@@ -8,8 +8,10 @@ export type AppHeaderProps = {
   tagline?: string
   /** Name rendered beside the avatar. */
   userName?: string
-  /** Shows a hamburger button before the wordmark and calls this on click.
-   *  AppShell passes this in below the `md` breakpoint to open the nav drawer. */
+  /** Calls this when the hamburger is clicked. The button only ever renders
+   *  below the `md` breakpoint — passing this prop on desktop does nothing,
+   *  by design, so a story can supply it unconditionally without it leaking
+   *  into the desktop layout. AppShell passes it to open the nav drawer. */
   onMenuClick?: () => void
 }
 
@@ -50,7 +52,7 @@ export function AppHeader({
         flexShrink: 0,
       }}
     >
-      {onMenuClick && (
+      {!isDesktop && onMenuClick && (
         <button
           type="button"
           onClick={onMenuClick}
