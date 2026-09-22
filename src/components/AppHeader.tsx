@@ -70,7 +70,12 @@ export function AppHeader({
       )}
 
       {isDesktop && (
-        <div style={{ width: 208, flexShrink: 0, lineHeight: 1.1, overflow: 'hidden' }}>
+        // Figma's Navbar has 16px of its own padding, then the logo sits
+        // inside a nested "Menu Item / Horizontal" wrapper with another 16px
+        // — 32px total. `header`'s own paddingInline only covers the first
+        // 16; this makes up the rest so the wordmark lines up with the
+        // sidebar icons below it instead of sitting 16px too far left.
+        <div style={{ width: 208, flexShrink: 0, lineHeight: 1.1, overflow: 'hidden', paddingLeft: token.padding }}>
           <div
             style={{
               color: '#fff',

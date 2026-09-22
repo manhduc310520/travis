@@ -73,3 +73,23 @@ export const AlertTriangle = sized(UI.AlertTriangle)
 export const XCircle = sized(UI.XCircle)
 export const CheckCircle = sized(UI.CheckCircle)
 export const Star01 = sized(UI.Star01, 20)
+
+// App shell navigation — real icon names read directly off the Figma
+// instances (Components/App Shells/Menu), not guessed.
+export const Home03 = sized(UI.Home03)
+export const LayoutAlt03 = sized(UI.LayoutAlt03)
+export const Tag03 = sized(UI.Tag03)
+export const PieChart04 = sized(UI.PieChart04)
+export const Grid01 = sized(UI.Grid01)
+export const ShoppingCart01 = sized(UI.ShoppingCart01)
+export const FileSearch02 = sized(UI.FileSearch02)
+export const Monitor03 = sized(UI.Monitor03)
+export const Mail01 = sized(UI.Mail01)
+export const File06 = sized(UI.File06)
+export const CheckCircleBroken = sized(UI.CheckCircleBroken)
+
+// More Ant Design internal-chrome overrides (Menu submenu arrow, Modal/
+// Drawer/Notification/Tag close buttons, Tabs, Breadcrumb, password toggle).
+export const EyeOff = sized(UI.EyeOff)
+export const DotsHorizontal = sized(UI.DotsHorizontal)
+export const X = sized(UI.X)

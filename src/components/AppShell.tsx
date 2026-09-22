@@ -1,22 +1,37 @@
 import { useState, type ReactNode } from 'react'
 import { Drawer, Grid, Layout, Menu, theme } from 'antd'
 import {
-  BookOpen01,
   Building02,
-  Home01,
-  LayoutLeft,
-  Menu02,
-  Printer,
-  Tag01,
-  Users01,
+  CheckCircleBroken,
   ChevronRight,
+  File06,
+  FileSearch02,
+  Grid01,
+  Home03,
+  LayoutAlt03,
+  LayoutLeft,
+  Mail01,
+  Menu02,
+  Monitor03,
+  PieChart04,
+  Printer,
+  ShoppingCart01,
+  Tag03,
+  Users01,
 } from '../icons'
 import { AppHeader } from './AppHeader'
 
 const { Sider, Content } = Layout
 
+/**
+ * The full nav, read directly off the Figma instance
+ * `App Shells > Components > App Shells Items / Menu` (node 27784:136759) —
+ * 14 top-level items, each with the exact icon instance bound to it in
+ * Figma (e.g. "Trang chủ" -> `home-03`, not a guessed equivalent). Earlier
+ * versions of this file had only 6 items; this is the full list.
+ */
 const navItems = [
-  { key: 'home', icon: <Home01 />, label: 'Trang chủ' },
+  { key: 'home', icon: <Home03 />, label: 'Trang chủ' },
   {
     key: 'restaurants',
     icon: <Building02 />,
@@ -34,10 +49,18 @@ const navItems = [
       { key: 'pos', label: 'Liên kết điểm bán hàng' },
     ],
   },
-  { key: 'menu', icon: <BookOpen01 />, label: 'Thực đơn' },
-  { key: 'promo', icon: <Tag01 />, label: 'Chương trình' },
+  { key: 'menu', icon: <LayoutAlt03 />, label: 'Thực đơn' },
+  { key: 'promo', icon: <Tag03 />, label: 'Chương trình' },
   { key: 'devices', icon: <Printer />, label: 'Thiết bị' },
   { key: 'staff', icon: <Users01 />, label: 'Nhân viên' },
+  { key: 'reports', icon: <PieChart04 />, label: 'Báo cáo' },
+  { key: 'apps', icon: <Grid01 />, label: 'Ứng dụng' },
+  { key: 'marketplace', icon: <ShoppingCart01 />, label: 'Marketplace' },
+  { key: 'accounting', icon: <FileSearch02 />, label: 'Kế toán và ngân hàng' },
+  { key: 'timekeeping', icon: <CheckCircleBroken />, label: 'Chấm công' },
+  { key: 'multichannel', icon: <Monitor03 />, label: 'Nhận đơn đa kênh' },
+  { key: 'support', icon: <Mail01 />, label: 'Góp ý hỗ trợ' },
+  { key: 'einvoice', icon: <File06 />, label: 'Hoá đơn điện tử' },
 ]
 
 export type AppShellProps = {
@@ -56,6 +79,13 @@ export type AppShellProps = {
  * in the product sits inside it, so a new module is a content problem rather
  * than a layout problem.
  *
+ * Sidebar padding (16px top, 8px each side) is Figma's own spec, measured off
+ * the same instance the nav list came from: the sidebar's `Content` slot
+ * carries that exact padding before Ant Design's own per-item padding/margin
+ * tokens take over. Skipping it was why the icons sat flush against the
+ * sidebar edge while the header logo — which does have this outer inset —
+ * did not line up with them.
+ *
  * Responsive: the Figma source is desktop-only (file name literally says
  * "Design Component Desktop"), so there is no frame to copy pixel-for-pixel
  * below `md`. Behaviour instead follows Ant Design's own reference pattern
@@ -73,7 +103,7 @@ export function AppShell({ children, selectedKey = 'list', height = 768 }: AppSh
 
   const nav = (
     <>
-      <div style={{ flex: 1, overflowY: 'auto' }}>
+      <div style={{ flex: 1, overflowY: 'auto', paddingBlockStart: token.padding, paddingInline: token.paddingXS }}>
         <Menu
           mode="inline"
           selectedKeys={[selectedKey]}
@@ -83,7 +113,7 @@ export function AppShell({ children, selectedKey = 'list', height = 768 }: AppSh
           onClick={() => setDrawerOpen(false)}
         />
       </div>
-      <div style={{ borderTop: `1px solid ${token.colorSplit}` }}>
+      <div style={{ borderTop: `1px solid ${token.colorSplit}`, paddingInline: token.paddingXS, paddingBlock: token.paddingXS }}>
         <Menu
           mode="inline"
           selectable={false}
