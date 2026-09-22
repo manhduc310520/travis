@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { expect } from 'storybook/test'
+import { expect, fn } from 'storybook/test'
 import { AppHeader } from './AppHeader'
 
 const meta = {
@@ -10,6 +10,13 @@ const meta = {
   // padded layout wraps it in a boxed card, making it look like an isolated
   // widget instead of the edge-to-edge bar it actually is everywhere it's used.
   parameters: { layout: 'fullscreen' },
+  // AppHeader only draws its hamburger when it's handed a callback — it has
+  // no way to know on its own whether a parent has a drawer to open.
+  // AppShell supplies one below `md`; this story needs to supply one too,
+  // or the hamburger simply cannot appear here no matter how narrow the
+  // viewport gets, even though `isDesktop` correctly flips at the same
+  // breakpoint. `fn()` also logs the click in the Actions panel.
+  args: { onMenuClick: fn() },
 } satisfies Meta<typeof AppHeader>
 
 export default meta
