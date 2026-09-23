@@ -3,6 +3,7 @@ import { Spin, Space, Card } from 'antd'
 
 const meta: Meta<typeof Spin> = {
   component: Spin,
+  title: 'Components/Spin',
   tags: ['ai-generated', 'needs-work'],
   // Every story uses a custom `render`, none set `args` — the Docs page's
   // argTypes table only renders once at least one arg exists. No JSDoc on

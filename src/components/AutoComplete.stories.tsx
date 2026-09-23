@@ -3,6 +3,7 @@ import { AutoComplete } from 'antd'
 
 const meta: Meta<typeof AutoComplete> = {
   component: AutoComplete,
+  title: 'Components/AutoComplete',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's auto-complete types — written from the API.
   argTypes: {

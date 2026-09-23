@@ -3,6 +3,7 @@ import { Anchor } from 'antd'
 
 const meta: Meta<typeof Anchor> = {
   component: Anchor,
+  title: 'Components/Anchor',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's Anchor.d.ts — written from the API surface.
   argTypes: {

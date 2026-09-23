@@ -4,6 +4,7 @@ import type { Dayjs } from 'dayjs'
 
 const meta: Meta<typeof Calendar> = {
   component: Calendar,
+  title: 'Components/Calendar',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on `fullscreen` in antd's calendar types — written from the API.
   argTypes: {

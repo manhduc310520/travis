@@ -3,6 +3,7 @@ import { Tabs } from 'antd'
 
 const meta: Meta<typeof Tabs> = {
   component: Tabs,
+  title: 'Components/Tabs',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's tabs types — written from the API.
   argTypes: {

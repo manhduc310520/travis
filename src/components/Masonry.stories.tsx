@@ -13,6 +13,7 @@ const heights = [150, 50, 90, 70, 110, 150, 130, 80].map((height, index) => ({
 
 const meta: Meta<typeof Masonry> = {
   component: Masonry,
+  title: 'Components/Masonry',
   tags: ['ai-generated', 'needs-work'],
   // `columns`/`gutter` descriptions are antd's own JSDoc from
   // masonry/Masonry.d.ts, copied as-is.

@@ -3,6 +3,7 @@ import { Switch } from 'antd'
 
 const meta: Meta<typeof Switch> = {
   component: Switch,
+  title: 'Components/Switch',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's switch types — written from the API.
   argTypes: {

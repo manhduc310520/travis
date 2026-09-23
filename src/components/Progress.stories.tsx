@@ -3,6 +3,7 @@ import { Progress, Space } from 'antd'
 
 const meta: Meta<typeof Progress> = {
   component: Progress,
+  title: 'Components/Progress',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's progress types — written from the API.
   argTypes: {

@@ -42,6 +42,7 @@ const data: Row[] = [
 
 const meta = {
   component: Table<Row>,
+  title: 'Components/Table',
   tags: ['ai-generated', 'needs-work'],
   // Without `scroll.x`, a table whose columns' combined minWidth exceeds its
   // container doesn't scroll internally — it overflows the page itself

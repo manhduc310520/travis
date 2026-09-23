@@ -3,6 +3,7 @@ import { Popover, Button } from 'antd'
 
 const meta: Meta<typeof Popover> = {
   component: Popover,
+  title: 'Components/Popover',
   tags: ['ai-generated', 'needs-work'],
   // The story uses a custom `render` with no `args` — the Docs page's
   // argTypes table only renders once at least one arg exists. No JSDoc on

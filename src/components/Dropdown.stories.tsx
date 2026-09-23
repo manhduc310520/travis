@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Dropdown, Button, Space } from 'antd'
 import { ChevronDown, Edit01, Eye, Trash01 } from '../icons'
-const meta: Meta<typeof Dropdown> = { component: Dropdown, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Dropdown> = { component: Dropdown, title: 'Components/Dropdown', tags: ['ai-generated', 'needs-work'] }
 export default meta
 type Story = StoryObj<typeof Dropdown>
 

@@ -3,6 +3,7 @@ import { Tag, Space } from 'antd'
 
 const meta: Meta<typeof Tag> = {
   component: Tag,
+  title: 'Components/Tag',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's tag types — written from the API.
   argTypes: {

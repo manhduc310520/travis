@@ -3,6 +3,7 @@ import { Mentions } from 'antd'
 
 const meta: Meta<typeof Mentions> = {
   component: Mentions,
+  title: 'Components/Mentions',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on `options` in antd's mentions types — written from the API.
   argTypes: {

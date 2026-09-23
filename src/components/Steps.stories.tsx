@@ -3,6 +3,7 @@ import { Steps } from 'antd'
 
 const meta: Meta<typeof Steps> = {
   component: Steps,
+  title: 'Components/Steps',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's steps types — written from the API.
   argTypes: {

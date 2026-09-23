@@ -3,6 +3,7 @@ import { Avatar, Space } from 'antd'
 import { User01 } from '../icons'
 const meta: Meta<typeof Avatar> = {
   component: Avatar,
+  title: 'Components/Avatar',
   tags: ['ai-generated', 'needs-work'],
   // `shape`/`icon` descriptions are antd's own JSDoc from avatar.d.ts,
   // copied as-is. `size` has no JSDoc there.

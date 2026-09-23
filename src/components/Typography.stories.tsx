@@ -3,7 +3,7 @@ import { Typography, Space } from 'antd'
 
 const { Title, Text, Paragraph, Link } = Typography
 
-const meta: Meta<typeof Typography> = { component: Typography, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Typography> = { component: Typography, title: 'Components/Typography', tags: ['ai-generated', 'needs-work'] }
 export default meta
 type Story = StoryObj<typeof Typography>
 

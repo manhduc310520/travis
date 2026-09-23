@@ -3,6 +3,7 @@ import { Checkbox, Space } from 'antd'
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
+  title: 'Components/Checkbox',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's Checkbox.d.ts — written from the API.
   argTypes: {

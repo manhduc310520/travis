@@ -3,6 +3,7 @@ import { Card, Button, Statistic } from 'antd'
 
 const meta: Meta<typeof Card> = {
   component: Card,
+  title: 'Components/Card',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's card/Card.d.ts — written from the API.
   argTypes: {

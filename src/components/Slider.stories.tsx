@@ -3,6 +3,7 @@ import { Slider } from 'antd'
 
 const meta: Meta<typeof Slider> = {
   component: Slider,
+  title: 'Components/Slider',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's slider types — written from the API.
   argTypes: {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { List, Avatar, Button } from 'antd'
 import { Building02 } from '../icons'
-const meta: Meta<typeof List> = { component: List, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof List> = { component: List, title: 'Components/List', tags: ['ai-generated', 'needs-work'] }
 export default meta
 type Story = StoryObj<typeof List>
 

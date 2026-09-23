@@ -3,6 +3,7 @@ import { Rate } from 'antd'
 
 const meta: Meta<typeof Rate> = {
   component: Rate,
+  title: 'Components/Rate',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's rate types — written from the API.
   argTypes: {

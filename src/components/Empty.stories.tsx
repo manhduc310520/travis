@@ -3,6 +3,7 @@ import { Empty, Button } from 'antd'
 
 const meta: Meta<typeof Empty> = {
   component: Empty,
+  title: 'Components/Empty',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's empty/index.d.ts — written from the API.
   argTypes: {

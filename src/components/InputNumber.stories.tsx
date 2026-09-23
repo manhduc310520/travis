@@ -3,6 +3,7 @@ import { InputNumber, Space } from 'antd'
 
 const meta: Meta<typeof InputNumber> = {
   component: InputNumber,
+  title: 'Components/InputNumber',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's input-number types — written from the API.
   argTypes: {

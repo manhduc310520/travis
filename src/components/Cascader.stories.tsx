@@ -3,6 +3,7 @@ import { Cascader } from 'antd'
 
 const meta: Meta<typeof Cascader> = {
   component: Cascader,
+  title: 'Components/Cascader',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's cascader types — written from the API.
   argTypes: {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Carousel } from 'antd'
 
-const meta: Meta<typeof Carousel> = { component: Carousel, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Carousel> = { component: Carousel, title: 'Components/Carousel', tags: ['ai-generated', 'needs-work'] }
 export default meta
 type Story = StoryObj<typeof Carousel>
 

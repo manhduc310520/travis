@@ -3,6 +3,7 @@ import { QRCode } from 'antd'
 
 const meta: Meta<typeof QRCode> = {
   component: QRCode,
+  title: 'Components/QRCode',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on `value`/`size` in antd's qr-code types. `bordered`'s JSDoc
   // is about a different `bordered` prop (in a describes-image comment,

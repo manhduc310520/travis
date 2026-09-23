@@ -3,6 +3,7 @@ import { Transfer } from 'antd'
 
 const meta: Meta<typeof Transfer> = {
   component: Transfer,
+  title: 'Components/Transfer',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's transfer types — written from the API.
   argTypes: {

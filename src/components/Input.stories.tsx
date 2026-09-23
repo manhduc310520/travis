@@ -4,6 +4,7 @@ import { Input } from 'antd'
 import { SearchMd } from '../icons'
 const meta = {
   component: Input,
+  title: 'Components/Input',
   tags: ['ai-generated', 'needs-work'],
   args: { placeholder: 'Tìm kiếm nhà hàng', style: { maxWidth: 320 } },
   // No JSDoc on these in antd's Input.d.ts — written from the API surface.

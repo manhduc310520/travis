@@ -3,6 +3,7 @@ import { Descriptions } from 'antd'
 
 const meta: Meta<typeof Descriptions> = {
   component: Descriptions,
+  title: 'Components/Descriptions',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's descriptions/index.d.ts — written from the API.
   argTypes: {

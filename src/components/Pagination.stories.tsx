@@ -3,6 +3,7 @@ import { Pagination } from 'antd'
 
 const meta: Meta<typeof Pagination> = {
   component: Pagination,
+  title: 'Components/Pagination',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's pagination types — written from the API.
   argTypes: {

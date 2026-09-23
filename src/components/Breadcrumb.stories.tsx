@@ -3,6 +3,7 @@ import { Breadcrumb } from 'antd'
 import { Home01 } from '../icons'
 const meta: Meta<typeof Breadcrumb> = {
   component: Breadcrumb,
+  title: 'Components/Breadcrumb',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on `items` in antd's breadcrumb types — written from the API.
   argTypes: {

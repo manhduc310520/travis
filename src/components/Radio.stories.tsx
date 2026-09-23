@@ -3,6 +3,7 @@ import { Radio, Space } from 'antd'
 
 const meta: Meta<typeof Radio> = {
   component: Radio,
+  title: 'Components/Radio',
   tags: ['ai-generated', 'needs-work'],
   // Every story renders `Radio.Group`/`Radio.Button`, not the bare `Radio`
   // named in this meta's `component` — `buttonStyle`/`defaultValue` belong

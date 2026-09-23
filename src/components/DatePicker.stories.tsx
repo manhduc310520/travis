@@ -3,6 +3,7 @@ import { DatePicker } from 'antd'
 
 const meta: Meta<typeof DatePicker> = {
   component: DatePicker,
+  title: 'Components/DatePicker',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc found on these in antd's generated picker types — written
   // from the API surface.

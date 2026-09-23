@@ -17,6 +17,7 @@ const ICONS = {
 
 const meta: Meta<typeof Alert> = {
   component: Alert,
+  title: 'Components/Alert',
   tags: ['ai-generated', 'needs-work'],
   // Every story below uses a custom `render`, none set `args` — but the
   // Docs page's argTypes table only renders once at least one arg exists

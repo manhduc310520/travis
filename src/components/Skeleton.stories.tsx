@@ -3,6 +3,7 @@ import { Skeleton } from 'antd'
 
 const meta: Meta<typeof Skeleton> = {
   component: Skeleton,
+  title: 'Components/Skeleton',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's Skeleton.d.ts — written from the API.
   argTypes: {

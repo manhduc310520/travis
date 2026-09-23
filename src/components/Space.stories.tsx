@@ -3,6 +3,7 @@ import { Space, Button } from 'antd'
 
 const meta: Meta<typeof Space> = {
   component: Space,
+  title: 'Components/Space',
   tags: ['ai-generated', 'needs-work'],
   // Every story uses a custom `render`, none set `args` — the Docs page's
   // argTypes table only renders once at least one arg exists. No JSDoc on

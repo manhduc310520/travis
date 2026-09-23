@@ -3,6 +3,7 @@ import { Flex, Button } from 'antd'
 
 const meta: Meta<typeof Flex> = {
   component: Flex,
+  title: 'Components/Flex',
   tags: ['ai-generated', 'needs-work'],
   // Every story uses a custom `render`, none set `args` — the Docs page's
   // argTypes table only renders once at least one arg exists.

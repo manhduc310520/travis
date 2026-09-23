@@ -3,6 +3,7 @@ import { TimePicker } from 'antd'
 
 const meta: Meta<typeof TimePicker> = {
   component: TimePicker,
+  title: 'Components/TimePicker',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc found on these in antd's time-picker types — written from the API.
   argTypes: {

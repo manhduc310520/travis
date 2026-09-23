@@ -3,6 +3,7 @@ import { Timeline } from 'antd'
 
 const meta: Meta<typeof Timeline> = {
   component: Timeline,
+  title: 'Components/Timeline',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's timeline types — written from the API.
   argTypes: {

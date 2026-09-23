@@ -3,6 +3,7 @@ import { Upload, Button } from 'antd'
 import { Upload01, UploadCloud01 } from '../icons'
 const meta: Meta<typeof Upload> = {
   component: Upload,
+  title: 'Components/Upload',
   tags: ['ai-generated', 'needs-work'],
   // Every story uses a custom `render`, none set `args` — the Docs page's
   // argTypes table only renders once at least one arg exists. No JSDoc on

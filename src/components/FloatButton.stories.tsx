@@ -3,6 +3,7 @@ import { FloatButton } from 'antd'
 import { HelpCircle, Plus } from '../icons'
 const meta: Meta<typeof FloatButton> = {
   component: FloatButton,
+  title: 'Components/FloatButton',
   tags: ['ai-generated', 'needs-work'],
   // Every story uses a custom `render`, none set `args` — the Docs page's
   // argTypes table only renders once at least one arg exists.

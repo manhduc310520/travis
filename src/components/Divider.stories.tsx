@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Divider, Typography } from 'antd'
 
-const meta: Meta<typeof Divider> = { component: Divider, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Divider> = { component: Divider, title: 'Components/Divider', tags: ['ai-generated', 'needs-work'] }
 export default meta
 type Story = StoryObj<typeof Divider>
 

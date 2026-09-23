@@ -3,6 +3,7 @@ import { Select } from 'antd'
 
 const meta: Meta<typeof Select> = {
   component: Select,
+  title: 'Components/Select',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's select/index.d.ts — written from the API
   // surface. `mode` options are the public SelectProps union ('multiple' |

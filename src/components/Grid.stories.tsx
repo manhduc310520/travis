@@ -3,6 +3,7 @@ import { Row, Col, Card } from 'antd'
 
 const meta: Meta<typeof Row> = {
   component: Row,
+  title: 'Components/Grid',
   tags: ['ai-generated', 'needs-work'],
   // Every story uses a custom `render`, none set `args` — the Docs page's
   // argTypes table only renders once at least one arg exists. `span`/

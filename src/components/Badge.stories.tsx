@@ -3,6 +3,7 @@ import { Badge, Avatar, Space } from 'antd'
 import { Bell01 } from '../icons'
 const meta: Meta<typeof Badge> = {
   component: Badge,
+  title: 'Components/Badge',
   tags: ['ai-generated', 'needs-work'],
   // `count`/`overflowCount`/`dot` descriptions are antd's own JSDoc from
   // badge/Badge.d.ts, copied as-is. `status`/`text` have no JSDoc there.

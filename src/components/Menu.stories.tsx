@@ -3,6 +3,7 @@ import { Menu } from 'antd'
 import { Building02, PieChart01, Settings01, Users01 } from '../icons'
 const meta: Meta<typeof Menu> = {
   component: Menu,
+  title: 'Components/Menu',
   tags: ['ai-generated', 'needs-work'],
   // Every story uses a custom `render`, none set `args` — the Docs page's
   // argTypes table only renders once at least one arg exists. No JSDoc on

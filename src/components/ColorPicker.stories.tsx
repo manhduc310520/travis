@@ -3,6 +3,7 @@ import { ColorPicker } from 'antd'
 
 const meta: Meta<typeof ColorPicker> = {
   component: ColorPicker,
+  title: 'Components/ColorPicker',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's color-picker types — written from the API.
   argTypes: {

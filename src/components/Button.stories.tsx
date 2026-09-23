@@ -4,6 +4,7 @@ import { Button, Space } from 'antd'
 import { Plus } from '../icons'
 const meta = {
   component: Button,
+  title: 'Components/Button',
   tags: ['ai-generated', 'needs-work'],
   args: { children: 'Tạo nhà hàng' },
   // Ant Design's own BaseButtonProps carries no JSDoc for these — unlike

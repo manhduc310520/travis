@@ -3,6 +3,7 @@ import { Collapse } from 'antd'
 
 const meta: Meta<typeof Collapse> = {
   component: Collapse,
+  title: 'Components/Collapse',
   tags: ['ai-generated', 'needs-work'],
   // `accordion`'s only JSDoc in antd's Collapse.d.ts is Chinese-only
   // ("手风琴效果" — accordion effect); described here in English from the

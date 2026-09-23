@@ -3,6 +3,7 @@ import { TreeSelect } from 'antd'
 
 const meta: Meta<typeof TreeSelect> = {
   component: TreeSelect,
+  title: 'Components/TreeSelect',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc found on these in antd's tree-select types — written from the API.
   argTypes: {

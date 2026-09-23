@@ -3,6 +3,7 @@ import { Result, Button } from 'antd'
 
 const meta: Meta<typeof Result> = {
   component: Result,
+  title: 'Components/Result',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's result types — written from the API.
   argTypes: {

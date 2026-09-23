@@ -3,6 +3,7 @@ import { Splitter, Typography } from 'antd'
 
 const meta: Meta<typeof Splitter> = {
   component: Splitter,
+  title: 'Components/Splitter',
   tags: ['ai-generated', 'needs-work'],
   // The story's only configured prop is `defaultSize`, which belongs to
   // `Splitter.Panel`, a different component from the one named here — not

@@ -4,6 +4,7 @@ import { Form, Input, Select, Button, Switch } from 'antd'
 
 const meta: Meta<typeof Form> = {
   component: Form,
+  title: 'Components/Form',
   tags: ['ai-generated', 'needs-work'],
   // Every story uses a custom `render` and none set `args` — the Docs
   // page's argTypes table only renders once at least one arg exists.

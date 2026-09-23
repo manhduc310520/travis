@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Drawer, Form, Input } from 'antd'
 
-const meta: Meta<typeof Drawer> = { component: Drawer, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Drawer> = { component: Drawer, title: 'Components/Drawer', tags: ['ai-generated', 'needs-work'] }
 export default meta
 type Story = StoryObj<typeof Drawer>
 

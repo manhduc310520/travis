@@ -3,6 +3,7 @@ import { Tree } from 'antd'
 
 const meta: Meta<typeof Tree> = {
   component: Tree,
+  title: 'Components/Tree',
   tags: ['ai-generated', 'needs-work'],
   // `defaultExpandAll`'s description is antd's own JSDoc from Tree.d.ts,
   // copied as-is. `treeData`/`checkable` have no JSDoc there.

@@ -3,6 +3,7 @@ import { Segmented } from 'antd'
 
 const meta: Meta<typeof Segmented> = {
   component: Segmented,
+  title: 'Components/Segmented',
   tags: ['ai-generated', 'needs-work'],
   // `block`'s description is antd's own JSDoc from segmented/index.d.ts,
   // copied as-is. `options`/`disabled` have no JSDoc there.

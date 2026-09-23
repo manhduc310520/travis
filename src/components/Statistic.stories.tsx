@@ -3,6 +3,7 @@ import { Statistic, Row, Col, Card } from 'antd'
 import { ArrowUp } from '../icons'
 const meta: Meta<typeof Statistic> = {
   component: Statistic,
+  title: 'Components/Statistic',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on these in antd's statistic types — written from the API.
   argTypes: {

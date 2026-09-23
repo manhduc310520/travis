@@ -3,6 +3,7 @@ import { Modal, Form, Input } from 'antd'
 
 const meta: Meta<typeof Modal> = {
   component: Modal,
+  title: 'Components/Modal',
   tags: ['ai-generated', 'needs-work'],
   // `open`/`confirmLoading`/`width`/`okText`/`cancelText` descriptions are
   // antd's own JSDoc from modal/interface.d.ts, copied as-is.

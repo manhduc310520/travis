@@ -3,6 +3,7 @@ import { Image } from 'antd'
 
 const meta: Meta<typeof Image> = {
   component: Image,
+  title: 'Components/Image',
   tags: ['ai-generated', 'needs-work'],
   // No JSDoc on `fallback` in antd's image types — written from the API.
   argTypes: {
