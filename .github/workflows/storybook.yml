@@ -13,7 +13,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -29,14 +29,14 @@ jobs:
       - run: npm run validate:tokens
       - run: npm run build-storybook
       - uses: actions/configure-pages@v5
-        if: github.event_name == 'push'
+        if: github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v3
         with:
           path: storybook-static
 
   deploy:
     needs: build
-    if: github.event_name == 'push'
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

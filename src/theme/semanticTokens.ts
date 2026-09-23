@@ -11,7 +11,7 @@
  * Figma are named exactly like Ant Design's global tokens, which makes the
  * mapping one to one.
  *
- * 28 of the 105 tokens change with the brand; the other 77 do not, so they are
+ * 28 of the 102 tokens change with the brand; the other 74 do not, so they are
  * stored once per colour mode instead of ten times.
  */
 export type Brand = 'blue' | 'green' | 'yellow' | 'magenta' | 'orange'

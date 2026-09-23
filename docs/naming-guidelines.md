@@ -24,7 +24,7 @@ the export is a rename, not a remap.
 One file per tier, matching Ant Design's own Seed → Map/Alias → Component
 split:
 
-- `semanticTokens.ts` — `semanticFixed` (mode-only, 77 tokens) +
+- `semanticTokens.ts` — `semanticFixed` (mode-only, 74 tokens) +
   `semanticBrand` (`${brand}.${mode}` keyed, 28 tokens). Key names are Ant
   Design's own token names (`colorPrimary`, `colorBgLayout`, ...), not
   Figma's — the Figma side of the name lives in the Figma file itself.
