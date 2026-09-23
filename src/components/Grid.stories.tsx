@@ -1,7 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Row, Col, Card } from 'antd'
 
-const meta: Meta<typeof Row> = { component: Row, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Row> = {
+  component: Row,
+  tags: ['ai-generated', 'needs-work'],
+  // Every story uses a custom `render`, none set `args` — the Docs page's
+  // argTypes table only renders once at least one arg exists. `span`/
+  // `xs`/`sm`/`md`/`lg` used in these stories belong to `Col`, a different
+  // component from the one documented here (`Row`), so they aren't listed.
+  args: { gutter: 16 },
+  argTypes: {
+    gutter: { description: 'Horizontal/vertical spacing between columns.', control: false },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Row>
 

@@ -1,7 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { InputNumber, Space } from 'antd'
 
-const meta: Meta<typeof InputNumber> = { component: InputNumber, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof InputNumber> = {
+  component: InputNumber,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's input-number types — written from the API.
+  argTypes: {
+    min: { description: 'Lowest value the input will accept.', control: 'number' },
+    step: { description: 'Amount added/removed per arrow-key press or spinner click.', control: 'number' },
+    disabled: { description: 'Disables the input.', control: 'boolean' },
+    status: { description: 'Validation state — colors the border and focus ring.', control: 'select', options: ['', 'warning', 'error'] },
+  },
+}
 export default meta
 type Story = StoryObj<typeof InputNumber>
 

@@ -1,7 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Descriptions } from 'antd'
 
-const meta: Meta<typeof Descriptions> = { component: Descriptions, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Descriptions> = {
+  component: Descriptions,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's descriptions/index.d.ts — written from the API.
+  argTypes: {
+    title: { description: 'Title shown above the list.', control: 'text' },
+    bordered: { description: 'Draws borders around each label/value cell.', control: 'boolean' },
+    column: { description: 'Number of label/value pairs per row.', control: 'number' },
+    layout: { description: 'Label position relative to its value.', control: 'select', options: ['horizontal', 'vertical'] },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Descriptions>
 

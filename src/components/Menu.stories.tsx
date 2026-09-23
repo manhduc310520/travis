@@ -1,7 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Menu } from 'antd'
 import { Building02, PieChart01, Settings01, Users01 } from '../icons'
-const meta: Meta<typeof Menu> = { component: Menu, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Menu> = {
+  component: Menu,
+  tags: ['ai-generated', 'needs-work'],
+  // Every story uses a custom `render`, none set `args` — the Docs page's
+  // argTypes table only renders once at least one arg exists. No JSDoc on
+  // these in antd's menu types — written from the API.
+  args: { mode: 'inline' },
+  argTypes: {
+    mode: { description: 'Layout direction of the menu.', control: 'select', options: ['vertical', 'horizontal', 'inline'] },
+    items: { description: 'The list of menu items, nestable via `children`.', control: false },
+    inlineCollapsed: { description: 'Collapses to icon-only width (mode="inline" only).', control: 'boolean' },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Menu>
 

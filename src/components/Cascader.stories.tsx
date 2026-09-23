@@ -1,7 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Cascader } from 'antd'
 
-const meta: Meta<typeof Cascader> = { component: Cascader, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Cascader> = {
+  component: Cascader,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's cascader types — written from the API.
+  argTypes: {
+    options: { description: 'The nested list of selectable options.', control: false },
+    multiple: { description: 'Allows selecting more than one leaf/branch at once.', control: 'boolean' },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Cascader>
 

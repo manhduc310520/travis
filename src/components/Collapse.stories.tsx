@@ -1,7 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Collapse } from 'antd'
 
-const meta: Meta<typeof Collapse> = { component: Collapse, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Collapse> = {
+  component: Collapse,
+  tags: ['ai-generated', 'needs-work'],
+  // `accordion`'s only JSDoc in antd's Collapse.d.ts is Chinese-only
+  // ("手风琴效果" — accordion effect); described here in English from the
+  // verified behavior instead of machine-translating that comment.
+  // `items`/`defaultActiveKey` have no JSDoc at all.
+  argTypes: {
+    items: { description: 'The list of panels.', control: false },
+    defaultActiveKey: { description: 'Key(s) expanded on initial render (uncontrolled).', control: false },
+    accordion: { description: 'Only one panel can be open at a time; opening one closes the others.', control: 'boolean' },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Collapse>
 

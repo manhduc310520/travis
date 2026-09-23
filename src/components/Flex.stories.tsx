@@ -1,7 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Flex, Button } from 'antd'
 
-const meta: Meta<typeof Flex> = { component: Flex, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Flex> = {
+  component: Flex,
+  tags: ['ai-generated', 'needs-work'],
+  // Every story uses a custom `render`, none set `args` — the Docs page's
+  // argTypes table only renders once at least one arg exists.
+  args: { gap: 'middle' },
+  // No JSDoc on these in antd's flex/interface.d.ts — written from the API.
+  argTypes: {
+    gap: { description: 'Space between children.', control: 'select', options: ['small', 'middle', 'large'] },
+    justify: { description: 'CSS justify-content — alignment along the main axis.', control: false },
+    vertical: { description: 'Stacks children top-to-bottom instead of left-to-right.', control: 'boolean' },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Flex>
 

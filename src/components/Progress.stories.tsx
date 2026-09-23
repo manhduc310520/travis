@@ -1,7 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Progress, Space } from 'antd'
 
-const meta: Meta<typeof Progress> = { component: Progress, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Progress> = {
+  component: Progress,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's progress types — written from the API.
+  argTypes: {
+    percent: { description: 'Completion percentage, 0–100.', control: 'number' },
+    type: { description: 'Visual shape of the progress indicator.', control: 'select', options: ['line', 'circle', 'dashboard'] },
+    status: { description: 'Overrides the color/icon to reflect an outcome.', control: 'select', options: ['normal', 'active', 'success', 'exception'] },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Progress>
 

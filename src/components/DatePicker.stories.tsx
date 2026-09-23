@@ -1,7 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { DatePicker } from 'antd'
 
-const meta: Meta<typeof DatePicker> = { component: DatePicker, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof DatePicker> = {
+  component: DatePicker,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc found on these in antd's generated picker types — written
+  // from the API surface.
+  argTypes: {
+    picker: {
+      description: 'Granularity of the picker panel.',
+      control: 'select',
+      options: ['date', 'week', 'month', 'quarter', 'year'],
+    },
+    disabled: { description: 'Disables the input.', control: 'boolean' },
+    status: { description: 'Validation state — colors the border and focus ring.', control: 'select', options: ['', 'warning', 'error'] },
+  },
+}
 export default meta
 type Story = StoryObj<typeof DatePicker>
 

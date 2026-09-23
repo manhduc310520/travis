@@ -1,7 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Card, Button, Statistic } from 'antd'
 
-const meta: Meta<typeof Card> = { component: Card, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Card> = {
+  component: Card,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's card/Card.d.ts — written from the API.
+  argTypes: {
+    title: { description: 'Card title.', control: 'text' },
+    extra: { description: 'Content rendered at the top-right, alongside the title.', control: false },
+    size: { description: 'Card density — default or small.', control: 'select', options: ['default', 'small'] },
+    loading: { description: 'Shows a skeleton placeholder instead of the children.', control: 'boolean' },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Card>
 
