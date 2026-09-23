@@ -4,18 +4,34 @@ import { Table, Tag } from 'antd'
 
 type Row = { key: string; posId: string; name: string; city: string; status: 'active' | 'paused' }
 
+/**
+ * Ant Design doesn't stop a header title from wrapping just because the
+ * column has a `width` — the two are unrelated. `onHeaderCell` sets a real
+ * CSS `minWidth` + `nowrap` on that one cell; `onCell` gives the body the
+ * same floor without forcing nowrap, so long content can still wrap.
+ */
+function withMinWidth<T>(column: T & { minWidth: number }) {
+  const { minWidth, ...rest } = column
+  return {
+    ...rest,
+    onHeaderCell: () => ({ style: { minWidth, whiteSpace: 'nowrap' as const } }),
+    onCell: () => ({ style: { minWidth } }),
+  }
+}
+
 const columns = [
-  { title: 'Pos ID', dataIndex: 'posId', key: 'posId' },
-  { title: 'Tên nhà hàng', dataIndex: 'name', key: 'name' },
-  { title: 'Địa điểm', dataIndex: 'city', key: 'city' },
-  {
+  withMinWidth({ title: 'Pos ID', dataIndex: 'posId', key: 'posId', minWidth: 100 }),
+  withMinWidth({ title: 'Tên nhà hàng', dataIndex: 'name', key: 'name', minWidth: 160 }),
+  withMinWidth({ title: 'Địa điểm', dataIndex: 'city', key: 'city', minWidth: 140 }),
+  withMinWidth({
     title: 'Trạng thái',
     dataIndex: 'status',
     key: 'status',
+    minWidth: 140,
     render: (s: Row['status']) => (
       <Tag color={s === 'active' ? 'success' : 'default'}>{s === 'active' ? 'Đang hoạt động' : 'Tạm dừng'}</Tag>
     ),
-  },
+  }),
 ]
 
 const data: Row[] = [
@@ -27,7 +43,11 @@ const data: Row[] = [
 const meta = {
   component: Table<Row>,
   tags: ['ai-generated', 'needs-work'],
-  args: { columns, dataSource: data, pagination: false },
+  // Without `scroll.x`, a table whose columns' combined minWidth exceeds its
+  // container doesn't scroll internally — it overflows the page itself
+  // (verified: .ant-table-content defaults to overflow-x: visible). This is
+  // the same fix RestaurantListPage.tsx already applies below `md`.
+  args: { columns, dataSource: data, pagination: false, scroll: { x: 'max-content' } },
 } satisfies Meta<typeof Table<Row>>
 
 export default meta
