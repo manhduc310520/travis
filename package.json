@@ -1,12 +1,19 @@
 {
   "name": "fabi-design-system",
+  "description": "FABi: Ant Design v6 retuned from the Figma design system's own tokens, components, and multibrand light/dark variables.",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manhduc310520/travis.git"
+  },
+  "homepage": "https://manhduc310520.github.io/travis/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "validate:tokens": "node scripts/audit-tokens.mjs",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

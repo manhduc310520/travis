@@ -102,3 +102,10 @@ console.log(`never read by Ant Design (${dead.length}):`)
 dead.length ? dead.forEach((d) => console.log('  ' + d)) : console.log('  none')
 console.log(`\nunit risk (${ratioRisk.length}):`)
 ratioRisk.length ? ratioRisk.forEach((d) => console.log('  ' + d)) : console.log('  none')
+
+// A silent audit only prevents mistakes the next person remembers to run it
+// against. Failing the process is what lets this run as a CI gate.
+if (dead.length || ratioRisk.length) {
+  console.error(`\naudit-tokens: ${dead.length + ratioRisk.length} issue(s) found`)
+  process.exitCode = 1
+}
