@@ -15,7 +15,32 @@ const ICONS = {
   warning: <AlertCircle />,
 } as const
 
-const meta: Meta<typeof Alert> = { component: Alert, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Alert> = {
+  component: Alert,
+  tags: ['ai-generated', 'needs-work'],
+  // Every story below uses a custom `render`, none set `args` — but the
+  // Docs page's argTypes table only renders once at least one arg exists
+  // (verified: it was silently empty without this). This default is never
+  // seen since no story reads args directly; it exists purely so the
+  // Controls table has something to display.
+  args: { type: 'info', title: 'Thông báo', showIcon: true },
+  // `type`/`closable`/`title`/`description`/`showIcon` descriptions are
+  // antd's own JSDoc from Alert.d.ts, copied as-is. `banner`/`icon` have no
+  // JSDoc in antd — written from the API itself, not guessed.
+  argTypes: {
+    type: {
+      description: 'Type of Alert styles.',
+      control: 'select',
+      options: ['success', 'info', 'warning', 'error'],
+    },
+    title: { description: 'Content of Alert.', control: 'text' },
+    description: { description: 'Additional content of Alert.', control: 'text' },
+    closable: { description: 'Whether Alert can be closed.', control: 'boolean' },
+    showIcon: { description: 'Whether to show icon.', control: 'boolean' },
+    banner: { description: 'Renders as a square-cornered banner meant to sit flush at the top of a page.', control: 'boolean' },
+    icon: { description: 'Custom icon, only effective when showIcon is true.', control: false },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Alert>
 

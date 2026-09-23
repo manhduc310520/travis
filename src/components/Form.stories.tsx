@@ -2,7 +2,24 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { expect } from 'storybook/test'
 import { Form, Input, Select, Button, Switch } from 'antd'
 
-const meta: Meta<typeof Form> = { component: Form, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Form> = {
+  component: Form,
+  tags: ['ai-generated', 'needs-work'],
+  // Every story uses a custom `render` and none set `args` — the Docs
+  // page's argTypes table only renders once at least one arg exists.
+  args: { layout: 'vertical' },
+  // No JSDoc on `layout` in antd's form/Form.d.ts. Field-level props
+  // (`rules`, `validateStatus`, `help`) belong to `Form.Item`, a different
+  // component from the one documented here, so they aren't listed as
+  // argTypes on this meta.
+  argTypes: {
+    layout: {
+      description: 'Position of labels relative to their fields.',
+      control: 'select',
+      options: ['horizontal', 'vertical', 'inline'],
+    },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Form>
 

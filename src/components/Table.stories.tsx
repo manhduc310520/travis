@@ -48,6 +48,13 @@ const meta = {
   // (verified: .ant-table-content defaults to overflow-x: visible). This is
   // the same fix RestaurantListPage.tsx already applies below `md`.
   args: { columns, dataSource: data, pagination: false, scroll: { x: 'max-content' } },
+  // No JSDoc on these in antd's InternalTable.d.ts — written from the API.
+  argTypes: {
+    pagination: { description: 'Pagination config, or false to disable it entirely.', control: false },
+    loading: { description: 'Shows a loading spinner over the table body.', control: 'boolean' },
+    size: { description: 'Row height / cell padding density.', control: 'select', options: ['large', 'middle', 'small'] },
+    bordered: { description: 'Adds vertical borders between columns (off by default, per the Figma spec).', control: 'boolean' },
+  },
 } satisfies Meta<typeof Table<Row>>
 
 export default meta

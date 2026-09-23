@@ -6,6 +6,19 @@ const meta = {
   component: Input,
   tags: ['ai-generated', 'needs-work'],
   args: { placeholder: 'Tìm kiếm nhà hàng', style: { maxWidth: 320 } },
+  // No JSDoc on these in antd's Input.d.ts — written from the API surface.
+  // `status` options are the exact 5 antd defines in InputStatus, not just
+  // the one ("error") this file happens to demo.
+  argTypes: {
+    prefix: { description: 'Content rendered inside the input, before the text.', control: false },
+    disabled: { description: 'Disables the input.', control: 'boolean' },
+    status: {
+      description: 'Validation state — colors the border and, for warning/error, the focus ring.',
+      control: 'select',
+      options: ['', 'warning', 'error', 'success', 'validating'],
+    },
+    allowClear: { description: 'Shows a clear ("x") button once the input has a value.', control: 'boolean' },
+  },
 } satisfies Meta<typeof Input>
 
 export default meta
