@@ -1,7 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Tabs } from 'antd'
 
-const meta: Meta<typeof Tabs> = { component: Tabs, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Tabs> = {
+  component: Tabs,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's tabs types — written from the API.
+  argTypes: {
+    items: { description: 'The list of tabs.', control: false },
+    type: { description: 'Visual style of the tab strip.', control: 'select', options: ['line', 'card', 'editable-card'] },
+    centered: { description: 'Centers the tab strip instead of left-aligning it.', control: 'boolean' },
+    size: { description: 'Size of the tab strip.', control: 'select', options: ['large', 'middle', 'small'] },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Tabs>
 

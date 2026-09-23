@@ -1,7 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Tree } from 'antd'
 
-const meta: Meta<typeof Tree> = { component: Tree, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Tree> = {
+  component: Tree,
+  tags: ['ai-generated', 'needs-work'],
+  // `defaultExpandAll`'s description is antd's own JSDoc from Tree.d.ts,
+  // copied as-is. `treeData`/`checkable` have no JSDoc there.
+  argTypes: {
+    treeData: { description: 'The nested list of nodes.', control: false },
+    defaultExpandAll: { description: 'Expand all tree nodes by default.', control: 'boolean' },
+    checkable: { description: 'Shows a checkbox on every node.', control: 'boolean' },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Tree>
 

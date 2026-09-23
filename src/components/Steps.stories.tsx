@@ -1,7 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Steps } from 'antd'
 
-const meta: Meta<typeof Steps> = { component: Steps, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Steps> = {
+  component: Steps,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's steps types — written from the API.
+  argTypes: {
+    current: { description: 'Index (0-based) of the active step.', control: 'number' },
+    orientation: { description: 'Layout direction of the steps.', control: 'select', options: ['horizontal', 'vertical'] },
+    size: { description: 'Size of the step indicators.', control: 'select', options: ['default', 'small'] },
+    status: {
+      description: 'Status of the current step (overridden per-item by that item\'s own `status`).',
+      control: 'select',
+      options: ['wait', 'process', 'finish', 'error'],
+    },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Steps>
 

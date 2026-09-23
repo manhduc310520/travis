@@ -4,6 +4,11 @@ import { Image } from 'antd'
 const meta: Meta<typeof Image> = {
   component: Image,
   tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on `fallback` in antd's image types — written from the API.
+  argTypes: {
+    width: { description: 'Width of the rendered image, in pixels.', control: 'number' },
+    fallback: { description: 'Image URL shown if `src` fails to load.', control: 'text' },
+  },
 }
 export default meta
 type Story = StoryObj<typeof Image>

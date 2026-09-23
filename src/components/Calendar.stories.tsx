@@ -5,6 +5,11 @@ import type { Dayjs } from 'dayjs'
 const meta: Meta<typeof Calendar> = {
   component: Calendar,
   tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on `fullscreen` in antd's calendar types — written from the API.
+  argTypes: {
+    fullscreen: { description: 'Full grid layout (true) vs a compact single-column layout for narrow spaces.', control: 'boolean' },
+    headerRender: { description: 'Replaces the built-in month/year header with a custom one.', control: false },
+  },
 }
 export default meta
 type Story = StoryObj<typeof Calendar>

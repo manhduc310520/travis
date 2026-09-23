@@ -1,7 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Transfer } from 'antd'
 
-const meta: Meta<typeof Transfer> = { component: Transfer, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Transfer> = {
+  component: Transfer,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's transfer types — written from the API.
+  argTypes: {
+    dataSource: { description: 'The full list of items to move between the two lists.', control: false },
+    targetKeys: { description: 'Keys currently on the right (target) side.', control: false },
+    titles: { description: 'Header text for the [left, right] lists.', control: false },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Transfer>
 

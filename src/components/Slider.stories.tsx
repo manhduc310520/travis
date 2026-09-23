@@ -1,7 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Slider } from 'antd'
 
-const meta: Meta<typeof Slider> = { component: Slider, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Slider> = {
+  component: Slider,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's slider types — written from the API.
+  argTypes: {
+    range: { description: 'Selects a span (two handles) instead of a single value.', control: 'boolean' },
+    marks: { description: 'Labeled tick marks at specific values.', control: false },
+    disabled: { description: 'Disables the slider.', control: 'boolean' },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Slider>
 

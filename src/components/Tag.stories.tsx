@@ -1,7 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Tag, Space } from 'antd'
 
-const meta: Meta<typeof Tag> = { component: Tag, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Tag> = {
+  component: Tag,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's tag types — written from the API.
+  argTypes: {
+    color: { description: 'Preset semantic color (success/error/...) or one of the palette colors (magenta/blue/...).', control: 'text' },
+    closable: { description: 'Shows a close ("x") affordance that removes the tag.', control: 'boolean' },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Tag>
 

@@ -1,7 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { TreeSelect } from 'antd'
 
-const meta: Meta<typeof TreeSelect> = { component: TreeSelect, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof TreeSelect> = {
+  component: TreeSelect,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc found on these in antd's tree-select types — written from the API.
+  argTypes: {
+    treeData: { description: 'The nested list of selectable nodes.', control: false },
+    treeCheckable: { description: 'Shows checkboxes and allows selecting multiple nodes.', control: 'boolean' },
+  },
+}
 export default meta
 type Story = StoryObj<typeof TreeSelect>
 

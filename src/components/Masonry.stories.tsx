@@ -14,6 +14,13 @@ const heights = [150, 50, 90, 70, 110, 150, 130, 80].map((height, index) => ({
 const meta: Meta<typeof Masonry> = {
   component: Masonry,
   tags: ['ai-generated', 'needs-work'],
+  // `columns`/`gutter` descriptions are antd's own JSDoc from
+  // masonry/Masonry.d.ts, copied as-is.
+  argTypes: {
+    columns: { description: 'Number of columns in the masonry grid layout.', control: 'number' },
+    gutter: { description: 'Spacing between items.', control: 'number' },
+    items: { description: 'The list of items to lay out.', control: false },
+  },
 }
 export default meta
 type Story = StoryObj<typeof Masonry>

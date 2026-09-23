@@ -1,7 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Timeline } from 'antd'
 
-const meta: Meta<typeof Timeline> = { component: Timeline, tags: ['ai-generated', 'needs-work'] }
+const meta: Meta<typeof Timeline> = {
+  component: Timeline,
+  tags: ['ai-generated', 'needs-work'],
+  // No JSDoc on these in antd's timeline types — written from the API.
+  argTypes: {
+    items: { description: 'The list of timeline entries.', control: false },
+    mode: { description: 'Placement of entries relative to the center line.', control: 'select', options: ['left', 'alternate', 'right'] },
+  },
+}
 export default meta
 type Story = StoryObj<typeof Timeline>
 
