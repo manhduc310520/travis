@@ -6,9 +6,9 @@ export default meta
 type Story = StoryObj<typeof Steps>
 
 const items = [
-  { title: 'Thông tin', description: 'Tên và địa chỉ' },
-  { title: 'Thực đơn', description: 'Nhập món' },
-  { title: 'Hoàn tất', description: 'Kiểm tra lại' },
+  { title: 'Thông tin', content: 'Tên và địa chỉ' },
+  { title: 'Thực đơn', content: 'Nhập món' },
+  { title: 'Hoàn tất', content: 'Kiểm tra lại' },
 ]
 
 export const Horizontal: Story = { args: { current: 1, items } }

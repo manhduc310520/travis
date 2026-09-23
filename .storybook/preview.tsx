@@ -17,6 +17,11 @@ import '../src/index.css'
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1)
 
 const preview: Preview = {
+  // Every story gets an auto-generated Docs page. Since every component here
+  // is Ant Design's own, the prop tables and descriptions it extracts come
+  // straight from Ant Design's own TypeScript types — nothing hand-written.
+  tags: ['autodocs'],
+
   globalTypes: {
     brand: {
       description: 'Brand theme, from the Figma collection `1. Brand`',

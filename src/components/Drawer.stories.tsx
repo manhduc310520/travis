@@ -11,7 +11,7 @@ export const Open: Story = {
     title: 'Bộ lọc',
     placement: 'right',
     getContainer: false,
-    width: 320,
+    size: 320,
     children: (
       <Form layout="vertical">
         <Form.Item label="Tên nhà hàng">

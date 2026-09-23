@@ -154,7 +154,7 @@ export function AppShell({ children, selectedKey = 'list', height = 768 }: AppSh
           <Drawer
             title="iPOS.vn"
             placement="left"
-            width={280}
+            size={280}
             open={drawerOpen}
             onClose={() => setDrawerOpen(false)}
             styles={{ body: { padding: 0, display: 'flex', flexDirection: 'column' } }}

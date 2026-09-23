@@ -23,9 +23,9 @@ export const Vertical: Story = {
   render: () => (
     <div>
       <Typography.Text>Sửa</Typography.Text>
-      <Divider type="vertical" />
+      <Divider orientation="vertical" />
       <Typography.Text>Xoá</Typography.Text>
-      <Divider type="vertical" />
+      <Divider orientation="vertical" />
       <Typography.Text>Nhân bản</Typography.Text>
     </div>
   ),
