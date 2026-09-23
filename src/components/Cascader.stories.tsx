@@ -19,4 +19,4 @@ const options = [
 ]
 
 export const Default: Story = { args: { options, placeholder: 'Chọn khu vực', style: { width: 280 } } }
-export const Multiple: Story = { args: { options, multiple: true, placeholder: 'Chọn nhiều', style: { width: 320 } } }
+export const Multiple: Story = { args: { options, multiple: true, placeholder: 'Chọn nhiều', style: { maxWidth: 320 } } }

@@ -29,7 +29,7 @@ export const Gap: Story = {
 
 export const SpaceBetween: Story = {
   render: () => (
-    <Flex justify="space-between" style={{ width: 480 }}>
+    <Flex justify="space-between" style={{ maxWidth: 480 }}>
       <Button>Trái</Button>
       <Button>Phải</Button>
     </Flex>

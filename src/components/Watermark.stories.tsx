@@ -18,7 +18,7 @@ type Story = StoryObj<typeof Watermark>
 export const Default: Story = {
   render: () => (
     <Watermark content="iPOS.vn">
-      <Card style={{ width: 480, height: 200 }}>Báo cáo nội bộ</Card>
+      <Card style={{ maxWidth: 480, height: 200 }}>Báo cáo nội bộ</Card>
     </Watermark>
   ),
 }

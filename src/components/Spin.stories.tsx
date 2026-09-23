@@ -31,7 +31,7 @@ export const Sizes: Story = {
 export const WithTip: Story = {
   render: () => (
     <Spin description="Đang tải dữ liệu">
-      <Card style={{ width: 320, height: 120 }} />
+      <Card style={{ maxWidth: 320, height: 120 }} />
     </Spin>
   ),
 }

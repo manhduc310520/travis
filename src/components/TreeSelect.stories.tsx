@@ -22,4 +22,4 @@ const treeData = [
 ]
 
 export const Default: Story = { args: { treeData, placeholder: 'Chọn nhóm món', style: { width: 280 } } }
-export const Checkable: Story = { args: { treeData, treeCheckable: true, placeholder: 'Chọn nhiều', style: { width: 320 } } }
+export const Checkable: Story = { args: { treeData, treeCheckable: true, placeholder: 'Chọn nhiều', style: { maxWidth: 320 } } }

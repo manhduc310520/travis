@@ -46,7 +46,7 @@ type Story = StoryObj<typeof Alert>
 
 export const Types: Story = {
   render: () => (
-    <Space orientation="vertical" style={{ width: 480 }}>
+    <Space orientation="vertical" style={{ maxWidth: 480 }}>
       <Alert type="success" title="Đã lưu thay đổi" showIcon icon={ICONS.success} />
       <Alert type="info" title="Bản cập nhật mới đã sẵn sàng" showIcon icon={ICONS.info} />
       <Alert type="warning" title="Giấy phép sắp hết hạn" showIcon icon={ICONS.warning} />
@@ -96,7 +96,7 @@ export const WithActions: Story = {
  */
 export const Banner: Story = {
   render: () => (
-    <Space orientation="vertical" size={16} style={{ width: 480 }}>
+    <Space orientation="vertical" size={16} style={{ maxWidth: 480 }}>
       <div>
         <div style={{ fontSize: 12, color: '#8c8c8c', marginBottom: 4 }}>Banner: False</div>
         <Alert type="warning" title="Hệ thống bảo trì lúc 02:00" showIcon icon={ICONS.warning} />

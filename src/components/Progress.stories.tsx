@@ -14,11 +14,11 @@ const meta: Meta<typeof Progress> = {
 export default meta
 type Story = StoryObj<typeof Progress>
 
-export const Line: Story = { args: { percent: 60, style: { width: 320 } } }
+export const Line: Story = { args: { percent: 60, style: { maxWidth: 320 } } }
 export const Circle: Story = { args: { type: 'circle', percent: 72 } }
 export const Statuses: Story = {
   render: () => (
-    <Space orientation="vertical" style={{ width: 320 }}>
+    <Space orientation="vertical" style={{ maxWidth: 320 }}>
       <Progress percent={100} status="success" />
       <Progress percent={40} status="exception" />
       <Progress percent={60} status="active" />
