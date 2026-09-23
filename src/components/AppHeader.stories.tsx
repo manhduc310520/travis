@@ -3,6 +3,7 @@ import { expect, fn } from 'storybook/test'
 import { AppHeader } from './AppHeader'
 
 const meta = {
+  title: 'Templates/AppHeader',
   component: AppHeader,
   tags: ['ai-generated', 'needs-work'],
   // Full-bleed: AppHeader is a layout header (AppShell renders this exact

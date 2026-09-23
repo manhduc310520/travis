@@ -76,6 +76,7 @@ function IconGallery() {
 }
 
 const meta: Meta<typeof IconGallery> = {
+  title: 'Style/Icons',
   component: IconGallery,
   tags: ['ai-generated', 'needs-work'],
 }

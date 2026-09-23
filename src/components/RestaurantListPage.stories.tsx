@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { RestaurantListPage, sampleRows } from './RestaurantListPage'
 
 const meta: Meta<typeof RestaurantListPage> = {
+  title: 'Templates/RestaurantListPage',
   component: RestaurantListPage,
   tags: ['ai-generated', 'needs-work'],
   parameters: { layout: 'fullscreen' },

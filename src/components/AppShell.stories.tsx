@@ -4,6 +4,7 @@ import { AppShell } from './AppShell'
 import { RestaurantListPage, sampleRows } from './RestaurantListPage'
 
 const meta: Meta<typeof AppShell> = {
+  title: 'Templates/AppShell',
   component: AppShell,
   tags: ['ai-generated', 'needs-work'],
   parameters: { layout: 'fullscreen' },
