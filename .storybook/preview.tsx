@@ -13,6 +13,7 @@ import {
 } from '../src/theme'
 import { antdIconDefaults } from '../src/theme/antdIcons'
 import '../src/index.css'
+import '../src/theme/tokens.css'
 
 const cap = (s: string) => s[0].toUpperCase() + s.slice(1)
 
