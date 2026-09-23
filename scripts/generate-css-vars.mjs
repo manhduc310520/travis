@@ -15,6 +15,7 @@
 import fs from 'node:fs'
 import { semanticFixed, semanticBrand } from '../src/theme/semanticTokens.ts'
 import { dimensionTokens, screenTokens, DENSITIES } from '../src/theme/dimensionTokens.ts'
+import { kebab } from '../src/theme/cssVarName.ts'
 
 // Derived from the data itself (not re-imported from index.ts, whose
 // extensionless imports Node's plain ESM loader can't resolve) so this
@@ -22,13 +23,6 @@ import { dimensionTokens, screenTokens, DENSITIES } from '../src/theme/dimension
 const brandModePairs = Object.keys(semanticBrand)
 const BRANDS = [...new Set(brandModePairs.map((k) => k.split('.')[0]))]
 const MODES = [...new Set(brandModePairs.map((k) => k.split('.')[1]))]
-
-// camelCase -> kebab-case, acronym-aware (controlHeightXS -> control-height-xs)
-const kebab = (name) =>
-  name
-    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
-    .toLowerCase()
 
 const declBlock = (tokens, unit = '') =>
   Object.entries(tokens)

@@ -1,0 +1,15 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as LayoutStories from './Layout.stories'
+
+<Meta of={LayoutStories} />
+
+# Layout Tokens
+
+## Spacing
+
+Every gap and padding in the system snaps to this scale — all multiples of
+4, per the project's own grid rule. Base `padding` is 16px, moved down from
+Ant Design's own default of 24. Switch **Density** to Compact in the
+toolbar to see the whole scale shift at once (`src/theme/dimensionTokens.ts`).
+
+<Canvas of={LayoutStories.Spacing} />

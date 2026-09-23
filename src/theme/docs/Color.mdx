@@ -1,0 +1,39 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as ColorStories from './Color.stories'
+
+<Meta of={ColorStories} />
+
+# Color Tokens
+
+Every value below is the real token from `src/theme/semanticTokens.ts`, shown as
+Blue / Light — the reference brand and mode. Switch the **Brand** or **Mode**
+toolbar on any component story to see the same CSS variable resolve to a
+different value; the variable name itself never changes.
+
+## Theme Colors
+
+Tokens that move with the selected brand — 28 in total, defined once per
+`brand.mode` pair in `semanticBrand`.
+
+<Canvas of={ColorStories.ThemeColors} />
+
+## Background Colors
+
+The three-layer surface system — page, container, then elevated — fixed
+across every brand.
+
+<Canvas of={ColorStories.BackgroundColors} />
+
+## System Colors
+
+Success / warning / error. Also fixed across every brand, so a status color
+means the same thing everywhere in the product.
+
+<Canvas of={ColorStories.SystemColors} />
+
+## Transparency
+
+Fill tokens used for hover/active backgrounds that need to blend with
+whatever surface sits behind them, rather than a flat opaque color.
+
+<Canvas of={ColorStories.TransparencyColors} />

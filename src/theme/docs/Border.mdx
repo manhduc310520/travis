@@ -1,0 +1,26 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as BorderStories from './Border.stories'
+
+<Meta of={BorderStories} />
+
+# Border Tokens
+
+From `src/theme/dimensionTokens.ts` (size and radius — these move with the
+**Density** toolbar, not brand) and `src/theme/semanticTokens.ts` (color,
+fixed across brands).
+
+## Border Color
+
+<Canvas of={BorderStories.BorderColor} />
+
+## Border Size
+
+<Canvas of={BorderStories.BorderSize} />
+
+## Border Radius
+
+Control radius is 6px — surfaces (card, modal, drawer) use the larger 8px
+step instead. Switch **Density** to Compact in the toolbar: radius stays
+fixed while control height and padding shrink around it.
+
+<Canvas of={BorderStories.BorderRadius} />
