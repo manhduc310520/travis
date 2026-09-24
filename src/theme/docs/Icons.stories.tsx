@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { expect } from 'storybook/test'
 import { Typography, theme, Divider } from 'antd'
-import * as Icons from '../icons'
-import type { IconProps } from '../icons'
+import * as Icons from '../../icons'
+import type { IconProps } from '../../icons'
 import type { FC } from 'react'
 
 const { Title, Text } = Typography
@@ -76,7 +76,7 @@ function IconGallery() {
 }
 
 const meta: Meta<typeof IconGallery> = {
-  title: 'Style/Icons',
+  title: 'Design Tokens/Icons',
   component: IconGallery,
   tags: ['ai-generated', 'needs-work'],
 }
