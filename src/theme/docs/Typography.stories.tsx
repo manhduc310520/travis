@@ -15,6 +15,9 @@ function FontSizes() {
   ]
   return <TokenTable kind="font-size" rows={rows} />
 }
+// See the identical fix (and full explanation) in Icons.stories.tsx —
+// production minification renames this function, breaking "Show code".
+FontSizes.displayName = 'FontSizes'
 
 const meta: Meta<typeof FontSizes> = {
   title: 'Design Tokens/Font',

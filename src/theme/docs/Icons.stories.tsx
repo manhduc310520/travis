@@ -79,6 +79,13 @@ function IconGallery() {
     </div>
   )
 }
+// Production minification renames this function (e.g. to `z9`), and
+// Storybook's "Show code" panel for a story with no args/render falls back to
+// printing `<ComponentFunction.name />` — so without this, the live site
+// showed `<z9 />` instead of `<IconGallery />` (verified: dev build was fine,
+// only the minified build broke). `displayName` is a plain string property,
+// which minifiers leave alone.
+IconGallery.displayName = 'IconGallery'
 
 const meta: Meta<typeof IconGallery> = {
   title: 'Design Tokens/Icons',
