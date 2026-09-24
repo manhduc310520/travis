@@ -25,6 +25,7 @@ export const BorderColor: Story = {
 export const BorderSize: Story = {
   args: {
     kind: 'border-width',
+    showPreview: false,
     rows: ['lineWidth', 'lineWidthBold', 'lineWidthFocus'].map(row(dims, 'px')),
   },
 }
@@ -32,6 +33,7 @@ export const BorderSize: Story = {
 export const BorderRadius: Story = {
   args: {
     kind: 'radius',
+    showPreview: false,
     rows: ['borderRadiusXS', 'borderRadiusSM', 'borderRadius', 'borderRadiusLG'].map(row(dims, 'px')),
   },
 }

@@ -17,7 +17,19 @@ export type TokenRow = {
  */
 export type TokenPreviewKind = 'color' | 'radius' | 'spacing' | 'font-size' | 'border-width'
 
-export function TokenTable({ rows, kind }: { rows: TokenRow[]; kind: TokenPreviewKind }) {
+export function TokenTable({
+  rows,
+  kind,
+  showPreview = true,
+}: {
+  rows: TokenRow[]
+  kind: TokenPreviewKind
+  /** Narmi's own tables only show a Preview column for Color and Spacing —
+   *  Border Size/Radius are CSS/Value only (verified live: no Preview column
+   *  exists there on their site at all). Defaults to true for the two
+   *  categories that do get one. */
+  showPreview?: boolean
+}) {
   const { token } = theme.useToken()
   // `fontFamilyCode` is the project's own seed token (see theme/index.ts),
   // set project-wide to match what was measured live off Narmi's token
@@ -36,7 +48,7 @@ export function TokenTable({ rows, kind }: { rows: TokenRow[]; kind: TokenPrevie
       <table style={{ width: '100%', minWidth: 480, borderCollapse: 'collapse' }}>
         <thead>
           <tr style={{ borderBottom: `1px solid ${token.colorBorder}` }}>
-            <th style={{ ...codeFont, textAlign: 'left', padding: '8px 4px', width: 120, color: token.colorText }}>Preview</th>
+            {showPreview && <th style={{ ...codeFont, textAlign: 'left', padding: '8px 4px', width: 120, color: token.colorText }}>Preview</th>}
             <th style={{ ...codeFont, textAlign: 'left', padding: '8px 4px', color: token.colorText }}>CSS</th>
             <th style={{ ...codeFont, textAlign: 'left', padding: '8px 4px', width: 140, color: token.colorText }}>Value</th>
           </tr>
@@ -44,9 +56,11 @@ export function TokenTable({ rows, kind }: { rows: TokenRow[]; kind: TokenPrevie
         <tbody>
           {rows.map(({ token: key, value }) => (
             <tr key={key} style={{ borderBottom: `1px solid ${token.colorBorder}` }}>
-              <td style={{ padding: '8px 4px' }}>
-                <Preview kind={kind} value={value} />
-              </td>
+              {showPreview && (
+                <td style={{ padding: '8px 4px' }}>
+                  <Preview kind={kind} value={value} />
+                </td>
+              )}
               <td style={{ padding: '8px 4px', whiteSpace: 'nowrap' }}>
                 <Text copyable style={{ ...codeFont, color: token.colorLink }}>
                   var({cssVarName(key)})
