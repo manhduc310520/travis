@@ -20,7 +20,11 @@ const theme = create({
   colorPrimary: '#00376A',
   colorSecondary: '#00376A',
 
-  appBg: '#FCF0E9',
+  // Picked by hand via the browser color picker on the live sidebar element
+  // (verified: rgb(252, 251, 233)). Storybook derives the sidebar background
+  // AND the fade-to-background glow above the sticky "Run tests" button from
+  // this same value, so both update together automatically.
+  appBg: '#FCFBE9',
   appContentBg: '#FFFFFF',
   appPreviewBg: '#FFFFFF',
   appBorderColor: 'rgba(38, 74, 115, 0.15)',
