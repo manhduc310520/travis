@@ -21,38 +21,52 @@ export function TokenTable({ rows, kind }: { rows: TokenRow[]; kind: TokenPrevie
   const { token } = theme.useToken()
 
   return (
-    // Narrow viewports (mobile toolbar, a docked panel) would otherwise wrap
-    // `var(--token-name)` one character per line — scroll the table
-    // horizontally instead of letting that happen.
-    <div style={{ overflowX: 'auto' }}>
-      <table style={{ width: '100%', minWidth: 480, borderCollapse: 'collapse' }}>
-        <thead>
-          <tr style={{ borderBottom: `1px solid ${token.colorBorderSecondary}` }}>
-            <th style={{ textAlign: 'left', padding: '8px 12px', width: 120 }}>Preview</th>
-            <th style={{ textAlign: 'left', padding: '8px 12px' }}>CSS</th>
-            <th style={{ textAlign: 'left', padding: '8px 12px', width: 140 }}>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map(({ token: key, value }) => (
-            <tr key={key} style={{ borderBottom: `1px solid ${token.colorBorderSecondary}` }}>
-              <td style={{ padding: '8px 12px' }}>
-                <Preview kind={kind} value={value} />
-              </td>
-              <td style={{ padding: '8px 12px', whiteSpace: 'nowrap' }}>
-                <Text code copyable>
-                  var({cssVarName(key)})
-                </Text>
-              </td>
-              <td style={{ padding: '8px 12px', whiteSpace: 'nowrap' }}>
-                <Text type="secondary" style={{ fontVariantNumeric: 'tabular-nums' }}>
-                  {value}
-                </Text>
-              </td>
+    // Card framing (border + radius + padding) matches Narmi's own Design
+    // Tokens pages — each table sits inside its own bordered surface instead
+    // of floating directly on the page background. Reuses the same Card
+    // tokens the rest of the system uses (`borderRadiusLG` = 8px surface
+    // radius, `colorBorderSecondary`, `colorBgContainer` per CLAUDE.md).
+    <div
+      style={{
+        border: `1px solid ${token.colorBorderSecondary}`,
+        borderRadius: token.borderRadiusLG,
+        background: token.colorBgContainer,
+        padding: token.paddingLG,
+      }}
+    >
+      {/* Narrow viewports (mobile toolbar, a docked panel) would otherwise wrap
+          `var(--token-name)` one character per line — scroll the table
+          horizontally instead of letting that happen. */}
+      <div style={{ overflowX: 'auto' }}>
+        <table style={{ width: '100%', minWidth: 480, borderCollapse: 'collapse' }}>
+          <thead>
+            <tr style={{ borderBottom: `1px solid ${token.colorBorderSecondary}` }}>
+              <th style={{ textAlign: 'left', padding: '8px 12px', width: 120 }}>Preview</th>
+              <th style={{ textAlign: 'left', padding: '8px 12px' }}>CSS</th>
+              <th style={{ textAlign: 'left', padding: '8px 12px', width: 140 }}>Value</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {rows.map(({ token: key, value }) => (
+              <tr key={key} style={{ borderBottom: `1px solid ${token.colorBorderSecondary}` }}>
+                <td style={{ padding: '8px 12px' }}>
+                  <Preview kind={kind} value={value} />
+                </td>
+                <td style={{ padding: '8px 12px', whiteSpace: 'nowrap' }}>
+                  <Text code copyable>
+                    var({cssVarName(key)})
+                  </Text>
+                </td>
+                <td style={{ padding: '8px 12px', whiteSpace: 'nowrap' }}>
+                  <Text type="secondary" style={{ fontVariantNumeric: 'tabular-nums' }}>
+                    {value}
+                  </Text>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
