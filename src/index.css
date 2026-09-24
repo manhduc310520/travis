@@ -38,3 +38,25 @@ body {
 :where(.ant-card-actions .fabi-icon) {
   margin: 0 auto;
 }
+
+/*
+ * Same root cause as Card.actions above, found in Upload.Dragger: antd
+ * centers the drag icon via `text-align: center` on an ancestor (relying on
+ * `.anticon`'s wrapper-span/inline-svg split, same as Card.actions) — a bare
+ * `.fabi-icon` with `display: block` ignores that. Verified live: the icon
+ * sat flush left (offset 0) instead of centered (expected ~177px on the demo
+ * story) before this. `p.ant-upload-drag-icon`, the class antd's own style
+ * source names, isn't actually present in the rendered DOM on this antd
+ * version — scoped to `.ant-upload-drag-container` instead, which is.
+ *
+ * Considered making `.fabi-icon` itself `inline-block` + `vertical-align:
+ * middle` project-wide instead of patching each component — verified live
+ * that it does fix this and would prevent future instances of the same bug,
+ * but it also measurably reintroduced the original vertical-misalignment bug
+ * this class exists to fix (~1.2px off-center on 2 of 3 icons tested in
+ * AppHeader's Space). Not a clean win, so kept the narrower per-component
+ * fix instead.
+ */
+:where(.ant-upload-drag-container .fabi-icon) {
+  margin: 0 auto;
+}
