@@ -62,6 +62,8 @@ export const Eye = sized(UI.Eye)
 export const Upload01 = sized(UI.Upload01)
 export const UploadCloud01 = sized(UI.UploadCloud01, 32)
 export const HelpCircle = sized(UI.HelpCircle)
+export const Heart = sized(UI.Heart)
+export const Share01 = sized(UI.Share01)
 
 // Icons Ant Design renders inside its own components. Overridden per component
 // through ConfigProvider so the internal chrome matches the Figma icon set too.

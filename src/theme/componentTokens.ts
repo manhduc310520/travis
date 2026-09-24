@@ -38,7 +38,11 @@ export const componentTokens = {
   Card: {
     bodyPadding: 16, bodyPaddingSM: 12,
     fontHeight: 22, fontSize: 14, fontSizeLG: 16, fontWeightStrong: 600,
-    headerFontSize: 12, headerFontSizeSM: 14,
+    // Was 12/14 (swapped — default read smaller than small). CLAUDE.md's own
+    // "cỡ chữ gốc 14px" rule means every Card title should read 14px
+    // regardless of size; `size="large"` doesn't exist on Card (its `size`
+    // prop is only 'small' | 'middle' | 'default' — no 'large' variant).
+    headerFontSize: 14, headerFontSizeSM: 14,
     headerHeight: 56, headerHeightSM: 38,
     headerPadding: 16, headerPaddingSM: 12,
     lineHeight: 22 / 14, lineWidth: 1,
