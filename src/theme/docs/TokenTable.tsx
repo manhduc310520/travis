@@ -79,7 +79,12 @@ function Preview({ kind, value }: { kind: TokenPreviewKind; value: string }) {
     case 'radius':
       return <div style={{ ...box, width: 48, height: 32, borderRadius: value }} />
     case 'spacing':
-      return <div style={{ width: 64, height: 32, display: 'flex', alignItems: 'center' }}><div style={{ width: value, height: 8, background: token.colorPrimary, borderRadius: 2 }} /></div>
+      // Bar height 20px, exact token value as width, no wrapper box, no
+      // radius — matches Narmi's own spacing bar exactly (verified live:
+      // `background-color: hotpink; width: <token>px`, rendered directly in
+      // the cell, 20px tall). Uses `colorPrimary` instead of their literal
+      // "hotpink" so it stays brand-reactive across FABi's 5 brands.
+      return <div style={{ width: value, height: 20, background: token.colorPrimary }} />
     case 'font-size':
       return <span style={{ fontSize: value }}>Aa</span>
     case 'border-width':
