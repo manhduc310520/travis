@@ -96,6 +96,13 @@ export default meta
 type Story = StoryObj<typeof IconGallery>
 
 export const AllIcons: Story = {
+  render: () => <IconGallery />,
+  // Pinned to just the `render` line — like Narmi's own icon-catalog story
+  // (`() => <IconDocs iconNames={...} />`). Without this override, Storybook's
+  // "Show code" prints the *whole* story object verbatim, comments and
+  // `play()` test included, which is accurate but noisy; this keeps the
+  // panel showing only what a reader actually wants: how the page is drawn.
+  parameters: { docs: { source: { code: '() => <IconGallery />' } } },
   play: async ({ canvas, userEvent }) => {
     await expect(canvas.getByText('Home01')).toBeVisible()
     const input = canvas.getByPlaceholderText('Search icons by name…')

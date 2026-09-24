@@ -27,4 +27,10 @@ const meta: Meta<typeof FontSizes> = {
 export default meta
 type Story = StoryObj<typeof FontSizes>
 
-export const Sizes: Story = {}
+export const Sizes: Story = {
+  render: () => <FontSizes />,
+  // See Icons.stories.tsx's AllIcons for the full explanation of both the
+  // `render` (avoids the minification-breaks-source-inference bug) and this
+  // pin (keeps "Show code" showing just the render line, not this comment).
+  parameters: { docs: { source: { code: '() => <FontSizes />' } } },
+}
