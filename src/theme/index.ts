@@ -12,6 +12,12 @@ export { DENSITIES, dimensionTokens, semanticFixed, semanticBrand }
 export const globalTokens = {
   fontSize: 14,
   fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+  // Not from Figma's `4. Typography` — adopted from Narmi's own design
+  // system Storybook on request, measured live off their token tables
+  // (`Monaco, Consolas, monospace`). Feeds every `<Typography.Text code>`
+  // and antd-internal `<code>` element project-wide via this one seed token,
+  // instead of styling each code block by hand.
+  fontFamilyCode: 'Monaco, Consolas, monospace',
 } as const
 
 /**

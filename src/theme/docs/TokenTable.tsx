@@ -17,15 +17,14 @@ export type TokenRow = {
  */
 export type TokenPreviewKind = 'color' | 'radius' | 'spacing' | 'font-size' | 'border-width'
 
-// Monospace stack + 14px, measured directly off Narmi's own live token
-// tables (`Monaco, Consolas, monospace`) — every cell in their Preview/CSS/
-// Value tables uses it, header included. Ant Design's own `Text code` was
-// dropped here because it renders a pink pill background; Narmi's code cells
-// are plain colored monospace text with no background.
-const codeFont = { fontFamily: 'Monaco, Consolas, monospace', fontSize: 14 }
-
 export function TokenTable({ rows, kind }: { rows: TokenRow[]; kind: TokenPreviewKind }) {
   const { token } = theme.useToken()
+  // `fontFamilyCode` is the project's own seed token (see theme/index.ts),
+  // set project-wide to match what was measured live off Narmi's token
+  // tables. Ant Design's own `Text code` was dropped here because it renders
+  // a pink pill background; Narmi's code cells are plain colored monospace
+  // text with no background.
+  const codeFont = { fontFamily: token.fontFamilyCode, fontSize: 14 }
 
   return (
     // No card wrapper here — `@storybook/addon-docs`'s own `.sbdocs-preview`
