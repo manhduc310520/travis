@@ -47,6 +47,12 @@ export default meta
 type Story = StoryObj<typeof Alert>
 
 export const Types: Story = {
+  args: {
+    closable: false,
+    banner: false,
+    variant: "outlined"
+  },
+
   render: () => (
     <Space orientation="vertical" style={{ width: '100%', maxWidth: 480 }}>
       <Alert type="success" title="Success Text" showIcon icon={ICONS.success} style={{ width: '100%' }} />
@@ -54,30 +60,35 @@ export const Types: Story = {
       <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} style={{ width: '100%' }} />
       <Alert type="error" title="Error Text" showIcon icon={ICONS.error} style={{ width: '100%' }} />
     </Space>
-  ),
+  )
 }
 
 /** `variant="filled"` swaps the pastel background for the semantic color's solid text shade. */
 export const Filled: Story = {
+  args: {
+    variant: "filled"
+  },
+
   render: () => (
-    <Space orientation="vertical" style={{ maxWidth: 480 }}>
-      <Alert type="success" title="Success Text" showIcon icon={ICONS.success} variant="filled" />
-      <Alert type="info" title="Info Text" showIcon icon={ICONS.info} variant="filled" />
-      <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} variant="filled" />
-      <Alert type="error" title="Error Text" showIcon icon={ICONS.error} variant="filled" />
+    <Space orientation="vertical" style={{ width: '100%', maxWidth: 480 }}>
+      <Alert type="success" title="Success Text" showIcon icon={ICONS.success} variant="filled" style={{ width: '100%' }} />
+      <Alert type="info" title="Info Text" showIcon icon={ICONS.info} variant="filled" style={{ width: '100%' }} />
+      <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} variant="filled" style={{ width: '100%' }} />
+      <Alert type="error" title="Error Text" showIcon icon={ICONS.error} variant="filled" style={{ width: '100%' }} />
     </Space>
-  ),
+  )
 }
 
 export const WithDescription: Story = {
   render: () => (
-    <Space orientation="vertical" style={{ maxWidth: 480 }}>
+    <Space orientation="vertical" style={{ width: '100%', maxWidth: 480 }}>
       <Alert
         type="success"
         title="Success Text"
         description="Detailed description and advice about successful copywriting."
         showIcon
         icon={ICONS.success}
+        style={{ width: '100%' }}
       />
       <Alert
         type="info"
@@ -85,6 +96,7 @@ export const WithDescription: Story = {
         description="Additional description and information about copywriting."
         showIcon
         icon={ICONS.info}
+        style={{ width: '100%' }}
       />
       <Alert
         type="warning"
@@ -92,6 +104,7 @@ export const WithDescription: Story = {
         description="This is a warning notice about copywriting."
         showIcon
         icon={ICONS.warning}
+        style={{ width: '100%' }}
       />
       <Alert
         type="error"
@@ -99,6 +112,7 @@ export const WithDescription: Story = {
         description="This is an error message about copywriting."
         showIcon
         icon={ICONS.error}
+        style={{ width: '100%' }}
       />
     </Space>
   ),
@@ -134,14 +148,14 @@ export const WithActions: Story = {
  */
 export const Banner: Story = {
   render: () => (
-    <Space orientation="vertical" size={16} style={{ maxWidth: 480 }}>
+    <Space orientation="vertical" size={16} style={{ width: '100%', maxWidth: 480 }}>
       <div>
         <div style={{ fontSize: 12, color: '#8c8c8c', marginBottom: 4 }}>Banner: False</div>
-        <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} />
+        <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} style={{ width: '100%' }} />
       </div>
       <div>
         <div style={{ fontSize: 12, color: '#8c8c8c', marginBottom: 4 }}>Banner: True</div>
-        <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} banner />
+        <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} banner style={{ width: '100%' }} />
       </div>
     </Space>
   ),
