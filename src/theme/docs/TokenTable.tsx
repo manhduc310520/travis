@@ -15,7 +15,7 @@ export type TokenRow = {
  * every token category. One reusable block instead of one bespoke table per
  * page, so Color/Border/Layout stay visually identical.
  */
-export type TokenPreviewKind = 'color' | 'radius' | 'spacing' | 'font-size' | 'border-width'
+export type TokenPreviewKind = 'color' | 'radius' | 'spacing' | 'font-size' | 'border-width' | 'text'
 
 export function TokenTable({
   rows,
@@ -103,5 +103,9 @@ function Preview({ kind, value }: { kind: TokenPreviewKind; value: string }) {
       return <span style={{ fontSize: value }}>Aa</span>
     case 'border-width':
       return <div style={{ width: 48, height: 32, borderRadius: 4, background: token.colorBgContainer, borderStyle: 'solid', borderWidth: value, borderColor: token.colorPrimary }} />
+    case 'text':
+      // Always used with `showPreview={false}` (font-family strings and
+      // line-height ratios have no meaningful swatch) — never actually rendered.
+      return null
   }
 }

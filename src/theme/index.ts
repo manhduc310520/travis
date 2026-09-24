@@ -1,16 +1,21 @@
 import { theme as antdTheme, type ThemeConfig } from 'antd'
 import { componentTokens } from './componentTokens'
 import { dimensionTokens, screenTokens, DENSITIES, type Density } from './dimensionTokens'
+import { typographyTokens, fontWeightTokens } from './typographyTokens'
 import { semanticFixed, semanticBrand, CUSTOM_KEYS, type Brand, type Mode } from './semanticTokens'
 
 export type { Brand, Mode, Density }
 export const BRANDS: Brand[] = ['blue', 'green', 'yellow', 'magenta', 'orange']
 export const MODES: Mode[] = ['light', 'dark']
-export { DENSITIES, dimensionTokens, semanticFixed, semanticBrand }
+export { DENSITIES, dimensionTokens, typographyTokens, fontWeightTokens, semanticFixed, semanticBrand }
 
-/** Typography tokens, from `4. Typography`. They do not change with brand. */
+/**
+ * `4. Typography`'s `Font Family` group — the only two type tokens here
+ * that don't vary by density (`Font Size` and `Line Height` do — see
+ * `typographyTokens.ts`; `Font Weight` doesn't either — see
+ * `fontWeightTokens` in the same file).
+ */
 export const globalTokens = {
-  fontSize: 14,
   fontFamily: "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
   // Not from Figma's `4. Typography` — adopted from Narmi's own design
   // system Storybook on request, measured live off their token tables
@@ -38,8 +43,10 @@ export function buildTheme(brand: Brand, mode: Mode, density: Density = 'default
       ...semanticFixed[mode],
       ...brandTokens,
       ...dimensionTokens[density],
+      ...typographyTokens[density],
       ...screenTokens,
       ...globalTokens,
+      fontWeightStrong: fontWeightTokens.fontWeightStrong,
     },
     components: componentTokens as ThemeConfig['components'],
   }
