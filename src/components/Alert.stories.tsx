@@ -48,11 +48,11 @@ type Story = StoryObj<typeof Alert>
 
 export const Types: Story = {
   render: () => (
-    <Space orientation="vertical" style={{ maxWidth: 480 }}>
-      <Alert type="success" title="Success Text" showIcon icon={ICONS.success} />
-      <Alert type="info" title="Info Text" showIcon icon={ICONS.info} />
-      <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} />
-      <Alert type="error" title="Error Text" showIcon icon={ICONS.error} />
+    <Space orientation="vertical" style={{ width: '100%', maxWidth: 480 }}>
+      <Alert type="success" title="Success Text" showIcon icon={ICONS.success} style={{ width: '100%' }} />
+      <Alert type="info" title="Info Text" showIcon icon={ICONS.info} style={{ width: '100%' }} />
+      <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} style={{ width: '100%' }} />
+      <Alert type="error" title="Error Text" showIcon icon={ICONS.error} style={{ width: '100%' }} />
     </Space>
   ),
 }
