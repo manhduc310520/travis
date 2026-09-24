@@ -22,3 +22,19 @@ body {
 :where(.fabi-icon) {
   display: block;
 }
+
+/*
+ * Ant Design's Card.actions centers each action by targeting its own
+ * `.anticon` class (`display: inline-block; width: 100%`): antd's icons are
+ * a small wrapper `<span class="anticon">` around a fixed 1em `<svg>`, so
+ * stretching the *wrapper* to 100% is invisible — the small glyph inside
+ * just ends up centered by the parent's `text-align: center`. `.fabi-icon`
+ * has no such wrapper (it IS the svg), so the same rule would stretch the
+ * visible glyph itself to fill the whole action cell instead of centering
+ * it (verified live — the icon rendered ~105px wide instead of 16px).
+ * `margin: 0 auto` centers the svg's own fixed size within the wider block
+ * container without touching its dimensions.
+ */
+:where(.ant-card-actions .fabi-icon) {
+  margin: 0 auto;
+}
