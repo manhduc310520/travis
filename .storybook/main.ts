@@ -12,13 +12,15 @@ const config: StorybookConfig = {
   framework: '@storybook/react-vite',
 
   /**
-   * `@untitledui/icons` ships CommonJS and calls `require('react')`, which lets
-   * Vite hand it a second copy of React. Two copies means two hook dispatchers,
-   * and every `useToken()` inside a ConfigProvider throws
-   * "Invalid hook call" / "Cannot read properties of null (reading 'useContext')".
-   *
-   * Deduping pins one React for the whole graph; pre-bundling the icons turns
-   * them into ESM so they resolve against that same copy.
+   * The free `@untitledui/icons` this project used to depend on shipped
+   * CommonJS-only and called `require('react')`, which let Vite hand it a
+   * second copy of React — two copies means two hook dispatchers, and every
+   * `useToken()` inside a ConfigProvider threw "Invalid hook call". Now on
+   * `@untitledui-pro/icons/line` (the paid PRO package), which ships proper
+   * dual ESM/CJS exports, so this may no longer be strictly necessary — but
+   * kept as a safety net rather than removed and re-diagnosed later, since it
+   * costs nothing and the failure mode is a cryptic runtime crash, not a
+   * build error.
    */
   viteFinal: async (viteConfig) => ({
     ...viteConfig,
@@ -28,7 +30,7 @@ const config: StorybookConfig = {
     },
     optimizeDeps: {
       ...viteConfig.optimizeDeps,
-      include: [...(viteConfig.optimizeDeps?.include ?? []), '@untitledui/icons', 'react', 'react-dom'],
+      include: [...(viteConfig.optimizeDeps?.include ?? []), '@untitledui-pro/icons/line', 'react', 'react-dom'],
     },
   }),
 }

@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^6.3.4",
-    "@untitledui/icons": "^0.0.22",
+    "@untitledui-pro/icons": "^0.0.4",
     "antd": "^6.6.5",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"

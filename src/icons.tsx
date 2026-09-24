@@ -6,12 +6,20 @@
  * Untitled UI Icons. This module maps the ones the system uses onto the
  * official React package so design and code draw from the same set.
  *
+ * Sourced from `@untitledui-pro/icons/line` (the purchased PRO package, line
+ * style — the same style the free `@untitledui/icons` package shipped, just a
+ * larger catalog: 1,174 icons vs ~1,100) rather than the free package. Every
+ * name already used here was confirmed present in the PRO set before
+ * switching (checked programmatically, not by eye) — same PascalCase names,
+ * same component shape (`size`/`color` + standard SVG props), so this was a
+ * drop-in swap with no call-site changes anywhere else in the project.
+ *
  * Untitled UI icons default to 24px. Ant Design sizes its own icons at `1em`,
  * so every icon here is wrapped to default to 16px instead, which is the size
  * the Figma components use inside controls. Pass `size` to override.
  */
 import type { FC, SVGProps } from 'react'
-import * as UI from '@untitledui/icons'
+import * as UI from '@untitledui-pro/icons/line'
 
 export type IconProps = SVGProps<SVGSVGElement> & { size?: number; color?: string }
 

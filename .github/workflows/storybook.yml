@@ -25,7 +25,12 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      # `@untitledui-pro/icons` is a paid private package (see .npmrc, which
+      # reads the token from this env var rather than storing it) — without
+      # this secret, npm ci fails to authenticate against pkg.untitledui.com.
       - run: npm ci
+        env:
+          UNTITLEDUI_PRO_TOKEN: ${{ secrets.UNTITLEDUI_PRO_TOKEN }}
       - run: npm run validate:tokens
       - run: npm run build-storybook
       - uses: actions/configure-pages@v5
