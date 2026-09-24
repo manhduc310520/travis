@@ -70,14 +70,38 @@ export const Filled: Story = {
 }
 
 export const WithDescription: Story = {
-  args: {
-    type: 'warning',
-    showIcon: true,
-    icon: ICONS.warning,
-    title: 'Warning Text',
-    description: 'Detailed description and advice about this warning.',
-    style: { maxWidth: 480 },
-  },
+  render: () => (
+    <Space orientation="vertical" style={{ maxWidth: 480 }}>
+      <Alert
+        type="success"
+        title="Success Text"
+        description="Detailed description and advice about successful copywriting."
+        showIcon
+        icon={ICONS.success}
+      />
+      <Alert
+        type="info"
+        title="Info Text"
+        description="Additional description and information about copywriting."
+        showIcon
+        icon={ICONS.info}
+      />
+      <Alert
+        type="warning"
+        title="Warning Text"
+        description="This is a warning notice about copywriting."
+        showIcon
+        icon={ICONS.warning}
+      />
+      <Alert
+        type="error"
+        title="Error Text"
+        description="This is an error message about copywriting."
+        showIcon
+        icon={ICONS.error}
+      />
+    </Space>
+  ),
 }
 
 export const Closable: Story = {
