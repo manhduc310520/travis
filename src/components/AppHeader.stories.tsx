@@ -43,8 +43,8 @@ export const LongProductName: Story = {
  * The only `CssCheck` in this project.
  *
  * `toBeVisible` would pass on a completely unstyled header. Reading the
- * resolved `background-image` is the one assertion that proves the Ant Design
- * ConfigProvider and the Figma-derived CSS variables both reached the story.
+ * resolved `background-image` is the one assertion that proves the theme
+ * provider and the Figma-derived CSS variables both reached the story.
  *
  * `#003EB3` and `#0958D9` are the Blue brand's `colorHeaderBgStart` and
  * `colorHeaderBgEnd` in light mode, straight out of the Figma export.

@@ -75,25 +75,24 @@ export type AppShellProps = {
 /**
  * The FABi CMS frame: gradient header, fixed sidebar, grey content well.
  *
- * This is the template layer — the thing Ant Design does not ship. Every screen
- * in the product sits inside it, so a new module is a content problem rather
- * than a layout problem.
+ * This is the template layer — the layout FABi CMS builds on top of its
+ * component library. Every screen in the product sits inside it, so a new
+ * module is a content problem rather than a layout problem.
  *
  * Sidebar padding (16px top, 8px each side) is Figma's own spec, measured off
  * the same instance the nav list came from: the sidebar's `Content` slot
- * carries that exact padding before Ant Design's own per-item padding/margin
- * tokens take over. Skipping it was why the icons sat flush against the
- * sidebar edge while the header logo — which does have this outer inset —
- * did not line up with them.
+ * carries that exact padding before the per-item padding/margin tokens take
+ * over. Skipping it was why the icons sat flush against the sidebar edge
+ * while the header logo — which does have this outer inset — did not line up
+ * with them.
  *
  * Responsive: the Figma source is desktop-only (file name literally says
  * "Design Component Desktop"), so there is no frame to copy pixel-for-pixel
- * below `md`. Behaviour instead follows Ant Design's own reference pattern
- * (the one Ant Design Pro ships): the sidebar isn't squeezed or scrolled, it's
- * removed entirely below `md` (768px) and replaced by a hamburger button in
- * the header that opens the same `Menu` inside an Ant Design `Drawer` — no
- * custom drawer, just the library's own component. Selecting an item closes
- * the drawer.
+ * below `md`. Behaviour instead follows the standard admin-dashboard
+ * reference pattern: the sidebar isn't squeezed or scrolled, it's removed
+ * entirely below `md` (768px) and replaced by a hamburger button in the
+ * header that opens the same `Menu` inside a `Drawer` — no custom drawer,
+ * just the library's own component. Selecting an item closes the drawer.
  */
 export function AppShell({ children, selectedKey = 'list', height = 768 }: AppShellProps) {
   const { token } = theme.useToken()

@@ -48,7 +48,7 @@ export type RestaurantListPageProps = {
  *   - Breadcrumb + actions, and the filter controls: `flex-wrap` — they wrap
  *     onto a second line instead of overflowing. No new component needed.
  *   - The table itself is the structural case. A 9-column table cannot become
- *     narrow; Ant Design's own `scroll.x` turns it into a horizontally
+ *     narrow; the table's own `scroll.x` turns it into a horizontally
  *     scrollable region below `md`, which keeps every column and this exact
  *     look rather than inventing a separate mobile card layout the design
  *     doesn't define.

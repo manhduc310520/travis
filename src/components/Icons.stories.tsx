@@ -18,7 +18,7 @@ const groups: [string, FC<IconProps>[]][] = [
   ['Chevrons & Arrows', [Icons.ChevronDown, Icons.ChevronRight, Icons.ArrowUp]],
   ['Actions', [Icons.Plus, Icons.Edit01, Icons.Trash01, Icons.Eye, Icons.Upload01, Icons.UploadCloud01, Icons.HelpCircle]],
   ['App Shell — Main Navigation', [Icons.Home03, Icons.LayoutAlt03, Icons.Tag03, Icons.PieChart04, Icons.Grid01, Icons.ShoppingCart01, Icons.FileSearch02, Icons.Monitor03, Icons.Mail01, Icons.File06, Icons.CheckCircleBroken]],
-  ['Ant Design Built-in Icon Overrides', [Icons.Check, Icons.XClose, Icons.Calendar, Icons.Clock, Icons.Loading02, Icons.AlertCircle, Icons.InfoCircle, Icons.AlertTriangle, Icons.XCircle, Icons.CheckCircle, Icons.Star01, Icons.EyeOff, Icons.DotsHorizontal, Icons.X]],
+  ['Built-in Icon Overrides', [Icons.Check, Icons.XClose, Icons.Calendar, Icons.Clock, Icons.Loading02, Icons.AlertCircle, Icons.InfoCircle, Icons.AlertTriangle, Icons.XCircle, Icons.CheckCircle, Icons.Star01, Icons.EyeOff, Icons.DotsHorizontal, Icons.X]],
 ]
 
 const nameOf = (Cmp: FC<IconProps>) =>

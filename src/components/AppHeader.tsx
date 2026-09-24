@@ -18,7 +18,7 @@ export type AppHeaderProps = {
 /**
  * The FABi CMS top bar.
  *
- * Its background is the one part of the system with no Ant Design equivalent:
+ * Its background is the one part of the system with no built-in equivalent:
  * a two-stop gradient driven by `colorHeaderBgStart` and `colorHeaderBgEnd`.
  * Those arrive as CSS variables from the Storybook preview, so the bar follows
  * whichever brand is selected in the toolbar.
