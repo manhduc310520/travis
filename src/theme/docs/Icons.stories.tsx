@@ -59,7 +59,8 @@ function IconGallery() {
           <div key={name} style={{ width: 84, textAlign: 'center' }}>
             <div
               style={{
-                height: 40,
+                width: '100%',
+                height: 56,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -69,7 +70,7 @@ function IconGallery() {
                 color: token.colorText,
               }}
             >
-              <Icon size={20} />
+              <Icon size={32} />
             </div>
             <Text style={{ fontSize: 11, display: 'block', marginTop: 4, wordBreak: 'break-word' }}>{name}</Text>
           </div>
@@ -88,16 +89,12 @@ export default meta
 type Story = StoryObj<typeof IconGallery>
 
 export const AllIcons: Story = {
-  play: async ({ canvas }) => {
-    await expect(canvas.getByText('Home01')).toBeVisible()
-    await expect(canvas.getByPlaceholderText('Search icons by name…')).toBeVisible()
-  },
-}
-
-/** Typing filters the grid down to matching names only. */
-export const Search: Story = {
   play: async ({ canvas, userEvent }) => {
+    await expect(canvas.getByText('Home01')).toBeVisible()
     const input = canvas.getByPlaceholderText('Search icons by name…')
+    await expect(input).toBeVisible()
+
+    // Typing filters the grid down to matching names only.
     await userEvent.type(input, 'clock')
     await expect(canvas.getByText('AlarmClock')).toBeVisible()
     await expect(canvas.queryByText('Home01')).not.toBeInTheDocument()
