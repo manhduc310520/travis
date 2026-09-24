@@ -40,6 +40,7 @@ const meta: Meta<typeof Alert> = {
     showIcon: { description: 'Whether to show icon.', control: 'boolean' },
     banner: { description: 'Renders as a square-cornered banner meant to sit flush at the top of a page.', control: 'boolean' },
     icon: { description: 'Custom icon, only effective when showIcon is true.', control: false },
+    variant: { description: 'Visual style: pastel background with a matching border, or a solid fill.', control: 'select', options: ['outlined', 'filled'] },
   },
 }
 export default meta
@@ -52,6 +53,18 @@ export const Types: Story = {
       <Alert type="info" title="Info Text" showIcon icon={ICONS.info} />
       <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} />
       <Alert type="error" title="Error Text" showIcon icon={ICONS.error} />
+    </Space>
+  ),
+}
+
+/** `variant="filled"` swaps the pastel background for the semantic color's solid text shade. */
+export const Filled: Story = {
+  render: () => (
+    <Space orientation="vertical" style={{ maxWidth: 480 }}>
+      <Alert type="success" title="Success Text" showIcon icon={ICONS.success} variant="filled" />
+      <Alert type="info" title="Info Text" showIcon icon={ICONS.info} variant="filled" />
+      <Alert type="warning" title="Warning Text" showIcon icon={ICONS.warning} variant="filled" />
+      <Alert type="error" title="Error Text" showIcon icon={ICONS.error} variant="filled" />
     </Space>
   ),
 }
