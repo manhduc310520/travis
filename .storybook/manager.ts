@@ -18,7 +18,11 @@ const theme = create({
   fontCode: 'Monaco, Consolas, monospace',
 
   colorPrimary: '#00376A',
-  colorSecondary: '#00376A',
+  // Specifically the selected sidebar item's fill (Storybook's own
+  // `LeafNodeStyleWrapper` reads `theme.color.secondary` for that one
+  // background, separate from `colorPrimary`/`booleanSelectedBg` — traced via
+  // the actual manager bundle source, not guessed). Requested directly.
+  colorSecondary: '#003EB3',
 
   // Picked by hand via the browser color picker on the live sidebar element
   // (verified: rgb(252, 251, 233)). Storybook derives the sidebar background

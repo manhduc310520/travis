@@ -1,0 +1,18 @@
+<style>
+  /*
+   * Storybook's boolean Control renders a two-label switch (False/True) and
+   * colors whichever side is selected with `booleanSelectedBg` (navy, set in
+   * manager.ts) — but there is no matching "selected text color" ThemeVars
+   * field, so the label text stayed `textColor` (dark charcoal), making it
+   * invisible against the dark navy background. Force white text on
+   * whichever side is currently selected via the native checkbox's
+   * `:checked` state (this control is a real, visually-hidden
+   * `<input type="checkbox" role="switch">` followed by two `<span>` labels).
+   */
+  input[type='checkbox'][role='switch']:checked ~ span:last-of-type {
+    color: #FFFFFF !important;
+  }
+  input[type='checkbox'][role='switch']:not(:checked) ~ span:first-of-type {
+    color: #FFFFFF !important;
+  }
+</style>
