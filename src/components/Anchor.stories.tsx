@@ -17,9 +17,9 @@ type Story = StoryObj<typeof Anchor>
 export const Default: Story = {
   args: {
     items: [
-      { key: '1', href: '#general', title: 'Thông tin chung' },
-      { key: '2', href: '#menu', title: 'Thực đơn' },
-      { key: '3', href: '#staff', title: 'Nhân viên' },
+      { key: '1', href: '#part-1', title: 'Part 1' },
+      { key: '2', href: '#part-2', title: 'Part 2' },
+      { key: '3', href: '#part-3', title: 'Part 3' },
     ],
   },
 }
@@ -28,8 +28,8 @@ export const Horizontal: Story = {
   args: {
     direction: 'horizontal',
     items: [
-      { key: '1', href: '#general', title: 'Thông tin chung' },
-      { key: '2', href: '#menu', title: 'Thực đơn' },
+      { key: '1', href: '#part-1', title: 'Part 1' },
+      { key: '2', href: '#part-2', title: 'Part 2' },
     ],
   },
 }

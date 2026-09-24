@@ -6,9 +6,9 @@ export default meta
 type Story = StoryObj<typeof List>
 
 const data = [
-  { title: 'Trà sữa 344', desc: 'Cầu Giấy, Hà Nội' },
-  { title: 'Gà rán 365', desc: 'Hải Châu, Đà Nẵng' },
-  { title: 'Cơm tấm Bảy', desc: 'Quận 1, TP. Hồ Chí Minh' },
+  { title: 'Title 1', desc: 'Description 1' },
+  { title: 'Title 2', desc: 'Description 2' },
+  { title: 'Title 3', desc: 'Description 3' },
 ]
 
 export const Default: Story = {
@@ -18,7 +18,7 @@ export const Default: Story = {
       itemLayout="horizontal"
       dataSource={data}
       renderItem={(item) => (
-        <List.Item actions={[<Button key="edit" type="link">Sửa</Button>]}>
+        <List.Item actions={[<Button key="edit" type="link">Edit</Button>]}>
           <List.Item.Meta
             avatar={<Avatar icon={<Building02 />} />}
             title={item.title}

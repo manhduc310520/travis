@@ -6,7 +6,7 @@ const meta = {
   component: Button,
   title: 'Components/Button',
   tags: ['ai-generated', 'needs-work'],
-  args: { children: 'Tạo nhà hàng' },
+  args: { children: 'Button' },
   // Ant Design's own BaseButtonProps carries no JSDoc for these — unlike
   // Alert/Divider/Steps elsewhere in this project, there's no official text
   // to copy. Descriptions below are written from the actual API surface,
@@ -40,8 +40,8 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
   args: { type: 'primary' },
   play: async ({ canvas }) => {
-    const btn = canvas.getByRole('button', { name: /tạo nhà hàng/i })
-    await expect(btn).toHaveTextContent('Tạo nhà hàng')
+    const btn = canvas.getByRole('button', { name: /button/i })
+    await expect(btn).toHaveTextContent('Button')
   },
 }
 

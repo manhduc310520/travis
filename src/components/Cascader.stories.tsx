@@ -15,9 +15,9 @@ export default meta
 type Story = StoryObj<typeof Cascader>
 
 const options = [
-  { value: 'hn', label: 'Hà Nội', children: [{ value: 'cg', label: 'Cầu Giấy' }, { value: 'dd', label: 'Đống Đa' }] },
-  { value: 'hcm', label: 'TP. Hồ Chí Minh', children: [{ value: 'q1', label: 'Quận 1' }] },
+  { value: 'option-1', label: 'Option 1', children: [{ value: 'option-1-1', label: 'Option 1-1' }, { value: 'option-1-2', label: 'Option 1-2' }] },
+  { value: 'option-2', label: 'Option 2', children: [{ value: 'option-2-1', label: 'Option 2-1' }] },
 ]
 
-export const Default: Story = { args: { options, placeholder: 'Chọn khu vực', style: { width: 280 } } }
-export const Multiple: Story = { args: { options, multiple: true, placeholder: 'Chọn nhiều', style: { maxWidth: 320 } } }
+export const Default: Story = { args: { options, placeholder: 'Please select', style: { width: 280 } } }
+export const Multiple: Story = { args: { options, multiple: true, placeholder: 'Please select', style: { maxWidth: 320 } } }

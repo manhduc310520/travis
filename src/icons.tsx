@@ -16,15 +16,18 @@ import * as UI from '@untitledui/icons'
 export type IconProps = SVGProps<SVGSVGElement> & { size?: number; color?: string }
 
 function sized(Cmp: FC<IconProps>, defaultSize = 16): FC<IconProps> {
-  return function Icon({ size = defaultSize, style, ...rest }: IconProps) {
+  return function Icon({ size = defaultSize, className, ...rest }: IconProps) {
     // Untitled UI renders a bare <svg> with no wrapper span, so it keeps the
     // browser default `display: inline; vertical-align: baseline`. Sitting
     // next to anything else inline (Avatar, text, another icon) inside a
     // block-level container — `.ant-space-item` is `display: block`, not
-    // flex — that baseline sits a few px above true vertical center. Forcing
-    // `display: block` here fixes every icon everywhere at once, instead of
-    // patching alignment per usage site.
-    return <Cmp size={size} style={{ display: 'block', ...style }} {...rest} />
+    // flex — that baseline sits a few px above true vertical center. The
+    // `.fabi-icon` class makes every icon `display: block` (see index.css).
+    // It must stay a zero-specificity class, never an inline style: Ant
+    // Design's own `> svg` rules (Tag, Breadcrumb, Collapse, Segmented, Tabs)
+    // switch a bare svg back to inline-block, and an inline `display: block`
+    // overrode them — which dropped Tag's close icon onto its own line.
+    return <Cmp size={size} className={className ? `fabi-icon ${className}` : 'fabi-icon'} {...rest} />
   }
 }
 

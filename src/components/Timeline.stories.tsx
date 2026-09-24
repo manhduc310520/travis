@@ -15,10 +15,10 @@ export default meta
 type Story = StoryObj<typeof Timeline>
 
 const items = [
-  { content: 'Tạo nhà hàng 09:00' },
-  { content: 'Nhập thực đơn 10:30', color: 'green' },
-  { content: 'Kết nối máy POS 14:00', color: 'red' },
-  { content: 'Bắt đầu bán 18:00' },
+  { content: 'Create a services site 2015-09-01' },
+  { content: 'Solve initial network problems 2015-09-01', color: 'green' },
+  { content: 'Technical testing 2015-09-01', color: 'red' },
+  { content: 'Network problems being solved 2015-09-01' },
 ]
 
 export const Default: Story = { args: { items } }

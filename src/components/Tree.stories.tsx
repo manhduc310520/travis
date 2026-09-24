@@ -18,14 +18,14 @@ type Story = StoryObj<typeof Tree>
 
 const treeData = [
   {
-    title: 'Đồ uống',
-    key: 'drink',
+    title: 'Parent 1',
+    key: 'parent-1',
     children: [
-      { title: 'Trà sữa', key: 'milktea' },
-      { title: 'Cà phê', key: 'coffee' },
+      { title: 'Child 1-1', key: 'child-1-1' },
+      { title: 'Child 1-2', key: 'child-1-2' },
     ],
   },
-  { title: 'Đồ ăn', key: 'food', children: [{ title: 'Gà rán', key: 'chicken' }] },
+  { title: 'Parent 2', key: 'parent-2', children: [{ title: 'Child 2-1', key: 'child-2-1' }] },
 ]
 
 export const Default: Story = { args: { treeData, defaultExpandAll: true } }

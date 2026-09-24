@@ -33,7 +33,7 @@ export type AppHeaderProps = {
 export function AppHeader({
   brandName = 'iPOS.vn',
   tagline = 'MAKE F&B BUSINESS BETTER',
-  userName = 'Chanh dev',
+  userName = 'John Doe',
   onMenuClick,
 }: AppHeaderProps) {
   const { token } = theme.useToken()
@@ -56,7 +56,7 @@ export function AppHeader({
         <button
           type="button"
           onClick={onMenuClick}
-          aria-label="Mở menu điều hướng"
+          aria-label="Open navigation menu"
           style={{
             background: 'transparent',
             border: 0,
@@ -105,14 +105,14 @@ export function AppHeader({
               </Typography.Text>
             ) : undefined
           }
-          placeholder="Tìm kiếm"
+          placeholder="Search"
           style={{ width: '100%', maxWidth: isDesktop ? 360 : undefined }}
-          aria-label="Tìm kiếm"
+          aria-label="Search"
         />
       </div>
 
       <Space size={isDesktop ? 16 : 8} style={{ width: isDesktop ? 208 : undefined, justifyContent: 'flex-end', flexShrink: 0 }}>
-        <Bell01 size={18} style={{ color: '#fff' }} aria-label="Thông báo" />
+        <Bell01 size={18} style={{ color: '#fff' }} aria-label="Notifications" />
         <Space size={8}>
           <Avatar size={28} icon={<User01 />} />
           {isDesktop && (

@@ -14,15 +14,15 @@ export default meta
 type Story = StoryObj<typeof Breadcrumb>
 
 export const Default: Story = {
-  args: { items: [{ title: 'Trang chủ' }, { title: 'Nhà hàng' }, { title: 'Danh sách nhà hàng' }] },
+  args: { items: [{ title: 'Home' }, { title: 'Application Center' }, { title: 'Application List' }] },
 }
 
 export const WithIcon: Story = {
   args: {
     items: [
       { title: <Home01 /> },
-      { title: <a href="#">Nhà hàng</a> },
-      { title: 'Danh sách nhà hàng' },
+      { title: <a href="#">Application Center</a> },
+      { title: 'Application List' },
     ],
   },
 }

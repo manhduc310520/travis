@@ -20,8 +20,8 @@ export const EmptySearch: Story = {
     </AppShell>
   ),
   play: async ({ canvas }) => {
-    await expect(canvas.getByText('Không tìm thấy dữ liệu')).toBeVisible()
-    await expect(canvas.getByRole('button', { name: /tạo nhà hàng/i })).toBeVisible()
+    await expect(canvas.getByText('No data found')).toBeVisible()
+    await expect(canvas.getByRole('button', { name: /create restaurant/i })).toBeVisible()
   },
 }
 

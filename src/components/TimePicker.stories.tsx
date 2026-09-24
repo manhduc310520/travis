@@ -15,7 +15,7 @@ const meta: Meta<typeof TimePicker> = {
 export default meta
 type Story = StoryObj<typeof TimePicker>
 
-export const Default: Story = { args: { placeholder: 'Giờ mở cửa' } }
+export const Default: Story = { args: { placeholder: 'Select time' } }
 export const Range: Story = { render: () => <TimePicker.RangePicker /> }
 export const TwelveHour: Story = { args: { use12Hours: true, format: 'h:mm a' } }
 export const Disabled: Story = { args: { disabled: true } }

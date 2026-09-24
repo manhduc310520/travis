@@ -34,7 +34,7 @@ export const WithSuffix: Story = {
           background: '#fafafa',
         }}
       >
-        đ
+        $
       </span>
     </Space.Compact>
   ),

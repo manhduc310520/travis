@@ -13,12 +13,12 @@ const { Title, Text } = Typography
  * from the real set without the grouping itself looking wrong.
  */
 const groups: [string, FC<IconProps>[]][] = [
-  ['Điều hướng', [Icons.Home01, Icons.Building02, Icons.BookOpen01, Icons.Tag01, Icons.Printer, Icons.Users01, Icons.PieChart01, Icons.Settings01]],
-  ['Thanh công cụ (Chrome)', [Icons.SearchMd, Icons.Bell01, Icons.User01, Icons.LayoutLeft, Icons.Menu02, Icons.Columns03]],
-  ['Chevron & mũi tên', [Icons.ChevronDown, Icons.ChevronRight, Icons.ArrowUp]],
-  ['Hành động', [Icons.Plus, Icons.Edit01, Icons.Trash01, Icons.Eye, Icons.Upload01, Icons.UploadCloud01, Icons.HelpCircle]],
-  ['App Shell — điều hướng chính', [Icons.Home03, Icons.LayoutAlt03, Icons.Tag03, Icons.PieChart04, Icons.Grid01, Icons.ShoppingCart01, Icons.FileSearch02, Icons.Monitor03, Icons.Mail01, Icons.File06, Icons.CheckCircleBroken]],
-  ['Ghi đè icon nội bộ Ant Design', [Icons.Check, Icons.XClose, Icons.Calendar, Icons.Clock, Icons.Loading02, Icons.AlertCircle, Icons.InfoCircle, Icons.AlertTriangle, Icons.XCircle, Icons.CheckCircle, Icons.Star01, Icons.EyeOff, Icons.DotsHorizontal, Icons.X]],
+  ['Navigation', [Icons.Home01, Icons.Building02, Icons.BookOpen01, Icons.Tag01, Icons.Printer, Icons.Users01, Icons.PieChart01, Icons.Settings01]],
+  ['Toolbar (Chrome)', [Icons.SearchMd, Icons.Bell01, Icons.User01, Icons.LayoutLeft, Icons.Menu02, Icons.Columns03]],
+  ['Chevrons & Arrows', [Icons.ChevronDown, Icons.ChevronRight, Icons.ArrowUp]],
+  ['Actions', [Icons.Plus, Icons.Edit01, Icons.Trash01, Icons.Eye, Icons.Upload01, Icons.UploadCloud01, Icons.HelpCircle]],
+  ['App Shell — Main Navigation', [Icons.Home03, Icons.LayoutAlt03, Icons.Tag03, Icons.PieChart04, Icons.Grid01, Icons.ShoppingCart01, Icons.FileSearch02, Icons.Monitor03, Icons.Mail01, Icons.File06, Icons.CheckCircleBroken]],
+  ['Ant Design Built-in Icon Overrides', [Icons.Check, Icons.XClose, Icons.Calendar, Icons.Clock, Icons.Loading02, Icons.AlertCircle, Icons.InfoCircle, Icons.AlertTriangle, Icons.XCircle, Icons.CheckCircle, Icons.Star01, Icons.EyeOff, Icons.DotsHorizontal, Icons.X]],
 ]
 
 const nameOf = (Cmp: FC<IconProps>) =>
@@ -33,10 +33,10 @@ function IconGallery() {
         Icons
       </Title>
       <Text type="secondary">
-        Bộ icon thật đang được import trong <code>src/icons.tsx</code> — bọc từ{' '}
-        <code>@untitledui/icons</code>, cùng tên với trang <code>🍑 Icon</code> trong Figma
-        (kebab-case, ví dụ <code>home-03</code> ↔ <code>Home03</code>). Không phải icon nào của
-        Figma cũng có ở đây — chỉ những icon hệ thống thực sự dùng.
+        The real icon set imported in <code>src/icons.tsx</code> — wrapped from{' '}
+        <code>@untitledui/icons</code>, using the same names as the <code>🍑 Icon</code> page in Figma
+        (kebab-case, e.g. <code>home-03</code> ↔ <code>Home03</code>). Not every Figma icon is
+        here — only the ones the system actually uses.
       </Text>
 
       {groups.map(([label, icons]) => (

@@ -17,12 +17,12 @@ export default meta
 type Story = StoryObj<typeof Descriptions>
 
 const items = [
-  { key: '1', label: 'Pos ID', children: 'POS-1042' },
-  { key: '2', label: 'Tên nhà hàng', children: 'Trà sữa 344' },
-  { key: '3', label: 'Địa điểm', children: 'Cầu Giấy, Hà Nội' },
-  { key: '4', label: 'Số điện thoại', children: '0900 000 000' },
+  { key: '1', label: 'UserName', children: 'John Brown' },
+  { key: '2', label: 'Telephone', children: '555-0100' },
+  { key: '3', label: 'Live', children: 'New York' },
+  { key: '4', label: 'Address', children: 'No. 1 Lake Park' },
 ]
 
-export const Default: Story = { args: { title: 'Thông tin nhà hàng', items } }
-export const Bordered: Story = { args: { title: 'Thông tin nhà hàng', bordered: true, items, column: 2 } }
+export const Default: Story = { args: { title: 'User Info', items } }
+export const Bordered: Story = { args: { title: 'User Info', bordered: true, items, column: 2 } }
 export const Vertical: Story = { args: { layout: 'vertical', bordered: true, items, column: 2 } }

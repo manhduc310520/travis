@@ -17,3 +17,8 @@ body,
 body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
+
+/* See `sized()` in src/icons.tsx — `:where()` keeps this at zero specificity. */
+:where(.fabi-icon) {
+  display: block;
+}

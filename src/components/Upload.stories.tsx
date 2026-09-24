@@ -21,7 +21,7 @@ export const Button_: Story = {
   name: 'With button',
   render: () => (
     <Upload beforeUpload={() => false}>
-      <Button icon={<Upload01 />}>Chọn file</Button>
+      <Button icon={<Upload01 />}>Click to Upload</Button>
     </Upload>
   ),
 }
@@ -30,11 +30,11 @@ export const Dragger: Story = {
   render: () => (
     <Upload.Dragger beforeUpload={() => false} style={{ maxWidth: 420 }}>
       <p><UploadCloud01 size={32} /></p>
-      <p>Kéo file vào đây hoặc bấm để chọn</p>
+      <p>Click or drag file to this area to upload</p>
     </Upload.Dragger>
   ),
 }
 
 export const PictureCard: Story = {
-  render: () => <Upload listType="picture-card" beforeUpload={() => false}>+ Tải ảnh</Upload>,
+  render: () => <Upload listType="picture-card" beforeUpload={() => false}>+ Upload</Upload>,
 }

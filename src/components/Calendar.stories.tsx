@@ -30,12 +30,12 @@ export const CustomHeader: Story = {
 
         return (
           <div style={{ padding: 8 }}>
-            <Typography.Title level={4}>Tuỳ chỉnh header</Typography.Title>
+            <Typography.Title level={4}>Custom header</Typography.Title>
             <Row gutter={8}>
               <Col>
                 <Radio.Group size="small" onChange={(e) => onTypeChange(e.target.value)} value={type}>
-                  <Radio.Button value="month">Tháng</Radio.Button>
-                  <Radio.Button value="year">Năm</Radio.Button>
+                  <Radio.Button value="month">Month</Radio.Button>
+                  <Radio.Button value="year">Year</Radio.Button>
                 </Radio.Group>
               </Col>
               <Col>

@@ -27,40 +27,40 @@ const { Sider, Content } = Layout
  * The full nav, read directly off the Figma instance
  * `App Shells > Components > App Shells Items / Menu` (node 27784:136759) —
  * 14 top-level items, each with the exact icon instance bound to it in
- * Figma (e.g. "Trang chủ" -> `home-03`, not a guessed equivalent). Earlier
+ * Figma (e.g. "Home" -> `home-03`, not a guessed equivalent). Earlier
  * versions of this file had only 6 items; this is the full list.
  */
 const navItems = [
-  { key: 'home', icon: <Home03 />, label: 'Trang chủ' },
+  { key: 'home', icon: <Home03 />, label: 'Home' },
   {
     key: 'restaurants',
     icon: <Building02 />,
-    label: 'Nhà hàng',
+    label: 'Restaurants',
     children: [
-      { key: 'list', label: 'Danh sách nhà hàng' },
-      { key: 'payment', label: 'Phương thức thanh toán' },
-      { key: 'source', label: 'Nguồn đơn hàng' },
-      { key: 'printer', label: 'Vị trí máy in' },
-      { key: 'area', label: 'Khu vực' },
-      { key: 'tables', label: 'Quản lý bàn' },
-      { key: 'map', label: 'Sơ đồ bàn' },
-      { key: 'invoice', label: 'Mẫu hoá đơn' },
+      { key: 'list', label: 'Restaurant List' },
+      { key: 'payment', label: 'Payment Methods' },
+      { key: 'source', label: 'Order Sources' },
+      { key: 'printer', label: 'Printer Locations' },
+      { key: 'area', label: 'Areas' },
+      { key: 'tables', label: 'Table Management' },
+      { key: 'map', label: 'Floor Plan' },
+      { key: 'invoice', label: 'Invoice Templates' },
       { key: 'momo', label: 'Merchant Momo' },
-      { key: 'pos', label: 'Liên kết điểm bán hàng' },
+      { key: 'pos', label: 'POS Connections' },
     ],
   },
-  { key: 'menu', icon: <LayoutAlt03 />, label: 'Thực đơn' },
-  { key: 'promo', icon: <Tag03 />, label: 'Chương trình' },
-  { key: 'devices', icon: <Printer />, label: 'Thiết bị' },
-  { key: 'staff', icon: <Users01 />, label: 'Nhân viên' },
-  { key: 'reports', icon: <PieChart04 />, label: 'Báo cáo' },
-  { key: 'apps', icon: <Grid01 />, label: 'Ứng dụng' },
+  { key: 'menu', icon: <LayoutAlt03 />, label: 'Menu' },
+  { key: 'promo', icon: <Tag03 />, label: 'Promotions' },
+  { key: 'devices', icon: <Printer />, label: 'Devices' },
+  { key: 'staff', icon: <Users01 />, label: 'Staff' },
+  { key: 'reports', icon: <PieChart04 />, label: 'Reports' },
+  { key: 'apps', icon: <Grid01 />, label: 'Apps' },
   { key: 'marketplace', icon: <ShoppingCart01 />, label: 'Marketplace' },
-  { key: 'accounting', icon: <FileSearch02 />, label: 'Kế toán và ngân hàng' },
-  { key: 'timekeeping', icon: <CheckCircleBroken />, label: 'Chấm công' },
-  { key: 'multichannel', icon: <Monitor03 />, label: 'Nhận đơn đa kênh' },
-  { key: 'support', icon: <Mail01 />, label: 'Góp ý hỗ trợ' },
-  { key: 'einvoice', icon: <File06 />, label: 'Hoá đơn điện tử' },
+  { key: 'accounting', icon: <FileSearch02 />, label: 'Accounting & Banking' },
+  { key: 'timekeeping', icon: <CheckCircleBroken />, label: 'Timekeeping' },
+  { key: 'multichannel', icon: <Monitor03 />, label: 'Multichannel Orders' },
+  { key: 'support', icon: <Mail01 />, label: 'Feedback & Support' },
+  { key: 'einvoice', icon: <File06 />, label: 'E-invoices' },
 ]
 
 export type AppShellProps = {
@@ -119,11 +119,11 @@ export function AppShell({ children, selectedKey = 'list', height = 768 }: AppSh
           selectable={false}
           style={{ borderInlineEnd: 0 }}
           items={[
-            { key: 'collapse', icon: <LayoutLeft />, label: 'Thu gọn' },
+            { key: 'collapse', icon: <LayoutLeft />, label: 'Collapse' },
             {
               key: 'expand',
               icon: <Menu02 />,
-              label: 'Mở rộng',
+              label: 'Expand',
               extra: <ChevronRight size={12} />,
             },
           ]}

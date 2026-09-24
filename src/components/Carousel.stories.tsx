@@ -15,9 +15,9 @@ export const Default: Story = {
   render: () => (
     <div style={{ maxWidth: 480 }}>
       <Carousel>
-        {slide('Khuyến mãi tháng 1', '#003EB3')}
-        {slide('Khuyến mãi tháng 2', '#0958D9')}
-        {slide('Khuyến mãi tháng 3', '#1677FF')}
+        {slide('Slide 1', '#003EB3')}
+        {slide('Slide 2', '#0958D9')}
+        {slide('Slide 3', '#1677FF')}
       </Carousel>
     </div>
   ),

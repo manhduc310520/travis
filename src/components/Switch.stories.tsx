@@ -20,4 +20,4 @@ type Story = StoryObj<typeof Switch>
 export const Default: Story = { args: { defaultChecked: true } }
 export const Small: Story = { args: { size: 'small', defaultChecked: true } }
 export const Disabled: Story = { args: { disabled: true, defaultChecked: true } }
-export const WithLabels: Story = { args: { checkedChildren: 'Bật', unCheckedChildren: 'Tắt', defaultChecked: true } }
+export const WithLabels: Story = { args: { checkedChildren: 'On', unCheckedChildren: 'Off', defaultChecked: true } }

@@ -21,9 +21,9 @@ type Story = StoryObj<typeof Flex>
 export const Gap: Story = {
   render: () => (
     <Flex gap="middle">
-      <Button type="primary">Một</Button>
-      <Button>Hai</Button>
-      <Button>Ba</Button>
+      <Button type="primary">Button 1</Button>
+      <Button>Button 2</Button>
+      <Button>Button 3</Button>
     </Flex>
   ),
 }
@@ -31,8 +31,8 @@ export const Gap: Story = {
 export const SpaceBetween: Story = {
   render: () => (
     <Flex justify="space-between" style={{ maxWidth: 480 }}>
-      <Button>Trái</Button>
-      <Button>Phải</Button>
+      <Button>Left</Button>
+      <Button>Right</Button>
     </Flex>
   ),
 }
@@ -40,8 +40,8 @@ export const SpaceBetween: Story = {
 export const VerticalStack: Story = {
   render: () => (
     <Flex vertical gap="small" style={{ width: 240 }}>
-      <Button type="primary">Tạo nhà hàng</Button>
-      <Button>Nhập từ file</Button>
+      <Button type="primary">Primary Button</Button>
+      <Button>Default Button</Button>
     </Flex>
   ),
 }

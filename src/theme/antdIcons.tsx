@@ -52,7 +52,7 @@ export const antdIconDefaults = {
   transfer: {
     selectionsIcon: <ChevronDown />,
   },
-  // The submenu arrow next to "Nhà hàng" — previously Ant Design's own caret.
+  // The submenu arrow next to "Restaurants" — previously Ant Design's own caret.
   menu: {
     expandIcon: <ChevronRight />,
   },
@@ -65,9 +65,10 @@ export const antdIconDefaults = {
   notification: {
     closeIcon: <X size={14} />,
   },
-  tag: {
-    closeIcon: <XClose size={10} />,
-  },
+  // Tag is deliberately absent. Ant Design treats a `closeIcon` set here as
+  // "every Tag is closable" (`computeClosable` in antd's useClosable hook), so
+  // it put an × on status tags that never asked for one. A closable Tag passes
+  // `closeIcon={<XClose size={10} />}` itself instead.
   tour: {
     closeIcon: <X size={14} />,
   },

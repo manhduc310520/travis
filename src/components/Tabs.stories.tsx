@@ -17,9 +17,9 @@ export default meta
 type Story = StoryObj<typeof Tabs>
 
 const items = [
-  { key: '1', label: 'Thông tin chung', children: 'Tên, địa chỉ, số điện thoại' },
-  { key: '2', label: 'Thực đơn', children: 'Danh sách món và giá' },
-  { key: '3', label: 'Nhân viên', children: 'Ca làm và phân quyền' },
+  { key: '1', label: 'Tab 1', children: 'Content of Tab Pane 1' },
+  { key: '2', label: 'Tab 2', children: 'Content of Tab Pane 2' },
+  { key: '3', label: 'Tab 3', children: 'Content of Tab Pane 3' },
 ]
 
 export const Line: Story = { args: { items, defaultActiveKey: '1' } }

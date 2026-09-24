@@ -16,11 +16,11 @@ type Story = StoryObj<typeof TreeSelect>
 
 const treeData = [
   {
-    title: 'Đồ uống', value: 'drink',
-    children: [{ title: 'Trà sữa', value: 'milktea' }, { title: 'Cà phê', value: 'coffee' }],
+    title: 'Parent 1', value: 'parent-1',
+    children: [{ title: 'Child 1-1', value: 'child-1-1' }, { title: 'Child 1-2', value: 'child-1-2' }],
   },
-  { title: 'Đồ ăn', value: 'food', children: [{ title: 'Gà rán', value: 'chicken' }] },
+  { title: 'Parent 2', value: 'parent-2', children: [{ title: 'Child 2-1', value: 'child-2-1' }] },
 ]
 
-export const Default: Story = { args: { treeData, placeholder: 'Chọn nhóm món', style: { width: 280 } } }
-export const Checkable: Story = { args: { treeData, treeCheckable: true, placeholder: 'Chọn nhiều', style: { maxWidth: 320 } } }
+export const Default: Story = { args: { treeData, placeholder: 'Please select', style: { width: 280 } } }
+export const Checkable: Story = { args: { treeData, treeCheckable: true, placeholder: 'Please select', style: { maxWidth: 320 } } }

@@ -21,10 +21,10 @@ export const TwoPanes: Story = {
   render: () => (
     <Splitter style={{ height: 240, boxShadow: '0 0 0 1px rgba(0,0,0,0.06)' }}>
       <Splitter.Panel defaultSize="40%">
-        <div style={{ padding: 16 }}><Typography.Text>Danh sách</Typography.Text></div>
+        <div style={{ padding: 16 }}><Typography.Text>First</Typography.Text></div>
       </Splitter.Panel>
       <Splitter.Panel>
-        <div style={{ padding: 16 }}><Typography.Text>Chi tiết</Typography.Text></div>
+        <div style={{ padding: 16 }}><Typography.Text>Second</Typography.Text></div>
       </Splitter.Panel>
     </Splitter>
   ),

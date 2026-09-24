@@ -23,16 +23,16 @@ type Story = StoryObj<typeof Result>
 export const Success: Story = {
   args: {
     status: 'success',
-    title: 'Đã tạo nhà hàng',
-    subTitle: 'Mã POS-1042 đã sẵn sàng bán hàng.',
-    extra: <Button type="primary">Về danh sách</Button>,
+    title: 'Successfully Submitted!',
+    subTitle: 'Your request has been processed successfully.',
+    extra: <Button type="primary">Go Back</Button>,
   },
 }
 
 export const NotFound: Story = {
-  args: { status: '404', title: '404', subTitle: 'Không tìm thấy trang bạn cần.' },
+  args: { status: '404', title: '404', subTitle: 'Sorry, the page you visited does not exist.' },
 }
 
 export const ErrorState: Story = {
-  args: { status: 'error', title: 'Tạo nhà hàng thất bại', subTitle: 'Kiểm tra lại thông tin rồi thử lại.' },
+  args: { status: 'error', title: 'Submission Failed', subTitle: 'Please check and modify the information before resubmitting.' },
 }

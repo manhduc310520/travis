@@ -16,8 +16,8 @@ const meta: Meta<typeof Segmented> = {
 export default meta
 type Story = StoryObj<typeof Segmented>
 
-const options = ['Ngày', 'Tuần', 'Tháng']
+const options = ['Daily', 'Weekly', 'Monthly']
 
-export const Default: Story = { args: { options, defaultValue: 'Tuần' } }
+export const Default: Story = { args: { options, defaultValue: 'Weekly' } }
 export const Block: Story = { args: { options, block: true, style: { maxWidth: 360 } } }
 export const Disabled: Story = { args: { options, disabled: true } }

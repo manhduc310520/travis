@@ -10,11 +10,11 @@ type Story = StoryObj<typeof Typography>
 export const Headings: Story = {
   render: () => (
     <div>
-      <Title level={1}>Danh sách nhà hàng</Title>
-      <Title level={2}>Danh sách nhà hàng</Title>
-      <Title level={3}>Danh sách nhà hàng</Title>
-      <Title level={4}>Danh sách nhà hàng</Title>
-      <Title level={5}>Danh sách nhà hàng</Title>
+      <Title level={1}>h1. Heading</Title>
+      <Title level={2}>h2. Heading</Title>
+      <Title level={3}>h3. Heading</Title>
+      <Title level={4}>h4. Heading</Title>
+      <Title level={5}>h5. Heading</Title>
     </div>
   ),
 }
@@ -22,15 +22,15 @@ export const Headings: Story = {
 export const TextVariants: Story = {
   render: () => (
     <Space orientation="vertical">
-      <Text>Văn bản thường</Text>
-      <Text type="secondary">Văn bản phụ</Text>
-      <Text type="success">Thành công</Text>
-      <Text type="warning">Cảnh báo</Text>
-      <Text type="danger">Lỗi</Text>
-      <Text disabled>Vô hiệu hoá</Text>
-      <Text strong>Đậm 600</Text>
+      <Text>Default text</Text>
+      <Text type="secondary">Secondary text</Text>
+      <Text type="success">Success text</Text>
+      <Text type="warning">Warning text</Text>
+      <Text type="danger">Danger text</Text>
+      <Text disabled>Disabled text</Text>
+      <Text strong>Strong text (600)</Text>
       <Text code>colorPrimary</Text>
-      <Link href="#">Liên kết</Link>
+      <Link href="#">Link</Link>
     </Space>
   ),
 }
@@ -38,8 +38,8 @@ export const TextVariants: Story = {
 export const BodyCopy: Story = {
   render: () => (
     <Paragraph style={{ maxWidth: 560 }}>
-      FABi CMS là web app quản trị chính trong hệ sinh thái iPOS. Chủ quán và đội ngũ dùng nó để xem
-      báo cáo doanh thu, sửa thực đơn, và xử lý hoá đơn điện tử.
+      FABi CMS is the main admin web app in the iPOS ecosystem. Restaurant owners and their teams use
+      it to view revenue reports, edit menus, and handle e-invoices.
     </Paragraph>
   ),
 }

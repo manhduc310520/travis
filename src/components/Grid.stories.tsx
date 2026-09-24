@@ -34,7 +34,7 @@ export const Responsive: Story = {
     <Row gutter={[16, 16]}>
       {[1, 2, 3, 4].map((n) => (
         <Col key={n} xs={24} sm={12} md={8} lg={6}>
-          <Card size="small">Ô {n}</Card>
+          <Card size="small">Col {n}</Card>
         </Col>
       ))}
     </Row>

@@ -15,8 +15,8 @@ type Story = StoryObj<typeof Mentions>
 
 export const Default: Story = {
   args: {
-    placeholder: 'Gõ @ để nhắc tên',
+    placeholder: 'Input @ to mention people',
     style: { maxWidth: 320 },
-    options: [{ value: 'chanh', label: 'chanh' }, { value: 'travis', label: 'travis' }],
+    options: [{ value: 'john', label: 'john' }, { value: 'jane', label: 'jane' }, { value: 'alex', label: 'alex' }],
   },
 }

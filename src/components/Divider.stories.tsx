@@ -8,25 +8,25 @@ type Story = StoryObj<typeof Divider>
 export const Horizontal: Story = {
   render: () => (
     <div>
-      <Typography.Text>Phần trên</Typography.Text>
+      <Typography.Text>Text above</Typography.Text>
       <Divider />
-      <Typography.Text>Phần dưới</Typography.Text>
+      <Typography.Text>Text below</Typography.Text>
     </div>
   ),
 }
 
-export const WithTitle: Story = { args: { children: 'Thông tin cửa hàng' } }
+export const WithTitle: Story = { args: { children: 'Text' } }
 
 export const Dashed: Story = { args: { dashed: true } }
 
 export const Vertical: Story = {
   render: () => (
     <div>
-      <Typography.Text>Sửa</Typography.Text>
+      <Typography.Text>Text</Typography.Text>
       <Divider orientation="vertical" />
-      <Typography.Text>Xoá</Typography.Text>
+      <Typography.Text>Link</Typography.Text>
       <Divider orientation="vertical" />
-      <Typography.Text>Nhân bản</Typography.Text>
+      <Typography.Text>Link</Typography.Text>
     </div>
   ),
 }

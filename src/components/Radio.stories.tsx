@@ -20,11 +20,11 @@ type Story = StoryObj<typeof Radio>
 
 export const Group: Story = {
   render: () => (
-    <Radio.Group defaultValue="all">
+    <Radio.Group defaultValue="a">
       <Space orientation="vertical">
-        <Radio value="all">Tất cả thành phố</Radio>
-        <Radio value="hn">Hà Nội</Radio>
-        <Radio value="dn">Đà Nẵng</Radio>
+        <Radio value="a">Option A</Radio>
+        <Radio value="b">Option B</Radio>
+        <Radio value="c">Option C</Radio>
       </Space>
     </Radio.Group>
   ),
@@ -33,9 +33,9 @@ export const Group: Story = {
 export const ButtonGroup: Story = {
   render: () => (
     <Radio.Group defaultValue="week" buttonStyle="solid">
-      <Radio.Button value="day">Ngày</Radio.Button>
-      <Radio.Button value="week">Tuần</Radio.Button>
-      <Radio.Button value="month">Tháng</Radio.Button>
+      <Radio.Button value="day">Day</Radio.Button>
+      <Radio.Button value="week">Week</Radio.Button>
+      <Radio.Button value="month">Month</Radio.Button>
     </Radio.Group>
   ),
 }
@@ -43,8 +43,8 @@ export const ButtonGroup: Story = {
 export const Disabled: Story = {
   render: () => (
     <Radio.Group defaultValue="a" disabled>
-      <Radio value="a">Khoá</Radio>
-      <Radio value="b">Khoá</Radio>
+      <Radio value="a">Disabled</Radio>
+      <Radio value="b">Disabled</Radio>
     </Radio.Group>
   ),
 }

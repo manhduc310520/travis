@@ -20,8 +20,8 @@ type Story = StoryObj<typeof Space>
 export const Horizontal: Story = {
   render: () => (
     <Space>
-      <Button type="primary">Lưu</Button>
-      <Button>Huỷ</Button>
+      <Button type="primary">Save</Button>
+      <Button>Cancel</Button>
     </Space>
   ),
 }
@@ -29,8 +29,8 @@ export const Horizontal: Story = {
 export const Vertical: Story = {
   render: () => (
     <Space orientation="vertical">
-      <Button type="primary">Lưu</Button>
-      <Button>Huỷ</Button>
+      <Button type="primary">Save</Button>
+      <Button>Cancel</Button>
     </Space>
   ),
 }

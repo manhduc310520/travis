@@ -8,13 +8,13 @@ type Story = StoryObj<typeof Drawer>
 export const Open: Story = {
   args: {
     open: true,
-    title: 'Bộ lọc',
+    title: 'Basic Drawer',
     placement: 'right',
     getContainer: false,
     size: 320,
     children: (
       <Form layout="vertical">
-        <Form.Item label="Tên nhà hàng">
+        <Form.Item label="Name">
           <Input />
         </Form.Item>
       </Form>

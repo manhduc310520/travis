@@ -20,8 +20,8 @@ const meta: Meta<typeof DatePicker> = {
 export default meta
 type Story = StoryObj<typeof DatePicker>
 
-export const Default: Story = { args: { placeholder: 'Chọn ngày' } }
+export const Default: Story = { args: { placeholder: 'Select date' } }
 export const Range: Story = { render: () => <DatePicker.RangePicker /> }
-export const Month: Story = { args: { picker: 'month', placeholder: 'Chọn tháng' } }
+export const Month: Story = { args: { picker: 'month', placeholder: 'Select month' } }
 export const Disabled: Story = { args: { disabled: true } }
-export const Invalid: Story = { args: { status: 'error', placeholder: 'Bắt buộc' } }
+export const Invalid: Story = { args: { status: 'error', placeholder: 'Select date' } }

@@ -22,14 +22,14 @@ type Story = StoryObj<typeof Modal>
 export const Open: Story = {
   args: {
     open: true,
-    title: 'Tạo nhà hàng',
-    okText: 'Tạo',
-    cancelText: 'Huỷ',
+    title: 'Basic Modal',
+    okText: 'OK',
+    cancelText: 'Cancel',
     getContainer: false,
     children: (
       <Form layout="vertical">
-        <Form.Item label="Tên nhà hàng">
-          <Input placeholder="Trà sữa 344" />
+        <Form.Item label="Name">
+          <Input placeholder="Please input" />
         </Form.Item>
       </Form>
     ),
@@ -46,12 +46,12 @@ export const Open: Story = {
 export const Confirm: Story = {
   args: {
     open: true,
-    title: 'Xoá nhà hàng này?',
-    okText: 'Xoá',
+    title: 'Are you sure delete this task?',
+    okText: 'Delete',
     okButtonProps: { danger: true },
-    cancelText: 'Huỷ',
+    cancelText: 'Cancel',
     getContainer: false,
-    children: <p>Hành động này không thể hoàn tác.</p>,
+    children: <p>This action cannot be undone.</p>,
   },
   decorators: [
     (Story) => (

@@ -6,17 +6,17 @@ export default meta
 type Story = StoryObj<typeof Dropdown>
 
 const items = [
-  { key: 'view', icon: <Eye />, label: 'Xem' },
-  { key: 'edit', icon: <Edit01 />, label: 'Sửa' },
+  { key: 'view', icon: <Eye />, label: 'View' },
+  { key: 'edit', icon: <Edit01 />, label: 'Edit' },
   { type: 'divider' as const },
-  { key: 'delete', icon: <Trash01 />, label: 'Xoá', danger: true },
+  { key: 'delete', icon: <Trash01 />, label: 'Delete', danger: true },
 ]
 
 export const Default: Story = {
   render: () => (
     <Dropdown menu={{ items }}>
       <Button>
-        <Space>Tiện ích<ChevronDown /></Space>
+        <Space>Hover me<ChevronDown /></Space>
       </Button>
     </Dropdown>
   ),
@@ -26,7 +26,7 @@ export const OpenByDefault: Story = {
   render: () => (
     <div style={{ height: 220 }}>
       <Dropdown menu={{ items }} open>
-        <Button>Tiện ích</Button>
+        <Button>Actions</Button>
       </Dropdown>
     </div>
   ),

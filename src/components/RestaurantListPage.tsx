@@ -17,13 +17,13 @@ type Row = {
 const columns = [
   { title: '#', dataIndex: 'index', key: 'index', width: 48 },
   { title: 'Pos ID', dataIndex: 'posId', key: 'posId' },
-  { title: 'Tên Nhà hàng', dataIndex: 'name', key: 'name' },
-  { title: 'Địa điểm', dataIndex: 'location', key: 'location' },
-  { title: 'Địa điểm', dataIndex: 'address', key: 'address' },
-  { title: 'Số điện thoại', dataIndex: 'phone', key: 'phone' },
+  { title: 'Restaurant Name', dataIndex: 'name', key: 'name' },
+  { title: 'City', dataIndex: 'location', key: 'location' },
+  { title: 'Address', dataIndex: 'address', key: 'address' },
+  { title: 'Phone Number', dataIndex: 'phone', key: 'phone' },
   { title: 'Email', dataIndex: 'email', key: 'email' },
-  { title: 'Thời hạn bản quyền', dataIndex: 'licence', key: 'licence' },
-  { title: 'Trạng thái', dataIndex: 'status', key: 'status' },
+  { title: 'License Expiry', dataIndex: 'licence', key: 'licence' },
+  { title: 'Status', dataIndex: 'status', key: 'status' },
 ]
 
 export type RestaurantListPageProps = {
@@ -62,17 +62,17 @@ export function RestaurantListPage({ rows = [], loading = false }: RestaurantLis
     <div style={{ display: 'flex', flexDirection: 'column', gap: token.padding, height: '100%' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: token.paddingSM }}>
         <Breadcrumb
-          items={[{ title: 'Trang chủ' }, { title: 'Nhà hàng' }, { title: 'Danh sách nhà hàng' }]}
+          items={[{ title: 'Home' }, { title: 'Restaurants' }, { title: 'Restaurant List' }]}
         />
         <Space wrap>
           <Button>
             <Space size={4}>
-              Tiện ích
+              Utilities
               <ChevronDown size={12} />
             </Space>
           </Button>
           <Button type="primary" icon={<Plus />}>
-            Tạo nhà hàng
+            Create Restaurant
           </Button>
         </Space>
       </div>
@@ -80,21 +80,21 @@ export function RestaurantListPage({ rows = [], loading = false }: RestaurantLis
       <Space wrap>
         <Input
           prefix={<SearchMd style={{ color: token.colorTextPlaceholder }} />}
-          placeholder="Tìm kiếm nhà hàng"
+          placeholder="Search restaurants"
           style={{ width: isDesktop ? 196 : '100%', minWidth: 196 }}
-          aria-label="Tìm kiếm nhà hàng"
+          aria-label="Search restaurants"
         />
         <Select
           defaultValue="all"
           style={{ width: 180 }}
           options={[
-            { value: 'all', label: 'Tất cả thành phố' },
-            { value: 'hn', label: 'Hà Nội' },
-            { value: 'dn', label: 'Đà Nẵng' },
-            { value: 'hcm', label: 'TP. Hồ Chí Minh' },
+            { value: 'all', label: 'All cities' },
+            { value: 'new-york', label: 'New York' },
+            { value: 'london', label: 'London' },
+            { value: 'sydney', label: 'Sydney' },
           ]}
         />
-        <Button icon={<Columns03 />} aria-label="Tuỳ chỉnh cột" />
+        <Button icon={<Columns03 />} aria-label="Customize columns" />
       </Space>
 
       <div
@@ -120,15 +120,15 @@ export function RestaurantListPage({ rows = [], loading = false }: RestaurantLis
                   description={
                     <Space orientation="vertical" size={4}>
                       <Typography.Text strong style={{ fontSize: 16 }}>
-                        Không tìm thấy dữ liệu
+                        No data found
                       </Typography.Text>
                       <Typography.Text type="secondary">
-                        Hãy thay đổi bộ lọc hoặc điều kiện tìm kiếm
+                        Try changing your filters or search terms
                       </Typography.Text>
                     </Space>
                   }
                 >
-                  <Button type="primary">Xoá tìm kiếm và bộ lọc</Button>
+                  <Button type="primary">Clear search and filters</Button>
                 </Empty>
               </div>
             ),
@@ -141,18 +141,18 @@ export function RestaurantListPage({ rows = [], loading = false }: RestaurantLis
 
 export const sampleRows: Row[] = [
   {
-    key: '1', index: 1, posId: 'POS-1042', name: 'Trà sữa 344', location: 'Hà Nội',
-    address: 'Cầu Giấy', phone: '0900 000 001', email: 'ts344@ipos.vn',
-    licence: '31/12/2026', status: 'Đang hoạt động',
+    key: '1', index: 1, posId: 'POS-1042', name: 'Restaurant A', location: 'New York',
+    address: '123 Main St', phone: '555-0101', email: 'restaurant-a@example.com',
+    licence: '2026-12-31', status: 'Active',
   },
   {
-    key: '2', index: 2, posId: 'POS-1043', name: 'Gà rán 365', location: 'Đà Nẵng',
-    address: 'Hải Châu', phone: '0900 000 002', email: 'gr365@ipos.vn',
-    licence: '30/06/2026', status: 'Đang hoạt động',
+    key: '2', index: 2, posId: 'POS-1043', name: 'Restaurant B', location: 'London',
+    address: '456 Oak Ave', phone: '555-0102', email: 'restaurant-b@example.com',
+    licence: '2026-06-30', status: 'Active',
   },
   {
-    key: '3', index: 3, posId: 'POS-1044', name: 'Cơm tấm Bảy', location: 'TP. Hồ Chí Minh',
-    address: 'Quận 1', phone: '0900 000 003', email: 'ct7@ipos.vn',
-    licence: '15/03/2026', status: 'Tạm dừng',
+    key: '3', index: 3, posId: 'POS-1044', name: 'Restaurant C', location: 'Sydney',
+    address: '789 Pine Rd', phone: '555-0103', email: 'restaurant-c@example.com',
+    licence: '2026-03-15', status: 'Paused',
   },
 ]

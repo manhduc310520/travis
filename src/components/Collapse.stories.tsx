@@ -19,9 +19,9 @@ export default meta
 type Story = StoryObj<typeof Collapse>
 
 const items = [
-  { key: '1', label: 'Thông tin chung', children: <p>Tên, địa chỉ, số điện thoại</p> },
-  { key: '2', label: 'Giờ mở cửa', children: <p>07:00 đến 22:00</p> },
-  { key: '3', label: 'Phương thức thanh toán', children: <p>Tiền mặt, thẻ, ví điện tử</p> },
+  { key: '1', label: 'This is panel header 1', children: <p>Content of panel 1</p> },
+  { key: '2', label: 'This is panel header 2', children: <p>Content of panel 2</p> },
+  { key: '3', label: 'This is panel header 3', children: <p>Content of panel 3</p> },
 ]
 
 export const Default: Story = { args: { items, defaultActiveKey: ['1'], style: { maxWidth: 480 } } }

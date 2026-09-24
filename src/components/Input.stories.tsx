@@ -6,7 +6,7 @@ const meta = {
   component: Input,
   title: 'Components/Input',
   tags: ['ai-generated', 'needs-work'],
-  args: { placeholder: 'Tìm kiếm nhà hàng', style: { maxWidth: 320 } },
+  args: { placeholder: 'Basic usage', style: { maxWidth: 320 } },
   // No JSDoc on these in antd's Input.d.ts — written from the API surface.
   // `status` options are the exact 5 antd defines in InputStatus, not just
   // the one ("error") this file happens to demo.
@@ -27,7 +27,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   play: async ({ canvas }) => {
-    await expect(canvas.getByPlaceholderText('Tìm kiếm nhà hàng')).toBeVisible()
+    await expect(canvas.getByPlaceholderText('Basic usage')).toBeVisible()
   },
 }
 
@@ -35,13 +35,13 @@ export const WithPrefix: Story = { args: { prefix: <SearchMd /> } }
 
 export const Disabled: Story = { args: { disabled: true } }
 
-export const Invalid: Story = { args: { status: 'error', defaultValue: 'sai định dạng' } }
+export const Invalid: Story = { args: { status: 'error', defaultValue: 'Invalid value' } }
 
 /** Proves the focus ring uses the brand-aware `controlOutline` token. */
 export const Focused: Story = {
   args: { prefix: <SearchMd /> },
   play: async ({ canvas, userEvent }) => {
-    const field = canvas.getByPlaceholderText('Tìm kiếm nhà hàng')
+    const field = canvas.getByPlaceholderText('Basic usage')
     await userEvent.click(field)
     await expect(field).toHaveFocus()
   },

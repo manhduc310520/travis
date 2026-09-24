@@ -29,11 +29,11 @@ export const Dot: Story = { args: { dot: true, children: <Bell01 size={20} /> } 
 export const Status: Story = {
   render: () => (
     <Space orientation="vertical">
-      <Badge status="success" text="Đang hoạt động" />
-      <Badge status="processing" text="Đang đồng bộ" />
-      <Badge status="warning" text="Sắp hết hạn" />
-      <Badge status="error" text="Mất kết nối" />
-      <Badge status="default" text="Tạm dừng" />
+      <Badge status="success" text="Success" />
+      <Badge status="processing" text="Processing" />
+      <Badge status="warning" text="Warning" />
+      <Badge status="error" text="Error" />
+      <Badge status="default" text="Default" />
     </Space>
   ),
 }

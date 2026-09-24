@@ -14,13 +14,13 @@ const meta: Meta<typeof Empty> = {
 export default meta
 type Story = StoryObj<typeof Empty>
 
-export const Default: Story = { args: { description: 'Không tìm thấy dữ liệu' } }
+export const Default: Story = { args: { description: 'No data' } }
 
 export const WithAction: Story = {
   args: {
-    description: 'Hãy thay đổi bộ lọc hoặc điều kiện tìm kiếm',
-    children: <Button type="primary">Xoá tìm kiếm và bộ lọc</Button>,
+    description: 'Try changing your filters or search terms',
+    children: <Button type="primary">Clear search and filters</Button>,
   },
 }
 
-export const Simple: Story = { args: { image: Empty.PRESENTED_IMAGE_SIMPLE, description: 'Trống' } }
+export const Simple: Story = { args: { image: Empty.PRESENTED_IMAGE_SIMPLE, description: 'No data' } }

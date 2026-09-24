@@ -17,17 +17,17 @@ export default meta
 type Story = StoryObj<typeof Card>
 
 export const Default: Story = {
-  args: { title: 'Trà sữa 344', style: { maxWidth: 320 }, children: 'Cầu Giấy, Hà Nội' },
+  args: { title: 'Card title', style: { maxWidth: 320 }, children: 'Card content' },
 }
 export const WithExtra: Story = {
   args: {
-    title: 'Doanh thu hôm nay',
-    extra: <Button type="link">Xem tất cả</Button>,
+    title: 'Card title',
+    extra: <Button type="link">More</Button>,
     style: { maxWidth: 320 },
-    children: <Statistic value={112893} suffix="đ" />,
+    children: <Statistic value={112893} prefix="$" />,
   },
 }
 export const Small: Story = {
-  args: { title: 'Nhỏ gọn', size: 'small', style: { width: 280 }, children: 'Mật độ cao hơn' },
+  args: { title: 'Small size card', size: 'small', style: { width: 280 }, children: 'Card content' },
 }
-export const Loading: Story = { args: { title: 'Đang tải', loading: true, style: { maxWidth: 320 } } }
+export const Loading: Story = { args: { title: 'Card title', loading: true, style: { maxWidth: 320 } } }

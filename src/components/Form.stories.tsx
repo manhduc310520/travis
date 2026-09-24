@@ -27,28 +27,28 @@ type Story = StoryObj<typeof Form>
 export const Vertical: Story = {
   render: () => (
     <Form layout="vertical" style={{ maxWidth: 420 }}>
-      <Form.Item label="Tên nhà hàng" name="name" rules={[{ required: true }]}>
-        <Input placeholder="Trà sữa 344" />
+      <Form.Item label="Name" name="name" rules={[{ required: true }]}>
+        <Input placeholder="Please input" />
       </Form.Item>
-      <Form.Item label="Thành phố" name="city">
-        <Select options={[{ value: 'hn', label: 'Hà Nội' }, { value: 'dn', label: 'Đà Nẵng' }]} />
+      <Form.Item label="Select" name="select">
+        <Select placeholder="Please select" options={[{ value: 'option-1', label: 'Option 1' }, { value: 'option-2', label: 'Option 2' }]} />
       </Form.Item>
-      <Form.Item label="Đang hoạt động" name="active" valuePropName="checked">
+      <Form.Item label="Switch" name="switch" valuePropName="checked">
         <Switch defaultChecked />
       </Form.Item>
-      <Button type="primary">Tạo nhà hàng</Button>
+      <Button type="primary">Submit</Button>
     </Form>
   ),
   play: async ({ canvas }) => {
-    await expect(canvas.getByLabelText('Tên nhà hàng')).toBeVisible()
+    await expect(canvas.getByLabelText('Name')).toBeVisible()
   },
 }
 
 export const Horizontal: Story = {
   render: () => (
     <Form layout="horizontal" labelCol={{ span: 6 }} wrapperCol={{ span: 14 }} style={{ maxWidth: 560 }}>
-      <Form.Item label="Tên nhà hàng"><Input /></Form.Item>
-      <Form.Item label="Số điện thoại"><Input /></Form.Item>
+      <Form.Item label="Name"><Input /></Form.Item>
+      <Form.Item label="Phone"><Input /></Form.Item>
     </Form>
   ),
 }
@@ -56,10 +56,10 @@ export const Horizontal: Story = {
 export const WithErrors: Story = {
   render: () => (
     <Form layout="vertical" style={{ maxWidth: 420 }}>
-      <Form.Item label="Tên nhà hàng" validateStatus="error" help="Tên không được để trống">
+      <Form.Item label="Name" validateStatus="error" help="Please input your name!">
         <Input />
       </Form.Item>
-      <Form.Item label="Email" validateStatus="warning" help="Định dạng có vẻ chưa đúng">
+      <Form.Item label="Email" validateStatus="warning" help="The input is not a valid email!">
         <Input defaultValue="abc@" />
       </Form.Item>
     </Form>

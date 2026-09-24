@@ -24,10 +24,10 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: { brandName: 'iPOS.vn', userName: 'Chanh dev' },
+  args: { brandName: 'iPOS.vn', userName: 'John Doe' },
   play: async ({ canvas }) => {
-    await expect(canvas.getByText('Chanh dev')).toBeVisible()
-    await expect(canvas.getByLabelText('Tìm kiếm')).toBeVisible()
+    await expect(canvas.getByText('John Doe')).toBeVisible()
+    await expect(canvas.getByLabelText('Search')).toBeVisible()
   },
 }
 
@@ -36,7 +36,7 @@ export const CustomTagline: Story = {
 }
 
 export const LongProductName: Story = {
-  args: { brandName: 'iPOS.vn Enterprise', userName: 'Nguyễn Thị Hồng Ánh' },
+  args: { brandName: 'iPOS.vn Enterprise', userName: 'Elizabeth Montgomery' },
 }
 
 /**

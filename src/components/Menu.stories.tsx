@@ -19,17 +19,17 @@ export default meta
 type Story = StoryObj<typeof Menu>
 
 const items = [
-  { key: 'home', icon: <PieChart01 />, label: 'Trang chủ' },
+  { key: 'home', icon: <PieChart01 />, label: 'Navigation One' },
   {
-    key: 'restaurants', icon: <Building02 />, label: 'Nhà hàng',
+    key: 'restaurants', icon: <Building02 />, label: 'Navigation Two',
     children: [
-      { key: 'list', label: 'Danh sách nhà hàng' },
-      { key: 'payment', label: 'Phương thức thanh toán' },
-      { key: 'area', label: 'Khu vực' },
+      { key: 'list', label: 'Option 1' },
+      { key: 'payment', label: 'Option 2' },
+      { key: 'area', label: 'Option 3' },
     ],
   },
-  { key: 'staff', icon: <Users01 />, label: 'Nhân viên' },
-  { key: 'devices', icon: <Settings01 />, label: 'Thiết bị' },
+  { key: 'staff', icon: <Users01 />, label: 'Navigation Three' },
+  { key: 'devices', icon: <Settings01 />, label: 'Navigation Four' },
 ]
 
 export const Inline: Story = {

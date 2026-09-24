@@ -21,23 +21,23 @@ function withMinWidth<T>(column: T & { minWidth: number }) {
 
 const columns = [
   withMinWidth({ title: 'Pos ID', dataIndex: 'posId', key: 'posId', minWidth: 100 }),
-  withMinWidth({ title: 'Tên nhà hàng', dataIndex: 'name', key: 'name', minWidth: 160 }),
-  withMinWidth({ title: 'Địa điểm', dataIndex: 'city', key: 'city', minWidth: 140 }),
+  withMinWidth({ title: 'Name', dataIndex: 'name', key: 'name', minWidth: 160 }),
+  withMinWidth({ title: 'City', dataIndex: 'city', key: 'city', minWidth: 140 }),
   withMinWidth({
-    title: 'Trạng thái',
+    title: 'Status',
     dataIndex: 'status',
     key: 'status',
     minWidth: 140,
     render: (s: Row['status']) => (
-      <Tag color={s === 'active' ? 'success' : 'default'}>{s === 'active' ? 'Đang hoạt động' : 'Tạm dừng'}</Tag>
+      <Tag color={s === 'active' ? 'success' : 'default'}>{s === 'active' ? 'Active' : 'Paused'}</Tag>
     ),
   }),
 ]
 
 const data: Row[] = [
-  { key: '1', posId: 'POS-1042', name: 'Trà sữa 344', city: 'Hà Nội', status: 'active' },
-  { key: '2', posId: 'POS-1043', name: 'Gà rán 365', city: 'Đà Nẵng', status: 'active' },
-  { key: '3', posId: 'POS-1044', name: 'Cơm tấm Bảy', city: 'TP. Hồ Chí Minh', status: 'paused' },
+  { key: '1', posId: 'POS-1042', name: 'John Brown', city: 'New York', status: 'active' },
+  { key: '2', posId: 'POS-1043', name: 'Jim Green', city: 'London', status: 'active' },
+  { key: '3', posId: 'POS-1044', name: 'Joe Black', city: 'Sydney', status: 'paused' },
 ]
 
 const meta = {
@@ -63,7 +63,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   play: async ({ canvas }) => {
-    await expect(canvas.getByText('Trà sữa 344')).toBeVisible()
+    await expect(canvas.getByText('John Brown')).toBeVisible()
     await expect(canvas.getAllByRole('row')).toHaveLength(4)
   },
 }
