@@ -21,3 +21,23 @@ two weights** anywhere in the UI — Regular 400 for body/control/menu/tab,
 Semibold 600 for heading/table-header/title. No thin, no 700+, no italic.
 Active/selected state is shown with color and an underline or border, never
 with extra weight.
+
+## Headings
+
+`Typography.Title` at each level, rendered with the live theme so this
+matches what `fontSizeHeading1`–`fontSizeHeading3` above actually produce.
+
+<Canvas of={TypographyStories.HeadingsStory} />
+
+## Text variants
+
+`Typography.Text` semantic types plus `Link` — color and weight carry the
+meaning, never a third font weight.
+
+<Canvas of={TypographyStories.TextVariantsStory} />
+
+## Body copy
+
+`Typography.Paragraph` at body size, capped to a comfortable reading width.
+
+<Canvas of={TypographyStories.BodyCopyStory} />
