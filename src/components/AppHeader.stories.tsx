@@ -24,19 +24,11 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: { brandName: 'iPOS.vn', userName: 'John Doe' },
+  args: { userName: 'John Doe' },
   play: async ({ canvas }) => {
     await expect(canvas.getByText('John Doe')).toBeVisible()
     await expect(canvas.getByLabelText('Search')).toBeVisible()
   },
-}
-
-export const CustomTagline: Story = {
-  args: { tagline: 'FABi CMS' },
-}
-
-export const LongProductName: Story = {
-  args: { brandName: 'iPOS.vn Enterprise', userName: 'Elizabeth Montgomery' },
 }
 
 /**
@@ -50,7 +42,6 @@ export const LongProductName: Story = {
  * `colorHeaderBgEnd` in light mode, straight out of the Figma export.
  */
 export const CssCheck: Story = {
-  args: { brandName: 'iPOS.vn' },
   globals: { brand: 'blue', mode: 'light' },
   play: async ({ canvas }) => {
     const header = canvas.getByRole('banner')
