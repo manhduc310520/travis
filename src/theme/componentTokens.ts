@@ -75,6 +75,9 @@ export const componentTokens = {
   Form: {
     itemMarginBottom: 16, labelColonMarginInlineEnd: 8,
     labelColonMarginInlineStart: 2, labelFontSize: 14, labelHeight: 32,
+    // antd's own default is `0 0 8px` (`paddingXS`) — removes the gap
+    // between a vertical-layout label and its own field, per request.
+    verticalLabelPadding: 0,
   },
   Image: { previewOperationSize: 18 },
   Input: {
