@@ -1,0 +1,140 @@
+/*
+ * Figma "❖ Segmented". Track and segment colours come from Component/Segmented/*.
+ * React Aria sets data-orientation / data-disabled on the group and
+ * data-selected, data-hovered, data-pressed, data-focus-visible, data-disabled
+ * on each segment. The selected thumb is a SelectionIndicator inside the
+ * selected segment; it slides between segments via the `translate`, `width`,
+ * `height` transitions.
+ *
+ * Radii follow Figma (not CLAUDE.md's square segmented): track 6 / 8 / 4 and
+ * thumb 4 / 6 / 2 for Default / Large / Small; `round` makes both pills.
+ * Size values are custom properties every root re-declares.
+ */
+.segmented {
+  --_h: var(--fc-size-control-base);
+  --_pad: var(--fc-component-segmented-track-padding);
+  --_radius: var(--fc-radius-base);
+  --_item-radius: var(--fc-radius-sm);
+  --_item-pad: var(--fc-space-padding-inline-control);
+  --_font-size: var(--fc-typography-size-base);
+  --_line-height: var(--fc-typography-line-height-base);
+  --_icon: var(--fc-typography-size-lg);
+
+  display: inline-flex;
+  max-width: 100%;
+  padding: var(--_pad);
+  border-radius: var(--_radius);
+  background: var(--fc-component-segmented-track-background);
+  color: var(--fc-component-segmented-item-content);
+  font-size: var(--_font-size);
+  line-height: var(--_line-height);
+}
+
+.sm {
+  --_h: var(--fc-size-control-sm);
+  --_radius: var(--fc-radius-sm);
+  --_item-radius: var(--fc-radius-xs);
+  --_item-pad: var(--fc-space-padding-inline-control-sm);
+  --_icon: var(--fc-typography-size-base);
+}
+.lg {
+  --_h: var(--fc-size-control-lg);
+  --_radius: var(--fc-radius-lg);
+  --_item-radius: var(--fc-radius-base);
+  --_font-size: var(--fc-typography-size-lg);
+  --_line-height: var(--fc-typography-line-height-lg);
+}
+.round {
+  --_radius: calc(var(--_h) / 2);
+  --_item-radius: calc(var(--_h) / 2 - var(--_pad));
+}
+
+/* Figma Block=True: full width, segments share it. */
+.block {
+  display: flex;
+  width: 100%;
+}
+.vertical { flex-direction: column; }
+
+/* ---------- a segment ---------- */
+.item {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fc-space-margin-xxs);
+  min-width: 0;
+  min-height: calc(var(--_h) - var(--_pad) * 2);
+  padding: 0 var(--_item-pad);
+  border: 0;
+  border-radius: var(--_item-radius);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s, background-color 0.2s;
+}
+.itemBlock { flex: 1 1 0; }
+
+.item[data-hovered]:not([data-selected], [data-disabled]) {
+  background: var(--fc-component-segmented-item-background-hover);
+  color: var(--fc-component-segmented-item-content-selected);
+}
+.item[data-pressed]:not([data-selected], [data-disabled]) {
+  background: var(--fc-component-segmented-item-background-active);
+}
+.item[data-selected] { color: var(--fc-component-segmented-item-content-selected); }
+.item[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.item[data-focus-visible] {
+  z-index: 1;
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* ---------- selected thumb (Figma item State=Active: Elevated + Shadow/Light) ---------- */
+.indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--fc-component-segmented-item-background-selected);
+  box-shadow:
+    inset 0 0 0 var(--fc-stroke-width-base) var(--fc-component-segmented-item-border-selected),
+    var(--fc-shadow-light);
+  transition-property: translate, width, height;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+/* Figma Active + Disabled: the thumb stays, flat and with a neutral edge. */
+.item[data-disabled] > .indicator {
+  box-shadow: inset 0 0 0 var(--fc-stroke-width-base) var(--fc-color-border-neutral);
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+}
+.icon svg {
+  width: var(--_icon);
+  height: var(--_icon);
+}
+
+.label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .indicator { transition: none; }
+}

@@ -1,0 +1,293 @@
+/*
+ * The box is TextField's (Input.module.css via controlClasses: 4 variants,
+ * warning / error, 3 sizes, hover and focus ring through --_border / --_ring).
+ * This file adds what only pickers have: date segments with a placeholder
+ * text, the two halves of a range with Figma's active bar, the calendar
+ * suffix, the clear button and the multiple-date tags (Figma binds these to
+ * "Select / Multiple Selection Item", so they use Component/Select/Tag-*).
+ * The popover panel is in panel.module.css.
+ */
+.picker { min-width: 0; }
+
+.box {
+  --_bar: var(--fc-color-solid-accent);
+  position: relative;
+  cursor: text;
+}
+.box.warning { --_bar: var(--fc-color-solid-warning); }
+.box[data-invalid] { --_bar: var(--fc-color-solid-danger); }
+.box[data-disabled] { cursor: not-allowed; }
+
+/* While the popover is open focus sits in it, not in the box: keep the box looking focused, per variant. */
+.open {
+  --_border: var(--fc-color-solid-accent);
+  --_ring: var(--fc-color-outline-accent);
+}
+.open.open-filled { --_bg: var(--fc-color-background-container); }
+.open.open-borderless { --_border: transparent; }
+.open.open-underlined {
+  --_ring: transparent;
+  box-shadow: 0 var(--fc-stroke-width-base) 0 0 var(--_border);
+}
+.open.warning {
+  --_border: var(--fc-color-solid-warning);
+  --_ring: var(--fc-color-outline-warning);
+}
+.open[data-invalid] {
+  --_border: var(--fc-color-solid-danger);
+  --_ring: var(--fc-color-outline-danger);
+}
+
+.prefix { pointer-events: none; }
+
+/* ---------- typed date: segments + placeholder text ---------- */
+.inputWrap {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  align-self: stretch;
+  min-width: 0;
+}
+.dateInput {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  outline: none;
+}
+.segment {
+  border-radius: var(--fc-radius-xs);
+  font-variant-numeric: tabular-nums;
+  caret-color: transparent;
+  outline: none;
+}
+.segment[data-placeholder] { color: var(--fc-color-content-placeholder); }
+.segment[data-focused] {
+  background: var(--fc-color-solid-accent);
+  color: var(--fc-color-content-on-solid);
+}
+.box[data-disabled] .segment,
+.segment[data-disabled] { color: var(--fc-color-content-disabled); }
+
+/*
+ * Empty and not being edited: show the placeholder text ("Chọn ngày") over
+ * the dd/mm/yyyy segments. The segments stay focusable underneath; focusing
+ * one hides the text again.
+ */
+.placeholder {
+  position: absolute;
+  top: 50%;
+  inset-inline: 0;
+  display: none;
+  overflow: hidden;
+  translate: 0 -50%;
+  color: var(--fc-color-content-placeholder);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+.box:not([data-focus-within]) .inputWrap:not(:has(.segment:not([data-placeholder]):not([data-type='literal']))) .placeholder { display: block; }
+.box:not([data-focus-within]) .inputWrap:not(:has(.segment:not([data-placeholder]):not([data-type='literal']))) .dateInput { opacity: 0; }
+
+/* ---------- range: start → end, active bar under the half being edited ---------- */
+.rangePart::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: calc(var(--fc-stroke-width-base) * -1);
+  height: var(--fc-stroke-width-strong);
+  background: var(--_bar);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.rangePart[data-active]::after,
+.rangePart:has(.dateInput[data-focus-within])::after { opacity: 1; }
+
+.separator,
+.suffix {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  color: var(--fc-color-content-icon);
+}
+.separator svg,
+.suffix svg {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+
+/* ---------- calendar button (suffix) ---------- */
+.suffix {
+  align-self: stretch;
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+.suffix[data-hovered] { color: var(--fc-color-content-icon-hover); }
+.suffix[data-focus-visible] { outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent); }
+.suffix[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+/* Clear (×) covers the suffix while the box is hovered or focused (the common picker pattern). */
+.clear {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  inset-inline-end: calc(var(--fc-space-padding-inline-control) - var(--fc-stroke-width-base));
+  translate: 0 -50%;
+  background: var(--_bg);
+}
+.clear svg {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+.small .clear { inset-inline-end: calc(var(--fc-space-padding-inline-control-sm) - var(--fc-stroke-width-base)); }
+.box:not([data-hovered]):not([data-focus-within]) .clear { visibility: hidden; }
+
+/* ---------- month / year pickers: the whole box is the trigger button ---------- */
+.triggerBox {
+  padding-inline: 0;
+  cursor: pointer;
+}
+.trigger {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--fc-space-padding-xxs);
+  min-width: 0;
+  padding: 0 calc(var(--fc-space-padding-inline-control) - var(--fc-stroke-width-base));
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: inherit;
+  outline: none;
+}
+.small .trigger { padding-inline: calc(var(--fc-space-padding-inline-control-sm) - var(--fc-stroke-width-base)); }
+.trigger .rangePart {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  align-self: stretch;
+  min-width: 0;
+}
+.triggerValue {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.triggerPlaceholder { color: var(--fc-color-content-placeholder); }
+.box[data-disabled] .triggerValue:not(.triggerPlaceholder) { color: var(--fc-color-content-disabled); }
+
+/* ---------- multiple dates: tags over a trigger that covers the box ---------- */
+.multiBox {
+  --_tag-h: var(--fc-component-select-tag-height);
+  height: auto;
+  min-height: var(--fc-size-control-base);
+  padding-block: calc((var(--fc-size-control-base) - var(--_tag-h)) / 2 - var(--fc-stroke-width-base));
+  padding-inline-end: calc(var(--fc-space-padding-inline-control) + var(--fc-typography-size-lg) + var(--fc-space-margin-xxs));
+  cursor: pointer;
+}
+.multiBox.small {
+  --_tag-h: var(--fc-component-select-tag-height-sm);
+  min-height: var(--fc-size-control-sm);
+  padding-block: calc((var(--fc-size-control-sm) - var(--_tag-h)) / 2 - var(--fc-stroke-width-base));
+}
+.multiBox.large {
+  --_tag-h: var(--fc-component-select-tag-height-lg);
+  min-height: var(--fc-size-control-lg);
+  padding-block: calc((var(--fc-size-control-lg) - var(--_tag-h)) / 2 - var(--fc-stroke-width-base));
+}
+.cover {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 calc(var(--fc-space-padding-inline-control) - var(--fc-stroke-width-base));
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: inherit;
+  outline: none;
+}
+.small .cover { padding-inline: calc(var(--fc-space-padding-inline-control-sm) - var(--fc-stroke-width-base)); }
+.above {
+  position: relative;
+  z-index: 1;
+}
+.multiPlaceholder {
+  flex: 1;
+  color: var(--fc-color-content-placeholder);
+  pointer-events: none;
+}
+.tags {
+  flex: 1;
+  min-width: 0;
+  pointer-events: none;
+}
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fc-space-margin-xxs);
+  outline: none;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xxs);
+  max-width: 100%;
+  height: var(--_tag-h);
+  padding-inline: var(--fc-space-padding-xs) var(--fc-space-padding-xxs);
+  border-radius: var(--fc-radius-sm);
+  background: var(--fc-component-select-tag-background);
+  color: var(--fc-color-content-neutral-strong);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--_tag-h);
+  pointer-events: auto;
+  cursor: default;
+  outline: none;
+}
+.small .tag { font-size: var(--fc-typography-size-sm); }
+.tag[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.box[data-disabled] .tag { color: var(--fc-color-content-disabled); }
+.tagLabel {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.tagRemove {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-xs);
+  background: transparent;
+  color: var(--fc-color-content-icon);
+  cursor: pointer;
+  outline: none;
+}
+.tagRemove[data-hovered] { color: var(--fc-color-content-icon-hover); }
+.tagRemove[data-focus-visible] { outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent); }
+.more { padding-inline: var(--fc-space-padding-xs); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rangePart::after { transition: none; }
+}

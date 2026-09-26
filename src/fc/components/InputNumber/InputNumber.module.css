@@ -1,0 +1,141 @@
+/*
+ * The box, variants, sizes, status and addons come from Input.module.css
+ * (controlClasses). Component/InputNumber/*: compact width (Figma controlWidth),
+ * handle column width (→ Size/Control/SM), handle background (→ Background/
+ * Container; Filled → Background/Handle), pressed (→ Fill/Alternate), divider
+ * (→ Border/Neutral) and hovered arrow (→ Solid/Accent, 3:1 as an icon).
+ * React Aria sets data-hovered / data-focus-within / data-disabled on the
+ * box and data-hovered / data-pressed / data-disabled on each step button.
+ */
+.root {
+  --_w: var(--fc-component-inputnumber-width);
+  --_w-spinner: calc(var(--fc-component-inputnumber-width) + 2 * var(--fc-size-control-base));
+}
+/* A prefix / suffix needs room next to the number (Figma Prefix Suffix is wider than Basic). */
+.affixed {
+  --_w: fit-content;
+  --_w-spinner: fit-content;
+}
+/* After .affixed: `block` wins. */
+.block {
+  --_w: 100%;
+  --_w-spinner: 100%;
+}
+
+.box {
+  --_pad: calc(var(--fc-space-padding-inline-control) - var(--fc-stroke-width-base));
+
+  position: relative;
+  overflow: hidden;
+  inline-size: var(--_w);
+  max-inline-size: 100%;
+}
+.small { --_pad: calc(var(--fc-space-padding-inline-control-sm) - var(--fc-stroke-width-base)); }
+
+/* With addons the row is as wide as its parts; `block` stretches it. */
+.addonRow { inline-size: fit-content; max-inline-size: 100%; }
+.block .addonRow { inline-size: auto; }
+
+.input { font-variant-numeric: tabular-nums; }
+
+/* ---------- default: ▲▼ at the end, shown while hovered or focused ---------- */
+.handles {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  display: flex;
+  flex-direction: column;
+  inline-size: var(--fc-component-inputnumber-handle-width);
+  border-inline-start: var(--fc-stroke-width-base) solid var(--fc-component-inputnumber-handle-border);
+  background: var(--fc-component-inputnumber-handle-background);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.filled .handles { background: var(--fc-component-inputnumber-handle-background-filled); }
+
+.withHandles[data-hovered],
+.withHandles[data-focus-within] {
+  padding-inline-end: calc(var(--fc-component-inputnumber-handle-width) + var(--fc-space-padding-xxs));
+}
+.withHandles[data-hovered] .handles,
+.withHandles[data-focus-within] .handles {
+  opacity: 1;
+}
+
+/* No hover on touch screens: keep the buttons visible. */
+@media (hover: none) {
+  .box.withHandles { padding-inline-end: calc(var(--fc-component-inputnumber-handle-width) + var(--fc-space-padding-xxs)); }
+  .handles { opacity: 1; }
+}
+
+.handle {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--fc-color-content-icon);
+  cursor: pointer;
+  outline: none;
+  transition: flex-grow 0.2s, color 0.2s, background-color 0.2s;
+}
+.handle + .handle { border-block-start: var(--fc-stroke-width-base) solid var(--fc-component-inputnumber-handle-border); }
+/* The hovered half grows (60 / 40) like the Figma hover state. */
+.handle[data-hovered] {
+  flex-grow: 1.5;
+  color: var(--fc-component-inputnumber-handle-content-hover);
+}
+
+/* ---------- spinner: − | number | + ---------- */
+/* Two classes: must beat the box padding / gap from Input.module.css whatever the CSS order. */
+.box.spinner {
+  --_w: var(--_w-spinner);
+
+  gap: 0;
+  padding-inline: 0;
+}
+.middle {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--fc-space-padding-xxs);
+  min-width: 0;
+  padding-inline: var(--_pad);
+}
+.spinner .input { text-align: center; }
+
+.step {
+  display: flex;
+  flex: none;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+  padding: 0 var(--_pad);
+  border: 0;
+  background: transparent;
+  color: var(--fc-color-content-icon);
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s, background-color 0.2s;
+}
+.stepStart { border-inline-end: var(--fc-stroke-width-base) solid var(--fc-component-inputnumber-handle-border); }
+.stepEnd { border-inline-start: var(--fc-stroke-width-base) solid var(--fc-component-inputnumber-handle-border); }
+.step[data-hovered] { color: var(--fc-component-inputnumber-handle-content-hover); }
+
+/* ---------- shared step-button states ---------- */
+.handle[data-pressed],
+.step[data-pressed] {
+  background: var(--fc-component-inputnumber-handle-background-active);
+}
+.handle[data-disabled],
+.step[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .handles, .handle, .step { transition: none; }
+}

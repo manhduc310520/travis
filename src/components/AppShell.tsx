@@ -1,178 +1,133 @@
 import { useState, type ReactNode } from 'react'
-import { Drawer, Grid, Layout, Menu, theme } from 'antd'
-import {
-  Building02,
-  CheckCircleBroken,
-  ChevronRight,
-  File06,
-  FileSearch02,
-  Grid01,
-  Home03,
-  LayoutAlt03,
-  LayoutLeft,
-  Mail01,
-  Menu02,
-  Monitor03,
-  PieChart04,
-  Printer,
-  ShoppingCart01,
-  Tag03,
-  Users01,
-} from '../icons'
-import { AppHeader } from './AppHeader'
+import type { Key } from 'react-aria-components'
+import { Drawer, Menu, SearchField, type MenuItemDef } from '../fc'
+import { LayoutAlt02, Mail01, Menu01 } from '../icons'
+import { cx } from '../fc/space'
+import { AppHeader, type AppHeaderProps } from './AppHeader'
+import { EXTENSIONS, NAV_ITEMS, fold } from './appShellNav'
+import { SearchModal } from './SearchModal'
+import { FEATURES, HISTORY } from './searchModalSamples'
+import { DESKTOP_QUERY, useMediaQuery } from './useMediaQuery'
+import styles from './AppShell.module.css'
 
-const { Sider, Content } = Layout
-
-/**
- * The full nav, read directly off the Figma instance
- * `App Shells > Components > App Shells Items / Menu` (node 27784:136759) —
- * 14 top-level items, each with the exact icon instance bound to it in
- * Figma (e.g. "Home" -> `home-03`, not a guessed equivalent). Earlier
- * versions of this file had only 6 items; this is the full list.
- */
-const navItems = [
-  { key: 'home', icon: <Home03 />, label: 'Home' },
-  {
-    key: 'restaurants',
-    icon: <Building02 />,
-    label: 'Restaurants',
-    children: [
-      { key: 'list', label: 'Restaurant List' },
-      { key: 'payment', label: 'Payment Methods' },
-      { key: 'source', label: 'Order Sources' },
-      { key: 'printer', label: 'Printer Locations' },
-      { key: 'area', label: 'Areas' },
-      { key: 'tables', label: 'Table Management' },
-      { key: 'map', label: 'Floor Plan' },
-      { key: 'invoice', label: 'Invoice Templates' },
-      { key: 'momo', label: 'Merchant Momo' },
-      { key: 'pos', label: 'POS Connections' },
-    ],
-  },
-  { key: 'menu', icon: <LayoutAlt03 />, label: 'Menu' },
-  { key: 'promo', icon: <Tag03 />, label: 'Promotions' },
-  { key: 'devices', icon: <Printer />, label: 'Devices' },
-  { key: 'staff', icon: <Users01 />, label: 'Staff' },
-  { key: 'reports', icon: <PieChart04 />, label: 'Reports' },
-  { key: 'apps', icon: <Grid01 />, label: 'Apps' },
-  { key: 'marketplace', icon: <ShoppingCart01 />, label: 'Marketplace' },
-  { key: 'accounting', icon: <FileSearch02 />, label: 'Accounting & Banking' },
-  { key: 'timekeeping', icon: <CheckCircleBroken />, label: 'Timekeeping' },
-  { key: 'multichannel', icon: <Monitor03 />, label: 'Multichannel Orders' },
-  { key: 'support', icon: <Mail01 />, label: 'Feedback & Support' },
-  { key: 'einvoice', icon: <File06 />, label: 'E-invoices' },
-]
-
-export type AppShellProps = {
-  /** Page body rendered inside the grey content area. */
+export interface AppShellProps {
+  /** Page body, drawn in the grey content well (Color/Background/Layout). */
   children?: ReactNode
-  /** Which nav key is highlighted. */
-  selectedKey?: string
+  /** The current page in the side navigation. */
+  selectedKey?: Key
+  onNavigate?: (key: Key) => void
+  /** Figma variant Size=SM: icons only, 80 wide, labels in tooltips. */
+  defaultCollapsed?: boolean
   /** Total height of the shell. */
   height?: number | string
+  /** Passed to the header (title, user, languages…). Its search box opens the Search Modal. */
+  header?: Partial<AppHeaderProps>
+  /** `auto` follows the viewport (desktop from 768px); stories can pin one layout. */
+  layout?: 'auto' | 'desktop' | 'mobile'
 }
 
 /**
- * The FABi CMS frame: gradient header, fixed sidebar, grey content well.
+ * The FABi CMS frame: header, side navigation, content well. Every screen of
+ * the product sits inside it, so a new module is a content problem, not a
+ * layout one.
  *
- * This is the template layer — the layout FABi CMS builds on top of its
- * component library. Every screen in the product sits inside it, so a new
- * module is a content problem rather than a layout problem.
- *
- * Sidebar padding (16px top, 8px each side) is Figma's own spec, measured off
- * the same instance the nav list came from: the sidebar's `Content` slot
- * carries that exact padding before the per-item padding/margin tokens take
- * over. Skipping it was why the icons sat flush against the sidebar edge
- * while the header logo — which does have this outer inset — did not line up
- * with them.
- *
- * Responsive: the Figma source is desktop-only (file name literally says
- * "Design Component Desktop"), so there is no frame to copy pixel-for-pixel
- * below `md`. Behaviour instead follows the standard admin-dashboard
- * reference pattern: the sidebar isn't squeezed or scrolled, it's removed
- * entirely below `md` (768px) and replaced by a hamburger button in the
- * header that opens the same `Menu` inside a `Drawer` — no custom drawer,
- * just the library's own component. Selecting an item closes the drawer.
+ * Desktop (Figma "App Shells", 256 wide): navigation, then a bottom block
+ * with "Thu gọn" (collapse to the 80-wide icon rail) and "Mở rộng" (connected
+ * apps, opening to the side). Below `md` the side navigation moves into a
+ * Drawer opened by the header's menu button — Figma draws only the SM
+ * header, so the drawer follows the standard admin pattern.
  */
-export function AppShell({ children, selectedKey = 'list', height = 768 }: AppShellProps) {
-  const { token } = theme.useToken()
-  const screens = Grid.useBreakpoint()
-  const isDesktop = screens.md ?? true
+export function AppShell({
+  children,
+  selectedKey: selectedProp,
+  onNavigate,
+  defaultCollapsed = false,
+  height = 768,
+  header,
+  layout = 'auto',
+}: AppShellProps) {
+  const wide = useMediaQuery(DESKTOP_QUERY)
+  const isDesktop = layout === 'auto' ? wide : layout === 'desktop'
+  const [collapsed, setCollapsed] = useState(defaultCollapsed)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [selectedState, setSelected] = useState<Key>('restaurants')
+  const [searchOpen, setSearchOpen] = useState(false)
+  const [history, setHistory] = useState(HISTORY)
+  const [extQuery, setExtQuery] = useState('')
+  const extMatches = EXTENSIONS.filter((label) => fold(label).includes(fold(extQuery.trim())))
+  const extensionItems: MenuItemDef[] = extMatches.length
+    ? extMatches.map((label) => ({ key: `ext:${label}`, icon: <Mail01 />, label }))
+    : [{ key: 'ext:none', label: 'Không tìm thấy ứng dụng', isDisabled: true }]
+  const selectedKey = selectedProp ?? selectedState
 
-  const nav = (
-    <>
-      <div style={{ flex: 1, overflowY: 'auto', paddingBlockStart: token.padding, paddingInline: token.paddingXS }}>
-        <Menu
-          mode="inline"
-          selectedKeys={[selectedKey]}
-          defaultOpenKeys={['restaurants']}
-          items={navItems}
-          style={{ borderInlineEnd: 0 }}
-          onClick={() => setDrawerOpen(false)}
-        />
-      </div>
-      <div style={{ borderTop: `1px solid ${token.colorSplit}`, paddingInline: token.paddingXS, paddingBlock: token.paddingXS }}>
-        <Menu
-          mode="inline"
-          selectable={false}
-          style={{ borderInlineEnd: 0 }}
-          items={[
-            { key: 'collapse', icon: <LayoutLeft />, label: 'Collapse' },
-            {
-              key: 'expand',
-              icon: <Menu02 />,
-              label: 'Expand',
-              extra: <ChevronRight size={12} />,
-            },
-          ]}
-        />
-      </div>
-    </>
+  const navigate = (key: Key) => {
+    if (String(key).startsWith('ext:')) return
+    setSelected(key)
+    onNavigate?.(key)
+    setDrawerOpen(false)
+  }
+
+  const nav = (isCollapsed: boolean) => (
+    <Menu
+      items={NAV_ITEMS}
+      selectedKey={selectedKey}
+      onAction={navigate}
+      isCollapsed={isCollapsed}
+      aria-label="Điều hướng chính"
+      className={styles.nav}
+    />
+  )
+
+  const bottom = (withCollapse: boolean) => (
+    <Menu
+      mode="vertical"
+      isCollapsed={collapsed && withCollapse}
+      selectedKey={null}
+      aria-label="Tuỳ chọn thanh bên"
+      className={styles.nav}
+      onAction={(key) => (key === 'collapse' ? setCollapsed((c) => !c) : navigate(key))}
+      items={[
+        ...(withCollapse
+          ? [{ key: 'collapse', icon: <LayoutAlt02 />, label: collapsed ? 'Hiện đầy đủ' : 'Thu gọn' }]
+          : []),
+        {
+          key: 'more',
+          icon: <Menu01 />,
+          label: 'Mở rộng',
+          children: extensionItems,
+          popupHeader: <SearchField aria-label="Tìm ứng dụng" placeholder="Tìm kiếm" value={extQuery} onChange={setExtQuery} />,
+        },
+      ]}
+    />
   )
 
   return (
-    <Layout style={{ height, overflow: 'hidden' }}>
-      <AppHeader onMenuClick={isDesktop ? undefined : () => setDrawerOpen(true)} />
-      <Layout>
-        {isDesktop && (
-          <Sider
-            width={256}
-            style={{
-              background: token.colorBgContainer,
-              borderInlineEnd: `1px solid ${token.colorSplit}`,
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            {nav}
-          </Sider>
-        )}
-
-        {!isDesktop && (
-          <Drawer
-            title="iPOS.vn"
-            placement="left"
-            size={280}
-            open={drawerOpen}
-            onClose={() => setDrawerOpen(false)}
-            styles={{ body: { padding: 0, display: 'flex', flexDirection: 'column' } }}
-          >
-            {nav}
+    <div className={styles.shell} style={{ height }}>
+      <AppHeader layout={layout} {...header} onMenuClick={() => setDrawerOpen(true)} onSearchOpen={() => setSearchOpen(true)} />
+      <div className={styles.body}>
+        {isDesktop ? (
+          <aside className={cx(styles.sider, collapsed && styles.collapsed)}>
+            <div className={styles.scroll}>{nav(collapsed)}</div>
+            <div className={styles.bottom}>{bottom(true)}</div>
+          </aside>
+        ) : (
+          <Drawer placement="left" title="iPOS.vn" isOpen={drawerOpen} onOpenChange={setDrawerOpen}>
+            <div className={styles.drawerNav}>
+              {nav(false)}
+              <div className={styles.bottom}>{bottom(false)}</div>
+            </div>
           </Drawer>
         )}
-
-        <Content
-          style={{
-            background: token.colorBgLayout,
-            padding: isDesktop ? token.padding : token.paddingSM,
-            overflowY: 'auto',
-            minWidth: 0,
-          }}
-        >
-          {children}
-        </Content>
-      </Layout>
-    </Layout>
+        <main className={styles.content}>{children}</main>
+      </div>
+      <SearchModal
+        isOpen={searchOpen}
+        onOpenChange={setSearchOpen}
+        groups={FEATURES}
+        history={history}
+        onClearHistory={() => setHistory([])}
+        onAction={(key) => onNavigate?.(key)}
+      />
+    </div>
   )
 }

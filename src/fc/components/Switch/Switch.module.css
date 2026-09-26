@@ -1,0 +1,119 @@
+/*
+ * Sizes follow the Figma component (track 44×22, handle 18; small 28×16,
+ * handle 12; 2px inset). React Aria sets data-selected, data-hovered,
+ * data-pressed, data-focus-visible, data-disabled on the label (.switch).
+ *
+ * The off track uses Color/Content/Neutral-Light (3.36:1 on the container)
+ * rather than the Figma kit's lighter grey (1.8:1): a switch must show its
+ * state at 3:1 (WCAG 1.4.11).
+ */
+.switch {
+  --_track-w: var(--fc-component-switch-track-width);
+  --_track-h: var(--fc-component-switch-track-height);
+  --_inset: var(--fc-component-switch-track-padding);
+  /* Padding around content inside the track, derived from the handle
+     (track height - 2 x padding): far side = half a handle, near side =
+     handle + 3 x padding. Matches Figma innerMinMargin / innerMaxMargin (9 / 24). */
+  --_handle: calc(var(--_track-h) - var(--_inset) * 2);
+  --_inner-far: calc(var(--_handle) / 2);
+  --_inner-near: calc(var(--_handle) + var(--_inset) * 3);
+  --_track: var(--fc-component-switch-track-background);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  cursor: pointer;
+  outline: none;
+}
+
+.sm {
+  --_track-w: var(--fc-component-switch-track-width-sm);
+  --_track-h: var(--fc-component-switch-track-height-sm);
+}
+
+.track {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  min-width: var(--_track-w);
+  height: var(--_track-h);
+  border-radius: calc(var(--_track-h) / 2);
+  background: var(--_track);
+  transition: background-color 0.2s;
+}
+
+.handle {
+  position: absolute;
+  top: var(--_inset);
+  inset-inline-start: var(--_inset);
+  width: var(--_handle);
+  height: var(--_handle);
+  border-radius: 50%;
+  background: var(--fc-component-switch-handle-background);
+  transition: inset-inline-start 0.2s;
+}
+
+.switch[data-hovered] { --_track: var(--fc-component-switch-track-background-hover); }
+
+.switch[data-selected] { --_track: var(--fc-color-solid-accent); }
+.switch[data-selected][data-hovered] { --_track: var(--fc-color-solid-accent-hover); }
+.switch[data-selected] .handle {
+  inset-inline-start: calc(100% - var(--_track-h) + var(--_inset));
+}
+
+/* ---------- content inside the track (Figma "Number and Icon") ---------- */
+.inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--_inner-near) var(--_inner-far);
+  color: var(--fc-color-content-on-solid);
+  font-size: var(--fc-typography-size-sm);
+  line-height: 1;
+  white-space: nowrap;
+}
+.inner svg { width: var(--fc-typography-size-sm); height: var(--fc-typography-size-sm); }
+.switch[data-selected] .inner { padding-inline: var(--_inner-far) var(--_inner-near); }
+.sm .inner { font-size: var(--fc-typography-size-sm); }
+/*
+ * Text needs 4.5:1: with content, the off track is one grey step stronger and
+ * its text is On-Solid-Neutral: white on dark grey in Light, black on light
+ * grey in Dark (white there was 2.2:1).
+ */
+.hasContent { --_track: var(--fc-color-content-neutral); }
+.hasContent[data-hovered] { --_track: var(--fc-color-content-neutral-strong); }
+.hasContent:not([data-selected]) .inner { color: var(--fc-color-content-on-solid-neutral); }
+
+/* ---------- loading ---------- */
+.spinner {
+  position: absolute;
+  inset: 15%;
+  border: var(--fc-stroke-width-base) solid var(--fc-color-solid-accent);
+  border-inline-end-color: transparent;
+  border-radius: 50%;
+  animation: fc-switch-spin 0.8s linear infinite;
+}
+@keyframes fc-switch-spin { to { transform: rotate(360deg); } }
+
+.switch[data-focus-visible] .track {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.switch[data-disabled] {
+  --_track: var(--fc-color-content-disabled);
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+/* Loading blocks toggling but keeps the current colours, so the state stays readable. */
+.switch.loading[data-disabled] { --_track: var(--fc-component-switch-track-background); color: var(--fc-color-content-neutral-strong); cursor: progress; }
+.switch.loading.hasContent[data-disabled] { --_track: var(--fc-color-content-neutral); }
+.switch.loading[data-disabled][data-selected] { --_track: var(--fc-color-solid-accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .track, .handle { transition: none; }
+  .spinner { animation-duration: 2s; }
+}

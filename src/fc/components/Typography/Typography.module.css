@@ -1,0 +1,134 @@
+/* ---------- tones ---------- */
+.secondary { color: var(--fc-color-content-description); }
+.success { color: var(--fc-color-content-success); }
+.warning { color: var(--fc-color-content-warning); }
+.danger { color: var(--fc-color-content-danger); }
+.disabled {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+  user-select: none;
+}
+
+/* ---------- sizes (Figma Text Size SM / Base / LG) ---------- */
+.sm { font-size: var(--fc-typography-size-sm); line-height: var(--fc-typography-line-height-sm); }
+.lg { font-size: var(--fc-typography-size-lg); line-height: var(--fc-typography-line-height-lg); }
+
+/* ---------- decorations ---------- */
+.kbd {
+  font-family: var(--fc-typography-family-code), ui-monospace, monospace;
+  font-size: var(--fc-typography-size-sm);
+  padding: 0 var(--fc-space-padding-xxs);
+  background: var(--fc-color-fill-neutral-light);
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral);
+  border-bottom-width: var(--fc-stroke-width-strong);
+  border-radius: var(--fc-radius-sm);
+}
+
+.strong { font-weight: var(--fc-typography-weight-semibold); }
+
+.code {
+  font-family: var(--fc-typography-family-code), ui-monospace, monospace;
+  font-size: var(--fc-typography-size-sm);
+  padding: 0 var(--fc-space-padding-xxs);
+  background: var(--fc-color-fill-neutral-light);
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+  border-radius: var(--fc-radius-sm);
+}
+
+.mark {
+  background: var(--fc-color-background-warning-faded-hover);
+  color: inherit;
+}
+
+/* ---------- truncation ---------- */
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.inlineTruncate {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: bottom;
+}
+.clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- title / paragraph ---------- */
+.title {
+  margin: 0;
+  color: var(--fc-color-content-heading);
+  font-weight: var(--fc-typography-weight-semibold);
+}
+.h1 { font-size: var(--fc-typography-size-heading-1); line-height: var(--fc-typography-line-height-heading-1); }
+.h2 { font-size: var(--fc-typography-size-heading-2); line-height: var(--fc-typography-line-height-heading-2); }
+.h3 { font-size: var(--fc-typography-size-heading-3); line-height: var(--fc-typography-line-height-heading-3); }
+.h4 { font-size: var(--fc-typography-size-heading-4); line-height: var(--fc-typography-line-height-heading-4); }
+.h5 { font-size: var(--fc-typography-size-heading-5); line-height: var(--fc-typography-line-height-heading-5); }
+
+.paragraph { margin: 0 0 var(--fc-space-margin-base); }
+.paragraph:last-child { margin-bottom: 0; }
+
+/* ---------- link ---------- */
+.link {
+  color: var(--fc-color-content-link);
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--fc-radius-sm);
+  outline: none;
+  transition: color 0.2s;
+}
+.link[data-hovered] {
+  color: var(--fc-color-content-link-hover);
+  text-decoration: underline;
+}
+.link[data-pressed] { color: var(--fc-color-content-link-active); }
+.link[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.linkUnderline { text-decoration: underline; }
+.link[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+/* ---------- editable title ---------- */
+.editableTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+}
+.editButton {
+  display: inline-flex;
+  flex: none;
+  padding: var(--fc-space-padding-xxs);
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-color-content-link);
+  cursor: pointer;
+  outline: none;
+}
+.editButton[data-hovered] { background: var(--fc-color-background-plain-hover); }
+.editButton[data-focus-visible] { outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent); }
+.editField { flex: 1; min-width: 0; }
+.editInput {
+  width: 100%;
+  padding: 0 calc(var(--fc-space-padding-xs) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid var(--fc-color-solid-accent);
+  border-radius: var(--fc-radius-base);
+  box-shadow: 0 0 0 var(--fc-stroke-width-outline) var(--fc-color-outline-accent);
+  background: var(--fc-color-background-container);
+  color: inherit;
+  font: inherit;
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link { transition: none; }
+}

@@ -1,0 +1,5 @@
+/* Focus ring inside the edge: the area usually fills its container. */
+.area:focus-visible {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}

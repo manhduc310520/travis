@@ -1,0 +1,3988 @@
+{
+  "_source": "Figma hneVCBNUiPizVorg7Jp18G, collections 0-5 (5: Component/* only) + Shadow/* effect styles. Exported 2026-09-26 via scripts/figma-export.js. Do not edit by hand: re-export from Figma.",
+  "global": {
+    "modes": [
+      "value"
+    ],
+    "vars": {
+      "Global/Light/Blue/1": [
+        "C",
+        "#e6f4ff"
+      ],
+      "Global/Light/Blue/2": [
+        "C",
+        "#bae0ff"
+      ],
+      "Global/Light/Blue/3": [
+        "C",
+        "#91caff"
+      ],
+      "Global/Light/Blue/4": [
+        "C",
+        "#69b1ff"
+      ],
+      "Global/Light/Blue/5": [
+        "C",
+        "#4096ff"
+      ],
+      "Global/Light/Blue/6": [
+        "C",
+        "#1677ff"
+      ],
+      "Global/Light/Blue/7": [
+        "C",
+        "#0958d9"
+      ],
+      "Global/Light/Blue/8": [
+        "C",
+        "#003eb3"
+      ],
+      "Global/Light/Blue/9": [
+        "C",
+        "#002c8c"
+      ],
+      "Global/Light/Blue/10": [
+        "C",
+        "#001d66"
+      ],
+      "Global/Light/Cyan/1": [
+        "C",
+        "#e6fffb"
+      ],
+      "Global/Light/Cyan/2": [
+        "C",
+        "#b5f5ec"
+      ],
+      "Global/Light/Cyan/3": [
+        "C",
+        "#87e8de"
+      ],
+      "Global/Light/Cyan/4": [
+        "C",
+        "#5cdbd3"
+      ],
+      "Global/Light/Cyan/5": [
+        "C",
+        "#36cfc9"
+      ],
+      "Global/Light/Cyan/6": [
+        "C",
+        "#13c2c2"
+      ],
+      "Global/Light/Cyan/7": [
+        "C",
+        "#08979c"
+      ],
+      "Global/Light/Cyan/8": [
+        "C",
+        "#006d75"
+      ],
+      "Global/Light/Cyan/9": [
+        "C",
+        "#00474f"
+      ],
+      "Global/Light/Cyan/10": [
+        "C",
+        "#002329"
+      ],
+      "Global/Light/Indigo/1": [
+        "C",
+        "#f0f5ff"
+      ],
+      "Global/Light/Indigo/2": [
+        "C",
+        "#d6e4ff"
+      ],
+      "Global/Light/Indigo/3": [
+        "C",
+        "#adc6ff"
+      ],
+      "Global/Light/Indigo/4": [
+        "C",
+        "#85a5ff"
+      ],
+      "Global/Light/Indigo/5": [
+        "C",
+        "#597ef7"
+      ],
+      "Global/Light/Indigo/6": [
+        "C",
+        "#2f54eb"
+      ],
+      "Global/Light/Indigo/7": [
+        "C",
+        "#1d39c4"
+      ],
+      "Global/Light/Indigo/8": [
+        "C",
+        "#10239e"
+      ],
+      "Global/Light/Indigo/9": [
+        "C",
+        "#061178"
+      ],
+      "Global/Light/Indigo/10": [
+        "C",
+        "#030852"
+      ],
+      "Global/Light/Amber/1": [
+        "C",
+        "#fffbe6"
+      ],
+      "Global/Light/Amber/2": [
+        "C",
+        "#fff1b8"
+      ],
+      "Global/Light/Amber/3": [
+        "C",
+        "#ffe58f"
+      ],
+      "Global/Light/Amber/4": [
+        "C",
+        "#ffd666"
+      ],
+      "Global/Light/Amber/5": [
+        "C",
+        "#ffc53d"
+      ],
+      "Global/Light/Amber/6": [
+        "C",
+        "#faad14"
+      ],
+      "Global/Light/Amber/7": [
+        "C",
+        "#d48806"
+      ],
+      "Global/Light/Amber/8": [
+        "C",
+        "#ad6800"
+      ],
+      "Global/Light/Amber/9": [
+        "C",
+        "#874d00"
+      ],
+      "Global/Light/Amber/10": [
+        "C",
+        "#613400"
+      ],
+      "Global/Light/Green/1": [
+        "C",
+        "#f6ffed"
+      ],
+      "Global/Light/Green/2": [
+        "C",
+        "#d9f7be"
+      ],
+      "Global/Light/Green/3": [
+        "C",
+        "#b7eb8f"
+      ],
+      "Global/Light/Green/4": [
+        "C",
+        "#95de64"
+      ],
+      "Global/Light/Green/5": [
+        "C",
+        "#73d13d"
+      ],
+      "Global/Light/Green/6": [
+        "C",
+        "#52c41a"
+      ],
+      "Global/Light/Green/7": [
+        "C",
+        "#389e0d"
+      ],
+      "Global/Light/Green/8": [
+        "C",
+        "#237804"
+      ],
+      "Global/Light/Green/9": [
+        "C",
+        "#135200"
+      ],
+      "Global/Light/Green/10": [
+        "C",
+        "#092b00"
+      ],
+      "Global/Light/Lime/1": [
+        "C",
+        "#fcffe6"
+      ],
+      "Global/Light/Lime/2": [
+        "C",
+        "#f4ffb8"
+      ],
+      "Global/Light/Lime/3": [
+        "C",
+        "#eaff8f"
+      ],
+      "Global/Light/Lime/4": [
+        "C",
+        "#d3f261"
+      ],
+      "Global/Light/Lime/5": [
+        "C",
+        "#bae637"
+      ],
+      "Global/Light/Lime/6": [
+        "C",
+        "#a0d911"
+      ],
+      "Global/Light/Lime/7": [
+        "C",
+        "#7cb305"
+      ],
+      "Global/Light/Lime/8": [
+        "C",
+        "#5b8c00"
+      ],
+      "Global/Light/Lime/9": [
+        "C",
+        "#3f6600"
+      ],
+      "Global/Light/Lime/10": [
+        "C",
+        "#254000"
+      ],
+      "Global/Light/Magenta/1": [
+        "C",
+        "#fff0f6"
+      ],
+      "Global/Light/Magenta/2": [
+        "C",
+        "#ffd6e7"
+      ],
+      "Global/Light/Magenta/3": [
+        "C",
+        "#ffadd2"
+      ],
+      "Global/Light/Magenta/4": [
+        "C",
+        "#ff85c0"
+      ],
+      "Global/Light/Magenta/5": [
+        "C",
+        "#f759ab"
+      ],
+      "Global/Light/Magenta/6": [
+        "C",
+        "#eb2f96"
+      ],
+      "Global/Light/Magenta/7": [
+        "C",
+        "#c41d7f"
+      ],
+      "Global/Light/Magenta/8": [
+        "C",
+        "#9e1068"
+      ],
+      "Global/Light/Magenta/9": [
+        "C",
+        "#780650"
+      ],
+      "Global/Light/Magenta/10": [
+        "C",
+        "#520339"
+      ],
+      "Global/Light/Orange/1": [
+        "C",
+        "#fff7e6"
+      ],
+      "Global/Light/Orange/2": [
+        "C",
+        "#ffe7ba"
+      ],
+      "Global/Light/Orange/3": [
+        "C",
+        "#ffd591"
+      ],
+      "Global/Light/Orange/4": [
+        "C",
+        "#ffc069"
+      ],
+      "Global/Light/Orange/5": [
+        "C",
+        "#ffa940"
+      ],
+      "Global/Light/Orange/6": [
+        "C",
+        "#fa8c16"
+      ],
+      "Global/Light/Orange/7": [
+        "C",
+        "#d46b08"
+      ],
+      "Global/Light/Orange/8": [
+        "C",
+        "#ad4e00"
+      ],
+      "Global/Light/Orange/9": [
+        "C",
+        "#873800"
+      ],
+      "Global/Light/Orange/10": [
+        "C",
+        "#612500"
+      ],
+      "Global/Light/Purple/1": [
+        "C",
+        "#f9f0ff"
+      ],
+      "Global/Light/Purple/2": [
+        "C",
+        "#efdbff"
+      ],
+      "Global/Light/Purple/3": [
+        "C",
+        "#d3adf7"
+      ],
+      "Global/Light/Purple/4": [
+        "C",
+        "#b37feb"
+      ],
+      "Global/Light/Purple/5": [
+        "C",
+        "#9254de"
+      ],
+      "Global/Light/Purple/6": [
+        "C",
+        "#722ed1"
+      ],
+      "Global/Light/Purple/7": [
+        "C",
+        "#531dab"
+      ],
+      "Global/Light/Purple/8": [
+        "C",
+        "#391085"
+      ],
+      "Global/Light/Purple/9": [
+        "C",
+        "#22075e"
+      ],
+      "Global/Light/Purple/10": [
+        "C",
+        "#120338"
+      ],
+      "Global/Light/Red/1": [
+        "C",
+        "#fff1f0"
+      ],
+      "Global/Light/Red/2": [
+        "C",
+        "#ffccc7"
+      ],
+      "Global/Light/Red/3": [
+        "C",
+        "#ffa39e"
+      ],
+      "Global/Light/Red/4": [
+        "C",
+        "#ff7875"
+      ],
+      "Global/Light/Red/5": [
+        "C",
+        "#ff4d4f"
+      ],
+      "Global/Light/Red/6": [
+        "C",
+        "#f5222d"
+      ],
+      "Global/Light/Red/7": [
+        "C",
+        "#cf1322"
+      ],
+      "Global/Light/Red/8": [
+        "C",
+        "#a8071a"
+      ],
+      "Global/Light/Red/9": [
+        "C",
+        "#820014"
+      ],
+      "Global/Light/Red/10": [
+        "C",
+        "#5c0011"
+      ],
+      "Global/Light/Vermilion/1": [
+        "C",
+        "#fff2e8"
+      ],
+      "Global/Light/Vermilion/2": [
+        "C",
+        "#ffd8bf"
+      ],
+      "Global/Light/Vermilion/3": [
+        "C",
+        "#ffbb96"
+      ],
+      "Global/Light/Vermilion/4": [
+        "C",
+        "#ff9c6e"
+      ],
+      "Global/Light/Vermilion/5": [
+        "C",
+        "#ff7a45"
+      ],
+      "Global/Light/Vermilion/6": [
+        "C",
+        "#fa541c"
+      ],
+      "Global/Light/Vermilion/7": [
+        "C",
+        "#d4380d"
+      ],
+      "Global/Light/Vermilion/8": [
+        "C",
+        "#ad2102"
+      ],
+      "Global/Light/Vermilion/9": [
+        "C",
+        "#871400"
+      ],
+      "Global/Light/Vermilion/10": [
+        "C",
+        "#610b00"
+      ],
+      "Global/Light/Yellow/1": [
+        "C",
+        "#feffe6"
+      ],
+      "Global/Light/Yellow/2": [
+        "C",
+        "#ffffb8"
+      ],
+      "Global/Light/Yellow/3": [
+        "C",
+        "#fffb8f"
+      ],
+      "Global/Light/Yellow/4": [
+        "C",
+        "#fff566"
+      ],
+      "Global/Light/Yellow/5": [
+        "C",
+        "#ffec3d"
+      ],
+      "Global/Light/Yellow/6": [
+        "C",
+        "#fadb14"
+      ],
+      "Global/Light/Yellow/7": [
+        "C",
+        "#d4b106"
+      ],
+      "Global/Light/Yellow/8": [
+        "C",
+        "#ad8b00"
+      ],
+      "Global/Light/Yellow/9": [
+        "C",
+        "#876800"
+      ],
+      "Global/Light/Yellow/10": [
+        "C",
+        "#614700"
+      ],
+      "Global/Dark/Blue/1": [
+        "C",
+        "#111a2c"
+      ],
+      "Global/Dark/Blue/2": [
+        "C",
+        "#112545"
+      ],
+      "Global/Dark/Blue/3": [
+        "C",
+        "#15325b"
+      ],
+      "Global/Dark/Blue/4": [
+        "C",
+        "#15417e"
+      ],
+      "Global/Dark/Blue/5": [
+        "C",
+        "#1554ad"
+      ],
+      "Global/Dark/Blue/6": [
+        "C",
+        "#1668dc"
+      ],
+      "Global/Dark/Blue/7": [
+        "C",
+        "#3c89e8"
+      ],
+      "Global/Dark/Blue/8": [
+        "C",
+        "#65a9f3"
+      ],
+      "Global/Dark/Blue/9": [
+        "C",
+        "#8dc5f8"
+      ],
+      "Global/Dark/Blue/10": [
+        "C",
+        "#b7dcfa"
+      ],
+      "Global/Dark/Cyan/1": [
+        "C",
+        "#112123"
+      ],
+      "Global/Dark/Cyan/2": [
+        "C",
+        "#113536"
+      ],
+      "Global/Dark/Cyan/3": [
+        "C",
+        "#144848"
+      ],
+      "Global/Dark/Cyan/4": [
+        "C",
+        "#146262"
+      ],
+      "Global/Dark/Cyan/5": [
+        "C",
+        "#138585"
+      ],
+      "Global/Dark/Cyan/6": [
+        "C",
+        "#13a8a8"
+      ],
+      "Global/Dark/Cyan/7": [
+        "C",
+        "#33bcb7"
+      ],
+      "Global/Dark/Cyan/8": [
+        "C",
+        "#58d1c9"
+      ],
+      "Global/Dark/Cyan/9": [
+        "C",
+        "#84e2d8"
+      ],
+      "Global/Dark/Cyan/10": [
+        "C",
+        "#b2f1e8"
+      ],
+      "Global/Dark/Indigo/1": [
+        "C",
+        "#131629"
+      ],
+      "Global/Dark/Indigo/2": [
+        "C",
+        "#161d40"
+      ],
+      "Global/Dark/Indigo/3": [
+        "C",
+        "#1c2755"
+      ],
+      "Global/Dark/Indigo/4": [
+        "C",
+        "#203175"
+      ],
+      "Global/Dark/Indigo/5": [
+        "C",
+        "#263ea0"
+      ],
+      "Global/Dark/Indigo/6": [
+        "C",
+        "#2b4acb"
+      ],
+      "Global/Dark/Indigo/7": [
+        "C",
+        "#5273e0"
+      ],
+      "Global/Dark/Indigo/8": [
+        "C",
+        "#7f9ef3"
+      ],
+      "Global/Dark/Indigo/9": [
+        "C",
+        "#a8c1f8"
+      ],
+      "Global/Dark/Indigo/10": [
+        "C",
+        "#d2e0fa"
+      ],
+      "Global/Dark/Amber/1": [
+        "C",
+        "#2b2111"
+      ],
+      "Global/Dark/Amber/2": [
+        "C",
+        "#443111"
+      ],
+      "Global/Dark/Amber/3": [
+        "C",
+        "#594214"
+      ],
+      "Global/Dark/Amber/4": [
+        "C",
+        "#7c5914"
+      ],
+      "Global/Dark/Amber/5": [
+        "C",
+        "#aa7714"
+      ],
+      "Global/Dark/Amber/6": [
+        "C",
+        "#d89614"
+      ],
+      "Global/Dark/Amber/7": [
+        "C",
+        "#e8b339"
+      ],
+      "Global/Dark/Amber/8": [
+        "C",
+        "#f3cc62"
+      ],
+      "Global/Dark/Amber/9": [
+        "C",
+        "#f8df8b"
+      ],
+      "Global/Dark/Amber/10": [
+        "C",
+        "#faedb5"
+      ],
+      "Global/Dark/Green/1": [
+        "C",
+        "#162312"
+      ],
+      "Global/Dark/Green/2": [
+        "C",
+        "#1d3712"
+      ],
+      "Global/Dark/Green/3": [
+        "C",
+        "#274916"
+      ],
+      "Global/Dark/Green/4": [
+        "C",
+        "#306317"
+      ],
+      "Global/Dark/Green/5": [
+        "C",
+        "#3c8618"
+      ],
+      "Global/Dark/Green/6": [
+        "C",
+        "#49aa19"
+      ],
+      "Global/Dark/Green/7": [
+        "C",
+        "#6abe39"
+      ],
+      "Global/Dark/Green/8": [
+        "C",
+        "#8fd460"
+      ],
+      "Global/Dark/Green/9": [
+        "C",
+        "#b2e58b"
+      ],
+      "Global/Dark/Green/10": [
+        "C",
+        "#d5f2bb"
+      ],
+      "Global/Dark/Lime/1": [
+        "C",
+        "#1f2611"
+      ],
+      "Global/Dark/Lime/2": [
+        "C",
+        "#2e3c10"
+      ],
+      "Global/Dark/Lime/3": [
+        "C",
+        "#3e4f13"
+      ],
+      "Global/Dark/Lime/4": [
+        "C",
+        "#536d13"
+      ],
+      "Global/Dark/Lime/5": [
+        "C",
+        "#6f9412"
+      ],
+      "Global/Dark/Lime/6": [
+        "C",
+        "#8bbb11"
+      ],
+      "Global/Dark/Lime/7": [
+        "C",
+        "#a9d134"
+      ],
+      "Global/Dark/Lime/8": [
+        "C",
+        "#c9e75d"
+      ],
+      "Global/Dark/Lime/9": [
+        "C",
+        "#e4f88b"
+      ],
+      "Global/Dark/Lime/10": [
+        "C",
+        "#f0fab5"
+      ],
+      "Global/Dark/Magenta/1": [
+        "C",
+        "#291321"
+      ],
+      "Global/Dark/Magenta/2": [
+        "C",
+        "#40162f"
+      ],
+      "Global/Dark/Magenta/3": [
+        "C",
+        "#551c3b"
+      ],
+      "Global/Dark/Magenta/4": [
+        "C",
+        "#75204f"
+      ],
+      "Global/Dark/Magenta/5": [
+        "C",
+        "#a02669"
+      ],
+      "Global/Dark/Magenta/6": [
+        "C",
+        "#cb2b83"
+      ],
+      "Global/Dark/Magenta/7": [
+        "C",
+        "#e0529c"
+      ],
+      "Global/Dark/Magenta/8": [
+        "C",
+        "#f37fb7"
+      ],
+      "Global/Dark/Magenta/9": [
+        "C",
+        "#f8a8cc"
+      ],
+      "Global/Dark/Magenta/10": [
+        "C",
+        "#fad2e3"
+      ],
+      "Global/Dark/Orange/1": [
+        "C",
+        "#2b1d11"
+      ],
+      "Global/Dark/Orange/2": [
+        "C",
+        "#442a11"
+      ],
+      "Global/Dark/Orange/3": [
+        "C",
+        "#593815"
+      ],
+      "Global/Dark/Orange/4": [
+        "C",
+        "#7c4a15"
+      ],
+      "Global/Dark/Orange/5": [
+        "C",
+        "#aa6215"
+      ],
+      "Global/Dark/Orange/6": [
+        "C",
+        "#d87a16"
+      ],
+      "Global/Dark/Orange/7": [
+        "C",
+        "#e89a3c"
+      ],
+      "Global/Dark/Orange/8": [
+        "C",
+        "#f3b765"
+      ],
+      "Global/Dark/Orange/9": [
+        "C",
+        "#f8cf8d"
+      ],
+      "Global/Dark/Orange/10": [
+        "C",
+        "#fae3b7"
+      ],
+      "Global/Dark/Purple/1": [
+        "C",
+        "#1a1325"
+      ],
+      "Global/Dark/Purple/2": [
+        "C",
+        "#24163a"
+      ],
+      "Global/Dark/Purple/3": [
+        "C",
+        "#301c4d"
+      ],
+      "Global/Dark/Purple/4": [
+        "C",
+        "#3e2069"
+      ],
+      "Global/Dark/Purple/5": [
+        "C",
+        "#51258f"
+      ],
+      "Global/Dark/Purple/6": [
+        "C",
+        "#642ab5"
+      ],
+      "Global/Dark/Purple/7": [
+        "C",
+        "#854eca"
+      ],
+      "Global/Dark/Purple/8": [
+        "C",
+        "#ab7ae0"
+      ],
+      "Global/Dark/Purple/9": [
+        "C",
+        "#cda8f0"
+      ],
+      "Global/Dark/Purple/10": [
+        "C",
+        "#ebd7fa"
+      ],
+      "Global/Dark/Red/1": [
+        "C",
+        "#2a1215"
+      ],
+      "Global/Dark/Red/2": [
+        "C",
+        "#431418"
+      ],
+      "Global/Dark/Red/3": [
+        "C",
+        "#58181c"
+      ],
+      "Global/Dark/Red/4": [
+        "C",
+        "#791a1f"
+      ],
+      "Global/Dark/Red/5": [
+        "C",
+        "#a61d24"
+      ],
+      "Global/Dark/Red/6": [
+        "C",
+        "#d32029"
+      ],
+      "Global/Dark/Red/7": [
+        "C",
+        "#e84749"
+      ],
+      "Global/Dark/Red/8": [
+        "C",
+        "#f37370"
+      ],
+      "Global/Dark/Red/9": [
+        "C",
+        "#f89f9a"
+      ],
+      "Global/Dark/Red/10": [
+        "C",
+        "#fac8c3"
+      ],
+      "Global/Dark/Vermilion/1": [
+        "C",
+        "#2b1611"
+      ],
+      "Global/Dark/Vermilion/2": [
+        "C",
+        "#441d12"
+      ],
+      "Global/Dark/Vermilion/3": [
+        "C",
+        "#592716"
+      ],
+      "Global/Dark/Vermilion/4": [
+        "C",
+        "#7c3118"
+      ],
+      "Global/Dark/Vermilion/5": [
+        "C",
+        "#aa3e19"
+      ],
+      "Global/Dark/Vermilion/6": [
+        "C",
+        "#d84a1b"
+      ],
+      "Global/Dark/Vermilion/7": [
+        "C",
+        "#e87040"
+      ],
+      "Global/Dark/Vermilion/8": [
+        "C",
+        "#f3956a"
+      ],
+      "Global/Dark/Vermilion/9": [
+        "C",
+        "#f8b692"
+      ],
+      "Global/Dark/Vermilion/10": [
+        "C",
+        "#fad4bc"
+      ],
+      "Global/Dark/Yellow/1": [
+        "C",
+        "#2b2611"
+      ],
+      "Global/Dark/Yellow/2": [
+        "C",
+        "#443b11"
+      ],
+      "Global/Dark/Yellow/3": [
+        "C",
+        "#595014"
+      ],
+      "Global/Dark/Yellow/4": [
+        "C",
+        "#7c6e14"
+      ],
+      "Global/Dark/Yellow/5": [
+        "C",
+        "#aa9514"
+      ],
+      "Global/Dark/Yellow/6": [
+        "C",
+        "#d8bd14"
+      ],
+      "Global/Dark/Yellow/7": [
+        "C",
+        "#e8d639"
+      ],
+      "Global/Dark/Yellow/8": [
+        "C",
+        "#f3ea62"
+      ],
+      "Global/Dark/Yellow/9": [
+        "C",
+        "#f8f48b"
+      ],
+      "Global/Dark/Yellow/10": [
+        "C",
+        "#fafab5"
+      ],
+      "Global/White": [
+        "C",
+        "#ffffff"
+      ],
+      "Global/Transparent": [
+        "C",
+        "#00000000"
+      ]
+    }
+  },
+  "brand": {
+    "modes": [
+      "blue",
+      "green",
+      "yellow",
+      "magenta",
+      "orange"
+    ],
+    "vars": {
+      "Brand/Light/Outline-Accent": [
+        "C",
+        "@Color/Palette/Blue/6|10",
+        "@Color/Palette/Green/6|10",
+        "@Color/Palette/Yellow/6|10",
+        "@Color/Palette/Magenta/6|10",
+        "@Color/Palette/Orange/6|10"
+      ],
+      "Brand/Dark/Outline-Accent": [
+        "C",
+        "@Color/Palette/Blue/5|15",
+        "@Color/Palette/Green/5|15",
+        "@Color/Palette/Yellow/5|15",
+        "@Color/Palette/Magenta/5|15",
+        "@Color/Palette/Orange/5|15"
+      ],
+      "Brand/Light/Background-Header-Start": [
+        "C",
+        "@Global/Light/Blue/8",
+        "@Global/Light/Green/9",
+        "@Global/Light/Yellow/10",
+        "@Global/Light/Magenta/9",
+        "@Global/Light/Orange/9"
+      ],
+      "Brand/Light/Background-Header-End": [
+        "C",
+        "@Global/Light/Blue/7",
+        "@Global/Light/Green/8",
+        "@Global/Light/Yellow/9",
+        "@Global/Light/Magenta/7",
+        "@Global/Light/Orange/8"
+      ],
+      "Brand/Dark/Background-Header-Start": [
+        "C",
+        "@Global/Dark/Blue/1",
+        "@Global/Dark/Green/1",
+        "@Global/Dark/Yellow/1",
+        "@Global/Dark/Magenta/1",
+        "@Global/Dark/Orange/1"
+      ],
+      "Brand/Dark/Background-Header-End": [
+        "C",
+        "@Global/Dark/Blue/2",
+        "@Global/Dark/Green/2",
+        "@Global/Dark/Yellow/2",
+        "@Global/Dark/Magenta/2",
+        "@Global/Dark/Orange/2"
+      ],
+      "Brand/Dark/Solid-Accent": [
+        "C",
+        "@Global/Dark/Blue/6",
+        "@Global/Dark/Green/5",
+        "@Global/Dark/Yellow/4",
+        "@Global/Dark/Magenta/6",
+        "@Global/Dark/Orange/5"
+      ],
+      "Brand/Light/Primary-1": [
+        "C",
+        "@Global/Light/Blue/1",
+        "@Global/Light/Green/1",
+        "@Global/Light/Yellow/1",
+        "@Global/Light/Magenta/1",
+        "@Global/Light/Orange/1"
+      ],
+      "Brand/Light/Primary-2": [
+        "C",
+        "@Global/Light/Blue/2",
+        "@Global/Light/Green/2",
+        "@Global/Light/Yellow/2",
+        "@Global/Light/Magenta/2",
+        "@Global/Light/Orange/2"
+      ],
+      "Brand/Light/Primary-3": [
+        "C",
+        "@Global/Light/Blue/3",
+        "@Global/Light/Green/3",
+        "@Global/Light/Yellow/3",
+        "@Global/Light/Magenta/3",
+        "@Global/Light/Orange/3"
+      ],
+      "Brand/Light/Primary-4": [
+        "C",
+        "@Global/Light/Blue/4",
+        "@Global/Light/Green/4",
+        "@Global/Light/Yellow/4",
+        "@Global/Light/Magenta/4",
+        "@Global/Light/Orange/4"
+      ],
+      "Brand/Light/Primary-5": [
+        "C",
+        "@Global/Light/Blue/5",
+        "@Global/Light/Green/5",
+        "@Global/Light/Yellow/5",
+        "@Global/Light/Magenta/5",
+        "@Global/Light/Orange/5"
+      ],
+      "Brand/Light/Primary-6": [
+        "C",
+        "@Global/Light/Blue/6",
+        "@Global/Light/Green/6",
+        "@Global/Light/Yellow/6",
+        "@Global/Light/Magenta/6",
+        "@Global/Light/Orange/6"
+      ],
+      "Brand/Light/Primary-7": [
+        "C",
+        "@Global/Light/Blue/7",
+        "@Global/Light/Green/7",
+        "@Global/Light/Yellow/7",
+        "@Global/Light/Magenta/7",
+        "@Global/Light/Orange/7"
+      ],
+      "Brand/Light/Primary-8": [
+        "C",
+        "@Global/Light/Blue/8",
+        "@Global/Light/Green/8",
+        "@Global/Light/Yellow/8",
+        "@Global/Light/Magenta/8",
+        "@Global/Light/Orange/8"
+      ],
+      "Brand/Light/Primary-9": [
+        "C",
+        "@Global/Light/Blue/9",
+        "@Global/Light/Green/9",
+        "@Global/Light/Yellow/9",
+        "@Global/Light/Magenta/9",
+        "@Global/Light/Orange/9"
+      ],
+      "Brand/Light/Primary-10": [
+        "C",
+        "@Global/Light/Blue/10",
+        "@Global/Light/Green/10",
+        "@Global/Light/Yellow/10",
+        "@Global/Light/Magenta/10",
+        "@Global/Light/Orange/10"
+      ],
+      "Brand/Dark/Primary-1": [
+        "C",
+        "@Global/Dark/Blue/1",
+        "@Global/Dark/Green/1",
+        "@Global/Dark/Yellow/1",
+        "@Global/Dark/Magenta/1",
+        "@Global/Dark/Orange/1"
+      ],
+      "Brand/Dark/Primary-2": [
+        "C",
+        "@Global/Dark/Blue/2",
+        "@Global/Dark/Green/2",
+        "@Global/Dark/Yellow/2",
+        "@Global/Dark/Magenta/2",
+        "@Global/Dark/Orange/2"
+      ],
+      "Brand/Dark/Primary-3": [
+        "C",
+        "@Global/Dark/Blue/3",
+        "@Global/Dark/Green/3",
+        "@Global/Dark/Yellow/3",
+        "@Global/Dark/Magenta/3",
+        "@Global/Dark/Orange/3"
+      ],
+      "Brand/Dark/Primary-4": [
+        "C",
+        "@Global/Dark/Blue/4",
+        "@Global/Dark/Green/4",
+        "@Global/Dark/Yellow/4",
+        "@Global/Dark/Magenta/4",
+        "@Global/Dark/Orange/4"
+      ],
+      "Brand/Dark/Primary-5": [
+        "C",
+        "@Global/Dark/Blue/5",
+        "@Global/Dark/Green/5",
+        "@Global/Dark/Yellow/5",
+        "@Global/Dark/Magenta/5",
+        "@Global/Dark/Orange/5"
+      ],
+      "Brand/Dark/Primary-6": [
+        "C",
+        "@Global/Dark/Blue/6",
+        "@Global/Dark/Green/6",
+        "@Global/Dark/Yellow/6",
+        "@Global/Dark/Magenta/6",
+        "@Global/Dark/Orange/6"
+      ],
+      "Brand/Dark/Primary-7": [
+        "C",
+        "@Global/Dark/Blue/7",
+        "@Global/Dark/Green/7",
+        "@Global/Dark/Yellow/7",
+        "@Global/Dark/Magenta/7",
+        "@Global/Dark/Orange/7"
+      ],
+      "Brand/Dark/Primary-8": [
+        "C",
+        "@Global/Dark/Blue/8",
+        "@Global/Dark/Green/8",
+        "@Global/Dark/Yellow/8",
+        "@Global/Dark/Magenta/8",
+        "@Global/Dark/Orange/8"
+      ],
+      "Brand/Dark/Primary-9": [
+        "C",
+        "@Global/Dark/Blue/9",
+        "@Global/Dark/Green/9",
+        "@Global/Dark/Yellow/9",
+        "@Global/Dark/Magenta/9",
+        "@Global/Dark/Orange/9"
+      ],
+      "Brand/Dark/Primary-10": [
+        "C",
+        "@Global/Dark/Blue/10",
+        "@Global/Dark/Green/10",
+        "@Global/Dark/Yellow/10",
+        "@Global/Dark/Magenta/10",
+        "@Global/Dark/Orange/10"
+      ],
+      "Brand/Light/Content-Accent": [
+        "C",
+        "@Global/Light/Blue/7",
+        "@Global/Light/Green/8",
+        "@Global/Light/Yellow/9",
+        "@Global/Light/Magenta/7",
+        "@Global/Light/Orange/8"
+      ],
+      "Brand/Dark/Content-Accent": [
+        "C",
+        "@Global/Dark/Blue/7",
+        "@Global/Dark/Green/6",
+        "@Global/Dark/Yellow/6",
+        "@Global/Dark/Magenta/7",
+        "@Global/Dark/Orange/6"
+      ],
+      "Brand/Light/Solid-Accent": [
+        "C",
+        "@Global/Light/Blue/8",
+        "@Global/Light/Green/8",
+        "@Global/Light/Yellow/9",
+        "@Global/Light/Magenta/8",
+        "@Global/Light/Orange/8"
+      ]
+    }
+  },
+  "colors": {
+    "modes": [
+      "light",
+      "dark"
+    ],
+    "vars": {
+      "Color/Palette/Blue/1": [
+        "C",
+        "@Global/Light/Blue/1",
+        "@Global/Dark/Blue/1"
+      ],
+      "Color/Palette/Blue/2": [
+        "C",
+        "@Global/Light/Blue/2",
+        "@Global/Dark/Blue/2"
+      ],
+      "Color/Palette/Blue/3": [
+        "C",
+        "@Global/Light/Blue/3",
+        "@Global/Dark/Blue/3"
+      ],
+      "Color/Palette/Blue/4": [
+        "C",
+        "@Global/Light/Blue/4",
+        "@Global/Dark/Blue/4"
+      ],
+      "Color/Palette/Blue/5": [
+        "C",
+        "@Global/Light/Blue/5",
+        "@Global/Dark/Blue/5"
+      ],
+      "Color/Palette/Blue/6": [
+        "C",
+        "@Global/Light/Blue/6",
+        "@Global/Dark/Blue/6"
+      ],
+      "Color/Palette/Blue/7": [
+        "C",
+        "@Global/Light/Blue/7",
+        "@Global/Dark/Blue/7"
+      ],
+      "Color/Palette/Blue/8": [
+        "C",
+        "@Global/Light/Blue/8",
+        "@Global/Dark/Blue/8"
+      ],
+      "Color/Palette/Blue/9": [
+        "C",
+        "@Global/Light/Blue/9",
+        "@Global/Dark/Blue/9"
+      ],
+      "Color/Palette/Blue/10": [
+        "C",
+        "@Global/Light/Blue/10",
+        "@Global/Dark/Blue/10"
+      ],
+      "Color/Palette/Cyan/1": [
+        "C",
+        "@Global/Light/Cyan/1",
+        "@Global/Dark/Cyan/1"
+      ],
+      "Color/Palette/Cyan/2": [
+        "C",
+        "@Global/Light/Cyan/2",
+        "@Global/Dark/Cyan/2"
+      ],
+      "Color/Palette/Cyan/3": [
+        "C",
+        "@Global/Light/Cyan/3",
+        "@Global/Dark/Cyan/3"
+      ],
+      "Color/Palette/Cyan/4": [
+        "C",
+        "@Global/Light/Cyan/4",
+        "@Global/Dark/Cyan/4"
+      ],
+      "Color/Palette/Cyan/5": [
+        "C",
+        "@Global/Light/Cyan/5",
+        "@Global/Dark/Cyan/5"
+      ],
+      "Color/Palette/Cyan/6": [
+        "C",
+        "@Global/Light/Cyan/6",
+        "@Global/Dark/Cyan/6"
+      ],
+      "Color/Palette/Cyan/7": [
+        "C",
+        "@Global/Light/Cyan/7",
+        "@Global/Dark/Cyan/7"
+      ],
+      "Color/Palette/Cyan/8": [
+        "C",
+        "@Global/Light/Cyan/8",
+        "@Global/Dark/Cyan/8"
+      ],
+      "Color/Palette/Cyan/9": [
+        "C",
+        "@Global/Light/Cyan/9",
+        "@Global/Dark/Cyan/9"
+      ],
+      "Color/Palette/Cyan/10": [
+        "C",
+        "@Global/Light/Cyan/10",
+        "@Global/Dark/Cyan/10"
+      ],
+      "Color/Palette/Indigo/1": [
+        "C",
+        "@Global/Light/Indigo/1",
+        "@Global/Dark/Indigo/1"
+      ],
+      "Color/Palette/Indigo/2": [
+        "C",
+        "@Global/Light/Indigo/2",
+        "@Global/Dark/Indigo/2"
+      ],
+      "Color/Palette/Indigo/3": [
+        "C",
+        "@Global/Light/Indigo/3",
+        "@Global/Dark/Indigo/3"
+      ],
+      "Color/Palette/Indigo/4": [
+        "C",
+        "@Global/Light/Indigo/4",
+        "@Global/Dark/Indigo/4"
+      ],
+      "Color/Palette/Indigo/5": [
+        "C",
+        "@Global/Light/Indigo/5",
+        "@Global/Dark/Indigo/5"
+      ],
+      "Color/Palette/Indigo/6": [
+        "C",
+        "@Global/Light/Indigo/6",
+        "@Global/Dark/Indigo/6"
+      ],
+      "Color/Palette/Indigo/7": [
+        "C",
+        "@Global/Light/Indigo/7",
+        "@Global/Dark/Indigo/7"
+      ],
+      "Color/Palette/Indigo/8": [
+        "C",
+        "@Global/Light/Indigo/8",
+        "@Global/Dark/Indigo/8"
+      ],
+      "Color/Palette/Indigo/9": [
+        "C",
+        "@Global/Light/Indigo/9",
+        "@Global/Dark/Indigo/9"
+      ],
+      "Color/Palette/Indigo/10": [
+        "C",
+        "@Global/Light/Indigo/10",
+        "@Global/Dark/Indigo/10"
+      ],
+      "Color/Palette/Amber/1": [
+        "C",
+        "@Global/Light/Amber/1",
+        "@Global/Dark/Amber/1"
+      ],
+      "Color/Palette/Amber/2": [
+        "C",
+        "@Global/Light/Amber/2",
+        "@Global/Dark/Amber/2"
+      ],
+      "Color/Palette/Amber/3": [
+        "C",
+        "@Global/Light/Amber/3",
+        "@Global/Dark/Amber/3"
+      ],
+      "Color/Palette/Amber/4": [
+        "C",
+        "@Global/Light/Amber/4",
+        "@Global/Dark/Amber/4"
+      ],
+      "Color/Palette/Amber/5": [
+        "C",
+        "@Global/Light/Amber/5",
+        "@Global/Dark/Amber/5"
+      ],
+      "Color/Palette/Amber/6": [
+        "C",
+        "@Global/Light/Amber/6",
+        "@Global/Dark/Amber/6"
+      ],
+      "Color/Palette/Amber/7": [
+        "C",
+        "@Global/Light/Amber/7",
+        "@Global/Dark/Amber/7"
+      ],
+      "Color/Palette/Amber/8": [
+        "C",
+        "@Global/Light/Amber/8",
+        "@Global/Dark/Amber/8"
+      ],
+      "Color/Palette/Amber/9": [
+        "C",
+        "@Global/Light/Amber/9",
+        "@Global/Dark/Amber/9"
+      ],
+      "Color/Palette/Amber/10": [
+        "C",
+        "@Global/Light/Amber/10",
+        "@Global/Dark/Amber/10"
+      ],
+      "Color/Palette/Green/1": [
+        "C",
+        "@Global/Light/Green/1",
+        "@Global/Dark/Green/1"
+      ],
+      "Color/Palette/Green/2": [
+        "C",
+        "@Global/Light/Green/2",
+        "@Global/Dark/Green/2"
+      ],
+      "Color/Palette/Green/3": [
+        "C",
+        "@Global/Light/Green/3",
+        "@Global/Dark/Green/3"
+      ],
+      "Color/Palette/Green/4": [
+        "C",
+        "@Global/Light/Green/4",
+        "@Global/Dark/Green/4"
+      ],
+      "Color/Palette/Green/5": [
+        "C",
+        "@Global/Light/Green/5",
+        "@Global/Dark/Green/5"
+      ],
+      "Color/Palette/Green/6": [
+        "C",
+        "@Global/Light/Green/6",
+        "@Global/Dark/Green/6"
+      ],
+      "Color/Palette/Green/7": [
+        "C",
+        "@Global/Light/Green/7",
+        "@Global/Dark/Green/7"
+      ],
+      "Color/Palette/Green/8": [
+        "C",
+        "@Global/Light/Green/8",
+        "@Global/Dark/Green/8"
+      ],
+      "Color/Palette/Green/9": [
+        "C",
+        "@Global/Light/Green/9",
+        "@Global/Dark/Green/9"
+      ],
+      "Color/Palette/Green/10": [
+        "C",
+        "@Global/Light/Green/10",
+        "@Global/Dark/Green/10"
+      ],
+      "Color/Palette/Lime/1": [
+        "C",
+        "@Global/Light/Lime/1",
+        "@Global/Dark/Lime/1"
+      ],
+      "Color/Palette/Lime/2": [
+        "C",
+        "@Global/Light/Lime/2",
+        "@Global/Dark/Lime/2"
+      ],
+      "Color/Palette/Lime/3": [
+        "C",
+        "@Global/Light/Lime/3",
+        "@Global/Dark/Lime/3"
+      ],
+      "Color/Palette/Lime/4": [
+        "C",
+        "@Global/Light/Lime/4",
+        "@Global/Dark/Lime/4"
+      ],
+      "Color/Palette/Lime/5": [
+        "C",
+        "@Global/Light/Lime/5",
+        "@Global/Dark/Lime/5"
+      ],
+      "Color/Palette/Lime/6": [
+        "C",
+        "@Global/Light/Lime/6",
+        "@Global/Dark/Lime/6"
+      ],
+      "Color/Palette/Lime/7": [
+        "C",
+        "@Global/Light/Lime/7",
+        "@Global/Dark/Lime/7"
+      ],
+      "Color/Palette/Lime/8": [
+        "C",
+        "@Global/Light/Lime/8",
+        "@Global/Dark/Lime/8"
+      ],
+      "Color/Palette/Lime/9": [
+        "C",
+        "@Global/Light/Lime/9",
+        "@Global/Dark/Lime/9"
+      ],
+      "Color/Palette/Lime/10": [
+        "C",
+        "@Global/Light/Lime/10",
+        "@Global/Dark/Lime/10"
+      ],
+      "Color/Palette/Magenta/1": [
+        "C",
+        "@Global/Light/Magenta/1",
+        "@Global/Dark/Magenta/1"
+      ],
+      "Color/Palette/Magenta/2": [
+        "C",
+        "@Global/Light/Magenta/2",
+        "@Global/Dark/Magenta/2"
+      ],
+      "Color/Palette/Magenta/3": [
+        "C",
+        "@Global/Light/Magenta/3",
+        "@Global/Dark/Magenta/3"
+      ],
+      "Color/Palette/Magenta/4": [
+        "C",
+        "@Global/Light/Magenta/4",
+        "@Global/Dark/Magenta/4"
+      ],
+      "Color/Palette/Magenta/5": [
+        "C",
+        "@Global/Light/Magenta/5",
+        "@Global/Dark/Magenta/5"
+      ],
+      "Color/Palette/Magenta/6": [
+        "C",
+        "@Global/Light/Magenta/6",
+        "@Global/Dark/Magenta/6"
+      ],
+      "Color/Palette/Magenta/7": [
+        "C",
+        "@Global/Light/Magenta/7",
+        "@Global/Dark/Magenta/7"
+      ],
+      "Color/Palette/Magenta/8": [
+        "C",
+        "@Global/Light/Magenta/8",
+        "@Global/Dark/Magenta/8"
+      ],
+      "Color/Palette/Magenta/9": [
+        "C",
+        "@Global/Light/Magenta/9",
+        "@Global/Dark/Magenta/9"
+      ],
+      "Color/Palette/Magenta/10": [
+        "C",
+        "@Global/Light/Magenta/10",
+        "@Global/Dark/Magenta/10"
+      ],
+      "Color/Palette/Orange/1": [
+        "C",
+        "@Global/Light/Orange/1",
+        "@Global/Dark/Orange/1"
+      ],
+      "Color/Palette/Orange/2": [
+        "C",
+        "@Global/Light/Orange/2",
+        "@Global/Dark/Orange/2"
+      ],
+      "Color/Palette/Orange/3": [
+        "C",
+        "@Global/Light/Orange/3",
+        "@Global/Dark/Orange/3"
+      ],
+      "Color/Palette/Orange/4": [
+        "C",
+        "@Global/Light/Orange/4",
+        "@Global/Dark/Orange/4"
+      ],
+      "Color/Palette/Orange/5": [
+        "C",
+        "@Global/Light/Orange/5",
+        "@Global/Dark/Orange/5"
+      ],
+      "Color/Palette/Orange/6": [
+        "C",
+        "@Global/Light/Orange/6",
+        "@Global/Dark/Orange/6"
+      ],
+      "Color/Palette/Orange/7": [
+        "C",
+        "@Global/Light/Orange/7",
+        "@Global/Dark/Orange/7"
+      ],
+      "Color/Palette/Orange/8": [
+        "C",
+        "@Global/Light/Orange/8",
+        "@Global/Dark/Orange/8"
+      ],
+      "Color/Palette/Orange/9": [
+        "C",
+        "@Global/Light/Orange/9",
+        "@Global/Dark/Orange/9"
+      ],
+      "Color/Palette/Orange/10": [
+        "C",
+        "@Global/Light/Orange/10",
+        "@Global/Dark/Orange/10"
+      ],
+      "Color/Palette/Purple/1": [
+        "C",
+        "@Global/Light/Purple/1",
+        "@Global/Dark/Purple/1"
+      ],
+      "Color/Palette/Purple/2": [
+        "C",
+        "@Global/Light/Purple/2",
+        "@Global/Dark/Purple/2"
+      ],
+      "Color/Palette/Purple/3": [
+        "C",
+        "@Global/Light/Purple/3",
+        "@Global/Dark/Purple/3"
+      ],
+      "Color/Palette/Purple/4": [
+        "C",
+        "@Global/Light/Purple/4",
+        "@Global/Dark/Purple/4"
+      ],
+      "Color/Palette/Purple/5": [
+        "C",
+        "@Global/Light/Purple/5",
+        "@Global/Dark/Purple/5"
+      ],
+      "Color/Palette/Purple/6": [
+        "C",
+        "@Global/Light/Purple/6",
+        "@Global/Dark/Purple/6"
+      ],
+      "Color/Palette/Purple/7": [
+        "C",
+        "@Global/Light/Purple/7",
+        "@Global/Dark/Purple/7"
+      ],
+      "Color/Palette/Purple/8": [
+        "C",
+        "@Global/Light/Purple/8",
+        "@Global/Dark/Purple/8"
+      ],
+      "Color/Palette/Purple/9": [
+        "C",
+        "@Global/Light/Purple/9",
+        "@Global/Dark/Purple/9"
+      ],
+      "Color/Palette/Purple/10": [
+        "C",
+        "@Global/Light/Purple/10",
+        "@Global/Dark/Purple/10"
+      ],
+      "Color/Palette/Red/1": [
+        "C",
+        "@Global/Light/Red/1",
+        "@Global/Dark/Red/1"
+      ],
+      "Color/Palette/Red/2": [
+        "C",
+        "@Global/Light/Red/2",
+        "@Global/Dark/Red/2"
+      ],
+      "Color/Palette/Red/3": [
+        "C",
+        "@Global/Light/Red/3",
+        "@Global/Dark/Red/3"
+      ],
+      "Color/Palette/Red/4": [
+        "C",
+        "@Global/Light/Red/4",
+        "@Global/Dark/Red/4"
+      ],
+      "Color/Palette/White": [
+        "C",
+        "@Global/White",
+        "@Global/White"
+      ],
+      "Color/Palette/Red/5": [
+        "C",
+        "@Global/Light/Red/5",
+        "@Global/Dark/Red/5"
+      ],
+      "Color/Palette/Red/6": [
+        "C",
+        "@Global/Light/Red/6",
+        "@Global/Dark/Red/6"
+      ],
+      "Color/Palette/Red/7": [
+        "C",
+        "@Global/Light/Red/7",
+        "@Global/Dark/Red/7"
+      ],
+      "Color/Palette/Red/8": [
+        "C",
+        "@Global/Light/Red/8",
+        "@Global/Dark/Red/8"
+      ],
+      "Color/Palette/Red/9": [
+        "C",
+        "@Global/Light/Red/9",
+        "@Global/Dark/Red/9"
+      ],
+      "Color/Palette/Red/10": [
+        "C",
+        "@Global/Light/Red/10",
+        "@Global/Dark/Red/10"
+      ],
+      "Color/Palette/Vermilion/1": [
+        "C",
+        "@Global/Light/Vermilion/1",
+        "@Global/Dark/Vermilion/1"
+      ],
+      "Color/Palette/Vermilion/2": [
+        "C",
+        "@Global/Light/Vermilion/2",
+        "@Global/Dark/Vermilion/2"
+      ],
+      "Color/Palette/Vermilion/3": [
+        "C",
+        "@Global/Light/Vermilion/3",
+        "@Global/Dark/Vermilion/3"
+      ],
+      "Color/Palette/Vermilion/4": [
+        "C",
+        "@Global/Light/Vermilion/4",
+        "@Global/Dark/Vermilion/4"
+      ],
+      "Color/Palette/Vermilion/5": [
+        "C",
+        "@Global/Light/Vermilion/5",
+        "@Global/Dark/Vermilion/5"
+      ],
+      "Color/Palette/Vermilion/6": [
+        "C",
+        "@Global/Light/Vermilion/6",
+        "@Global/Dark/Vermilion/6"
+      ],
+      "Color/Palette/Vermilion/7": [
+        "C",
+        "@Global/Light/Vermilion/7",
+        "@Global/Dark/Vermilion/7"
+      ],
+      "Color/Palette/Transparent": [
+        "C",
+        "@Global/Transparent",
+        "@Global/Transparent"
+      ],
+      "Color/Palette/Yellow/1": [
+        "C",
+        "@Global/Light/Yellow/1",
+        "@Global/Dark/Yellow/1"
+      ],
+      "Color/Palette/Vermilion/8": [
+        "C",
+        "@Global/Light/Vermilion/8",
+        "@Global/Dark/Vermilion/8"
+      ],
+      "Color/Palette/Yellow/2": [
+        "C",
+        "@Global/Light/Yellow/2",
+        "@Global/Dark/Yellow/2"
+      ],
+      "Color/Palette/Yellow/3": [
+        "C",
+        "@Global/Light/Yellow/3",
+        "@Global/Dark/Yellow/3"
+      ],
+      "Color/Palette/Vermilion/9": [
+        "C",
+        "@Global/Light/Vermilion/9",
+        "@Global/Dark/Vermilion/9"
+      ],
+      "Color/Palette/Yellow/4": [
+        "C",
+        "@Global/Light/Yellow/4",
+        "@Global/Dark/Yellow/4"
+      ],
+      "Color/Palette/Vermilion/10": [
+        "C",
+        "@Global/Light/Vermilion/10",
+        "@Global/Dark/Vermilion/10"
+      ],
+      "Color/Palette/Yellow/5": [
+        "C",
+        "@Global/Light/Yellow/5",
+        "@Global/Dark/Yellow/5"
+      ],
+      "Color/Palette/Yellow/6": [
+        "C",
+        "@Global/Light/Yellow/6",
+        "@Global/Dark/Yellow/6"
+      ],
+      "Color/Palette/Yellow/7": [
+        "C",
+        "@Global/Light/Yellow/7",
+        "@Global/Dark/Yellow/7"
+      ],
+      "Color/Palette/Yellow/8": [
+        "C",
+        "@Global/Light/Yellow/8",
+        "@Global/Dark/Yellow/8"
+      ],
+      "Color/Palette/Yellow/9": [
+        "C",
+        "@Global/Light/Yellow/9",
+        "@Global/Dark/Yellow/9"
+      ],
+      "Color/Palette/Yellow/10": [
+        "C",
+        "@Global/Light/Yellow/10",
+        "@Global/Dark/Yellow/10"
+      ],
+      "Color/Palette/Accent/1": [
+        "C",
+        "@Brand/Light/Primary-1",
+        "@Brand/Dark/Primary-1"
+      ],
+      "Color/Palette/Accent/2": [
+        "C",
+        "@Brand/Light/Primary-2",
+        "@Brand/Dark/Primary-2"
+      ],
+      "Color/Palette/Accent/3": [
+        "C",
+        "@Brand/Light/Primary-3",
+        "@Brand/Dark/Primary-3"
+      ],
+      "Color/Palette/Accent/4": [
+        "C",
+        "@Brand/Light/Primary-4",
+        "@Brand/Dark/Primary-4"
+      ],
+      "Color/Palette/Accent/5": [
+        "C",
+        "@Brand/Light/Primary-5",
+        "@Brand/Dark/Primary-5"
+      ],
+      "Color/Palette/Accent/6": [
+        "C",
+        "@Brand/Light/Primary-6",
+        "@Brand/Dark/Primary-6"
+      ],
+      "Color/Palette/Accent/7": [
+        "C",
+        "@Brand/Light/Primary-7",
+        "@Brand/Dark/Primary-7"
+      ],
+      "Color/Palette/Accent/8": [
+        "C",
+        "@Brand/Light/Primary-8",
+        "@Brand/Dark/Primary-8"
+      ],
+      "Color/Palette/Accent/9": [
+        "C",
+        "@Brand/Light/Primary-9",
+        "@Brand/Dark/Primary-9"
+      ],
+      "Color/Palette/Accent/10": [
+        "C",
+        "@Brand/Light/Primary-10",
+        "@Brand/Dark/Primary-10"
+      ],
+      "Color/Background/Header-Start": [
+        "C",
+        "@Brand/Light/Background-Header-Start",
+        "@Brand/Dark/Background-Header-Start"
+      ],
+      "Color/Background/Header-End": [
+        "C",
+        "@Brand/Light/Background-Header-End",
+        "@Brand/Dark/Background-Header-End"
+      ],
+      "Color/Content/Neutral-Strong": [
+        "C",
+        "#000000e0",
+        "#ffffffd9"
+      ],
+      "Color/Content/Neutral": [
+        "C",
+        "#000000a6",
+        "#ffffffa6"
+      ],
+      "Color/Content/Neutral-Light": [
+        "C",
+        "#00000073",
+        "#ffffff73"
+      ],
+      "Color/Content/Neutral-Faded": [
+        "C",
+        "#00000040",
+        "#ffffff40"
+      ],
+      "Color/Content/On-Solid": [
+        "C",
+        "#ffffff",
+        "#ffffff"
+      ],
+      "Color/Content/Heading": [
+        "C",
+        "@Color/Content/Neutral-Strong",
+        "@Color/Content/Neutral-Strong"
+      ],
+      "Color/Content/Label": [
+        "C",
+        "@Color/Content/Neutral",
+        "@Color/Content/Neutral"
+      ],
+      "Color/Content/Description": [
+        "C",
+        "@Color/Content/Neutral",
+        "@Color/Content/Neutral"
+      ],
+      "Color/Content/Disabled": [
+        "C",
+        "@Color/Content/Neutral-Faded",
+        "@Color/Content/Neutral-Faded"
+      ],
+      "Color/Content/Placeholder": [
+        "C",
+        "@Color/Content/Neutral-Faded",
+        "@Color/Content/Neutral-Faded"
+      ],
+      "Color/Content/On-Solid-Neutral": [
+        "C",
+        "#ffffff",
+        "#000000"
+      ],
+      "Color/Content/Icon": [
+        "C",
+        "@Color/Content/Neutral-Light",
+        "@Color/Content/Neutral-Light"
+      ],
+      "Color/Content/Icon-Hover": [
+        "C",
+        "@Color/Content/Neutral-Strong",
+        "@Color/Content/Neutral-Strong"
+      ],
+      "Color/Background/Container": [
+        "C",
+        "@Color/Seed/Background",
+        "#141414"
+      ],
+      "Color/Background/Elevated": [
+        "C",
+        "@Color/Seed/Background",
+        "#1f1f1f"
+      ],
+      "Color/Background/Layout": [
+        "C",
+        "#f5f5f5",
+        "@Color/Seed/Background"
+      ],
+      "Color/Background/Overlay": [
+        "C",
+        "#00000073",
+        "#00000073"
+      ],
+      "Color/Background/Spotlight": [
+        "C",
+        "#000000d9",
+        "#424242"
+      ],
+      "Color/Border/Neutral": [
+        "C",
+        "#d9d9d9",
+        "#424242"
+      ],
+      "Color/Border/Neutral-Light": [
+        "C",
+        "#f0f0f0",
+        "#303030"
+      ],
+      "Color/Fill/Neutral-Strong": [
+        "C",
+        "#00000026",
+        "#ffffff2e"
+      ],
+      "Color/Fill/Neutral": [
+        "C",
+        "#0000000f",
+        "#ffffff1f"
+      ],
+      "Color/Fill/Neutral-Light": [
+        "C",
+        "#0000000a",
+        "#ffffff14"
+      ],
+      "Color/Fill/Neutral-Faded": [
+        "C",
+        "#00000005",
+        "#ffffff0a"
+      ],
+      "Color/Seed/Background": [
+        "C",
+        "#ffffff",
+        "#000000"
+      ],
+      "Color/Seed/Content": [
+        "C",
+        "#000000",
+        "#ffffff"
+      ],
+      "Color/Background/Container-Disabled": [
+        "C",
+        "@Color/Fill/Neutral-Light",
+        "@Color/Fill/Neutral-Light"
+      ],
+      "Color/Background/Plain-Active": [
+        "C",
+        "@Color/Fill/Neutral-Strong",
+        "@Color/Fill/Neutral-Strong"
+      ],
+      "Color/Background/Plain-Hover": [
+        "C",
+        "@Color/Fill/Neutral",
+        "@Color/Fill/Neutral"
+      ],
+      "Color/Border/Container": [
+        "C",
+        "@Color/Background/Container",
+        "@Color/Background/Container"
+      ],
+      "Color/Fill/Area": [
+        "C",
+        "@Color/Fill/Neutral",
+        "@Color/Fill/Neutral"
+      ],
+      "Color/Fill/Area-Hover": [
+        "C",
+        "@Color/Fill/Neutral-Strong",
+        "@Color/Fill/Neutral-Strong"
+      ],
+      "Color/Fill/Alternate": [
+        "C",
+        "@Color/Fill/Neutral-Faded",
+        "@Color/Fill/Neutral-Faded"
+      ],
+      "Color/Background/Alternate": [
+        "C",
+        "#fafafa",
+        "#1d1d1d"
+      ],
+      "Color/Background/Handle": [
+        "C",
+        "#f0f0f0",
+        "#303030"
+      ],
+      "Color/Border/Neutral-Faded": [
+        "C",
+        "#0000000f",
+        "#ffffff0f"
+      ],
+      "Color/Solid/Accent": [
+        "C",
+        "@Brand/Light/Solid-Accent",
+        "@Brand/Dark/Solid-Accent"
+      ],
+      "Color/Solid/Success": [
+        "C",
+        "@Global/Light/Green/8",
+        "@Global/Dark/Green/7"
+      ],
+      "Color/Solid/Warning": [
+        "C",
+        "@Global/Light/Amber/7",
+        "@Global/Dark/Amber/6"
+      ],
+      "Color/Solid/Info": [
+        "C",
+        "@Color/Solid/Accent",
+        "@Color/Solid/Accent"
+      ],
+      "Color/Solid/Danger": [
+        "C",
+        "@Global/Light/Red/7",
+        "@Global/Dark/Red/6"
+      ],
+      "Color/Content/Link": [
+        "C",
+        "@Color/Content/Info",
+        "@Color/Content/Info"
+      ],
+      "Color/Background/Danger-Faded": [
+        "C",
+        "@Global/Light/Red/1",
+        "#2c1618"
+      ],
+      "Color/Background/Danger-Faded-Hover": [
+        "C",
+        "#fff1f0",
+        "#451d1f"
+      ],
+      "Color/Border/Danger-Light": [
+        "C",
+        "#ffccc7",
+        "#5b2526"
+      ],
+      "Color/Border/Danger-Light-Hover": [
+        "C",
+        "#ffa39e",
+        "#7e2e2f"
+      ],
+      "Color/Solid/Danger-Hover": [
+        "C",
+        "#ff7875",
+        "#e86e6b"
+      ],
+      "Color/Solid/Danger-Active": [
+        "C",
+        "#d9363e",
+        "#ad393a"
+      ],
+      "Color/Content/Danger-Hover": [
+        "C",
+        "#ff7875",
+        "#e86e6b"
+      ],
+      "Color/Content/Danger": [
+        "C",
+        "@Global/Light/Red/7",
+        "@Global/Dark/Red/8"
+      ],
+      "Color/Content/Danger-Active": [
+        "C",
+        "#d9363e",
+        "#ad393a"
+      ],
+      "Color/Content/Link-Hover": [
+        "C",
+        "@Color/Solid/Info-Hover",
+        "@Color/Solid/Info-Hover"
+      ],
+      "Color/Background/Info-Faded": [
+        "C",
+        "@Color/Background/Accent-Faded",
+        "@Color/Background/Accent-Faded"
+      ],
+      "Color/Background/Info-Faded-Hover": [
+        "C",
+        "@Color/Background/Accent-Faded-Hover",
+        "@Color/Background/Accent-Faded-Hover"
+      ],
+      "Color/Border/Info-Light": [
+        "C",
+        "@Color/Border/Accent-Light",
+        "@Color/Border/Accent-Light"
+      ],
+      "Color/Border/Info-Light-Hover": [
+        "C",
+        "@Color/Border/Accent-Light-Hover",
+        "@Color/Border/Accent-Light-Hover"
+      ],
+      "Color/Solid/Info-Hover": [
+        "C",
+        "@Color/Solid/Accent-Hover",
+        "@Color/Solid/Accent-Hover"
+      ],
+      "Color/Solid/Info-Active": [
+        "C",
+        "@Color/Solid/Accent-Active",
+        "@Color/Solid/Accent-Active"
+      ],
+      "Color/Content/Info-Hover": [
+        "C",
+        "@Color/Content/Accent-Hover",
+        "@Color/Content/Accent-Hover"
+      ],
+      "Color/Content/Info": [
+        "C",
+        "@Color/Content/Accent",
+        "@Color/Content/Accent"
+      ],
+      "Color/Content/Info-Active": [
+        "C",
+        "@Color/Content/Accent-Active",
+        "@Color/Content/Accent-Active"
+      ],
+      "Color/Content/Link-Active": [
+        "C",
+        "@Color/Solid/Info-Active",
+        "@Color/Solid/Info-Active"
+      ],
+      "Color/Background/Accent-Faded": [
+        "C",
+        "@Brand/Light/Primary-1",
+        "@Brand/Dark/Primary-1"
+      ],
+      "Color/Background/Accent-Faded-Hover": [
+        "C",
+        "@Brand/Light/Primary-2",
+        "@Brand/Dark/Primary-2"
+      ],
+      "Color/Border/Accent-Light": [
+        "C",
+        "@Brand/Light/Primary-3",
+        "@Brand/Dark/Primary-3"
+      ],
+      "Color/Border/Accent-Light-Hover": [
+        "C",
+        "@Brand/Light/Primary-4",
+        "@Brand/Dark/Primary-4"
+      ],
+      "Color/Solid/Accent-Hover": [
+        "C",
+        "@Brand/Light/Primary-5",
+        "@Brand/Dark/Primary-7"
+      ],
+      "Color/Solid/Accent-Active": [
+        "C",
+        "@Brand/Light/Primary-7",
+        "@Brand/Dark/Primary-5"
+      ],
+      "Color/Content/Accent-Hover": [
+        "C",
+        "@Brand/Light/Primary-5",
+        "@Brand/Dark/Primary-7"
+      ],
+      "Color/Content/Accent": [
+        "C",
+        "@Brand/Light/Content-Accent",
+        "@Brand/Dark/Content-Accent"
+      ],
+      "Color/Content/Accent-Active": [
+        "C",
+        "@Brand/Light/Primary-7",
+        "@Brand/Dark/Primary-5"
+      ],
+      "Color/Background/Success-Faded": [
+        "C",
+        "@Global/Light/Green/1",
+        "@Global/Dark/Green/1"
+      ],
+      "Color/Background/Success-Faded-Hover": [
+        "C",
+        "@Global/Light/Green/2",
+        "@Global/Dark/Green/2"
+      ],
+      "Color/Border/Success-Light": [
+        "C",
+        "@Global/Light/Green/3",
+        "@Global/Dark/Green/3"
+      ],
+      "Color/Border/Success-Light-Hover": [
+        "C",
+        "@Global/Light/Green/4",
+        "@Global/Dark/Green/4"
+      ],
+      "Color/Solid/Success-Hover": [
+        "C",
+        "@Global/Light/Green/4",
+        "@Global/Dark/Green/4"
+      ],
+      "Color/Solid/Success-Active": [
+        "C",
+        "@Global/Light/Green/7",
+        "@Global/Dark/Green/5"
+      ],
+      "Color/Content/Success-Hover": [
+        "C",
+        "@Global/Light/Green/5",
+        "@Global/Dark/Green/7"
+      ],
+      "Color/Content/Success": [
+        "C",
+        "@Global/Light/Green/8",
+        "@Global/Dark/Green/6"
+      ],
+      "Color/Content/Success-Active": [
+        "C",
+        "@Global/Light/Green/7",
+        "@Global/Dark/Green/5"
+      ],
+      "Color/Background/Warning-Faded": [
+        "C",
+        "@Global/Light/Amber/1",
+        "@Global/Dark/Amber/1"
+      ],
+      "Color/Background/Warning-Faded-Hover": [
+        "C",
+        "@Global/Light/Amber/2",
+        "@Global/Dark/Amber/2"
+      ],
+      "Color/Border/Warning-Light": [
+        "C",
+        "@Global/Light/Amber/3",
+        "@Global/Dark/Amber/3"
+      ],
+      "Color/Border/Warning-Light-Hover": [
+        "C",
+        "@Global/Light/Amber/4",
+        "@Global/Dark/Amber/4"
+      ],
+      "Color/Solid/Warning-Hover": [
+        "C",
+        "@Global/Light/Amber/4",
+        "@Global/Dark/Amber/4"
+      ],
+      "Color/Solid/Warning-Active": [
+        "C",
+        "@Global/Light/Amber/7",
+        "@Global/Dark/Amber/5"
+      ],
+      "Color/Content/Warning-Hover": [
+        "C",
+        "@Global/Light/Amber/5",
+        "@Global/Dark/Amber/7"
+      ],
+      "Color/Content/Warning": [
+        "C",
+        "@Global/Light/Amber/9",
+        "@Global/Dark/Amber/6"
+      ],
+      "Color/Content/Warning-Active": [
+        "C",
+        "@Global/Light/Amber/7",
+        "@Global/Dark/Amber/5"
+      ],
+      "Color/Outline/Danger": [
+        "C",
+        "#ff26060f",
+        "#ee26381c"
+      ],
+      "Color/Outline/Warning": [
+        "C",
+        "#ffd7051a",
+        "#ad6b0026"
+      ],
+      "Color/Background/Item-Selected": [
+        "C",
+        "@Color/Background/Accent-Faded",
+        "@Color/Background/Accent-Faded"
+      ],
+      "Color/Background/Item-Selected-Disabled": [
+        "C",
+        "@Color/Fill/Neutral-Strong",
+        "@Color/Fill/Neutral-Strong"
+      ],
+      "Color/Background/Item-Selected-Hover": [
+        "C",
+        "@Color/Background/Accent-Faded-Hover",
+        "@Color/Background/Accent-Faded-Hover"
+      ],
+      "Color/Background/Item-Hover": [
+        "C",
+        "@Color/Fill/Neutral-Light",
+        "@Color/Fill/Neutral-Light"
+      ],
+      "Color/Outline/Accent": [
+        "C",
+        "@Brand/Light/Outline-Accent",
+        "@Brand/Dark/Outline-Accent"
+      ],
+      "Color/Outline/Neutral": [
+        "C",
+        "@Color/Fill/Neutral-Faded",
+        "@Color/Fill/Neutral-Faded"
+      ],
+      "Color/Solid/Neutral": [
+        "C",
+        "#000000",
+        "#fffffff2"
+      ],
+      "Color/Solid/Neutral-Active": [
+        "C",
+        "#000000f2",
+        "#ffffffe5"
+      ],
+      "Color/Solid/Neutral-Hover": [
+        "C",
+        "#000000bf",
+        "#ffffff"
+      ],
+      "Color/Background/Neutral": [
+        "C",
+        "#f5f5f5",
+        "#272727"
+      ],
+      "Color/Border/Control": [
+        "C",
+        "#8c8c8c",
+        "#737373"
+      ]
+    }
+  },
+  "dimensions": {
+    "modes": [
+      "default",
+      "compact"
+    ],
+    "vars": {
+      "Size/Seed/Step": [
+        "F",
+        4,
+        2
+      ],
+      "Size/Seed/Unit": [
+        "F",
+        4,
+        4
+      ],
+      "Size/Control/Interactive": [
+        "F",
+        16,
+        14
+      ],
+      "Size/Popup-Arrow/Base": [
+        "F",
+        16,
+        16
+      ],
+      "Size/Scale/XXS": [
+        "F",
+        4,
+        4
+      ],
+      "Size/Scale/XS": [
+        "F",
+        8,
+        4
+      ],
+      "Size/Scale/SM": [
+        "F",
+        12,
+        8
+      ],
+      "Size/Scale/Base": [
+        "F",
+        16,
+        8
+      ],
+      "Size/Scale/MS": [
+        "F",
+        16,
+        12
+      ],
+      "Size/Scale/MD": [
+        "F",
+        20,
+        16
+      ],
+      "Size/Scale/LG": [
+        "F",
+        24,
+        16
+      ],
+      "Size/Scale/XL": [
+        "F",
+        32,
+        32
+      ],
+      "Size/Scale/XXL": [
+        "F",
+        48,
+        48
+      ],
+      "Size/Control/Base": [
+        "F",
+        32,
+        28
+      ],
+      "Size/Control/LG": [
+        "F",
+        40,
+        35
+      ],
+      "Size/Control/SM": [
+        "F",
+        24,
+        21
+      ],
+      "Size/Control/XS": [
+        "F",
+        16,
+        14
+      ],
+      "Stroke/Width/Base": [
+        "F",
+        1,
+        1
+      ],
+      "Stroke/Width/Strong": [
+        "F",
+        2,
+        2
+      ],
+      "Stroke/Width/Focus": [
+        "F",
+        4,
+        4
+      ],
+      "Stroke/Width/Outline": [
+        "F",
+        2,
+        2
+      ],
+      "Stroke/Width/Icon": [
+        "F",
+        1.2000000476837158,
+        1.2000000476837158
+      ],
+      "Breakpoint/LG": [
+        "F",
+        992,
+        992
+      ],
+      "Breakpoint/LG-Max": [
+        "F",
+        1199,
+        1199
+      ],
+      "Breakpoint/LG-Min": [
+        "F",
+        "@Breakpoint/LG",
+        "@Breakpoint/LG"
+      ],
+      "Breakpoint/MD": [
+        "F",
+        768,
+        768
+      ],
+      "Breakpoint/MD-Max": [
+        "F",
+        991,
+        991
+      ],
+      "Breakpoint/MD-Min": [
+        "F",
+        "@Breakpoint/MD",
+        "@Breakpoint/MD"
+      ],
+      "Breakpoint/SM": [
+        "F",
+        576,
+        576
+      ],
+      "Breakpoint/SM-Max": [
+        "F",
+        767,
+        767
+      ],
+      "Breakpoint/SM-Min": [
+        "F",
+        "@Breakpoint/SM",
+        "@Breakpoint/SM"
+      ],
+      "Breakpoint/XL": [
+        "F",
+        1200,
+        1200
+      ],
+      "Breakpoint/XL-Max": [
+        "F",
+        1599,
+        1599
+      ],
+      "Breakpoint/XL-Min": [
+        "F",
+        "@Breakpoint/XL",
+        "@Breakpoint/XL"
+      ],
+      "Breakpoint/XS": [
+        "F",
+        480,
+        480
+      ],
+      "Breakpoint/XS-Max": [
+        "F",
+        575,
+        575
+      ],
+      "Breakpoint/XS-Min": [
+        "F",
+        "@Breakpoint/XS",
+        "@Breakpoint/XS"
+      ],
+      "Breakpoint/XXL": [
+        "F",
+        1600,
+        1600
+      ],
+      "Breakpoint/XXL-Min": [
+        "F",
+        "@Breakpoint/XXL",
+        "@Breakpoint/XXL"
+      ],
+      "Space/Margin/Base": [
+        "F",
+        "@Size/Scale/Base",
+        "@Size/Scale/Base"
+      ],
+      "Space/Margin/LG": [
+        "F",
+        "@Size/Scale/LG",
+        "@Size/Scale/LG"
+      ],
+      "Space/Margin/MD": [
+        "F",
+        "@Size/Scale/MD",
+        "@Size/Scale/MD"
+      ],
+      "Space/Margin/SM": [
+        "F",
+        "@Size/Scale/SM",
+        "@Size/Scale/SM"
+      ],
+      "Space/Margin/XL": [
+        "F",
+        "@Size/Scale/XL",
+        "@Size/Scale/XL"
+      ],
+      "Space/Margin/XS": [
+        "F",
+        "@Size/Scale/XS",
+        "@Size/Scale/XS"
+      ],
+      "Space/Margin/XXL": [
+        "F",
+        "@Size/Scale/XXL",
+        "@Size/Scale/XXL"
+      ],
+      "Space/Margin/XXS": [
+        "F",
+        "@Size/Scale/XXS",
+        "@Size/Scale/XXS"
+      ],
+      "Space/Padding/Base": [
+        "F",
+        "@Size/Scale/Base",
+        "@Size/Scale/Base"
+      ],
+      "Space/Padding/LG": [
+        "F",
+        "@Size/Scale/LG",
+        "@Size/Scale/LG"
+      ],
+      "Space/Padding/MD": [
+        "F",
+        "@Size/Scale/MD",
+        "@Size/Scale/MD"
+      ],
+      "Space/Padding/SM": [
+        "F",
+        "@Size/Scale/SM",
+        "@Size/Scale/SM"
+      ],
+      "Space/Padding/XL": [
+        "F",
+        "@Size/Scale/XL",
+        "@Size/Scale/XL"
+      ],
+      "Space/Padding/XS": [
+        "F",
+        "@Size/Scale/XS",
+        "@Size/Scale/XS"
+      ],
+      "Space/Padding/XXS": [
+        "F",
+        "@Size/Scale/XXS",
+        "@Size/Scale/XXS"
+      ],
+      "Space/Padding-Inline/Container": [
+        "F",
+        "@Size/Scale/MS",
+        "@Size/Scale/MS"
+      ],
+      "Space/Padding-Inline/Container-LG": [
+        "F",
+        "@Size/Scale/LG",
+        "@Size/Scale/LG"
+      ],
+      "Space/Padding-Inline/Container-SM": [
+        "F",
+        "@Size/Scale/Base",
+        "@Size/Scale/Base"
+      ],
+      "Space/Padding-Block/Container": [
+        "F",
+        "@Size/Scale/SM",
+        "@Size/Scale/SM"
+      ],
+      "Space/Padding-Block/Container-LG": [
+        "F",
+        "@Size/Scale/MS",
+        "@Size/Scale/MS"
+      ],
+      "Space/Padding-Block/Container-SM": [
+        "F",
+        "@Size/Scale/XS",
+        "@Size/Scale/XS"
+      ],
+      "Space/Padding-Inline/Control": [
+        "F",
+        12,
+        12
+      ],
+      "Space/Padding-Inline/Control-SM": [
+        "F",
+        8,
+        8
+      ],
+      "Radius/Base": [
+        "F",
+        6,
+        6
+      ],
+      "Radius/LG": [
+        "F",
+        8,
+        8
+      ],
+      "Radius/SM": [
+        "F",
+        4,
+        4
+      ],
+      "Radius/XS": [
+        "F",
+        2,
+        2
+      ]
+    }
+  },
+  "typography": {
+    "modes": [
+      "default",
+      "compact"
+    ],
+    "vars": {
+      "Typography/Family/Base": [
+        "S",
+        "Inter",
+        "Inter"
+      ],
+      "Typography/Family/Code": [
+        "S",
+        "@Typography/Family/Base",
+        "@Typography/Family/Base"
+      ],
+      "Typography/Size/Base": [
+        "F",
+        14,
+        12
+      ],
+      "Typography/Size/LG": [
+        "F",
+        16,
+        14
+      ],
+      "Typography/Size/SM": [
+        "F",
+        12,
+        10
+      ],
+      "Typography/Size/XL": [
+        "F",
+        20,
+        16
+      ],
+      "Typography/Size/Heading-1": [
+        "F",
+        38,
+        32
+      ],
+      "Typography/Size/Heading-2": [
+        "F",
+        30,
+        26
+      ],
+      "Typography/Size/Heading-3": [
+        "F",
+        24,
+        20
+      ],
+      "Typography/Size/Heading-4": [
+        "F",
+        20,
+        16
+      ],
+      "Typography/Size/Heading-5": [
+        "F",
+        16,
+        14
+      ],
+      "Typography/Line-Height/Base": [
+        "F",
+        22,
+        20
+      ],
+      "Typography/Line-Height/LG": [
+        "F",
+        24,
+        22
+      ],
+      "Typography/Line-Height/SM": [
+        "F",
+        20,
+        18
+      ],
+      "Typography/Line-Height/Heading-1": [
+        "F",
+        46,
+        40
+      ],
+      "Typography/Line-Height/Heading-2": [
+        "F",
+        38,
+        34
+      ],
+      "Typography/Line-Height/Heading-3": [
+        "F",
+        32,
+        28
+      ],
+      "Typography/Line-Height/Heading-4": [
+        "F",
+        28,
+        24
+      ],
+      "Typography/Line-Height/Heading-5": [
+        "F",
+        24,
+        22
+      ],
+      "Typography/Size/Icon": [
+        "F",
+        12,
+        12
+      ],
+      "Typography/Weight/Regular": [
+        "F",
+        400,
+        400
+      ],
+      "Typography/Weight/Medium": [
+        "F",
+        500,
+        500
+      ],
+      "Typography/Weight/Semibold": [
+        "F",
+        600,
+        600
+      ]
+    }
+  },
+  "components": {
+    "modes": [
+      "value"
+    ],
+    "vars": {
+      "Component/Button/Padding-Inline": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Button/Padding-Inline-SM": [
+        "F",
+        "@Space/Padding/XS"
+      ],
+      "Component/Button/Padding-Inline-LG": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Button/Icon-Size": [
+        "F",
+        "@Typography/Size/LG"
+      ],
+      "Component/Button/Icon-Size-SM": [
+        "F",
+        "@Typography/Size/Base"
+      ],
+      "Component/Button/Icon-Size-LG": [
+        "F",
+        18
+      ],
+      "Component/Input/Addon-Background": [
+        "C",
+        "@Color/Fill/Alternate"
+      ],
+      "Component/Radio/Button-Padding-Inline": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Radio/Button-Padding-Inline-SM": [
+        "F",
+        "@Space/Padding/XS"
+      ],
+      "Component/Switch/Track-Width": [
+        "F",
+        44
+      ],
+      "Component/Switch/Track-Width-SM": [
+        "F",
+        28
+      ],
+      "Component/Switch/Track-Height": [
+        "F",
+        22
+      ],
+      "Component/Switch/Track-Height-SM": [
+        "F",
+        16
+      ],
+      "Component/Switch/Track-Padding": [
+        "F",
+        2
+      ],
+      "Component/Switch/Track-Background": [
+        "C",
+        "@Color/Content/Neutral-Light"
+      ],
+      "Component/Switch/Track-Background-Hover": [
+        "C",
+        "@Color/Content/Neutral"
+      ],
+      "Component/Switch/Handle-Background": [
+        "C",
+        "@Color/Content/On-Solid"
+      ],
+      "Component/Tag/Background-Default": [
+        "C",
+        "@Color/Background/Neutral"
+      ],
+      "Component/Tag/Content-Default": [
+        "C",
+        "@Color/Content/Neutral-Strong"
+      ],
+      "Component/Tag/Padding-Inline": [
+        "F",
+        "@Space/Padding/XS"
+      ],
+      "Component/Tag/Font-Size": [
+        "F",
+        "@Typography/Size/SM"
+      ],
+      "Component/Tag/Line-Height": [
+        "F",
+        "@Typography/Line-Height/SM"
+      ],
+      "Component/Badge/Indicator-Height": [
+        "F",
+        20
+      ],
+      "Component/Badge/Indicator-Height-SM": [
+        "F",
+        14
+      ],
+      "Component/Badge/Dot-Size": [
+        "F",
+        6
+      ],
+      "Component/Badge/Font-Size": [
+        "F",
+        "@Typography/Size/SM"
+      ],
+      "Component/Avatar/Size": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Avatar/Size-SM": [
+        "F",
+        "@Size/Control/SM"
+      ],
+      "Component/Avatar/Size-LG": [
+        "F",
+        "@Size/Control/LG"
+      ],
+      "Component/Avatar/Icon-Size": [
+        "F",
+        18
+      ],
+      "Component/Avatar/Icon-Size-SM": [
+        "F",
+        "@Typography/Size/Base"
+      ],
+      "Component/Avatar/Icon-Size-LG": [
+        "F",
+        "@Typography/Size/Heading-3"
+      ],
+      "Component/Avatar/Background-Default": [
+        "C",
+        "@Color/Fill/Neutral"
+      ],
+      "Component/Avatar/Content-Default": [
+        "C",
+        "@Color/Content/Neutral"
+      ],
+      "Component/Avatar/Group-Margin-Inline": [
+        "F",
+        "@Space/Margin/XS"
+      ],
+      "Component/Avatar/Group-Border": [
+        "C",
+        "@Color/Border/Container"
+      ],
+      "Component/Tooltip/Max-Width": [
+        "F",
+        250
+      ],
+      "Component/Tooltip/Background": [
+        "C",
+        "@Color/Background/Spotlight"
+      ],
+      "Component/Tooltip/Content": [
+        "C",
+        "@Color/Content/On-Solid"
+      ],
+      "Component/Divider/Margin-Block": [
+        "F",
+        "@Space/Margin/LG"
+      ],
+      "Component/Divider/Margin-Inline-Vertical": [
+        "F",
+        "@Space/Margin/XS"
+      ],
+      "Component/Popover/Padding": [
+        "F",
+        "@Space/Padding/SM"
+      ],
+      "Component/Popover/Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Dropdown/Padding": [
+        "F",
+        "@Space/Padding/XXS"
+      ],
+      "Component/Dropdown/Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Dropdown/Item-Height": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Dropdown/Item-Padding-Inline": [
+        "F",
+        "@Space/Padding/SM"
+      ],
+      "Component/Dropdown/Item-Radius": [
+        "F",
+        "@Radius/SM"
+      ],
+      "Component/Select/Menu-Padding": [
+        "F",
+        "@Space/Padding/XXS"
+      ],
+      "Component/Select/Menu-Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Select/Option-Height": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Select/Option-Padding-Inline": [
+        "F",
+        "@Space/Padding/SM"
+      ],
+      "Component/Select/Option-Background-Hover": [
+        "C",
+        "@Color/Background/Item-Hover"
+      ],
+      "Component/Select/Option-Background-Selected": [
+        "C",
+        "@Color/Background/Item-Selected"
+      ],
+      "Component/Select/Tag-Background": [
+        "C",
+        "@Color/Fill/Neutral"
+      ],
+      "Component/Select/Tag-Height": [
+        "F",
+        "@Size/Control/SM"
+      ],
+      "Component/Select/Tag-Height-SM": [
+        "F",
+        "@Size/Control/XS"
+      ],
+      "Component/Select/Tag-Height-LG": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Menu/Item-Height": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Menu/Item-Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Menu/Item-Padding-Inline": [
+        "F",
+        "@Space/Padding/MD"
+      ],
+      "Component/Menu/Item-Margin-Inline": [
+        "F",
+        "@Space/Margin/XXS"
+      ],
+      "Component/Menu/Item-Background-Hover": [
+        "C",
+        "@Color/Background/Plain-Hover"
+      ],
+      "Component/Menu/Item-Background-Selected": [
+        "C",
+        "@Color/Background/Item-Selected"
+      ],
+      "Component/Menu/Item-Content-Selected": [
+        "C",
+        "@Color/Content/Accent"
+      ],
+      "Component/Menu/Icon-Size": [
+        "F",
+        "@Typography/Size/LG"
+      ],
+      "Component/Menu/Collapsed-Width": [
+        "F",
+        80
+      ],
+      "Component/Menu/Sub-Background": [
+        "C",
+        "@Color/Fill/Alternate"
+      ],
+      "Component/Menu/Group-Content": [
+        "C",
+        "@Color/Content/Description"
+      ],
+      "Component/Tabs/Gutter": [
+        "F",
+        "@Space/Margin/XL"
+      ],
+      "Component/Tabs/Ink-Bar-Size": [
+        "F",
+        "@Stroke/Width/Strong"
+      ],
+      "Component/Tabs/Card-Height": [
+        "F",
+        "@Size/Control/LG"
+      ],
+      "Component/Tabs/Card-Height-SM": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Tabs/Card-Height-LG": [
+        "F",
+        "@Size/Scale/XXL"
+      ],
+      "Component/Tabs/Card-Background": [
+        "C",
+        "@Color/Fill/Alternate"
+      ],
+      "Component/Tabs/Card-Gap": [
+        "F",
+        2
+      ],
+      "Component/Breadcrumb/Separator-Margin": [
+        "F",
+        "@Space/Margin/XS"
+      ],
+      "Component/Breadcrumb/Content": [
+        "C",
+        "@Color/Content/Description"
+      ],
+      "Component/Breadcrumb/Content-Current": [
+        "C",
+        "@Color/Content/Neutral-Strong"
+      ],
+      "Component/Breadcrumb/Icon-Size": [
+        "F",
+        "@Typography/Size/Base"
+      ],
+      "Component/Pagination/Item-Size": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Pagination/Item-Size-SM": [
+        "F",
+        "@Size/Control/SM"
+      ],
+      "Component/Pagination/Item-Size-LG": [
+        "F",
+        "@Size/Control/LG"
+      ],
+      "Component/Pagination/Item-Radius": [
+        "F",
+        "@Radius/Base"
+      ],
+      "Component/Modal/Width": [
+        "F",
+        520
+      ],
+      "Component/Modal/Padding-Block": [
+        "F",
+        "@Space/Padding/MD"
+      ],
+      "Component/Modal/Padding-Inline": [
+        "F",
+        "@Space/Padding/LG"
+      ],
+      "Component/Modal/Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Modal/Title-Font-Size": [
+        "F",
+        "@Typography/Size/LG"
+      ],
+      "Component/Modal/Mask": [
+        "C",
+        "@Color/Background/Overlay"
+      ],
+      "Component/Drawer/Width": [
+        "F",
+        400
+      ],
+      "Component/Drawer/Padding": [
+        "F",
+        "@Space/Padding/LG"
+      ],
+      "Component/Drawer/Header-Padding-Block": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Drawer/Footer-Padding-Block": [
+        "F",
+        "@Space/Padding/XS"
+      ],
+      "Component/Drawer/Footer-Padding-Inline": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Message/Min-Height": [
+        "F",
+        "@Size/Control/LG"
+      ],
+      "Component/Message/Padding-Inline": [
+        "F",
+        "@Space/Padding/SM"
+      ],
+      "Component/Message/Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Notification/Width": [
+        "F",
+        384
+      ],
+      "Component/Notification/Padding-Block": [
+        "F",
+        "@Space/Padding/MD"
+      ],
+      "Component/Notification/Padding-Inline": [
+        "F",
+        "@Space/Padding/LG"
+      ],
+      "Component/Notification/Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Notification/Icon-Size": [
+        "F",
+        24
+      ],
+      "Component/Avatar/Font-Size": [
+        "F",
+        "@Typography/Size/SM"
+      ],
+      "Component/Skeleton/Background": [
+        "C",
+        "@Color/Fill/Area"
+      ],
+      "Component/Skeleton/Background-Shimmer": [
+        "C",
+        "@Color/Fill/Neutral-Strong"
+      ],
+      "Component/Skeleton/Block-Radius": [
+        "F",
+        "@Radius/SM"
+      ],
+      "Component/Skeleton/Title-Height": [
+        "F",
+        16
+      ],
+      "Component/Skeleton/Paragraph-Height": [
+        "F",
+        16
+      ],
+      "Component/Skeleton/Paragraph-Margin-Top": [
+        "F",
+        28
+      ],
+      "Component/Skeleton/Image-Size": [
+        "F",
+        96
+      ],
+      "Component/Spin/Dot-Size-SM": [
+        "F",
+        "@Typography/Size/Base"
+      ],
+      "Component/Spin/Dot-Size": [
+        "F",
+        "@Typography/Size/XL"
+      ],
+      "Component/Spin/Dot-Size-LG": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Spin/Content-Height": [
+        "F",
+        400
+      ],
+      "Component/Card/Header-Padding-Inline": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Card/Header-Padding-Inline-SM": [
+        "F",
+        "@Space/Padding/SM"
+      ],
+      "Component/Card/Body-Padding": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Card/Body-Padding-SM": [
+        "F",
+        "@Space/Padding/SM"
+      ],
+      "Component/Card/Header-Background": [
+        "C",
+        "@Color/Palette/Transparent"
+      ],
+      "Component/Card/Title-Font-Size": [
+        "F",
+        "@Typography/Size/Base"
+      ],
+      "Component/Card/Actions-Background": [
+        "C",
+        "@Color/Background/Container"
+      ],
+      "Component/Descriptions/Label-Background": [
+        "C",
+        "@Color/Fill/Alternate"
+      ],
+      "Component/Descriptions/Label-Content": [
+        "C",
+        "@Color/Content/Label"
+      ],
+      "Component/Descriptions/Title-Margin-Bottom": [
+        "F",
+        "@Space/Margin/MD"
+      ],
+      "Component/Descriptions/Item-Padding-Bottom": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Descriptions/Item-Padding-End": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Statistic/Content-Font-Size": [
+        "F",
+        "@Typography/Size/Heading-3"
+      ],
+      "Component/Statistic/Title-Font-Size": [
+        "F",
+        "@Typography/Size/Base"
+      ],
+      "Component/Alert/Padding-Block": [
+        "F",
+        "@Space/Padding-Block/Container-SM"
+      ],
+      "Component/Alert/Padding-Inline": [
+        "F",
+        "@Space/Padding/SM"
+      ],
+      "Component/Alert/Padding-Block-Description": [
+        "F",
+        "@Space/Padding/MD"
+      ],
+      "Component/Alert/Padding-Inline-Description": [
+        "F",
+        "@Space/Padding-Inline/Container-LG"
+      ],
+      "Component/Alert/Icon-Size": [
+        "F",
+        "@Typography/Size/LG"
+      ],
+      "Component/Alert/Icon-Size-Description": [
+        "F",
+        "@Typography/Size/Heading-3"
+      ],
+      "Component/Alert/Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Result/Icon-Size": [
+        "F",
+        40
+      ],
+      "Component/Result/Title-Font-Size": [
+        "F",
+        "@Typography/Size/Heading-5"
+      ],
+      "Component/Result/Subtitle-Font-Size": [
+        "F",
+        "@Typography/Size/Base"
+      ],
+      "Component/Result/Content-Padding-Inline": [
+        "F",
+        40
+      ],
+      "Component/Result/Content-Background": [
+        "C",
+        "@Color/Fill/Alternate"
+      ],
+      "Component/Empty/Image-Width": [
+        "F",
+        184
+      ],
+      "Component/Empty/Image-Width-SM": [
+        "F",
+        120
+      ],
+      "Component/Progress/Track": [
+        "C",
+        "@Color/Fill/Neutral"
+      ],
+      "Component/Progress/Fill": [
+        "C",
+        "@Color/Content/Info"
+      ],
+      "Component/Progress/Circle-Text": [
+        "C",
+        "@Color/Content/Neutral-Strong"
+      ],
+      "Component/Progress/Line-Size": [
+        "F",
+        8
+      ],
+      "Component/Progress/Line-Size-SM": [
+        "F",
+        6
+      ],
+      "Component/Progress/Circle-Size": [
+        "F",
+        120
+      ],
+      "Component/Progress/Circle-Size-SM": [
+        "F",
+        80
+      ],
+      "Component/Progress/Step-Width": [
+        "F",
+        32
+      ],
+      "Component/Progress/Step-Width-SM": [
+        "F",
+        2
+      ],
+      "Component/Progress/Steps-Gap": [
+        "F",
+        2
+      ],
+      "Component/Steps/Icon-Size": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Steps/Icon-Size-SM": [
+        "F",
+        "@Typography/Size/Heading-3"
+      ],
+      "Component/Steps/Custom-Icon-Size": [
+        "F",
+        "@Size/Control/SM"
+      ],
+      "Component/Steps/Icon-Font-Size": [
+        "F",
+        "@Typography/Size/Base"
+      ],
+      "Component/Steps/Title-Line-Height": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Steps/Dot-Size": [
+        "F",
+        8
+      ],
+      "Component/Steps/Dot-Size-Current": [
+        "F",
+        10
+      ],
+      "Component/Steps/Description-Max-Width": [
+        "F",
+        140
+      ],
+      "Component/Steps/Nav-Arrow": [
+        "C",
+        "@Color/Content/Disabled"
+      ],
+      "Component/Steps/Panel-Arrow-Width": [
+        "F",
+        56
+      ],
+      "Component/Timeline/Tail": [
+        "C",
+        "@Color/Border/Neutral-Faded"
+      ],
+      "Component/Timeline/Tail-Width": [
+        "F",
+        "@Stroke/Width/Strong"
+      ],
+      "Component/Timeline/Dot-Background": [
+        "C",
+        "@Color/Background/Container"
+      ],
+      "Component/Timeline/Item-Padding-Bottom": [
+        "F",
+        "@Space/Padding/MD"
+      ],
+      "Component/Timeline/Dot-Size": [
+        "F",
+        10
+      ],
+      "Component/Table/Header-Background": [
+        "C",
+        "@Color/Fill/Alternate"
+      ],
+      "Component/Table/Header-Background-Sorted": [
+        "C",
+        "@Color/Fill/Neutral"
+      ],
+      "Component/Table/Border": [
+        "C",
+        "@Color/Border/Neutral-Light"
+      ],
+      "Component/Table/Row-Background-Hover": [
+        "C",
+        "@Color/Background/Alternate"
+      ],
+      "Component/Table/Row-Background-Selected": [
+        "C",
+        "@Color/Background/Item-Selected"
+      ],
+      "Component/Table/Row-Background-Selected-Hover": [
+        "C",
+        "@Color/Background/Item-Selected-Hover"
+      ],
+      "Component/Table/Row-Background-Expanded": [
+        "C",
+        "@Color/Fill/Alternate"
+      ],
+      "Component/Table/Cell-Background-Sorted": [
+        "C",
+        "@Color/Background/Alternate"
+      ],
+      "Component/Table/Cell-Padding-Block": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Table/Cell-Padding-Block-MD": [
+        "F",
+        "@Space/Padding/SM"
+      ],
+      "Component/Table/Cell-Padding-Block-SM": [
+        "F",
+        "@Space/Padding/XS"
+      ],
+      "Component/Table/Cell-Padding-Inline": [
+        "F",
+        "@Space/Padding/Base"
+      ],
+      "Component/Table/Cell-Padding-Inline-SM": [
+        "F",
+        "@Space/Padding/XS"
+      ],
+      "Component/Table/Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Cascader/Menu-Height": [
+        "F",
+        180
+      ],
+      "Component/Cascader/Column-Width": [
+        "F",
+        120
+      ],
+      "Component/Cascader/Menu-Padding": [
+        "F",
+        "@Space/Padding/XXS"
+      ],
+      "Component/Cascader/Menu-Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Cascader/Option-Height": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Cascader/Option-Padding-Inline": [
+        "F",
+        "@Space/Padding-Inline/Control"
+      ],
+      "Component/Cascader/Option-Background-Hover": [
+        "C",
+        "@Color/Background/Item-Hover"
+      ],
+      "Component/Cascader/Option-Background-Selected": [
+        "C",
+        "@Color/Background/Item-Selected"
+      ],
+      "Component/Cascader/Option-Content-Selected": [
+        "C",
+        "@Color/Content/Neutral-Strong"
+      ],
+      "Component/AutoComplete/Option-Height": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/AutoComplete/Option-Font-Size": [
+        "F",
+        "@Typography/Size/Base"
+      ],
+      "Component/AutoComplete/Option-Background-Hover": [
+        "C",
+        "@Color/Background/Item-Hover"
+      ],
+      "Component/AutoComplete/Option-Padding-Inline": [
+        "F",
+        "@Space/Padding/SM"
+      ],
+      "Component/AutoComplete/Group-Indent": [
+        "F",
+        "@Space/Padding/LG"
+      ],
+      "Component/AutoComplete/Menu-Padding": [
+        "F",
+        "@Space/Padding/XXS"
+      ],
+      "Component/AutoComplete/Menu-Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/Transfer/List-Width": [
+        "F",
+        180
+      ],
+      "Component/Transfer/List-Height": [
+        "F",
+        200
+      ],
+      "Component/Transfer/Item-Height": [
+        "F",
+        "@Size/Control/Base"
+      ],
+      "Component/Transfer/Header-Height": [
+        "F",
+        "@Size/Control/LG"
+      ],
+      "Component/Upload/Picture-Card-Size": [
+        "F",
+        104
+      ],
+      "Component/Upload/Actions-Content": [
+        "C",
+        "@Color/Content/Icon"
+      ],
+      "Component/Upload/Dragger-Background": [
+        "C",
+        "@Color/Fill/Alternate"
+      ],
+      "Component/Slider/Rail-Size": [
+        "F",
+        4
+      ],
+      "Component/Slider/Handle-Size": [
+        "F",
+        10
+      ],
+      "Component/Slider/Handle-Size-Hover": [
+        "F",
+        12
+      ],
+      "Component/Slider/Dot-Size": [
+        "F",
+        8
+      ],
+      "Component/Slider/Rail-Background": [
+        "C",
+        "@Color/Border/Neutral-Faded"
+      ],
+      "Component/Slider/Track-Background": [
+        "C",
+        "@Color/Solid/Accent"
+      ],
+      "Component/Slider/Track-Background-Disabled": [
+        "C",
+        "@Color/Background/Container-Disabled"
+      ],
+      "Component/Slider/Handle-Color": [
+        "C",
+        "@Color/Solid/Accent"
+      ],
+      "Component/Slider/Handle-Color-Disabled": [
+        "C",
+        "@Color/Content/Disabled"
+      ],
+      "Component/Slider/Dot-Border": [
+        "C",
+        "@Color/Border/Neutral"
+      ],
+      "Component/Slider/Dot-Border-Active": [
+        "C",
+        "@Color/Solid/Accent"
+      ],
+      "Component/Segmented/Track-Background": [
+        "C",
+        "@Color/Background/Layout"
+      ],
+      "Component/Segmented/Track-Padding": [
+        "F",
+        "@Stroke/Width/Strong"
+      ],
+      "Component/Segmented/Item-Content": [
+        "C",
+        "@Color/Content/Label"
+      ],
+      "Component/Segmented/Item-Content-Selected": [
+        "C",
+        "@Color/Content/Neutral-Strong"
+      ],
+      "Component/Segmented/Item-Background-Hover": [
+        "C",
+        "@Color/Fill/Neutral"
+      ],
+      "Component/Segmented/Item-Background-Active": [
+        "C",
+        "@Color/Fill/Neutral-Strong"
+      ],
+      "Component/Segmented/Item-Background-Selected": [
+        "C",
+        "@Color/Background/Elevated"
+      ],
+      "Component/Segmented/Item-Border-Selected": [
+        "C",
+        "@Color/Border/Control"
+      ],
+      "Component/Collapse/Header-Background": [
+        "C",
+        "@Color/Fill/Alternate"
+      ],
+      "Component/Collapse/Content-Background": [
+        "C",
+        "@Color/Background/Container"
+      ],
+      "Component/Collapse/Content-Background-Borderless": [
+        "C",
+        "@Color/Palette/Transparent"
+      ],
+      "Component/Tree/Title-Height": [
+        "F",
+        "@Size/Control/SM"
+      ],
+      "Component/Tree/Indent-Size": [
+        "F",
+        "@Size/Control/SM"
+      ],
+      "Component/Tree/Node-Background-Hover": [
+        "C",
+        "@Color/Background/Item-Hover"
+      ],
+      "Component/Tree/Node-Background-Selected": [
+        "C",
+        "@Color/Background/Item-Selected"
+      ],
+      "Component/Tree/Node-Content-Hover": [
+        "C",
+        "@Color/Content/Neutral-Strong"
+      ],
+      "Component/Tree/Node-Content-Selected": [
+        "C",
+        "@Color/Content/Neutral-Strong"
+      ],
+      "Component/Tree/Directory-Background-Selected": [
+        "C",
+        "@Color/Solid/Accent"
+      ],
+      "Component/Tree/Directory-Content-Selected": [
+        "C",
+        "@Color/Content/On-Solid"
+      ],
+      "Component/TreeSelect/Title-Height": [
+        "F",
+        "@Size/Control/SM"
+      ],
+      "Component/TreeSelect/Node-Background-Hover": [
+        "C",
+        "@Color/Background/Item-Hover"
+      ],
+      "Component/TreeSelect/Node-Background-Selected": [
+        "C",
+        "@Color/Background/Item-Selected"
+      ],
+      "Component/TreeSelect/Menu-Padding": [
+        "F",
+        "@Space/Padding/XXS"
+      ],
+      "Component/TreeSelect/Menu-Radius": [
+        "F",
+        "@Radius/LG"
+      ],
+      "Component/TimePicker/Column-Width": [
+        "F",
+        56
+      ],
+      "Component/TimePicker/Column-Height": [
+        "F",
+        224
+      ],
+      "Component/TimePicker/Cell-Height": [
+        "F",
+        28
+      ],
+      "Component/TimePicker/Cell-Background-Hover": [
+        "C",
+        "@Color/Background/Item-Hover"
+      ],
+      "Component/TimePicker/Cell-Background-Selected": [
+        "C",
+        "@Color/Background/Item-Selected"
+      ],
+      "Component/Form/Label-Color": [
+        "C",
+        "@Color/Content/Heading"
+      ],
+      "Component/Form/Required-Mark-Color": [
+        "C",
+        "@Color/Content/Danger"
+      ],
+      "Component/Form/Item-Margin-Bottom": [
+        "F",
+        "@Space/Margin/Base"
+      ],
+      "Component/Form/Label-Gap": [
+        "F",
+        "@Space/Margin/XS"
+      ],
+      "Component/Form/Label-Width": [
+        "F",
+        120
+      ],
+      "Component/InputNumber/Width": [
+        "F",
+        92
+      ],
+      "Component/InputNumber/Handle-Width": [
+        "F",
+        "@Size/Control/SM"
+      ],
+      "Component/InputNumber/Handle-Background": [
+        "C",
+        "@Color/Background/Container"
+      ],
+      "Component/InputNumber/Handle-Background-Active": [
+        "C",
+        "@Color/Fill/Alternate"
+      ],
+      "Component/InputNumber/Handle-Background-Filled": [
+        "C",
+        "@Color/Background/Handle"
+      ],
+      "Component/InputNumber/Handle-Border": [
+        "C",
+        "@Color/Border/Neutral"
+      ],
+      "Component/InputNumber/Handle-Content-Hover": [
+        "C",
+        "@Color/Solid/Accent"
+      ],
+      "Component/DatePicker/Cell-Width": [
+        "F",
+        36
+      ],
+      "Component/DatePicker/Cell-Height": [
+        "F",
+        "@Size/Control/SM"
+      ],
+      "Component/DatePicker/Cell-Background-Hover": [
+        "C",
+        "@Color/Background/Item-Hover"
+      ],
+      "Component/DatePicker/Cell-Background-Range": [
+        "C",
+        "@Color/Background/Item-Selected"
+      ],
+      "Component/DatePicker/Cell-Background-Range-Hover": [
+        "C",
+        "@Color/Background/Accent-Faded-Hover"
+      ],
+      "Component/DatePicker/Cell-Background-Disabled": [
+        "C",
+        "@Color/Background/Container-Disabled"
+      ],
+      "Component/DatePicker/Header-Height": [
+        "F",
+        "@Size/Control/LG"
+      ],
+      "Component/DatePicker/Presets-Width": [
+        "F",
+        120
+      ],
+      "Component/DatePicker/Period-Row-Height": [
+        "F",
+        64
+      ],
+      "Component/Calendar/Background": [
+        "C",
+        "@Color/Background/Container"
+      ],
+      "Component/Calendar/Year-Control-Width": [
+        "F",
+        80
+      ],
+      "Component/Calendar/Month-Control-Width": [
+        "F",
+        96
+      ],
+      "Component/Calendar/Item-Background-Selected": [
+        "C",
+        "@Color/Background/Item-Selected"
+      ],
+      "Component/Calendar/Mini-Content-Height": [
+        "F",
+        256
+      ],
+      "Component/Calendar/Full-Cell-Height": [
+        "F",
+        88
+      ]
+    }
+  },
+  "effects": {
+    "modes": [
+      "value"
+    ],
+    "vars": {
+      "Shadow/Base": [
+        "E",
+        "0px 6px 16px 0px rgba(0, 0, 0, 0.08), 0px 3px 6px -4px rgba(0, 0, 0, 0.12), 0px 9px 28px 8px rgba(0, 0, 0, 0.05)"
+      ],
+      "Shadow/Light": [
+        "E",
+        "0px 1px 2px 0px rgba(0, 0, 0, 0.03), 0px 1px 6px -1px rgba(0, 0, 0, 0.02), 0px 2px 4px 0px rgba(0, 0, 0, 0.02)"
+      ]
+    }
+  }
+}

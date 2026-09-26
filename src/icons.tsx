@@ -14,9 +14,9 @@
  * same component shape (`size`/`color` + standard SVG props), so this was a
  * drop-in swap with no call-site changes anywhere else in the project.
  *
- * Untitled UI icons default to 24px. Ant Design sizes its own icons at `1em`,
- * so every icon here is wrapped to default to 16px instead, which is the size
- * the Figma components use inside controls. Pass `size` to override.
+ * Untitled UI icons default to 24px; every icon here is wrapped to default to
+ * 16px instead, which is the size the Figma components use inside controls.
+ * Pass `size` to override.
  */
 import type { FC, SVGProps } from 'react'
 import * as UI from '@untitledui-pro/icons/line'
@@ -25,16 +25,11 @@ export type IconProps = SVGProps<SVGSVGElement> & { size?: number; color?: strin
 
 function sized(Cmp: FC<IconProps>, defaultSize = 16): FC<IconProps> {
   return function Icon({ size = defaultSize, className, ...rest }: IconProps) {
-    // Untitled UI renders a bare <svg> with no wrapper span, so it keeps the
-    // browser default `display: inline; vertical-align: baseline`. Sitting
-    // next to anything else inline (Avatar, text, another icon) inside a
-    // block-level container — `.ant-space-item` is `display: block`, not
-    // flex — that baseline sits a few px above true vertical center. The
-    // `.fabi-icon` class makes every icon `display: block` (see index.css).
-    // It must stay a zero-specificity class, never an inline style: Ant
-    // Design's own `> svg` rules (Tag, Breadcrumb, Collapse, Segmented, Tabs)
-    // switch a bare svg back to inline-block, and an inline `display: block`
-    // overrode them — which dropped Tag's close icon onto its own line.
+    // Untitled UI renders a bare <svg>, which keeps the browser default
+    // `display: inline; vertical-align: baseline` and sits a few px above
+    // true centre next to text. The `.fabi-icon` class makes every icon
+    // `display: block` (see index.css). It stays a zero-specificity class,
+    // never an inline style, so a component can still set its own display.
     return <Cmp size={size} className={className ? `fabi-icon ${className}` : 'fabi-icon'} {...rest} />
   }
 }
@@ -73,8 +68,7 @@ export const HelpCircle = sized(UI.HelpCircle)
 export const Heart = sized(UI.Heart)
 export const Share01 = sized(UI.Share01)
 
-// Icons Ant Design renders inside its own components. Overridden per component
-// through ConfigProvider so the internal chrome matches the Figma icon set too.
+// Control chrome: check marks, close / clear, calendar, clock, spinners, status.
 export const Check = sized(UI.Check, 14)
 export const XClose = sized(UI.XClose, 12)
 export const Calendar = sized(UI.Calendar, 14)
@@ -101,8 +95,70 @@ export const Mail01 = sized(UI.Mail01)
 export const File06 = sized(UI.File06)
 export const CheckCircleBroken = sized(UI.CheckCircleBroken)
 
-// More Ant Design internal-chrome overrides (Menu submenu arrow, Modal/
-// Drawer/Notification/Tag close buttons, Tabs, Breadcrumb, password toggle).
+// More control chrome: password toggle, overflow menus, close buttons.
 export const EyeOff = sized(UI.EyeOff)
 export const DotsHorizontal = sized(UI.DotsHorizontal)
 export const X = sized(UI.X)
+
+// fc components (waves 3–5): overlays, navigation, data display, data entry.
+export const ChevronLeft = sized(UI.ChevronLeft, 12)
+export const ChevronUp = sized(UI.ChevronUp, 12)
+export const ChevronLeftDouble = sized(UI.ChevronLeftDouble, 12)
+export const ChevronRightDouble = sized(UI.ChevronRightDouble, 12)
+export const ChevronSelectorVertical = sized(UI.ChevronSelectorVertical, 12)
+export const ArrowDown = sized(UI.ArrowDown, 12)
+export const ArrowLeft = sized(UI.ArrowLeft)
+export const ArrowRight = sized(UI.ArrowRight)
+export const DotsVertical = sized(UI.DotsVertical)
+export const Minus = sized(UI.Minus)
+export const Copy01 = sized(UI.Copy01)
+export const Save01 = sized(UI.Save01)
+export const Send01 = sized(UI.Send01)
+export const Download01 = sized(UI.Download01)
+export const RefreshCw01 = sized(UI.RefreshCw01)
+export const FilterLines = sized(UI.FilterLines)
+export const Link01 = sized(UI.Link01)
+export const LogOut01 = sized(UI.LogOut01)
+export const Lock01 = sized(UI.Lock01)
+export const Phone = sized(UI.Phone)
+export const Receipt = sized(UI.Receipt)
+export const BarChart01 = sized(UI.BarChart01)
+export const File02 = sized(UI.File02)
+export const Image01 = sized(UI.Image01)
+export const Package = sized(UI.Package)
+export const Truck01 = sized(UI.Truck01)
+export const Gift01 = sized(UI.Gift01)
+export const Coins01 = sized(UI.Coins01)
+export const Wallet02 = sized(UI.Wallet02)
+export const CreditCard01 = sized(UI.CreditCard01)
+export const Globe01 = sized(UI.Globe01)
+export const Map01 = sized(UI.Map01)
+export const Hash01 = sized(UI.Hash01)
+export const List = sized(UI.List)
+export const LayoutGrid01 = sized(UI.LayoutGrid01)
+export const ClockRewind = sized(UI.ClockRewind)
+export const Sun = sized(UI.Sun)
+export const Moon01 = sized(UI.Moon01)
+// Image preview toolbar.
+export const ZoomIn = sized(UI.ZoomIn)
+export const ZoomOut = sized(UI.ZoomOut)
+export const RefreshCcw01 = sized(UI.RefreshCcw01)
+export const SwitchHorizontal01 = sized(UI.SwitchHorizontal01)
+export const SwitchVertical01 = sized(UI.SwitchVertical01)
+// App shell (header, sidebar) and Search Modal.
+export const Menu01 = sized(UI.Menu01)
+export const LayoutAlt02 = sized(UI.LayoutAlt02)
+export const ArrowNarrowLeft = sized(UI.ArrowNarrowLeft)
+export const CornerDownLeft = sized(UI.CornerDownLeft)
+export const SearchSm = sized(UI.SearchSm)
+export const Bell02 = sized(UI.Bell02)
+export const Settings02 = sized(UI.Settings02)
+export const FaceSmile = sized(UI.FaceSmile)
+export const FilterFunnel01 = sized(UI.FilterFunnel01, 12)
+export const Inbox01 = sized(UI.Inbox01)
+export const ImagePlus = sized(UI.ImagePlus)
+export const Paperclip = sized(UI.Paperclip)
+export const FaceFrown = sized(UI.FaceFrown)
+export const Folder = sized(UI.Folder)
+export const MinusSquare = sized(UI.MinusSquare)
+export const PlusSquare = sized(UI.PlusSquare)

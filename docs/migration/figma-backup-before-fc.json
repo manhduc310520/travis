@@ -1,0 +1,42 @@
+{
+  "note": "Backup taken 2026-09-26 before the fc rename (phase 1). Renames are reversible from fc-rename-map.json (new names are unique). This file keeps what the rename map cannot restore: collection names, deleted variables, and cleared descriptions. codeSyntax was empty on every variable in collections 1-4.",
+  "file": "hneVCBNUiPizVorg7Jp18G",
+  "collections": [
+    { "id": "VariableCollectionId:27919:13", "name": "1. Brand" },
+    { "id": "VariableCollectionId:5006:35", "name": "2. Colors" },
+    { "id": "VariableCollectionId:5006:1885", "name": "3. Dimensions" },
+    { "id": "VariableCollectionId:5006:3735", "name": "4. Typography" },
+    { "id": "VariableCollectionId:5009:34", "name": "5. Components" }
+  ],
+  "deleted": {
+    "Colors/Base/Pink/1..10": {
+      "note": "Identical values to Colors/Base/Magenta/1..10 in both modes; hidden from publishing; scopes ALL_SCOPES; no variable aliased them.",
+      "ids": ["VariableID:19184:27635", "VariableID:19184:27636", "VariableID:19184:27637", "VariableID:19184:27638", "VariableID:19184:27639", "VariableID:19184:27640", "VariableID:19184:27641", "VariableID:19184:27642", "VariableID:19184:27643", "VariableID:19184:27644"],
+      "light": ["#fff0f6", "#ffd6e7", "#ffadd2", "#ff85c0", "#f759ab", "#eb2f96", "#c41d7f", "#9e1068", "#780650", "#520339"],
+      "dark": ["#291321", "#40162f", "#551c3b", "#75204f", "#a02669", "#cb2b83", "#e0529c", "#f37fb7", "#f8a8cc", "#fad2e3"]
+    },
+    "Color": {
+      "id": "VariableID:27239:36094",
+      "collection": "2. Colors",
+      "type": "COLOR",
+      "scopes": ["ALL_SCOPES"],
+      "hiddenFromPublishing": false,
+      "values": {
+        "Light": { "alias": "VariableID:27239:36056", "aliasName": "Components/Input/Global/colorTextPlaceholderDefault" },
+        "Dark": { "alias": "VariableID:27239:36056", "aliasName": "Components/Input/Global/colorTextPlaceholderDefault" }
+      }
+    }
+  },
+  "clearedDescriptions": [
+    {
+      "id": "VariableID:5006:3934",
+      "name": "Typography/Font Family/fontFamily",
+      "description": "In Figma, we use &quot;SF Pro Text&quot; as a default font family. Ant Design of React uses system font family &quot;-apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, &#39;Helvetica Neue&#39;, Arial, &#39;Noto Sans&#39;, sans-serif, &#39;Apple Color Emoji&#39;, &#39;Segoe UI Emoji&#39;, &#39;Segoe UI Symbol&#39;, &#39;Noto Color Emoji&#39;&quot;."
+    },
+    {
+      "id": "VariableID:5006:3936",
+      "name": "Typography/Font Family/fontFamilyCode",
+      "description": "In Figma, we use &quot;Courier Prime&quot; as a default code font family. Ant Design of React uses system font family &quot;&#39;SFMono-Regular&#39;, Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace&#39;&quot;."
+    }
+  ]
+}

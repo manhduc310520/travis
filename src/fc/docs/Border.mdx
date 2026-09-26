@@ -1,0 +1,19 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as BorderStories from './Border.stories'
+
+<Meta of={BorderStories} />
+
+# Viền và bo góc
+
+Biến trong Figma collection `3. Dimensions`. Màu viền nằm ở trang **Màu** (`Color/Border`).
+
+## Độ dày nét — `Stroke/Width`
+
+<Canvas of={BorderStories.StrokeWidth} />
+
+## Bo góc — `Radius`
+
+`base` cho control (nút, ô nhập), `lg` cho bề mặt (card, modal), `sm` cho tag,
+tooltip, popover. Không trộn nhiều bán kính trên các phần tử kề nhau.
+
+<Canvas of={BorderStories.Radius} />

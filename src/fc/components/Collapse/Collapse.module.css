@@ -1,0 +1,163 @@
+/*
+ * Figma "❖ Collapse". Header / content backgrounds come from Component/Collapse/*,
+ * paddings from the space scale (Figma binds them to padding XS / SM / Base / LG).
+ * React Aria sets data-expanded, data-disabled, data-focus-visible-within on
+ * each item (Disclosure) and data-focus-visible on the header button.
+ *
+ * Variant rules use child combinators (`.outlined > .item`) and size values are
+ * custom properties every root re-declares, so a Collapse nested in a panel
+ * keeps its own look.
+ *
+ * The header button's ::after covers the whole header row, so the row is one
+ * pointer target; `.extra` sits above it (z-index) and stays independent.
+ */
+.collapse {
+  --_pad-block: var(--fc-space-padding-sm);
+  --_pad-end: var(--fc-space-padding-base);
+  --_content-pad: var(--fc-space-padding-base);
+  --_font-size: var(--fc-typography-size-base);
+  --_line-height: var(--fc-typography-line-height-base);
+  --_border: var(--fc-color-border-neutral);
+  --_inner-radius: calc(var(--fc-radius-lg) - var(--fc-stroke-width-base));
+
+  min-width: 0;
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--_font-size);
+  line-height: var(--_line-height);
+}
+
+/* ---------- sizes (Figma Size: Small / Default / Large) ---------- */
+.sm {
+  --_pad-block: var(--fc-space-padding-xs);
+  --_pad-end: var(--fc-space-padding-sm);
+  --_content-pad: var(--fc-space-padding-sm);
+}
+.lg {
+  --_pad-block: var(--fc-space-padding-base);
+  --_pad-end: var(--fc-space-padding-lg);
+  --_content-pad: var(--fc-space-padding-lg);
+  --_font-size: var(--fc-typography-size-lg);
+  --_line-height: var(--fc-typography-line-height-lg);
+}
+
+/* ---------- variants (Figma Type) ---------- */
+.outlined {
+  border: var(--fc-stroke-width-base) solid var(--_border);
+  border-radius: var(--fc-radius-lg);
+  background: var(--fc-color-background-container);
+}
+.borderless {
+  border-radius: var(--fc-radius-lg);
+  background: var(--fc-component-collapse-header-background);
+}
+
+.outlined > .item:not(:last-child),
+.borderless > .item:not(:last-child) {
+  border-bottom: var(--fc-stroke-width-base) solid var(--_border);
+}
+
+/* ---------- header ---------- */
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-sm);
+  padding: var(--_pad-block) var(--_pad-end) var(--_pad-block) var(--_pad-block);
+  color: var(--fc-color-content-heading);
+}
+.outlined > .item > .header { background: var(--fc-component-collapse-header-background); }
+.outlined > .item:first-child > .header {
+  border-start-start-radius: var(--_inner-radius);
+  border-start-end-radius: var(--_inner-radius);
+}
+.outlined > .item:last-child:not([data-expanded]) > .header {
+  border-end-start-radius: var(--_inner-radius);
+  border-end-end-radius: var(--_inner-radius);
+}
+.item[data-disabled] > .header { color: var(--fc-color-content-disabled); }
+
+.title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  border-radius: inherit;
+  color: inherit;
+  font: inherit;
+}
+
+.trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  outline: none;
+}
+.trigger::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.trigger[data-focus-visible]::after {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+.trigger[data-disabled] { cursor: not-allowed; }
+
+/* Figma chevron: 12px, points right; turns down when open. */
+.arrow {
+  display: inline-flex;
+  flex: none;
+}
+.arrow svg {
+  width: var(--fc-typography-size-icon);
+  height: var(--fc-typography-size-icon);
+}
+.chevron { transition: transform 0.2s; }
+.item[data-expanded] > .header > .chevron { transform: rotate(90deg); }
+
+/* Figma `Extra Node`: above the header's pointer target. */
+.extra {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+}
+
+/* ---------- panel ---------- */
+.panel {
+  height: var(--disclosure-panel-height);
+  overflow: clip;
+  transition: height 0.2s ease-in-out;
+}
+.content { padding: var(--_content-pad); }
+
+.outlined > .item > .panel { background: var(--fc-component-collapse-content-background); }
+.outlined > .item > .panel > .content { border-top: var(--fc-stroke-width-base) solid var(--_border); }
+.outlined > .item:last-child > .panel {
+  border-end-start-radius: var(--_inner-radius);
+  border-end-end-radius: var(--_inner-radius);
+}
+
+/* Borderless: transparent content, tucked under its header and indented (Figma 4px top, +24px start). */
+.borderless > .item > .panel { background: var(--fc-component-collapse-content-background-borderless); }
+.borderless > .item > .panel > .content {
+  padding-block-start: var(--fc-space-padding-xxs);
+  padding-inline-start: calc(var(--_content-pad) + var(--fc-space-padding-lg));
+}
+
+/* Ghost: no border, no fill; 12px above and below the content in every size (Figma). */
+.ghost > .item > .panel > .content { padding-block: var(--fc-space-padding-sm); }
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .chevron { transition: none; }
+}

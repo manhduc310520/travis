@@ -1,0 +1,286 @@
+/*
+ * Figma "❖ Tree" (Tree / Tree Item). A row is Component/Tree/Title-Height
+ * (24, legacy titleHeight = Size/Control/SM) tall:
+ *   indent columns   Component/Tree/Indent-Size (24) each, one per level
+ *   [holder]         24, Draggable only (Figma Holder Icon, 14px dots)
+ *   switcher         24 with a 12px chevron (± squares with lines); leaves keep the gap
+ *   [checkbox]       16 + Space/Padding/XS (Figma Checkbox Wrapper)
+ *   [icon]           16 + Space/Padding/XS
+ *   title            fills the row: padding-inline Space/Padding/XXS,
+ *                    Radius/Base, one line of Typography/Line-Height/Base
+ *                    (22 — Figma leaves 1px of air above and below)
+ * Hover tints the title (Component/Tree/Node-Background-Hover), selected
+ * uses Node-Background-Selected; the text keeps Content/Neutral-Strong
+ * (Node-Content-Hover / -Selected) — no weight change. Directory style tints
+ * the whole row, selected = Solid/Accent + On-Solid (Component/Tree/Directory-*).
+ * Guide lines: Color/Border/Neutral (decorative).
+ *
+ * React Aria renders nested rows as siblings and sets data-level,
+ * data-expanded, data-has-child-items, data-selected, data-hovered,
+ * data-focus-visible, data-disabled, data-dragging, data-drop-target on
+ * each row; drop indicators carry --tree-item-level.
+ */
+.tree {
+  --_row-h: var(--fc-component-tree-title-height);
+  --_indent: var(--fc-component-tree-indent-size);
+  --_bg-hover: var(--fc-component-tree-node-background-hover);
+  --_bg-selected: var(--fc-component-tree-node-background-selected);
+  --_fg-hover: var(--fc-component-tree-node-content-hover);
+  --_fg-selected: var(--fc-component-tree-node-content-selected);
+  --_line: var(--fc-color-border-neutral);
+  /* What sits between the indent and the title: the switcher (+ the holder when draggable). */
+  --_lead: var(--_row-h);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: auto;
+  color: var(--fc-color-content-neutral-strong);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  outline: none;
+}
+.tree[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+.draggable { --_lead: calc(var(--_row-h) * 2); }
+
+/* ---------- row ---------- */
+.row {
+  --_fg: var(--fc-color-content-neutral-strong);
+  --_title-bg: transparent;
+  --_row-bg: transparent;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: var(--_row-h);
+  border-radius: var(--fc-radius-base);
+  background: var(--_row-bg);
+  color: var(--_fg);
+  outline: none;
+  cursor: default;
+  transition: background-color 0.2s;
+}
+.row[data-hovered] {
+  --_title-bg: var(--_bg-hover);
+  --_fg: var(--_fg-hover);
+  cursor: pointer;
+}
+.tree:not(.checkable) .row[data-selected] {
+  --_title-bg: var(--_bg-selected);
+  --_fg: var(--_fg-selected);
+}
+.tree:not(.checkable) .row[data-selected][data-hovered] {
+  --_title-bg: var(--fc-color-background-item-selected-hover);
+}
+.row[data-focus-visible] .title {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+.row[data-disabled] {
+  --_title-bg: transparent;
+  --_fg: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.draggable .row:not([data-disabled]) { cursor: grab; }
+.row[data-dragging] { opacity: 0.5; }
+
+/* Drop onto a node: tinted title with an accent frame. */
+.row[data-drop-target] { --_title-bg: var(--fc-color-background-accent-faded); }
+.row[data-drop-target] .title {
+  box-shadow: inset 0 0 0 var(--fc-stroke-width-base) var(--fc-color-solid-accent);
+}
+
+/* ---------- indent and guide lines ---------- */
+.indent {
+  position: relative;
+  flex: none;
+  align-self: stretch;
+  width: var(--_indent);
+}
+/* Vertical line under the ancestor's switcher; the last child stops half-way (└). */
+.rail::before,
+.railEnd::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  inset-inline-start: calc(50% - var(--fc-stroke-width-base) / 2);
+  border-inline-start: var(--fc-stroke-width-base) solid var(--_line);
+}
+.railEnd::before { bottom: 50%; }
+
+/* ---------- switcher (expand / collapse) ---------- */
+.switcher {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+  width: var(--_row-h);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
+.switcher svg { display: block; }
+.leaf { cursor: inherit; }
+.row[data-disabled] .switcher { cursor: not-allowed; }
+/* Figma "Leaf Line": from the parent's line across the empty switcher to the title. */
+.leafLine::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  inset-inline-start: calc(var(--_indent) / -2);
+  inset-inline-end: 0;
+  border-top: var(--fc-stroke-width-base) solid var(--_line);
+}
+
+.chevron { transition: transform 0.2s; }
+.row:not([data-expanded]) .chevron { transform: rotate(-90deg); }
+.row:not([data-expanded]) .chevron:dir(rtl) { transform: rotate(90deg); }
+
+/* ---------- holder (draggable) ---------- */
+.handle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  align-self: stretch;
+  justify-content: center;
+  width: var(--_row-h);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  /* Figma binds the holder to colorText: it follows the row text (disabled included). */
+  color: inherit;
+  outline: none;
+}
+.handle svg {
+  display: block;
+  width: var(--fc-typography-size-base);
+  height: var(--fc-typography-size-base);
+}
+.handle[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+  border-radius: var(--fc-radius-base);
+}
+
+/* ---------- checkbox, icon, title ---------- */
+.check {
+  display: inline-flex;
+  flex: none;
+  padding-inline-end: var(--fc-space-padding-xs);
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  padding-inline-end: var(--fc-space-padding-xs);
+  color: inherit;
+}
+.icon svg {
+  display: block;
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--fc-typography-line-height-base);
+  padding-inline: var(--fc-space-padding-xxs);
+  border-radius: var(--fc-radius-base);
+  background: var(--_title-bg);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+/* Search match: accent + underline (colour is never the only cue). */
+.mark {
+  background: transparent;
+  color: var(--fc-color-content-accent);
+  text-decoration: underline;
+}
+
+/* ---------- directory style: the whole row reacts ---------- */
+.tree.directory .row { --_title-bg: transparent; }
+.tree.directory .row[data-hovered] { --_row-bg: var(--_bg-hover); }
+.tree.directory .row[data-selected],
+.tree.directory .row[data-selected][data-hovered] {
+  /* Solid/Accent stays on hover: On-Solid text keeps 4.5:1 (Accent-Hover would not). */
+  --_row-bg: var(--fc-component-tree-directory-background-selected);
+  --_fg: var(--fc-component-tree-directory-content-selected);
+  --_title-bg: transparent;
+}
+.tree.directory .row[data-selected] .mark { color: inherit; }
+.tree.directory .row[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+.tree.directory .row[data-selected][data-focus-visible] { outline-color: var(--fc-component-tree-directory-content-selected); }
+.tree.directory .row[data-focus-visible] .title { outline: none; }
+
+/* ---------- drop indicator (between rows) ---------- */
+.dropIndicator {
+  position: relative;
+  height: 0;
+  outline: none;
+}
+.dropIndicator[data-drop-target]::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: calc(var(--fc-stroke-width-strong) / -2);
+  inset-inline-start: calc((var(--tree-item-level) - 1) * var(--_indent) + var(--_lead));
+  inset-inline-end: 0;
+  height: var(--fc-stroke-width-strong);
+  background: var(--fc-color-solid-accent);
+}
+/* A ring marks where the line starts, i.e. the level the node will land on. */
+.dropIndicator[data-drop-target]::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: calc(var(--fc-space-margin-xs) / -2);
+  inset-inline-start: calc((var(--tree-item-level) - 1) * var(--_indent) + var(--_lead) - var(--fc-space-margin-xs));
+  box-sizing: border-box;
+  width: var(--fc-space-margin-xs);
+  height: var(--fc-space-margin-xs);
+  border: var(--fc-stroke-width-strong) solid var(--fc-color-solid-accent);
+  border-radius: 50%;
+  background: var(--fc-color-background-container);
+}
+
+/* ---------- async load row, empty ---------- */
+.loader {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  min-height: var(--_row-h);
+  padding-inline-start: calc(var(--_depth) * var(--_indent) + var(--_lead) + var(--fc-space-padding-xxs));
+  color: var(--fc-color-content-description);
+}
+.loader .loaderSpin { padding: 0; }
+
+.empty {
+  display: flex;
+  justify-content: center;
+  padding-block: var(--fc-space-padding-xs);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row,
+  .title,
+  .chevron { transition: none; }
+}

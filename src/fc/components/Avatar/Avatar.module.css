@@ -1,0 +1,68 @@
+/*
+ * Sizes come from Component/Avatar/*: 24 / 32 / 40 (= the control heights).
+ * Figma: text is 12px at every size; the icon is 14 / 18 / 24, and half the
+ * box for a Custom size. Square avatars use
+ * the control radius of their size. Fallback colours: neutral fill, or a
+ * palette hue (step 1 background, strong-step text — palette.module.css).
+ */
+.avatar {
+  --_size: var(--fc-component-avatar-size);
+  --_bg: var(--fc-component-avatar-background-default);
+  --_fg: var(--fc-component-avatar-content-default);
+  --_icon: var(--fc-component-avatar-icon-size);
+
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--_size);
+  height: var(--_size);
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--_bg);
+  color: var(--_fg);
+  font-size: var(--fc-component-avatar-font-size);
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.sm { --_size: var(--fc-component-avatar-size-sm); --_icon: var(--fc-component-avatar-icon-size-sm); }
+.lg { --_size: var(--fc-component-avatar-size-lg); --_icon: var(--fc-component-avatar-icon-size-lg); }
+
+.square { border-radius: var(--fc-radius-base); }
+.square.sm { border-radius: var(--fc-radius-sm); }
+.square.lg { border-radius: var(--fc-radius-lg); }
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.fallback svg {
+  width: var(--_icon);
+  height: var(--_icon);
+}
+
+.default { --_bg: var(--fc-component-avatar-background-default); --_fg: var(--fc-component-avatar-content-default); }
+.hue { --_bg: var(--_hue-faded); --_fg: var(--_hue-strong); }
+
+/* ---------- group: overlap by 8px, ring in the container colour ---------- */
+.group {
+  display: inline-flex;
+  align-items: center;
+}
+.group > .avatar {
+  box-shadow: 0 0 0 var(--fc-stroke-width-base) var(--fc-component-avatar-group-border);
+}
+.group > .avatar + .avatar {
+  margin-inline-start: calc(var(--fc-component-avatar-group-margin-inline) * -1);
+}

@@ -1,0 +1,146 @@
+/*
+ * Figma "❖ Descriptions". Sizes and colours specific to Descriptions come
+ * from Component/Descriptions/*; the rest is semantic.
+ *
+ * Layout is a CSS grid on the `dl`; each pair is a `div` (dt + dd). The
+ * component closes every row in JS (`--_span`), so the grid never leaves a
+ * hole. Bordered: the grid gap IS the 1px line — the `dl` paints the line
+ * colour behind the cells and each cell paints the container over it, so
+ * translucent Border/Neutral-Faded looks the same in the gaps and on the edge.
+ * Label cells line up across rows through subgrid.
+ *
+ * Classes sit on each element (never `.bordered .label`), so a Descriptions
+ * nested in a value cell is not restyled by its parent.
+ */
+.descriptions {
+  /* Bordered cell padding — Figma Size=Large. */
+  --_pad-block: var(--fc-space-padding-base);
+  --_pad-inline: var(--fc-space-padding-lg);
+  /* Basic: space between rows. */
+  --_row-gap: var(--fc-component-descriptions-item-padding-bottom);
+  --_line: var(--fc-color-border-neutral-faded);
+
+  min-width: 0;
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+.md {
+  --_pad-block: var(--fc-space-padding-sm);
+  --_row-gap: var(--fc-space-padding-sm);
+}
+.sm {
+  --_pad-block: var(--fc-space-padding-xs);
+  --_pad-inline: var(--fc-space-padding-base);
+  --_row-gap: var(--fc-space-padding-xs);
+}
+
+/* ---------- title row ---------- */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  margin-block-end: var(--fc-component-descriptions-title-margin-bottom);
+}
+.title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-typography-size-lg);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-lg);
+}
+.extra {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  margin-inline-start: auto;
+}
+
+/* ---------- the list ---------- */
+.list {
+  display: grid;
+  grid-template-columns: repeat(var(--_cols), minmax(0, 1fr));
+  gap: var(--_row-gap) var(--fc-component-descriptions-item-padding-end);
+  margin: 0;
+}
+
+.label {
+  margin: 0;
+  color: var(--fc-component-descriptions-label-content);
+}
+.content {
+  min-width: 0;
+  margin: 0;
+  color: var(--fc-color-content-neutral-strong);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Basic, horizontal: "Label: value" ---------- */
+.itemH {
+  display: flex;
+  align-items: baseline;
+  grid-column: span var(--_span);
+  min-width: 0;
+}
+.itemH > .label {
+  flex: none;
+  margin-inline-end: var(--fc-space-margin-xs);
+}
+/* The colon is punctuation for the eye; screen readers already hear a term. */
+.colon::after {
+  content: ':';
+  content: ':' / '';
+}
+
+/* ---------- Basic, vertical: label above value ---------- */
+.itemV {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+  grid-column: span var(--_span);
+  min-width: 0;
+}
+
+/* ---------- Bordered ---------- */
+.listBorderedH,
+.listBorderedV {
+  gap: var(--fc-stroke-width-base);
+  overflow: hidden;
+  border: var(--fc-stroke-width-base) solid var(--_line);
+  border-radius: var(--fc-radius-lg);
+  background:
+    linear-gradient(var(--_line), var(--_line)) padding-box,
+    var(--fc-color-background-container) padding-box;
+}
+/* Label tracks size to their longest label; value tracks share the rest. */
+.listBorderedH { grid-template-columns: repeat(var(--_cols), auto minmax(0, 1fr)); }
+
+.itemBorderedH {
+  display: grid;
+  grid-column: span var(--_span);
+  grid-template-columns: subgrid;
+  min-width: 0;
+}
+.itemBorderedH > .content { grid-column: 2 / -1; }
+
+.itemBorderedV {
+  display: grid;
+  grid-column: span var(--_span);
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  min-width: 0;
+}
+
+.cellLabel,
+.cellContent {
+  padding: var(--_pad-block) var(--_pad-inline);
+  background: var(--fc-color-background-container);
+}
+.cellLabel {
+  background:
+    linear-gradient(var(--fc-component-descriptions-label-background), var(--fc-component-descriptions-label-background)),
+    var(--fc-color-background-container);
+}

@@ -1,0 +1,42 @@
+/*
+ * Surface from overlay.module.css, rows from listItem.module.css. Figma
+ * "Dropdown Menu": padding 4, radius 8, item height 32, item padding 12,
+ * item radius 4 (Component/Dropdown/*). At least as wide as the trigger.
+ */
+.popover {
+  --_radius: var(--fc-component-dropdown-radius);
+  --_padding: var(--fc-component-dropdown-padding);
+  min-width: max(var(--trigger-width, 0px), calc(var(--fc-component-modal-width) / 4));
+  max-width: calc(100vw - var(--fc-space-margin-lg));
+}
+
+.menu {
+  outline: none;
+}
+
+.item {
+  --_item-height: var(--fc-component-dropdown-item-height);
+  --_item-padding-inline: var(--fc-component-dropdown-item-padding-inline);
+  --_item-radius: var(--fc-component-dropdown-item-radius);
+}
+
+/* Label + optional description, stacked. */
+.text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dialog {
+  outline: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--fc-space-margin-xs);
+  margin-top: var(--fc-component-dropdown-padding);
+  padding: var(--fc-space-padding-xs) var(--fc-component-dropdown-item-padding-inline) var(--fc-space-padding-xxs);
+  border-top: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+}

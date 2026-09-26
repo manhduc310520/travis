@@ -1,0 +1,238 @@
+/*
+ * Figma "❖ Progress". Sizes and colours from Component/Progress/*:
+ * line 8px (small 6px), circle 120px (small 80px), track Fill/Neutral,
+ * fill Content/Info. Status and palette fills use the Content/* roles (and
+ * the palette's "strong" step), which reach 3:1 against the track in Light
+ * and Dark; Figma's Solid/Info and Solid/Danger drop to 2.5:1 in Dark.
+ *
+ * --_fill      the fill colour (or the gradient start), set on the root
+ * --_to        the gradient end, set on the track / svg so a second hue applies
+ * --_thickness line thickness; --_size circle diameter (inline for Size=Custom)
+ */
+.progress {
+  --_fill: var(--fc-component-progress-fill);
+  --_track: var(--fc-component-progress-track);
+
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* ---------- colours ---------- */
+.toneDefault { --_fill: var(--fc-component-progress-fill); }
+.toneSuccess { --_fill: var(--fc-color-content-success); }
+.toneWarning { --_fill: var(--fc-color-content-warning); }
+.toneDanger { --_fill: var(--fc-color-content-danger); }
+.toneHue { --_fill: var(--_hue-strong); }
+
+.endDefault { --_to: var(--fc-component-progress-fill); }
+.endSuccess { --_to: var(--fc-color-content-success); }
+.endWarning { --_to: var(--fc-color-content-warning); }
+.endDanger { --_to: var(--fc-color-content-danger); }
+.endHue { --_to: var(--_hue-strong); }
+
+.label {
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.info {
+  flex: none;
+  color: var(--fc-color-content-neutral-strong);
+  white-space: nowrap;
+}
+.statusIcon {
+  display: inline-flex;
+  align-items: center;
+}
+.statusIcon svg {
+  width: var(--_icon);
+  height: var(--_icon);
+}
+.iconSuccess { color: var(--fc-color-content-success); }
+.iconException { color: var(--fc-color-content-danger); }
+
+/* ---------- line (Figma "Progress / Standard") ---------- */
+.line {
+  --_thickness: var(--fc-component-progress-line-size);
+  --_step-width: var(--fc-component-progress-step-width);
+  --_icon: var(--fc-typography-size-lg);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+  width: 100%;
+}
+.line.sm {
+  --_thickness: var(--fc-component-progress-line-size-sm);
+  --_step-width: var(--fc-component-progress-step-width-sm);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-sm);
+  min-width: 0;
+}
+/* Figma Value Position Outside / Start: the value sits close to the bar. */
+.rowStart { gap: var(--fc-space-margin-xxs); }
+
+.track {
+  --_h: var(--_thickness);
+
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: var(--_h);
+  border-radius: calc(var(--_h) / 2);
+  background: var(--_track);
+  overflow: hidden;
+}
+/* Figma Value Position Inside: the bar grows to hold one line of text. */
+.insideTrack { --_h: max(var(--_thickness), var(--fc-typography-line-height-sm)); }
+.square .track { border-radius: 0; }
+
+.fill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--_fill);
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+.empty { visibility: hidden; }
+
+/* Figma "Progress / Gradient": the gradient spans the whole track, the fill reveals part of it. */
+.gradient .fill {
+  background-image: linear-gradient(to right, var(--_fill), var(--_to));
+  background-size: calc(100% * 100 / var(--_pct)) 100%;
+}
+
+.insideText {
+  flex: 1;
+  padding-inline: var(--fc-space-padding-xs);
+  color: var(--fc-color-content-on-solid-neutral);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--_h);
+  white-space: nowrap;
+}
+.inside-start { text-align: start; }
+.inside-center { text-align: center; }
+.inside-end { text-align: end; }
+
+/* Figma Value Position Outside / Bottom. */
+.bottom {
+  display: flex;
+  justify-content: center;
+}
+
+/* Status active: a sheen runs across the fill while work continues. */
+.active .fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--fc-color-background-container);
+  opacity: 0;
+  animation: fc-progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+}
+@keyframes fc-progress-active {
+  0% { transform: translateX(-100%) scaleX(0); opacity: 0.1; }
+  20% { transform: translateX(-100%) scaleX(0); opacity: 0.5; }
+  100% { transform: translateX(0) scaleX(1); opacity: 0; }
+}
+
+/* ---------- steps (Figma "Progress / Steps") ---------- */
+.stepsRow { gap: var(--fc-space-margin-xs); }
+.stepsRow .info { font-size: var(--fc-typography-size-sm); line-height: var(--fc-typography-line-height-sm); }
+.stepsRow .statusIcon { --_icon: var(--fc-typography-size-sm); }
+.steps {
+  display: flex;
+  gap: var(--fc-component-progress-steps-gap);
+}
+.step {
+  flex: none;
+  width: var(--_step-width);
+  height: var(--_thickness);
+  background: var(--_track);
+}
+.stepOn { background: var(--_fill); }
+
+/* ---------- circle / dashboard ---------- */
+.circle {
+  --_size: var(--fc-component-progress-circle-size);
+  --_font: var(--fc-typography-size-heading-3);
+  --_lh: var(--fc-typography-line-height-heading-3);
+  --_icon: var(--fc-size-control-base);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  vertical-align: middle;
+}
+.circle.sm,
+.tierSm {
+  --_font: var(--fc-typography-size-lg);
+  --_lh: var(--fc-typography-line-height-lg);
+  --_icon: var(--fc-size-control-sm);
+}
+.circle.sm { --_size: var(--fc-component-progress-circle-size-sm); }
+.tierXs {
+  --_font: var(--fc-typography-size-sm);
+  --_lh: var(--fc-typography-line-height-sm);
+  --_icon: var(--fc-size-control-xs);
+}
+
+.circleBox {
+  position: relative;
+  flex: none;
+  width: var(--_size);
+  height: var(--_size);
+}
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.trail {
+  fill: none;
+  stroke: var(--_track);
+}
+.arc {
+  fill: none;
+  stroke: var(--_fill);
+  transition: stroke-dasharray 0.3s ease;
+}
+.stopFrom { stop-color: var(--_fill); }
+.stopTo { stop-color: var(--_to); }
+
+.circleInfo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.circleInfo .info {
+  color: var(--fc-component-progress-circle-text);
+  font-size: var(--_font);
+  line-height: var(--_lh);
+}
+.circleInfo .iconSuccess { color: var(--fc-color-content-success); }
+.circleInfo .iconException { color: var(--fc-color-content-danger); }
+
+/* Tiny circles take keyboard focus to show their tooltip. */
+.circle[tabindex]:focus-visible {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+  border-radius: var(--fc-radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fill,
+  .arc { transition: none; }
+  .active .fill::after { animation: none; }
+}

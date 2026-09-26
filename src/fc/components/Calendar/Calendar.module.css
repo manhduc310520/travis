@@ -1,0 +1,159 @@
+/*
+ * Figma "❖ Calendar". The card reuses the DatePicker panel cells
+ * (DatePicker/panel.module.css: the 24px "Menu Item" cell, week numbers, month
+ * grid). This file adds the header, the card surface and the full-page cells
+ * ("Calendar / Calendar Item": 2px top rule, day number top-end, notes below).
+ * Component/Calendar/*: background, year / month control widths, selected
+ * item background, mini content height, full cell height.
+ *
+ * Full cells carry React Aria's data-* on days (data-hovered, data-selected,
+ * data-today, data-outside-month, data-disabled, data-unavailable,
+ * data-focus-visible) and the month grid's own on months (data-selected,
+ * data-current, data-disabled; :hover / :focus-visible).
+ */
+.calendar {
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.full { background: var(--fc-component-calendar-background); }
+
+/* Figma "Calendar / Card": bordered 8px surface (flat: border, no shadow). */
+.card {
+  overflow: hidden;
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+  border-radius: var(--fc-radius-lg);
+  background: var(--fc-component-calendar-background);
+}
+
+/* ---------- header ---------- */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--fc-space-margin-xs);
+}
+.withTitle .controls { justify-content: flex-start; }
+.title {
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-typography-size-heading-4);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-heading-4);
+}
+
+.full .header { padding-block-end: var(--fc-space-margin-sm); }
+.card .header {
+  padding: var(--fc-space-padding-sm) var(--fc-space-padding-xs);
+  border-bottom: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+.card .header.withTitle { padding-block: var(--fc-space-padding-xs); }
+
+.yearSelect { min-width: var(--fc-component-calendar-year-control-width); }
+.monthSelect { min-width: var(--fc-component-calendar-month-control-width); }
+
+/* ---------- card content ---------- */
+.card .content { padding-block: var(--fc-space-padding-xs); }
+.calendar .miniGrid {
+  width: 100%;
+  height: var(--fc-component-calendar-mini-content-height);
+  table-layout: fixed;
+}
+
+/* ---------- full page: big cells, 8px apart ---------- */
+.calendar .fullGrid {
+  width: calc(100% + var(--fc-space-margin-xs) * 2);
+  margin-inline: calc(var(--fc-space-margin-xs) * -1);
+  border-collapse: separate;
+  border-spacing: var(--fc-space-margin-xs) 0;
+  table-layout: fixed;
+}
+.calendar .fullGrid th {
+  width: auto;
+  height: auto;
+  padding: 0 var(--fc-space-padding-xs) var(--fc-space-padding-xxs) 0;
+  text-align: end;
+}
+.calendar .fullGrid td { padding: 0; }
+
+.fullCell,
+.fullWeek {
+  box-sizing: border-box;
+  height: var(--fc-component-calendar-full-cell-height);
+  padding: var(--fc-space-padding-xxs) var(--fc-space-padding-xs) 0;
+  border: 0;
+  border-top: var(--fc-stroke-width-strong) solid var(--_line, var(--fc-color-border-neutral-faded));
+}
+
+/* Figma "Calendar / Calendar Week": week number top-end, secondary (description colour for 4.5:1; Figma: disabled grey). */
+.calendar .fullWeek {
+  color: var(--fc-color-content-description);
+  text-align: end;
+  vertical-align: top;
+}
+
+.fullCell {
+  --_bg: transparent;
+  --_fg: var(--fc-color-content-neutral-strong);
+  --_line: var(--fc-color-border-neutral-faded);
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--_bg);
+  color: var(--_fg);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s;
+}
+.fullCell[data-hovered],
+.fullCell:is(button):hover:not([data-disabled]) { --_bg: var(--fc-color-background-item-hover); }
+.fullCell[data-selected] {
+  --_bg: var(--fc-component-calendar-item-background-selected);
+  --_fg: var(--fc-color-content-accent);
+}
+/* Figma Status=Active: today / this month, accent top rule. */
+.fullCell[data-today],
+.fullCell[data-current] { --_line: var(--fc-color-solid-accent); }
+/* Figma Status=Non-current: days of the neighbouring months. */
+.fullCell[data-outside-month] {
+  --_bg: transparent;
+  --_fg: var(--fc-color-content-disabled);
+  cursor: default;
+}
+.fullCell[data-disabled]:not([data-outside-month]),
+.fullCell[data-unavailable] {
+  --_bg: var(--fc-color-background-container-disabled);
+  --_fg: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.fullCell[data-focus-visible],
+.fullCell:is(button):focus-visible {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+
+.fullValue {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+/* Notes (Figma "Calendar Item / Notice"): clipped to the cell, never recoloured by the cell state. */
+.fullContent {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  color: var(--fc-color-content-neutral-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fullCell { transition: none; }
+}

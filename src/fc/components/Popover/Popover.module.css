@@ -1,0 +1,37 @@
+/*
+ * Surface, shadow, arrow and animation come from overlay.module.css. Figma
+ * Popover Body: padding 12, radius 8, 8px between title and content
+ * (Component/Popover/*).
+ */
+.popover {
+  --_radius: var(--fc-component-popover-radius);
+  max-width: calc(100vw - var(--fc-space-margin-lg));
+}
+
+/* Padding lives here so the whole panel area keeps hover popovers open. */
+.inner {
+  padding: var(--fc-component-popover-padding);
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+  outline: none;
+}
+
+.title {
+  margin: 0;
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-typography-size-base);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.content {
+  color: var(--fc-color-content-neutral-strong);
+}
+
+.hoverTrigger {
+  display: inline-flex;
+}

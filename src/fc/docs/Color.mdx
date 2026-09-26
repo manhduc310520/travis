@@ -1,0 +1,71 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as ColorStories from './Color.stories'
+
+<Meta of={ColorStories} />
+
+# Màu
+
+Mỗi dòng là một biến trong Figma (collection `0. Global`, `1. Brand`, `2. Colors`). Cột **CSS**
+trùng với Code syntax trong Dev Mode; cột **Giá trị** là giá trị trình duyệt đang
+tính ra — đổi **Brand** hoặc **Mode** trên thanh công cụ để xem nó đổi theo.
+Tên biến không bao giờ đổi theo theme. Trong Figma tên viết hoa chữ đầu
+(`Color/Content/Neutral-Strong`); biến CSS là cùng đường dẫn viết thường
+(`--fc-color-content-neutral-strong`). Quy tắc đặt tên: `docs/token-naming-spec.md`.
+
+## Chữ và icon — `Color/Content`
+
+<Canvas of={ColorStories.Content} />
+
+## Nền — `Color/Background`
+
+Nền trang (`layout`) → nền card, bảng, form (`container`) → lớp nổi (`elevated`,
+phân biệt bằng shadow).
+
+<Canvas of={ColorStories.Background} />
+
+## Màu chính của từng role — `Color/Solid`
+
+Dùng cho nền, chữ hoặc viền khi cần màu đậm nhất của role. `accent` là màu brand:
+mỗi màn hình chỉ một hành động primary.
+
+<Canvas of={ColorStories.Solid} />
+
+## Viền — `Color/Border`
+
+<Canvas of={ColorStories.Border} />
+
+## Nền bán trong suốt — `Color/Fill`
+
+Dùng cho hover, vùng nhấn nhẹ cần hòa vào bề mặt phía sau.
+
+<Canvas of={ColorStories.Fill} />
+
+## Vòng focus — `Color/Outline`
+
+<Canvas of={ColorStories.Outline} />
+
+## Giá trị gốc — `Color/Seed`
+
+<Canvas of={ColorStories.Seed} />
+
+## Bảng màu — `Color/Palette`
+
+12 dải × 10 bậc, cộng `accent` (dải của brand đang chọn). Đổi theo **Mode**:
+cùng một tên cho màu sáng ở Light và màu tối ở Dark. Chỉ dùng trực tiếp cho tag,
+chart, phân loại — không dùng cho nút hay UI chính.
+
+<Canvas of={ColorStories.Palette} />
+
+## Brand — `Brand/Light`, `Brand/Dark`
+
+Tầng đổi theo **Brand**, tách sẵn phía Light và Dark. Không dùng trực tiếp trong
+component — dùng qua `Color/*`.
+
+<Canvas of={ColorStories.Brand} />
+
+## Giá trị gốc — `Global/Light`, `Global/Dark`
+
+Collection `0. Global`: một mode, không đổi theo theme, ẩn khỏi thư viện Figma.
+Chỉ là nguồn cho các tầng trên — **không bao giờ** dùng trực tiếp.
+
+<Canvas of={ColorStories.Global} />

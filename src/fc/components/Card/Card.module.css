@@ -1,0 +1,225 @@
+/*
+ * Figma "❖ Card". A Container surface: 8px radius, 1px Border/Neutral-Light,
+ * no shadow (flat-first). Sizes and colours specific to the card come from
+ * Component/Card/*; everything else is semantic.
+ *
+ * Header height is padding + the title's line height, never a fixed number:
+ * Medium 16 + 24 + 16 = 56, Small 8 + 22 + 8 = 38 (Figma headerHeight /
+ * headerHeightSM). The extra slot is pulled in by 4px top and bottom so a
+ * control up to line-height + 8 (a 32px button in Medium, 24px in Small)
+ * fits without growing the header.
+ *
+ * Size / variant values are custom properties that every card root
+ * re-declares, so a card nested in another card's body (Figma "Card / Basic
+ * with Inner inside") is never restyled by its parent.
+ */
+.card {
+  --_header-pad-block: var(--fc-space-padding-base);
+  --_header-pad-inline: var(--fc-component-card-header-padding-inline);
+  --_header-bg: var(--fc-component-card-header-background);
+  --_title-lh: var(--fc-typography-line-height-lg);
+  --_body-pad: var(--fc-component-card-body-padding);
+  --_line: var(--fc-color-border-neutral-light);
+  /* Radius of anything painted just inside the 1px outline. */
+  --_inner-r: calc(var(--fc-radius-lg) - var(--fc-stroke-width-base));
+
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: var(--fc-stroke-width-base) solid var(--_line);
+  border-radius: var(--fc-radius-lg);
+  background: var(--fc-color-background-container);
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* ---------- Size=Small ---------- */
+.sm {
+  --_header-pad-block: var(--fc-space-padding-xs);
+  --_header-pad-inline: var(--fc-component-card-header-padding-inline-sm);
+  --_title-lh: var(--fc-typography-line-height-base);
+  --_body-pad: var(--fc-component-card-body-padding-sm);
+}
+
+/* ---------- Borderless=True: same box, outline not painted ---------- */
+.borderless { border-color: transparent; }
+
+/* ---------- Card / Inner: tinted header ---------- */
+.inner { --_header-bg: var(--fc-color-fill-alternate); }
+
+/* ---------- header: title + extra ---------- */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  min-width: 0;
+  padding: var(--_header-pad-block) var(--_header-pad-inline);
+  border-block-end: var(--fc-stroke-width-base) solid var(--_line);
+  border-radius: var(--_inner-r) var(--_inner-r) 0 0;
+  background: var(--_header-bg);
+}
+.header:last-child {
+  border-block-end: 0;
+  border-radius: var(--_inner-r);
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-component-card-title-font-size);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--_title-lh);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.extra {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  margin-block: calc(var(--fc-space-margin-xxs) * -1);
+  margin-inline-start: auto;
+}
+
+/* ---------- cover: edge to edge, over the outline ---------- */
+.cover {
+  margin: 0 calc(var(--fc-stroke-width-base) * -1);
+  overflow: hidden;
+}
+.cover:first-child {
+  margin-block-start: calc(var(--fc-stroke-width-base) * -1);
+  border-start-start-radius: var(--fc-radius-lg);
+  border-start-end-radius: var(--fc-radius-lg);
+}
+.cover:last-child {
+  margin-block-end: calc(var(--fc-stroke-width-base) * -1);
+  border-end-start-radius: var(--fc-radius-lg);
+  border-end-end-radius: var(--fc-radius-lg);
+}
+.cover > * {
+  display: block;
+  width: 100%;
+}
+
+/* ---------- body ---------- */
+.body {
+  min-width: 0;
+  padding: var(--_body-pad);
+}
+
+/* Tabs=True: the strip sits under the header; the panel keeps 16px below. */
+.tabsBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-base);
+  min-width: 0;
+  padding: 0 var(--_body-pad) var(--fc-space-padding-base);
+}
+
+/* ---------- actions (Figma Card / Advanced footer) ---------- */
+.actions {
+  display: flex;
+  margin: 0;
+  padding: var(--fc-space-padding-sm) 0;
+  border-block-start: var(--fc-stroke-width-base) solid var(--_line);
+  border-radius: 0 0 var(--_inner-r) var(--_inner-r);
+  background: var(--fc-component-card-actions-background);
+  list-style: none;
+}
+.actions:first-child {
+  border-block-start: 0;
+  border-radius: var(--_inner-r);
+}
+.action {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+.action + .action { border-inline-start: var(--fc-stroke-width-base) solid var(--_line); }
+
+/* ---------- CardMeta ---------- */
+.meta {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--fc-space-margin-base);
+  min-width: 0;
+}
+.metaAvatar {
+  display: flex;
+  flex: none;
+}
+.metaText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+  min-width: 0;
+}
+.metaTitle {
+  margin: 0;
+  overflow: hidden;
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-typography-size-lg);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-lg);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.metaDescription {
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* ---------- loading placeholder ---------- */
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-base);
+}
+.bone {
+  display: block;
+  height: var(--fc-size-control-xs);
+  border-radius: var(--fc-radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--fc-color-fill-neutral) 25%,
+    var(--fc-color-fill-neutral-strong) 37%,
+    var(--fc-color-fill-neutral) 63%
+  );
+  background-size: 400% 100%;
+  animation: fc-card-shimmer 1.4s ease infinite;
+}
+.boneTitle {
+  width: 38%;
+  margin-block-end: var(--fc-space-margin-xs);
+}
+.boneLast { width: 61%; }
+
+@keyframes fc-card-shimmer {
+  from { background-position: 100% 50%; }
+  to { background-position: 0 50%; }
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bone {
+    animation: none;
+    background: var(--fc-color-fill-neutral);
+  }
+}

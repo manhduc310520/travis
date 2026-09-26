@@ -1,0 +1,432 @@
+/*
+ * Figma "❖ Upload". Every value is an fc token; Component/Upload/* for the
+ * tile size, the row action colour and the dragger fill. Controls (dragger,
+ * add tile) take Color/Border/Control like the dashed Button (3:1, WCAG
+ * 1.4.11); file rows and tiles are containers (Color/Border/Neutral).
+ * React Aria puts the state on buttons and the drop zone: data-hovered,
+ * data-pressed, data-focus-visible, data-disabled, data-drop-target.
+ */
+.upload {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-inline-size: 0;
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+.block { align-items: stretch; }
+
+.buttonSlot { display: inline-flex; }
+
+.description {
+  margin-block-start: var(--fc-space-margin-xxs);
+  color: var(--fc-color-content-description);
+}
+
+/* Always mounted so new messages are announced; takes no room while empty. */
+.problems {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+  color: var(--fc-color-content-danger);
+}
+.problems:not(:empty) { margin-block-start: var(--fc-space-margin-xs); }
+.problems p { margin: 0; }
+
+/* ---------- dragger (Figma "Upload / Drag and Drop") ---------- */
+.draggerSlot { display: flex; }
+
+.dragger {
+  --_border: var(--fc-color-border-control);
+  --_bg: var(--fc-component-upload-dragger-background);
+
+  flex: 1;
+  min-inline-size: 0;
+  border: var(--fc-stroke-width-base) dashed var(--_border);
+  border-radius: var(--fc-radius-lg);
+  background: var(--_bg);
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.dragger[data-hovered] { --_border: var(--fc-color-solid-accent-hover); }
+.dragger[data-drop-target] {
+  --_border: var(--fc-color-solid-accent);
+  --_bg: var(--fc-color-background-accent-faded);
+  border-style: solid;
+}
+/* The drop zone's own (visually hidden) paste target has focus. */
+.dragger[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.dragger[data-disabled] {
+  --_border: var(--fc-color-border-neutral);
+  --_bg: var(--fc-color-background-container-disabled);
+}
+
+.draggerButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--fc-space-margin-base);
+  box-sizing: border-box;
+  inline-size: 100%;
+  padding: calc(var(--fc-space-padding-base) - var(--fc-stroke-width-base));
+  border: 0;
+  border-radius: var(--fc-radius-lg);
+  background: transparent;
+  color: var(--fc-color-content-neutral-strong);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+.draggerButton[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+.draggerButton[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+.draggerIcon {
+  display: inline-flex;
+  color: var(--fc-color-content-accent);
+}
+.draggerIcon svg {
+  inline-size: var(--fc-size-scale-xxl);
+  block-size: var(--fc-size-scale-xxl);
+}
+.draggerButton[data-disabled] .draggerIcon { color: inherit; }
+
+.draggerText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+}
+.draggerTitle {
+  font-size: var(--fc-typography-size-lg);
+  line-height: var(--fc-typography-line-height-lg);
+}
+.draggerHint { color: var(--fc-color-content-description); }
+.draggerButton[data-disabled] .draggerHint { color: inherit; }
+
+/* ---------- shared row parts ---------- */
+.textList,
+.pictureList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+  align-self: stretch;
+  margin: var(--fc-space-margin-xs) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+
+.name {
+  max-inline-size: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* A finished file opens (preview or link): link colour, like Figma's accent file name. */
+.nameLink {
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-xs);
+  background: none;
+  color: var(--fc-color-content-link);
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+/* Hover underlines: Content/Link-Hover drops below 4.5:1 in some brands. */
+.nameLink:hover,
+.nameLink[data-hovered] { text-decoration: underline; }
+.nameLink:focus-visible,
+.nameLink[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.errorText {
+  color: var(--fc-color-content-danger);
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+}
+.isError .name { color: var(--fc-color-content-danger); }
+
+/* fc Progress, thinned to Figma's 2px upload bar through its --_thickness knob. */
+.info .fileProgress,
+.tile .fileProgress {
+  --_thickness: var(--fc-stroke-width-strong);
+  align-self: stretch;
+  margin-block-start: var(--fc-space-margin-xxs);
+}
+
+/* Row actions: 24px targets. Text rows show them on hover / focus (Figma State=Hover), always when failed or on touch. */
+.actions {
+  display: flex;
+  flex: none;
+  gap: var(--fc-space-margin-xxs);
+}
+.textItem .actions {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.textItem:hover .actions,
+.textItem:focus-within .actions,
+.textItem.isError .actions { opacity: 1; }
+@media (hover: none) {
+  .textItem .actions { opacity: 1; }
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--fc-size-control-sm);
+  block-size: var(--fc-size-control-sm);
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-component-upload-actions-content);
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s;
+}
+.action[data-hovered] { color: var(--fc-color-content-icon-hover); }
+.isError .action { color: var(--fc-color-content-danger); }
+.isError .action[data-hovered] { color: var(--fc-color-content-danger-hover); }
+.action[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.action[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+/* ---------- text list (Figma "Upload List Item / Basic") ---------- */
+.textItem {
+  --_bg: transparent;
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--fc-space-margin-xs);
+  background: var(--_bg);
+  transition: background-color 0.2s;
+}
+/* Figma State=Hover tints the row with Item-Hover; Fill/Alternate keeps the link name at 4.5:1 in every brand. */
+.textItem:hover { --_bg: var(--fc-color-fill-alternate); }
+/* One line of text centred on the 24px action buttons. */
+.textItem .info { padding-block: calc((var(--fc-size-control-sm) - var(--fc-typography-line-height-base)) / 2); }
+
+.fileIcon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  block-size: var(--fc-size-control-sm);
+  color: var(--fc-color-content-icon);
+}
+.fileIcon svg {
+  inline-size: var(--fc-size-control-xs);
+  block-size: var(--fc-size-control-xs);
+}
+.linked .fileIcon { color: var(--fc-color-content-link); }
+.isError .fileIcon { color: var(--fc-color-content-danger); }
+
+/* ---------- picture list (Figma "Upload List Item / Picture card") ---------- */
+.pictureItem {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  padding: calc(var(--fc-space-padding-xs) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral);
+  border-radius: var(--fc-radius-lg);
+}
+.pictureItem.isUploading { border-style: dashed; }
+.pictureItem.isError { border-color: var(--fc-color-solid-danger); }
+
+.thumb {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--fc-size-scale-xxl);
+  block-size: var(--fc-size-scale-xxl);
+  overflow: hidden;
+  border-radius: var(--fc-radius-sm);
+  color: var(--fc-color-content-icon);
+}
+.thumb img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+.isError .thumb { color: var(--fc-color-content-danger); }
+
+.bigIcon {
+  inline-size: var(--fc-size-scale-xl);
+  block-size: var(--fc-size-scale-xl);
+}
+
+/* ---------- tiles (Figma "Upload List Item / Picture" Type=Card / Circle) ---------- */
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fc-space-margin-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tileSlot { display: flex; }
+
+.tile {
+  --_inset: calc(var(--fc-space-padding-xs) - var(--fc-stroke-width-base));
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fc-space-margin-xxs);
+  box-sizing: border-box;
+  inline-size: var(--fc-component-upload-picture-card-size);
+  block-size: var(--fc-component-upload-picture-card-size);
+  padding: var(--_inset);
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral);
+  border-radius: var(--fc-radius-lg);
+  background: var(--fc-color-background-container);
+  color: var(--fc-color-content-neutral-strong);
+  text-align: center;
+  overflow: hidden;
+}
+.circle .tile { border-radius: 50%; }
+.tile.isUploading { border-style: dashed; }
+.tile.isError {
+  border-color: var(--fc-color-solid-danger);
+  background: var(--fc-color-background-item-hover);
+  color: var(--fc-color-content-danger);
+}
+
+.tileImage {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+.circle .tileImage { border-radius: 50%; }
+
+.tileName {
+  max-inline-size: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Hover mask with the tile actions (Background/Overlay, Dark-mode tokens). */
+.overlay {
+  position: absolute;
+  inset: var(--_inset);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fc-space-margin-xxs);
+  background: var(--fc-color-background-overlay);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.circle .overlay { border-radius: 50%; }
+.tile:hover .overlay,
+.tile:focus-within .overlay { opacity: 1; }
+@media (hover: none) {
+  .overlay { opacity: 1; }
+}
+
+.overlayAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--fc-size-control-sm);
+  block-size: var(--fc-size-control-sm);
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-color-content-neutral-strong);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s;
+}
+.overlayAction[data-hovered] { background: var(--fc-color-fill-neutral); }
+.overlayAction[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.overlayAction[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+/* Add tile (Figma Status=Upload): a dashed control. */
+.addTile {
+  border-style: dashed;
+  border-color: var(--fc-color-border-control);
+  background: var(--fc-color-background-item-hover);
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.addTile[data-hovered] { border-color: var(--fc-color-solid-accent-hover); }
+.addTile[data-pressed] { border-color: var(--fc-color-solid-accent-active); }
+.addTile[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.addTile[data-disabled] {
+  border-color: var(--fc-color-border-neutral);
+  background: var(--fc-color-background-container-disabled);
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.addIcon {
+  inline-size: var(--fc-size-control-xs);
+  block-size: var(--fc-size-control-xs);
+}
+
+/* ---------- misc ---------- */
+
+.srOnly {
+  position: absolute;
+  inline-size: var(--fc-stroke-width-base);
+  block-size: var(--fc-stroke-width-base);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dragger,
+  .textItem,
+  .textItem .actions,
+  .action,
+  .overlay,
+  .overlayAction,
+  .addTile { transition: none; }
+}

@@ -1,0 +1,55 @@
+/*
+ * Shared surface for floating panels: Popover, Popconfirm, Dropdown and the
+ * Select menu (later DatePicker, Cascader, TreeSelect). Elevated background +
+ * Shadow/Base: an overlay is set apart by its shadow, never by a new colour.
+ * Each component sets --_radius and --_padding from its Component/* tokens.
+ * React Aria sets data-placement (top/bottom/left/right), data-entering and
+ * data-exiting on the popover and data-placement on the arrow.
+ */
+.surface {
+  --_radius: var(--fc-radius-lg);
+  --_padding: 0px;
+  --_from: none;
+
+  box-sizing: border-box;
+  padding: var(--_padding);
+  border-radius: var(--_radius);
+  background: var(--fc-color-background-elevated);
+  box-shadow: var(--fc-shadow-base);
+  color: var(--fc-color-content-neutral-strong);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  outline: none;
+}
+
+/* Slide in from the trigger side. */
+.surface[data-placement='top'] { --_from: translateY(var(--fc-space-margin-xxs)); }
+.surface[data-placement='bottom'] { --_from: translateY(calc(var(--fc-space-margin-xxs) * -1)); }
+.surface[data-placement='left'] { --_from: translateX(var(--fc-space-margin-xxs)); }
+.surface[data-placement='right'] { --_from: translateX(calc(var(--fc-space-margin-xxs) * -1)); }
+.surface[data-entering] { animation: fc-overlay-in 0.16s ease-out; }
+.surface[data-exiting] { animation: fc-overlay-out 0.1s ease-in forwards; }
+
+@keyframes fc-overlay-in {
+  from { opacity: 0; transform: var(--_from); }
+}
+@keyframes fc-overlay-out {
+  to { opacity: 0; transform: var(--_from); }
+}
+
+/* Arrow (Figma 16 × 8 = Size/Popup-Arrow/Base), same fill as the surface. */
+.arrow svg {
+  display: block;
+  width: var(--fc-size-popup-arrow-base);
+  height: calc(var(--fc-size-popup-arrow-base) / 2);
+  fill: var(--fc-color-background-elevated);
+}
+.arrow[data-placement='bottom'] svg { transform: rotate(180deg); }
+.arrow[data-placement='left'] svg { transform: rotate(-90deg); }
+.arrow[data-placement='right'] svg { transform: rotate(90deg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .surface[data-entering],
+  .surface[data-exiting] { animation: none; }
+}

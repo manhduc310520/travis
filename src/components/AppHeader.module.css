@@ -1,0 +1,194 @@
+/*
+ * Figma "*Navbar" (page ❖ Header). Every value is an fc token.
+ *
+ * Height is not a Figma variable: it comes out of a 32px control plus the
+ * bar's padding-block, as in Figma — Padding/Base on LG (64), Padding/SM on
+ * SM (56) — so it follows density.
+ */
+.header {
+  --_pad: var(--fc-space-padding-base);
+
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 360px) 1fr;
+  align-items: center;
+  gap: var(--fc-space-margin-md);
+  flex: none;
+  padding: var(--_pad);
+  background: linear-gradient(180deg, var(--fc-color-background-header-start), var(--fc-color-background-header-end));
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* Figma "Breakpoint=SM": menu, search filling the rest, buttons. */
+.mobile {
+  --_pad: var(--fc-space-padding-sm);
+
+  display: flex;
+  gap: var(--fc-space-margin-xs);
+}
+
+.start,
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  min-width: 0;
+}
+.actions { justify-content: flex-end; }
+.mobile .start { flex: none; }
+.mobile .actions { flex: none; }
+
+/* Figma "Menu Item / Horizontal" around the wordmark: Padding/Base inline. */
+.logo {
+  flex: none;
+  margin-inline-start: var(--fc-space-padding-base);
+  color: var(--fc-color-content-on-solid);
+}
+
+/* Figma "Type = Title": Typography/Size/LG, Semibold, On-Solid. */
+.title {
+  margin: 0;
+  overflow: hidden;
+  color: var(--fc-color-content-on-solid);
+  font-size: var(--fc-typography-size-lg);
+  line-height: var(--fc-typography-line-height-lg);
+  font-weight: var(--fc-typography-weight-semibold);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*
+ * Buttons on the bar: the region is Dark mode (hover / press tokens for a
+ * dark surface); the glyphs and name are On-Solid like Figma, and the focus
+ * ring is On-Solid too — the accent ring would vanish on the accent bar.
+ */
+.header .start :where(button),
+.header .actions :where(button) {
+  color: var(--fc-color-content-on-solid);
+}
+.header .start :where(button)[data-focus-visible],
+.header .actions :where(button)[data-focus-visible] {
+  outline-color: var(--fc-color-content-on-solid);
+}
+
+.account {
+  gap: var(--fc-space-margin-xs);
+  padding-inline: var(--fc-space-padding-xxs);
+}
+.userName {
+  max-width: calc(var(--fc-size-control-base) * 5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chevron { color: var(--fc-color-content-on-solid); }
+
+/*
+ * Search box (Figma "Input / Outlined", 360 wide, "⌘ K" in the count slot).
+ * It is a button that opens the Search Modal, dressed like an input. Its text
+ * is Content/Description, not the disabled placeholder colour: on a button it
+ * is the label, so it must reach 4.5:1.
+ */
+.search {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-padding-xxs);
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  height: var(--fc-size-control-base);
+  padding-inline: calc(var(--fc-space-padding-inline-control) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-control);
+  border-radius: var(--fc-radius-base);
+  background: var(--fc-color-background-container);
+  color: var(--fc-color-content-description);
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.mobile .search { flex: 1; }
+.search[data-hovered] { border-color: var(--fc-color-solid-accent-hover); }
+.search[data-focus-visible] {
+  border-color: var(--fc-color-solid-accent);
+  box-shadow: 0 0 0 var(--fc-stroke-width-outline) var(--fc-color-outline-accent);
+}
+.searchIcon {
+  flex: none;
+  width: var(--fc-size-control-interactive);
+  height: var(--fc-size-control-interactive);
+  color: var(--fc-color-content-icon);
+}
+.searchText {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-align: start;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.shortcut {
+  flex: none;
+  font: inherit;
+  color: var(--fc-color-content-description);
+}
+
+/* ---------- inbox popover (Figma "Notification / Open") ---------- */
+.inbox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+}
+.inboxList {
+  max-height: calc(var(--fc-size-control-base) * 10);
+  overflow-y: auto;
+}
+.inboxDate {
+  margin: 0;
+  padding-block: var(--fc-space-padding-xs);
+  color: var(--fc-color-content-neutral);
+  font-size: var(--fc-typography-size-base);
+  font-weight: var(--fc-typography-weight-regular);
+}
+.inboxRows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.inboxRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: var(--fc-space-margin-md);
+  row-gap: var(--fc-space-margin-xxs);
+  padding-block: var(--fc-space-padding-xs);
+  border-block-end: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+.inboxSender { color: var(--fc-color-content-neutral-strong); }
+.inboxTime { color: var(--fc-color-content-neutral); }
+.inboxText {
+  grid-column: 1 / -1;
+  color: var(--fc-color-content-neutral);
+}
+.inboxEmpty {
+  margin: 0;
+  padding-block: var(--fc-space-padding-lg);
+  color: var(--fc-color-content-description);
+  text-align: center;
+}
+.inboxFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+.manage {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xxs);
+}
+.manage svg {
+  width: var(--fc-size-control-interactive);
+  height: var(--fc-size-control-interactive);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search { transition: none; }
+}

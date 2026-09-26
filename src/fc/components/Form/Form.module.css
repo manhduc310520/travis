@@ -1,0 +1,155 @@
+/*
+ * Figma "❖ Form". Component/Form/*: label colour (→ Content/Heading),
+ * required mark (→ Content/Danger), space between items (→ Space/Margin/Base),
+ * label gap (→ Space/Margin/XS: under the label in vertical forms, after the
+ * colon in horizontal / inline ones) and the horizontal label column width.
+ * The label row is as tall as a control of the form's size (Size/Control/*),
+ * so a one-line label sits level with the field next to it.
+ *
+ * Fields are found by their label row (`[data-fc-field-label]`, rendered by
+ * FieldLabel for every fc field and FormItem), so horizontal / inline layout
+ * works without touching each field's own styles.
+ */
+.form {
+  --_label-h: var(--fc-size-control-base);
+  --_label-width: var(--fc-component-form-label-width);
+  --_label-justify: flex-end;
+  --_label-align: end;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-component-form-item-margin-bottom);
+  min-width: 0;
+}
+
+/* A button or link placed straight in the form keeps its own width. */
+.form > :where(button, a) { align-self: flex-start; }
+
+.sm { --_label-h: var(--fc-size-control-sm); }
+.lg { --_label-h: var(--fc-size-control-lg); }
+
+.labelStart {
+  --_label-justify: flex-start;
+  --_label-align: start;
+}
+
+/* Inline: items side by side, wrapping; each label only as wide as its text. */
+.inline {
+  --_label-width: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+/* ---------- label (Figma Form Label Vertical / Horizontal) ---------- */
+.labelRow {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xxs);
+  min-width: 0;
+  /* Label-Gap below the label; the field itself already adds Space/Margin/XXS. */
+  padding-block-end: calc(var(--fc-component-form-label-gap) - var(--fc-space-margin-xxs));
+  color: var(--fc-component-form-label-color);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.label {
+  min-width: 0;
+  color: inherit;
+}
+
+/* Non-text mark, but kept at text contrast (Content/Danger, 4.5:1) in both modes. */
+.mark {
+  margin-inline-start: var(--fc-space-margin-xxs);
+  color: var(--fc-component-form-required-mark-color);
+}
+
+.optional { color: var(--fc-color-content-description); }
+.colon { flex: none; }
+
+/* (?) — 16px icon, 24px hit area (WCAG 2.5.8) without moving the layout. */
+.tooltipButton {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-color-content-icon);
+  cursor: help;
+  outline: none;
+}
+.tooltipButton::after {
+  content: '';
+  position: absolute;
+  inset: calc(var(--fc-space-padding-xxs) * -1);
+}
+.tooltipButton[data-hovered] { color: var(--fc-color-content-icon-hover); }
+.tooltipButton[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* ---------- FormItem ---------- */
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+  min-width: 0;
+}
+
+/* Content row at least one control tall, short content (checkbox, switch) centred in it. */
+.itemControl {
+  display: flex;
+  align-items: center;
+  min-height: var(--_label-h, var(--fc-size-control-base));
+}
+.itemContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.description {
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.error {
+  color: var(--fc-color-content-danger);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* ---------- horizontal / inline: label column + field column ---------- */
+.horizontal :is(.item, :has(> [data-fc-field-label])),
+.inline :is(.item, :has(> [data-fc-field-label])) {
+  display: grid;
+  grid-template-columns: var(--_label-width) minmax(0, 1fr);
+  column-gap: var(--fc-component-form-label-gap);
+  row-gap: var(--fc-space-margin-xxs);
+  align-items: start;
+}
+
+/* Box, caption and error in the field column; an item without a label lines up with the fields. */
+.horizontal :is(.item, :has(> [data-fc-field-label])) > *,
+.inline :is(.item, :has(> [data-fc-field-label])) > * {
+  grid-column: 2;
+}
+
+.horizontal :is(.item, :has(> [data-fc-field-label])) > [data-fc-field-label],
+.inline :is(.item, :has(> [data-fc-field-label])) > [data-fc-field-label] {
+  grid-column: 1;
+  grid-row: 1;
+  justify-content: var(--_label-justify);
+  min-height: var(--_label-h);
+  padding-block-end: 0;
+  text-align: var(--_label-align);
+}
+
+/* Inline items without a label (checkbox, buttons) take no label column. */
+.inline .item:not(:has(> [data-fc-field-label])) {
+  display: flex;
+}

@@ -1,0 +1,59 @@
+/*
+ * Figma "TimePicker Menu" panel + "TimePicker Menu Cell".
+ * Component/TimePicker/*: column width 56 and height 224, cell height 28,
+ * cell hover / selected tints. Rows reuse the shared list row
+ * (listItem.module.css: hover, selected, focus ring, disabled, radius 4).
+ * Divider between columns: Color/Border/Neutral-Faded, as in Figma.
+ */
+.panel {
+  --_col-w: var(--fc-component-timepicker-column-width);
+  --_cell-h: var(--fc-component-timepicker-cell-height);
+
+  display: flex;
+  padding-top: var(--fc-space-padding-xxs);
+}
+
+.column {
+  position: relative;
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  width: var(--_col-w);
+  height: var(--fc-component-timepicker-column-height);
+  padding-inline: var(--fc-space-padding-xxs);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  outline: none;
+}
+.column:hover { scrollbar-width: thin; }
+/* The column itself holds focus until a row is picked (nothing selected yet). */
+.column[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+.column + .column {
+  border-inline-start: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+
+/* Room after the last row so any row can scroll to the top. */
+.column::after {
+  content: '';
+  display: block;
+  height: calc(100% - var(--_cell-h));
+}
+
+.column .cell {
+  --_item-height: var(--_cell-h);
+  --_item-bg-hover: var(--fc-component-timepicker-cell-background-hover);
+  --_item-bg-selected: var(--fc-component-timepicker-cell-background-selected);
+
+  /* Figma cell: text 14 from the start edge, (column width − cell height) / 2. */
+  padding-inline: calc((var(--_col-w) - var(--_cell-h)) / 2) 0;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .column { scroll-behavior: auto; }
+  .column .cell { transition: none; }
+}

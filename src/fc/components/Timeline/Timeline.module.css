@@ -1,0 +1,190 @@
+/*
+ * Figma "❖ Timeline". From Component/Timeline/*: tail Border/Neutral-Faded at
+ * Stroke/Width/Strong, dot 10px on Background/Container, 20px under each
+ * item. The marker sits on the first line of the content.
+ *
+ * --_dot-color  the marker colour (Figma item Color)
+ * --_marker     marker box: the dot, or a 16px custom icon
+ */
+.timeline {
+  --_tail: var(--fc-component-timeline-tail-width) solid var(--fc-component-timeline-tail);
+  --_rail: var(--fc-typography-size-lg);
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.item {
+  --_marker: var(--fc-component-timeline-dot-size);
+  --_marker-top: calc((var(--fc-typography-line-height-base) - var(--_marker)) / 2);
+}
+.hasCustom { --_marker: var(--fc-typography-size-lg); }
+
+/* ---------- colours (Figma item Color) ---------- */
+.accent { --_dot-color: var(--fc-color-solid-accent); }
+/* Figma Gray is Content/Disabled (1.8:1); Neutral-Light keeps the marker at 3:1. */
+.neutral { --_dot-color: var(--fc-color-content-neutral-light); }
+.success { --_dot-color: var(--fc-color-solid-success); }
+.warning { --_dot-color: var(--fc-color-content-warning); }
+.danger { --_dot-color: var(--fc-color-solid-danger); }
+.hue { --_dot-color: var(--_hue-strong); }
+
+/* ---------- marker ---------- */
+.rail {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: var(--_rail);
+}
+.dot {
+  position: relative;
+  flex: none;
+  width: var(--_marker);
+  height: var(--_marker);
+  margin-top: var(--_marker-top);
+  border: var(--fc-component-timeline-tail-width) solid var(--_dot-color);
+  border-radius: 50%;
+  background: var(--fc-component-timeline-dot-background);
+}
+.custom {
+  position: relative;
+  display: flex;
+  flex: none;
+  width: var(--_marker);
+  height: var(--_marker);
+  margin-top: var(--_marker-top);
+  color: var(--fc-color-content-neutral-strong);
+}
+.custom svg {
+  width: 100%;
+  height: 100%;
+}
+.tinted .custom { color: var(--_dot-color); }
+
+.spin { animation: fc-timeline-spin 1s linear infinite; }
+@keyframes fc-timeline-spin {
+  to { transform: rotate(360deg); }
+}
+
+.content,
+.label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.label { color: var(--fc-color-content-neutral-strong); }
+
+/* ---------- vertical ---------- */
+.vertical > .item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas: 'rail content';
+  column-gap: var(--fc-space-margin-base);
+}
+.vertical .rail { grid-area: rail; }
+.vertical .content { grid-area: content; }
+.vertical .label { grid-area: label; }
+.vertical .content,
+.vertical .label { padding-bottom: var(--fc-component-timeline-item-padding-bottom); }
+.vertical > .last .content,
+.vertical > .last .label { padding-bottom: 0; }
+
+/* Figma Text Placement=Left: content before the line, aligned to it. */
+.vertical > .contentStart {
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas: 'content rail';
+}
+/* Figma Text Placement=Alternate, and any timeline with labels: three columns. */
+.vertical:is(.alternate, .withLabel) > .item {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-areas: 'label rail content';
+}
+.vertical:is(.alternate, .withLabel) > .contentStart { grid-template-areas: 'content rail label'; }
+.vertical .contentStart .content,
+.vertical .contentEnd .label { text-align: end; }
+
+/* The line: above the marker (from the item before) and below it (to the next). */
+.vertical .rail::before,
+.vertical .rail::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: calc(50% - var(--fc-component-timeline-tail-width) / 2);
+  border-inline-start: var(--_tail);
+}
+.vertical .rail::before {
+  top: 0;
+  height: var(--_marker-top);
+}
+.vertical .rail::after {
+  top: calc(var(--_marker-top) + var(--_marker));
+  bottom: 0;
+}
+.vertical > .first .rail::before,
+.vertical > .last .rail::after { content: none; }
+.vertical > .dashBefore .rail::before,
+.vertical > .dashAfter .rail::after { border-inline-start-style: dashed; }
+
+/* ---------- horizontal (Figma "Timeline / Horizontal") ---------- */
+.horizontal {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  row-gap: var(--fc-space-padding-sm);
+}
+.horizontal:is(.alternate, .withLabel) { grid-template-rows: auto auto auto; }
+.horizontal > .item {
+  display: grid;
+  grid-row: 1 / -1;
+  grid-template-rows: subgrid;
+  justify-items: center;
+  padding-inline: var(--fc-space-padding-xxs);
+  text-align: center;
+}
+/* Two rows: Text Placement Bottom (`end`) puts the line first, Top (`start`) last. */
+.horizontal .rail { grid-row: 1; }
+.horizontal .content { grid-row: 2; }
+.horizontal.start .rail { grid-row: 2; }
+.horizontal.start .content { grid-row: 1; }
+/* Three rows: the line in the middle, content and label on either side. */
+.horizontal:is(.alternate, .withLabel) .rail { grid-row: 2; }
+.horizontal:is(.alternate, .withLabel) .contentEnd .content,
+.horizontal:is(.alternate, .withLabel) .contentStart .label { grid-row: 3; }
+.horizontal:is(.alternate, .withLabel) .contentStart .content,
+.horizontal:is(.alternate, .withLabel) .contentEnd .label { grid-row: 1; }
+
+.horizontal .rail {
+  align-items: center;
+  width: calc(100% + 2 * var(--fc-space-padding-xxs));
+  margin-inline: calc(-1 * var(--fc-space-padding-xxs));
+  height: var(--_marker);
+}
+.horizontal .dot,
+.horizontal .custom { margin-top: 0; }
+.horizontal .rail::before,
+.horizontal .rail::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - var(--fc-component-timeline-tail-width) / 2);
+  border-top: var(--_tail);
+}
+.horizontal .rail::before {
+  inset-inline-start: 0;
+  inset-inline-end: calc(50% + var(--_marker) / 2);
+}
+.horizontal .rail::after {
+  inset-inline-start: calc(50% + var(--_marker) / 2);
+  inset-inline-end: 0;
+}
+.horizontal > .first .rail::before,
+.horizontal > .last .rail::after { content: none; }
+.horizontal > .dashBefore .rail::before,
+.horizontal > .dashAfter .rail::after { border-top-style: dashed; }
+
+@media (prefers-reduced-motion: reduce) {
+  .spin { animation: none; }
+}

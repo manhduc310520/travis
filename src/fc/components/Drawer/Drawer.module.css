@@ -1,0 +1,138 @@
+/*
+ * Figma "❖ Drawer". Surface (Elevated background, Shadow/Base, slide
+ * animation) comes from overlay.module.css; sizes and padding from
+ * Component/Drawer/*: 400 wide (the same 400 tall for top / bottom),
+ * header 16 × 24, body 24, footer 8 × 16. Mask: Background/Overlay.
+ * No radius: the panel is attached to the viewport edge.
+ */
+.mask {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  /* Above page chrome; React Aria popovers opened from the drawer sit higher. */
+  z-index: 1000;
+  box-sizing: border-box;
+  width: 100vw;
+  height: var(--visual-viewport-height);
+  background: var(--fc-color-background-overlay);
+}
+
+.mask[data-entering] { animation: fc-drawer-mask-in 0.24s ease-out; }
+.mask[data-exiting] { animation: fc-drawer-mask-out 0.16s ease-in forwards; }
+
+/* `.mask >` lifts these above `.surface`, whatever order the CSS loads in. */
+.mask > .drawer {
+  --_radius: 0;
+  /* No token for the large size yet: 736, the common large drawer (Figma has only 400). */
+  --_base-size: var(--fc-component-drawer-width);
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+.mask > .large { --_base-size: 736px; }
+
+/* Slide in from the placement edge (keyframes: overlay.module.css). */
+.mask > .drawer[data-entering] { animation-duration: 0.24s; }
+.mask > .drawer[data-exiting] { animation-duration: 0.16s; }
+
+.mask > .right,
+.mask > .left {
+  inset-block: 0;
+  width: var(--_size, var(--_base-size));
+  max-width: 100%;
+}
+.mask > .right { right: 0; --_from: translateX(100%); }
+.mask > .left { left: 0; --_from: translateX(-100%); }
+
+.mask > .top,
+.mask > .bottom {
+  inset-inline: 0;
+  height: var(--_size, var(--_base-size));
+  max-height: 100%;
+}
+.mask > .top { top: 0; --_from: translateY(-100%); }
+.mask > .bottom { bottom: 0; --_from: translateY(100%); }
+
+.dialog {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  outline: none;
+}
+
+/* ---------- header: [close] title … [extra] ---------- */
+.header {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  padding: var(--fc-component-drawer-header-padding-block) var(--fc-component-drawer-padding);
+  border-block-end: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-typography-size-lg);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-lg);
+  overflow-wrap: anywhere;
+}
+
+/* Close icon: quiet icon colour (Color/Content/Icon, 3:1) until hovered. */
+.header > .close {
+  --_fg: var(--fc-color-content-icon);
+  flex: none;
+}
+.header > .close[data-hovered],
+.header > .close[data-pressed] {
+  --_fg: var(--fc-color-content-icon-hover);
+}
+
+.extra {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  margin-inline-start: auto;
+}
+
+/* ---------- body ---------- */
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--fc-component-drawer-padding);
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- footer ---------- */
+.footer {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--fc-space-margin-xs);
+  padding: var(--fc-component-drawer-footer-padding-block) var(--fc-component-drawer-footer-padding-inline);
+  border-block-start: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+
+@keyframes fc-drawer-mask-in {
+  from { opacity: 0; }
+}
+@keyframes fc-drawer-mask-out {
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask[data-entering],
+  .mask[data-exiting] { animation: none; }
+}

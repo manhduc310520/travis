@@ -1,0 +1,48 @@
+/*
+ * Dark translucent surface, white text (Color/Background/Spotlight +
+ * Color/Content/On-Solid, 10:1+). Radius 4px like tags and popovers.
+ * Surface, text and max width (250px) come from Component/Tooltip/*.
+ * React Aria sets data-placement on the tooltip and the arrow.
+ */
+.tooltip {
+  --_bg: var(--fc-component-tooltip-background);
+  --_fg: var(--fc-component-tooltip-content);
+
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: var(--fc-component-tooltip-max-width);
+  min-height: var(--fc-size-control-base);
+  padding: var(--fc-space-padding-xxs) var(--fc-space-padding-xs);
+  border-radius: var(--fc-radius-sm);
+  background: var(--_bg);
+  color: var(--_fg);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  overflow-wrap: anywhere;
+}
+
+.tooltip[data-entering] { animation: fc-tooltip-in 0.15s ease-out; }
+
+/* Colour presets: palette hue at its strong step (palette.module.css). */
+.hue {
+  --_bg: var(--_hue-strong);
+  --_fg: var(--fc-color-content-on-solid-neutral);
+}
+
+.arrow svg {
+  display: block;
+  fill: var(--_bg);
+}
+.arrow[data-placement='bottom'] svg { transform: rotate(180deg); }
+.arrow[data-placement='left'] svg { transform: rotate(-90deg); }
+.arrow[data-placement='right'] svg { transform: rotate(90deg); }
+
+@keyframes fc-tooltip-in {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip[data-entering] { animation: none; }
+}

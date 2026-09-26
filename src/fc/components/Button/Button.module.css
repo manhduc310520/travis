@@ -1,0 +1,312 @@
+/*
+ * Every value is an fc token. Interaction states come from React Aria's data
+ * attributes (data-hovered, data-pressed, data-focus-visible, data-disabled,
+ * data-pending).
+ *
+ * Two layers: a colour class (.c-*) sets the palette of the button as local
+ * custom properties; a fill class (.solid, .outlined, .dashed, .filled,
+ * .text, .link) decides which of them paint the background, border and text.
+ * The default colour's border is Color/Border/Control (3:1, WCAG 1.4.11).
+ */
+.button {
+  --_bg: transparent;
+  --_fg: var(--fc-color-content-neutral-strong);
+  --_border: transparent;
+  --_border-style: solid;
+  --_radius: var(--fc-radius-base);
+  --_icon-size: var(--fc-component-button-icon-size);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fc-space-padding-xs);
+  height: var(--fc-size-control-base);
+  padding-inline: calc(var(--fc-component-button-padding-inline) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) var(--_border-style) var(--_border);
+  border-radius: var(--_radius);
+  background: var(--_bg);
+  color: var(--_fg);
+  font: inherit;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  font-weight: var(--fc-typography-weight-regular);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.button svg {
+  flex: none;
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+}
+
+.button[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* ---------- colours ---------- */
+.c-default {
+  --_c-solid: var(--fc-color-solid-neutral);
+  --_c-solid-hover: var(--fc-color-solid-neutral-hover);
+  --_c-solid-active: var(--fc-color-solid-neutral-active);
+  --_c-on-solid: var(--fc-color-content-on-solid-neutral);
+  --_c-text: var(--fc-color-content-neutral-strong);
+  --_c-text-hover: var(--fc-color-content-accent-hover);
+  --_c-text-active: var(--fc-color-content-accent-active);
+  --_c-border: var(--fc-color-border-control);
+  --_c-border-hover: var(--fc-color-solid-accent-hover);
+  --_c-border-active: var(--fc-color-solid-accent-active);
+  --_c-faded: var(--fc-color-background-plain-hover);
+  --_c-faded-hover: var(--fc-color-background-plain-active);
+  --_c-ghost: var(--fc-color-content-on-solid);
+  --_c-text-open: var(--fc-color-content-accent);
+  --_c-border-open: var(--fc-color-solid-accent);
+}
+
+.c-primary {
+  --_c-solid: var(--fc-color-solid-accent);
+  --_c-solid-hover: var(--fc-color-solid-accent-hover);
+  --_c-solid-active: var(--fc-color-solid-accent-active);
+  --_c-on-solid: var(--fc-color-content-on-solid);
+  --_c-text: var(--fc-color-content-accent);
+  --_c-text-hover: var(--fc-color-content-accent-hover);
+  --_c-text-active: var(--fc-color-content-accent-active);
+  --_c-border: var(--fc-color-content-accent);
+  --_c-border-hover: var(--fc-color-solid-accent-hover);
+  --_c-border-active: var(--fc-color-solid-accent-active);
+  --_c-faded: var(--fc-color-background-accent-faded);
+  --_c-faded-hover: var(--fc-color-background-accent-faded-hover);
+  --_c-ghost: var(--fc-color-content-accent);
+  --_c-text-open: var(--fc-color-content-accent);
+  --_c-border-open: var(--fc-color-solid-accent);
+}
+
+.c-danger {
+  --_c-solid: var(--fc-color-solid-danger);
+  --_c-solid-hover: var(--fc-color-solid-danger-hover);
+  --_c-solid-active: var(--fc-color-solid-danger-active);
+  --_c-on-solid: var(--fc-color-content-on-solid);
+  --_c-text: var(--fc-color-content-danger);
+  --_c-text-hover: var(--fc-color-content-danger-hover);
+  --_c-text-active: var(--fc-color-content-danger-active);
+  --_c-border: var(--fc-color-solid-danger);
+  --_c-border-hover: var(--fc-color-solid-danger-hover);
+  --_c-border-active: var(--fc-color-solid-danger-active);
+  --_c-faded: var(--fc-color-background-danger-faded);
+  --_c-faded-hover: var(--fc-color-background-danger-faded-hover);
+  --_c-ghost: var(--fc-color-content-danger);
+  --_c-text-open: var(--fc-color-content-danger);
+  --_c-border-open: var(--fc-color-solid-danger);
+}
+
+/* Link buttons without an explicit colour use the link role. */
+.c-link {
+  --_c-text: var(--fc-color-content-link);
+  --_c-text-hover: var(--fc-color-content-link-hover);
+  --_c-text-active: var(--fc-color-content-link-active);
+}
+
+/* Palette hues: values come from palette.module.css (--_hue-*). */
+.c-hue {
+  --_c-solid: var(--_hue-strong);
+  --_c-solid-hover: var(--_hue-strong-hover);
+  --_c-solid-active: var(--_hue-strong-active);
+  --_c-on-solid: var(--fc-color-content-on-solid-neutral);
+  --_c-text: var(--_hue-strong);
+  --_c-text-hover: var(--_hue-strong-hover);
+  --_c-text-active: var(--_hue-strong-active);
+  --_c-border: var(--_hue-strong);
+  --_c-border-hover: var(--_hue-strong-hover);
+  --_c-border-active: var(--_hue-strong-active);
+  --_c-faded: var(--_hue-faded);
+  --_c-faded-hover: var(--_hue-faded-hover);
+  --_c-ghost: var(--_hue-strong);
+  --_c-text-open: var(--_hue-strong);
+  --_c-border-open: var(--_hue-strong);
+}
+
+/* ---------- fills ---------- */
+.solid { --_bg: var(--_c-solid); --_fg: var(--_c-on-solid); }
+.solid[data-hovered] { --_bg: var(--_c-solid-hover); }
+.solid[data-pressed] { --_bg: var(--_c-solid-active); }
+
+.outlined,
+.dashed {
+  --_bg: var(--fc-color-background-container);
+  --_fg: var(--_c-text);
+  --_border: var(--_c-border);
+}
+.dashed { --_border-style: dashed; }
+.outlined[data-hovered],
+.dashed[data-hovered] { --_fg: var(--_c-text-hover); --_border: var(--_c-border-hover); }
+.outlined[data-pressed],
+.dashed[data-pressed] { --_fg: var(--_c-text-active); --_border: var(--_c-border-active); }
+
+.filled { --_bg: var(--_c-faded); --_fg: var(--_c-text); }
+.filled[data-hovered] { --_bg: var(--_c-faded-hover); }
+.filled[data-pressed] { --_bg: var(--_c-faded-hover); --_fg: var(--_c-text-active); }
+
+.text { --_fg: var(--_c-text); }
+.text[data-hovered] { --_bg: var(--_c-faded); }
+.text[data-pressed] { --_bg: var(--_c-faded-hover); }
+/* Default text buttons keep neutral text when pressed (no accent). */
+.c-default.filled[data-pressed],
+.c-default.text[data-pressed] { --_fg: var(--fc-color-content-neutral-strong); }
+
+.link { --_fg: var(--_c-text); }
+.link[data-hovered] { --_fg: var(--_c-text-hover); }
+.link[data-pressed] { --_fg: var(--_c-text-active); }
+
+/*
+ * Open trigger: React Aria keeps a menu / popover trigger "pressed" for as long
+ * as its overlay is open. That is a lasting state, not the instant of a press,
+ * so it takes the base colours (4.5:1 in every brand and mode) instead of the
+ * *-Active steps, which are darker and fall below 4.5:1 in Dark. Like an open
+ * Select, the outline turns accent so the trigger reads as "open".
+ */
+.outlined[aria-expanded='true'],
+.dashed[aria-expanded='true'] { --_fg: var(--_c-text-open); --_border: var(--_c-border-open); }
+.filled[aria-expanded='true'],
+.link[aria-expanded='true'] { --_fg: var(--_c-text); }
+
+.c-danger[data-focus-visible] { outline-color: var(--fc-color-solid-danger); }
+
+/* ---------- ghost: transparent, coloured border + text ---------- */
+.ghost {
+  --_bg: transparent;
+  --_fg: var(--_c-ghost);
+  --_border: var(--_c-ghost);
+}
+.ghost[data-hovered],
+.ghost[data-pressed] {
+  --_bg: var(--fc-color-fill-neutral-light);
+  --_fg: var(--_c-ghost);
+  --_border: var(--_c-ghost);
+}
+
+/* ---------- sizes ---------- */
+.sm {
+  height: var(--fc-size-control-sm);
+  padding-inline: calc(var(--fc-component-button-padding-inline-sm) - var(--fc-stroke-width-base));
+  --_radius: var(--fc-radius-sm);
+  --_icon-size: var(--fc-component-button-icon-size-sm);
+}
+
+.lg {
+  height: var(--fc-size-control-lg);
+  font-size: var(--fc-typography-size-lg);
+  line-height: var(--fc-typography-line-height-lg);
+  padding-inline: calc(var(--fc-component-button-padding-inline-lg) - var(--fc-stroke-width-base));
+  --_radius: var(--fc-radius-lg);
+  --_icon-size: var(--fc-component-button-icon-size-lg);
+}
+
+.block {
+  display: flex;
+  width: 100%;
+}
+
+/* ---------- shapes ---------- */
+.round { --_radius: calc(var(--fc-size-control-base) / 2); }
+.round.sm { --_radius: calc(var(--fc-size-control-sm) / 2); }
+.round.lg { --_radius: calc(var(--fc-size-control-lg) / 2); }
+
+.iconOnly {
+  width: var(--fc-size-control-base);
+  padding-inline: 0;
+}
+.iconOnly.sm { width: var(--fc-size-control-sm); }
+.iconOnly.lg { width: var(--fc-size-control-lg); }
+.circle { --_radius: 50%; }
+.circle:not(.iconOnly) { --_radius: calc(var(--fc-size-control-base) / 2); }
+
+/* ---------- disabled / pending ---------- */
+.button[data-disabled] {
+  --_fg: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.solid[data-disabled],
+.outlined[data-disabled],
+.dashed[data-disabled],
+.filled[data-disabled] {
+  --_bg: var(--fc-color-background-container-disabled);
+  --_border: var(--fc-color-border-neutral);
+}
+.text[data-disabled],
+.link[data-disabled],
+.ghost[data-disabled] {
+  --_bg: transparent;
+}
+.ghost[data-disabled] { --_border: var(--fc-color-border-neutral); }
+
+.button[data-pending] {
+  cursor: progress;
+}
+
+.spinner {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  border: var(--fc-stroke-width-strong) solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 50%;
+  animation: fc-button-spin 0.8s linear infinite;
+}
+
+@keyframes fc-button-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- compact group: joined buttons ---------- */
+.group {
+  display: inline-flex;
+}
+.group > .button {
+  border-radius: 0;
+}
+.group > .button + .button {
+  margin-inline-start: calc(var(--fc-stroke-width-base) * -1);
+}
+.group > .button:first-child {
+  border-start-start-radius: var(--_radius);
+  border-end-start-radius: var(--_radius);
+}
+.group > .button:last-child {
+  border-start-end-radius: var(--_radius);
+  border-end-end-radius: var(--_radius);
+}
+.group > .button[data-hovered],
+.group > .button[data-focus-visible] {
+  z-index: 1;
+}
+/* Solid buttons side by side need a visible seam (Figma "Button Compact Separator"). */
+.group > .solid + .solid {
+  border-inline-start-color: var(--_c-solid-hover);
+}
+
+.groupVertical {
+  flex-direction: column;
+}
+.groupVertical > .button + .button {
+  margin-inline-start: 0;
+  margin-block-start: calc(var(--fc-stroke-width-base) * -1);
+}
+.groupVertical > .button:first-child {
+  border-radius: var(--_radius) var(--_radius) 0 0;
+}
+.groupVertical > .button:last-child {
+  border-radius: 0 0 var(--_radius) var(--_radius);
+}
+.groupVertical > .solid + .solid {
+  border-inline-start-color: transparent;
+  border-block-start-color: var(--_c-solid-hover);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+  .spinner { animation-duration: 2s; }
+}

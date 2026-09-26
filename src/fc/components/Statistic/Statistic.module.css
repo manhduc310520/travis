@@ -1,0 +1,65 @@
+/*
+ * Figma "❖ Statistic". Title 14/22 Content/Description, 4px gap, value
+ * 24/32 semibold (Component/Statistic/Content-Font-Size, Heading-3).
+ * Type Up / Down colour the value with the success / danger TEXT tokens
+ * (Figma binds Solid/*; Content/* is the variant that holds 4.5:1 in both
+ * modes). The icon stays in the description colour, as in Figma, and is
+ * sized to the value (1em). Tabular digits keep a ticking countdown still.
+ */
+.statistic {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+  min-width: 0;
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.title {
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-component-statistic-title-font-size);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xxs);
+  min-width: 0;
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-component-statistic-content-font-size);
+  font-weight: var(--fc-typography-weight-semibold);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--fc-typography-line-height-heading-3);
+}
+.up { color: var(--fc-color-content-success); }
+.down { color: var(--fc-color-content-danger); }
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  color: var(--fc-color-content-description);
+}
+.icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+.affix {
+  flex: none;
+}
+
+.number {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

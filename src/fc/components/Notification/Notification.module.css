@@ -1,0 +1,102 @@
+/*
+ * Figma "❖ Notification": 384 wide, padding 20 × 24, radius 8, 24px icon
+ * 12 from the text (Component/Notification/*), close button top-right.
+ * Elevated surface, Shadow/Base and the enter / exit animation come from
+ * overlay.module.css (`.surface`, `[data-entering]`, `[data-exiting]`, all
+ * set by Message/toast.tsx).
+ */
+
+/* Top-right corner, newest first. */
+.region {
+  position: fixed;
+  /* Above React Aria popovers, which set z-index 100000 inline. */
+  z-index: 100001;
+  inset-block-start: var(--fc-space-margin-lg);
+  inset-inline-end: var(--fc-space-margin-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-base);
+  max-width: calc(100% - 2 * var(--fc-space-margin-lg));
+  outline: none;
+}
+
+.notice {
+  --_radius: var(--fc-component-notification-radius);
+  --_padding: var(--fc-component-notification-padding-block) var(--fc-component-notification-padding-inline);
+  --_from: translateX(var(--fc-space-margin-lg));
+
+  position: relative;
+  width: var(--fc-component-notification-width);
+  max-width: 100%;
+}
+
+.region[data-focus-visible],
+.notice[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.main {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--fc-space-margin-sm);
+}
+
+/* 24px, the height of the title line it sits beside. */
+.icon {
+  display: flex;
+  flex: none;
+  width: var(--fc-component-notification-icon-size);
+  height: var(--fc-component-notification-icon-size);
+}
+.icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.basic { color: var(--fc-color-content-accent); }
+.info { color: var(--fc-color-content-info); }
+.success { color: var(--fc-color-content-success); }
+.warning { color: var(--fc-color-content-warning); }
+.error { color: var(--fc-color-content-danger); }
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+  min-width: 0;
+}
+
+/* Room on the right for the close button. */
+.title {
+  padding-inline-end: calc(var(--fc-size-control-sm) + var(--fc-space-margin-xs));
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-typography-size-lg);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-lg);
+  overflow-wrap: anywhere;
+}
+
+.description {
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--fc-space-margin-xs);
+  margin-block-start: var(--fc-space-margin-sm);
+}
+
+/* fc Button text / sm, pinned to the first line of the title. */
+.close {
+  position: absolute;
+  inset-block-start: var(--fc-component-notification-padding-block);
+  inset-inline-end: var(--fc-component-notification-padding-inline);
+}

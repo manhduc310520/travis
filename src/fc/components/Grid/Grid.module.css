@@ -1,0 +1,36 @@
+/*
+ * 24-column grid. Media queries cannot read CSS variables, so the px below
+ * are the breakpoint tokens written out — `npm run build:tokens` fails if any
+ * `min-width` here stops matching a `breakpoint/*` token.
+ */
+.row {
+  display: grid;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+}
+
+.col {
+  grid-column: var(--_start, auto) / span var(--_span, 24);
+  min-width: 0;
+}
+.col[data-span="0"] { display: none; }
+
+@media (min-width: 576px) {
+  .col[data-sm] { display: block; grid-column: var(--_start, auto) / span var(--_sm); }
+  .col[data-sm="0"] { display: none; }
+}
+@media (min-width: 768px) {
+  .col[data-md] { display: block; grid-column: var(--_start, auto) / span var(--_md); }
+  .col[data-md="0"] { display: none; }
+}
+@media (min-width: 992px) {
+  .col[data-lg] { display: block; grid-column: var(--_start, auto) / span var(--_lg); }
+  .col[data-lg="0"] { display: none; }
+}
+@media (min-width: 1200px) {
+  .col[data-xl] { display: block; grid-column: var(--_start, auto) / span var(--_xl); }
+  .col[data-xl="0"] { display: none; }
+}
+@media (min-width: 1600px) {
+  .col[data-xxl] { display: block; grid-column: var(--_start, auto) / span var(--_xxl); }
+  .col[data-xxl="0"] { display: none; }
+}

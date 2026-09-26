@@ -1,0 +1,2054 @@
+[
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Blue/1",
+  "new": "global/color/blue-1",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Blue/2",
+  "new": "global/color/blue-2",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Blue/3",
+  "new": "global/color/blue-3",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Blue/4",
+  "new": "global/color/blue-4",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Blue/5",
+  "new": "global/color/blue-5",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Blue/6",
+  "new": "global/color/blue-6",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Blue/7",
+  "new": "global/color/blue-7",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Blue/8",
+  "new": "global/color/blue-8",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Blue/9",
+  "new": "global/color/blue-9",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Blue/10",
+  "new": "global/color/blue-10",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Cyan/1",
+  "new": "global/color/cyan-1",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Cyan/2",
+  "new": "global/color/cyan-2",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Cyan/3",
+  "new": "global/color/cyan-3",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Cyan/4",
+  "new": "global/color/cyan-4",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Cyan/5",
+  "new": "global/color/cyan-5",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Cyan/6",
+  "new": "global/color/cyan-6",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Cyan/7",
+  "new": "global/color/cyan-7",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Cyan/8",
+  "new": "global/color/cyan-8",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Cyan/9",
+  "new": "global/color/cyan-9",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Cyan/10",
+  "new": "global/color/cyan-10",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Geekblue/1",
+  "new": "global/color/indigo-1",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Geekblue/2",
+  "new": "global/color/indigo-2",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Geekblue/3",
+  "new": "global/color/indigo-3",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Geekblue/4",
+  "new": "global/color/indigo-4",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Geekblue/5",
+  "new": "global/color/indigo-5",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Geekblue/6",
+  "new": "global/color/indigo-6",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Geekblue/7",
+  "new": "global/color/indigo-7",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Geekblue/8",
+  "new": "global/color/indigo-8",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Geekblue/9",
+  "new": "global/color/indigo-9",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Geekblue/10",
+  "new": "global/color/indigo-10",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Gold/1",
+  "new": "global/color/amber-1",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Gold/2",
+  "new": "global/color/amber-2",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Gold/3",
+  "new": "global/color/amber-3",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Gold/4",
+  "new": "global/color/amber-4",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Gold/5",
+  "new": "global/color/amber-5",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Gold/6",
+  "new": "global/color/amber-6",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Gold/7",
+  "new": "global/color/amber-7",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Gold/8",
+  "new": "global/color/amber-8",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Gold/9",
+  "new": "global/color/amber-9",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Gold/10",
+  "new": "global/color/amber-10",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Green/1",
+  "new": "global/color/green-1",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Green/2",
+  "new": "global/color/green-2",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Green/3",
+  "new": "global/color/green-3",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Green/4",
+  "new": "global/color/green-4",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Green/5",
+  "new": "global/color/green-5",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Green/6",
+  "new": "global/color/green-6",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Green/7",
+  "new": "global/color/green-7",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Green/8",
+  "new": "global/color/green-8",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Green/9",
+  "new": "global/color/green-9",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Green/10",
+  "new": "global/color/green-10",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Lime/1",
+  "new": "global/color/lime-1",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Lime/2",
+  "new": "global/color/lime-2",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Lime/3",
+  "new": "global/color/lime-3",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Lime/4",
+  "new": "global/color/lime-4",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Lime/5",
+  "new": "global/color/lime-5",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Lime/6",
+  "new": "global/color/lime-6",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Lime/7",
+  "new": "global/color/lime-7",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Lime/8",
+  "new": "global/color/lime-8",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Lime/9",
+  "new": "global/color/lime-9",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Lime/10",
+  "new": "global/color/lime-10",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Magenta/1",
+  "new": "global/color/magenta-1",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Magenta/2",
+  "new": "global/color/magenta-2",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Magenta/3",
+  "new": "global/color/magenta-3",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Magenta/4",
+  "new": "global/color/magenta-4",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Magenta/5",
+  "new": "global/color/magenta-5",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Magenta/6",
+  "new": "global/color/magenta-6",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Magenta/7",
+  "new": "global/color/magenta-7",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Magenta/8",
+  "new": "global/color/magenta-8",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Magenta/9",
+  "new": "global/color/magenta-9",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Magenta/10",
+  "new": "global/color/magenta-10",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Orange/1",
+  "new": "global/color/orange-1",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Orange/2",
+  "new": "global/color/orange-2",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Orange/3",
+  "new": "global/color/orange-3",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Orange/4",
+  "new": "global/color/orange-4",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Orange/5",
+  "new": "global/color/orange-5",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Orange/6",
+  "new": "global/color/orange-6",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Orange/7",
+  "new": "global/color/orange-7",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Orange/8",
+  "new": "global/color/orange-8",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Orange/9",
+  "new": "global/color/orange-9",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Orange/10",
+  "new": "global/color/orange-10",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Purple/1",
+  "new": "global/color/purple-1",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Purple/2",
+  "new": "global/color/purple-2",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Purple/3",
+  "new": "global/color/purple-3",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Purple/4",
+  "new": "global/color/purple-4",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Purple/5",
+  "new": "global/color/purple-5",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Purple/6",
+  "new": "global/color/purple-6",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Purple/7",
+  "new": "global/color/purple-7",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Purple/8",
+  "new": "global/color/purple-8",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Purple/9",
+  "new": "global/color/purple-9",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Purple/10",
+  "new": "global/color/purple-10",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Red/1",
+  "new": "global/color/red-1",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Red/2",
+  "new": "global/color/red-2",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Red/3",
+  "new": "global/color/red-3",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Red/4",
+  "new": "global/color/red-4",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Red/5",
+  "new": "global/color/red-5",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Red/6",
+  "new": "global/color/red-6",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Red/7",
+  "new": "global/color/red-7",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Red/8",
+  "new": "global/color/red-8",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Red/9",
+  "new": "global/color/red-9",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Red/10",
+  "new": "global/color/red-10",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Volcano/1",
+  "new": "global/color/vermilion-1",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Volcano/2",
+  "new": "global/color/vermilion-2",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Volcano/3",
+  "new": "global/color/vermilion-3",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Volcano/4",
+  "new": "global/color/vermilion-4",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Volcano/5",
+  "new": "global/color/vermilion-5",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Volcano/6",
+  "new": "global/color/vermilion-6",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Volcano/7",
+  "new": "global/color/vermilion-7",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Volcano/8",
+  "new": "global/color/vermilion-8",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Volcano/9",
+  "new": "global/color/vermilion-9",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Volcano/10",
+  "new": "global/color/vermilion-10",
+  "note": "đổi tên dải"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Yellow/1",
+  "new": "global/color/yellow-1",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Yellow/2",
+  "new": "global/color/yellow-2",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Yellow/3",
+  "new": "global/color/yellow-3",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Yellow/4",
+  "new": "global/color/yellow-4",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Yellow/5",
+  "new": "global/color/yellow-5",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Yellow/6",
+  "new": "global/color/yellow-6",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Yellow/7",
+  "new": "global/color/yellow-7",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Yellow/8",
+  "new": "global/color/yellow-8",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Yellow/9",
+  "new": "global/color/yellow-9",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Yellow/10",
+  "new": "global/color/yellow-10",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Pink/1",
+  "new": "XÓA",
+  "note": "trùng hệt magenta; không biến nào trỏ vào"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Pink/2",
+  "new": "XÓA",
+  "note": "trùng hệt magenta; không biến nào trỏ vào"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Pink/3",
+  "new": "XÓA",
+  "note": "trùng hệt magenta; không biến nào trỏ vào"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Pink/4",
+  "new": "XÓA",
+  "note": "trùng hệt magenta; không biến nào trỏ vào"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Pink/5",
+  "new": "XÓA",
+  "note": "trùng hệt magenta; không biến nào trỏ vào"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Pink/6",
+  "new": "XÓA",
+  "note": "trùng hệt magenta; không biến nào trỏ vào"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Pink/7",
+  "new": "XÓA",
+  "note": "trùng hệt magenta; không biến nào trỏ vào"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Pink/8",
+  "new": "XÓA",
+  "note": "trùng hệt magenta; không biến nào trỏ vào"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Pink/9",
+  "new": "XÓA",
+  "note": "trùng hệt magenta; không biến nào trỏ vào"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Base/Pink/10",
+  "new": "XÓA",
+  "note": "trùng hệt magenta; không biến nào trỏ vào"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Gradient/colorHeaderBgStart",
+  "new": "color/background/header-start",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Gradient/colorHeaderBgEnd",
+  "new": "color/background/header-end",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/colorText",
+  "new": "color/content/neutral-strong",
+  "note": "chữ chính"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/colorTextSecondary",
+  "new": "color/content/neutral",
+  "note": "chữ phụ"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/colorTextTertiary",
+  "new": "color/content/neutral-light",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/colorTextQuaternary",
+  "new": "color/content/neutral-faded",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/colorTextHeading",
+  "new": "color/content/heading",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/colorTextLabel",
+  "new": "color/content/label",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/colorTextDescription",
+  "new": "color/content/description",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/colorTextDisabled",
+  "new": "color/content/disabled",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/colorTextPlaceholder",
+  "new": "color/content/placeholder",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/colorTextLightSolid",
+  "new": "color/content/on-solid",
+  "note": "chữ trắng trên nền solid có màu"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Text/solidTextColor",
+  "new": "color/content/on-solid-neutral",
+  "note": "chữ trên nền color/solid/neutral"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Icon/colorIcon",
+  "new": "color/content/icon",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Icon/colorIconHover",
+  "new": "color/content/icon-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgContainer",
+  "new": "color/background/container",
+  "note": "nền card, bảng, form"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgElevated",
+  "new": "color/background/elevated",
+  "note": "nền dropdown, modal"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgLayout",
+  "new": "color/background/layout",
+  "note": "nền trang"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgMask",
+  "new": "color/background/overlay",
+  "note": "lớp phủ sau modal"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgSpotlight",
+  "new": "color/background/spotlight",
+  "note": "nền tooltip"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgContainerDisabled",
+  "new": "color/background/container-disabled",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgTextHover",
+  "new": "color/background/plain-hover",
+  "note": "nền control không viền, không nền khi hover"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgTextActive",
+  "new": "color/background/plain-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBorderBg",
+  "new": "color/border/container",
+  "note": "viền trùng màu nền (vòng quanh avatar, badge)"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgSolid",
+  "new": "color/solid/neutral",
+  "note": "nền đặc đen (Light) / trắng (Dark)"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgSolidHover",
+  "new": "color/solid/neutral-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/colorBgSolidActive",
+  "new": "color/solid/neutral-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Bg/defaultBg",
+  "new": "color/background/neutral",
+  "note": "CẦN XEM: chưa rõ nơi dùng"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Border/colorBorder",
+  "new": "color/border/neutral",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Border/colorBorderSecondary",
+  "new": "color/border/neutral-light",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Border/colorSplit",
+  "new": "color/border/neutral-faded",
+  "note": "đường chia"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Fill/colorFill",
+  "new": "color/fill/neutral-strong",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Fill/colorFillSecondary",
+  "new": "color/fill/neutral",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Fill/colorFillTertiary",
+  "new": "color/fill/neutral-light",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Fill/colorFillQuaternary",
+  "new": "color/fill/neutral-faded",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Fill/colorFillContent",
+  "new": "color/fill/area",
+  "note": "CẦN XEM: nền vùng nội dung"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Fill/colorFillContentHover",
+  "new": "color/fill/area-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Fill/colorFillAlter",
+  "new": "color/fill/alternate",
+  "note": "nền xen kẽ, bán trong suốt"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Fill/colorFillAlterSolid",
+  "new": "color/background/alternate",
+  "note": "nền xen kẽ, đặc"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/Fill/colorFilledHandleBg",
+  "new": "color/background/handle",
+  "note": "CẦN XEM: nền núm kéo"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/colorWhite",
+  "new": "global/color/white",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/transparent",
+  "new": "global/color/transparent",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/colorBgBase",
+  "new": "color/seed/background",
+  "note": "màu gốc nền của mode"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Neutral/colorTextBase",
+  "new": "color/seed/content",
+  "note": "màu gốc chữ của mode"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Link/colorLink",
+  "new": "color/content/link",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Link/colorLinkHover",
+  "new": "color/content/link-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Link/colorLinkActive",
+  "new": "color/content/link-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Control/controlItemBgHover",
+  "new": "color/background/item-hover",
+  "note": "nền dòng trong list, menu"
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Control/controlItemBgActive",
+  "new": "color/background/item-selected",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Control/controlItemBgActiveHover",
+  "new": "color/background/item-selected-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Control/controlItemBgActiveDisabled",
+  "new": "color/background/item-selected-disabled",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Control/controlOutline",
+  "new": "color/outline/accent",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Control/controlTmpOutline",
+  "new": "color/outline/neutral",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorErrorOutline",
+  "new": "color/outline/danger",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarningOutline",
+  "new": "color/outline/warning",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Primary/colorPrimary",
+  "new": "color/solid/accent",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Primary/colorPrimaryHover",
+  "new": "color/solid/accent-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Primary/colorPrimaryActive",
+  "new": "color/solid/accent-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Primary/colorPrimaryBg",
+  "new": "color/background/accent-faded",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Primary/colorPrimaryBgHover",
+  "new": "color/background/accent-faded-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Primary/colorPrimaryBorder",
+  "new": "color/border/accent-light",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Primary/colorPrimaryBorderHover",
+  "new": "color/border/accent-light-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Primary/colorPrimaryText",
+  "new": "color/content/accent",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Primary/colorPrimaryTextHover",
+  "new": "color/content/accent-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Primary/colorPrimaryTextActive",
+  "new": "color/content/accent-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Success/colorSuccess",
+  "new": "color/solid/success",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Success/colorSuccessHover",
+  "new": "color/solid/success-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Success/colorSuccessActive",
+  "new": "color/solid/success-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Success/colorSuccessBg",
+  "new": "color/background/success-faded",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Success/colorSuccessBgHover",
+  "new": "color/background/success-faded-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Success/colorSuccessBorder",
+  "new": "color/border/success-light",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Success/colorSuccessBorderHover",
+  "new": "color/border/success-light-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Success/colorSuccessText",
+  "new": "color/content/success",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Success/colorSuccessTextHover",
+  "new": "color/content/success-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Success/colorSuccessTextActive",
+  "new": "color/content/success-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarning",
+  "new": "color/solid/warning",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarningHover",
+  "new": "color/solid/warning-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarningActive",
+  "new": "color/solid/warning-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarningBg",
+  "new": "color/background/warning-faded",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarningBgHover",
+  "new": "color/background/warning-faded-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarningBorder",
+  "new": "color/border/warning-light",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarningBorderHover",
+  "new": "color/border/warning-light-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarningText",
+  "new": "color/content/warning",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarningTextHover",
+  "new": "color/content/warning-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Warning/colorWarningTextActive",
+  "new": "color/content/warning-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorError",
+  "new": "color/solid/danger",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorErrorHover",
+  "new": "color/solid/danger-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorErrorActive",
+  "new": "color/solid/danger-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorErrorBg",
+  "new": "color/background/danger-faded",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorErrorBgHover",
+  "new": "color/background/danger-faded-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorErrorBorder",
+  "new": "color/border/danger-light",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorErrorBorderHover",
+  "new": "color/border/danger-light-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorErrorText",
+  "new": "color/content/danger",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorErrorTextHover",
+  "new": "color/content/danger-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Error/colorErrorTextActive",
+  "new": "color/content/danger-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Info/colorInfo",
+  "new": "color/solid/info",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Info/colorInfoHover",
+  "new": "color/solid/info-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Info/colorInfoActive",
+  "new": "color/solid/info-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Info/colorInfoBg",
+  "new": "color/background/info-faded",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Info/colorInfoBgHover",
+  "new": "color/background/info-faded-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Info/colorInfoBorder",
+  "new": "color/border/info-light",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Info/colorInfoBorderHover",
+  "new": "color/border/info-light-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Info/colorInfoText",
+  "new": "color/content/info",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Info/colorInfoTextHover",
+  "new": "color/content/info-hover",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Colors/Brand/Info/colorInfoTextActive",
+  "new": "color/content/info-active",
+  "note": ""
+ },
+ {
+  "collection": "2. Colors",
+  "old": "Color",
+  "new": "XÓA",
+  "note": "biến mồ côi, trỏ ngược lên tầng component; không biến nào dùng"
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Primary/1",
+  "new": "brand/primary-1",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Primary/2",
+  "new": "brand/primary-2",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Primary/3",
+  "new": "brand/primary-3",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Primary/4",
+  "new": "brand/primary-4",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Primary/5",
+  "new": "brand/primary-5",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Primary/6",
+  "new": "brand/primary-6",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Primary/7",
+  "new": "brand/primary-7",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Primary/8",
+  "new": "brand/primary-8",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Primary/9",
+  "new": "brand/primary-9",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Primary/10",
+  "new": "brand/primary-10",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Light/controlOutline",
+  "new": "brand/light/outline-accent",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Light/colorHeaderBgStart",
+  "new": "brand/light/background-header-start",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Light/colorHeaderBgEnd",
+  "new": "brand/light/background-header-end",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Dark/controlOutline",
+  "new": "brand/dark/outline-accent",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Dark/colorHeaderBgStart",
+  "new": "brand/dark/background-header-start",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Dark/colorHeaderBgEnd",
+  "new": "brand/dark/background-header-end",
+  "note": ""
+ },
+ {
+  "collection": "1. Brand",
+  "old": "Dark/colorPrimary",
+  "new": "brand/dark/solid-accent",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/sizeStep",
+  "new": "size/seed/step",
+  "note": "bước tăng của thang size"
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/sizeUnit",
+  "new": "size/seed/unit",
+  "note": "đơn vị gốc 4px"
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/controlInteractiveSize",
+  "new": "size/control/interactive",
+  "note": "ô checkbox, radio"
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/sizePopupArrow",
+  "new": "size/popup-arrow/base",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Base/sizeXXS",
+  "new": "size/scale/xxs",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Base/sizeXS",
+  "new": "size/scale/xs",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Base/sizeSM",
+  "new": "size/scale/sm",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Base/size",
+  "new": "size/scale/base",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Base/sizeMS",
+  "new": "size/scale/ms",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Base/sizeMD",
+  "new": "size/scale/md",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Base/sizeLG",
+  "new": "size/scale/lg",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Base/sizeXL",
+  "new": "size/scale/xl",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Base/sizeXXL",
+  "new": "size/scale/xxl",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Height/controlHeight",
+  "new": "size/control/base",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Height/controlHeightLG",
+  "new": "size/control/lg",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Height/controlHeightSM",
+  "new": "size/control/sm",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Height/controlHeightXS",
+  "new": "size/control/xs",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Line Width/lineWidth",
+  "new": "stroke/width/base",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Line Width/lineWidthBold",
+  "new": "stroke/width/strong",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Line Width/lineWidthFocus",
+  "new": "stroke/width/focus",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Line Width/controlOutlineWidth",
+  "new": "stroke/width/outline",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Line Width/lineIcon",
+  "new": "stroke/width/icon",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenXS",
+  "new": "breakpoint/xs",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenXSMin",
+  "new": "breakpoint/xs-min",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenXSMax",
+  "new": "breakpoint/xs-max",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenSM",
+  "new": "breakpoint/sm",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenSMMin",
+  "new": "breakpoint/sm-min",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenSMMax",
+  "new": "breakpoint/sm-max",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenMD",
+  "new": "breakpoint/md",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenMDMin",
+  "new": "breakpoint/md-min",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenMDMax",
+  "new": "breakpoint/md-max",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenLG",
+  "new": "breakpoint/lg",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenLGMin",
+  "new": "breakpoint/lg-min",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenLGMax",
+  "new": "breakpoint/lg-max",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenXL",
+  "new": "breakpoint/xl",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenXLMin",
+  "new": "breakpoint/xl-min",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenXLMax",
+  "new": "breakpoint/xl-max",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenXXL",
+  "new": "breakpoint/xxl",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Size/Screen Size/screenXXLMin",
+  "new": "breakpoint/xxl-min",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Margin/margin",
+  "new": "space/margin/base",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Margin/marginXXS",
+  "new": "space/margin/xxs",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Margin/marginXS",
+  "new": "space/margin/xs",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Margin/marginSM",
+  "new": "space/margin/sm",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Margin/marginMD",
+  "new": "space/margin/md",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Margin/marginLG",
+  "new": "space/margin/lg",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Margin/marginXL",
+  "new": "space/margin/xl",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Margin/marginXXL",
+  "new": "space/margin/xxl",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/padding",
+  "new": "space/padding/base",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingXXS",
+  "new": "space/padding/xxs",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingXS",
+  "new": "space/padding/xs",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingSM",
+  "new": "space/padding/sm",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingMD",
+  "new": "space/padding/md",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingLG",
+  "new": "space/padding/lg",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingXL",
+  "new": "space/padding/xl",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingContentHorizontal",
+  "new": "space/padding-inline/container",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingContentHorizontalLG",
+  "new": "space/padding-inline/container-lg",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingContentHorizontalSM",
+  "new": "space/padding-inline/container-sm",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingContentVertical",
+  "new": "space/padding-block/container",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingContentVerticalLG",
+  "new": "space/padding-block/container-lg",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/paddingContentVerticalSM",
+  "new": "space/padding-block/container-sm",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/controlPaddingHorizontal",
+  "new": "space/padding-inline/control",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Space/Padding/controlPaddingHorizontalSM",
+  "new": "space/padding-inline/control-sm",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Border Radius/borderRadius",
+  "new": "radius/base",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Border Radius/borderRadiusLG",
+  "new": "radius/lg",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Border Radius/borderRadiusSM",
+  "new": "radius/sm",
+  "note": ""
+ },
+ {
+  "collection": "3. Dimensions",
+  "old": "Border Radius/borderRadiusXS",
+  "new": "radius/xs",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Family/fontFamily",
+  "new": "typography/family/base",
+  "note": "dọn mô tả"
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Family/fontFamilyCode",
+  "new": "typography/family/code",
+  "note": "dọn mô tả"
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Size/fontSize",
+  "new": "typography/size/base",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Size/fontSizeSM",
+  "new": "typography/size/sm",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Size/fontSizeLG",
+  "new": "typography/size/lg",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Size/fontSizeXL",
+  "new": "typography/size/xl",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Size/fontSizeHeading1",
+  "new": "typography/size/heading-1",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Size/fontSizeHeading2",
+  "new": "typography/size/heading-2",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Size/fontSizeHeading3",
+  "new": "typography/size/heading-3",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Size/fontSizeHeading4",
+  "new": "typography/size/heading-4",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Size/fontSizeHeading5",
+  "new": "typography/size/heading-5",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Size/fontSizeIcon",
+  "new": "typography/size/icon",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Line Height/lineHeight",
+  "new": "typography/line-height/base",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Line Height/lineHeightSM",
+  "new": "typography/line-height/sm",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Line Height/lineHeightLG",
+  "new": "typography/line-height/lg",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Line Height/lineHeightHeading1",
+  "new": "typography/line-height/heading-1",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Line Height/lineHeightHeading2",
+  "new": "typography/line-height/heading-2",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Line Height/lineHeightHeading3",
+  "new": "typography/line-height/heading-3",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Line Height/lineHeightHeading4",
+  "new": "typography/line-height/heading-4",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Line Height/lineHeightHeading5",
+  "new": "typography/line-height/heading-5",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Weight/fontWeightNormal",
+  "new": "typography/weight/regular",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Weight/fontWeightMedium",
+  "new": "typography/weight/medium",
+  "note": ""
+ },
+ {
+  "collection": "4. Typography",
+  "old": "Typography/Font Weight/fontWeightStrong",
+  "new": "typography/weight/semibold",
+  "note": ""
+ }
+]

@@ -1,0 +1,277 @@
+/*
+ * Figma "❖ Tabs". Every value is an fc token; sizes and colours specific to
+ * tabs come from Component/Tabs/*. React Aria puts the state on each tab:
+ * data-selected, data-hovered, data-pressed, data-focus-visible, data-disabled.
+ *
+ * The strip's hairline is drawn by the nav (inset box-shadow) so tabs paint
+ * over it: the ink bar sits on the line, and the selected card's open side
+ * hides it. Active = accent colour + ink bar / container background — the
+ * weight never changes.
+ *
+ * Variant and placement classes sit on each element (never `.card .tab`),
+ * so a Tabs nested in a panel is not restyled by its parent. Size values are
+ * custom properties that every root re-declares.
+ */
+.tabs {
+  --_line: var(--fc-color-border-neutral-light);
+  --_pad-block: var(--fc-space-padding-sm);
+  --_font-size: var(--fc-typography-size-base);
+  --_line-height: var(--fc-typography-line-height-base);
+  --_icon-size: var(--fc-typography-size-lg);
+  --_card-height: var(--fc-component-tabs-card-height);
+  --_card-pad-inline: var(--fc-space-padding-base);
+  --_card-r: var(--fc-radius-lg);
+  --_card-radius: var(--_card-r) var(--_card-r) 0 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-base);
+  min-width: 0;
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* ---------- placement: the strip's side; DOM order stays tab list → panel ---------- */
+.bottom {
+  flex-direction: column-reverse;
+  --_card-radius: 0 0 var(--_card-r) var(--_card-r);
+}
+.left {
+  flex-direction: row;
+  gap: var(--fc-space-margin-lg);
+  --_card-radius: var(--_card-r) 0 0 var(--_card-r);
+}
+.right {
+  flex-direction: row-reverse;
+  gap: var(--fc-space-margin-lg);
+  --_card-radius: 0 var(--_card-r) var(--_card-r) 0;
+}
+
+/* ---------- sizes (Figma Size: Small / Default / Large) ---------- */
+.sm {
+  --_pad-block: var(--fc-space-padding-xs);
+  --_card-height: var(--fc-component-tabs-card-height-sm);
+  --_card-pad-inline: var(--fc-space-padding-xs);
+  --_card-r: var(--fc-radius-base);
+}
+.lg {
+  --_pad-block: var(--fc-space-padding-base);
+  --_font-size: var(--fc-typography-size-lg);
+  --_line-height: var(--fc-typography-line-height-lg);
+  --_card-height: var(--fc-component-tabs-card-height-lg);
+}
+
+/* ---------- the bar: tab list + add button + extra ---------- */
+.nav {
+  display: flex;
+  flex: none;
+  align-items: center;
+  min-width: 0;
+  box-shadow: inset 0 calc(var(--fc-stroke-width-base) * -1) 0 var(--_line);
+}
+.nav-bottom { box-shadow: inset 0 var(--fc-stroke-width-base) 0 var(--_line); }
+.nav-left,
+.nav-right {
+  flex-direction: column;
+  align-items: stretch;
+}
+.nav-left { box-shadow: inset calc(var(--fc-stroke-width-base) * -1) 0 0 var(--_line); }
+.nav-right { box-shadow: inset var(--fc-stroke-width-base) 0 0 var(--_line); }
+/* Cards stand on the line. */
+.navCard.nav-top { align-items: flex-end; }
+.navCard.nav-bottom { align-items: flex-start; }
+
+.list {
+  display: flex;
+  gap: var(--fc-component-tabs-gutter);
+  min-width: 0;
+  font-size: var(--_font-size);
+  line-height: var(--_line-height);
+}
+.list[data-orientation='vertical'] {
+  flex-direction: column;
+  gap: var(--fc-space-margin-base);
+}
+.list.listCard { gap: var(--fc-component-tabs-card-gap); }
+
+/* ---------- a tab ---------- */
+.tab {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fc-space-margin-xs);
+  padding: var(--_pad-block) 0;
+  border-radius: var(--fc-radius-sm);
+  color: var(--fc-color-content-neutral-strong);
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+.tabVertical { padding: var(--fc-space-padding-xs) var(--fc-space-padding-lg); }
+
+.tab[data-hovered] { color: var(--fc-color-content-accent-hover); }
+.tab[data-pressed] { color: var(--fc-color-content-accent-active); }
+.tab[data-selected] { color: var(--fc-color-content-accent); }
+.tab[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.tab[data-focus-visible] {
+  z-index: 1;
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+}
+.icon svg {
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+}
+
+/* Inline (not flex) so the space before the badge stays in the tab's name: "Đơn mới 5". */
+.label { display: inline; }
+.badge { display: inline-flex; vertical-align: middle; }
+
+/* ---------- ink bar (line tabs): on the side that faces the panel ---------- */
+.ink {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--fc-component-tabs-ink-bar-size);
+  background: var(--fc-color-solid-accent);
+  pointer-events: none;
+  transition-property: translate, width;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+.ink-bottom { top: 0; bottom: auto; }
+.ink-left,
+.ink-right {
+  top: 0;
+  bottom: auto;
+  width: var(--fc-component-tabs-ink-bar-size);
+  height: 100%;
+  transition-property: translate, height;
+}
+.ink-left { left: auto; right: 0; }
+
+/* ---------- card / editable card (Figma Tabs / Card, Tabs / Container) ---------- */
+.tabCard {
+  height: var(--_card-height);
+  padding: 0 var(--_card-pad-inline);
+  border: var(--fc-stroke-width-base) solid var(--_line);
+  border-radius: var(--_card-radius);
+  background: var(--fc-component-tabs-card-background);
+}
+.tabCard[data-selected] { background: var(--fc-color-background-container); }
+.tabCard-top[data-selected] { border-bottom-color: var(--fc-color-background-container); }
+.tabCard-bottom[data-selected] { border-top-color: var(--fc-color-background-container); }
+.tabCard-left[data-selected] { border-right-color: var(--fc-color-background-container); }
+.tabCard-right[data-selected] { border-left-color: var(--fc-color-background-container); }
+
+/*
+ * × on a closable tab: a pointer shortcut (aria-hidden). Keyboard: Delete /
+ * Backspace on the tab. 24px hit area, pulled in so the tab keeps its padding.
+ */
+.close {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--fc-size-control-sm);
+  height: var(--fc-size-control-sm);
+  margin-inline: calc(var(--fc-space-margin-xxs) * -1) calc(var(--fc-space-margin-xs) * -1);
+  border-radius: var(--fc-radius-sm);
+  color: var(--fc-color-content-icon);
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+.close svg {
+  width: var(--fc-typography-size-sm);
+  height: var(--fc-typography-size-sm);
+}
+.close:hover {
+  background: var(--fc-color-background-plain-hover);
+  color: var(--fc-color-content-icon-hover);
+}
+
+.add {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--_card-height);
+  height: var(--_card-height);
+  margin-inline-start: var(--fc-component-tabs-card-gap);
+  padding: 0;
+  border: var(--fc-stroke-width-base) solid var(--_line);
+  border-radius: var(--_card-radius);
+  background: var(--fc-component-tabs-card-background);
+  color: var(--fc-color-content-icon);
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s;
+}
+.add svg {
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+}
+.add[data-hovered] { color: var(--fc-color-content-accent-hover); }
+.add[data-pressed] { color: var(--fc-color-content-accent-active); }
+.add[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.add[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.addVertical {
+  width: auto;
+  margin-inline-start: 0;
+  margin-block-start: var(--fc-component-tabs-card-gap);
+}
+
+/* ---------- extra slot: end of the bar ---------- */
+.extra {
+  display: flex;
+  flex: none;
+  align-items: center;
+  align-self: center;
+  margin-inline-start: auto;
+  padding-inline-start: var(--fc-space-margin-base);
+}
+.extraVertical {
+  align-self: auto;
+  margin-inline-start: 0;
+  padding-inline-start: 0;
+  margin-block-start: var(--fc-space-margin-base);
+}
+
+/* ---------- panel ---------- */
+.panel {
+  flex: 1;
+  min-width: 0;
+  border-radius: var(--fc-radius-sm);
+  outline: none;
+}
+.panel[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .close,
+  .add { transition: none; }
+  .ink { transition: none; }
+}

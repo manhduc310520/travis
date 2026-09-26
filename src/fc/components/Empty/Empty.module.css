@@ -1,0 +1,73 @@
+/*
+ * Figma "❖ Empty" (Size = MD | SM): illustration, description and optional
+ * actions, centred in a column — padding 16 top / bottom, 16 between items
+ * (Space/Margin/Base). The illustration is 184 wide at MD and 120 at SM
+ * (Component/Empty/Image-Width*); its height follows the artwork.
+ */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--fc-space-margin-base);
+  box-sizing: border-box;
+  padding-block: var(--fc-space-padding-base);
+  color: var(--fc-color-content-description);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  text-align: center;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+.preset { width: var(--fc-component-empty-image-width); }
+.sm .preset { width: var(--fc-component-empty-image-width-sm); }
+
+.art {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Figma wraps the text in a 32-high menu row: keep that row height. */
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--fc-size-control-base);
+  overflow-wrap: anywhere;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--fc-space-margin-xs);
+}
+
+/*
+ * Image=2. Figma paints it with fixed hexes (#AEB8C2, #DCE0E6, #F5F5F5) that
+ * stay light in Dark mode; here each grey is the nearest fc neutral, so the
+ * artwork follows the mode. #F5F5F5 = Background/Neutral exactly; #DCE0E6 ≈
+ * Border/Neutral (#D9D9D9); #AEB8C2 ≈ Content/Disabled (Legacy/Empty's
+ * colorTextDisabled). Paper and tray front stay opaque so shapes behind them
+ * never show through.
+ */
+.shade { fill: var(--fc-color-content-disabled); }
+.paper { fill: var(--fc-color-background-neutral); }
+.detail { fill: var(--fc-color-border-neutral); }
+
+/* Image=1: the variables Figma binds. */
+.trayShadow { fill: var(--fc-color-fill-neutral); }
+.tray {
+  fill: var(--fc-color-fill-neutral-light);
+  stroke: var(--fc-color-border-neutral);
+  stroke-width: var(--fc-stroke-width-base);
+}
+.trayEdge {
+  stroke: var(--fc-color-border-neutral);
+  stroke-width: var(--fc-stroke-width-base);
+}

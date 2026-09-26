@@ -1,0 +1,59 @@
+{
+  "_note": "Values of the variables changed by the tier-1 contrast fix (2026-09-26), read from Figma just before the change. To revert: set each value back and delete Brand/Light/Content-Accent, Brand/Dark/Content-Accent, Brand/Light/Solid-Accent. Follow-up the same night: Color/Content/Danger Dark moved from Global/Dark/Red/7 to Global/Dark/Red/8 so it also passes on Color/Background/Danger-Faded.",
+  "Color/Content/Accent": {
+    "id": "VariableID:5006:224",
+    "values": {
+      "Light": "@Brand/Light/Primary-6",
+      "Dark": "@Brand/Dark/Primary-6"
+    }
+  },
+  "Color/Solid/Accent": {
+    "id": "VariableID:5006:191",
+    "values": {
+      "Light": "@Brand/Light/Primary-8",
+      "Dark": "@Brand/Dark/Solid-Accent"
+    }
+  },
+  "Color/Content/Link": {
+    "id": "VariableID:5006:196",
+    "values": {
+      "Light": "@Color/Solid/Info",
+      "Dark": "@Color/Solid/Info"
+    }
+  },
+  "Color/Content/Description": {
+    "id": "VariableID:5006:121",
+    "values": {
+      "Light": "@Color/Content/Neutral-Light",
+      "Dark": "@Color/Content/Neutral-Light"
+    }
+  },
+  "Color/Content/Success": {
+    "id": "VariableID:5006:233",
+    "values": {
+      "Light": "@Global/Light/Green/6",
+      "Dark": "@Global/Dark/Green/6"
+    }
+  },
+  "Color/Content/Warning": {
+    "id": "VariableID:5006:250",
+    "values": {
+      "Light": "@Global/Light/Amber/6",
+      "Dark": "@Global/Dark/Amber/6"
+    }
+  },
+  "Color/Content/Danger": {
+    "id": "VariableID:5006:204",
+    "values": {
+      "Light": "#ff4d4f",
+      "Dark": "#dc4446"
+    }
+  },
+  "Color/Solid/Danger": {
+    "id": "VariableID:5006:195",
+    "values": {
+      "Light": "@Global/Light/Red/7",
+      "Dark": "#dc4446"
+    }
+  }
+}

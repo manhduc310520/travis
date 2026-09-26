@@ -1,0 +1,18 @@
+/*
+ * Base styles for everything rendered inside <FcTheme>. Scoped to .fc-root so
+ * the legacy stories that still run alongside are untouched.
+ */
+.fc-root {
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  font-weight: var(--fc-typography-weight-regular);
+  color: var(--fc-color-content-neutral-strong);
+  -webkit-font-smoothing: antialiased;
+}
+
+.fc-root *,
+.fc-root *::before,
+.fc-root *::after {
+  box-sizing: border-box;
+}

@@ -1,0 +1,283 @@
+/*
+ * Every value is an fc token. React Aria puts the state on the elements:
+ * the TextField root gets data-invalid / data-disabled, the Group wrapper gets
+ * data-hovered / data-focus-within / data-disabled / data-invalid.
+ * Border: Color/Border/Control (3:1 on every surface, WCAG 1.4.11); disabled
+ * keeps the lighter Color/Border/Neutral.
+ */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+  min-width: 0;
+}
+
+.label {
+  color: var(--fc-color-content-label);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+
+.description {
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.error {
+  color: var(--fc-color-content-danger);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* ---------- the box ---------- */
+.control {
+  --_bg: var(--fc-color-background-container);
+  --_border: var(--fc-color-border-control);
+  --_ring: transparent;
+
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-padding-xxs);
+  height: var(--fc-size-control-base);
+  padding-inline: calc(var(--fc-space-padding-inline-control) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid var(--_border);
+  border-radius: var(--fc-radius-base);
+  background: var(--_bg);
+  box-shadow: 0 0 0 var(--fc-stroke-width-outline) var(--_ring);
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.control[data-hovered] { --_border: var(--fc-color-solid-accent-hover); }
+.control[data-focus-within] {
+  --_border: var(--fc-color-solid-accent);
+  --_ring: var(--fc-color-outline-accent);
+}
+
+.filled {
+  --_bg: var(--fc-color-fill-neutral-light);
+  --_border: transparent;
+}
+.filled[data-hovered] { --_bg: var(--fc-color-fill-neutral); --_border: transparent; }
+.filled[data-focus-within] { --_bg: var(--fc-color-background-container); }
+
+/* Underlined: only a bottom rule, square corners. */
+.underlined {
+  --_bg: transparent;
+  border-width: 0 0 var(--fc-stroke-width-base);
+}
+.underlined,
+.underlined.sm,
+.underlined.lg { border-radius: 0; }
+.underlined[data-focus-within] { --_ring: transparent; box-shadow: 0 var(--fc-stroke-width-base) 0 0 var(--_border); }
+
+/* Borderless: no box at rest; a soft ring while focused keeps focus visible. */
+.borderless {
+  --_bg: transparent;
+  --_border: transparent;
+}
+.borderless[data-hovered] { --_border: transparent; }
+.borderless[data-focus-within] { --_border: transparent; }
+
+/* ---------- sizes ---------- */
+.sm {
+  height: var(--fc-size-control-sm);
+  padding-inline: calc(var(--fc-space-padding-inline-control-sm) - var(--fc-stroke-width-base));
+  border-radius: var(--fc-radius-sm);
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+}
+
+.lg {
+  height: var(--fc-size-control-lg);
+  border-radius: var(--fc-radius-lg);
+  font-size: var(--fc-typography-size-lg);
+  line-height: var(--fc-typography-line-height-lg);
+}
+
+.multiline {
+  height: auto;
+  align-items: stretch;
+  padding-block: calc(var(--fc-space-padding-xxs) - var(--fc-stroke-width-base));
+}
+
+/* ---------- status ---------- */
+.control[data-invalid] { --_border: var(--fc-color-solid-danger); }
+.control[data-invalid][data-hovered] { --_border: var(--fc-color-solid-danger-hover); }
+.control[data-invalid][data-focus-within] { --_border: var(--fc-color-solid-danger); --_ring: var(--fc-color-outline-danger); }
+.filled[data-invalid] { --_bg: var(--fc-color-background-danger-faded); }
+
+.success { --_border: var(--fc-color-solid-success); }
+.success[data-hovered] { --_border: var(--fc-color-solid-success-hover); }
+.success[data-focus-within] { --_border: var(--fc-color-solid-success); }
+
+.warning { --_border: var(--fc-color-solid-warning); }
+.warning[data-hovered] { --_border: var(--fc-color-solid-warning-hover); }
+.warning[data-focus-within] { --_border: var(--fc-color-solid-warning); --_ring: var(--fc-color-outline-warning); }
+.filled.warning { --_bg: var(--fc-color-background-warning-faded); }
+
+.control[data-disabled] {
+  --_bg: var(--fc-color-background-container-disabled);
+  --_border: var(--fc-color-border-neutral);
+  --_ring: transparent;
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+/* ---------- inner parts ---------- */
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+.input::placeholder { color: var(--fc-color-content-placeholder); }
+.input[data-disabled] { cursor: not-allowed; }
+
+.textarea {
+  resize: vertical;
+  min-height: var(--fc-size-control-base);
+}
+
+/* Text affixes (units like "VNĐ") need 4.5:1; icons only 3:1, so they keep the icon colour. */
+.affix {
+  display: inline-flex;
+  flex: none;
+  color: var(--fc-color-content-description);
+}
+.affix svg { color: var(--fc-color-content-icon); }
+
+.iconButton {
+  display: inline-flex;
+  flex: none;
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-color-content-icon);
+  cursor: pointer;
+  outline: none;
+}
+.iconButton[data-hovered] { color: var(--fc-color-content-icon-hover); }
+.iconButton[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+}
+
+/* ---------- show count ---------- */
+.count {
+  flex: none;
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-sm);
+}
+.countBelow {
+  display: flex;
+  justify-content: flex-end;
+  line-height: var(--fc-typography-line-height-sm);
+}
+
+/* ---------- pre / post tab (addons) ---------- */
+.addonRow {
+  display: flex;
+  align-items: stretch;
+}
+.addonRow > .control { flex: 1; min-width: 0; }
+.addon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--fc-space-padding-xxs);
+  padding-inline: calc(var(--fc-space-padding-inline-control) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-control);
+  background: var(--fc-component-input-addon-background);
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  white-space: nowrap;
+}
+.addonBefore {
+  border-inline-end: 0;
+  border-start-start-radius: var(--fc-radius-base);
+  border-end-start-radius: var(--fc-radius-base);
+}
+.addonAfter {
+  border-inline-start: 0;
+  border-start-end-radius: var(--fc-radius-base);
+  border-end-end-radius: var(--fc-radius-base);
+}
+.joined { border-radius: 0; }
+.addonRow > .joined:first-child { border-start-start-radius: var(--fc-radius-base); border-end-start-radius: var(--fc-radius-base); }
+.addonRow > .joined:last-child { border-start-end-radius: var(--fc-radius-base); border-end-end-radius: var(--fc-radius-base); }
+.addon-sm .addon { padding-inline: calc(var(--fc-space-padding-inline-control-sm) - var(--fc-stroke-width-base)); font-size: var(--fc-typography-size-sm); }
+.addon-sm .addonBefore, .addon-sm .joined:first-child { border-start-start-radius: var(--fc-radius-sm); border-end-start-radius: var(--fc-radius-sm); }
+.addon-sm .addonAfter, .addon-sm .joined:last-child { border-start-end-radius: var(--fc-radius-sm); border-end-end-radius: var(--fc-radius-sm); }
+.addon-lg .addon { font-size: var(--fc-typography-size-lg); }
+.addon-lg .addonBefore, .addon-lg .joined:first-child { border-start-start-radius: var(--fc-radius-lg); border-end-start-radius: var(--fc-radius-lg); }
+.addon-lg .addonAfter, .addon-lg .joined:last-child { border-start-end-radius: var(--fc-radius-lg); border-end-end-radius: var(--fc-radius-lg); }
+
+/* ---------- search ---------- */
+.clear { visibility: visible; }
+.field[data-empty] .clear { visibility: hidden; }
+.search .input::-webkit-search-cancel-button { display: none; }
+.addonRow > .searchButton {
+  margin-inline-start: calc(var(--fc-stroke-width-base) * -1);
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+/* ---------- OTP ---------- */
+.otp {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+}
+.otpCell {
+  --_bg: var(--fc-color-background-container);
+  --_border: var(--fc-color-border-control);
+  width: var(--fc-size-control-base);
+  height: var(--fc-size-control-base);
+  padding: 0;
+  border: var(--fc-stroke-width-base) solid var(--_border);
+  border-radius: var(--fc-radius-base);
+  background: var(--_bg);
+  color: var(--fc-color-content-neutral-strong);
+  font: inherit;
+  font-size: var(--fc-typography-size-lg);
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.otpCell:hover { --_border: var(--fc-color-solid-accent-hover); }
+.otpCell:focus {
+  --_border: var(--fc-color-solid-accent);
+  box-shadow: 0 0 0 var(--fc-stroke-width-outline) var(--fc-color-outline-accent);
+}
+.otp-sm { width: var(--fc-size-control-sm); height: var(--fc-size-control-sm); border-radius: var(--fc-radius-sm); font-size: var(--fc-typography-size-base); }
+.otp-lg { width: var(--fc-size-control-lg); height: var(--fc-size-control-lg); border-radius: var(--fc-radius-lg); }
+.otp-filled { --_bg: var(--fc-color-fill-neutral-light); --_border: transparent; }
+.otp-filled:hover { --_bg: var(--fc-color-fill-neutral); --_border: transparent; }
+.otp-filled:focus { --_bg: var(--fc-color-background-container); }
+.otp-borderless { --_bg: transparent; --_border: transparent; }
+.otp-borderless:hover, .otp-borderless:focus { --_border: transparent; }
+.otp-error { --_border: var(--fc-color-solid-danger); }
+.otp-error:focus { --_border: var(--fc-color-solid-danger); box-shadow: 0 0 0 var(--fc-stroke-width-outline) var(--fc-color-outline-danger); }
+.otp-warning { --_border: var(--fc-color-solid-warning); }
+.otp-warning:focus { --_border: var(--fc-color-solid-warning); box-shadow: 0 0 0 var(--fc-stroke-width-outline) var(--fc-color-outline-warning); }
+.otpCell:disabled {
+  --_bg: var(--fc-color-background-container-disabled);
+  --_border: var(--fc-color-border-neutral);
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.otpSeparator { color: var(--fc-color-content-description); }
+
+@media (prefers-reduced-motion: reduce) {
+  .control, .otpCell { transition: none; }
+}

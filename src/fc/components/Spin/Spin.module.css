@@ -1,0 +1,145 @@
+/*
+ * Figma "❖ Spin". Block: padding Space/Padding/Base (16), indicator → tip
+ * gap Space/Margin/XS (8), centred. Indicator 14 / 20 / 32
+ * (Component/Spin/Dot-Size-SM / Dot-Size / Dot-Size-LG): four dots, each
+ * 40% of the box, in Color/Solid/Accent at Figma's 50 / 30 / 100 / 60 %
+ * opacity. Tip: Typography/Size/Base, regular, Color/Content/Accent (the
+ * text step of Figma's colorPrimary, 4.5:1 on Container in Light and Dark).
+ *
+ * Nested: the content keeps its layout and fades to half opacity; the
+ * spinner is centred over it, but never lower than
+ * Component/Spin/Content-Height (400) from the top, so it stays in view on
+ * tall content. Fullscreen: Background/Overlay mask + the shared elevated
+ * surface (overlay.module.css), so the accent dots and tip keep their contrast.
+ *
+ * Rotation like the Button's pending spinner: linear and endless; slower
+ * (not stopped) under prefers-reduced-motion, since it is the only visible
+ * sign that work is still going on.
+ */
+.spin {
+  --_size: var(--fc-component-spin-dot-size);
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fc-space-margin-xs);
+  box-sizing: border-box;
+  padding: var(--fc-space-padding-base);
+  color: var(--fc-color-content-accent);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  font-weight: var(--fc-typography-weight-regular);
+  text-align: center;
+  vertical-align: middle;
+}
+.sm { --_size: var(--fc-component-spin-dot-size-sm); }
+.lg { --_size: var(--fc-component-spin-dot-size-lg); }
+
+/* Not spinning: the empty status element takes no room. */
+.idle { padding: 0; }
+
+.indicator {
+  position: relative;
+  display: block;
+  flex: none;
+  width: var(--_size);
+  height: var(--_size);
+  color: var(--fc-color-solid-accent);
+  animation: fc-spin-rotate 1.2s linear infinite;
+}
+.indicator > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.dot {
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  border-radius: 50%;
+  background: currentColor;
+}
+.dot1 { top: 0; left: 0; opacity: 0.5; }
+.dot2 { top: 0; right: 0; opacity: 0.3; }
+.dot3 { bottom: 0; left: 0; }
+.dot4 { bottom: 0; right: 0; opacity: 0.6; }
+
+@keyframes fc-spin-rotate {
+  to { transform: rotate(360deg); }
+}
+
+.tip {
+  max-width: 100%;
+}
+
+/* ---------- nested: overlay on content ---------- */
+.nested {
+  position: relative;
+}
+
+.content {
+  transition: opacity 0.3s;
+}
+.busy {
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  cursor: progress;
+  outline: none;
+}
+.overlay > .spin {
+  height: 100%;
+  max-height: var(--fc-component-spin-content-height);
+}
+
+/* ---------- fullscreen ---------- */
+.mask {
+  position: fixed;
+  inset: 0;
+  /* Same layer as the Modal mask; a later one stacks on top. */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fc-color-background-overlay);
+  cursor: progress;
+}
+.mask[data-entering] { animation: fc-spin-fade 0.16s ease-out; }
+.mask[data-exiting] { animation: fc-spin-fade 0.1s ease-in reverse forwards; }
+
+@keyframes fc-spin-fade {
+  from { opacity: 0; }
+}
+
+.panelBody {
+  display: flex;
+  padding: var(--fc-space-padding-lg);
+  outline: none;
+}
+
+/* ---------- a11y ---------- */
+.srOnly {
+  position: absolute;
+  inline-size: var(--fc-stroke-width-base);
+  block-size: var(--fc-stroke-width-base);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator { animation-duration: 2.4s; }
+  .content { transition: none; }
+  .mask[data-entering],
+  .mask[data-exiting] { animation: none; }
+}

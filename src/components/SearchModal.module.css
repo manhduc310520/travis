@@ -1,0 +1,222 @@
+/*
+ * Figma "Search Modal" (27702:145661), 650 × 450: Head 72 / Content 322 /
+ * Footer 56. Mask, surface (Elevated, Shadow/Base, radius Component/Modal/
+ * Radius), enter / exit animation and reduced motion come from
+ * Modal.module.css + overlay.module.css; rows from listItem.module.css.
+ *
+ * Figma bindings → fc tokens (Legacy/* aliases resolved):
+ * - Head padding: Space/Margin/Base (block) × Space/Padding/Base (inline),
+ *   bottom rule Color/Border/Neutral-Light. Field: Input Large (fc SearchField lg).
+ * - Content padding-inline Space/Padding/Base. Rows: AutoComplete controlHeight
+ *   → Size/Control/Base, radius SM, gap Space/Margin/XS, right padding
+ *   Space/Padding/SM, left padding 24 (unbound in Figma) → Space/Padding/LG,
+ *   highlight Color/Background/Item-Hover.
+ * - Path header: Breadcrumb linkColor → Component/Breadcrumb/Content,
+ *   separator margin Component/Breadcrumb/Separator-Margin.
+ * - Footer: padding Space/Padding/Base, top rule Color/Border/Neutral-Light,
+ *   fill Color/Seed/Background (white in Light, black in Dark, as in Figma).
+ *   Key caps = Button / Basic Small Disabled: height Size/Control/SM, radius
+ *   SM, padding Component/Button/Padding-Inline-SM, border Color/Border/Neutral,
+ *   fill Color/Background/Container-Disabled, icon Component/Button/Icon-Size-SM.
+ */
+
+/* Figma frame size; no variable exists for it (650 × 450). */
+.modal {
+  --_width: 650px;
+  --_height: 450px;
+
+  height: var(--_height);
+}
+
+.dialog {
+  flex: 1 1 auto;
+}
+
+/* ---------- head: the search field ---------- */
+.head {
+  display: flex;
+  flex: none;
+  align-items: center;
+  padding: var(--fc-space-margin-base) var(--fc-space-padding-base);
+  border-block-end: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+}
+
+.field {
+  flex: 1;
+}
+
+/* ---------- content ---------- */
+.content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* State=History title row: "Gần đây" + "Xoá lịch sử" (Space/Padding/SM inside the content padding). */
+.recent {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fc-space-margin-xs);
+  min-height: var(--fc-size-control-base);
+  padding-inline: calc(var(--fc-space-padding-base) + var(--fc-space-padding-sm));
+}
+
+/* Link-styled button: its own padding would push the text in; line it up with the rows. */
+.clearHistory {
+  margin-inline-end: calc(var(--fc-component-button-padding-inline-sm) * -1);
+}
+
+/* The menu is the scroller: head, history title and footer stay put. */
+.content > .menu {
+  --_list-max-height: none;
+
+  flex: 1 1 auto;
+  min-height: 0;
+  padding-inline: var(--fc-space-padding-base);
+}
+
+.group {
+  display: block;
+}
+
+/* Figma "Breadcrumb Title": the group's path, one control high, flush left. */
+.path {
+  display: block;
+  overflow: hidden;
+  padding-block: calc((var(--fc-size-control-base) - var(--fc-typography-line-height-base)) / 2);
+  color: var(--fc-component-breadcrumb-content);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.separator {
+  margin-inline: var(--fc-component-breadcrumb-separator-margin);
+}
+
+/* Rows sit indented under their path (and under "Gần đây"). */
+.content .item {
+  padding-inline-start: var(--fc-space-padding-lg);
+}
+
+/* History clock: 14 like Figma's clock-line, quiet until the row is highlighted. */
+.content .itemIcon {
+  color: var(--fc-color-content-icon);
+}
+.content .itemIcon svg {
+  width: var(--fc-typography-size-base);
+  height: var(--fc-typography-size-base);
+}
+.content .item[data-hovered] .itemIcon,
+.content .item[data-focused] .itemIcon {
+  color: var(--fc-color-content-icon-hover);
+}
+
+/* ---------- Default hint and Empty result, centred in the content ---------- */
+.state {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: auto;
+  text-align: center;
+}
+
+.hint {
+  gap: var(--fc-space-margin-xs);
+  padding: var(--fc-space-margin-base) var(--fc-space-padding-base) var(--fc-space-padding-base);
+}
+
+/* Figma "Result": padding-inline Space/Padding/XL inside the content padding, gap Space/Padding/LG. */
+.empty {
+  gap: var(--fc-space-padding-lg);
+  padding-inline: calc(var(--fc-space-padding-base) + var(--fc-space-padding-xl));
+}
+
+.emptyIcon {
+  flex: none;
+  width: var(--fc-size-control-lg);
+  height: var(--fc-size-control-lg);
+  color: var(--fc-color-content-heading);
+}
+/* Figma binds the glyph's stroke to Stroke/Width/Icon at every size. */
+.emptyIcon path {
+  stroke-width: var(--fc-stroke-width-icon);
+  vector-effect: non-scaling-stroke;
+}
+
+.emptyText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+}
+
+.emptyTitle {
+  margin: 0;
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-typography-size-heading-5);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-heading-3);
+}
+
+/* ---------- footer: key legend ---------- */
+.footer {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fc-space-margin-xs);
+  padding: var(--fc-space-padding-base);
+  border-block-start: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+  border-end-start-radius: var(--_radius);
+  border-end-end-radius: var(--_radius);
+  background: var(--fc-color-seed-background);
+}
+
+.shortcut {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  white-space: nowrap;
+}
+
+.keycap {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--fc-size-control-sm);
+  height: var(--fc-size-control-sm);
+  padding-inline: calc(var(--fc-component-button-padding-inline-sm) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral);
+  border-radius: var(--fc-radius-sm);
+  background: var(--fc-color-background-container-disabled);
+  color: var(--fc-color-content-description);
+  font: inherit;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.iconKey {
+  width: var(--fc-size-control-sm);
+  padding-inline: 0;
+}
+.iconKey svg {
+  width: var(--fc-component-button-icon-size-sm);
+  height: var(--fc-component-button-icon-size-sm);
+}
+
+/* Phones: no keyboard to describe, and the legend would not fit on one line. */
+@media (max-width: 575px) {
+  .footer { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content .item { transition: none; }
+}

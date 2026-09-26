@@ -1,0 +1,155 @@
+/*
+ * Figma "❖ Pagination". Item sizes and radius from Component/Pagination/*.
+ * React Aria puts data-hovered / data-pressed / data-focus-visible /
+ * data-disabled on every button; the current page is [aria-current='page'].
+ * Current = container background + accent border + accent text; the weight
+ * never changes. The jumper and the Simple field reuse the fc Input box.
+ */
+.pagination {
+  --_item-size: var(--fc-component-pagination-item-size);
+  --_item-radius: var(--fc-component-pagination-item-radius);
+  --_gap: var(--fc-space-margin-xs);
+  --_icon-size: var(--fc-typography-size-base);
+  --_font-size: var(--fc-typography-size-base);
+  --_line-height: var(--fc-typography-line-height-base);
+
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--_font-size);
+  line-height: var(--_line-height);
+}
+
+/* Figma Variant Mini = the small size. */
+.sm {
+  --_item-size: var(--fc-component-pagination-item-size-sm);
+  --_item-radius: var(--fc-radius-sm);
+  --_gap: var(--fc-space-margin-xxs);
+  --_icon-size: var(--fc-typography-size-sm);
+}
+.lg {
+  --_item-size: var(--fc-component-pagination-item-size-lg);
+  --_font-size: var(--fc-typography-size-lg);
+  --_line-height: var(--fc-typography-line-height-lg);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--_gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.list > li {
+  display: flex;
+  align-items: center;
+}
+
+/* ---------- page / arrow / jump items ---------- */
+.item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--_item-size);
+  height: var(--_item-size);
+  padding: 0 calc(var(--fc-space-padding-xxs) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid transparent;
+  border-radius: var(--_item-radius);
+  background: transparent;
+  color: var(--fc-color-content-neutral-strong);
+  font: inherit;
+  font-size: var(--_font-size);
+  line-height: var(--_line-height);
+  font-weight: var(--fc-typography-weight-regular);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+.item svg {
+  flex: none;
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+}
+.item[data-hovered] { background: var(--fc-color-background-plain-hover); }
+.item[data-pressed] { background: var(--fc-color-background-plain-active); }
+.item[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.item[aria-current='page'] {
+  border-color: var(--fc-color-solid-accent);
+  background: var(--fc-color-background-container);
+  color: var(--fc-color-content-accent);
+}
+.item[aria-current='page'][data-hovered] {
+  border-color: var(--fc-color-solid-accent-hover);
+  color: var(--fc-color-content-accent-hover);
+}
+.item[aria-current='page'][data-pressed] {
+  border-color: var(--fc-color-solid-accent-active);
+  color: var(--fc-color-content-accent-active);
+}
+
+/* Figma Variant "Prev and next": words instead of arrows. */
+.textArrow { padding-inline: calc(var(--fc-space-padding-xs) - var(--fc-stroke-width-base)); }
+
+/* "•••" turns into a double arrow on hover / keyboard focus (Figma Variant More). */
+.jump { color: var(--fc-color-content-icon); }
+.jump[data-hovered],
+.jump[data-pressed] {
+  background: transparent;
+  color: var(--fc-color-content-accent-hover);
+}
+.jump .jumpIcon { display: none; }
+.jump[data-hovered] .dots,
+.jump[data-focus-visible] .dots { display: none; }
+.jump[data-hovered] .jumpIcon,
+.jump[data-focus-visible] .jumpIcon { display: block; }
+
+.item[data-disabled] {
+  background: transparent;
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.item[aria-current='page'][data-disabled] {
+  border-color: var(--fc-color-border-neutral);
+  background: var(--fc-color-background-container-disabled);
+  color: var(--fc-color-content-disabled);
+}
+
+/* ---------- total, slot ---------- */
+.total { margin-inline-end: var(--fc-space-margin-xs); }
+.slot { margin-inline-start: var(--fc-space-margin-xs); }
+
+/* ---------- jumper and Simple field: the fc Input box, narrow ---------- */
+.jumper,
+.simple {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+}
+.jumper { margin-inline-start: var(--fc-space-margin-xs); }
+.jumperLabel { white-space: nowrap; }
+
+.pagination .box {
+  width: calc(var(--_item-size) + var(--fc-space-padding-base));
+  padding-inline: calc(var(--fc-space-padding-xxs) - var(--fc-stroke-width-base));
+}
+.input { text-align: center; }
+
+.of { white-space: nowrap; }
+
+.srOnly {
+  position: absolute;
+  width: var(--fc-stroke-width-base);
+  height: var(--fc-stroke-width-base);
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item { transition: none; }
+}

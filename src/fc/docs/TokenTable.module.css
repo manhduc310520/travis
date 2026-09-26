@@ -1,0 +1,111 @@
+.wrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.table th {
+  text-align: left;
+  padding: var(--fc-space-padding-xs) var(--fc-space-padding-sm);
+  background: var(--fc-color-fill-alternate);
+  color: var(--fc-color-content-heading);
+  font-weight: var(--fc-typography-weight-semibold);
+  border-bottom: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+}
+
+.table td {
+  padding: var(--fc-space-padding-xs) var(--fc-space-padding-sm);
+  border-bottom: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+  vertical-align: middle;
+}
+
+.previewCol { width: 136px; }
+.valueCol { width: 200px; }
+
+.code {
+  font-family: var(--fc-typography-family-code), ui-monospace, monospace;
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+}
+
+.value {
+  color: var(--fc-color-content-description);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.copy {
+  all: unset;
+  cursor: pointer;
+  color: var(--fc-color-content-link);
+  border-radius: var(--fc-radius-sm);
+  white-space: nowrap;
+}
+.copy[data-hovered] { color: var(--fc-color-content-link-hover); }
+.copy[data-pressed] { color: var(--fc-color-content-link-active); }
+.copy[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.copied {
+  margin-inline-start: var(--fc-space-margin-xs);
+  color: var(--fc-color-content-success);
+  font-size: var(--fc-typography-size-sm);
+}
+
+/* ---------- previews ---------- */
+.swatch,
+.track {
+  box-sizing: border-box;
+  width: 100%;
+  height: 28px;
+  border-radius: var(--fc-radius-sm);
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+}
+
+/* Spacing: the swatch frame on a faint fill, the accent bar inside is the length. */
+.track {
+  overflow: hidden;
+  background: var(--fc-color-fill-alternate);
+}
+
+.box {
+  width: 48px;
+  height: 32px;
+  background: var(--fc-color-background-container);
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral);
+}
+
+.stroke {
+  width: 48px;
+  height: 32px;
+  border-radius: var(--fc-radius-sm);
+  border-style: solid;
+  border-color: var(--fc-color-solid-accent);
+}
+
+.bar {
+  height: 100%;
+  max-width: 100%;
+  border-radius: var(--fc-radius-sm);
+  background: var(--fc-color-solid-accent);
+}
+
+.sample {
+  color: var(--fc-color-content-neutral-strong);
+  white-space: nowrap;
+}
+
+.probe {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}

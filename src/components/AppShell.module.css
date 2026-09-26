@@ -1,0 +1,87 @@
+/*
+ * Figma "App Shells" (page ❖ App Shells). Every value is an fc token except
+ * the sidebar width: Figma draws it as a fixed 256 frame with no variable
+ * (the collapsed rail is Component/Menu/Collapsed-Width, 80).
+ */
+.shell {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--fc-color-background-layout);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Figma: Color/Background/Container, right edge Color/Border/Neutral-Light. */
+.sider {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  inline-size: 256px;
+  border-inline-end: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+  background: var(--fc-color-background-container);
+  transition: inline-size 0.2s;
+}
+.sider.collapsed { inline-size: var(--fc-component-menu-collapsed-width); }
+
+/* The sider draws the surface and the edge; the menus inside stay plain. */
+.sider .nav,
+.drawerNav .nav {
+  border-inline-end: 0;
+  background: transparent;
+}
+
+/*
+ * Figma "Content": padding 16 top, Padding/XS on the sides. The menu already
+ * insets its rows (Component/Menu/Item-Margin-Inline) and pads its list
+ * (Padding/XS), so the wrapper adds only the rest.
+ */
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-block-start: calc(var(--fc-space-padding-base) - var(--fc-space-padding-xs));
+  padding-inline: calc(var(--fc-space-padding-xs) - var(--fc-component-menu-item-margin-inline));
+}
+
+/*
+ * Figma "Menu / Submenu": top edge Border/Neutral-Faded, padding
+ * Padding/XXS × Padding/XS. The menu's own list padding (Padding/XS) is
+ * pulled back so the rows sit Padding/XXS from the edge, as in Figma.
+ */
+.bottom {
+  flex: none;
+  padding-inline: calc(var(--fc-space-padding-xs) - var(--fc-component-menu-item-margin-inline));
+  border-block-start: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+.bottom .nav {
+  margin-block: calc(var(--fc-space-padding-xxs) - var(--fc-space-padding-xs));
+}
+.collapsed .scroll,
+.collapsed .bottom { padding-inline: 0; }
+
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.drawerNav > .nav { flex: 1; }
+
+/* Content well: Color/Background/Layout, Padding/Base (Padding/SM on mobile). */
+.content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: var(--fc-space-padding-base);
+}
+@media (max-width: 767px) {
+  .content { padding: var(--fc-space-padding-sm); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sider { transition: none; }
+}

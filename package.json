@@ -1,6 +1,6 @@
 {
   "name": "fabi-design-system",
-  "description": "FABi: Ant Design v6 retuned from the Figma design system's own tokens, components, and multibrand light/dark variables.",
+  "description": "FABi CMS design system \"fc\": React Aria Components + CSS Modules, styled only with --fc-* tokens exported from the Figma file (multibrand, light/dark, default/compact).",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,18 +13,19 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "validate:tokens": "node scripts/audit-tokens.mjs",
-    "generate:css-vars": "node scripts/generate-css-vars.mjs",
+    "build:tokens": "node scripts/build-tokens.mjs",
+    "audit:contrast": "node scripts/audit-contrast.mjs",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
-    "@ant-design/icons": "^6.3.4",
+    "@internationalized/date": "^3.12.4",
     "@untitledui-pro/icons": "^0.0.4",
-    "antd": "^6.6.5",
     "react": "^19.2.8",
+    "react-aria": "^3.52.1",
+    "react-aria-components": "^1.21.1",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {

@@ -1,0 +1,9 @@
+.flex {
+  display: flex;
+  min-width: 0;
+}
+
+.inline {
+  display: inline-flex;
+  min-width: 0;
+}

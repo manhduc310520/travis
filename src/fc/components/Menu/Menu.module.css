@@ -1,0 +1,263 @@
+/*
+ * Figma "❖ Menu": side navigation. Rows 32 high, radius 8, inset 4 from the
+ * sides (Component/Menu/Item-*), text 20 from the row start and 16 from its
+ * end, list padding-block 8, icon 16, collapsed width 80, submenu background
+ * Fill/Alternate, group title Content/Description.
+ *
+ * States come from React Aria data attributes: data-hovered, data-pressed,
+ * data-focus-visible, data-disabled and data-current (aria-current="page").
+ * Current page = tinted row + accent text, never a heavier weight.
+ *
+ * Theme Dark: the root (and each submenu popover) carries data-mode="dark",
+ * so every token below resolves to its Dark value. No colour of its own:
+ * Figma's navy (#001529) is outside the palette.
+ *
+ * Local variables (set on the menu, reset on popovers):
+ *   --_inset      gap between a row and the surface edge
+ *   --_pad-start  text start inside a row (level 0)
+ *   --_pad-end    text end inside a row
+ *   --_indent     one nesting step = icon + gap, so a child's text lines up
+ *                 with its parent's label
+ *   --_level      nesting depth, set per row
+ */
+.menu {
+  --_inset: var(--fc-component-menu-item-margin-inline);
+  --_pad-start: var(--fc-component-menu-item-padding-inline);
+  --_pad-end: var(--fc-space-padding-base);
+  --_indent: calc(var(--fc-component-menu-icon-size) + var(--fc-space-margin-xs));
+  --_gap: var(--fc-space-margin-xxs);
+  --_item-radius: var(--fc-component-menu-item-radius);
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  inline-size: 100%;
+  background: var(--fc-color-background-container);
+  border-inline-end: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+  color: var(--fc-color-content-neutral-strong);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  font-weight: var(--fc-typography-weight-regular);
+  transition: inline-size 0.2s;
+}
+
+.menu.dark { border-inline-end: 0; }
+
+.collapsed { inline-size: var(--fc-component-menu-collapsed-width); }
+
+/* ---------- logo ---------- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  padding: var(--fc-space-padding-base) calc(var(--_inset) + var(--_pad-start));
+  overflow: hidden;
+  white-space: nowrap;
+}
+.collapsed .logo {
+  justify-content: center;
+  padding-inline: 0;
+}
+
+/* ---------- lists ---------- */
+.list,
+.subList,
+.groupList,
+.popupList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.list { padding-block: var(--fc-space-padding-xs); }
+.subList { padding-block: var(--_gap); }
+
+.entry { display: block; }
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--_gap);
+}
+
+/* Inline submenu: the panel spans the full width on Fill/Alternate. */
+.panel { background: var(--fc-component-menu-sub-background); }
+
+/* ---------- row ---------- */
+.item {
+  --_bg: transparent;
+  --_fg: var(--fc-color-content-neutral-strong);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  box-sizing: border-box;
+  inline-size: calc(100% - var(--_inset) * 2);
+  min-block-size: var(--fc-component-menu-item-height);
+  margin: 0 var(--_inset);
+  /* One line keeps the token height exactly; a wrapped label grows the row. */
+  padding-block: calc((var(--fc-component-menu-item-height) - var(--fc-typography-line-height-base)) / 2);
+  padding-inline: calc(var(--_pad-start) + var(--_level, 0) * var(--_indent)) var(--_pad-end);
+  border: 0;
+  border-radius: var(--_item-radius);
+  background: var(--_bg);
+  color: var(--_fg);
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/*
+ * Pressed keeps the hover tint: a popover trigger stays "pressed" while its
+ * popover is open, and the stronger Plain-Active tint would drop the accent
+ * text of the path to the current page below 4.5:1.
+ */
+.item[data-hovered],
+.item[data-pressed] { --_bg: var(--fc-component-menu-item-background-hover); }
+
+/* Current page. Hover keeps the tint: the hover tint would drop accent text below 4.5:1. */
+.item[data-current] {
+  --_bg: var(--fc-component-menu-item-background-selected);
+  --_fg: var(--fc-component-menu-item-content-selected);
+}
+
+/* Submenu that contains the current page: accent text; collapsed (icon only) also takes the tint. */
+.childSelected { --_fg: var(--fc-component-menu-item-content-selected); }
+.iconOnly.childSelected { --_bg: var(--fc-component-menu-item-background-selected); }
+
+.item[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* Figma Status=Error. */
+.danger { --_fg: var(--fc-color-content-danger); }
+.danger[data-hovered] { --_bg: var(--fc-color-background-danger-faded); }
+.danger[data-pressed] { --_bg: var(--fc-color-background-danger-faded-hover); }
+.danger[data-focus-visible] { outline-color: var(--fc-color-solid-danger); }
+
+.item[data-disabled] {
+  --_bg: transparent;
+  --_fg: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+/*
+ * Any dark rendering (Theme=Dark, or Theme=Light inside a dark app): accent
+ * text on the dark hover tint is under 4.5:1, so the path to the current
+ * page goes full white instead.
+ */
+[data-mode='dark'] .childSelected { --_fg: var(--fc-color-content-on-solid); }
+
+/* Figma Theme=Dark: the current page is a solid accent row. */
+.dark .item[data-current],
+.dark .iconOnly.childSelected {
+  --_bg: var(--fc-color-solid-accent);
+  --_fg: var(--fc-color-content-on-solid);
+}
+
+/* ---------- row parts ---------- */
+.icon,
+.initial {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--fc-component-menu-icon-size);
+}
+.icon svg {
+  inline-size: var(--fc-component-menu-icon-size);
+  block-size: var(--fc-component-menu-icon-size);
+}
+
+.label {
+  flex: 1;
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.arrow {
+  display: inline-flex;
+  flex: none;
+  margin-inline-start: auto;
+  transition: transform 0.2s;
+}
+.arrow svg {
+  inline-size: var(--fc-typography-size-sm);
+  block-size: var(--fc-typography-size-sm);
+}
+.disclosure[data-expanded] > .item .arrow { transform: rotate(180deg); }
+
+/* Collapsed: icon centred, label kept for screen readers. */
+.iconOnly {
+  justify-content: center;
+  padding-inline: 0;
+}
+
+/* ---------- group title, divider ---------- */
+.groupTitle {
+  padding-block: var(--fc-space-padding-xs) var(--fc-space-padding-xxs);
+  padding-inline: calc(var(--_inset) + var(--_pad-start) + var(--_level, 0) * var(--_indent)) var(--_pad-end);
+  color: var(--fc-component-menu-group-content);
+}
+/* Dark Content/Description sits at ~4.47:1 on Elevated and Fill/Alternate: one step stronger keeps 4.5:1. */
+[data-mode='dark'] .groupTitle { color: var(--fc-color-content-neutral); }
+
+.groupRule,
+.divider {
+  flex: none;
+  block-size: var(--fc-stroke-width-base);
+  margin-inline: var(--_inset);
+  background: var(--fc-color-border-neutral-light);
+}
+.list > .group:first-child > .groupRule { background: transparent; }
+
+/* ---------- submenu popover (vertical / collapsed) ---------- */
+.popover {
+  --_radius: var(--fc-radius-lg);
+  --_padding: var(--fc-space-padding-xxs);
+  --_inset: 0px;
+  --_pad-start: var(--fc-space-padding-sm);
+  --_pad-end: var(--fc-space-padding-sm);
+  --_indent: calc(var(--fc-component-menu-icon-size) + var(--fc-space-margin-xs));
+  --_gap: 0px;
+  --_item-radius: var(--fc-radius-sm);
+
+  min-inline-size: calc(var(--fc-size-control-base) * 5);
+  max-inline-size: calc(100vw - var(--fc-space-margin-lg));
+  overflow: auto;
+}
+.popover .divider { margin-block: var(--fc-space-margin-xxs); }
+/* Optional header above a popover submenu (e.g. a search field). */
+.popupHeader { padding-block-end: var(--fc-space-padding-xxs); }
+/* Popover rows touch each other: draw the focus ring inside, as list rows do. */
+.popover .item[data-focus-visible] { outline-offset: calc(var(--fc-stroke-width-outline) * -1); }
+
+/* ---------- a11y ---------- */
+.srOnly {
+  position: absolute;
+  inline-size: var(--fc-stroke-width-base);
+  block-size: var(--fc-stroke-width-base);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .item,
+  .arrow { transition: none; }
+}
+
+.popupDialog {
+  outline: none;
+}

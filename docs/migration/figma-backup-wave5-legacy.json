@@ -1,0 +1,273 @@
+{
+  "note": "Values of Legacy/<Name>/Component/* in '5. Components' (mode Value) before wave 5 aliased them to the new Component/* variables (2026-09-27). Restore = set each back to this alias/value.",
+  "file": "hneVCBNUiPizVorg7Jp18G",
+  "values": {
+    "Legacy/Cascader/Component/dropdownHeight": {
+      "value": 180
+    },
+    "Legacy/Cascader/Component/menuPadding": {
+      "alias": "Space/Padding/XXS"
+    },
+    "Legacy/Cascader/Component/optionSelectedBg": {
+      "alias": "Color/Background/Item-Selected"
+    },
+    "Legacy/Cascader/Component/optionSelectedColor": {
+      "alias": "Color/Content/Neutral-Strong"
+    },
+    "Legacy/AutoComplete/Component/optionHeight": {
+      "value": 32
+    },
+    "Legacy/AutoComplete/Component/optionFontSize": {
+      "alias": "Typography/Size/Base"
+    },
+    "Legacy/AutoComplete/Component/optionActiveBg": {
+      "value": "#0000000a"
+    },
+    "Legacy/Transfer/Component/listWidth": {
+      "value": 180
+    },
+    "Legacy/Transfer/Component/listHeight": {
+      "value": 200
+    },
+    "Legacy/Transfer/Component/itemHeight": {
+      "alias": "Size/Control/Base"
+    },
+    "Legacy/Transfer/Component/headerHeight": {
+      "alias": "Size/Control/LG"
+    },
+    "Legacy/Upload/Component/pictureCardSize": {
+      "value": 102
+    },
+    "Legacy/Upload/Component/actionsColor": {
+      "alias": "Color/Content/Icon"
+    },
+    "Legacy/Slider/Component/railSize": {
+      "value": 4
+    },
+    "Legacy/Slider/Component/handleSize": {
+      "value": 10
+    },
+    "Legacy/Slider/Component/controlSize": {
+      "value": 10
+    },
+    "Legacy/Slider/Component/handleSizeHover": {
+      "value": 12
+    },
+    "Legacy/Slider/Component/dotSize": {
+      "value": 8
+    },
+    "Legacy/Slider/Component/railBg": {
+      "alias": "Color/Fill/Neutral-Light"
+    },
+    "Legacy/Slider/Component/trackBg": {
+      "alias": "Color/Border/Accent-Light"
+    },
+    "Legacy/Slider/Component/trackBgDisabled": {
+      "alias": "Color/Background/Container-Disabled"
+    },
+    "Legacy/Slider/Component/handleColor": {
+      "alias": "Color/Border/Accent-Light"
+    },
+    "Legacy/Slider/Component/handleActiveColor": {
+      "alias": "Color/Solid/Accent"
+    },
+    "Legacy/Slider/Component/handleColorDisabled": {
+      "value": "#bfbfbf"
+    },
+    "Legacy/Slider/Component/dotBorderColor": {
+      "alias": "Color/Border/Neutral-Light"
+    },
+    "Legacy/Slider/Component/dotActiveBorderColor": {
+      "alias": "Color/Border/Accent-Light"
+    },
+    "Legacy/Segmented/Component/trackBg": {
+      "alias": "Color/Background/Layout"
+    },
+    "Legacy/Segmented/Component/trackPadding": {
+      "alias": "Stroke/Width/Strong"
+    },
+    "Legacy/Segmented/Component/itemColor": {
+      "alias": "Color/Content/Label"
+    },
+    "Legacy/Segmented/Component/itemSelectedColor": {
+      "alias": "Color/Content/Neutral-Strong"
+    },
+    "Legacy/Segmented/Component/itemHoverColor": {
+      "alias": "Color/Content/Neutral-Strong"
+    },
+    "Legacy/Segmented/Component/itemHoverBg": {
+      "alias": "Color/Fill/Neutral"
+    },
+    "Legacy/Segmented/Component/itemActiveBg": {
+      "alias": "Color/Fill/Neutral-Strong"
+    },
+    "Legacy/Segmented/Component/itemSelectedBg": {
+      "alias": "Color/Background/Elevated"
+    },
+    "Legacy/Collapse/Component/headerBg": {
+      "alias": "Color/Fill/Alternate"
+    },
+    "Legacy/Collapse/Component/contentBg": {
+      "alias": "Color/Background/Container"
+    },
+    "Legacy/Collapse/Component/borderlessContentBg": {
+      "alias": "Color/Palette/Transparent"
+    },
+    "Legacy/Tree/Component/titleHeight": {
+      "alias": "Size/Control/SM"
+    },
+    "Legacy/Tree/Component/indentSize": {
+      "alias": "Legacy/Tree/Component/titleHeight"
+    },
+    "Legacy/Tree/Component/nodeHoverBg": {
+      "alias": "Color/Background/Item-Hover"
+    },
+    "Legacy/Tree/Component/nodeSelectedBg": {
+      "alias": "Color/Background/Item-Selected"
+    },
+    "Legacy/Tree/Component/nodeHoverColor": {
+      "alias": "Color/Content/Neutral-Strong"
+    },
+    "Legacy/Tree/Component/nodeSelectedColor": {
+      "alias": "Color/Content/Neutral-Strong"
+    },
+    "Legacy/Tree/Component/directoryNodeSelectedBg": {
+      "alias": "Color/Solid/Accent"
+    },
+    "Legacy/Tree/Component/directoryNodeSelectedColor": {
+      "alias": "Color/Content/On-Solid"
+    },
+    "Legacy/TreeSelect/Component/titleHeight": {
+      "alias": "Size/Control/SM"
+    },
+    "Legacy/TreeSelect/Component/nodeHoverBg": {
+      "alias": "Color/Background/Item-Hover"
+    },
+    "Legacy/TreeSelect/Component/nodeSelectedBg": {
+      "alias": "Color/Background/Item-Selected"
+    },
+    "Legacy/TimePicker/Component/timeColumnWidth": {
+      "value": 56
+    },
+    "Legacy/DatePicker/Component/timeColumnWidth": {
+      "value": 56
+    },
+    "Legacy/TimePicker/Component/timeColumnHeight": {
+      "value": 224
+    },
+    "Legacy/DatePicker/Component/timeColumnHeight": {
+      "value": 224
+    },
+    "Legacy/TimePicker/Component/timeCellHeight": {
+      "value": 28
+    },
+    "Legacy/DatePicker/Component/timeCellHeight": {
+      "value": 28
+    },
+    "Legacy/TimePicker/Component/cellHoverBg": {
+      "alias": "Color/Background/Item-Hover"
+    },
+    "Legacy/TimePicker/Component/cellActiveWithRangeBg": {
+      "alias": "Color/Background/Item-Selected"
+    },
+    "Legacy/Form/Component/labelColor": {
+      "alias": "Color/Content/Heading"
+    },
+    "Legacy/Form/Component/labelRequiredMarkColor": {
+      "alias": "Color/Solid/Danger"
+    },
+    "Legacy/Form/Component/itemMarginBottom": {
+      "alias": "Space/Margin/Base"
+    },
+    "Legacy/Form/Component/labelColonMarginInlineEnd": {
+      "alias": "Space/Margin/XS"
+    },
+    "Legacy/InputNumber/Component/controlWidth": {
+      "value": 90
+    },
+    "Legacy/InputNumber/Component/handleWidth": {
+      "value": 22
+    },
+    "Legacy/InputNumber/Component/handleBg": {
+      "alias": "Color/Background/Container"
+    },
+    "Legacy/InputNumber/Component/handleActiveBg": {
+      "alias": "Color/Fill/Alternate"
+    },
+    "Legacy/InputNumber/Component/filledHandleBg": {
+      "alias": "Color/Background/Handle"
+    },
+    "Legacy/InputNumber/Component/handleBorderColor": {
+      "alias": "Color/Border/Neutral"
+    },
+    "Legacy/InputNumber/Component/handleHoverColor": {
+      "alias": "Color/Solid/Accent"
+    },
+    "Legacy/DatePicker/Component/cellWidth": {
+      "value": 36
+    },
+    "Legacy/TimePicker/Component/cellWidth": {
+      "value": 36
+    },
+    "Legacy/DatePicker/Component/cellHeight": {
+      "alias": "Size/Control/SM"
+    },
+    "Legacy/TimePicker/Component/cellHeight": {
+      "alias": "Size/Control/SM"
+    },
+    "Legacy/DatePicker/Component/cellHoverBg": {
+      "alias": "Color/Background/Item-Hover"
+    },
+    "Legacy/DatePicker/Component/cellActiveWithRangeBg": {
+      "alias": "Color/Background/Item-Selected"
+    },
+    "Legacy/DatePicker/Component/cellHoverWithRangeBg": {
+      "alias": "Color/Background/Accent-Faded-Hover"
+    },
+    "Legacy/TimePicker/Component/cellHoverWithRangeBg": {
+      "alias": "Color/Background/Accent-Faded-Hover"
+    },
+    "Legacy/DatePicker/Component/cellBgDisabled": {
+      "alias": "Color/Background/Container-Disabled"
+    },
+    "Legacy/TimePicker/Component/cellBgDisabled": {
+      "alias": "Color/Background/Container-Disabled"
+    },
+    "Legacy/DatePicker/Component/textHeight": {
+      "alias": "Size/Control/LG"
+    },
+    "Legacy/TimePicker/Component/textHeight": {
+      "alias": "Size/Control/LG"
+    },
+    "Legacy/DatePicker/Component/presetsWidth": {
+      "value": 120
+    },
+    "Legacy/TimePicker/Component/presetsWidth": {
+      "value": 120
+    },
+    "Legacy/DatePicker/Component/withoutTimeCellHeight": {
+      "value": 66
+    },
+    "Legacy/TimePicker/Component/withoutTimeCellHeight": {
+      "value": 66
+    },
+    "Legacy/Calendar/Component/fullBg": {
+      "alias": "Color/Background/Container"
+    },
+    "Legacy/Calendar/Component/fullPanelBg": {
+      "alias": "Color/Background/Container"
+    },
+    "Legacy/Calendar/Component/yearControlWidth": {
+      "value": 80
+    },
+    "Legacy/Calendar/Component/monthControlWidth": {
+      "value": 70
+    },
+    "Legacy/Calendar/Component/itemActiveBg": {
+      "alias": "Color/Background/Item-Selected"
+    },
+    "Legacy/Calendar/Component/miniContentHeight": {
+      "value": 256
+    }
+  }
+}

@@ -1,0 +1,147 @@
+/*
+ * The box reuses TextField's control (Input.module.css: variants, status,
+ * sizes, hover / focus ring via --_border and --_ring); padding 11 / 7 is
+ * padding-inline-control minus the 1px border, as in Figma. The panel reuses
+ * the overlay surface; its columns live in TimeColumns.module.css.
+ * Icons (prefix, arrow, clock) turn Content/Icon-Hover while the box is
+ * hovered, Content/Disabled when disabled, as in Figma.
+ */
+.box {
+  --_bar: var(--fc-color-solid-accent);
+
+  position: relative;
+  cursor: pointer;
+}
+.box[data-invalid] { --_bar: var(--fc-color-solid-danger); }
+.box[data-status='warning'] { --_bar: var(--fc-color-solid-warning); }
+.box[data-disabled] { cursor: not-allowed; }
+
+/* ---------- one editable time ---------- */
+.part {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  align-self: stretch;
+  min-width: 0;
+}
+
+/* Hit area under the segments: a click beside the value opens the panel. */
+.cover {
+  position: absolute;
+  inset: 0;
+}
+
+.input {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  cursor: text;
+  outline: none;
+}
+.box[data-disabled] .input { cursor: not-allowed; }
+
+/* Empty and unfocused: placeholder text instead of "––:––"; the whole part opens the panel. */
+.empty .input {
+  opacity: 0;
+  pointer-events: none;
+}
+.placeholder {
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  overflow: hidden;
+  color: var(--fc-color-content-placeholder);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  translate: 0 -50%;
+  pointer-events: none;
+}
+.box[data-disabled] .placeholder { color: var(--fc-color-content-disabled); }
+
+.segment {
+  border-radius: var(--fc-radius-xs);
+  caret-color: transparent;
+  outline: none;
+}
+.segment[data-placeholder] { color: var(--fc-color-content-placeholder); }
+/* The segment being typed into: solid accent, like a text selection. */
+.segment[data-focused] {
+  background: var(--fc-color-solid-accent);
+  color: var(--fc-color-content-on-solid);
+}
+.segment[data-disabled] { color: var(--fc-color-content-disabled); }
+
+/* ---------- icons ---------- */
+.suffix svg,
+.separator svg {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+.separator {
+  display: inline-flex;
+  flex: none;
+  color: var(--fc-color-content-icon);
+}
+.prefix { pointer-events: none; }
+.box[data-hovered] .suffix,
+.box[data-hovered] .separator,
+.box[data-hovered] .prefix svg { color: var(--fc-color-content-icon-hover); }
+.box[data-disabled] .suffix,
+.box[data-disabled] .separator,
+.box[data-disabled] .prefix,
+.box[data-disabled] .prefix svg { color: var(--fc-color-content-disabled); }
+.box[data-disabled] .suffix { cursor: not-allowed; }
+
+/* Clear (×) sits over the clock and shows while the box is hovered or focused. */
+.clear {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  inset-inline-end: calc(var(--fc-space-padding-inline-control) - var(--fc-stroke-width-base));
+  background: var(--_bg);
+  translate: 0 -50%;
+}
+.box[data-size='sm'] .clear { inset-inline-end: calc(var(--fc-space-padding-inline-control-sm) - var(--fc-stroke-width-base)); }
+.box:not([data-hovered]):not([data-focus-within]) .clear { visibility: hidden; }
+
+/* ---------- range ---------- */
+.rangeContent {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  align-self: stretch;
+  gap: var(--fc-space-padding-xs);
+  min-width: 0;
+}
+.rangeField {
+  display: flex;
+  flex: 1;
+  align-self: stretch;
+  min-width: 0;
+}
+
+/* Active bar: 2px under the half being edited, over the bottom border (status colour). */
+.part[data-active]::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: calc(var(--fc-stroke-width-base) * -1);
+  height: var(--fc-stroke-width-outline);
+  background: var(--_bar);
+  pointer-events: none;
+}
+
+/* ---------- panel ---------- */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  padding: var(--fc-space-padding-xs) var(--fc-space-padding-sm);
+  border-top: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+.ok { margin-inline-start: auto; }

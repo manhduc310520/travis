@@ -1,0 +1,160 @@
+/*
+ * Figma "❖ Modal". Surface (Elevated background, Shadow/Base, fade + scale
+ * animation) comes from overlay.module.css; size, padding, radius, title
+ * size and mask from Component/Modal/*: width 520, padding 20 × 24,
+ * radius 8, title 16 / 600, mask Background/Overlay.
+ *
+ * Padding: 20 (block) × 24 (inline) on every outer edge. Figma draws the
+ * header at 16 and the footer at 24; CLAUDE.md fixes the modal at 20 × 24,
+ * so header, body and footer all use the Component/Modal/Padding tokens.
+ * Inside: header → body 8, body → footer 12 (Space/Margin XS, SM).
+ *
+ * The body scrolls when the content is taller than the viewport; header
+ * and footer stay put.
+ */
+.mask {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  /* Above page chrome; React Aria popovers opened from the modal sit higher. */
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100vw;
+  height: var(--visual-viewport-height);
+  padding: var(--fc-space-margin-base);
+  background: var(--fc-component-modal-mask);
+}
+
+.mask[data-entering] { animation: fc-modal-mask-in 0.16s ease-out; }
+.mask[data-exiting] { animation: fc-modal-mask-out 0.1s ease-in forwards; }
+
+/* `.mask >` lifts these above `.surface`, whatever order the CSS loads in. */
+.mask > .modal {
+  --_radius: var(--fc-component-modal-radius);
+  --_from: scale(0.96);
+  --_pad-block: var(--fc-component-modal-padding-block);
+  --_pad-inline: var(--fc-component-modal-padding-inline);
+
+  display: flex;
+  flex-direction: column;
+  width: var(--_width, var(--fc-component-modal-width));
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  outline: none;
+}
+
+/* ---------- header ---------- */
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--fc-space-margin-xs);
+  padding: var(--_pad-block) var(--_pad-inline) 0;
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-component-modal-title-font-size);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-lg);
+  overflow-wrap: anywhere;
+}
+
+/* Close icon: quiet icon colour (Color/Content/Icon, 3:1) until hovered. */
+.header > .close {
+  --_fg: var(--fc-color-content-icon);
+  flex: none;
+  margin-inline-start: auto;
+}
+.header > .close[data-hovered],
+.header > .close[data-pressed] {
+  --_fg: var(--fc-color-content-icon-hover);
+}
+
+/* ---------- body ---------- */
+.body {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: var(--fc-space-margin-xs) var(--_pad-inline) var(--fc-space-margin-sm);
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  overflow-wrap: anywhere;
+}
+/* No header: the body opens the modal. No footer: it closes it. */
+.body:first-child { padding-block-start: var(--_pad-block); }
+.body:last-child { padding-block-end: var(--_pad-block); }
+
+/* ---------- footer ---------- */
+.footer {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--fc-space-margin-xs);
+  padding: 0 var(--_pad-inline) var(--_pad-block);
+}
+
+/* ---------- Modal / Information ---------- */
+/* Icon beside the title; the content lines up under the title, not the icon. */
+.statusBody {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  column-gap: var(--fc-space-margin-sm);
+  row-gap: var(--fc-space-margin-xs);
+}
+.statusBody > .title,
+.statusBody > .content {
+  grid-column: 2;
+}
+
+/* The icon fills the title's line box, so it centres on the first line. */
+.icon {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--fc-typography-line-height-lg);
+}
+.icon svg {
+  display: block;
+  width: var(--fc-typography-line-height-lg);
+  height: var(--fc-typography-line-height-lg);
+}
+
+.content {
+  color: var(--fc-color-content-neutral-strong);
+}
+
+.info { color: var(--fc-color-content-info); }
+.success { color: var(--fc-color-content-success); }
+.warning,
+.confirm { color: var(--fc-color-content-warning); }
+.error { color: var(--fc-color-content-danger); }
+
+@keyframes fc-modal-mask-in {
+  from { opacity: 0; }
+}
+@keyframes fc-modal-mask-out {
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask[data-entering],
+  .mask[data-exiting] { animation: none; }
+}

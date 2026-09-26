@@ -1,0 +1,31 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as FontStories from './Font.stories'
+
+<Meta of={FontStories} />
+
+# Chữ
+
+Biến trong Figma collection `4. Typography`. Cỡ chữ gốc 14px; đổi **Density** sang
+Compact để xem cỡ chữ và line-height thu lại. Màu chữ nằm ở trang **Màu**
+(`Color/Content`).
+
+## Font — `Typography/Family`
+
+<Canvas of={FontStories.Family} />
+
+## Cỡ chữ — `Typography/Size`
+
+<Canvas of={FontStories.Size} />
+
+## Chiều cao dòng — `Typography/Line-Height`
+
+Giá trị px, đi cặp với cỡ chữ cùng tên.
+
+<Canvas of={FontStories.LineHeight} />
+
+## Độ đậm — `Typography/Weight`
+
+Giao diện chỉ dùng `regular` (400) và `semibold` (600). Nhấn mạnh trạng thái bằng
+màu và nét, không bằng độ đậm.
+
+<Canvas of={FontStories.Weight} />

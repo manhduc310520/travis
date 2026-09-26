@@ -1,0 +1,103 @@
+/*
+ * Every value is an fc token. A colour class sets five local values; the
+ * variant class decides which paint the tag:
+ *   outlined = tint + border + coloured text (Figma default)
+ *   filled   = tint + coloured text
+ *   solid    = strong fill + on-solid text
+ * Palette hues come from palette.module.css (--_hue-*).
+ * Solid fills must keep text at 4.5:1 in Light and Dark. Solid/Danger and
+ * Solid/Info (= accent) do with white text; Solid/Success and Solid/Warning
+ * are too light for white in Dark, so those solid tags use the green / amber
+ * strong step with text that flips white/black with the mode.
+ */
+.tag {
+  --_t-faded: var(--fc-component-tag-background-default);
+  --_t-border: var(--fc-color-border-neutral);
+  --_t-text: var(--fc-component-tag-content-default);
+  --_t-solid: var(--fc-color-solid-neutral);
+  --_t-on-solid: var(--fc-color-content-on-solid-neutral);
+  --_bg: var(--_t-faded);
+  --_border: var(--_t-border);
+  --_fg: var(--_t-text);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xxs);
+  padding-inline: calc(var(--fc-component-tag-padding-inline) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid var(--_border);
+  border-radius: var(--fc-radius-sm);
+  background: var(--_bg);
+  color: var(--_fg);
+  font: inherit;
+  font-size: var(--fc-component-tag-font-size);
+  line-height: var(--fc-component-tag-line-height);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.tag svg {
+  flex: none;
+  width: var(--fc-component-tag-font-size);
+  height: var(--fc-component-tag-font-size);
+}
+
+/* ---------- colours ---------- */
+.success { --_t-faded: var(--fc-color-background-success-faded); --_t-border: var(--fc-color-border-success-light); --_t-text: var(--fc-color-content-success); --_t-solid: var(--_hue-strong); --_t-on-solid: var(--fc-color-content-on-solid-neutral); }
+.info { --_t-faded: var(--fc-color-background-info-faded); --_t-border: var(--fc-color-border-info-light); --_t-text: var(--fc-color-content-info); --_t-solid: var(--fc-color-solid-info); --_t-on-solid: var(--fc-color-content-on-solid); }
+.warning { --_t-faded: var(--fc-color-background-warning-faded); --_t-border: var(--fc-color-border-warning-light); --_t-text: var(--fc-color-content-warning); --_t-solid: var(--_hue-strong); --_t-on-solid: var(--fc-color-content-on-solid-neutral); }
+.danger { --_t-faded: var(--fc-color-background-danger-faded); --_t-border: var(--fc-color-border-danger-light); --_t-text: var(--fc-color-content-danger); --_t-solid: var(--fc-color-solid-danger); --_t-on-solid: var(--fc-color-content-on-solid); }
+.hue { --_t-faded: var(--_hue-faded); --_t-border: var(--_hue-border); --_t-text: var(--_hue-strong); --_t-solid: var(--_hue-strong); --_t-on-solid: var(--fc-color-content-on-solid-neutral); }
+
+/* ---------- variants ---------- */
+.filled { --_border: transparent; }
+.solid { --_bg: var(--_t-solid); --_border: transparent; --_fg: var(--_t-on-solid); }
+
+/* ---------- close button ---------- */
+.close {
+  display: inline-flex;
+  margin-inline-end: calc(var(--fc-space-padding-xxs) * -1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-xs);
+  background: transparent;
+  color: var(--_fg);
+  cursor: pointer;
+  outline: none;
+}
+.close[data-hovered] { background: var(--fc-color-fill-neutral); }
+.close[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+}
+
+/* ---------- checkable (toggle) ---------- */
+.checkable {
+  --_bg: transparent;
+  --_border: transparent;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+.checkable[data-hovered] { --_fg: var(--fc-color-content-accent-hover); }
+.checkable[data-pressed] { --_bg: var(--fc-color-background-accent-faded); }
+.checkable[data-selected] { --_bg: var(--fc-color-solid-accent); --_fg: var(--fc-color-content-on-solid); }
+.checkable[data-selected][data-hovered] { --_bg: var(--fc-color-solid-accent-hover); --_fg: var(--fc-color-content-on-solid); }
+.checkable[data-focus-visible],
+.add[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.checkable[data-disabled] { --_fg: var(--fc-color-content-disabled); cursor: not-allowed; }
+
+/* ---------- add new ---------- */
+.add {
+  --_bg: var(--fc-color-background-container);
+  --_border: var(--fc-color-border-control);
+  border-style: dashed;
+  cursor: pointer;
+  outline: none;
+}
+.add[data-hovered] { --_border: var(--fc-color-solid-accent-hover); --_fg: var(--fc-color-content-accent-hover); }
+
+@media (prefers-reduced-motion: reduce) {
+  .checkable { transition: none; }
+}

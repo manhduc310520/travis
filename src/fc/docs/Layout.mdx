@@ -1,0 +1,37 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks'
+import * as LayoutStories from './Layout.stories'
+
+<Meta of={LayoutStories} />
+
+# Khoảng cách và kích thước
+
+Biến trong Figma collection `3. Dimensions`. Mọi giá trị bám lưới 4px ở density
+Default; đổi **Density** sang Compact trên thanh công cụ để xem chúng thu lại.
+
+## Khoảng cách ngoài — `Space/Margin`
+
+Khoảng cách giữa hai phần tử. `Flex`, `Space`, `Grid` nhận các bậc này qua prop `gap`.
+
+<Canvas of={LayoutStories.Margin} />
+
+## Khoảng đệm — `Space/Padding`
+
+<Canvas of={LayoutStories.Padding} />
+
+## Thang kích thước chung — `Size/Scale`
+
+<Canvas of={LayoutStories.SizeScale} />
+
+## Chiều cao control — `Size/Control`
+
+`base` là chiều cao chuẩn của nút, ô nhập, select.
+
+<Canvas of={LayoutStories.ControlHeight} />
+
+## Mốc màn hình — `Breakpoint`
+
+<Canvas of={LayoutStories.Breakpoint} />
+
+## Khác
+
+<Canvas of={LayoutStories.Other} />

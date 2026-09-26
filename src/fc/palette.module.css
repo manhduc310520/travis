@@ -1,0 +1,24 @@
+/*
+ * One class per Color/Palette hue, setting local custom properties that
+ * components read (Button, Tag, Avatar, Tooltip, Ribbon).
+ *
+ * --_hue-strong is the hue's "strong" step S: the first step where
+ *   - the step as text on Color/Background/Container, and
+ *   - Color/Content/On-Solid-Neutral (white in Light, black in Dark) on the step
+ * both reach 4.5:1 in Light AND Dark (computed from the tokens, 2026-09-26).
+ * A single step cannot keep white text readable in both modes — the palette
+ * gets lighter as steps rise in Dark — so solid fills pair S with
+ * On-Solid-Neutral. Hover is one step lighter, active one step darker.
+ */
+.blue { --_hue-strong: var(--fc-color-palette-blue-7); --_hue-strong-hover: var(--fc-color-palette-blue-6); --_hue-strong-active: var(--fc-color-palette-blue-8); --_hue-faded: var(--fc-color-palette-blue-1); --_hue-faded-hover: var(--fc-color-palette-blue-2); --_hue-border: var(--fc-color-palette-blue-3); }
+.cyan { --_hue-strong: var(--fc-color-palette-cyan-8); --_hue-strong-hover: var(--fc-color-palette-cyan-7); --_hue-strong-active: var(--fc-color-palette-cyan-9); --_hue-faded: var(--fc-color-palette-cyan-1); --_hue-faded-hover: var(--fc-color-palette-cyan-2); --_hue-border: var(--fc-color-palette-cyan-3); }
+.indigo { --_hue-strong: var(--fc-color-palette-indigo-8); --_hue-strong-hover: var(--fc-color-palette-indigo-7); --_hue-strong-active: var(--fc-color-palette-indigo-9); --_hue-faded: var(--fc-color-palette-indigo-1); --_hue-faded-hover: var(--fc-color-palette-indigo-2); --_hue-border: var(--fc-color-palette-indigo-3); }
+.purple { --_hue-strong: var(--fc-color-palette-purple-8); --_hue-strong-hover: var(--fc-color-palette-purple-7); --_hue-strong-active: var(--fc-color-palette-purple-9); --_hue-faded: var(--fc-color-palette-purple-1); --_hue-faded-hover: var(--fc-color-palette-purple-2); --_hue-border: var(--fc-color-palette-purple-3); }
+.magenta { --_hue-strong: var(--fc-color-palette-magenta-7); --_hue-strong-hover: var(--fc-color-palette-magenta-6); --_hue-strong-active: var(--fc-color-palette-magenta-8); --_hue-faded: var(--fc-color-palette-magenta-1); --_hue-faded-hover: var(--fc-color-palette-magenta-2); --_hue-border: var(--fc-color-palette-magenta-3); }
+.red { --_hue-strong: var(--fc-color-palette-red-7); --_hue-strong-hover: var(--fc-color-palette-red-6); --_hue-strong-active: var(--fc-color-palette-red-8); --_hue-faded: var(--fc-color-palette-red-1); --_hue-faded-hover: var(--fc-color-palette-red-2); --_hue-border: var(--fc-color-palette-red-3); }
+.vermilion { --_hue-strong: var(--fc-color-palette-vermilion-8); --_hue-strong-hover: var(--fc-color-palette-vermilion-7); --_hue-strong-active: var(--fc-color-palette-vermilion-9); --_hue-faded: var(--fc-color-palette-vermilion-1); --_hue-faded-hover: var(--fc-color-palette-vermilion-2); --_hue-border: var(--fc-color-palette-vermilion-3); }
+.orange { --_hue-strong: var(--fc-color-palette-orange-8); --_hue-strong-hover: var(--fc-color-palette-orange-7); --_hue-strong-active: var(--fc-color-palette-orange-9); --_hue-faded: var(--fc-color-palette-orange-1); --_hue-faded-hover: var(--fc-color-palette-orange-2); --_hue-border: var(--fc-color-palette-orange-3); }
+.amber { --_hue-strong: var(--fc-color-palette-amber-9); --_hue-strong-hover: var(--fc-color-palette-amber-8); --_hue-strong-active: var(--fc-color-palette-amber-10); --_hue-faded: var(--fc-color-palette-amber-1); --_hue-faded-hover: var(--fc-color-palette-amber-2); --_hue-border: var(--fc-color-palette-amber-3); }
+.yellow { --_hue-strong: var(--fc-color-palette-yellow-9); --_hue-strong-hover: var(--fc-color-palette-yellow-8); --_hue-strong-active: var(--fc-color-palette-yellow-10); --_hue-faded: var(--fc-color-palette-yellow-1); --_hue-faded-hover: var(--fc-color-palette-yellow-2); --_hue-border: var(--fc-color-palette-yellow-3); }
+.lime { --_hue-strong: var(--fc-color-palette-lime-9); --_hue-strong-hover: var(--fc-color-palette-lime-8); --_hue-strong-active: var(--fc-color-palette-lime-10); --_hue-faded: var(--fc-color-palette-lime-1); --_hue-faded-hover: var(--fc-color-palette-lime-2); --_hue-border: var(--fc-color-palette-lime-3); }
+.green { --_hue-strong: var(--fc-color-palette-green-8); --_hue-strong-hover: var(--fc-color-palette-green-7); --_hue-strong-active: var(--fc-color-palette-green-9); --_hue-faded: var(--fc-color-palette-green-1); --_hue-faded-hover: var(--fc-color-palette-green-2); --_hue-border: var(--fc-color-palette-green-3); }

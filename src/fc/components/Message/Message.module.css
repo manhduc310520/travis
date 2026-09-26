@@ -1,0 +1,83 @@
+/*
+ * Figma "❖ Message": 40 high (Component/Message/Min-Height), padding 9 × 12
+ * — the block padding is what centres one body line in the minimum height —
+ * gap 8, radius 8 (Component/Message/Radius), 16px icon. Elevated surface,
+ * Shadow/Base and the enter / exit animation come from overlay.module.css
+ * (`.surface`, `[data-entering]`, `[data-exiting]`, all set by toast.tsx).
+ */
+
+/* Centred at the top of the viewport, newest first. */
+.region {
+  position: fixed;
+  /* Above React Aria popovers, which set z-index 100000 inline. */
+  z-index: 100001;
+  inset-block-start: var(--fc-space-margin-xs);
+  inset-inline: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  width: fit-content;
+  max-width: calc(100% - 2 * var(--fc-space-margin-base));
+  margin-inline: auto;
+  outline: none;
+}
+
+.message {
+  --_radius: var(--fc-component-message-radius);
+  --_padding: calc((var(--fc-component-message-min-height) - var(--fc-typography-line-height-base)) / 2) var(--fc-component-message-padding-inline);
+  --_from: translateY(calc(var(--fc-space-margin-xs) * -1));
+
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  min-height: var(--fc-component-message-min-height);
+}
+
+.region[data-focus-visible],
+.message[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--fc-space-margin-xs);
+  min-width: 0;
+}
+
+/* One body line tall, so the icon stays on the first line when text wraps. */
+.icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  height: var(--fc-typography-line-height-base);
+}
+.icon svg {
+  display: block;
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+
+.info { color: var(--fc-color-content-info); }
+.success { color: var(--fc-color-content-success); }
+.warning { color: var(--fc-color-content-warning); }
+.error { color: var(--fc-color-content-danger); }
+.loading { color: var(--fc-color-content-accent); }
+.loading svg { animation: fc-message-spin 1s linear infinite; }
+
+.text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@keyframes fc-message-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Enter / exit animations are switched off in overlay.module.css. The spinner slows down like Button's. */
+@media (prefers-reduced-motion: reduce) {
+  .loading svg { animation-duration: 2s; }
+}

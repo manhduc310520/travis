@@ -31,7 +31,11 @@ jobs:
       - run: npm ci
         env:
           UNTITLEDUI_PRO_TOKEN: ${{ secrets.UNTITLEDUI_PRO_TOKEN }}
-      - run: npm run validate:tokens
+      # Rebuilds the fc tokens from the Figma export; fails on dangling --fc-*
+      # references or media queries off the breakpoint tokens.
+      - run: npm run build:tokens
+      # Every text / border token pair must meet WCAG in every brand and mode.
+      - run: npm run audit:contrast
       - run: npm run build-storybook
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'

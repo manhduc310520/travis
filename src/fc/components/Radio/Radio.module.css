@@ -1,0 +1,157 @@
+/*
+ * Every value is an fc token. React Aria sets data-selected, data-hovered,
+ * data-focus-visible, data-disabled, data-invalid on the label (.radio).
+ * Selected = solid accent disc with an on-solid dot (the dot is an inset ring).
+ * Border: Color/Border/Control (3:1 on every surface, WCAG 1.4.11); disabled
+ * keeps the lighter Color/Border/Neutral.
+ */
+.radio {
+  --_bg: var(--fc-color-background-container);
+  --_border: var(--fc-color-border-control);
+  --_dot: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  cursor: pointer;
+  outline: none;
+}
+
+.circle {
+  flex: none;
+  width: var(--fc-size-control-interactive);
+  height: var(--fc-size-control-interactive);
+  border: var(--fc-stroke-width-base) solid var(--_border);
+  border-radius: 50%;
+  background: var(--_bg);
+  /* dot: 8px (half the control) of --_dot in the middle */
+  box-shadow: inset 0 0 0 calc(var(--fc-size-control-interactive) / 4 - var(--fc-stroke-width-base)) var(--_bg),
+    inset 0 0 0 var(--fc-size-control-interactive) var(--_dot);
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.radio[data-hovered] { --_border: var(--fc-color-solid-accent-hover); }
+
+.radio[data-selected] {
+  --_bg: var(--fc-color-solid-accent);
+  --_border: var(--fc-color-solid-accent);
+  --_dot: var(--fc-color-content-on-solid);
+}
+.radio[data-selected][data-hovered] {
+  --_bg: var(--fc-color-solid-accent-hover);
+  --_border: var(--fc-color-solid-accent-hover);
+}
+
+.radio[data-focus-visible] .circle {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.radio[data-invalid] { --_border: var(--fc-color-solid-danger); }
+.radio[data-invalid][data-selected] { --_bg: var(--fc-color-solid-danger); }
+
+.radio[data-disabled] {
+  --_bg: var(--fc-color-background-container-disabled);
+  --_border: var(--fc-color-border-neutral);
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.radio[data-disabled][data-selected] { --_dot: var(--fc-color-content-disabled); }
+
+/* ---------- group ---------- */
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+}
+
+.groupLabel {
+  color: var(--fc-color-content-label);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fc-space-margin-xs) var(--fc-space-margin-base);
+}
+.vertical { flex-direction: column; }
+
+.description {
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.error {
+  color: var(--fc-color-content-danger);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* ---------- button appearance (Figma Radio / Radio Button) ---------- */
+.buttons {
+  --_h: var(--fc-size-control-base);
+  --_radius: var(--fc-radius-base);
+  flex-wrap: nowrap;
+  gap: 0;
+}
+.buttons.sm { --_h: var(--fc-size-control-sm); --_radius: var(--fc-radius-sm); }
+.buttons.lg { --_h: var(--fc-size-control-lg); --_radius: var(--fc-radius-lg); }
+.buttons .circle { display: none; }
+.buttons .radio {
+  position: relative;
+  justify-content: center;
+  height: var(--_h);
+  padding-inline: calc(var(--fc-component-radio-button-padding-inline) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-control);
+  background: var(--fc-color-background-container);
+  color: var(--fc-color-content-neutral-strong);
+  white-space: nowrap;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.buttons.sm .radio { padding-inline: calc(var(--fc-component-radio-button-padding-inline-sm) - var(--fc-stroke-width-base)); }
+.buttons.lg .radio { font-size: var(--fc-typography-size-lg); line-height: var(--fc-typography-line-height-lg); }
+.buttons .radio + .radio { margin-inline-start: calc(var(--fc-stroke-width-base) * -1); }
+.buttons .radio:first-child { border-start-start-radius: var(--_radius); border-end-start-radius: var(--_radius); }
+.buttons .radio:last-child { border-start-end-radius: var(--_radius); border-end-end-radius: var(--_radius); }
+.buttons .radio[data-hovered] { color: var(--fc-color-content-accent-hover); }
+.buttons .radio[data-selected] {
+  z-index: 1;
+  border-color: var(--fc-color-content-accent);
+  color: var(--fc-color-content-accent);
+}
+.buttons .radio[data-selected][data-hovered] {
+  border-color: var(--fc-color-solid-accent-hover);
+  color: var(--fc-color-content-accent-hover);
+}
+.buttons.solid .radio[data-selected] {
+  border-color: var(--fc-color-solid-accent);
+  background: var(--fc-color-solid-accent);
+  color: var(--fc-color-content-on-solid);
+}
+.buttons.solid .radio[data-selected][data-hovered] {
+  border-color: var(--fc-color-solid-accent-hover);
+  background: var(--fc-color-solid-accent-hover);
+}
+.buttons .radio[data-focus-visible] {
+  z-index: 2;
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.buttons .radio[data-disabled] {
+  border-color: var(--fc-color-border-neutral);
+  background: var(--fc-color-background-container-disabled);
+  color: var(--fc-color-content-disabled);
+}
+.buttons .radio[data-disabled][data-selected] { background: var(--fc-color-fill-neutral-strong); }
+.block { display: flex; width: 100%; }
+.block .radio { flex: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .circle, .buttons .radio { transition: none; }
+}

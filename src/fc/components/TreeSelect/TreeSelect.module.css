@@ -1,0 +1,35 @@
+/*
+ * Figma "❖ TreeSelect". The box is Figma's "Select / Select Input": it
+ * reuses Select.module.css (trigger, tags, clear) on top of TextField's
+ * control (Input.module.css: variants, status, sizes). The menu is the
+ * shared overlay surface (Elevated + Shadow/Base) holding a Tree:
+ * Component/TreeSelect/Menu-Padding (4) and Menu-Radius (8); rows
+ * Component/TreeSelect/Title-Height (24, also the indent step) with the
+ * Node-Background-Hover / -Selected tints. The menu is at least as wide as
+ * the box, so Figma's Left / Right placements line up the same.
+ */
+.popover {
+  --_radius: var(--fc-component-treeselect-menu-radius);
+  --_padding: var(--fc-component-treeselect-menu-padding);
+
+  display: flex;
+  flex-direction: column;
+  min-width: var(--trigger-width);
+}
+
+.search {
+  flex: none;
+  margin-block-end: var(--fc-space-margin-xxs);
+}
+
+/* Two classes: wins over the Tree's own defaults, whatever the CSS order. */
+.popover .menuTree {
+  --_row-h: var(--fc-component-treeselect-title-height);
+  --_indent: var(--fc-component-treeselect-title-height);
+  --_bg-hover: var(--fc-component-treeselect-node-background-hover);
+  --_bg-selected: var(--fc-component-treeselect-node-background-selected);
+
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: calc(var(--fc-size-control-base) * 8);
+}

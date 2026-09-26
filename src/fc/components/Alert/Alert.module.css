@@ -1,0 +1,175 @@
+/*
+ * Figma "❖ Alert".
+ * - Description=False: padding 8 × 12, 8 between parts, 16px icon, 14 / 22 title.
+ * - Description=True: padding 20 × 24, 12 between icon and text, 24px icon,
+ *   16 / 24 title, 14 / 22 description 8 below it.
+ * - Banner=True: same, without border and radius.
+ * Background Color/Background/<type>-Faded, border Color/Border/<type>-Light,
+ * radius 8 (Component/Alert/*). The border sits inside the padding, as the
+ * Figma stroke does, so the heights match Figma (38 / 94).
+ */
+.alert {
+  --_bg: var(--fc-color-background-info-faded);
+  --_border: var(--fc-color-border-info-light);
+  --_tone: var(--fc-color-content-info);
+  --_pad-block: var(--fc-component-alert-padding-block);
+  --_pad-inline: var(--fc-component-alert-padding-inline);
+  --_icon-size: var(--fc-component-alert-icon-size);
+
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  box-sizing: border-box;
+  padding: calc(var(--_pad-block) - var(--fc-stroke-width-base)) calc(var(--_pad-inline) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid var(--_border);
+  border-radius: var(--fc-component-alert-radius);
+  background: var(--_bg);
+  color: var(--fc-color-content-neutral-strong);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* Status text on its faded background: all four pairs pass 4.5:1 in Light and Dark. */
+.info {
+  --_bg: var(--fc-color-background-info-faded);
+  --_border: var(--fc-color-border-info-light);
+  --_tone: var(--fc-color-content-info);
+}
+.success {
+  --_bg: var(--fc-color-background-success-faded);
+  --_border: var(--fc-color-border-success-light);
+  --_tone: var(--fc-color-content-success);
+}
+.warning {
+  --_bg: var(--fc-color-background-warning-faded);
+  --_border: var(--fc-color-border-warning-light);
+  --_tone: var(--fc-color-content-warning);
+}
+.error {
+  --_bg: var(--fc-color-background-danger-faded);
+  --_border: var(--fc-color-border-danger-light);
+  --_tone: var(--fc-color-content-danger);
+}
+
+.withDescription {
+  --_pad-block: var(--fc-component-alert-padding-block-description);
+  --_pad-inline: var(--fc-component-alert-padding-inline-description);
+  --_icon-size: var(--fc-component-alert-icon-size-description);
+
+  align-items: flex-start;
+  gap: var(--fc-space-margin-sm);
+}
+
+/* Banner: flush with its container. The border stays (transparent) so the height matches. */
+.banner {
+  border-color: transparent;
+  border-radius: 0;
+}
+
+.icon {
+  display: flex;
+  flex: none;
+  color: var(--_tone);
+}
+.icon svg {
+  display: block;
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+}
+
+/* Text on the left, actions + close on the right, 8 apart. */
+.main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  min-width: 0;
+}
+.withDescription .main { align-items: flex-start; }
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Figma draws the title in Content/Heading; the status colour stays on the icon. */
+.title { color: var(--fc-color-content-heading); }
+.withDescription .title {
+  font-size: var(--fc-typography-size-lg);
+  line-height: var(--fc-typography-line-height-lg);
+}
+
+.description { color: var(--fc-color-content-neutral-strong); }
+
+.actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--fc-space-margin-xxs);
+}
+
+/* Close ×: Content/Icon (3:1 on every faded background), 12px glyph (Typography/Size/Icon). */
+.close {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--fc-size-control-xs);
+  height: var(--fc-size-control-xs);
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-xs);
+  background: transparent;
+  color: var(--fc-color-content-icon);
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s;
+}
+.close svg {
+  display: block;
+  width: var(--fc-typography-size-icon);
+  height: var(--fc-typography-size-icon);
+}
+.close[data-hovered],
+.close[data-pressed] { color: var(--fc-color-content-icon-hover); }
+.close[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* Figma "Close Text": 12 / 20. Content/Description rather than Figma's grey, for 4.5:1 text. */
+.closeText {
+  height: auto;
+  padding-inline: var(--fc-space-padding-xxs);
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+  white-space: nowrap;
+}
+
+/* Close: fade and collapse (height from the measured --_height), then unmount. */
+.alert[data-exiting] {
+  overflow: hidden;
+  pointer-events: none;
+  animation: fc-alert-out 0.2s ease-in forwards;
+}
+@keyframes fc-alert-out {
+  from { max-height: var(--_height); }
+  to {
+    max-height: 0;
+    padding-block: 0;
+    border-block-width: 0;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alert[data-exiting] { animation: none; }
+  .close { transition: none; }
+}

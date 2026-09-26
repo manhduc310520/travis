@@ -1,0 +1,73 @@
+/*
+ * The box reuses TextField (Input.module.css: variants, status, sizes, the
+ * attached search button). The menu reuses the overlay surface and the shared
+ * list rows (like Select). Component/AutoComplete/*: menu padding 4 and radius 8,
+ * option height 32, font size 14, padding 12, hover tint (legacy optionActiveBg
+ * #0000000a = Fill/Neutral-Light, via Background/Item-Hover), grouped-row indent 24.
+ */
+.box { position: relative; }
+
+/* Clear (×) shows while the box is hovered or focused, as in Select. */
+.clear { flex: none; }
+.box:not([data-hovered]):not([data-focus-within]) .clear { visibility: hidden; }
+
+/* ---------- menu ---------- */
+.popover {
+  --_radius: var(--fc-component-autocomplete-menu-radius);
+  --_padding: var(--fc-component-autocomplete-menu-padding);
+  min-width: var(--trigger-width);
+}
+.listbox { outline: none; }
+
+.option {
+  --_item-height: var(--fc-component-autocomplete-option-height);
+  --_item-padding-inline: var(--fc-component-autocomplete-option-padding-inline);
+  --_item-bg-hover: var(--fc-component-autocomplete-option-background-hover);
+  font-size: var(--fc-component-autocomplete-option-font-size);
+}
+/* Rows inside a group sit under the group title (Figma: 24 start, 12 end). */
+.option.grouped { padding-inline-start: var(--fc-component-autocomplete-group-indent); }
+
+.optionText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Figma "Icon + Text": icon and count 2 apart, text at 4.5:1 (description colour). */
+.extra {
+  gap: var(--fc-space-padding-xxs);
+  font-size: var(--fc-component-autocomplete-option-font-size);
+}
+.extra svg {
+  width: var(--fc-typography-size-base);
+  height: var(--fc-typography-size-base);
+}
+
+/*
+ * Figma item Type=Header: a 32-high title row at body size with an optional
+ * action at the end ("more"). Title colour is Content/Description (Figma's
+ * Neutral-Light is under 4.5:1 for text).
+ */
+.header.header {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  min-height: var(--fc-component-autocomplete-option-height);
+  padding-block: 0;
+  padding-inline: var(--fc-component-autocomplete-option-padding-inline);
+  font-size: var(--fc-component-autocomplete-option-font-size);
+  line-height: var(--fc-typography-line-height-base);
+}
+.headerLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.headerExtra {
+  display: inline-flex;
+  flex: none;
+}

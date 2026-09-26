@@ -1,0 +1,145 @@
+/*
+ * One row in a list of choices: Select options, Dropdown and Menu items
+ * (later AutoComplete, Cascader). React Aria sets data-hovered, data-focused,
+ * data-focus-visible, data-pressed, data-selected and data-disabled on the
+ * item. Each component sets --_item-* from its Component/* tokens.
+ *
+ * Selected = tinted row (+ a grey check where several can be selected).
+ * CLAUDE.md forbids marking a state with font weight, so no bold selected text.
+ */
+.list {
+  --_list-max-height: calc(var(--fc-size-control-base) * 8);
+
+  display: flex;
+  flex-direction: column;
+  max-height: var(--_list-max-height);
+  overflow: auto;
+  outline: none;
+}
+
+.item {
+  --_item-height: var(--fc-size-control-base);
+  --_item-padding-inline: var(--fc-space-padding-sm);
+  --_item-radius: var(--fc-radius-sm);
+  --_item-bg-hover: var(--fc-color-background-item-hover);
+  --_item-bg-selected: var(--fc-color-background-item-selected);
+  --_item-bg: transparent;
+  --_item-fg: var(--fc-color-content-neutral-strong);
+
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  box-sizing: border-box;
+  min-height: var(--_item-height);
+  /* Grows for two-line items; one line keeps the token height exactly. */
+  padding-block: calc((var(--_item-height) - var(--fc-typography-line-height-base)) / 2);
+  padding-inline: var(--_item-padding-inline);
+  border-radius: var(--_item-radius);
+  background: var(--_item-bg);
+  color: var(--_item-fg);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s;
+}
+.item[data-hovered],
+.item[data-focused] { --_item-bg: var(--_item-bg-hover); }
+.item[data-selected] { --_item-bg: var(--_item-bg-selected); }
+.item[data-selected][data-hovered],
+.item[data-selected][data-focused] { --_item-bg: var(--fc-color-background-item-selected-hover); }
+.item[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+.item[data-disabled] {
+  --_item-bg: transparent;
+  --_item-fg: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+/* Destructive item: red text; on hover the row turns solid red, text on-solid. */
+.danger { --_item-fg: var(--fc-color-content-danger); }
+.danger[data-hovered],
+.danger[data-focused] {
+  --_item-bg: var(--fc-color-solid-danger);
+  --_item-fg: var(--fc-color-content-on-solid);
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  color: inherit;
+}
+.icon svg {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+
+.label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.description {
+  display: block;
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+  white-space: normal;
+}
+.item[data-disabled] .description { color: inherit; }
+
+/* Right-hand extra: keyboard shortcut, count, submenu chevron. */
+.extra {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  margin-inline-start: auto;
+  padding-inline-start: var(--fc-space-margin-xs);
+  color: var(--fc-color-content-description);
+}
+.danger[data-hovered] .extra,
+.danger[data-focused] .extra { color: inherit; }
+.extra svg {
+  width: var(--fc-typography-size-sm);
+  height: var(--fc-typography-size-sm);
+}
+
+/* Figma "Selected Multiple": grey check (Content/Icon, 3:1 against the tint). */
+.check {
+  display: inline-flex;
+  flex: none;
+  margin-inline-start: auto;
+  color: var(--fc-color-content-icon);
+}
+.check svg {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+
+/* Group title (Figma "Group Title") and dividers between groups. */
+.header {
+  display: block;
+  padding: var(--fc-space-padding-xxs) var(--_item-padding-inline, var(--fc-space-padding-sm));
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+}
+.separator {
+  flex: none;
+  height: var(--fc-stroke-width-base);
+  margin-block: var(--fc-space-margin-xxs);
+  border: 0;
+  background: var(--fc-color-border-neutral-light);
+}
+
+.empty {
+  padding: var(--fc-space-padding-xs) var(--fc-space-padding-sm);
+  color: var(--fc-color-content-description);
+  text-align: center;
+}

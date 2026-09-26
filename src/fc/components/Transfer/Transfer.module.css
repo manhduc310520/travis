@@ -1,0 +1,207 @@
+/*
+ * Figma "❖ Transfer". Every value is an fc token; Component/Transfer/* for
+ * the list size, row height and header height. React Aria puts the state on
+ * GridList rows: data-hovered, data-selected, data-focus-visible, data-disabled.
+ * The panel frame is a container (Border/Neutral, like Card and Table); its
+ * colour switches with Status (Solid/Warning, Solid/Danger).
+ */
+.transfer {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  max-inline-size: 100%;
+}
+
+/* ---------- panel (Figma "Transfer / Transfer Panel") ---------- */
+.panel {
+  --_border: var(--fc-color-border-neutral);
+
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  box-sizing: border-box;
+  inline-size: var(--_list-width, var(--fc-component-transfer-list-width));
+  min-inline-size: 0;
+  block-size: var(--_list-height, var(--fc-component-transfer-list-height));
+  border: var(--fc-stroke-width-base) solid var(--_border);
+  border-radius: var(--fc-radius-lg);
+  background: var(--fc-color-background-container);
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  overflow: hidden;
+}
+.warning { --_border: var(--fc-color-solid-warning); }
+.error { --_border: var(--fc-color-solid-danger); }
+
+/* ---------- header (Figma "Transfer / Transfer Header") ---------- */
+.header {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  box-sizing: border-box;
+  min-block-size: var(--fc-component-transfer-header-height);
+  padding-inline: var(--fc-space-padding-sm);
+  border-block-end: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+
+.headerStart {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--fc-space-margin-xxs);
+  min-inline-size: 0;
+}
+
+.menuButton { flex: none; }
+
+.count,
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.count { min-inline-size: 0; }
+.title {
+  flex: none;
+  max-inline-size: 50%;
+}
+
+/* ---------- search (Figma "Search wrapper") ---------- */
+.search {
+  flex: none;
+  padding: var(--fc-space-padding-sm);
+}
+
+/* ---------- list (Figma "Transfer List" slot) ---------- */
+.list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-block-size: 0;
+  overflow: auto;
+  outline: none;
+}
+.list[data-empty] {
+  align-items: center;
+  justify-content: center;
+}
+/* The grid itself only takes focus while empty (rows take it otherwise). */
+.list[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+.panel[data-disabled] .list { background: var(--fc-color-background-container-disabled); }
+
+.empty { padding: var(--fc-space-padding-xs); }
+
+/* ---------- row (Figma "Transfer / Transfer List Item") ---------- */
+.item {
+  --_bg: transparent;
+
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  box-sizing: border-box;
+  min-block-size: var(--fc-component-transfer-item-height);
+  /* One line keeps the token height exactly (Figma item padding 5 = (32 - 22) / 2). */
+  padding-block: calc((var(--fc-component-transfer-item-height) - var(--fc-typography-line-height-base)) / 2);
+  padding-inline: var(--fc-space-padding-sm);
+  background: var(--_bg);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s;
+}
+.item[data-hovered] { --_bg: var(--fc-color-background-item-hover); }
+.item[data-selected] { --_bg: var(--fc-color-background-item-selected); }
+.item[data-selected][data-hovered] { --_bg: var(--fc-color-background-item-selected-hover); }
+.item[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+.item[data-disabled] {
+  --_bg: transparent;
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+.itemContent {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+.itemTitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.itemDescription {
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+}
+.item[data-disabled] .itemDescription { color: inherit; }
+
+/* One-way target rows: the remove button (24px target, kept inside the row's line box). */
+.remove {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--fc-size-control-sm);
+  block-size: var(--fc-size-control-sm);
+  margin-block: calc((var(--fc-typography-line-height-base) - var(--fc-size-control-sm)) / 2);
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-color-content-icon);
+  cursor: pointer;
+  outline: none;
+}
+.remove[data-hovered] { color: var(--fc-color-content-danger); }
+.remove[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.remove[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+/* ---------- footer (Figma "Transfer / Transfer Footer": Left Button / Right Button) ---------- */
+.footer {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  box-sizing: border-box;
+  min-block-size: var(--fc-component-transfer-header-height);
+  padding: var(--fc-space-padding-xxs);
+  border-block-start: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral);
+}
+.footerEnd { justify-content: flex-end; }
+
+/* ---------- move buttons (Figma "Transfer / Transfer Buttons") ---------- */
+.operations {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+}
+
+.srOnly {
+  position: absolute;
+  inline-size: var(--fc-stroke-width-base);
+  block-size: var(--fc-stroke-width-base);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item { transition: none; }
+}

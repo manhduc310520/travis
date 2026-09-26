@@ -1,0 +1,247 @@
+/*
+ * Figma "❖ Slider". Sizes and colours specific to the slider come from
+ * Component/Slider/*. React Aria sets data-orientation and data-disabled on
+ * the root, data-hovered on the track, and data-hovered, data-dragging,
+ * data-focused, data-focus-visible, data-disabled on each thumb. It also
+ * positions each thumb inline (left / top in %, translate -50% -50%); the
+ * fill, dots and mark labels are placed inline by Slider.tsx.
+ *
+ * Contrast (WCAG 1.4.11): the thumb ring and the track are Color/Solid/Accent,
+ * at least 3:1 against the rail (Color/Border/Neutral-Faded) and the surface in
+ * every brand and mode. The kit's Border/Accent-Light track (1.7:1) and the
+ * darker hover rail (Fill/Neutral, 2.5:1 in dark) are not used for that reason;
+ * hover shows as a larger thumb with a glow instead.
+ */
+.slider {
+  --_rail: var(--fc-component-slider-rail-size);
+  --_handle: var(--fc-component-slider-handle-size);
+  --_handle-hover: var(--fc-component-slider-handle-size-hover);
+  --_dot: var(--fc-component-slider-dot-size);
+  --_hit: var(--fc-size-control-sm);
+  --_track: var(--fc-component-slider-track-background);
+  --_handle-color: var(--fc-component-slider-handle-color);
+  --_arrow: var(--fc-size-popup-arrow-base);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+  min-width: 0;
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+/* A vertical slider takes its parent's height. */
+.vertical {
+  display: inline-flex;
+  height: 100%;
+  min-height: 0;
+}
+.slider[data-disabled] {
+  --_track: var(--fc-component-slider-track-background-disabled);
+  --_handle-color: var(--fc-component-slider-handle-color-disabled);
+}
+
+/* ---------- icons + track (Figma Slider / Icon: 8px gap) ---------- */
+.body {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  min-width: 0;
+}
+.bodyVertical {
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  color: var(--fc-color-content-icon);
+}
+.icon svg {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+.slider[data-disabled] .icon { color: var(--fc-color-content-disabled); }
+
+/*
+ * The track box is the pointer target: the full rail length, 24px across.
+ * Half a (hovered) thumb of margin keeps the thumbs inside the component.
+ */
+.track {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: var(--_hit);
+  margin-inline: calc(var(--_handle-hover) / 2);
+  cursor: pointer;
+  touch-action: none;
+}
+.trackVertical {
+  width: var(--_hit);
+  height: auto;
+  min-height: 0;
+  margin-inline: 0;
+  margin-block: calc(var(--_handle-hover) / 2);
+}
+/* Room for the mark labels under the rail. */
+.labelsBelow { margin-block-end: var(--fc-typography-line-height-base); }
+.slider[data-disabled] .track { cursor: not-allowed; }
+
+/* ---------- rail + filled track (Figma Slider Rail / Slider Track) ---------- */
+.rail,
+.fill {
+  position: absolute;
+  top: 50%;
+  height: var(--_rail);
+  border-radius: calc(var(--_rail) / 2);
+  translate: 0 -50%;
+  pointer-events: none;
+}
+.rail {
+  right: 0;
+  left: 0;
+  background: var(--fc-component-slider-rail-background);
+}
+.fill { background: var(--_track); }
+
+.railVertical,
+.fillVertical {
+  top: auto;
+  left: 50%;
+  width: var(--_rail);
+  translate: -50% 0;
+}
+.railVertical {
+  right: auto;
+  top: 0;
+  bottom: 0;
+  height: auto;
+}
+
+/* ---------- dots and mark labels (Figma Slider Mark) ---------- */
+.dot {
+  position: absolute;
+  top: 50%;
+  width: var(--_dot);
+  height: var(--_dot);
+  border: var(--fc-stroke-width-strong) solid var(--fc-component-slider-dot-border);
+  border-radius: 50%;
+  background: var(--fc-color-background-container);
+  translate: -50% -50%;
+  pointer-events: none;
+}
+.dotVertical {
+  top: auto;
+  left: 50%;
+  translate: -50% 50%;
+}
+.dotActive { border-color: var(--fc-component-slider-dot-border-active); }
+.slider[data-disabled] .dotActive { border-color: var(--_handle-color); }
+
+/* Pressing a label moves the nearest thumb there (the press lands on the track). */
+.markLabel {
+  position: absolute;
+  top: 100%;
+  color: var(--fc-color-content-description);
+  white-space: nowrap;
+  translate: -50% 0;
+}
+.markLabelVertical {
+  top: auto;
+  left: 100%;
+  translate: 0 50%;
+}
+.markLabelActive { color: var(--fc-color-content-neutral-strong); }
+.slider[data-disabled] .markLabel { color: var(--fc-color-content-disabled); }
+
+/* ---------- thumb (Figma Slider Handle: 10px, 12px on hover / pressed) ---------- */
+.thumb {
+  top: 50%;
+  width: var(--_handle);
+  height: var(--_handle);
+  border: var(--fc-stroke-width-strong) solid var(--_handle-color);
+  border-radius: 50%;
+  background: var(--fc-color-background-container);
+  cursor: pointer;
+  transition: width 0.2s, height 0.2s, box-shadow 0.2s;
+}
+.thumbVertical { left: 50%; }
+/* 24px pointer target around the small thumb. */
+.thumb::before {
+  content: '';
+  position: absolute;
+  inset: calc((var(--_handle) - var(--fc-stroke-width-strong) * 2 - var(--_hit)) / 2);
+  border-radius: 50%;
+}
+.thumb:is([data-hovered], [data-dragging], [data-focus-visible]) {
+  width: var(--_handle-hover);
+  height: var(--_handle-hover);
+}
+.thumb:is([data-hovered], [data-dragging]) {
+  box-shadow: 0 0 0 var(--fc-stroke-width-focus) var(--fc-color-outline-accent);
+}
+.thumb:is([data-dragging], [data-focused]) { z-index: 1; }
+.thumb[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.thumb[data-disabled] {
+  width: var(--_handle);
+  height: var(--_handle);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ---------- value bubble: fc Tooltip surface (Component/Tooltip/*) ---------- */
+.bubble {
+  position: absolute;
+  z-index: 1;
+  display: none;
+  align-items: center;
+  min-height: var(--fc-size-control-base);
+  padding: var(--fc-space-padding-xxs) var(--fc-space-padding-xs);
+  border-radius: var(--fc-radius-sm);
+  background: var(--fc-component-tooltip-background);
+  color: var(--fc-component-tooltip-content);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.bubble::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+}
+.bubbleTop {
+  bottom: calc(100% + var(--_arrow) / 2);
+  left: 50%;
+  translate: -50% 0;
+}
+.bubbleTop::after {
+  top: 100%;
+  left: 50%;
+  width: calc(var(--_arrow) / 2);
+  height: calc(var(--_arrow) / 4);
+  translate: -50% 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.bubbleEnd {
+  top: 50%;
+  left: calc(100% + var(--_arrow) / 2);
+  translate: 0 -50%;
+}
+.bubbleEnd::after {
+  top: 50%;
+  right: 100%;
+  width: calc(var(--_arrow) / 4);
+  height: calc(var(--_arrow) / 2);
+  translate: 0 -50%;
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+.thumb:is([data-hovered], [data-dragging], [data-focus-visible]):not([data-disabled]) > .bubble,
+.bubbleAlways { display: flex; }
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb { transition: none; }
+}

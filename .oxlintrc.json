@@ -4,5 +4,17 @@
   "rules": {
     "react/rules-of-hooks": "error",
     "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/**", ".storybook/**"],
+      "rules": {
+        "no-restricted-imports": ["error", {
+          "patterns": [
+            { "group": ["antd", "antd/*", "@ant-design/*"], "message": "The fc design system is built on react-aria-components and --fc-* tokens; Ant Design was removed (phase 5)." }
+          ]
+        }]
+      }
+    }
+  ]
 }

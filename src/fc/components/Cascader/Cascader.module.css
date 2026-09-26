@@ -1,0 +1,89 @@
+/*
+ * The box reuses TextField / Select (Input.module.css + Select.module.css:
+ * variants, status, sizes, tags). The menu reuses the overlay surface and the
+ * shared list rows. Component/Cascader/*: menu height 180 and radius 8, column
+ * width 120 (Figma item 111 + 2 × menu padding 4 + 1 divider), menu padding 4,
+ * option height 32 and padding 12, hover / selected tints, selected text.
+ * Selected rows are marked by the tint only (Figma's Semibold selected weight
+ * is dropped: CLAUDE.md never marks a state with font weight).
+ */
+.popover {
+  --_radius: var(--fc-component-cascader-menu-radius);
+  --_padding: 0px;
+  max-width: calc(100vw - var(--fc-space-margin-base) * 2);
+}
+/* With search (or nothing to show) the menu is at least as wide as the box. */
+.wide { min-width: var(--trigger-width); }
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+}
+
+/* ---------- columns ---------- */
+.columns {
+  display: flex;
+  height: var(--fc-component-cascader-menu-height);
+  overflow-x: auto;
+}
+
+.column {
+  --_list-max-height: none;
+  flex: none;
+  box-sizing: border-box;
+  min-width: var(--fc-component-cascader-column-width);
+  padding: var(--fc-component-cascader-menu-padding);
+  overflow-y: auto;
+}
+.column + .column { border-inline-start: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded); }
+/* Extra width (search open, wide box) goes to the last column. */
+.column:last-child { flex: 1; }
+
+.option {
+  --_item-height: var(--fc-component-cascader-option-height);
+  --_item-padding-inline: var(--fc-component-cascader-option-padding-inline);
+  --_item-bg-hover: var(--fc-component-cascader-option-background-hover);
+  --_item-bg-selected: var(--fc-component-cascader-option-background-selected);
+  flex: none;
+}
+.option[data-selected]:not([data-disabled]) { --_item-fg: var(--fc-component-cascader-option-content-selected); }
+
+/* The open branch in each column (Figma Selected=True), also in multiple mode where it is not ticked. */
+.option.active:not([data-disabled]) { --_item-bg: var(--_item-bg-selected); }
+.option.active[data-hovered],
+.option.active[data-focused] { --_item-bg: var(--fc-color-background-item-selected-hover); }
+
+/* Branch chevron: same colour as the text (Figma), disabled with it. */
+.expand {
+  display: inline-flex;
+  flex: none;
+  margin-inline-start: auto;
+  color: inherit;
+}
+
+/* ---------- search ---------- */
+.searchBar {
+  display: flex;
+  flex-direction: column;
+  padding: var(--fc-space-padding-xs);
+  border-bottom: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+
+.results {
+  --_list-max-height: var(--fc-component-cascader-menu-height);
+  padding: var(--fc-component-cascader-menu-padding);
+}
+
+.match {
+  background: transparent;
+  color: var(--fc-color-content-accent);
+}
+
+.empty { padding-inline: var(--fc-space-padding-base); }
+
+/* Figma "Cascader Menu Item / Footer": 8 padding, a hairline above. */
+.footer {
+  padding: var(--fc-space-padding-xs);
+  border-top: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}

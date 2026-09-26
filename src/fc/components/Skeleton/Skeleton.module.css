@@ -1,0 +1,165 @@
+/*
+ * Figma "❖ Skeleton". Every block is Component/Skeleton/Background
+ * (= Color/Fill/Area, Figma colorFillContent). Title and paragraph bars:
+ * 16 high, Component/Skeleton/Block-Radius (= Radius/SM); rows 16 apart
+ * (Space/Margin/Base); the column's parts (title, input, images, paragraph,
+ * button) 28 apart (Paragraph-Margin-Top); avatar 16 from the text column;
+ * image + chart 20 apart (Space/Margin/MD).
+ *
+ * Element skeletons copy the fc component they stand in for: Avatar sizes
+ * (Component/Avatar/Size*), Button and Input heights (Size/Control/*) and
+ * radii (SM 4 / Base 6 / LG 8), Button twice as wide as tall.
+ *
+ * Shimmer (isActive): a band of Component/Skeleton/Background-Shimmer
+ * (= Color/Fill/Neutral-Strong) sweeps across the fill; none under
+ * prefers-reduced-motion.
+ */
+.skeleton {
+  width: 100%;
+}
+
+/* Loaded: the wrapper only keeps the status element mounted; it adds no box. */
+.loaded {
+  display: contents;
+}
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--fc-space-margin-base);
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--fc-component-skeleton-paragraph-margin-top);
+  min-width: 0;
+}
+
+/* ---------- blocks ---------- */
+.block {
+  --_bg: var(--fc-component-skeleton-background);
+  --_shine: var(--fc-component-skeleton-background-shimmer);
+  --_radius: var(--fc-component-skeleton-block-radius);
+
+  display: inline-block;
+  flex: none;
+  box-sizing: border-box;
+  border-radius: var(--_radius);
+  background: var(--_bg);
+  vertical-align: top;
+}
+
+.title {
+  width: 50%;
+  height: var(--fc-component-skeleton-title-height);
+}
+
+.paragraph {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  gap: var(--fc-space-margin-base);
+}
+
+.row {
+  width: 100%;
+  height: var(--fc-component-skeleton-paragraph-height);
+}
+
+.round .title { --_radius: calc(var(--fc-component-skeleton-title-height) / 2); }
+.round .row { --_radius: calc(var(--fc-component-skeleton-paragraph-height) / 2); }
+
+/* Figma Input? in the column: an input bar as wide as the title. */
+.content > .inlineInput { width: 50%; }
+
+.images {
+  display: flex;
+  gap: var(--fc-space-margin-md);
+}
+
+/* ---------- avatar ---------- */
+.avatar {
+  --_size: var(--fc-component-avatar-size);
+  --_radius: 50%;
+
+  width: var(--_size);
+  height: var(--_size);
+}
+.avatar.sm { --_size: var(--fc-component-avatar-size-sm); }
+.avatar.lg { --_size: var(--fc-component-avatar-size-lg); }
+.avatar.square { --_radius: var(--fc-radius-base); }
+.avatar.square.sm { --_radius: var(--fc-radius-sm); }
+.avatar.square.lg { --_radius: var(--fc-radius-lg); }
+
+/* ---------- button ---------- */
+.button {
+  --_h: var(--fc-size-control-base);
+  --_radius: var(--fc-radius-base);
+
+  width: calc(var(--_h) * 2);
+  height: var(--_h);
+}
+.button.sm { --_h: var(--fc-size-control-sm); --_radius: var(--fc-radius-sm); }
+.button.lg { --_h: var(--fc-size-control-lg); --_radius: var(--fc-radius-lg); }
+.button.round { --_radius: calc(var(--_h) / 2); }
+.button.circle { --_radius: 50%; width: var(--_h); }
+.button.full { width: 100%; }
+
+/* ---------- input ---------- */
+.input {
+  --_radius: var(--fc-radius-base);
+
+  width: 100%;
+  height: var(--fc-size-control-base);
+}
+.input.sm { height: var(--fc-size-control-sm); --_radius: var(--fc-radius-sm); }
+.input.lg { height: var(--fc-size-control-lg); --_radius: var(--fc-radius-lg); }
+
+/* ---------- image ---------- */
+.image {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--fc-component-skeleton-image-size);
+  height: var(--fc-component-skeleton-image-size);
+  color: var(--fc-color-fill-neutral-strong);
+}
+.image svg {
+  display: block;
+  width: 50%;
+  height: auto;
+}
+
+/* ---------- shimmer ---------- */
+.active .block,
+.block.active {
+  background: linear-gradient(90deg, var(--_bg) 25%, var(--_shine) 37%, var(--_bg) 63%);
+  background-size: 400% 100%;
+  animation: fc-skeleton-shimmer 1.4s ease infinite;
+}
+
+@keyframes fc-skeleton-shimmer {
+  from { background-position: 100% 50%; }
+  to { background-position: 0 50%; }
+}
+
+/* ---------- a11y ---------- */
+.srOnly {
+  position: absolute;
+  inline-size: var(--fc-stroke-width-base);
+  block-size: var(--fc-stroke-width-base);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .active .block,
+  .block.active {
+    background: var(--_bg);
+    animation: none;
+  }
+}

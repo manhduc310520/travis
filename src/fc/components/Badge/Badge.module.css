@@ -1,0 +1,149 @@
+/*
+ * Sizes come from Component/Badge/*: indicator 20px high (small 14px), dot 6px.
+ * Pill radius — badges and dots are the only round-ended shapes besides avatars.
+ */
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.standalone {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fc-color-solid-danger);
+  color: var(--fc-color-content-on-solid);
+  box-shadow: 0 0 0 var(--fc-stroke-width-base) var(--fc-color-border-container);
+  white-space: nowrap;
+}
+
+.count {
+  --_h: var(--fc-component-badge-indicator-height);
+  min-width: var(--_h);
+  height: var(--_h);
+  padding-inline: calc(var(--fc-space-padding-xs) - var(--fc-stroke-width-strong));
+  border-radius: calc(var(--_h) / 2);
+  font-size: var(--fc-component-badge-font-size);
+  line-height: var(--_h);
+}
+
+.count.sm {
+  --_h: var(--fc-component-badge-indicator-height-sm);
+  padding-inline: var(--fc-space-padding-xxs);
+}
+
+.dot {
+  width: var(--fc-component-badge-dot-size);
+  height: var(--fc-component-badge-dot-size);
+  border-radius: 50%;
+}
+
+.attached {
+  position: absolute;
+  top: 0;
+  inset-inline-end: 0;
+  transform: translate(50%, -50%);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- status dot + text ---------- */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.statusDot {
+  position: relative;
+  flex: none;
+  width: var(--fc-component-badge-dot-size);
+  height: var(--fc-component-badge-dot-size);
+  border-radius: 50%;
+}
+.default { background: var(--fc-color-content-neutral-faded); }
+.success { background: var(--fc-color-solid-success); }
+.warning { background: var(--fc-color-solid-warning); }
+.error { background: var(--fc-color-solid-danger); }
+.processing { background: var(--fc-color-solid-info); }
+.processing::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: var(--fc-stroke-width-base) solid var(--fc-color-solid-info);
+  border-radius: 50%;
+  animation: fc-badge-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes fc-badge-pulse {
+  from { transform: scale(0.8); opacity: 0.5; }
+  to { transform: scale(2.4); opacity: 0; }
+}
+
+/* ---------- ribbon ---------- */
+.ribbonWrapper {
+  position: relative;
+}
+.ribbon {
+  --_bg: var(--fc-color-solid-accent);
+  --_fg: var(--fc-color-content-on-solid);
+  --_corner: var(--fc-color-solid-accent-active);
+
+  position: absolute;
+  top: var(--fc-space-margin-xs);
+  inset-inline-end: calc(var(--fc-space-margin-xs) * -1);
+  padding-inline: var(--fc-space-padding-xs);
+  border-radius: var(--fc-radius-sm);
+  border-end-end-radius: 0;
+  background: var(--_bg);
+  color: var(--_fg);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  white-space: nowrap;
+}
+.ribbonHue {
+  --_bg: var(--_hue-strong);
+  --_fg: var(--fc-color-content-on-solid-neutral);
+  --_corner: var(--_hue-strong-active);
+}
+/* The fold: a small triangle under the end of the ribbon, one shade darker. */
+.ribbonCorner {
+  position: absolute;
+  top: 100%;
+  inset-inline-end: 0;
+  width: var(--fc-space-margin-xs);
+  height: var(--fc-space-margin-xs);
+  background: var(--_corner);
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+.ribbonStart {
+  inset-inline-end: auto;
+  inset-inline-start: calc(var(--fc-space-margin-xs) * -1);
+  border-end-end-radius: var(--fc-radius-sm);
+  border-end-start-radius: 0;
+}
+.ribbonStart .ribbonCorner {
+  inset-inline-end: auto;
+  inset-inline-start: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .processing::after { animation: none; }
+}

@@ -1,0 +1,2102 @@
+{
+ "pick": {
+  "blue": {
+   "Brand/Light/Content-Accent": 7,
+   "Brand/Dark/Content-Accent": 7,
+   "Brand/Light/Solid-Accent": 8
+  },
+  "green": {
+   "Brand/Light/Content-Accent": 8,
+   "Brand/Dark/Content-Accent": 6,
+   "Brand/Light/Solid-Accent": 8
+  },
+  "yellow": {
+   "Brand/Light/Content-Accent": 9,
+   "Brand/Dark/Content-Accent": 6,
+   "Brand/Light/Solid-Accent": 9
+  },
+  "magenta": {
+   "Brand/Light/Content-Accent": 7,
+   "Brand/Dark/Content-Accent": 7,
+   "Brand/Light/Solid-Accent": 8
+  },
+  "orange": {
+   "Brand/Light/Content-Accent": 8,
+   "Brand/Dark/Content-Accent": 6,
+   "Brand/Light/Solid-Accent": 8
+  }
+ },
+ "brandVars": {
+  "Brand/Light/Content-Accent": [
+   "@Global/Light/Blue/7",
+   "@Global/Light/Green/8",
+   "@Global/Light/Yellow/9",
+   "@Global/Light/Magenta/7",
+   "@Global/Light/Orange/8"
+  ],
+  "Brand/Dark/Content-Accent": [
+   "@Global/Dark/Blue/7",
+   "@Global/Dark/Green/6",
+   "@Global/Dark/Yellow/6",
+   "@Global/Dark/Magenta/7",
+   "@Global/Dark/Orange/6"
+  ],
+  "Brand/Light/Solid-Accent": [
+   "@Global/Light/Blue/8",
+   "@Global/Light/Green/8",
+   "@Global/Light/Yellow/9",
+   "@Global/Light/Magenta/8",
+   "@Global/Light/Orange/8"
+  ]
+ },
+ "edits": [
+  {
+   "name": "Color/Content/Accent",
+   "mode": "light",
+   "from": "@Brand/Light/Content-Accent",
+   "to": "@Brand/Light/Content-Accent"
+  },
+  {
+   "name": "Color/Content/Accent",
+   "mode": "dark",
+   "from": "@Brand/Dark/Content-Accent",
+   "to": "@Brand/Dark/Content-Accent"
+  },
+  {
+   "name": "Color/Solid/Accent",
+   "mode": "light",
+   "from": "@Brand/Light/Solid-Accent",
+   "to": "@Brand/Light/Solid-Accent"
+  },
+  {
+   "name": "Color/Content/Link",
+   "mode": "light",
+   "from": "@Color/Content/Info",
+   "to": "@Color/Content/Info"
+  },
+  {
+   "name": "Color/Content/Link",
+   "mode": "dark",
+   "from": "@Color/Content/Info",
+   "to": "@Color/Content/Info"
+  },
+  {
+   "name": "Color/Content/Description",
+   "mode": "light",
+   "from": "@Color/Content/Neutral",
+   "to": "@Color/Content/Neutral"
+  },
+  {
+   "name": "Color/Content/Success",
+   "mode": "light",
+   "from": "@Global/Light/Green/8",
+   "to": "@Global/Light/Green/8"
+  },
+  {
+   "name": "Color/Content/Warning",
+   "mode": "light",
+   "from": "@Global/Light/Amber/9",
+   "to": "@Global/Light/Amber/9"
+  },
+  {
+   "name": "Color/Content/Danger",
+   "mode": "light",
+   "from": "@Global/Light/Red/7",
+   "to": "@Global/Light/Red/7"
+  },
+  {
+   "name": "Color/Content/Danger",
+   "mode": "dark",
+   "from": "@Global/Dark/Red/8",
+   "to": "@Global/Dark/Red/8"
+  },
+  {
+   "name": "Color/Solid/Danger",
+   "mode": "dark",
+   "from": "@Global/Dark/Red/6",
+   "to": "@Global/Dark/Red/6"
+  }
+ ],
+ "rows": [
+  {
+   "label": "Chữ chính",
+   "fg": "color/content/neutral-strong",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 16.48,
+    "fg": "#1f1f1f",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 16.48,
+    "fg": "#1f1f1f",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ chính",
+   "fg": "color/content/neutral-strong",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 13.43,
+    "fg": "#dcdcdc",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 13.43,
+    "fg": "#dcdcdc",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ chính",
+   "fg": "color/content/neutral-strong",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 16.48,
+    "fg": "#1f1f1f",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 16.48,
+    "fg": "#1f1f1f",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ chính",
+   "fg": "color/content/neutral-strong",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 13.43,
+    "fg": "#dcdcdc",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 13.43,
+    "fg": "#dcdcdc",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ chính",
+   "fg": "color/content/neutral-strong",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 16.48,
+    "fg": "#1f1f1f",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 16.48,
+    "fg": "#1f1f1f",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ chính",
+   "fg": "color/content/neutral-strong",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 13.43,
+    "fg": "#dcdcdc",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 13.43,
+    "fg": "#dcdcdc",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ chính",
+   "fg": "color/content/neutral-strong",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 16.48,
+    "fg": "#1f1f1f",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 16.48,
+    "fg": "#1f1f1f",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ chính",
+   "fg": "color/content/neutral-strong",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 13.43,
+    "fg": "#dcdcdc",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 13.43,
+    "fg": "#dcdcdc",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ chính",
+   "fg": "color/content/neutral-strong",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 16.48,
+    "fg": "#1f1f1f",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 16.48,
+    "fg": "#1f1f1f",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ chính",
+   "fg": "color/content/neutral-strong",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 13.43,
+    "fg": "#dcdcdc",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 13.43,
+    "fg": "#dcdcdc",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ phụ",
+   "fg": "color/content/neutral",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ phụ",
+   "fg": "color/content/neutral",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 8.21,
+    "fg": "#adadad",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 8.21,
+    "fg": "#adadad",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ phụ",
+   "fg": "color/content/neutral",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ phụ",
+   "fg": "color/content/neutral",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 8.21,
+    "fg": "#adadad",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 8.21,
+    "fg": "#adadad",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ phụ",
+   "fg": "color/content/neutral",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ phụ",
+   "fg": "color/content/neutral",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 8.21,
+    "fg": "#adadad",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 8.21,
+    "fg": "#adadad",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ phụ",
+   "fg": "color/content/neutral",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ phụ",
+   "fg": "color/content/neutral",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 8.21,
+    "fg": "#adadad",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 8.21,
+    "fg": "#adadad",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ phụ",
+   "fg": "color/content/neutral",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ phụ",
+   "fg": "color/content/neutral",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 8.21,
+    "fg": "#adadad",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 8.21,
+    "fg": "#adadad",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ mô tả",
+   "fg": "color/content/description",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ mô tả",
+   "fg": "color/content/description",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 4.54,
+    "fg": "#7e7e7e",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 4.54,
+    "fg": "#7e7e7e",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ mô tả",
+   "fg": "color/content/description",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ mô tả",
+   "fg": "color/content/description",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 4.54,
+    "fg": "#7e7e7e",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 4.54,
+    "fg": "#7e7e7e",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ mô tả",
+   "fg": "color/content/description",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ mô tả",
+   "fg": "color/content/description",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 4.54,
+    "fg": "#7e7e7e",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 4.54,
+    "fg": "#7e7e7e",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ mô tả",
+   "fg": "color/content/description",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ mô tả",
+   "fg": "color/content/description",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 4.54,
+    "fg": "#7e7e7e",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 4.54,
+    "fg": "#7e7e7e",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ mô tả",
+   "fg": "color/content/description",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7,
+    "fg": "#595959",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ mô tả",
+   "fg": "color/content/description",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 4.54,
+    "fg": "#7e7e7e",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 4.54,
+    "fg": "#7e7e7e",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Link",
+   "fg": "color/content/link",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.16,
+    "fg": "#0958d9",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 6.16,
+    "fg": "#0958d9",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Link",
+   "fg": "color/content/link",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.21,
+    "fg": "#3c89e8",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 5.21,
+    "fg": "#3c89e8",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Link",
+   "fg": "color/content/link",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Link",
+   "fg": "color/content/link",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Link",
+   "fg": "color/content/link",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.24,
+    "fg": "#876800",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.24,
+    "fg": "#876800",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Link",
+   "fg": "color/content/link",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 9.83,
+    "fg": "#d8bd14",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 9.83,
+    "fg": "#d8bd14",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Link",
+   "fg": "color/content/link",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.48,
+    "fg": "#c41d7f",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.48,
+    "fg": "#c41d7f",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Link",
+   "fg": "color/content/link",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.14,
+    "fg": "#e0529c",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 5.14,
+    "fg": "#e0529c",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Link",
+   "fg": "color/content/link",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.43,
+    "fg": "#ad4e00",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.43,
+    "fg": "#ad4e00",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Link",
+   "fg": "color/content/link",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.89,
+    "fg": "#d87a16",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 5.89,
+    "fg": "#d87a16",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ accent",
+   "fg": "color/content/accent",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.16,
+    "fg": "#0958d9",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 6.16,
+    "fg": "#0958d9",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ accent",
+   "fg": "color/content/accent",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.21,
+    "fg": "#3c89e8",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 5.21,
+    "fg": "#3c89e8",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ accent",
+   "fg": "color/content/accent",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ accent",
+   "fg": "color/content/accent",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ accent",
+   "fg": "color/content/accent",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.24,
+    "fg": "#876800",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.24,
+    "fg": "#876800",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ accent",
+   "fg": "color/content/accent",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 9.83,
+    "fg": "#d8bd14",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 9.83,
+    "fg": "#d8bd14",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ accent",
+   "fg": "color/content/accent",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.48,
+    "fg": "#c41d7f",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.48,
+    "fg": "#c41d7f",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ accent",
+   "fg": "color/content/accent",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.14,
+    "fg": "#e0529c",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 5.14,
+    "fg": "#e0529c",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ accent",
+   "fg": "color/content/accent",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.43,
+    "fg": "#ad4e00",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.43,
+    "fg": "#ad4e00",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ accent",
+   "fg": "color/content/accent",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.89,
+    "fg": "#d87a16",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 5.89,
+    "fg": "#d87a16",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ thành công",
+   "fg": "color/content/success",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ thành công",
+   "fg": "color/content/success",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ thành công",
+   "fg": "color/content/success",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ thành công",
+   "fg": "color/content/success",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ thành công",
+   "fg": "color/content/success",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ thành công",
+   "fg": "color/content/success",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ thành công",
+   "fg": "color/content/success",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ thành công",
+   "fg": "color/content/success",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ thành công",
+   "fg": "color/content/success",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ thành công",
+   "fg": "color/content/success",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.18,
+    "fg": "#49aa19",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ cảnh báo",
+   "fg": "color/content/warning",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.79,
+    "fg": "#874d00",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 6.79,
+    "fg": "#874d00",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ cảnh báo",
+   "fg": "color/content/warning",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 7.27,
+    "fg": "#d89614",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 7.27,
+    "fg": "#d89614",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ cảnh báo",
+   "fg": "color/content/warning",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.79,
+    "fg": "#874d00",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 6.79,
+    "fg": "#874d00",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ cảnh báo",
+   "fg": "color/content/warning",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 7.27,
+    "fg": "#d89614",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 7.27,
+    "fg": "#d89614",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ cảnh báo",
+   "fg": "color/content/warning",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.79,
+    "fg": "#874d00",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 6.79,
+    "fg": "#874d00",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ cảnh báo",
+   "fg": "color/content/warning",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 7.27,
+    "fg": "#d89614",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 7.27,
+    "fg": "#d89614",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ cảnh báo",
+   "fg": "color/content/warning",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.79,
+    "fg": "#874d00",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 6.79,
+    "fg": "#874d00",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ cảnh báo",
+   "fg": "color/content/warning",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 7.27,
+    "fg": "#d89614",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 7.27,
+    "fg": "#d89614",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ cảnh báo",
+   "fg": "color/content/warning",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.79,
+    "fg": "#874d00",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 6.79,
+    "fg": "#874d00",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ cảnh báo",
+   "fg": "color/content/warning",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 7.27,
+    "fg": "#d89614",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 7.27,
+    "fg": "#d89614",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ lỗi",
+   "fg": "color/content/danger",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.57,
+    "fg": "#cf1322",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.57,
+    "fg": "#cf1322",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ lỗi",
+   "fg": "color/content/danger",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.58,
+    "fg": "#f37370",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.58,
+    "fg": "#f37370",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ lỗi",
+   "fg": "color/content/danger",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.57,
+    "fg": "#cf1322",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.57,
+    "fg": "#cf1322",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ lỗi",
+   "fg": "color/content/danger",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.58,
+    "fg": "#f37370",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.58,
+    "fg": "#f37370",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ lỗi",
+   "fg": "color/content/danger",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.57,
+    "fg": "#cf1322",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.57,
+    "fg": "#cf1322",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ lỗi",
+   "fg": "color/content/danger",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.58,
+    "fg": "#f37370",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.58,
+    "fg": "#f37370",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ lỗi",
+   "fg": "color/content/danger",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.57,
+    "fg": "#cf1322",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.57,
+    "fg": "#cf1322",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ lỗi",
+   "fg": "color/content/danger",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.58,
+    "fg": "#f37370",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.58,
+    "fg": "#f37370",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Chữ lỗi",
+   "fg": "color/content/danger",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.57,
+    "fg": "#cf1322",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.57,
+    "fg": "#cf1322",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Chữ lỗi",
+   "fg": "color/content/danger",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 6.58,
+    "fg": "#f37370",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 6.58,
+    "fg": "#f37370",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Nút primary",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/accent",
+   "brand": "blue",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 8.97,
+    "fg": "#ffffff",
+    "bg": "#003eb3"
+   },
+   "after": {
+    "ratio": 8.97,
+    "fg": "#ffffff",
+    "bg": "#003eb3"
+   }
+  },
+  {
+   "label": "Nút primary",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/accent",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.19,
+    "fg": "#ffffff",
+    "bg": "#1668dc"
+   },
+   "after": {
+    "ratio": 5.19,
+    "fg": "#ffffff",
+    "bg": "#1668dc"
+   }
+  },
+  {
+   "label": "Nút primary",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/accent",
+   "brand": "green",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.59,
+    "fg": "#ffffff",
+    "bg": "#237804"
+   },
+   "after": {
+    "ratio": 5.59,
+    "fg": "#ffffff",
+    "bg": "#237804"
+   }
+  },
+  {
+   "label": "Nút primary",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/accent",
+   "brand": "green",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 4.55,
+    "fg": "#ffffff",
+    "bg": "#3c8618"
+   },
+   "after": {
+    "ratio": 4.55,
+    "fg": "#ffffff",
+    "bg": "#3c8618"
+   }
+  },
+  {
+   "label": "Nút primary",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/accent",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#876800"
+   },
+   "after": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#876800"
+   }
+  },
+  {
+   "label": "Nút primary",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/accent",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.13,
+    "fg": "#ffffff",
+    "bg": "#7c6e14"
+   },
+   "after": {
+    "ratio": 5.13,
+    "fg": "#ffffff",
+    "bg": "#7c6e14"
+   }
+  },
+  {
+   "label": "Nút primary",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/accent",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 7.7,
+    "fg": "#ffffff",
+    "bg": "#9e1068"
+   },
+   "after": {
+    "ratio": 7.7,
+    "fg": "#ffffff",
+    "bg": "#9e1068"
+   }
+  },
+  {
+   "label": "Nút primary",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/accent",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 4.99,
+    "fg": "#ffffff",
+    "bg": "#cb2b83"
+   },
+   "after": {
+    "ratio": 4.99,
+    "fg": "#ffffff",
+    "bg": "#cb2b83"
+   }
+  },
+  {
+   "label": "Nút primary",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/accent",
+   "brand": "orange",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.43,
+    "fg": "#ffffff",
+    "bg": "#ad4e00"
+   },
+   "after": {
+    "ratio": 5.43,
+    "fg": "#ffffff",
+    "bg": "#ad4e00"
+   }
+  },
+  {
+   "label": "Nút primary",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/accent",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 4.7,
+    "fg": "#ffffff",
+    "bg": "#aa6215"
+   },
+   "after": {
+    "ratio": 4.7,
+    "fg": "#ffffff",
+    "bg": "#aa6215"
+   }
+  },
+  {
+   "label": "Nút primary danger",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/danger",
+   "brand": "blue",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.57,
+    "fg": "#ffffff",
+    "bg": "#cf1322"
+   },
+   "after": {
+    "ratio": 5.57,
+    "fg": "#ffffff",
+    "bg": "#cf1322"
+   }
+  },
+  {
+   "label": "Nút primary danger",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/danger",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#d32029"
+   },
+   "after": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#d32029"
+   }
+  },
+  {
+   "label": "Nút primary danger",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/danger",
+   "brand": "green",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.57,
+    "fg": "#ffffff",
+    "bg": "#cf1322"
+   },
+   "after": {
+    "ratio": 5.57,
+    "fg": "#ffffff",
+    "bg": "#cf1322"
+   }
+  },
+  {
+   "label": "Nút primary danger",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/danger",
+   "brand": "green",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#d32029"
+   },
+   "after": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#d32029"
+   }
+  },
+  {
+   "label": "Nút primary danger",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/danger",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.57,
+    "fg": "#ffffff",
+    "bg": "#cf1322"
+   },
+   "after": {
+    "ratio": 5.57,
+    "fg": "#ffffff",
+    "bg": "#cf1322"
+   }
+  },
+  {
+   "label": "Nút primary danger",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/danger",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#d32029"
+   },
+   "after": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#d32029"
+   }
+  },
+  {
+   "label": "Nút primary danger",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/danger",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.57,
+    "fg": "#ffffff",
+    "bg": "#cf1322"
+   },
+   "after": {
+    "ratio": 5.57,
+    "fg": "#ffffff",
+    "bg": "#cf1322"
+   }
+  },
+  {
+   "label": "Nút primary danger",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/danger",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#d32029"
+   },
+   "after": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#d32029"
+   }
+  },
+  {
+   "label": "Nút primary danger",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/danger",
+   "brand": "orange",
+   "mode": "light",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.57,
+    "fg": "#ffffff",
+    "bg": "#cf1322"
+   },
+   "after": {
+    "ratio": 5.57,
+    "fg": "#ffffff",
+    "bg": "#cf1322"
+   }
+  },
+  {
+   "label": "Nút primary danger",
+   "fg": "color/content/on-solid",
+   "bg": "color/solid/danger",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 4.5,
+   "before": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#d32029"
+   },
+   "after": {
+    "ratio": 5.24,
+    "fg": "#ffffff",
+    "bg": "#d32029"
+   }
+  },
+  {
+   "label": "Vòng focus (non-text)",
+   "fg": "color/solid/accent",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "light",
+   "min": 3,
+   "before": {
+    "ratio": 8.97,
+    "fg": "#003eb3",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 8.97,
+    "fg": "#003eb3",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Vòng focus (non-text)",
+   "fg": "color/solid/accent",
+   "bg": "color/background/container",
+   "brand": "blue",
+   "mode": "dark",
+   "min": 3,
+   "before": {
+    "ratio": 3.55,
+    "fg": "#1668dc",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 3.55,
+    "fg": "#1668dc",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Vòng focus (non-text)",
+   "fg": "color/solid/accent",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "light",
+   "min": 3,
+   "before": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.59,
+    "fg": "#237804",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Vòng focus (non-text)",
+   "fg": "color/solid/accent",
+   "bg": "color/background/container",
+   "brand": "green",
+   "mode": "dark",
+   "min": 3,
+   "before": {
+    "ratio": 4.05,
+    "fg": "#3c8618",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 4.05,
+    "fg": "#3c8618",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Vòng focus (non-text)",
+   "fg": "color/solid/accent",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "light",
+   "min": 3,
+   "before": {
+    "ratio": 5.24,
+    "fg": "#876800",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.24,
+    "fg": "#876800",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Vòng focus (non-text)",
+   "fg": "color/solid/accent",
+   "bg": "color/background/container",
+   "brand": "yellow",
+   "mode": "dark",
+   "min": 3,
+   "before": {
+    "ratio": 3.59,
+    "fg": "#7c6e14",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 3.59,
+    "fg": "#7c6e14",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Vòng focus (non-text)",
+   "fg": "color/solid/accent",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "light",
+   "min": 3,
+   "before": {
+    "ratio": 7.7,
+    "fg": "#9e1068",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 7.7,
+    "fg": "#9e1068",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Vòng focus (non-text)",
+   "fg": "color/solid/accent",
+   "bg": "color/background/container",
+   "brand": "magenta",
+   "mode": "dark",
+   "min": 3,
+   "before": {
+    "ratio": 3.7,
+    "fg": "#cb2b83",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 3.7,
+    "fg": "#cb2b83",
+    "bg": "#141414"
+   }
+  },
+  {
+   "label": "Vòng focus (non-text)",
+   "fg": "color/solid/accent",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "light",
+   "min": 3,
+   "before": {
+    "ratio": 5.43,
+    "fg": "#ad4e00",
+    "bg": "#ffffff"
+   },
+   "after": {
+    "ratio": 5.43,
+    "fg": "#ad4e00",
+    "bg": "#ffffff"
+   }
+  },
+  {
+   "label": "Vòng focus (non-text)",
+   "fg": "color/solid/accent",
+   "bg": "color/background/container",
+   "brand": "orange",
+   "mode": "dark",
+   "min": 3,
+   "before": {
+    "ratio": 3.92,
+    "fg": "#aa6215",
+    "bg": "#141414"
+   },
+   "after": {
+    "ratio": 3.92,
+    "fg": "#aa6215",
+    "bg": "#141414"
+   }
+  }
+ ]
+}

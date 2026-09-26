@@ -1,0 +1,348 @@
+/*
+ * The date panel, shared by the DatePicker popover and the Calendar card:
+ * Figma "DatePicker Menu" (header 40, body, footer, preset column) and
+ * "DatePicker / DatePicker / Menu Item" (24px cell, radius SM).
+ * Component/DatePicker/*: cell width 36, cell height (Size/Control/SM), header
+ * height (Size/Control/LG), preset column width 120, month / year row height,
+ * cell hover / range / disabled backgrounds. Everything else is semantic.
+ *
+ * React Aria sets on each day: data-hovered, data-pressed, data-focus-visible,
+ * data-selected, data-selection-start / -end (range), data-today,
+ * data-outside-month, data-disabled, data-unavailable, data-invalid.
+ * The month / year grid sets the same names itself (data-in-range,
+ * data-range-start / -end, data-current, data-outside, data-disabled).
+ */
+
+/* ---------- popover + layout ---------- */
+.popover {
+  --_radius: var(--fc-radius-lg);
+  --_padding: 0px;
+  max-width: calc(100vw - var(--fc-space-padding-lg));
+  overflow: auto;
+}
+.dialog { outline: none; }
+
+.layout {
+  display: flex;
+  align-items: stretch;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+/* Two months / years side by side (range). */
+.panels { display: flex; }
+.view {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- header: « ‹ title › » ---------- */
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--fc-component-datepicker-header-height);
+  padding-inline: var(--fc-space-padding-xs);
+  border-bottom: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+.navStart,
+.navEnd {
+  display: flex;
+  align-items: center;
+}
+.navEnd { justify-content: flex-end; }
+
+.nav {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--fc-size-control-sm);
+  height: var(--fc-size-control-sm);
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-color-content-icon);
+  cursor: pointer;
+  outline: none;
+}
+.nav svg {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+.nav[data-hovered] { color: var(--fc-color-content-icon-hover); }
+.nav[data-disabled] {
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+.nav[data-focus-visible],
+.titleButton[data-focus-visible],
+.preset[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--fc-stroke-width-outline) * -1);
+}
+
+.title {
+  display: flex;
+  gap: var(--fc-space-margin-xs);
+  justify-content: center;
+  color: var(--fc-color-content-neutral-strong);
+  font-weight: var(--fc-typography-weight-semibold);
+  white-space: nowrap;
+}
+.titleButton {
+  padding: 0 var(--fc-space-padding-xxs);
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s;
+}
+.titleButton[data-hovered] { color: var(--fc-color-content-accent); }
+
+/* ---------- body ---------- */
+.body {
+  padding: var(--fc-space-padding-xs) var(--fc-space-padding-inline-container);
+}
+.periodBody {
+  padding: var(--fc-space-padding-xs);
+}
+
+/* ---------- day grid ---------- */
+.grid {
+  --_row: calc(var(--fc-component-datepicker-cell-height) + var(--fc-space-padding-xxs) * 2);
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.grid th,
+.grid td { padding: 0; }
+
+.weekday,
+.weekHead {
+  width: var(--fc-component-datepicker-cell-width);
+  height: var(--_row);
+  color: var(--fc-color-content-neutral-strong);
+  font-weight: var(--fc-typography-weight-regular);
+  text-align: center;
+}
+
+/*
+ * Figma "Cell Week": week numbers are secondary. Figma draws them in the
+ * disabled grey; they are information, not disabled, so they use the
+ * description colour (4.5:1).
+ */
+.weekNumber {
+  width: var(--fc-component-datepicker-cell-width);
+  color: var(--fc-color-content-description);
+  text-align: center;
+}
+
+.cell,
+.periodCell {
+  --_inner-bg: transparent;
+  --_inner-fg: var(--fc-color-content-neutral-strong);
+  --_inner-border: transparent;
+  --_band: transparent;
+  --_band-start: 0;
+  --_band-end: 0;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: var(--fc-component-datepicker-cell-width);
+  height: var(--_row);
+  cursor: pointer;
+  outline: none;
+}
+
+/* Range band: full column width, the cell height. Halved at the range ends. */
+.cell::before,
+.periodCell::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: var(--_band-start);
+  inset-inline-end: var(--_band-end);
+  top: 50%;
+  height: var(--fc-component-datepicker-cell-height);
+  translate: 0 -50%;
+  background: var(--_band);
+}
+
+.inner {
+  position: relative;
+  box-sizing: border-box;
+  min-width: var(--fc-component-datepicker-cell-height);
+  height: var(--fc-component-datepicker-cell-height);
+  padding-inline: var(--fc-space-padding-xxs);
+  border: var(--fc-stroke-width-base) solid var(--_inner-border);
+  border-radius: var(--fc-radius-sm);
+  background: var(--_inner-bg);
+  color: var(--_inner-fg);
+  line-height: calc(var(--fc-component-datepicker-cell-height) - var(--fc-stroke-width-base) * 2);
+  text-align: center;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.cell[data-hovered] { --_inner-bg: var(--fc-component-datepicker-cell-background-hover); }
+/* Figma State=Current: today (this month / this year) outlined in the accent. */
+.cell[data-today],
+.periodCell[data-current] { --_inner-border: var(--fc-color-solid-accent); }
+.cell[data-selected],
+.periodCell[data-selected] {
+  --_inner-bg: var(--fc-color-solid-accent);
+  --_inner-fg: var(--fc-color-content-on-solid);
+}
+.cell[data-selected][data-hovered] { --_inner-bg: var(--fc-color-solid-accent-hover); }
+.cell[data-selected][data-invalid] { --_inner-bg: var(--fc-color-solid-danger); }
+.cell[data-focus-visible] .inner,
+.periodCell:focus-visible .inner {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* Days of the neighbouring months (Figma State=Inactive): not selectable. */
+.cell[data-outside-month] {
+  --_inner-bg: transparent;
+  --_inner-fg: var(--fc-color-content-disabled);
+  --_inner-border: transparent;
+  --_band: transparent;
+  cursor: default;
+}
+/* Outside minValue–maxValue or unavailable: grey band, disabled text. */
+.cell[data-disabled]:not([data-outside-month]),
+.cell[data-unavailable],
+.periodCell[data-disabled] {
+  --_inner-bg: transparent;
+  --_inner-fg: var(--fc-color-content-disabled);
+  --_band: var(--fc-component-datepicker-cell-background-disabled);
+  cursor: not-allowed;
+}
+.cell[data-unavailable] .inner { text-decoration: line-through; }
+
+/* ---------- ranges: tinted band, solid ends ---------- */
+.rangeGrid .cell[data-selected]:not([data-outside-month]),
+.rangeGrid .periodCell[data-in-range] {
+  --_band: var(--fc-component-datepicker-cell-background-range);
+  --_inner-bg: transparent;
+  --_inner-fg: var(--fc-color-content-neutral-strong);
+}
+.rangeGrid .cell[data-selected][data-hovered]:not([data-outside-month]),
+.rangeGrid .periodCell[data-in-range]:hover { --_inner-bg: var(--fc-component-datepicker-cell-background-range-hover); }
+.previewing .cell[data-selected]:not([data-outside-month]),
+.previewing .periodCell[data-in-range] { --_band: var(--fc-component-datepicker-cell-background-range-hover); }
+
+.rangeGrid .cell[data-selection-start]:not([data-outside-month]),
+.rangeGrid .cell[data-selection-end]:not([data-outside-month]),
+.rangeGrid .periodCell[data-range-start],
+.rangeGrid .periodCell[data-range-end] {
+  --_inner-bg: var(--fc-color-solid-accent);
+  --_inner-fg: var(--fc-color-content-on-solid);
+}
+.rangeGrid .cell[data-selection-start],
+.rangeGrid .periodCell[data-range-start] { --_band-start: 50%; }
+.rangeGrid .cell[data-selection-end],
+.rangeGrid .periodCell[data-range-end] { --_band-end: 50%; }
+
+/* ---------- month / year grid (Figma Type=Month, Type=Year) ---------- */
+.periodGrid {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+.periodTd { padding: 0; }
+.periodCell {
+  --_row: var(--fc-component-datepicker-period-row-height);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+}
+.periodCell .inner {
+  min-width: calc(var(--fc-component-datepicker-cell-width) * 2);
+  padding-inline: var(--fc-space-padding-xs);
+}
+.periodCell:hover:not([data-disabled]):not([data-selected]):not([data-in-range]) { --_inner-bg: var(--fc-component-datepicker-cell-background-hover); }
+/* Years just outside the decade: still pickable, so dimmed to the description colour (4.5:1), not the disabled grey. */
+.periodCell[data-outside]:not([data-selected]):not([data-in-range]) { --_inner-fg: var(--fc-color-content-description); }
+
+/* ---------- preset column ---------- */
+.presets {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+  box-sizing: border-box;
+  width: var(--fc-component-datepicker-presets-width);
+  padding: var(--fc-space-padding-xs);
+  border-inline-end: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+.preset {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--fc-component-datepicker-cell-height);
+  padding: 0 var(--fc-space-padding-xs);
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-color-content-neutral-strong);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s;
+}
+.preset[data-hovered] { background: var(--fc-component-datepicker-cell-background-hover); }
+
+/* ---------- date + time (Figma Type=Date and Time): TimePicker columns right of the calendar ---------- */
+.withTime {
+  display: flex;
+  align-items: stretch;
+}
+.timePanel {
+  display: flex;
+  flex-direction: column;
+  border-inline-start: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+/* Lines up with the calendar header; holds the start / end switch of a range. */
+.timeHeader {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: var(--fc-component-datepicker-header-height);
+  padding-inline: var(--fc-space-padding-xs);
+  border-bottom: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+.timeColumns { flex: 1; }
+
+/* ---------- footer ---------- */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fc-space-margin-xs);
+  padding: var(--fc-space-padding-xs) var(--fc-space-padding-sm);
+  border-top: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+.footerSplit { justify-content: space-between; }
+.footerEnd { justify-content: flex-end; }
+
+@media (prefers-reduced-motion: reduce) {
+  .inner,
+  .preset,
+  .titleButton { transition: none; }
+}

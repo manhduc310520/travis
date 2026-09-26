@@ -1,158 +1,168 @@
-import { Breadcrumb, Button, Grid, Input, Select, Space, Table, Empty, Typography, theme } from 'antd'
-import { ChevronDown, Columns03, Plus, SearchMd } from '../icons'
+import { useMemo, useState } from 'react'
+import type { Key } from 'react-aria-components'
+import {
+  Breadcrumb,
+  Button,
+  Dropdown,
+  Empty,
+  SearchField,
+  Select,
+  StatusBadge,
+  Table,
+  type DropdownItem,
+  type TableColumn,
+} from '../fc'
+import { ChevronDown, Columns03, Download01, Plus, Printer, SearchMd, Upload01 } from '../icons'
+import { fold } from './appShellNav'
+import type { RestaurantRow } from './restaurantSamples'
+import styles from './RestaurantListPage.module.css'
 
-type Row = {
-  key: string
-  index: number
-  posId: string
-  name: string
-  location: string
-  address: string
-  phone: string
-  email: string
-  licence: string
-  status: string
-}
+export type { RestaurantRow } from './restaurantSamples'
 
-const columns = [
-  { title: '#', dataIndex: 'index', key: 'index', width: 48 },
-  { title: 'Pos ID', dataIndex: 'posId', key: 'posId' },
-  { title: 'Restaurant Name', dataIndex: 'name', key: 'name' },
-  { title: 'City', dataIndex: 'location', key: 'location' },
-  { title: 'Address', dataIndex: 'address', key: 'address' },
-  { title: 'Phone Number', dataIndex: 'phone', key: 'phone' },
-  { title: 'Email', dataIndex: 'email', key: 'email' },
-  { title: 'License Expiry', dataIndex: 'licence', key: 'licence' },
-  { title: 'Status', dataIndex: 'status', key: 'status' },
+const CITIES = [
+  { key: 'all', label: 'Tất cả thành phố' },
+  { key: 'Hà Nội', label: 'Hà Nội' },
+  { key: 'TP. Hồ Chí Minh', label: 'TP. Hồ Chí Minh' },
+  { key: 'Đà Nẵng', label: 'Đà Nẵng' },
+]
+
+const COLUMNS: TableColumn<RestaurantRow>[] = [
+  { key: 'index', title: '#', dataIndex: 'index', width: 48, align: 'end' },
+  { key: 'posId', title: 'Mã POS', dataIndex: 'posId', sortable: (a, b) => a.posId.localeCompare(b.posId) },
+  { key: 'name', title: 'Tên nhà hàng', dataIndex: 'name', isRowHeader: true, sortable: (a, b) => a.name.localeCompare(b.name, 'vi') },
+  { key: 'city', title: 'Thành phố', dataIndex: 'city' },
+  { key: 'address', title: 'Địa chỉ', dataIndex: 'address', ellipsis: true, minWidth: 180 },
+  { key: 'phone', title: 'Số điện thoại', dataIndex: 'phone' },
+  { key: 'email', title: 'Email', dataIndex: 'email' },
+  { key: 'licence', title: 'Hạn giấy phép', dataIndex: 'licence', sortable: (a, b) => a.licenceIso.localeCompare(b.licenceIso) },
+  {
+    key: 'status',
+    title: 'Trạng thái',
+    dataIndex: 'status',
+    render: (status: RestaurantRow['status']) =>
+      status === 'active' ? <StatusBadge status="success">Đang hoạt động</StatusBadge> : <StatusBadge status="warning">Tạm dừng</StatusBadge>,
+  },
+]
+
+/** Columns the user may hide; the row header (name) always stays. */
+const HIDEABLE = COLUMNS.filter((c) => !c.isRowHeader && c.key !== 'index')
+
+const UTILITIES: DropdownItem[] = [
+  { key: 'import', label: 'Nhập từ Excel', icon: <Upload01 /> },
+  { key: 'export', label: 'Xuất Excel', icon: <Download01 /> },
+  { key: 'print', label: 'In danh sách', icon: <Printer /> },
 ]
 
 export type RestaurantListPageProps = {
   /** Rows to render. Leave empty to show the empty state. */
-  rows?: Row[]
-  /** Show the table skeleton instead of rows. */
+  rows?: RestaurantRow[]
+  /** Dim the rows under a spinner while data loads. */
   loading?: boolean
 }
 
 /**
- * The restaurant list screen, rebuilt from the Figma frame `Empty Search`.
+ * The restaurant list screen: the reference list page of FABi CMS, built
+ * only from fc components. Breadcrumb and page actions on one row, a filter
+ * row, then one container holding the table. Every other list screen reuses
+ * this shape.
  *
- * It is the reference page for the system: breadcrumb and page actions on one
- * row, a filter row, then a single container holding the table. Every other
- * list screen in FABi CMS reuses this shape.
+ * One primary action per screen ("Tạo nhà hàng"); everything else is default.
+ * Search (accent-insensitive) and the city filter work on the sample rows.
  *
- * Responsive: Figma only shows this at desktop width, so the breakpoints below
- * follow the three-tier split used for the rest of the system — token for
- * density, auto layout (flex-wrap here) for reflow, and a real structural
- * change only for the one piece that can't just reflow.
- *
- *   - Breadcrumb + actions, and the filter controls: `flex-wrap` — they wrap
- *     onto a second line instead of overflowing. No new component needed.
- *   - The table itself is the structural case. A 9-column table cannot become
- *     narrow; the table's own `scroll.x` turns it into a horizontally
- *     scrollable region below `md`, which keeps every column and this exact
- *     look rather than inventing a separate mobile card layout the design
- *     doesn't define.
+ * Responsive: the header and filter rows wrap; the table keeps every column
+ * and scrolls sideways when the page is narrower than its content.
  */
 export function RestaurantListPage({ rows = [], loading = false }: RestaurantListPageProps) {
-  const { token } = theme.useToken()
-  const screens = Grid.useBreakpoint()
-  const isDesktop = screens.md ?? true
+  const [query, setQuery] = useState('')
+  const [city, setCity] = useState<Key>('all')
+  const [visible, setVisible] = useState<Set<Key>>(() => new Set(HIDEABLE.map((c) => c.key)))
+
+  const filtered = useMemo(() => {
+    const q = fold(query.trim())
+    return rows.filter(
+      (r) => (city === 'all' || r.city === city) && (!q || fold(`${r.name} ${r.address} ${r.posId}`).includes(q)),
+    )
+  }, [rows, query, city])
+
+  const columns = COLUMNS.filter((c) => c.isRowHeader || c.key === 'index' || visible.has(c.key))
+  const hasFilters = query.trim() !== '' || city !== 'all'
+  const clearFilters = () => {
+    setQuery('')
+    setCity('all')
+  }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: token.padding, height: '100%' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: token.paddingSM }}>
+    <div className={styles.page}>
+      <div className={styles.header}>
         <Breadcrumb
-          items={[{ title: 'Home' }, { title: 'Restaurants' }, { title: 'Restaurant List' }]}
-        />
-        <Space wrap>
-          <Button>
-            <Space size={4}>
-              Utilities
-              <ChevronDown size={12} />
-            </Space>
-          </Button>
-          <Button type="primary" icon={<Plus />}>
-            Create Restaurant
-          </Button>
-        </Space>
-      </div>
-
-      <Space wrap>
-        <Input
-          prefix={<SearchMd style={{ color: token.colorTextPlaceholder }} />}
-          placeholder="Search restaurants"
-          style={{ width: isDesktop ? 196 : '100%', minWidth: 196 }}
-          aria-label="Search restaurants"
-        />
-        <Select
-          defaultValue="all"
-          style={{ width: 180 }}
-          options={[
-            { value: 'all', label: 'All cities' },
-            { value: 'new-york', label: 'New York' },
-            { value: 'london', label: 'London' },
-            { value: 'sydney', label: 'Sydney' },
+          items={[
+            { key: 'home', label: 'Trang chủ', href: '#' },
+            { key: 'restaurants', label: 'Nhà hàng', href: '#' },
+            { key: 'list', label: 'Danh sách nhà hàng' },
           ]}
         />
-        <Button icon={<Columns03 />} aria-label="Customize columns" />
-      </Space>
-
-      <div
-        style={{
-          flex: 1,
-          background: token.colorBgContainer,
-          border: `1px solid ${token.colorSplit}`,
-          borderRadius: token.borderRadiusLG,
-          overflow: 'hidden',
-        }}
-      >
-        <Table<Row>
-          columns={columns}
-          dataSource={rows}
-          loading={loading}
-          pagination={false}
-          scroll={isDesktop ? undefined : { x: 'max-content' }}
-          locale={{
-            emptyText: (
-              <div style={{ paddingBlock: 96 }}>
-                <Empty
-                  image={<SearchMd size={48} style={{ color: token.colorText }} />}
-                  description={
-                    <Space orientation="vertical" size={4}>
-                      <Typography.Text strong style={{ fontSize: 16 }}>
-                        No data found
-                      </Typography.Text>
-                      <Typography.Text type="secondary">
-                        Try changing your filters or search terms
-                      </Typography.Text>
-                    </Space>
-                  }
-                >
-                  <Button type="primary">Clear search and filters</Button>
-                </Empty>
-              </div>
-            ),
-          }}
-        />
+        <div className={styles.actions}>
+          <Dropdown items={UTILITIES} placement="bottom end">
+            <Button iconEnd={<ChevronDown />}>Tiện ích</Button>
+          </Dropdown>
+          <Button variant="primary" iconStart={<Plus />}>
+            Tạo nhà hàng
+          </Button>
+        </div>
       </div>
+
+      <div className={styles.filters}>
+        <div className={styles.search}>
+          <SearchField aria-label="Tìm nhà hàng" placeholder="Tìm theo tên, địa chỉ, mã POS" value={query} onChange={setQuery} />
+        </div>
+        <div className={styles.city}>
+          <Select
+            aria-label="Lọc theo thành phố"
+            options={CITIES}
+            value={city}
+            onChange={(v) => setCity((v as Key | null) ?? 'all')}
+          />
+        </div>
+        <Dropdown
+          aria-label="Cột hiển thị"
+          placement="bottom end"
+          items={[
+            {
+              type: 'group',
+              key: 'columns',
+              label: 'Cột hiển thị',
+              selectionMode: 'multiple',
+              selectedKeys: visible,
+              onSelectionChange: (keys) => setVisible(keys === 'all' ? new Set(HIDEABLE.map((c) => c.key)) : new Set(keys)),
+              children: HIDEABLE.map((c) => ({ key: c.key, label: c.title })),
+            },
+          ]}
+        >
+          <Button iconStart={<Columns03 />} aria-label="Tuỳ chỉnh cột" />
+        </Dropdown>
+      </div>
+
+      <Table<RestaurantRow>
+        aria-label="Danh sách nhà hàng"
+        className={styles.table}
+        columns={columns}
+        dataSource={filtered}
+        isLoading={loading}
+        pagination={filtered.length > 10 ? { pageSize: 10 } : false}
+        emptyContent={
+          <Empty
+            image={<SearchMd className={styles.emptyIcon} />}
+            description={
+              <span className={styles.emptyText}>
+                <span className={styles.emptyTitle}>Không tìm thấy dữ liệu</span>
+                <span>{hasFilters ? 'Thử đổi từ khoá hoặc bộ lọc' : 'Chưa có nhà hàng nào trong danh sách'}</span>
+              </span>
+            }
+          >
+            {hasFilters && <Button onPress={clearFilters}>Xoá tìm kiếm và bộ lọc</Button>}
+          </Empty>
+        }
+      />
     </div>
   )
 }
-
-export const sampleRows: Row[] = [
-  {
-    key: '1', index: 1, posId: 'POS-1042', name: 'Restaurant A', location: 'New York',
-    address: '123 Main St', phone: '555-0101', email: 'restaurant-a@example.com',
-    licence: '2026-12-31', status: 'Active',
-  },
-  {
-    key: '2', index: 2, posId: 'POS-1043', name: 'Restaurant B', location: 'London',
-    address: '456 Oak Ave', phone: '555-0102', email: 'restaurant-b@example.com',
-    licence: '2026-06-30', status: 'Active',
-  },
-  {
-    key: '3', index: 3, posId: 'POS-1044', name: 'Restaurant C', location: 'Sydney',
-    address: '789 Pine Rd', phone: '555-0103', email: 'restaurant-c@example.com',
-    licence: '2026-03-15', status: 'Paused',
-  },
-]

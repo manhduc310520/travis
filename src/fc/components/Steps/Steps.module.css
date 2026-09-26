@@ -1,0 +1,468 @@
+/*
+ * Figma "❖ Steps". Sizes from Component/Steps/*: icon 32 (small 24), custom
+ * icon 24, dot 8 (current 10), description max 140. React Aria puts
+ * data-hovered / data-pressed / data-focus-visible / data-disabled on the
+ * clickable steps. The current step is marked by colour and fill, never by
+ * weight.
+ *
+ * --_icon       box of the step marker (numbered circle, custom icon, dot)
+ * --_title-row  height of the title row; the marker is centred on it
+ * --_tail-w     thickness of the connecting line
+ */
+.steps {
+  --_icon: var(--fc-component-steps-icon-size);
+  --_glyph: var(--fc-typography-size-lg);
+  --_title-size: var(--fc-typography-size-lg);
+  --_title-lh: var(--fc-typography-line-height-lg);
+  --_title-row: var(--fc-component-steps-title-line-height);
+  --_tail-w: var(--fc-stroke-width-base);
+  --_gap: var(--fc-space-margin-xs);
+
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+.sm {
+  --_icon: var(--fc-component-steps-icon-size-sm);
+  --_glyph: var(--fc-typography-size-sm);
+  --_title-size: var(--fc-typography-size-base);
+  --_title-lh: var(--fc-typography-line-height-base);
+  --_title-row: var(--fc-component-steps-icon-size-sm);
+}
+/* Figma Type=Dot: the marker box is the current dot; the tail is bold. */
+.dot {
+  --_icon: var(--fc-component-steps-dot-size-current);
+  --_title-row: var(--_title-lh);
+  --_tail-w: var(--fc-stroke-width-strong);
+}
+/* Figma Type=Custom Icon. */
+.hasCustomIcon {
+  --_icon: var(--fc-component-steps-custom-icon-size);
+  --_title-row: max(var(--_icon), var(--_title-lh));
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.button {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--_gap);
+  align-items: start;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  outline: none;
+}
+.clickable .button { cursor: pointer; }
+.clickable .button[data-disabled] { cursor: not-allowed; }
+.button[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+  border-radius: var(--fc-radius-sm);
+}
+
+.iconSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_icon);
+  height: var(--_title-row);
+}
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- numbered circle (Figma "Steps Item / Progress Icon") ---------- */
+.icon {
+  position: relative;
+  width: var(--_icon);
+  height: var(--_icon);
+  border-radius: 50%;
+  font-size: var(--fc-component-steps-icon-font-size);
+  line-height: 1;
+}
+.icon svg {
+  width: var(--_glyph);
+  height: var(--_glyph);
+}
+.finish .icon { background: var(--fc-color-background-item-selected); color: var(--fc-color-content-accent); }
+.process .icon { background: var(--fc-color-solid-accent); color: var(--fc-color-content-on-solid); }
+.wait .icon { background: var(--fc-color-fill-area); color: var(--fc-color-content-description); }
+.error .icon { background: var(--fc-color-solid-danger); color: var(--fc-color-content-on-solid); }
+
+/* Figma Progress Icon State=Progress: a ring hugging the current number. */
+.ring {
+  position: absolute;
+  top: calc(-1 * var(--fc-stroke-width-strong));
+  left: calc(-1 * var(--fc-stroke-width-strong));
+  width: calc(100% + 2 * var(--fc-stroke-width-strong));
+  height: calc(100% + 2 * var(--fc-stroke-width-strong));
+  pointer-events: none;
+}
+.ringTrack { fill: none; stroke: var(--fc-color-border-neutral-light); }
+.ringArc { fill: none; stroke: var(--fc-color-content-accent); }
+
+.customIcon {
+  width: var(--_icon);
+  height: var(--_icon);
+  color: var(--fc-color-content-neutral-strong);
+}
+.customIcon svg {
+  width: 100%;
+  height: 100%;
+}
+.wait .customIcon { color: var(--fc-color-content-description); }
+.error .customIcon { color: var(--fc-color-content-danger); }
+
+/* ---------- dot ---------- */
+.dotMark {
+  --_mark: var(--fc-color-solid-accent);
+
+  width: var(--fc-component-steps-dot-size);
+  height: var(--fc-component-steps-dot-size);
+  border-radius: 50%;
+  background: var(--_mark);
+}
+.current .dotMark {
+  width: var(--fc-component-steps-dot-size-current);
+  height: var(--fc-component-steps-dot-size-current);
+}
+/* Figma paints waiting dots Content/Disabled (1.8:1); Neutral-Light keeps them at 3:1. */
+.wait .dotMark { --_mark: var(--fc-color-content-neutral-light); }
+.error .dotMark { --_mark: var(--fc-color-solid-danger); }
+
+/* ---------- text ---------- */
+.text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.titleRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--fc-space-margin-xs);
+  min-height: var(--_title-row);
+}
+.title {
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--_title-size);
+  line-height: var(--_title-lh);
+}
+.subTitle { color: var(--fc-color-content-description); }
+.description { color: var(--fc-color-content-description); }
+.process .description { color: var(--fc-color-content-neutral-strong); }
+.wait .title { color: var(--fc-color-content-description); }
+.error .title,
+.error .description { color: var(--fc-color-content-danger); }
+
+/* Figma State=Hover on clickable steps: text (and a custom icon) turn accent. */
+.clickable:is(.default, .dot, .navigation) .button[data-hovered] :is(.title, .description, .customIcon) {
+  color: var(--fc-color-content-accent);
+}
+.clickable .button[data-disabled] :is(.title, .subTitle, .description) { color: var(--fc-color-content-disabled); }
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- tails ---------- */
+.tail { background: var(--fc-color-border-neutral-faded); }
+.finish > .tail:not(.tailBefore),
+.prevFinish > .tailBefore { background: var(--fc-color-solid-accent); }
+
+/* Horizontal, label beside the icon (Figma Direction=Horizontal, Center=No). */
+.horizontal { gap: var(--fc-space-margin-base); }
+.default.horizontal:not(.centered) > .item { flex: 1 1 0; }
+.default.horizontal:not(.centered) > .item.last { flex: none; }
+.default.horizontal:not(.centered) .tail {
+  flex: 1;
+  min-width: var(--fc-space-margin-base);
+  height: var(--_tail-w);
+  margin-top: calc(var(--_title-row) / 2 - var(--_tail-w) / 2);
+  margin-inline-start: var(--fc-space-margin-base);
+}
+.horizontal:is(.default, .dot) .description { max-width: var(--fc-component-steps-description-max-width); }
+
+/* Vertical (Figma Direction=Vertical). */
+.vertical { flex-direction: column; }
+.vertical .button { column-gap: var(--fc-space-margin-base); }
+.vertical > .item { padding-bottom: var(--fc-space-padding-sm); }
+.vertical .tail {
+  position: absolute;
+  inset-inline-start: calc(var(--_icon) / 2 - var(--_tail-w) / 2);
+  top: calc(var(--_title-row) / 2 + var(--_icon) / 2 + var(--fc-space-margin-xxs));
+  bottom: var(--fc-space-margin-xxs);
+  width: var(--_tail-w);
+}
+
+/* Centred labels (Figma Center=Yes, and horizontal dots). */
+.centered { gap: 0; }
+.centered > .item {
+  flex: 1 1 0;
+  justify-content: center;
+}
+.centered .button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: var(--fc-space-padding-sm);
+  text-align: center;
+}
+.dot.centered .button { row-gap: var(--fc-space-margin-xs); }
+.centered .iconSlot { height: var(--_icon); }
+.centered .text { align-items: center; }
+.centered .titleRow { justify-content: center; min-height: 0; }
+.centered .tail {
+  position: absolute;
+  top: calc(var(--_icon) / 2 - var(--_tail-w) / 2);
+  height: var(--_tail-w);
+}
+.tailBefore {
+  inset-inline-start: 0;
+  inset-inline-end: calc(50% + var(--_icon) / 2 + var(--fc-space-margin-xxs));
+}
+.tailAfter {
+  inset-inline-start: calc(50% + var(--_icon) / 2 + var(--fc-space-margin-xxs));
+  inset-inline-end: 0;
+}
+
+/* ---------- navigation (Figma Type=Navigation) ---------- */
+.navigation {
+  --_title-size: var(--fc-typography-size-base);
+  --_title-lh: var(--fc-typography-line-height-base);
+
+  gap: 0;
+}
+.navigation > .item {
+  flex: 1 1 0;
+  align-items: center;
+}
+.navigation .button {
+  position: relative;
+  flex: 1;
+  padding-block: var(--fc-space-padding-sm);
+}
+.navigation .current .button::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--fc-stroke-width-strong);
+  background: var(--fc-color-solid-accent);
+}
+.navArrow {
+  display: flex;
+  flex: none;
+  margin-inline: var(--fc-space-margin-base);
+  color: var(--fc-component-steps-nav-arrow);
+}
+.navArrow svg {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+
+/* ---------- inline (Figma "Steps Item / Inline Step") ---------- */
+.inline {
+  --_dot: calc(var(--fc-component-steps-dot-size) * 3 / 4);
+
+  gap: 0;
+}
+.inline > .item { flex: none; }
+.inline > .item::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--fc-space-padding-xs) + var(--_dot) / 2 - var(--fc-stroke-width-base) / 2);
+  inset-inline: 0;
+  height: var(--fc-stroke-width-base);
+  background: var(--fc-color-border-neutral-faded);
+}
+.inline > .first::before { inset-inline-start: 50%; }
+.inline > .last::before { inset-inline-end: 50%; }
+.inline .button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--fc-space-margin-xxs);
+  padding: var(--fc-space-padding-xs) var(--fc-space-padding-xxs);
+  border-radius: var(--fc-radius-sm);
+}
+.inline.clickable .button[data-hovered] { background: var(--fc-color-background-item-hover); }
+.inline .iconSlot {
+  position: relative;
+  width: auto;
+  height: var(--_dot);
+}
+.inline .dotMark,
+.inline .current .dotMark {
+  width: var(--_dot);
+  height: var(--_dot);
+}
+/* Figma: waiting = hollow, finished = soft filled. Border-Control / Neutral-Light keep them at 3:1. */
+.inline .wait .dotMark {
+  background: var(--fc-color-background-container);
+  box-shadow: inset 0 0 0 var(--fc-stroke-width-base) var(--fc-color-border-control);
+}
+.inline .finish .dotMark { --_mark: var(--fc-color-content-neutral-light); }
+.inline .titleRow { min-height: 0; }
+.inline .title,
+.inline .error .title {
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+  white-space: nowrap;
+}
+
+/* ---------- panel (Figma "Panel Steps") ---------- */
+.panel {
+  --_arrow: var(--fc-component-steps-panel-arrow-width);
+  --_pad: var(--fc-space-padding-sm);
+  --_radius: var(--fc-radius-base);
+
+  gap: 0;
+}
+.panel.sm {
+  --_pad: var(--fc-space-padding-xs);
+  --_radius: var(--fc-radius-sm);
+}
+.panel > .item {
+  --_bg: var(--fc-color-fill-neutral-light);
+  --_bg-hover: var(--fc-color-fill-neutral);
+  --_title-c: var(--fc-color-content-description);
+  --_text-c: var(--fc-color-content-description);
+  --_focus: var(--fc-color-solid-accent);
+
+  flex: 1 1 0;
+}
+/* Items overlap by the arrow: only the chevron shapes take pointer events, so a click on a tip reaches its own step. */
+.panel > .item:not(.first) { margin-inline-start: calc(-1 * var(--_arrow)); }
+.panel > .item { pointer-events: none; }
+.panel .button { pointer-events: auto; }
+.panel > .finish {
+  --_bg: var(--fc-color-background-accent-faded);
+  --_bg-hover: var(--fc-color-background-accent-faded-hover);
+  --_title-c: var(--fc-color-content-neutral-strong);
+}
+.panel > .error {
+  --_bg: var(--fc-color-background-danger-faded);
+  --_bg-hover: var(--fc-color-background-danger-faded-hover);
+  --_title-c: var(--fc-color-content-danger);
+  --_text-c: var(--fc-color-content-danger);
+}
+.panel > .process,
+.panel > .current.error {
+  --_bg: var(--fc-color-solid-accent);
+  --_bg-hover: var(--fc-color-solid-accent);
+  --_title-c: var(--fc-color-content-on-solid);
+  --_text-c: var(--fc-color-content-on-solid);
+  --_focus: var(--fc-color-content-on-solid);
+}
+.panel > .current.error {
+  --_bg: var(--fc-color-solid-danger);
+  --_bg-hover: var(--fc-color-solid-danger);
+}
+
+.panel .button {
+  --_fill: var(--_bg);
+  --_edge: var(--_fill);
+  --_shape: polygon(0 0, calc(100% - var(--_arrow)) 0, 100% 50%, calc(100% - var(--_arrow)) 100%, 0 100%, var(--_arrow) 50%);
+
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding-block: var(--_pad);
+  padding-inline: calc(var(--_arrow) + var(--_pad)) var(--_arrow);
+  background: var(--_edge);
+  clip-path: var(--_shape);
+}
+.panel .button[data-hovered] { --_fill: var(--_bg-hover); }
+.panel .button::before {
+  content: '';
+  position: absolute;
+  inset: var(--fc-stroke-width-base);
+  border-radius: inherit;
+  background: var(--_fill);
+  clip-path: var(--_shape);
+}
+.panel > .first .button {
+  --_shape: polygon(0 0, calc(100% - var(--_arrow)) 0, 100% 50%, calc(100% - var(--_arrow)) 100%, 0 100%);
+
+  padding-inline-start: var(--_pad);
+  border-start-start-radius: var(--_radius);
+  border-end-start-radius: var(--_radius);
+}
+.panel > .last .button {
+  --_shape: polygon(0 0, 100% 0, 100% 100%, 0 100%, var(--_arrow) 50%);
+
+  padding-inline-end: var(--_pad);
+  border-start-end-radius: var(--_radius);
+  border-end-end-radius: var(--_radius);
+}
+.panel > .first.last .button { --_shape: none; }
+.panel .text { position: relative; }
+.panel .titleRow { min-height: 0; }
+.panel .title { color: var(--_title-c); }
+.panel .subTitle,
+.panel .description { color: var(--_text-c); }
+.panel .button[data-focus-visible] { outline: none; }
+.panel .button[data-focus-visible] .text {
+  outline: var(--fc-stroke-width-outline) solid var(--_focus);
+  outline-offset: var(--fc-space-margin-xxs);
+  border-radius: var(--fc-radius-sm);
+}
+
+/* Figma Panel Steps Type=2: outlined chevrons on the container colour. */
+.panel.outlined > .item {
+  --_bg: var(--fc-color-background-container);
+  --_bg-hover: var(--fc-color-background-container);
+  --_line: var(--fc-color-border-control);
+}
+.panel.outlined > .finish {
+  --_line: var(--fc-color-solid-accent);
+  --_title-c: var(--fc-color-content-neutral-strong);
+  --_text-c: var(--fc-color-content-description);
+}
+.panel.outlined > .process {
+  --_bg: var(--fc-color-background-accent-faded);
+  --_bg-hover: var(--fc-color-background-accent-faded);
+  --_line: var(--fc-color-solid-accent);
+  --_title-c: var(--fc-color-content-accent);
+  --_text-c: var(--fc-color-content-accent);
+  --_focus: var(--fc-color-solid-accent);
+}
+.panel.outlined > .error { --_line: var(--fc-color-solid-danger); }
+.panel.outlined > .current.error {
+  --_bg: var(--fc-color-background-danger-faded);
+  --_bg-hover: var(--fc-color-background-danger-faded);
+  --_title-c: var(--fc-color-content-danger);
+  --_text-c: var(--fc-color-content-danger);
+  --_focus: var(--fc-color-solid-accent);
+}
+.panel.outlined .button { --_edge: var(--_line); }
+.panel.outlined > .item:is(.wait, .finish) .button[data-hovered] .title { color: var(--fc-color-content-accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+}

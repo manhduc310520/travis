@@ -1,0 +1,189 @@
+{
+  "note": "Values of Legacy/<Name>/Component/* in '5. Components' (mode Value) before wave 4 aliased them to the new Component/* variables (2026-09-26). Restore = set each back to this alias/value.",
+  "file": "hneVCBNUiPizVorg7Jp18G",
+  "values": {
+    "Legacy/Skeleton/Component/blockRadius": {
+      "alias": "Radius/SM"
+    },
+    "Legacy/Skeleton/Component/titleHeight": {
+      "value": 16
+    },
+    "Legacy/Skeleton/Component/paragraphLiHeight": {
+      "value": 16
+    },
+    "Legacy/Skeleton/Component/paragraphMarginTop": {
+      "value": 28
+    },
+    "Legacy/Spin/Component/dotSizeSM": {
+      "value": 14
+    },
+    "Legacy/Spin/Component/dotSize": {
+      "value": 20
+    },
+    "Legacy/Spin/Component/dotSizeLG": {
+      "alias": "Size/Control/Base"
+    },
+    "Legacy/Spin/Component/contentHeight": {
+      "value": 400
+    },
+    "Legacy/Card/Component/headerPadding": {
+      "value": 16
+    },
+    "Legacy/Card/Component/headerPaddingSM": {
+      "value": 12
+    },
+    "Legacy/Card/Component/bodyPadding": {
+      "value": 16
+    },
+    "Legacy/Card/Component/bodyPaddingSM": {
+      "value": 12
+    },
+    "Legacy/Card/Component/headerBg": {
+      "alias": "Color/Palette/Transparent"
+    },
+    "Legacy/Card/Component/headerFontSize": {
+      "alias": "Typography/Size/SM"
+    },
+    "Legacy/Card/Component/headerFontSizeSM": {
+      "alias": "Typography/Size/Base"
+    },
+    "Legacy/Card/Component/actionsBg": {
+      "alias": "Color/Background/Container"
+    },
+    "Legacy/Descriptions/Component/labelBg": {
+      "alias": "Color/Fill/Alternate"
+    },
+    "Legacy/Descriptions/Component/labelColor": {
+      "alias": "Color/Content/Neutral-Light"
+    },
+    "Legacy/Descriptions/Component/titleMarginBottom": {
+      "value": 20
+    },
+    "Legacy/Descriptions/Component/itemPaddingBottom": {
+      "alias": "Space/Padding/Base"
+    },
+    "Legacy/Descriptions/Component/itemPaddingEnd": {
+      "alias": "Space/Padding/Base"
+    },
+    "Legacy/Statistic/Component/contentFontSize": {
+      "alias": "Typography/Size/Heading-3"
+    },
+    "Legacy/Statistic/Component/titleFontSize": {
+      "alias": "Typography/Size/Base"
+    },
+    "Legacy/Alert/Component/withDescriptionIconSize": {
+      "alias": "Typography/Size/Heading-3"
+    },
+    "Legacy/Result/Component/iconFontSize": {
+      "value": 42
+    },
+    "Legacy/Result/Component/titleFontSize": {
+      "alias": "Typography/Size/Heading-3"
+    },
+    "Legacy/Result/Component/subtitleFontSize": {
+      "alias": "Typography/Size/Base"
+    },
+    "Legacy/Progress/Component/remainingColor": {
+      "alias": "Color/Fill/Neutral"
+    },
+    "Legacy/Progress/Component/defaultColor": {
+      "alias": "Color/Solid/Info"
+    },
+    "Legacy/Progress/Component/circleTextColor": {
+      "alias": "Color/Content/Neutral-Strong"
+    },
+    "Legacy/Steps/Component/iconSize": {
+      "alias": "Size/Control/Base"
+    },
+    "Legacy/Steps/Component/iconSizeSM": {
+      "alias": "Typography/Size/Heading-3"
+    },
+    "Legacy/Steps/Component/customIconFontSize": {
+      "alias": "Size/Control/SM"
+    },
+    "Legacy/Steps/Component/iconFontSize": {
+      "alias": "Typography/Size/Base"
+    },
+    "Legacy/Steps/Component/titleLineHeight": {
+      "alias": "Size/Control/Base"
+    },
+    "Legacy/Steps/Component/dotSize": {
+      "value": 8
+    },
+    "Legacy/Steps/Component/dotCurrentSize": {
+      "value": 10
+    },
+    "Legacy/Steps/Component/descriptionMaxWidth": {
+      "value": 140
+    },
+    "Legacy/Steps/Component/navArrowColor": {
+      "alias": "Color/Content/Disabled"
+    },
+    "Legacy/Timeline/Component/tailColor": {
+      "alias": "Color/Border/Neutral-Faded"
+    },
+    "Legacy/Timeline/Component/tailWidth": {
+      "alias": "Stroke/Width/Strong"
+    },
+    "Legacy/Timeline/Component/dotBg": {
+      "alias": "Color/Background/Container"
+    },
+    "Legacy/Timeline/Component/itemPaddingBottom": {
+      "value": 20
+    },
+    "Legacy/Table/Component/headerBg": {
+      "alias": "Color/Fill/Alternate"
+    },
+    "Legacy/Table/Component/footerBg": {
+      "alias": "Color/Fill/Alternate"
+    },
+    "Legacy/Table/Component/headerSortActiveBg": {
+      "alias": "Color/Fill/Neutral"
+    },
+    "Legacy/Table/Component/headerSortHoverBg": {
+      "alias": "Color/Fill/Neutral"
+    },
+    "Legacy/Table/Component/borderColor": {
+      "alias": "Color/Border/Neutral-Light"
+    },
+    "Legacy/Table/Component/headerSplitColor": {
+      "alias": "Color/Border/Neutral-Light"
+    },
+    "Legacy/Table/Component/rowHoverBg": {
+      "alias": "Color/Background/Alternate"
+    },
+    "Legacy/Table/Component/rowSelectedBg": {
+      "alias": "Color/Background/Item-Selected"
+    },
+    "Legacy/Table/Component/rowSelectedHoverBg": {
+      "alias": "Color/Background/Item-Selected-Hover"
+    },
+    "Legacy/Table/Component/rowExpandedBg": {
+      "alias": "Color/Fill/Alternate"
+    },
+    "Legacy/Table/Component/bodySortBg": {
+      "alias": "Color/Background/Alternate"
+    },
+    "Legacy/Table/Component/cellPaddingBlock": {
+      "alias": "Space/Padding/Base"
+    },
+    "Legacy/Table/Component/cellPaddingBlockMD": {
+      "alias": "Space/Padding/SM"
+    },
+    "Legacy/Table/Component/cellPaddingBlockSM": {
+      "alias": "Space/Padding/XS"
+    },
+    "Legacy/Table/Component/cellPaddingInline": {
+      "alias": "Space/Padding/Base"
+    },
+    "Legacy/Table/Component/cellPaddingInlineSM": {
+      "alias": "Space/Padding/XS"
+    },
+    "Legacy/Table/Component/cellPaddingInlineMD": {
+      "alias": "Space/Padding/XS"
+    },
+    "Legacy/Table/Component/headerBorderRadius": {
+      "alias": "Radius/LG"
+    }
+  }
+}

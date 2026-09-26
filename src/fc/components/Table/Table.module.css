@@ -1,0 +1,325 @@
+/*
+ * Figma "❖ Table". Colours, cell padding and radius from Component/Table/*;
+ * everything else from semantic tokens.
+ * React Aria sets on the header cells: data-allows-sorting, data-sort-direction,
+ * data-hovered, data-pressed, data-focus-visible; on rows: data-selected,
+ * data-focus-visible, data-expanded, data-has-child-items, data-level; on
+ * cells: data-focus-visible; on the body: data-empty.
+ *
+ * No zebra stripes. Row states change the background only (hover → selected
+ * → selected hover); the text weight never changes. The header is 14 / 600.
+ * The frame keeps Figma's Radius/LG (Component/Table/Radius); cells are square.
+ */
+.root {
+  --_py: var(--fc-component-table-cell-padding-block);
+  --_px: var(--fc-component-table-cell-padding-inline);
+  --_border: var(--fc-stroke-width-base) solid var(--fc-component-table-border);
+  --_ring: var(--fc-stroke-width-outline);
+
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  color: var(--fc-color-content-neutral-strong);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* Figma Size=Medium / Small (Default = large is the base). */
+.md {
+  --_py: var(--fc-component-table-cell-padding-block-md);
+  --_px: var(--fc-component-table-cell-padding-inline-sm);
+}
+.sm {
+  --_py: var(--fc-component-table-cell-padding-block-sm);
+  --_px: var(--fc-component-table-cell-padding-inline-sm);
+}
+
+/* Figma "Table Title": above the frame. */
+.title {
+  padding: var(--fc-space-padding-xs);
+  color: var(--fc-color-content-neutral-strong);
+}
+
+.frame {
+  position: relative;
+  overflow: hidden;
+  border: var(--_border);
+  border-radius: var(--fc-component-table-radius);
+  background: var(--fc-color-background-container);
+}
+
+.viewport { position: relative; }
+
+/* Scrolls both ways; the header sticks (Table.tsx keeps a keyboard-focused row clear of it). */
+.scroll { overflow: auto; }
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  outline: none;
+}
+.fixed { table-layout: fixed; }
+.table[data-focus-visible] {
+  outline: var(--_ring) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--_ring) * -1);
+}
+
+/* ---------- header ---------- */
+.column {
+  --_bg: var(--fc-component-table-header-background);
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: var(--_py) var(--_px);
+  border-bottom: var(--_border);
+  /* Header tint laid over the container colour so scrolled rows never show through. */
+  background: linear-gradient(var(--_bg), var(--_bg)), var(--fc-color-background-container);
+  color: var(--fc-color-content-heading);
+  font-weight: var(--fc-typography-weight-semibold);
+  text-align: start;
+  vertical-align: middle;
+  outline: none;
+}
+.column[data-allows-sorting] {
+  cursor: pointer;
+  user-select: none;
+}
+.column[data-allows-sorting][data-hovered],
+.column[data-sort-direction] {
+  --_bg: var(--fc-component-table-header-background-sorted);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  min-width: 0;
+}
+.headerTitle { min-width: 0; }
+.alignEnd .headerInner { justify-content: flex-end; }
+.alignCenter .headerInner { justify-content: center; }
+
+.sortIcon {
+  flex: none;
+  width: calc(var(--fc-typography-size-icon) * 2 / 3);
+  height: var(--fc-typography-size-icon);
+}
+.sortIcon path { fill: var(--fc-color-content-icon); }
+.sortIcon .sortActive { fill: var(--fc-color-content-accent); }
+
+/* Filter / search buttons (Figma "Dropdown Trigger"). */
+.trigger {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  height: var(--fc-typography-line-height-base);
+  padding: 0 var(--fc-space-padding-xxs);
+  border: 0;
+  border-radius: var(--fc-radius-base);
+  background: transparent;
+  color: var(--fc-color-content-icon);
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s, background-color 0.2s;
+}
+.trigger svg {
+  width: var(--fc-typography-size-icon);
+  height: var(--fc-typography-size-icon);
+}
+.trigger[data-hovered],
+.trigger[data-pressed] {
+  background: var(--fc-color-fill-area);
+  color: var(--fc-color-content-icon-hover);
+}
+/* A filter or search is applied. */
+.triggerActive,
+.triggerActive[data-hovered],
+.triggerActive[data-pressed] {
+  color: var(--fc-color-content-accent);
+}
+.trigger[data-focus-visible] {
+  outline: var(--_ring) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* ---------- body ---------- */
+.cell {
+  padding: var(--_py) var(--_px);
+  border-bottom: var(--_border);
+  text-align: start;
+  vertical-align: middle;
+  outline: none;
+}
+.body > .row:last-child > .cell { border-bottom: 0; }
+
+/* Sorted column (Figma Table cell Sort=Yes). */
+.sorted { background: var(--fc-component-table-cell-background-sorted); }
+
+@media (hover: hover) {
+  .row:not(.detailRow):hover > .cell { background: var(--fc-component-table-row-background-hover); }
+}
+.row[data-selected] > .cell { background: var(--fc-component-table-row-background-selected); }
+@media (hover: hover) {
+  .row[data-selected]:hover > .cell { background: var(--fc-component-table-row-background-selected-hover); }
+}
+
+.alignEnd {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+.alignCenter { text-align: center; }
+
+.ellipsis {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Keyboard focus: a cell gets an inset ring; a row gets one drawn round its cells. */
+.cell[data-focus-visible],
+.column[data-focus-visible] {
+  outline: var(--_ring) solid var(--fc-color-solid-accent);
+  outline-offset: calc(var(--_ring) * -1);
+}
+.row[data-focus-visible] > .cell {
+  --_c: var(--fc-color-solid-accent);
+  box-shadow: inset 0 var(--_ring) var(--_c), inset 0 calc(var(--_ring) * -1) var(--_c);
+}
+.row[data-focus-visible] > .cell:first-child {
+  box-shadow: inset 0 var(--_ring) var(--_c), inset 0 calc(var(--_ring) * -1) var(--_c), inset var(--_ring) 0 var(--_c);
+}
+.row[data-focus-visible] > .cell:last-child {
+  box-shadow: inset 0 var(--_ring) var(--_c), inset 0 calc(var(--_ring) * -1) var(--_c), inset calc(var(--_ring) * -1) 0 var(--_c);
+}
+.row[data-focus-visible] > .cell:only-child {
+  box-shadow: inset 0 0 0 var(--_ring) var(--_c);
+}
+
+/* Figma Bordered=True: lines between columns too. */
+.bordered .column:not(:last-child),
+.bordered .cell:not(:last-child) {
+  border-inline-end: var(--_border);
+}
+
+/* ---------- selection / expand columns (Figma Row Control, Header Control) ---------- */
+/* Content box = the 16px control; the cell padding makes 48 (large) or 32 (middle, small). */
+.control {
+  width: var(--fc-size-control-interactive);
+  text-align: center;
+}
+.control > * { vertical-align: middle; }
+.radioControl {
+  position: relative;
+  vertical-align: middle;
+}
+
+/* Figma "Table Item / Collapse": 16px square, + / −. */
+.expand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: var(--fc-size-control-interactive);
+  height: var(--fc-size-control-interactive);
+  padding: 0;
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-control);
+  border-radius: var(--fc-radius-xs);
+  background: var(--fc-color-background-container);
+  color: var(--fc-color-content-neutral-strong);
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+.expand svg {
+  width: var(--fc-typography-size-icon);
+  height: var(--fc-typography-size-icon);
+}
+.expand[data-hovered] {
+  border-color: var(--fc-color-content-link-hover);
+  color: var(--fc-color-content-link-hover);
+}
+.expand[data-pressed] {
+  border-color: var(--fc-color-content-link-active);
+  color: var(--fc-color-content-link-active);
+}
+.expand[data-focus-visible] {
+  outline: var(--_ring) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* The detail row under an expanded record. */
+.detailRow > .cell { background: var(--fc-component-table-row-background-expanded); }
+
+/* ---------- empty, loading ---------- */
+.body[data-empty] > tr > td { padding: 0; }
+.empty {
+  padding: var(--fc-space-padding-lg) var(--_px);
+}
+
+.viewport[aria-busy] .scroll {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.loading {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fc-color-content-accent);
+  cursor: progress;
+}
+
+/* ---------- footer, pagination ---------- */
+/* Figma "Table Divider": the band under the rows. */
+.footer {
+  padding: var(--fc-space-padding-base);
+  border-top: var(--_border);
+  background: var(--fc-component-table-header-background);
+  color: var(--fc-color-content-heading);
+}
+
+.pager {
+  display: flex;
+  justify-content: flex-end;
+}
+/* Borderless: inside the frame. Bordered: under it. */
+.pagerInside {
+  padding: var(--fc-space-padding-base);
+  border-top: var(--_border);
+}
+.pagerOutside { padding-block: var(--fc-space-padding-base); }
+
+/* ---------- header search box (Figma "Table Dropdown" Type=Search) ---------- */
+.searchPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+  min-width: calc(var(--fc-component-modal-width) / 2);
+}
+.searchActions {
+  display: flex;
+  gap: var(--fc-space-margin-xs);
+}
+
+.srOnly {
+  position: absolute;
+  width: var(--fc-stroke-width-base);
+  height: var(--fc-stroke-width-base);
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .expand { transition: none; }
+}

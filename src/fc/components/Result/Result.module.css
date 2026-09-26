@@ -1,0 +1,97 @@
+/*
+ * Figma "❖ Result": a centred column — padding 0 × 32 (Space/Padding/XL),
+ * 24 between icon, text, actions and content (Space/Padding/LG). Title and
+ * subtitle 8 apart (Space/Margin/XS); actions 8 apart.
+ */
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--fc-space-margin-lg);
+  box-sizing: border-box;
+  padding-inline: var(--fc-space-padding-xl);
+  color: var(--fc-color-content-neutral-strong);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  text-align: center;
+}
+
+/*
+ * Status and custom icons, Content/Heading as in Figma. Figma draws them 42px
+ * (Legacy iconFontSize); Component/Result/Icon-Size snaps that to 40. The
+ * stroke stays Stroke/Width/Icon at any size, like the Figma instances.
+ */
+.icon {
+  display: flex;
+  color: var(--fc-color-content-heading);
+}
+.icon svg {
+  display: block;
+  width: var(--fc-component-result-icon-size);
+  height: var(--fc-component-result-icon-size);
+}
+.icon svg * {
+  vector-effect: non-scaling-stroke;
+  stroke-width: var(--fc-stroke-width-icon);
+}
+
+/* 403 / 404 / 500 illustrations keep their artwork size (≈252 × 294). */
+.image {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+.art {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+  max-width: 100%;
+}
+
+/* Figma: Heading-5 size on the Heading-3 line (16 / 32), semibold. */
+.title {
+  margin: 0;
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-component-result-title-font-size);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-heading-3);
+  overflow-wrap: anywhere;
+}
+
+/* Figma binds Content/Neutral-Light (3.4:1); Content/Description reaches 4.5:1. */
+.subtitle {
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-component-result-subtitle-font-size);
+  line-height: var(--fc-typography-line-height-base);
+  overflow-wrap: anywhere;
+}
+
+.extra {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--fc-space-margin-xs);
+}
+
+/* Figma "Error Details": Fill/Alternate panel, padding 24 × 40, full width. */
+.content {
+  align-self: stretch;
+  box-sizing: border-box;
+  padding: var(--fc-space-padding-lg) var(--fc-component-result-content-padding-inline);
+  background: var(--fc-component-result-content-background);
+  text-align: start;
+}
+
+/* Illustration colours that are UI colours (see illustrations.tsx). */
+.tint { fill: var(--fc-color-background-accent-faded); }
+.tintLine { stroke: var(--fc-color-background-accent-faded); }
+.badge403 { fill: var(--fc-color-palette-purple-5); }
+.badge404 { fill: var(--fc-color-solid-info); }
+.badge500 { fill: var(--fc-color-solid-danger); }

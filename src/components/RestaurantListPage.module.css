@@ -1,0 +1,50 @@
+/* The reference list page. Every value is an fc token. */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-padding-base);
+  min-height: 100%;
+}
+
+/* Breadcrumb + page actions; wraps onto two lines when narrow. */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fc-space-padding-sm);
+}
+
+.actions,
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+}
+
+/* Filter widths: search a little wider than the city select (Figma 196 / 180). */
+.search { inline-size: calc(var(--fc-size-control-base) * 8); max-inline-size: 100%; }
+.city { inline-size: calc(var(--fc-size-control-base) * 6); }
+@media (max-width: 767px) {
+  .search { inline-size: 100%; }
+}
+
+.table { flex: 1; }
+
+/* Empty state: search icon, title and hint (Figma "Empty Search"). */
+.emptyIcon {
+  width: var(--fc-size-control-lg);
+  height: var(--fc-size-control-lg);
+  color: var(--fc-color-content-heading);
+}
+.emptyText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+}
+.emptyTitle {
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-typography-size-lg);
+  font-weight: var(--fc-typography-weight-semibold);
+}

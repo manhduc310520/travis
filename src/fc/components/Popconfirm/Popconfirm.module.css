@@ -1,0 +1,45 @@
+/* Panel from Popover; this lays out icon + text and the button row. */
+.body {
+  display: flex;
+  gap: var(--fc-space-margin-xs);
+  max-width: calc(var(--fc-component-modal-width) / 1.5);
+}
+
+/* Icon box = one text line high, so the icon centres on the title. */
+.icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  height: var(--fc-typography-line-height-base);
+  color: var(--fc-color-content-warning);
+}
+.icon svg {
+  width: var(--fc-typography-size-base);
+  height: var(--fc-typography-size-base);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xxs);
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  color: var(--fc-color-content-heading);
+  font-size: var(--fc-typography-size-base);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.description {
+  color: var(--fc-color-content-neutral-strong);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--fc-space-margin-xs);
+  margin-top: var(--fc-space-margin-sm);
+}

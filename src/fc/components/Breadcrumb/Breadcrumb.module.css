@@ -1,0 +1,88 @@
+/*
+ * Figma "❖ Breadcrumb". Values from Component/Breadcrumb/*: Content for the
+ * trail and the separator, Content-Current for hover and the current page,
+ * Separator-Margin on both sides of the separator, Icon-Size for icons.
+ * React Aria puts data-hovered / data-pressed / data-focus-visible /
+ * data-disabled on links and the dropdown trigger.
+ */
+.breadcrumb {
+  color: var(--fc-component-breadcrumb-content);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Links carry a little padding for the hover background, pulled back by a negative margin (Figma link State=Hover). */
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xxs);
+  height: var(--fc-typography-line-height-base);
+  margin-inline: calc(var(--fc-space-padding-xxs) * -1);
+  padding: 0 var(--fc-space-padding-xxs);
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-component-breadcrumb-content);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s, background-color 0.2s;
+}
+.link[data-hovered] {
+  background: var(--fc-color-background-plain-hover);
+  color: var(--fc-component-breadcrumb-content-current);
+}
+.link[data-pressed] { background: var(--fc-color-background-plain-active); }
+.link[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.link[data-disabled] {
+  background: transparent;
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+/* Figma link State=Current: the page you are on — text, not a link. */
+.current {
+  color: var(--fc-component-breadcrumb-content-current);
+  cursor: default;
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+}
+.icon svg,
+.separator svg,
+.chevron {
+  width: var(--fc-component-breadcrumb-icon-size);
+  height: var(--fc-component-breadcrumb-icon-size);
+}
+.chevron { flex: none; }
+
+.separator {
+  display: inline-flex;
+  align-items: center;
+  margin-inline: var(--fc-component-breadcrumb-separator-margin);
+  color: var(--fc-component-breadcrumb-content);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link { transition: none; }
+}
