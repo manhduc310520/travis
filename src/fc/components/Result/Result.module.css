@@ -20,7 +20,7 @@
 /*
  * Status and custom icons, Content/Heading as in Figma. Figma draws them 42px
  * (Legacy iconFontSize); Component/Result/Icon-Size snaps that to 40. The
- * stroke stays Stroke/Width/Icon at any size, like the Figma instances.
+ * stroke is Stroke/Width/Strong (2px) at any size.
  */
 .icon {
   display: flex;
@@ -33,7 +33,7 @@
 }
 .icon svg * {
   vector-effect: non-scaling-stroke;
-  stroke-width: var(--fc-stroke-width-icon);
+  stroke-width: var(--fc-stroke-width-strong);
 }
 
 /* 403 / 404 / 500 illustrations keep their artwork size (≈252 × 294). */

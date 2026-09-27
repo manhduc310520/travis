@@ -5,7 +5,7 @@ import './index.css'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <p style={{ fontFamily: 'Inter, sans-serif', padding: 24 }}>
-      FABi Design System — run <code>npm run storybook</code>
+      FABi CMS Design System — run <code>npm run storybook</code>
     </p>
   </StrictMode>,
 )

@@ -64,6 +64,11 @@
   cursor: pointer;
   outline: none;
 }
+/* Close / remove × is 16px on every component (after `.tag svg`, which sizes content icons). */
+.close svg {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
 .close[data-hovered] { background: var(--fc-color-fill-neutral); }
 .close[data-focus-visible] {
   outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);

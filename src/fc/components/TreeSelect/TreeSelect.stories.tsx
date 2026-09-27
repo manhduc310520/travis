@@ -3,7 +3,7 @@ import { Building02, Tag01 } from '../../../icons'
 import type { TreeNode } from '../Tree/Tree'
 import { TreeSelect } from './TreeSelect'
 
-/** FABi menu categories → groups → dishes. */
+/** FABi CMS menu categories → groups → dishes. */
 const MENU: TreeNode[] = [
   {
     key: 'mon-chinh',

@@ -1,4 +1,4 @@
-# FABi Design System — fc
+# FABi CMS Design System — fc
 
 The design system of FABi CMS. Components are built on
 [React Aria Components](https://react-spectrum.adobe.com/react-aria/) for

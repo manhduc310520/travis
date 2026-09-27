@@ -83,9 +83,10 @@
   overflow-wrap: anywhere;
 }
 
-/* Close icon: quiet icon colour (Color/Content/Icon, 3:1) until hovered. */
+/* Close icon: quiet icon colour (Color/Content/Icon, 3:1) until hovered; 16px like every close ×. */
 .header > .close {
   --_fg: var(--fc-color-content-icon);
+  --_icon-size: var(--fc-typography-size-lg);
   flex: none;
 }
 .header > .close[data-hovered],

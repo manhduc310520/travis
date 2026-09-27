@@ -19,7 +19,7 @@ const COM_TAM = photo('#D6E4FF', '#FAAD14', '#CF1322')
 const TRA_DAO = photo('#FFF1F0', '#FA8C16', '#7CB305')
 
 /** A small local file, so retry has something to resend and links open offline. */
-const localFile = (name: string, type: string) => new File([`Tệp mẫu FABi: ${name}`], name, { type })
+const localFile = (name: string, type: string) => new File([`Tệp mẫu FABi CMS: ${name}`], name, { type })
 const MENU_PDF = localFile('thuc-don-thang-10.pdf', 'application/pdf')
 const MENU_URL = URL.createObjectURL(MENU_PDF)
 

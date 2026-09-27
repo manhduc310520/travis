@@ -178,7 +178,7 @@ function CardDemo(args: TableProps<Dish>) {
 
 /**
  * Figma Table Size=Default, Bordered=False (Footer? + Pagination?): the
- * FABi list page. The footer band carries the total; pagination with
+ * FABi CMS list page. The footer band carries the total; pagination with
  * "Hiển thị 1 - 5 trên tổng số 12" and the page-size Select sits inside the
  * frame.
  */

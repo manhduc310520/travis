@@ -1,5 +1,5 @@
 /**
- * The FABi icon set.
+ * The FABi CMS icon set.
  *
  * The Figma file carries 2,361 icons on the `🍑 Icon` page, named
  * `align-bottom-01`, `layers-three-01`, `layout-alt-01` and so on — that is
@@ -70,7 +70,7 @@ export const Share01 = sized(UI.Share01)
 
 // Control chrome: check marks, close / clear, calendar, clock, spinners, status.
 export const Check = sized(UI.Check, 14)
-export const XClose = sized(UI.XClose, 12)
+export const XClose = sized(UI.XClose) // close / remove / clear: 16px everywhere
 export const Calendar = sized(UI.Calendar, 14)
 export const Clock = sized(UI.Clock, 14)
 export const Loading02 = sized(UI.Loading02, 14)

@@ -7,7 +7,7 @@ import { SearchField } from '../Input/SearchField'
 import { Tree, type TreeNode } from './Tree'
 import { getExpandableKeys } from './treeData'
 
-/** FABi menu: categories → groups → dishes. */
+/** FABi CMS menu: categories → groups → dishes. */
 const MENU: TreeNode[] = [
   {
     key: 'mon-chinh',

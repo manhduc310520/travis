@@ -39,7 +39,7 @@ export function Tag({ color = 'default', variant = 'outlined', icon, bordered = 
       {children}
       {onClose && (
         <AriaButton className={styles.close} aria-label={closeLabel} onPress={onClose}>
-          <X size={12} />
+          <X />
         </AriaButton>
       )}
     </span>

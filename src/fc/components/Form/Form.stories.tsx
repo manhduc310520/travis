@@ -248,7 +248,7 @@ function ValidationDemo(args: FormProps) {
         />
         <FormItem>
           <CheckboxGroup name="terms" aria-label="Điều khoản" isRequired errorMessage="Vui lòng đồng ý với điều khoản sử dụng">
-            <Checkbox value="accepted">Tôi đồng ý với điều khoản sử dụng FABi</Checkbox>
+            <Checkbox value="accepted">Tôi đồng ý với điều khoản sử dụng FABi CMS</Checkbox>
           </CheckboxGroup>
         </FormItem>
         <FormItem>
@@ -397,7 +397,7 @@ function CreateRestaurantDemo(args: FormProps) {
           <TextArea name="intro" label="Giới thiệu" placeholder="Món đặc trưng, không gian, giờ phục vụ…" rows={3} maxLength={500} showCount />
           <FormItem>
             <CheckboxGroup name="terms" aria-label="Điều khoản" isRequired errorMessage="Vui lòng đồng ý với điều khoản trước khi tạo">
-              <Checkbox value="accepted">Tôi đồng ý với điều khoản sử dụng dịch vụ FABi</Checkbox>
+              <Checkbox value="accepted">Tôi đồng ý với điều khoản sử dụng dịch vụ FABi CMS</Checkbox>
             </CheckboxGroup>
           </FormItem>
           <Flex gap="xs" justify="end">

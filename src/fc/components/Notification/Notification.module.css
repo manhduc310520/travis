@@ -94,7 +94,10 @@
   margin-block-start: var(--fc-space-margin-sm);
 }
 
-/* fc Button text / sm, pinned to the first line of the title. */
+/* fc Button text / sm, pinned to the first line of the title; 16px glyph like every close ×. */
+.notice .close {
+  --_icon-size: var(--fc-typography-size-lg);
+}
 .close {
   position: absolute;
   inset-block-start: var(--fc-component-notification-padding-block);

@@ -6,12 +6,12 @@ import { create } from 'storybook/theming'
  * keep FABi CMS's own Figma-sourced brand via ConfigProvider in preview.tsx.
  * Requested to match Narmi's own Storybook chrome; every value below was
  * measured live off narmi.github.io/design_system (getComputedStyle,
- * elementFromPoint), not guessed. `brandTitle` stays "FABi Design System" —
+ * elementFromPoint), not guessed. `brandTitle` stays "FABi CMS Design System" —
  * the layout/color/font conventions are copied, not Narmi's own name or logo.
  */
 const theme = create({
   base: 'light',
-  brandTitle: 'FABi Design System',
+  brandTitle: 'FABi CMS Design System',
   brandUrl: 'https://github.com/manhduc310520/travis',
 
   fontBase: '"Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',

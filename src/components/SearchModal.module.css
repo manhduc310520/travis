@@ -145,9 +145,9 @@
   height: var(--fc-size-control-lg);
   color: var(--fc-color-content-heading);
 }
-/* Figma binds the glyph's stroke to Stroke/Width/Icon at every size. */
+/* Stroke/Width/Strong (2px) at every size, like the Result icons. */
 .emptyIcon path {
-  stroke-width: var(--fc-stroke-width-icon);
+  stroke-width: var(--fc-stroke-width-strong);
   vector-effect: non-scaling-stroke;
 }
 

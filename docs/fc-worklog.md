@@ -456,6 +456,53 @@ Làm theo kế hoạch đã duyệt (`docs/fc-plan-waves-3-5.md`). 5 agent dựn
 - Tài liệu: `AGENTS.md`, `README.md` viết lại; `design-tokens.md`, `naming-guidelines.md`, `token-contract.md` (mô tả kiến trúc antd) chuyển vào `docs/migration/legacy/`.
 - Còn nhắc antd trong code: chỉ quy tắc lint cấm import. Chú thích "(antd `loading`)"… đã viết lại.
 - **Chưa làm, chờ anh/chị:** viết lại `CLAUDE.md` (file quy ước chung của anh/chị, vẫn ghi "Ant Design v6"); xoá biến `Legacy/*` trong Figma; commit git.
+- **Cập nhật:** anh/chị duyệt cả ba. `CLAUDE.md` đã viết lại (bản cũ: `docs/migration/CLAUDE.antd-v6.backup.md`). Commit `1743f94` đã push lên `main`, Storybook live đã deploy. Việc xoá `Legacy/*`: xem mục 23.
+
+## 23. Xoá biến `Legacy/*` trong Figma — XONG 2026-09-27
+
+Anh/chị: "làm kỹ nhé". Đã xoá cả 1.961 biến. Collection `5. Components` giờ chỉ còn 272 biến `Component/*`. Token export không đổi (checksum 6 lát trùng với trước khi xoá).
+
+**Sao lưu:** `docs/migration/figma-backup-legacy-vars.txt` (1.961 dòng `Tên|Kiểu|Giá trị|Scopes`, checksum nội dung đã sắp xếp `f2749ed9`). Muốn quay lại: File → Show version history trong Figma.
+
+### Cách làm
+Mỗi binding tới `Legacy/*` được gắn sang cuối chuỗi alias (biến không-Legacy đầu tiên). 103 biến Legacy mang giá trị thô: gỡ binding, giữ giá trị. Script trong `docs/migration/`:
+
+| Bước | Script | Việc |
+|---|---|---|
+| A. Node gốc | `legacy-rebind.figma.js` | Mọi node không nằm trong instance, trên 99 trang. Trang Button: 2.400 node, mỗi lần ghi khoảng 0,2 giây (Button lồng trong gần như mọi component), 56 lượt. |
+| Style | (một lần chạy) | Text style `Text Base/Semibold` → `Typography/Size/Base`; effect style `Component/Button/*Shadow` → `Color/Outline/*`, `Stroke/Width/Outline`. Giá trị không đổi. |
+| Steps | (một lần chạy) | 64 node chữ gắn `maxWidth`: API không gắn biến được vào `maxWidth` của text, nên gỡ binding (giữ 140 = `Component/Steps/Description-Max-Width`). Có thể gắn tay trong Figma. |
+| B. Override trong instance | `legacy-rebind-instances.figma.js` | Chỉ sửa binding Figma liệt kê trong `instance.overrides` trên cùng trang (kể cả trường `boundVariables`). Binding thừa hưởng để nguyên, tự theo khi tầng gốc được sửa. Chạy nhiều lượt tới khi hết. |
+| Component mồ côi | `legacy-rebind-orphans.figma.js` | Component (set) đã xoá khỏi canvas nhưng instance vẫn dùng (vd `_Table`, `Button / Basic`, các icon antd `*Outlined`). Pha A không thấy chúng. |
+| Nội dung ngoài canvas | `legacy-rebind-offcanvas.figma.js` | Nội dung mặc định của SLOT (Table "Content Columns", Alert/Popconfirm "Items", "Head", "Footer"…) nằm trong khung không thuộc trang nào. |
+
+### Kết quả
+- Hơn 30.000 binding được gắn lại sang biến semantic / `Component/*`.
+- **568 node còn trỏ vào biến đã xoá** (giá trị hiển thị không đổi; Figma hiện là biến đã bị xoá):
+  - Phần lớn là kích thước icon đã swap trong instance lồng nhau (`Menu iconSize`, `Button onlyIconSize`) và chữ trong bản sao ở Draft / AI Design. Plugin API bỏ qua mọi lệnh gắn biến lên các lớp này (thử cả gỡ rồi gắn, mở khoá tỉ lệ).
+  - Chữ vạch mốc Slider trong component Form: gắn lẫn gỡ đều không ăn.
+  - 1 lớp chữ font "SF Pro Text" (không có trong Figma), trang Block.
+  - Theo trang: Draft 304, AI Design 124, Form 58, Menu 56, Block 13, App Shells 9, AutoComplete 3, TreeSelect 1.
+  - Sửa tay nếu cần: chọn lớp trong Figma, gắn lại biến ở panel bên phải.
+- Kiểm: `node scripts/export-checksum.mjs` trùng `figma-export.js` (`SLICE = 'checksum'`) ở cả 6 lát (global `fe8901fb`, palette `d8d49014`, semantic `b7bdd2b8`, rest `ba7e2034`, component `9492136e`, effects `440897b4`). `build:tokens`, `audit:contrast` 240/240.
+
+### Bài học (đã ghi vào `AGENTS.md` và hướng dẫn bảo trì)
+- Figma không trả biến / collection theo thứ tự cố định: checksum phải tính trên bản đã sắp xếp khoá (`scripts/export-checksum.mjs`).
+- Gắn biến trong instance chỉ khi đó là override thật; gắn thừa tạo override mới và cắt lớp khỏi component gốc.
+- Component xoá khỏi canvas và nội dung mặc định của SLOT vẫn giữ binding; phải tìm từ ID của lớp trong instance.
+- Mỗi lượt `use_figma` ≤ 60–70 giây; ghi trong một vòng đồng bộ.
+
+## 24. Icon đóng 16px, nét icon trạng thái 2px, tên FABi CMS (2026-09-27)
+
+Anh/chị yêu cầu:
+- **Icon X để đóng / gỡ / xoá luôn 16px** (trước 12–14px).
+  - Code: `XClose` mặc định 16; Tag, Tabs, Alert dùng `--fc-typography-size-lg` (16 Default, 14 Compact); nút đóng Modal, Drawer, Notification đặt `--_icon-size`. Đo lại 134 story: mọi nút đóng / gỡ đều 16px.
+  - Figma: `x-line` 16×16 ở 16 biến thể Alert, Tag Closeable, 6 biến thể thẻ Select. Tabs và `_Button Close` (Modal / Drawer / Notification) vốn đã 16.
+- **Icon Result và trạng thái rỗng của Search Modal: nét 2px** (`Stroke/Width/Strong`).
+  - Code: `Result.module.css`, `SearchModal.module.css`.
+  - Figma: 5 biến thể Result (Success, Info, Warning, Error, Custom icon). Search Modal trong Figma đã là 2px.
+- **Tên "FABi CMS Design System"** (không phải "FABi Design System"): tiêu đề Storybook (`.storybook/manager.ts`), trang Welcome, `README.md`, `AGENTS.md`, `CLAUDE.md`, nội dung mẫu trong story Form / Upload.
+  - Giữ nguyên: "FABi Online" (tên kênh đặt món, tooltip mẫu trong Form) và tên miền email `@fabi.vn`.
 
 ## Phụ lục — file chính đã tạo/sửa đêm nay
 

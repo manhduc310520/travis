@@ -113,7 +113,7 @@
   gap: var(--fc-space-margin-xxs);
 }
 
-/* Close ×: Content/Icon (3:1 on every faded background), 12px glyph (Typography/Size/Icon). */
+/* Close ×: Content/Icon (3:1 on every faded background), 16px glyph like every close × (Typography/Size/LG). */
 .close {
   display: inline-flex;
   flex: none;
@@ -133,8 +133,8 @@
 }
 .close svg {
   display: block;
-  width: var(--fc-typography-size-icon);
-  height: var(--fc-typography-size-icon);
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
 }
 .close[data-hovered],
 .close[data-pressed] { color: var(--fc-color-content-icon-hover); }

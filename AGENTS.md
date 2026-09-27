@@ -1,8 +1,10 @@
-# AGENTS.md — FABi Design System ("fc")
+# AGENTS.md — FABi CMS Design System ("fc")
 
 Context brief for AI agents working in this repo. Read it before making
 changes; it exists so a new session doesn't re-derive what a previous one
-already learned the hard way.
+already learned the hard way. Step-by-step procedures (new component, variant,
+template, icon, token; export; commit and deploy) are in
+[docs/fc-maintenance-guide.md](./docs/fc-maintenance-guide.md).
 
 ## Project
 
@@ -28,6 +30,7 @@ Ant Design was the previous base; it was removed on 2026-09-27 (phase 5 of
 | Lint | `npm run lint` |
 | Build tokens from the Figma export | `npm run build:tokens` |
 | Contrast gate | `npm run audit:contrast` |
+| Check the local export matches Figma | `node scripts/export-checksum.mjs`, compared with `scripts/figma-export.js` run with `SLICE = 'checksum'` |
 | Build Storybook | `npm run build-storybook` |
 
 **Typecheck with `-p tsconfig.app.json`.** The root `tsconfig.json` is a
@@ -49,8 +52,8 @@ CI (`.github/workflows/storybook.yml`) runs `build:tokens` and
 - `src/components/` — Templates built from fc: `AppHeader`, `AppShell`, `SearchModal`, `RestaurantListPage`.
 - `src/icons.tsx` — Untitled UI PRO icons (the Figma icon page), wrapped to 16px by default.
 - `tokens/` — `figma-export.json` (raw export), `fc.tokens.json` (DTCG). Generated.
-- `scripts/` — `figma-export.js` (run through the Figma MCP `use_figma` tool), `merge-figma-export.mjs`, `build-tokens.mjs`, `tokens-lib.mjs`, `audit-contrast.mjs`.
-- `docs/` — `fc-roadmap.md`, `fc-worklog.md` (what was done and why), `fc-component-conventions.md` (rules for new components), `fc-component-tokens-proposal.md` (every `Component/*` token), `token-naming-spec.md`, `migration/` (backups).
+- `scripts/` — `figma-export.js` (run through the Figma MCP `use_figma` tool), `merge-figma-export.mjs`, `build-tokens.mjs`, `tokens-lib.mjs`, `audit-contrast.mjs`, `export-checksum.mjs`.
+- `docs/` — `fc-maintenance-guide.md` (how to add and maintain things), `fc-roadmap.md`, `fc-worklog.md` (what was done and why), `fc-component-conventions.md` (rules for new components), `fc-component-tokens-proposal.md` (every `Component/*` token), `token-naming-spec.md`, `migration/` (backups).
 
 ## Token pipeline
 
@@ -59,20 +62,22 @@ CI (`.github/workflows/storybook.yml`) runs `build:tokens` and
 3. `npm run build:tokens` → `tokens/fc.tokens.json` + `src/fc/tokens.css` + `src/fc/tokens.meta.ts`.
 
 To add a few variables without a full re-export, append them to
-`tokens/figma-export.json` in Figma's order (new variables go to the end of
-their collection) and compare an FNV-1a checksum of the slice computed in
-Figma with the local one — see `docs/fc-worklog.md`.
+`tokens/figma-export.json` and check that every slice checksum matches:
+`scripts/figma-export.js` with `SLICE = 'checksum'` in Figma against
+`node scripts/export-checksum.mjs` locally. The hash is taken over a key-sorted
+copy because Figma does not return collections or variables in a stable order.
 
 - **Casing:** Figma names are Title Case (`Color/Background/Accent-Faded`, sizes upper-case `Space/Padding/SM`); code is the same path lowercased (`--fc-color-background-accent-faded`).
 - **Tiers:** `0. Global` has one mode — `light` / `dark` in its names are folders, not modes. Semantic `color/*` and `color/palette/*` alias Global per mode. Never bind a layer or write CSS against `global/*` or `brand/*`.
 - `data-brand`, `data-mode`, `data-density` must sit on the same element (FcTheme does this).
-- **Component tokens:** `5. Components` has `Component/*` (exported as `--fc-component-*`, emitted on every themed element so aliases re-resolve in nested `data-mode` regions) and `Legacy/*` (antd-era variables, aliased to `Component/*` or semantic tokens, never exported — do not reference them).
+- **Component tokens:** `5. Components` has `Component/*` (exported as `--fc-component-*`, emitted on every themed element so aliases re-resolve in nested `data-mode` regions) only. The antd-era `Legacy/*` group (1,961 variables) was deleted on 2026-09-27 (`docs/fc-worklog.md` §23); 568 layers, mostly swapped icons nested in instances that the Plugin API cannot rebind, still point at deleted variables with their values intact.
 - **Guards:** `build:tokens` fails when code references an `--fc-*` name that doesn't exist and when a media query drifts from the breakpoint tokens. `audit:contrast` is strict (240 pairs).
 
 ## Rules that are not obvious from reading the code once
 
 - **Never hand-edit a token value in code to fix a Figma bug.** Fix it in Figma and re-export; a code patch makes Figma and code disagree silently.
-- **Rebinding many Figma nodes is slow** (~0.34 s per write, instances re-layout). To move a whole family of bindings, alias the old variable to the new one instead of rebinding.
+- **Rebinding Figma nodes:** bind only main-component nodes; instances inherit. Inside an instance, rebind a layer only when Figma lists it in an `instance.overrides` on the same page — rebinding an inherited value creates a new override and cuts the layer off from its main component. Writes on heavily-instanced pages (Button) cost ~0.2 s each: write in one synchronous loop (load fonts first, no `await` between writes), keep each call ≤ 60–70 s, re-run until done. Templates: `docs/migration/legacy-rebind.figma.js`, `docs/migration/legacy-rebind-instances.figma.js`.
+- **Plugin API limits met so far:** a TEXT node's `maxWidth` cannot be bound to a variable (bind it by hand); text in a font Figma lacks (e.g. "SF Pro Text") cannot be edited; binding `width` on a proportion-locked layer drops its `height` binding (height follows width).
 - **Component-specific values go through a `--fc-component-*` token**, created in Figma first (see `docs/fc-component-tokens-proposal.md`).
 - **Contrast:** text 4.5:1, borders / icons / focus rings 3:1, in Light and Dark. Control borders use `--fc-color-border-control`. Placeholders use the disabled colour by convention (a known, accepted axe hit).
 - **Only two font weights** (400 / 600); never show state with weight.

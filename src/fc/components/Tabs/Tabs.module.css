@@ -195,8 +195,8 @@
   transition: color 0.2s, background-color 0.2s;
 }
 .close svg {
-  width: var(--fc-typography-size-sm);
-  height: var(--fc-typography-size-sm);
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
 }
 .close:hover {
   background: var(--fc-color-background-plain-hover);
