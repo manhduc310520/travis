@@ -189,7 +189,7 @@ export const Advanced: Story = {
   ),
 }
 
-/** Placeholder body while data loads (not a Figma variant). Screen readers hear "Đang tải nội dung". */
+/** Placeholder body while data loads (not a Figma variant). Screen readers hear "Đang tải nội dung" (Loading content). */
 export const Loading: Story = { args: { isLoading: true } }
 
 /**

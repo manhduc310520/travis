@@ -179,8 +179,8 @@ function CardDemo(args: TableProps<Dish>) {
 /**
  * Figma Table Size=Default, Bordered=False (Footer? + Pagination?): the
  * FABi CMS list page. The footer band carries the total; pagination with
- * "Hiển thị 1 - 5 trên tổng số 12" and the page-size Select sits inside the
- * frame.
+ * "Hiển thị 1 - 5 trên tổng số 12" (showing 1 - 5 of 12) and the page-size
+ * Select sits inside the frame.
  */
 export const Default: Story = { render: (args) => <CardDemo {...args} /> }
 
@@ -245,7 +245,8 @@ export const Sorting: Story = {
 
 /**
  * Figma Header Item Filter=true and "Table Dropdown" Type=Filter (opened on
- * the Danh mục column): tick options, then "Áp dụng"; "Đặt lại" clears.
+ * the "Danh mục" (Category) column): tick options, then "Áp dụng" (Apply);
+ * "Đặt lại" (Reset) clears.
  * The funnel turns accent while a filter is applied. "Danh mục" is also
  * sortable: focus lands on the header (Enter sorts), Arrow Right reaches
  * the funnel.
@@ -273,7 +274,7 @@ export const Filtering: Story = {
 
 /**
  * Figma Header Item Search=true and "Table Dropdown" Type=Search (opened):
- * type, then Enter or "Tìm". Matching ignores case and accents ("pho"
+ * type, then Enter or "Tìm" (Search). Matching ignores case and accents ("pho"
  * finds "Phở").
  */
 export const ColumnSearch: Story = {
@@ -309,7 +310,7 @@ function CheckboxSelectionDemo(args: TableProps<Dish>) {
  * Figma Row Control Type=Checkbox + Header Control Type=Checkbox: select
  * rows with the checkboxes, a click on the row, or Space; the header box
  * selects the page. Selected rows use Background/Item-Selected. "Cà phê
- * sữa đá" (hết món) cannot be selected but stays readable. The selection
+ * sữa đá" (sold out) cannot be selected but stays readable. The selection
  * survives paging.
  */
 export const CheckboxSelection: Story = {
@@ -334,7 +335,7 @@ export const RadioSelection: Story = {
 /**
  * Figma Row Control Type=Expand / Collapse ("Table Item / Collapse"): the
  * + / − button, or Arrow Right / Arrow Left on a focused row, opens the
- * detail row (Fill/Alternate) under it. Rows that are "hết món" have no
+ * detail row (Fill/Alternate) under it. Sold-out rows ("Hết món") have no
  * detail. The table becomes a treegrid: rows announce expanded / collapsed.
  */
 export const ExpandableRows: Story = {
@@ -411,7 +412,7 @@ export const CellTypes: Story = {
 }
 
 /**
- * No rows: the default "Không có dữ liệu", or your own content in
+ * No rows: the default "Không có dữ liệu" (No data), or your own content in
  * `emptyContent` (e.g. after a search, with a way forward).
  */
 export const EmptyState: Story = {
@@ -436,7 +437,7 @@ export const EmptyState: Story = {
 
 /**
  * `isLoading`: rows fade under a spinner, the table is marked busy and
- * "Đang tải dữ liệu" is announced. With no rows yet the body keeps its
+ * "Đang tải dữ liệu" (Loading data) is announced. With no rows yet the body keeps its
  * height.
  */
 export const Loading: Story = {

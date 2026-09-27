@@ -13,7 +13,7 @@ export interface ModalFuncProps extends Omit<ConfirmModalProps, 'isOpen' | 'defa
  * `false` when it was cancelled or dismissed.
  */
 export interface ModalApi {
-  /** Question with "Hủy" + "Đồng ý" (warning icon). */
+  /** Question with "Hủy" (Cancel) + "Đồng ý" (OK) and a warning icon. */
   confirm: (props: ModalFuncProps) => Promise<boolean>
   info: (props: ModalFuncProps) => Promise<boolean>
   success: (props: ModalFuncProps) => Promise<boolean>

@@ -48,7 +48,7 @@ export interface CalendarProps {
   showWeek?: boolean
   /** Figma Custom Header=True: a title above the header controls. */
   title?: ReactNode
-  /** Replaces the header controls (year, month, Tháng / Năm) with your own. */
+  /** Replaces the header controls — year, month and the "Tháng" / "Năm" (Month / Year) toggle — with your own. */
   headerRender?: (api: CalendarHeaderApi) => ReactNode
   /**
    * Figma "Calendar Item / Notice": extra content under a day (mode `month`)
@@ -61,7 +61,7 @@ export interface CalendarProps {
   isDateUnavailable?: (date: DateValue) => boolean
   isDisabled?: boolean
   isReadOnly?: boolean
-  /** Names the calendar for screen readers. Default "Lịch". */
+  /** Names the calendar for screen readers. Default "Lịch" (Calendar). */
   'aria-label'?: string
   className?: string
 }
@@ -190,7 +190,7 @@ function Months({ variant, cellRender }: Pick<CalendarProps, 'cellRender'> & { v
 /**
  * Figma "❖ Calendar": a month (or year) shown in place — full page with notes
  * in each day (bookings, events), or a compact card. The header picks the
- * year, the month and the Tháng / Năm mode; weeks start on Monday.
+ * year, the month and the "Tháng" / "Năm" (Month / Year) mode; weeks start on Monday.
  */
 export function Calendar({
   variant = 'full', mode: modeProp, defaultMode = 'month', onModeChange, onPanelChange, showWeek = false, title, headerRender,

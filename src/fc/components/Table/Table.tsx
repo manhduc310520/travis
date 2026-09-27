@@ -106,7 +106,7 @@ export interface TableColumn<T> {
 
 /** Every visible or announced string, overridable one by one. */
 export interface TableLabels {
-  /** Name of the selection column (single selection; multiple uses React Aria's "Chọn tất cả"). */
+  /** Name of the selection column (single selection; multiple uses React Aria's "Chọn tất cả" (Select all)). */
   selectColumn: string
   /** Name of the expand column. */
   expandColumn: string
@@ -131,7 +131,7 @@ export interface TableLabels {
   searchReset: string
   /** Name of the pagination landmark; gets the table name so several tables on a page differ. */
   pagination: (table: string | undefined) => string
-  /** Default pagination total ("Hiển thị 1 - 10 trên tổng số 85"). */
+  /** Default pagination total: "Hiển thị 1 - 10 trên tổng số 85" (showing 1 - 10 of 85). */
   total: (total: number, range: [number, number]) => ReactNode
 }
 
@@ -209,7 +209,7 @@ export interface TableProps<T extends object> {
   onExpandedChange?: (keys: Set<Key>) => void
   /** Rows are dimmed under a spinner and the table is marked busy. */
   isLoading?: boolean
-  /** Shown when there are no rows. Defaults to "Không có dữ liệu". */
+  /** Shown when there are no rows. Defaults to "Không có dữ liệu" (No data). */
   emptyContent?: ReactNode
   /** Max height of the rows area: the body scrolls under a sticky header. */
   scrollY?: number | string
@@ -593,7 +593,7 @@ export function Table<T extends object>({
                         <Row id={detailKey} isDisabled className={cx(styles.row, styles.detailRow)}>
                           <Cell colSpan={columnCount} className={styles.cell}>
                             {/* React Aria labels a row by its row-header cell id; the detail row has no
-                                such cell, so this hidden name takes that id ("Chi tiết Phở bò"). */}
+                                such cell, so this hidden name takes that id, e.g. "Chi tiết Phở bò" (Phở bò details). */}
                             <span id={cellId(gridId, detailKey, rowHeaderKey)} className={styles.srOnly}>{t.detailRow(rowName)}</span>
                             {expandedRowRender(record)}
                           </Cell>
@@ -635,7 +635,7 @@ function SortIcon({ direction }: { direction: SortDescriptor['direction'] | unde
 /**
  * Figma Row Control Type=Radio. React Aria gives the row's selection props
  * through the checkbox "selection" slot; this draws them as a real radio so
- * screen readers hear "nút chọn" (one row at a time).
+ * screen readers hear a radio button (one row at a time).
  */
 function SelectionRadio() {
   const slot = useSlottedContext(CheckboxContext, 'selection')
@@ -673,7 +673,7 @@ interface MenuProps {
   defaultOpen?: boolean
 }
 
-/** Figma "Table Dropdown" Type=Filter: fc Dropdown with checks, "Đặt lại" / "Áp dụng" footer. */
+/** Figma "Table Dropdown" Type=Filter: fc Dropdown with checks, "Đặt lại" / "Áp dụng" (Reset / Apply) footer. */
 function FilterMenu({ label, options, multiple, applied, onApply, defaultOpen = false, t }: MenuProps & {
   options: TableFilterOption[]
   multiple: boolean
@@ -716,7 +716,7 @@ function FilterMenu({ label, options, multiple, applied, onApply, defaultOpen = 
   )
 }
 
-/** Figma "Table Dropdown" Type=Search: a search box with "Tìm" / "Đặt lại". */
+/** Figma "Table Dropdown" Type=Search: a search box with "Tìm" / "Đặt lại" (Search / Reset). */
 function SearchMenu({ label, placeholder, applied, onApply, defaultOpen = false, t }: MenuProps & {
   placeholder: string
   applied: string

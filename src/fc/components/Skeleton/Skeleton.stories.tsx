@@ -163,7 +163,7 @@ export const ActiveElements: Story = {
 
 /**
  * `fallback`: a custom placeholder composed from the elements (a dish card
- * in the POS menu). The whole group is announced once as "Đang tải món ăn…".
+ * in the POS menu). The whole group is announced once as "Đang tải món ăn…" (Loading dishes…).
  */
 export const CustomFallback: Story = {
   render: () => (

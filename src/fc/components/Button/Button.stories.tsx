@@ -22,7 +22,8 @@ const stack = { display: 'grid', gap: 'var(--fc-space-padding-base)' } as const
 const TYPES = ['primary', 'default', 'dashed', 'text', 'link'] as const
 const LABEL: Record<(typeof TYPES)[number], string> = { primary: 'Primary', default: 'Default', dashed: 'Dashed', text: 'Text', link: 'Link' }
 
-export const Playground: Story = {}
+/** Shown first on the docs page: the primary button. */
+export const Playground: Story = { args: { variant: 'primary' } }
 
 /** Figma `Button / Basic` — Type. One primary per screen. */
 export const Types: Story = {

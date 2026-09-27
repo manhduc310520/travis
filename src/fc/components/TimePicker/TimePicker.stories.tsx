@@ -42,7 +42,7 @@ const grid = { display: 'grid', gap: 'var(--fc-space-margin-base)', gridTemplate
 
 export const Playground: Story = { render: (args) => <div style={single}><TimePicker {...args} /></div> }
 
-/** Figma `TimePicker` Active=Yes: panel open under the box, the picked hour / minute / second at the top of their columns, "Bây giờ" + "OK" footer. */
+/** Figma `TimePicker` Active=Yes: panel open under the box, the picked hour / minute / second at the top of their columns, "Bây giờ" (Now) + "OK" footer. */
 export const Open: Story = {
   render: (args) => <div style={single}><TimePicker {...args} granularity="second" defaultValue={OPEN_AT.set({ second: 30 })} defaultOpen /></div>,
 }
@@ -151,12 +151,12 @@ export const Seconds: Story = {
   render: () => <div style={single}><TimePicker label="Thời gian nấu" granularity="second" defaultValue={new Time(0, 12, 30)} /></div>,
 }
 
-/** `hourCycle={12}`: SA / CH segment and column. vi-VN defaults to 24-hour. */
+/** `hourCycle={12}`: "SA" / "CH" (AM / PM) segment and column. vi-VN defaults to 24-hour. */
 export const TwelveHour: Story = {
   render: () => <div style={single}><TimePicker label="Giờ khai trương" hourCycle={12} defaultValue={new Time(18, 30)} /></div>,
 }
 
-/** Controlled value: the text below updates on every commit ("OK", Enter, "Bây giờ", typing, clear). */
+/** Controlled value: the text below updates on every commit ("OK", Enter, "Bây giờ" (Now), typing, clear). */
 export const Controlled: Story = {
   render: function Render() {
     const [time, setTime] = useState<Time | null>(new Time(7, 30))

@@ -37,7 +37,7 @@ export interface MenuItemEntry {
   /** Destination of the link. Without it the item is a link-role element that only fires `onAction`. */
   href?: string
   isDisabled?: boolean
-  /** Figma Status=Error: destructive entry such as "Đăng xuất". */
+  /** Figma Status=Error: destructive entry such as "Đăng xuất" (Log out). */
   danger?: boolean
   /** Figma "Submenu": inline mode expands in place, vertical / collapsed opens a popover to the side. */
   children?: MenuItemDef[]

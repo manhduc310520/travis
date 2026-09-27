@@ -88,7 +88,7 @@ export function ancestorKeys(items: TreeNode[], keys: Iterable<Key>): Key[] {
 
 // ---------- search ----------
 
-/** Case- and accent-insensitive form: "Phở Bò" and "pho bo" match (Vietnamese đ → d). */
+/** Case- and accent-insensitive form: "Phở Bò" and "pho bo" match (Vietnamese `đ` → `d`). */
 export const fold = (s: string) =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase()
 

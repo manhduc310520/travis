@@ -66,7 +66,7 @@ export type RestaurantListPageProps = {
  * row, then one container holding the table. Every other list screen reuses
  * this shape.
  *
- * One primary action per screen ("Tạo nhà hàng"); everything else is default.
+ * One primary action per screen, "Tạo nhà hàng" (Create restaurant); everything else is default.
  * Search (accent-insensitive) and the city filter work on the sample rows.
  *
  * Responsive: the header and filter rows wrap; the table keeps every column

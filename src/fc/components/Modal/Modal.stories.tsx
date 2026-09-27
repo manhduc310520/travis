@@ -44,7 +44,7 @@ type Story = StoryObj<typeof meta>
 
 const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms))
 
-/** Interactive: press the button. Esc, the close icon, "Hủy" or the mask close it. */
+/** Interactive: press the button. Esc, the close icon, "Hủy" (Cancel) or the mask close it. */
 export const Playground: Story = {}
 
 /** Figma `Modal / Basic` Type=Text — open on load. */
@@ -162,7 +162,7 @@ export const InformationTriggers: Story = {
   ),
 }
 
-/** Figma confirmation example, destructive: OK is danger, focus starts on "Hủy". */
+/** Figma confirmation example, destructive: OK is danger, focus starts on "Hủy" (Cancel). */
 export const Confirmation: Story = {
   render: () => (
     <ModalTrigger defaultOpen>

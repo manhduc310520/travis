@@ -117,7 +117,7 @@ export const Status: Story = {
   ),
 }
 
-/** Figma menu Type=With Groups: group titles with an action ("Xem thêm"), rows indented under them, a count on the right. */
+/** Figma menu Type=With Groups: group titles with a "Xem thêm" (See more) link at the end, rows indented under them, a count on the right. */
 export const WithGroups: Story = {
   args: { label: 'Tìm món', options: GROUPED, defaultOpen: true, placeholder: 'Nhập tên món' },
   decorators: [(Story) => <div style={{ minHeight: 440 }}><Story /></div>],
@@ -199,7 +199,7 @@ export const ComputedOptions: Story = {
   },
 }
 
-/** Disabled field and a disabled suggestion (Trà đào). */
+/** Disabled field and a disabled suggestion ("Trà đào cam sả"). */
 export const Disabled: Story = {
   render: (args) => (
     <div style={column}>

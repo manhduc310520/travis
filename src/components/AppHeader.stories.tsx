@@ -73,7 +73,7 @@ export const AccountMenu: Story = {
   },
 }
 
-/** Figma "Language Item / Open=Open1": Việt Nam / English / China. */
+/** Figma "Language Item / Open=Open1": "Việt Nam" / "English" / "China". */
 export const LanguageMenu: Story = {
   args: { layout: 'desktop' },
   parameters: { docs: { story: { height: '260px' } } },

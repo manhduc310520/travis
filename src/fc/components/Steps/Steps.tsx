@@ -54,7 +54,7 @@ export interface StepsProps {
   variant?: 'filled' | 'outlined'
   /** Makes each step a button (Figma State=Hover); receives the chosen index. */
   onChange?: (current: number) => void
-  /** Override any of the status words, e.g. `{ status: { error: 'thanh toán thất bại' } }`. */
+  /** Override any of the status words, e.g. `{ status: { error: 'thanh toán thất bại' } }` ("payment failed"). */
   labels?: { status?: Partial<StepsLabels['status']> }
   'aria-label'?: string
   'aria-labelledby'?: string
@@ -76,7 +76,7 @@ function RingIcon({ percent }: { percent: number }) {
 /**
  * Figma "❖ Steps". An ordered list: the current step carries
  * `aria-current="step"`, and every step's status is read after its title
- * ("đã xong", "bị lỗi"…) — colour and icon are never the only signal. With
+ * ("đã xong" (done), "bị lỗi" (failed)…) — colour and icon are never the only signal. With
  * `onChange` each step is a React Aria button.
  */
 export function Steps({

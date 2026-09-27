@@ -84,9 +84,9 @@ export const MultipleSelection: Story = {
 }
 
 /**
- * Figma Tree Type=Checkbox: tri-state checkboxes. Checking "Bán hàng" checks
- * every enabled child; a partly checked parent shows the dash. "Hoàn tiền" is
- * disabled and keeps its state.
+ * Figma Tree Type=Checkbox: tri-state checkboxes. Checking "Bán hàng" (Sales)
+ * checks every enabled child; a partly checked parent shows the dash.
+ * "Hoàn tiền" (Refund) is disabled and keeps its state.
  */
 export const Checkbox: Story = {
   render: function Render() {

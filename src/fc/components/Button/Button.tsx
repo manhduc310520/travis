@@ -89,7 +89,7 @@ export function Button({
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   /** Figma "Button Group Compact": buttons joined into one control. */
   orientation?: 'horizontal' | 'vertical'
-  /** Name of the group for assistive tech, e.g. "Căn lề". */
+  /** Name of the group for assistive tech, e.g. "Chế độ xem" (View mode). */
   'aria-label'?: string
   children: ReactNode
 }

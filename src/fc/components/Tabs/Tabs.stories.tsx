@@ -51,7 +51,7 @@ const SIZES: [TabsSize, string][] = [['sm', 'Small'], ['md', 'Default'], ['lg', 
 
 export const Playground: Story = {}
 
-/** Figma `Tabs / Basic` Placement=Top, Size=Default. "Nhân viên" is a disabled tab. */
+/** Figma `Tabs / Basic` Placement=Top, Size=Default. "Nhân viên" (Staff) is a disabled tab. */
 export const Line: Story = {}
 
 /** Figma `Tabs / Basic` Placement: Top, Bottom, Left, Right. Left / Right use Up / Down arrows. */
@@ -111,8 +111,8 @@ export const CardPlacements: Story = {
 
 /**
  * One editable strip (Figma `Tabs / Container`): "+" appends an order tab,
- * × or Delete on a focused tab closes it. "Bàn 1" is not closable, so both
- * `Closeable?` states show.
+ * × or Delete on a focused tab closes it. "Bàn 1" (Table 1) is not closable,
+ * so both `Closeable?` states show.
  */
 function EditableDemo({ size }: { size: TabsSize }) {
   const [tabs, setTabs] = useState<TabsItem[]>([

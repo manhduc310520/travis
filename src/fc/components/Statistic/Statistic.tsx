@@ -18,7 +18,7 @@ interface StatisticBaseProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title
   icon?: ReactNode
   /** Before the value, same size (e.g. a currency sign). */
   prefix?: ReactNode
-  /** After the value, same size (e.g. "%", "đơn"). */
+  /** After the value, same size (e.g. "%" or "đơn" (orders)). */
   suffix?: ReactNode
 }
 
@@ -35,7 +35,7 @@ export interface StatisticProps extends StatisticBaseProps {
   formatter?: (value: number | string) => ReactNode
   /**
    * Figma Type Up / Down: success / danger value colour, an arrow, and a
-   * visually hidden word ("Tăng" / "Giảm") so the direction never rests on colour.
+   * visually hidden word ("Tăng" / "Giảm": up / down) so the direction never rests on colour.
    */
   trend?: StatisticTrend
   /** The hidden words read before the value for each trend. */
@@ -45,7 +45,7 @@ export interface StatisticProps extends StatisticBaseProps {
 const TREND_ICON: Record<StatisticTrend, ReactNode> = { up: <ArrowUp />, down: <ArrowDown /> }
 const TREND_LABELS: Record<StatisticTrend, string> = { up: 'Tăng', down: 'Giảm' }
 
-/** Figma "❖ Statistic": a titled number for dashboards (doanh thu, số đơn, khách). */
+/** Figma "❖ Statistic": a titled number for dashboards (revenue, orders, guests). */
 export function Statistic({
   title,
   value,
@@ -89,7 +89,7 @@ export interface CountdownProps extends Omit<StatisticBaseProps, 'onChange'> {
   value: number | Date
   /**
    * Figma `Statistic / Countdown` Type 1 = `HH:mm:ss`, Type 2 = `HH:mm:ss:SSS`.
-   * Tokens `D H m s` (repeat to zero-pad), `SSS` = ms; `[text]` is literal: `D [ngày] HH:mm:ss`.
+   * Tokens `D H m s` (repeat to zero-pad), `SSS` = ms; `[text]` is literal: `D [ngày] HH [giờ] mm [phút]`.
    */
   format?: string
   /** Called once when the countdown reaches zero (not if the deadline had already passed on mount). */

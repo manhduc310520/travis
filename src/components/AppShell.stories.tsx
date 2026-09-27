@@ -45,7 +45,7 @@ export const LoadingRows: Story = {
   ),
 }
 
-/** Figma "App Shells Items / Menu", Size=SM: the 80-wide icon rail, labels in tooltips. "Thu gọn" toggles it. */
+/** Figma "App Shells Items / Menu", Size=SM: the 80-wide icon rail, labels in tooltips. "Thu gọn" (Collapse) toggles it. */
 export const Collapsed: Story = {
   args: { defaultCollapsed: true, layout: 'desktop' },
   render: (args) => (
@@ -55,7 +55,7 @@ export const Collapsed: Story = {
   ),
 }
 
-/** Figma "App Shells Menu Bottom / Open=Yes": "Mở rộng" lists the connected apps to the side. */
+/** Figma "App Shells Menu Bottom / Open=Yes": "Mở rộng" (Extensions) lists the connected apps to the side. */
 export const ExtensionsOpen: Story = {
   args: { layout: 'desktop' },
   render: (args) => (

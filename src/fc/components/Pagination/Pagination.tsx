@@ -61,11 +61,11 @@ export interface PaginationProps {
   variant?: PaginationVariant
   /** `sm` is Figma Variant Mini. */
   size?: PaginationSize
-  /** Figma Variant Jumper / Mini Jumper: "Đến trang [ ]" after the items. Enter or leaving the field jumps. */
+  /** Figma Variant Jumper / Mini Jumper: a "Đến trang" (Go to page) field after the items. Enter or leaving the field jumps. */
   showJumper?: boolean
-  /** `text` = Figma Variant "Prev and next": "Trang trước" / "Trang sau" instead of arrows. */
+  /** `text` = Figma Variant "Prev and next": "Trang trước" / "Trang sau" (Previous / Next) instead of arrows. */
   prevNext?: 'icon' | 'text'
-  /** "Tổng 85 mục" before the items; pass a function for your own text. */
+  /** "Tổng 85 mục" (85 items in total) before the items; pass a function for your own text. */
   showTotal?: boolean | ((total: number, range: [number, number]) => ReactNode)
   /**
    * Slot for the page-size changer (fc Select), placed after the "next"

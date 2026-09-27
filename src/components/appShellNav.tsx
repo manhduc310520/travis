@@ -37,7 +37,7 @@ export const NAV_ITEMS: MenuItemDef[] = [
   { key: 'einvoice', icon: <File06 />, label: 'Hoá đơn điện tử' },
 ]
 
-/** Figma "App Shells Menu Bottom / Open=Yes": the connected apps behind "Mở rộng". */
+/** Figma "App Shells Menu Bottom / Open=Yes": the connected apps behind "Mở rộng" (Extensions). */
 export const EXTENSIONS: string[] = [
   'Hoá đơn điện tử Viettel S-Invoice',
   'Heo Vàng',

@@ -10,7 +10,7 @@ import styles from './Drawer.module.css'
 
 /**
  * Opens the Drawer placed after its trigger:
- * `<DrawerTrigger><Button>Mở</Button><Drawer …/></DrawerTrigger>`. It is
+ * `<DrawerTrigger><Button>Xem đơn hàng</Button><Drawer …/></DrawerTrigger>`. It is
  * React Aria's `DialogTrigger` (`defaultOpen`, `isOpen`, `onOpenChange`).
  */
 export const DrawerTrigger = DialogTrigger

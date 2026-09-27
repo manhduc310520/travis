@@ -30,9 +30,9 @@ export interface TransferLabels {
   source: string
   /** Name of the target list when it has no `titles[1]`. */
   target: string
-  /** Header count, nothing checked: "12 mục". */
+  /** Header count, nothing checked: "12 mục" (12 items). */
   count: (total: number) => string
-  /** Header count with checked items: "3/12 mục". */
+  /** Header count with checked items: "3/12 mục" (3 of 12 items). */
   countSelected: (selected: number, total: number) => string
   moveToRight: string
   moveToLeft: string
@@ -108,8 +108,8 @@ export interface TransferProps<T extends TransferItem = TransferItem> {
   /** Figma panel `Footer`: content under each list (start-aligned on the left, end-aligned on the right). */
   footer?: (direction: TransferDirection) => ReactNode
   /**
-   * One-way: only "Chuyển sang phải". Right rows have no checkbox but a
-   * remove button; the right header menu offers "Xóa tất cả".
+   * One-way: only "Chuyển sang phải" (Move right). Right rows have no checkbox
+   * but a remove button; the right header menu offers "Xóa tất cả" (Remove all).
    */
   oneWay?: boolean
   /** Custom row content. Keep it non-interactive: the whole row toggles the item. */
@@ -129,7 +129,7 @@ export interface TransferProps<T extends TransferItem = TransferItem> {
   style?: CSSProperties
 }
 
-/** Lower case, accents and đ folded: "Cà phê sữa đá" matches "ca phe sua da". */
+/** Lower case, accents and `đ` folded: "Cà phê sữa đá" matches "ca phe sua da". */
 const fold = (s: string) =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[đĐ]/g, 'd').toLowerCase()
 
@@ -140,7 +140,7 @@ const px = (v: number | string | undefined) => (typeof v === 'number' ? `${v}px`
  * with move buttons between them. Each list has a header (select-all
  * checkbox with indeterminate state, a chevron menu, "3/12 mục", the title),
  * an optional search and footer. Moves are announced politely
- * ("Đã chuyển 3 mục") and focus returns to the list the items left.
+ * ("Đã chuyển 3 mục": 3 items moved) and focus returns to the list the items left.
  */
 export function Transfer<T extends TransferItem = TransferItem>({
   dataSource,

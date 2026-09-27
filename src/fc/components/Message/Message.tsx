@@ -21,7 +21,7 @@ const ICON_LABEL: Record<MessageType, string | undefined> = {
   success: 'Thành công',
   warning: 'Cảnh báo',
   error: 'Lỗi',
-  loading: undefined, // the text already says it ("Đang …")
+  loading: undefined, // the message text already says it is loading
 }
 
 interface MessageBodyProps {
@@ -52,7 +52,7 @@ function MessageBody({ type, iconLabel, live, children }: MessageBodyProps) {
 export interface MessageCardProps {
   /** Figma Type: Normal → `info`, Success, Warning, Error, Loading. */
   type?: MessageType
-  /** Screen-reader name of the icon. Defaults to the Vietnamese type name ("Lỗi"…). */
+  /** Screen-reader name of the icon. Defaults to the Vietnamese type name, e.g. "Lỗi" (Error). */
   iconLabel?: string
   /** The message, one short sentence. */
   children: ReactNode

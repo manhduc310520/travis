@@ -94,9 +94,9 @@ export interface CascaderProps extends Omit<FieldChromeProps, 'showCount'> {
   expandTrigger?: 'click' | 'hover'
   /** Single: choosing a branch (not only a leaf) sets the value. */
   changeOnSelect?: boolean
-  /** A search box at the top of the menu: matches whole paths, ignoring accents ("hoan kiem"). */
+  /** A search box at the top of the menu: matches whole paths, ignoring accents ("hoan kiem" finds "Hoàn Kiếm"). */
   showSearch?: boolean
-  /** Custom display of the chosen path in the box. Default "Hà Nội / Hoàn Kiếm / Tràng Tiền". */
+  /** Custom display of the chosen path in the box. Default: the labels joined by " / ", e.g. "Hà Nội / Hoàn Kiếm / Tràng Tiền". */
   displayRender?: (labels: ReactNode[], options: CascaderOption[]) => ReactNode
   /** Multiple: show this many tags, then "+N". */
   maxTagCount?: number
@@ -106,7 +106,7 @@ export interface CascaderProps extends Omit<FieldChromeProps, 'showCount'> {
   prefix?: ReactNode
   /** Figma Placement. The menu flips when there is no room. */
   placement?: CascaderPlacement
-  /** Figma Cascader Menu Variant2 (Empty): shown when `options` is empty. Default "Chưa có dữ liệu". */
+  /** Figma Cascader Menu Variant2 (Empty): shown when `options` is empty. Default "Chưa có dữ liệu" (No data yet). */
   emptyContent?: ReactNode
   /** Figma Cascader Menu "Footer": content under the columns (a note, an action). */
   footer?: ReactNode

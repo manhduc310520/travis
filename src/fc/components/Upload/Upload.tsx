@@ -147,7 +147,7 @@ export interface UploadProps {
   isPending?: boolean
   /** Figma "Upload / Button" Size. */
   size?: ButtonSize
-  /** Help under the trigger ("PNG, JPG · tối đa 2 MB"), linked to it. */
+  /** Help under the trigger (accepted types, size limit), linked to it. */
   description?: ReactNode
   /** Custom trigger: a React Aria pressable (fc Button…). Replaces the default button or add tile. */
   children?: ReactElement

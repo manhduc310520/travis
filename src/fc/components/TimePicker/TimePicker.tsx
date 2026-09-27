@@ -52,7 +52,7 @@ const LABELS: TimePickerLabels = {
 }
 
 interface PickerBaseProps extends Omit<FieldChromeProps, 'showCount' | 'placeholder'>, TimeConstraints {
-  /** 12 shows SA / CH (segment and column). Default: the locale's clock (vi-VN: 24-hour). */
+  /** 12 shows "SA" / "CH" (AM / PM) in the segment and a column. Default: the locale's clock (vi-VN: 24-hour). */
   hourCycle?: 12 | 24
   /** Two-digit hours (`09:05`, `HH:mm`). @default true */
   shouldForceLeadingZeros?: boolean
@@ -60,7 +60,7 @@ interface PickerBaseProps extends Omit<FieldChromeProps, 'showCount' | 'placehol
   prefix?: ReactNode
   /** Clear button (×) over the clock while hovered or focused, when there is a value. @default true */
   allowClear?: boolean
-  /** Footer "Bây giờ" link. @default true */
+  /** Footer "Bây giờ" (Now) link. @default true */
   showNow?: boolean
   /** Panel below (default) or above the box. */
   placement?: 'bottom' | 'top'
@@ -255,7 +255,7 @@ interface PanelProps extends TimeConstraints {
 }
 
 /**
- * Figma "TimePicker Menu": columns + footer ("Bây giờ" link, "OK" primary)
+ * Figma "TimePicker Menu": columns + footer ("Bây giờ" (Now) link, "OK" primary)
  * on the shared overlay surface. The popover itself is the dialog, so React
  * Aria keeps focus inside it and returns it to the box on close.
  */

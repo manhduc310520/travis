@@ -106,13 +106,13 @@ export const Reverse: Story = {
 export const Marks: Story = {
   render: () => (
     <div style={stack}>
-      <Captioned label="included (mặc định)">
+      <Captioned label="included (default)">
         <Slider label="Thời gian chờ món" marks={WAIT_MARKS} minValue={0} maxValue={60} defaultValue={30} />
       </Captioned>
       <Captioned label="included={false}">
         <Slider label="Thời gian chờ món" marks={WAIT_MARKS} minValue={0} maxValue={60} defaultValue={30} included={false} />
       </Captioned>
-      <Captioned label="step={null}: chỉ chọn được các mốc">
+      <Captioned label="step={null}: only the marks can be chosen">
         <Slider
           label="Mức cay"
           marks={{ 0: 'Không cay', 1: 'Ít', 2: 'Vừa', 3: 'Cay', 4: 'Rất cay' }}

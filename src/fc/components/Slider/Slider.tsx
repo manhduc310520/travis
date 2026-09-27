@@ -54,7 +54,7 @@ export interface SliderProps<T extends SliderValue = number>
   iconEnd?: ReactNode
   /** Visible label. Without it, pass `aria-label`. */
   label?: ReactNode
-  /** Accessible name of each thumb in a range. Defaults to "Từ" / "Đến" for two thumbs. */
+  /** Accessible name of each thumb in a range. Defaults to "Từ" / "Đến" (From / To) for two thumbs. */
   thumbLabels?: string[]
   className?: string
 }

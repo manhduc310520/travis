@@ -64,7 +64,7 @@ function Dots() {
  * - `fullscreen`: a page-blocking mask (React Aria modal) with the spinner on an elevated panel.
  *
  * The indicator is hidden from assistive tech; the status says the tip, or
- * `label` ("Đang tải…"). It turns like the Button's pending spinner (steady
+ * `label` (default "Đang tải…", Loading…). It turns like the Button's pending spinner (steady
  * linear rotation, slowed rather than stopped under prefers-reduced-motion).
  */
 export function Spin({

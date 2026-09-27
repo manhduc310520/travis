@@ -19,7 +19,7 @@ export interface BreadcrumbItem {
   icon?: ReactNode
   /** Where the item goes. Without `href` the item is still pressable (`onAction`). */
   href?: string
-  /** Accessible name for an icon-only item, e.g. "Trang chủ". */
+  /** Accessible name for an icon-only item, e.g. "Trang chủ" (Home). */
   'aria-label'?: string
   /**
    * Figma Type=Dropdown — slot for the fc Dropdown. The item renders a

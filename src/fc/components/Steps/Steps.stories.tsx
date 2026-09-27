@@ -99,7 +99,7 @@ function ClickableDemo(args: Story['args']) {
   )
 }
 
-/** Figma State=Hover: with `onChange` each step is a button (hover, focus ring, disabled). "Kích hoạt" is disabled. */
+/** Figma State=Hover: with `onChange` each step is a button (hover, focus ring, disabled). "Kích hoạt" (Activate) is disabled. */
 export const Clickable: Story = { render: (args) => <ClickableDemo {...args} /> }
 
 function NavigationDemo({ size }: { size: 'sm' | 'md' }) {

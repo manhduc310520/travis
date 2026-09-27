@@ -83,7 +83,7 @@ export const Banner: Story = {
 }
 
 /**
- * Figma "Custom Actions": a single text action (the "Hoàn tác" pattern) and a
+ * Figma "Custom Actions": a single text action ("Hoàn tác", the Undo pattern) and a
  * stacked pair on an alert with description — one primary, the other default.
  */
 export const CustomActions: Story = {

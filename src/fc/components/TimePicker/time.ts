@@ -13,7 +13,7 @@ export interface DisabledTime {
   seconds?: (hour: number, minute: number) => number[]
 }
 
-/** What limits the choice: shared by the columns, the field validation and "Bây giờ". */
+/** What limits the choice: shared by the columns, the field validation and "Bây giờ" (Now). */
 export interface TimeConstraints {
   /** @default 'minute' */
   granularity?: TimeGranularity
@@ -35,7 +35,7 @@ export interface TimeColumnLabels {
   hour: string
   minute: string
   second: string
-  /** 12-hour clock only: the SA / CH column. */
+  /** 12-hour clock only: the "SA" / "CH" (AM / PM) column. */
   dayPeriod: string
 }
 

@@ -62,7 +62,7 @@ export interface TabsProps extends Omit<AriaTabsProps, 'children' | 'className' 
   addLabel?: string
   /** Read to screen-reader users on a closable tab: how to close it from the keyboard. */
   closeHint?: string
-  /** Names the tab list, e.g. "Cài đặt nhà hàng". */
+  /** Names the tab list, e.g. "Cài đặt nhà hàng" (Restaurant settings). */
   'aria-label'?: string
   'aria-labelledby'?: string
   className?: string

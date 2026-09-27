@@ -59,7 +59,7 @@ export interface ProgressProps {
   showInfo?: boolean
   /** Line only. Inside positions make the bar tall enough to hold the text. */
   valuePosition?: ProgressValuePosition
-  /** Custom visible text, e.g. `(p) => \`${p} / 100 món\``. A string result is also what screen readers hear. */
+  /** Custom visible text, e.g. `(p) => \`${p} bàn\``. A string result is also what screen readers hear. */
   format?: (percent: number) => ReactNode
   /** Visible label: above a line, beside a circle. Without it pass `aria-label`. */
   label?: ReactNode
@@ -107,8 +107,8 @@ const TINY_CIRCLE = 60
 /**
  * Figma "❖ Progress". A React Aria `ProgressBar` (or `Meter`, see
  * `isMeter`) drawn as a bar, a ring or a dashboard gauge. The value is always
- * exposed as `aria-valuetext` (plus "hoàn tất" / "bị lỗi" for the final
- * states); the visible percentage is hidden from assistive tech so it isn't
+ * exposed as `aria-valuetext` (plus "hoàn tất" (complete) / "bị lỗi" (failed)
+ * for the final states); the visible percentage is hidden from assistive tech so it isn't
  * read twice. Fill colours reach 3:1 against the track in Light and Dark.
  */
 export function Progress({

@@ -147,7 +147,7 @@ export const Formatting: Story = {
 /**
  * `minValue` / `maxValue` / `step`. By default a typed value snaps into range
  * on blur; with `commitBehavior="validate"` it stays and the form reports it
- * on submit (Vietnamese message). Try 250 bàn, then "Kiểm tra".
+ * on submit (Vietnamese message). Type 250 in the two table-count fields, then press "Kiểm tra" (Check).
  */
 export const MinMaxStep: Story = {
   render: (args) => (

@@ -34,7 +34,7 @@ export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'
   showIcon?: boolean
   /** Replaces the type icon. Decorative unless `iconLabel` is given. */
   icon?: ReactNode
-  /** Accessible name of the icon. Default: the type ("Lỗi", "Cảnh báo"…) for the type icon. */
+  /** Accessible name of the icon. Default for the type icon: the type in words, e.g. "Lỗi" (Error), "Cảnh báo" (Warning). */
   iconLabel?: string
   /** Figma Banner=True: no border, no radius — sits flush at the top of a page or panel. */
   banner?: boolean
@@ -42,7 +42,7 @@ export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'
   action?: ReactNode
   /** Figma "Close Icon": an × button that dismisses the alert. */
   closable?: boolean
-  /** Figma "Close Text": a text close button (e.g. "Đã hiểu") instead of the ×. Implies `closable`. */
+  /** Figma "Close Text": a text close button instead of the ×, e.g. "Đã hiểu" (Got it). Implies `closable`. */
   closeText?: ReactNode
   /** Accessible name of the × button. */
   closeLabel?: string

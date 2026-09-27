@@ -3,17 +3,17 @@ import * as BorderStories from './Border.stories'
 
 <Meta of={BorderStories} />
 
-# Viền và bo góc
+# Border & Radius
 
-Biến trong Figma collection `3. Dimensions`. Màu viền nằm ở trang **Màu** (`Color/Border`).
+Variables in the Figma collection `3. Dimensions`. Border colors live on the **Color** page (`Color/Border`).
 
-## Độ dày nét — `Stroke/Width`
+## Stroke width — `Stroke/Width`
 
 <Canvas of={BorderStories.StrokeWidth} />
 
-## Bo góc — `Radius`
+## Corner radius — `Radius`
 
-`base` cho control (nút, ô nhập), `lg` cho bề mặt (card, modal), `sm` cho tag,
-tooltip, popover. Không trộn nhiều bán kính trên các phần tử kề nhau.
+`base` for controls (buttons, inputs), `lg` for surfaces (cards, modals, drawers, popovers,
+dropdowns), `sm` for tags, tooltips and calendar cells. Do not mix different radii on adjacent elements.
 
 <Canvas of={BorderStories.Radius} />

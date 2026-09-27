@@ -26,7 +26,7 @@ export interface TimeColumnsProps extends TimeConstraints {
   onConfirm?: (value: Time) => void
   /** Time the first pick builds on while `value` is null (React Aria `placeholderValue`). @default 00:00:00 */
   placeholderValue?: Time
-  /** 12 adds an SA / CH column. By default the locale decides (vi-VN: 24). */
+  /** 12 adds an "SA" / "CH" (AM / PM) column. By default the locale decides (vi-VN: 24). */
   hourCycle?: 12 | 24
   /** Focus the selected row of the first column on mount (inside a popover). */
   autoFocus?: boolean
@@ -39,7 +39,7 @@ interface ColumnDef { unit: string; label: string; selected: Key | null; cells: 
 
 /**
  * Figma "TimePicker Menu" panel: one scrolling column per unit (hours /
- * minutes / seconds, + SA / CH on a 12-hour clock), divided by hairlines.
+ * minutes / seconds, + "SA" / "CH" on a 12-hour clock), divided by hairlines.
  * Each column is a React Aria ListBox — ↑ / ↓ move and pick (selection
  * follows focus), ← / → or Tab switch column, Enter confirms. The picked row
  * scrolls to the top of its column.

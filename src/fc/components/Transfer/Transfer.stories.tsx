@@ -64,7 +64,7 @@ export const Playground: Story = {}
  * Figma `Transfer` Search=No. Rows show the list item states: checked
  * (State=Selected, tinted), hover (State=Hover) and "Bò lúc lắc"
  * (State=Disabled). Check rows, then move them with › / ‹; the move is
- * announced ("Đã chuyển 2 mục") and focus returns to the source list.
+ * announced ("Đã chuyển 2 mục": 2 items moved) and focus returns to the source list.
  */
 export const Basic: Story = {}
 
@@ -94,8 +94,8 @@ export const Status: Story = {
 export const Disabled: Story = { args: { isDisabled: true, showSearch: true } }
 
 /**
- * `oneWay`: only "Chuyển sang phải". Target rows have no checkbox but a
- * remove button, and the target header menu offers "Xóa tất cả".
+ * `oneWay`: only "Chuyển sang phải" (Move right). Target rows have no checkbox
+ * but a remove button, and the target header menu offers "Xóa tất cả" (Remove all).
  */
 export const OneWay: Story = { args: { oneWay: true, defaultSelectedKeys: [] } }
 
@@ -126,7 +126,7 @@ export const WithDescription: Story = {
   },
 }
 
-/** Empty lists use fc `Empty` size `sm`; a search with no match says "Không tìm thấy kết quả". */
+/** Empty lists use fc `Empty` size `sm`; a search with no match says "Không tìm thấy kết quả" (No results found). */
 export const EmptyLists: Story = {
   render: (args) => (
     <div style={stack}>

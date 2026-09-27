@@ -29,7 +29,7 @@ export interface SearchModalItem {
   href?: string
 }
 
-/** Features that live under one path, e.g. "Nhà hàng / Danh sách nhà hàng". */
+/** Features that live under one path, e.g. "Nhà hàng / Danh sách nhà hàng" (Restaurants / Restaurant list). */
 export interface SearchModalGroup {
   key: Key
   /** Figma "Breadcrumb Title" above the group's rows. Searched as well as the item labels. */
@@ -96,7 +96,7 @@ interface SearchPanelProps {
    * empty. Without any, the field-empty state is the Default hint.
    */
   history?: SearchModalItem[]
-  /** Adds "Xoá lịch sử". Update `history` in response; focus returns to the field. */
+  /** Adds "Xoá lịch sử" (Clear history). Update `history` in response; focus returns to the field. */
   onClearHistory?: () => void
   /** A result or history row was chosen (Enter or click). The modal then closes. */
   onAction?: (key: Key) => void
@@ -181,8 +181,9 @@ function SearchPanel({
     onClose()
   }
 
-  // The footer promises "ESC Đóng lại": close at once, even with text in the
-  // field (a plain search field would clear it first). The × button clears.
+  // The footer promises "ESC Đóng lại" (Esc closes): close at once, even with
+  // text in the field (a plain search field would clear it first). The ×
+  // button clears.
   const closeOnEscape = (e: KeyboardEvent) => {
     if (e.key !== 'Escape' || e.nativeEvent.isComposing) return
     e.preventDefault()
@@ -331,11 +332,11 @@ function IconKey({ name, icon }: { name: string; icon: ReactNode }) {
  * for finding a feature. 650 × 450, Elevated surface, radius 8, Shadow/Base,
  * over the Modal mask. Head = Input Large with search icon and clear button;
  * Content = one of the Figma states; Footer = key legend
- * ("ESC Đóng lại · ↑ ↓ Di chuyển lên xuống · ↵ Chọn").
+ * ("ESC Đóng lại · ↑ ↓ Di chuyển lên xuống · ↵ Chọn": close, move up / down, select).
  *
  * States, chosen from the text and the data:
  * - empty field, no `history` → State=Default / Focused (hint);
- * - empty field with `history` → State=History ("Gần đây", "Xoá lịch sử");
+ * - empty field with `history` → State=History: "Gần đây" (Recent) and "Xoá lịch sử" (Clear history);
  * - text with matches → State=Typing / Filled (rows grouped under their path);
  * - text without matches → State=Empty.
  *

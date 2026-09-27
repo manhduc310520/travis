@@ -9,7 +9,7 @@ export interface MessageOptions {
   duration?: number
   /** Called when the message closes (timer or `close()`); not on `message.destroy()`. */
   onClose?: () => void
-  /** Screen-reader name of the type icon, e.g. "Lỗi". Defaults to the Vietnamese type name. */
+  /** Screen-reader name of the type icon, e.g. "Lỗi" (Error). Defaults to the Vietnamese type name. */
   iconLabel?: string
 }
 

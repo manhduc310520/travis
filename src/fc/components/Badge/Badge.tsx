@@ -14,7 +14,7 @@ export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   showZero?: boolean
   /** A dot instead of a number. Give it a `label` — a dot alone says nothing to a screen reader. */
   dot?: boolean
-  /** Screen-reader text for the indicator, e.g. "5 đơn mới". Defaults to the count. */
+  /** Screen-reader text for the indicator, e.g. "12 đơn mới" (12 new orders). Defaults to the count. */
   label?: string
   size?: 'sm' | 'md'
   /** What the badge sits on (icon, avatar, button). Without children the indicator stands alone. */

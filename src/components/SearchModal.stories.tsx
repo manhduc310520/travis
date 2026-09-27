@@ -11,7 +11,7 @@ const LABEL_BY_KEY = new Map<Key, string>(FEATURES.flatMap((group) => group.item
 
 /**
  * Trigger button + the modal (inside `ModalTrigger`), with a working
- * "Xoá lịch sử" and the last chosen feature shown under the button.
+ * "Xoá lịch sử" (Clear history) and the last chosen feature shown under the button.
  */
 function Demo({ defaultOpen, history: initialHistory = [], onAction, onClearHistory, ...args }: SearchModalProps) {
   const [history, setHistory] = useState(initialHistory)
@@ -73,7 +73,8 @@ type Story = StoryObj<typeof meta>
 /**
  * Figma Search Modal State=Default and State=Focused — open on load, nothing
  * typed, no history: the field has focus and the hint
- * "Nhập từ khoá để tìm tính năng" / "Ví dụ: “Sản phẩm”" fills the content.
+ * "Nhập từ khoá để tìm tính năng" / "Ví dụ: “Sản phẩm”" (Enter a keyword to
+ * find a feature / Example: “Products”) fills the content.
  */
 export const Default: Story = {
   args: { defaultOpen: true },
@@ -81,8 +82,8 @@ export const Default: Story = {
 
 /**
  * Figma State=History — nothing typed, recent features listed under "Gần đây"
- * with a clock icon. ↓ enters the list; "Xoá lịch sử" empties it (back to the
- * Default hint, focus returns to the field).
+ * (Recent) with a clock icon. ↓ enters the list; "Xoá lịch sử" (Clear history)
+ * empties it (back to the Default hint, focus returns to the field).
  */
 export const History: Story = {
   args: { defaultOpen: true, history: HISTORY },
@@ -96,7 +97,8 @@ export const History: Story = {
 
 /**
  * Figma State=Typing / State=Filled — the field holds "nha hang" (no
- * diacritics) and every feature under "Nhà hàng" is listed, grouped by path.
+ * diacritics) and every feature under "Nhà hàng" (Restaurants) is listed,
+ * grouped by path.
  * Typing highlights the first row; ↑ / ↓ move across groups, Enter chooses.
  */
 export const Results: Story = {
@@ -105,7 +107,8 @@ export const Results: Story = {
 
 /**
  * Figma State=Empty — "23332d" matches nothing: search icon,
- * "Không tìm thấy kết quả", "Vui lòng nhập từ khóa khác để tìm kiếm".
+ * "Không tìm thấy kết quả" (No results found),
+ * "Vui lòng nhập từ khóa khác để tìm kiếm" (Please try another keyword).
  */
 export const Empty: Story = {
   args: { defaultOpen: true, defaultInputValue: '23332d' },
@@ -119,9 +122,10 @@ export const Empty: Story = {
 
 /**
  * Interactive, controlled the way the app header opens it: `isOpen` +
- * `onOpenChange`. Press the button, type (e.g. "doanh thu", "phan quyen"),
- * move with ↑ / ↓, choose with Enter or a click; Esc or the mask closes.
- * The play test types "nha hang", checks the filter, then picks "Sơ đồ bàn".
+ * `onOpenChange`. Press the button, type (e.g. "doanh thu" for revenue,
+ * "phan quyen" for permissions), move with ↑ / ↓, choose with Enter or a
+ * click; Esc or the mask closes. The play test types "nha hang", checks the
+ * filter, then picks "Sơ đồ bàn" (Table map).
  */
 export const Interactive: Story = {
   args: { history: HISTORY },

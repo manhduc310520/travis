@@ -142,12 +142,12 @@ type Story = StoryObj<typeof meta>
 
 export const Playground: Story = {}
 
-/** Figma Theme=Light, Mode=Inline, Collapsed=No, Logo. Submenus expand in place; group titles inside "Báo cáo". */
+/** Figma Theme=Light, Mode=Inline, Collapsed=No, Logo. Submenus expand in place; group titles inside "Báo cáo" (Reports). */
 export const Inline: Story = {
   args: { logo, defaultOpenKeys: ['menu', 'reports'] },
 }
 
-/** Figma Theme=Light, Mode=Inline, Collapsed=Yes: icons only, tooltip with the label, "Thực đơn" popover open. */
+/** Figma Theme=Light, Mode=Inline, Collapsed=Yes: icons only, tooltip with the label, "Thực đơn" (Menu) popover open. */
 export const InlineCollapsed: Story = {
   args: { logo, isCollapsed: true, defaultOpenKeys: ['menu'] },
   parameters: OPEN_POPOVER,

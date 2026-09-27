@@ -101,7 +101,7 @@ export const Vertical: Story = {
       <Captioned label="Vertical">
         <Segmented {...args} options={CHANNELS} defaultSelectedKey="all" orientation="vertical" aria-label="Kênh bán" />
       </Captioned>
-      <Captioned label="Vertical, Block (khung rộng 200)">
+      <Captioned label="Vertical, Block (200px-wide frame)">
         <div style={{ width: 200 }}>
           <Segmented {...args} options={CHANNELS} defaultSelectedKey="all" orientation="vertical" block aria-label="Kênh bán (block)" />
         </div>
@@ -149,10 +149,10 @@ export const WithIcons: Story = {
 export const Disabled: Story = {
   render: (args) => (
     <div style={stack}>
-      <Captioned label="Một mục bị khoá">
+      <Captioned label="One item disabled">
         <Segmented {...args} options={PERIODS.map((o) => (o.key === 'quarter' ? { ...o, isDisabled: true } : o))} />
       </Captioned>
-      <Captioned label="Mục đang chọn bị khoá">
+      <Captioned label="Selected item disabled">
         <Segmented {...args} defaultSelectedKey="quarter" options={PERIODS.map((o) => (o.key === 'quarter' ? { ...o, isDisabled: true } : o))} />
       </Captioned>
       <Captioned label="isDisabled">

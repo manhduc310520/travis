@@ -32,7 +32,7 @@ export const Playground: Story = {}
  */
 export const Basic: Story = {}
 
-/** Figma link State=Hover: "Chuỗi nhà hàng" is hovered on load (background + Content-Current colour). */
+/** Figma link State=Hover: the "Chuỗi nhà hàng" (Restaurant chain) link is hovered on load — background + Content-Current colour. */
 export const Hover: Story = {
   play: async ({ canvasElement }) => {
     await userEvent.hover(within(canvasElement).getByRole('link', { name: 'Chuỗi nhà hàng' }))
@@ -41,7 +41,7 @@ export const Hover: Story = {
 
 /**
  * Figma Type=Icon, both link `Icon?` / `Label?` combinations: an icon-only
- * home link (named "Trang chủ" for assistive tech), then icon + label items.
+ * home link (named "Trang chủ", Home, for assistive tech), then icon + label items.
  */
 export const WithIcon: Story = {
   args: {

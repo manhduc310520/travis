@@ -166,7 +166,7 @@ export const Range: Story = {
   render: () => <div style={wideColumn}><DateRangePicker label="Kỳ báo cáo doanh thu" defaultValue={RANGE} defaultOpen /></div>,
 }
 
-/** Figma menu Preset=True (range): the report shortcuts (`RANGE_PRESETS`: Hôm nay, 7 ngày qua, Tháng này…). */
+/** Figma menu Preset=True (range): the report shortcuts (`RANGE_PRESETS`: "Hôm nay", "7 ngày qua", "Tháng này"…). */
 export const RangePresets: Story = {
   render: () => <div style={wideColumn}><DateRangePicker label="Kỳ báo cáo" presets={RANGE_PRESETS} defaultValue={RANGE} defaultOpen /></div>,
   decorators: [(Story) => <div style={{ minHeight: 440 }}><Story /></div>],

@@ -5,7 +5,7 @@ export interface InboxMessage {
   key: Key
   sender: string
   text: string
-  /** Relative time on the right, e.g. "15p trước". */
+  /** Relative time on the right, e.g. "15p trước" (15 min ago). */
   time: string
   /** Rows are grouped under this date, e.g. "15/07/2026". */
   date: string

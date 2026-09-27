@@ -17,7 +17,7 @@ export interface InputNumberProps extends Omit<AriaNumberFieldProps, 'className'
   tooltip?: ReactNode
   /** Figma `Prefix Suffix` Prefix: icon or short text inside the box, before the number. */
   prefix?: ReactNode
-  /** Figma Suffix: a unit after the number ("bàn", "%"). For money prefer `formatOptions` currency. */
+  /** Figma Suffix: a unit after the number, e.g. "bàn" (tables) or "%". For money prefer `formatOptions` currency. */
   suffix?: ReactNode
   /** Figma "Pre Tab": text, icon or a small control joined to the start of the box. */
   addonBefore?: ReactNode

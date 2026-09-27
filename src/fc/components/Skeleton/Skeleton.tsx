@@ -142,7 +142,7 @@ export interface SkeletonProps {
 /**
  * Figma "❖ Skeleton" (set `Skeleton`: Type Basic / Complex, `Images?`, `Input?`, `Button?`).
  * Grey blocks where content is still loading. The blocks are hidden from
- * assistive tech; one visually hidden `role="status"` says "Đang tải…"
+ * assistive tech; one visually hidden `role="status"` says "Đang tải…" (Loading…)
  * instead. That status element stays mounted when loading ends, so a later
  * reload is announced reliably.
  */

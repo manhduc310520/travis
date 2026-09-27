@@ -60,7 +60,7 @@ export const Basic: Story = {
 
 /**
  * Figma `Statistic` Type Up / Down × Show Icon. Success / danger text colour,
- * an arrow, and a hidden "Tăng" / "Giảm" — the colour is never the only cue.
+ * an arrow, and a hidden "Tăng" / "Giảm" (up / down) — the colour is never the only cue.
  */
 export const Trend: Story = {
   render: () => (
@@ -120,7 +120,7 @@ function CountdownDemo() {
       <Captioned label="Type=2 (HH:mm:ss:SSS)">
         <Countdown title="Kết thúc khuyến mãi sau" value={deadline} format="HH:mm:ss:SSS" />
       </Captioned>
-      <Captioned label="Theo ngày">
+      <Captioned label="By day">
         <Countdown title="Hết hạn gói dịch vụ" value={deadline + 3 * 24 * 60 * 60 * 1000} format="D [ngày] HH [giờ] mm [phút]" />
       </Captioned>
     </div>
@@ -149,5 +149,5 @@ function FinishDemo() {
   )
 }
 
-/** Reaching zero: `onFinish` runs once and screen readers hear "Đã hết thời gian" (polite). */
+/** Reaching zero: `onFinish` runs once and screen readers hear "Đã hết thời gian" (Time is up) through a polite status. */
 export const CountdownFinish: Story = { render: () => <FinishDemo /> }

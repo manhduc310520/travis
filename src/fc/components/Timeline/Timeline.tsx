@@ -36,7 +36,7 @@ export interface TimelineProps {
   textPlacement?: TimelineTextPlacement
   /**
    * A last item for what is still happening, with a spinning marker.
-   * `true` shows the default text ("Đang cập nhật…").
+   * `true` shows the default text, "Đang cập nhật…" (Updating…).
    */
   pending?: ReactNode
   /** Marker of the pending item; defaults to a spinner. */

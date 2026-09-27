@@ -41,7 +41,7 @@ export interface SegmentedProps
   /** Figma `Block`: fill the parent's width, segments share it equally. */
   block?: boolean
   shape?: SegmentedShape
-  /** Names the group, e.g. "Kỳ báo cáo". Required when there is no visible label nearby (`aria-labelledby`). */
+  /** Names the group, e.g. "Kỳ báo cáo" (Reporting period). Required when there is no visible label nearby (`aria-labelledby`). */
   'aria-label'?: string
   className?: string
 }

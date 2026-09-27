@@ -28,7 +28,7 @@ export const WithRows: Story = {
 /** More than one page of rows: pagination under the table. */
 export const Paged: Story = { args: { rows: manyRows } }
 
-/** A search with no match: empty state with "Xoá tìm kiếm và bộ lọc". */
+/** A search with no match: empty state with "Xoá tìm kiếm và bộ lọc" (Clear search and filters). */
 export const NoMatch: Story = {
   args: { rows: sampleRows },
   play: async ({ canvas }) => {

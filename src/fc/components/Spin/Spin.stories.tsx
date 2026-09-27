@@ -128,7 +128,7 @@ export const Nested: Story = {
 }
 
 /**
- * Real use: "Làm mới" reloads for 1.5 s. Focus is parked on the status
+ * Real use: "Làm mới" (Refresh) reloads for 1.5 s. Focus is parked on the status
  * overlay while the card is inert, then returns to the button.
  */
 export const NestedReload: Story = {
@@ -182,7 +182,7 @@ export const Fullscreen: Story = {
   },
 }
 
-/** Fullscreen in use: "Đồng bộ" blocks the whole page for 2 s; focus returns to the button after. */
+/** Fullscreen in use: "Đồng bộ thực đơn" (Sync menu) blocks the whole page for 2 s; focus returns to the button after. */
 export const FullscreenInteractive: Story = {
   parameters: { docs: { story: { inline: false, iframeHeight: 360 } } },
   render: function Render() {

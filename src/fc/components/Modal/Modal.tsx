@@ -17,7 +17,7 @@ import styles from './Modal.module.css'
 
 /**
  * Opens the Modal (or ConfirmModal / InfoModal) placed after its trigger:
- * `<ModalTrigger><Button>Mở</Button><Modal …/></ModalTrigger>`. It is React
+ * `<ModalTrigger><Button>Mở hộp thoại</Button><Modal …/></ModalTrigger>`. It is React
  * Aria's `DialogTrigger`: it takes `defaultOpen`, `isOpen`, `onOpenChange`.
  */
 export const ModalTrigger = DialogTrigger
@@ -48,7 +48,7 @@ export interface ModalProps extends ModalFrameProps {
   /** Figma `Modal / Basic` Type=Text (plain copy) or Type=Slot (any content: form, list…). */
   children?: ReactNode
   /**
-   * Default: "Hủy" + "Đồng ý" (primary), right-aligned. `null` hides the
+   * Default: "Hủy" (Cancel) + "Đồng ý" (OK, primary), right-aligned. `null` hides the
    * footer. A node replaces it; a function receives `close` (closes without
    * calling `onCancel`).
    */
@@ -149,8 +149,8 @@ function ModalFrame({
 /**
  * Figma "❖ Modal" — `Modal / Basic` (Type = Text | Slot). Width 520, radius
  * 8, Elevated surface with Shadow/Base over a Background/Overlay mask.
- * Header (title + close icon), body, footer ("Hủy" + "Đồng ý", right
- * aligned, 8 apart). One primary action only.
+ * Header (title + close icon), body, footer: "Hủy" (Cancel) + "Đồng ý"
+ * (OK), right aligned, 8 apart. One primary action only.
  *
  * Built on React Aria `ModalOverlay` + `Modal` + `Dialog`: focus moves in,
  * stays trapped and returns to the trigger; Esc closes; the page behind is
@@ -225,7 +225,7 @@ const STATUS_ICON: Record<ModalStatus | 'confirm', ReactNode> = {
 }
 
 export interface ConfirmModalProps extends ModalFrameProps {
-  /** One-line question or statement, e.g. "Xóa món ăn?". Names the dialog. */
+  /** One-line question or statement, e.g. "Xóa món ăn?" (Delete dish?). Names the dialog. */
   title: ReactNode
   /** Detail under the title. Read out as the dialog's description. */
   children?: ReactNode
@@ -237,7 +237,7 @@ export interface ConfirmModalProps extends ModalFrameProps {
   onOk?: () => unknown
   /** Cancel, Esc and (if `isDismissable`) a mask click. */
   onCancel?: () => void
-  /** Destructive confirmation: OK turns danger and focus starts on "Hủy". */
+  /** Destructive confirmation: OK turns danger and focus starts on "Hủy" (Cancel). */
   danger?: boolean
   confirmLoading?: boolean
   okButtonProps?: ModalButtonProps
@@ -251,7 +251,7 @@ export interface InfoModalProps extends Omit<ConfirmModalProps, 'cancelText' | '
 
 /**
  * Figma `Modal / Information` layout: status icon + title + content, then
- * the buttons. `type="confirm"` adds "Hủy". Used by ConfirmModal, InfoModal
+ * the buttons. `type="confirm"` adds "Hủy" (Cancel). Used by ConfirmModal, InfoModal
  * and `useModal()`; not exported from the package.
  */
 export function StatusModal({
@@ -314,8 +314,8 @@ export function StatusModal({
 
 /**
  * Figma "Modal" confirmation example: warning icon, question, detail,
- * "Hủy" + "Đồng ý". For deleting, set `danger` and a verb as `okText`
- * ("Xóa"). Announced as an `alertdialog`; the mask does not close it.
+ * "Hủy" (Cancel) + "Đồng ý" (OK). For deleting, set `danger` and a verb as
+ * `okText`, e.g. "Xóa" (Delete). Announced as an `alertdialog`; the mask does not close it.
  */
 export function ConfirmModal(props: ConfirmModalProps) {
   return <StatusModal {...props} type="confirm" />
@@ -323,7 +323,7 @@ export function ConfirmModal(props: ConfirmModalProps) {
 
 /**
  * Figma `Modal / Information` — Status = Info | Success | Warning | Error.
- * A single "Đồng ý" acknowledges the message.
+ * A single "Đồng ý" (OK) acknowledges the message.
  */
 export function InfoModal({ status = 'info', ...props }: InfoModalProps) {
   return <StatusModal {...props} type={status} />

@@ -49,7 +49,7 @@ interface PickerBaseProps extends Omit<FieldChromeProps, 'showCount' | 'placehol
   picker?: DatePickerType
   /** Date pickers only: add hours / minutes / seconds, picked in TimePicker's columns beside the calendar. */
   granularity?: DateGranularity
-  /** With a time: 12 adds an SA / CH column. By default the locale decides (vi-VN: 24). */
+  /** With a time: 12 adds an "SA" / "CH" (AM / PM) column. By default the locale decides (vi-VN: 24). */
   hourCycle?: 12 | 24
   /** Figma "Prefix": icon or short text inside the box, before the value. */
   prefix?: ReactNode
@@ -90,9 +90,9 @@ export interface DateRangePickerProps extends PickerBaseProps {
   value?: RangeValue<DateValue> | null
   defaultValue?: RangeValue<DateValue> | null
   onChange?: (value: RangeValue<DateValue> | null) => void
-  /** Default "Ngày bắt đầu" (or "Tháng / Năm bắt đầu"). */
+  /** Default "Ngày bắt đầu" (or "Tháng bắt đầu" / "Năm bắt đầu"). */
   startPlaceholder?: string
-  /** Default "Ngày kết thúc" (or "Tháng / Năm kết thúc"). */
+  /** Default "Ngày kết thúc" (or "Tháng kết thúc" / "Năm kết thúc"). */
   endPlaceholder?: string
   /** Figma Preset=True. See `RANGE_PRESETS` for the report shortcuts ("Hôm nay", "7 ngày qua", "Tháng này"…). */
   presets?: DatePreset<RangeValue<DateValue>>[]

@@ -27,7 +27,7 @@ export interface NotificationContent {
   showIcon?: boolean
   /** Replaces the type icon (24px), e.g. a cart for a new order. */
   icon?: ReactNode
-  /** Screen-reader name of the icon. Defaults to the Vietnamese type name ("Lỗi"…). */
+  /** Screen-reader name of the icon. Defaults to the Vietnamese type name, e.g. "Lỗi" (Error). */
   iconLabel?: string
   /** Figma Buttons?: footer actions, right-aligned. */
   actions?: NotificationAction[]

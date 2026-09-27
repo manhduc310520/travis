@@ -203,8 +203,8 @@ export const Validation: Story = {
 
 /**
  * Simulated upload: progress with fc `Progress`, then done (announced
- * "Đã tải lên …"). Pick a file named with "loi" (e.g. "anh-loi.png") to see
- * a failure, then retry it.
+ * "Đã tải lên …" (Uploaded …)). Pick a file whose name contains "loi"
+ * (e.g. "anh-loi.png") to see a failure, then retry it.
  */
 export const SimulatedUpload: Story = {
   args: { listType: 'picture' },

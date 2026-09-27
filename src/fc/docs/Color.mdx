@@ -3,69 +3,69 @@ import * as ColorStories from './Color.stories'
 
 <Meta of={ColorStories} />
 
-# Màu
+# Color
 
-Mỗi dòng là một biến trong Figma (collection `0. Global`, `1. Brand`, `2. Colors`). Cột **CSS**
-trùng với Code syntax trong Dev Mode; cột **Giá trị** là giá trị trình duyệt đang
-tính ra — đổi **Brand** hoặc **Mode** trên thanh công cụ để xem nó đổi theo.
-Tên biến không bao giờ đổi theo theme. Trong Figma tên viết hoa chữ đầu
-(`Color/Content/Neutral-Strong`); biến CSS là cùng đường dẫn viết thường
-(`--fc-color-content-neutral-strong`). Quy tắc đặt tên: `docs/token-naming-spec.md`.
+Each row is one Figma variable (collections `0. Global`, `1. Brand`, `2. Colors`). The **CSS** column
+matches the Code syntax in Dev Mode; the **Value** column is the value the browser currently
+resolves — switch **Brand** or **Mode** in the toolbar to watch it change.
+Variable names never change with the theme. In Figma, names are Title Case
+(`Color/Content/Neutral-Strong`); the CSS variable is the same path in lowercase
+(`--fc-color-content-neutral-strong`). Naming rules: `docs/token-naming-spec.md`.
 
-## Chữ và icon — `Color/Content`
+## Text and icons — `Color/Content`
 
 <Canvas of={ColorStories.Content} />
 
-## Nền — `Color/Background`
+## Background — `Color/Background`
 
-Nền trang (`layout`) → nền card, bảng, form (`container`) → lớp nổi (`elevated`,
-phân biệt bằng shadow).
+Page background (`layout`) → card, table and form background (`container`) → floating layers (`elevated`,
+told apart by shadow).
 
 <Canvas of={ColorStories.Background} />
 
-## Màu chính của từng role — `Color/Solid`
+## Main color of each role — `Color/Solid`
 
-Dùng cho nền, chữ hoặc viền khi cần màu đậm nhất của role. `accent` là màu brand:
-mỗi màn hình chỉ một hành động primary.
+Use for background, text or border when you need a role's strongest color. `accent` is the brand color:
+only one primary action per screen.
 
 <Canvas of={ColorStories.Solid} />
 
-## Viền — `Color/Border`
+## Border — `Color/Border`
 
 <Canvas of={ColorStories.Border} />
 
-## Nền bán trong suốt — `Color/Fill`
+## Semi-transparent fill — `Color/Fill`
 
-Dùng cho hover, vùng nhấn nhẹ cần hòa vào bề mặt phía sau.
+Use for hover and subtly emphasized areas that should blend into the surface behind them.
 
 <Canvas of={ColorStories.Fill} />
 
-## Vòng focus — `Color/Outline`
+## Focus ring — `Color/Outline`
 
 <Canvas of={ColorStories.Outline} />
 
-## Giá trị gốc — `Color/Seed`
+## Seed values — `Color/Seed`
 
 <Canvas of={ColorStories.Seed} />
 
-## Bảng màu — `Color/Palette`
+## Palette — `Color/Palette`
 
-12 dải × 10 bậc, cộng `accent` (dải của brand đang chọn). Đổi theo **Mode**:
-cùng một tên cho màu sáng ở Light và màu tối ở Dark. Chỉ dùng trực tiếp cho tag,
-chart, phân loại — không dùng cho nút hay UI chính.
+12 ramps × 10 steps, plus `accent` (the ramp of the selected brand). Follows **Mode**:
+the same name is a light color in Light and a dark color in Dark. Use directly only for tags,
+charts and categorization — never for buttons or primary UI.
 
 <Canvas of={ColorStories.Palette} />
 
 ## Brand — `Brand/Light`, `Brand/Dark`
 
-Tầng đổi theo **Brand**, tách sẵn phía Light và Dark. Không dùng trực tiếp trong
-component — dùng qua `Color/*`.
+The layer that follows **Brand**, already split into Light and Dark sides. Do not use it directly in
+components — go through `Color/*`.
 
 <Canvas of={ColorStories.Brand} />
 
-## Giá trị gốc — `Global/Light`, `Global/Dark`
+## Base values — `Global/Light`, `Global/Dark`
 
-Collection `0. Global`: một mode, không đổi theo theme, ẩn khỏi thư viện Figma.
-Chỉ là nguồn cho các tầng trên — **không bao giờ** dùng trực tiếp.
+Collection `0. Global`: a single mode, does not change with the theme, hidden from the Figma library.
+It is only the source for the layers above — **never** use it directly.
 
 <Canvas of={ColorStories.Global} />

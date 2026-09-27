@@ -4,7 +4,7 @@ import { Map01, Plus } from '../../../icons'
 import { Button } from '../Button/Button'
 import { Cascader, type CascaderOption, type CascaderValue } from './Cascader'
 
-/** Tỉnh / thành → quận → phường (sample data, not exhaustive). */
+/** Provinces / cities → districts → wards (sample data, not exhaustive). */
 const AREAS: CascaderOption[] = [
   {
     key: 'hn', label: 'Hà Nội', children: [
@@ -38,7 +38,7 @@ const AREAS: CascaderOption[] = [
   { key: 'ct', label: 'Cần Thơ', isDisabled: true, children: [{ key: 'ninh-kieu', label: 'Ninh Kiều' }] },
 ]
 
-/** Thực đơn → nhóm → món: a branch can be a valid choice too (changeOnSelect). */
+/** Menu → category → dish: a branch can be a valid choice too (changeOnSelect). */
 const MENU: CascaderOption[] = [
   {
     key: 'food', label: 'Đồ ăn', children: [
@@ -180,7 +180,7 @@ export const Search: Story = { args: { showSearch: true, allowClear: true } }
 /** Search in multiple mode: tick results straight from the list. */
 export const SearchMultiple: Story = { args: { showSearch: true, selectionMode: 'multiple', label: 'Khu vực áp dụng' } }
 
-/** Figma menu item State=Disabled (Cầu Giấy, Cần Thơ, Ô Chợ Dừa) and a disabled field. */
+/** Figma menu item State=Disabled ("Cầu Giấy", "Cần Thơ", "Ô Chợ Dừa") and a disabled field. */
 export const Disabled: Story = {
   render: (args) => (
     <div style={column}>

@@ -11,7 +11,7 @@ import styles from './AppHeader.module.css'
 
 export type { AppAccount, InboxMessage } from './appHeaderSamples'
 
-/** Figma "Language Item" menu: Việt Nam / English / China. */
+/** Figma "Language Item" menu: "Việt Nam" / "English" / "China". */
 export type AppLanguage = 'vi' | 'en' | 'zh'
 
 const LANGUAGES: { key: AppLanguage; label: string; Flag: typeof FlagVietnam }[] = [
@@ -27,7 +27,7 @@ export interface AppHeaderProps {
   userAvatarSrc?: string
   /**
    * Figma "Type = Title": a back arrow and the page title replace the logo,
-   * for pages opened from somewhere else (e.g. "Hóa đơn điện tử").
+   * for pages opened from somewhere else, e.g. "Hóa đơn điện tử" (E-invoices).
    */
   title?: ReactNode
   onBack?: () => void
@@ -39,9 +39,9 @@ export interface AppHeaderProps {
   onAiClick?: () => void
   language?: AppLanguage
   onLanguageChange?: (language: AppLanguage) => void
-  /** "Thông báo" tab of the inbox popover. */
+  /** "Thông báo" (Notices) tab of the inbox popover. */
   notices?: InboxMessage[]
-  /** "Hòm thư" tab of the inbox popover. */
+  /** "Hòm thư" (Mailbox) tab of the inbox popover. */
   mails?: InboxMessage[]
   onManageInbox?: () => void
   /** Stores / accounts the user can switch between. */
@@ -225,7 +225,7 @@ function isMac() {
   return typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform)
 }
 
-/** Figma "Notification / Open": title, two tabs with counts, rows by date, "Quản lý hòm thư". */
+/** Figma "Notification / Open": title, two tabs with counts, rows by date, "Quản lý hòm thư" (Manage mailbox). */
 function Inbox({ notices, mails, onManage }: { notices: InboxMessage[]; mails: InboxMessage[]; onManage?: () => void }) {
   return (
     <div className={styles.inbox}>

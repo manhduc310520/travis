@@ -3,35 +3,35 @@ import * as LayoutStories from './Layout.stories'
 
 <Meta of={LayoutStories} />
 
-# Khoảng cách và kích thước
+# Spacing & Sizing
 
-Biến trong Figma collection `3. Dimensions`. Mọi giá trị bám lưới 4px ở density
-Default; đổi **Density** sang Compact trên thanh công cụ để xem chúng thu lại.
+Variables in the Figma collection `3. Dimensions`. Every value snaps to the 4px grid at the
+Default density; switch **Density** to Compact in the toolbar to see them shrink.
 
-## Khoảng cách ngoài — `Space/Margin`
+## Margin — `Space/Margin`
 
-Khoảng cách giữa hai phần tử. `Flex`, `Space`, `Grid` nhận các bậc này qua prop `gap`.
+The space between two elements. `Flex`, `Space` and `Grid` take these steps through the `gap` prop.
 
 <Canvas of={LayoutStories.Margin} />
 
-## Khoảng đệm — `Space/Padding`
+## Padding — `Space/Padding`
 
 <Canvas of={LayoutStories.Padding} />
 
-## Thang kích thước chung — `Size/Scale`
+## General size scale — `Size/Scale`
 
 <Canvas of={LayoutStories.SizeScale} />
 
-## Chiều cao control — `Size/Control`
+## Control height — `Size/Control`
 
-`base` là chiều cao chuẩn của nút, ô nhập, select.
+`base` is the standard height of buttons, inputs and selects.
 
 <Canvas of={LayoutStories.ControlHeight} />
 
-## Mốc màn hình — `Breakpoint`
+## Breakpoints — `Breakpoint`
 
 <Canvas of={LayoutStories.Breakpoint} />
 
-## Khác
+## Other
 
 <Canvas of={LayoutStories.Other} />

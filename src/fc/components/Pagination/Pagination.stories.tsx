@@ -29,7 +29,7 @@ export const Basic: Story = {}
 /** Figma Variant=More: many pages fold into "•••" items on both sides; hover or focus one to see the jump arrow. */
 export const More: Story = { args: { total: 500, defaultCurrent: 6 } }
 
-/** Figma Variant=Jumper: "Đến trang" field after the items — type a number, Enter (or leave the field) jumps. */
+/** Figma Variant=Jumper: "Đến trang" (Go to page) field after the items — type a number, Enter (or leave the field) jumps. */
 export const Jumper: Story = { args: { total: 500, defaultCurrent: 2, showJumper: true } }
 
 /** Figma Variant=Mini: the small size. */
@@ -58,7 +58,7 @@ export const Sizes: Story = {
   ),
 }
 
-/** `showTotal`: "Tổng 85 mục" before the items, or your own text from a function. */
+/** `showTotal`: "Tổng 85 mục" (85 items in total) before the items, or your own text from a function. */
 export const WithTotal: Story = {
   render: (args) => (
     <div style={stack}>
