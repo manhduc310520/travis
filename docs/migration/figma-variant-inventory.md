@@ -1,6 +1,6 @@
 # Figma variant inventory (2026-09-26)
 
-Read from file `hneVCBNUiPizVorg7Jp18G` with the Plugin API. For every component page:
+Read from the FABi CMS Figma file with the Plugin API. For every component page:
 **Sets** = component sets and their variant / boolean properties; **Examples** = the instances
 placed in the page's docs section ("Light Mode" example frame), with only the properties that
 differ from the component's defaults (`(default)` = all defaults). Storybook must show every

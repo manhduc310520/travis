@@ -1,5 +1,5 @@
 // Figma Plugin API snippet — run through the Figma MCP `use_figma` tool on
-// file hneVCBNUiPizVorg7Jp18G. The Variables REST API needs an Enterprise
+// the FABi CMS Figma file. The Variables REST API needs an Enterprise
 // plan, so this is the export path. It is read-only.
 //
 // Set SLICE (output is capped at ~20 KB per call) and run it once per slice:

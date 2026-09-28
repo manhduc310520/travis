@@ -11,8 +11,9 @@ template, icon, token; export; commit and deploy) are in
 The FABi CMS design system, named **fc**. Components are built on
 `react-aria-components` (behaviour and accessibility) and styled with CSS
 Modules that use **only** `--fc-*` CSS variables. Every token comes from the
-Figma file `hneVCBNUiPizVorg7Jp18G` ("Design Component Desktop"), which is the
-source of truth. 5 brands × 2 modes × 2 densities = 20 live theme combinations.
+FABi CMS Figma file, which is the
+source of truth. Its key and link stay out of this public repo
+and out of Storybook; the maintainer's local `CLAUDE.md` holds them. 5 brands × 2 modes × 2 densities = 20 live theme combinations.
 
 Ant Design was the previous base; it was removed on 2026-09-27 (phase 5 of
 [docs/fc-roadmap.md](./docs/fc-roadmap.md)). Backups of the removed code:

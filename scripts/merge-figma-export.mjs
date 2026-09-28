@@ -25,7 +25,7 @@ const missing = ORDER.filter((k) => !merged[k])
 if (missing.length) throw new Error(`Missing collections: ${missing.join(', ')} — run every slice`)
 
 const out = {
-  _source: `Figma hneVCBNUiPizVorg7Jp18G, collections 0-5 (5: Component/* only) + Shadow/* effect styles. Exported ${new Date().toISOString().slice(0, 10)} via scripts/figma-export.js. Do not edit by hand: re-export from Figma.`,
+  _source: `FABi CMS Figma file, collections 0-5 (5: Component/* only) + Shadow/* effect styles. Exported ${new Date().toISOString().slice(0, 10)} via scripts/figma-export.js. Do not edit by hand: re-export from Figma.`,
   ...Object.fromEntries(ORDER.map((k) => [k, merged[k]])),
 }
 fs.writeFileSync(new URL('../tokens/figma-export.json', import.meta.url), JSON.stringify(out, null, 2) + '\n')

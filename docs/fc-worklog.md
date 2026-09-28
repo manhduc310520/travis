@@ -25,7 +25,7 @@
 - Đọc repo `fabi-design-system`, mở Storybook, đọc artifact nghiên cứu Wheel, trang
   Wheel/HRV Design System, bản ghi bài nói về design token, bài Medium "Design tokens: what, why
   and how", ảnh lưới đặt tên.
-- Kết nối Figma file `Design Component Desktop`, đọc kỹ 5 collection biến.
+- Kết nối file Figma của FABi CMS, đọc kỹ 5 collection biến.
 - So sánh cách đặt tên của Wheel với bộ token cũ → anh/chị chọn đổi sang kiểu Wheel, namespace
   riêng **`fc`** (FABi CMS), đổi toàn bộ.
 - Yêu cầu: **không còn dấu vết Ant Design** → chọn **mức C**: bỏ hẳn `antd` khỏi code, viết lại

@@ -1,5 +1,5 @@
-// Figma Plugin API snippet — run through the Figma MCP `use_figma` tool on file
-// hneVCBNUiPizVorg7Jp18G. Phase A for main components that are on no page (docs/fc-worklog.md §23).
+// Figma Plugin API snippet — run through the Figma MCP `use_figma` tool on the
+// FABi CMS Figma file. Phase A for main components that are on no page (docs/fc-worklog.md §23).
 //
 // A component (set) deleted from the canvas lives on while instances still use it. Phase A only
 // walks pages, so Legacy bindings inside such a component stay, and every instance keeps

@@ -1,6 +1,6 @@
 {
   "note": "Values of Legacy/<Name>/Component/* in '5. Components' (mode Value) before wave 4 aliased them to the new Component/* variables (2026-09-26). Restore = set each back to this alias/value.",
-  "file": "hneVCBNUiPizVorg7Jp18G",
+  "file": "FABi CMS Figma file",
   "values": {
     "Legacy/Skeleton/Component/blockRadius": {
       "alias": "Radius/SM"

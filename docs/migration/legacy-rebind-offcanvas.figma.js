@@ -1,5 +1,5 @@
-// Figma Plugin API snippet — run through the Figma MCP `use_figma` tool on file
-// hneVCBNUiPizVorg7Jp18G. Legacy deletion, off-canvas sources (docs/fc-worklog.md §23).
+// Figma Plugin API snippet — run through the Figma MCP `use_figma` tool on the
+// FABi CMS Figma file. Legacy deletion, off-canvas sources (docs/fc-worklog.md §23).
 //
 // SLOT default content (and similar) lives in frames that sit on no page. A layer shown inside an
 // instance inherits from them, so neither phase A (pages only) nor the orphan-component pass

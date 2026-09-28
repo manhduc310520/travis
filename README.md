@@ -5,8 +5,6 @@ The design system of FABi CMS. Components are built on
 behaviour and accessibility, and styled with CSS Modules that read only `--fc-*`
 tokens exported from the Figma file.
 
-**Figma source:** `hneVCBNUiPizVorg7Jp18G` — *Design Component Desktop*
-
 ## Run it
 
 ```bash

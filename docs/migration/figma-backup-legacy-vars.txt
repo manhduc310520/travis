@@ -1,5 +1,5 @@
 # Backup of the Legacy/* variables in collection "5. Components" (mode "Value"),
-# file hneVCBNUiPizVorg7Jp18G, taken 2026-09-27 before they were deleted.
+# FABi CMS Figma file, taken 2026-09-27 before they were deleted.
 # One line per variable: Name (without the "Legacy/" prefix) | type (F float, C colour, S string)
 #   | value ("@Path" = alias to that variable, "#rrggbb[aa]" = colour, number) | scopes ("" none, "*" ALL_SCOPES, "many" = the long numeric list).
 # Every binding to these variables was moved to the value shown (resolved through Legacy chains) before deletion,

@@ -1,5 +1,5 @@
-// Figma Plugin API snippet — run through the Figma MCP `use_figma` tool on file
-// hneVCBNUiPizVorg7Jp18G. Phase B of deleting the `Legacy/*` variables (docs/fc-worklog.md §23).
+// Figma Plugin API snippet — run through the Figma MCP `use_figma` tool on the
+// FABi CMS Figma file. Phase B of deleting the `Legacy/*` variables (docs/fc-worklog.md §23).
 // Run it only after phase A (legacy-rebind.figma.js) has finished on every page.
 //
 // Handles Legacy bindings on instances and inside them. Such a binding is either an override set

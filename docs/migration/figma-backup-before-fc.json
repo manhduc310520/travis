@@ -1,6 +1,6 @@
 {
   "note": "Backup taken 2026-09-26 before the fc rename (phase 1). Renames are reversible from fc-rename-map.json (new names are unique). This file keeps what the rename map cannot restore: collection names, deleted variables, and cleared descriptions. codeSyntax was empty on every variable in collections 1-4.",
-  "file": "hneVCBNUiPizVorg7Jp18G",
+  "file": "FABi CMS Figma file",
   "collections": [
     { "id": "VariableCollectionId:27919:13", "name": "1. Brand" },
     { "id": "VariableCollectionId:5006:35", "name": "2. Colors" },

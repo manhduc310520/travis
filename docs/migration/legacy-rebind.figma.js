@@ -1,5 +1,5 @@
-// Figma Plugin API snippet — run through the Figma MCP `use_figma` tool on file
-// hneVCBNUiPizVorg7Jp18G. Phase A of deleting the `Legacy/*` variables (docs/fc-worklog.md §23).
+// Figma Plugin API snippet — run through the Figma MCP `use_figma` tool on the
+// FABi CMS Figma file. Phase A of deleting the `Legacy/*` variables (docs/fc-worklog.md §23).
 //
 // For every node on PAGES that is NOT an instance (and not inside one), each binding to a
 // `Legacy/*` variable is moved to the end of its alias chain (the first non-Legacy variable).

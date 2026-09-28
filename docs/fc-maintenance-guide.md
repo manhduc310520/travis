@@ -15,13 +15,13 @@
 ### 0.1 Chuẩn bị
 - **Chủ design system:** người giữ quyền sửa file Figma và duyệt PR vào `main`. Tên và kênh liên hệ chưa ghi trong repo: hỏi chủ repo. Mọi mục "hỏi trước" gửi kèm bảng đề xuất (mục 3.1 bước 4).
 - **Máy:** Node 22 (như CI). Đặt biến môi trường `UNTITLEDUI_PRO_TOKEN` (xin chủ repo), rồi `npm ci`. Thiếu token thì cài lỗi ở gói `@untitledui-pro/icons`.
-- **Figma:** quyền sửa file `hneVCBNUiPizVorg7Jp18G`; Claude Code có Figma MCP. Nạp skill `figma-use` trước mọi lần gọi `use_figma` (export, tạo biến, gắn biến). Đọc set có sẵn bằng `get_design_context` / `get_metadata` (nạp skill `figma-design-to-code` trước).
+- **Figma:** quyền sửa file Figma của FABi CMS (key và link file nằm trong `CLAUDE.md` trên máy chủ dự án; không ghi vào repo hay Storybook vì repo công khai); Claude Code có Figma MCP. Nạp skill `figma-use` trước mọi lần gọi `use_figma` (export, tạo biến, gắn biến). Đọc set có sẵn bằng `get_design_context` / `get_metadata` (nạp skill `figma-design-to-code` trước).
 - `scripts/figma-export.js` chỉ chạy được qua `use_figma` (dùng `return` ở cấp cao nhất), không dán vào console plugin.
 
 ## 1. Bức tranh tổng
 
 ```
-Figma hneVCBNUiPizVorg7Jp18G  (nguồn chân lý: Variables 0–5 + effect style Shadow/*)
+Figma FABi CMS  (nguồn chân lý: Variables 0–5 + effect style Shadow/*)
    │  scripts/figma-export.js, chạy qua use_figma, 6 lát
    ▼
 tokens/figma-export.json       ← node scripts/merge-figma-export.mjs
@@ -225,7 +225,7 @@ Chung cho mọi thay đổi:
 4. Chỉ xoá biến khi **0 tham chiếu**: node (kể cả instance), style, và biến khác alias vào nó.
 
 ### 7.6 Export đầy đủ (cách chuẩn)
-1. Qua tool `use_figma` trên file `hneVCBNUiPizVorg7Jp18G`, chạy `scripts/figma-export.js` 6 lần, mỗi lần sửa `const SLICE = '…'`: `global`, `palette`, `semantic`, `rest`, `component`, `effects`. Mỗi lần trả tối đa khoảng 20 KB. Script chỉ đọc.
+1. Qua tool `use_figma` trên file Figma của FABi CMS, chạy `scripts/figma-export.js` 6 lần, mỗi lần sửa `const SLICE = '…'`: `global`, `palette`, `semantic`, `rest`, `component`, `effects`. Mỗi lần trả tối đa khoảng 20 KB. Script chỉ đọc.
 2. Lưu mỗi kết quả ra một file. Repo chưa quy định chỗ lưu và chưa chứa file lát nào: lưu ngoài repo.
 3. Ghép:
    ```bash
