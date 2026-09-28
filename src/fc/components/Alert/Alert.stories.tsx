@@ -5,7 +5,7 @@ import { Button } from '../Button/Button'
 import { Alert, type AlertType } from './Alert'
 
 const meta = {
-  title: 'Components/Alert',
+  title: 'Components/Feedback/Alert',
   component: Alert,
   args: {
     type: 'info',

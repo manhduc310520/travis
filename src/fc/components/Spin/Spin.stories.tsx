@@ -8,7 +8,7 @@ import { Text, Title } from '../Typography/Typography'
 import { Spin } from './Spin'
 
 const meta = {
-  title: 'Components/Spin',
+  title: 'Components/Feedback/Spin',
   component: Spin,
   args: { isSpinning: true, size: 'md', tip: '', label: 'Đang tải…', delay: 0, fullscreen: false },
   argTypes: {

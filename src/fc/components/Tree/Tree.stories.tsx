@@ -58,7 +58,7 @@ const withIcons = (nodes: TreeNode[]): TreeNode[] =>
 const OPEN = ['mon-chinh', 'mon-nuoc', 'do-uong']
 
 const meta = {
-  title: 'Components/Tree',
+  title: 'Components/Data Display/Tree',
   component: Tree,
   args: { items: MENU, 'aria-label': 'Thực đơn', defaultExpandedKeys: OPEN },
   argTypes: {

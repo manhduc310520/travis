@@ -4,7 +4,7 @@ import { Button } from '../Button/Button'
 import { Badge, Ribbon, StatusBadge } from './Badge'
 
 const meta = {
-  title: 'Components/Badge',
+  title: 'Components/Data Display/Badge',
   component: Badge,
   args: { count: 5, overflowCount: 99, showZero: false, dot: false, size: 'md' },
   argTypes: { size: { control: 'inline-radio', options: ['sm', 'md'] } },

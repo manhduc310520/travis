@@ -9,7 +9,7 @@ import { Paragraph, Text, Title } from '../Typography/Typography'
 import { Skeleton, SkeletonAvatar, SkeletonButton, SkeletonImage, SkeletonInput } from './Skeleton'
 
 const meta = {
-  title: 'Components/Skeleton',
+  title: 'Components/Feedback/Skeleton',
   component: Skeleton,
   args: {
     isLoading: true,

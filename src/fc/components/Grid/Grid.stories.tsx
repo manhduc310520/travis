@@ -4,7 +4,7 @@ import { Flex } from '../Flex/Flex'
 import { Col, Row } from './Grid'
 
 const meta = {
-  title: 'Components/Grid',
+  title: 'Components/Layout/Grid',
   component: Row,
   args: { gap: 'base' },
   argTypes: { gap: { control: 'select', options: ['xxs', 'xs', 'sm', 'base', 'md', 'lg', 'xl', 'xxl'] } },

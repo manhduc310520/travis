@@ -5,7 +5,7 @@ import { Link } from '../Typography/Typography'
 import { Result } from './Result'
 
 const meta = {
-  title: 'Components/Result',
+  title: 'Components/Feedback/Result',
   component: Result,
   args: { status: 'success' },
   argTypes: {

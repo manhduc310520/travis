@@ -5,7 +5,7 @@ import { PALETTE_HUES } from '../../palette'
 import { Tooltip } from './Tooltip'
 
 const meta = {
-  title: 'Components/Tooltip',
+  title: 'Components/Data Display/Tooltip',
   component: Tooltip,
   args: { content: 'Sửa thông tin nhà hàng', placement: 'top', delay: 500, isDisabled: false, children: <span /> },
   argTypes: {

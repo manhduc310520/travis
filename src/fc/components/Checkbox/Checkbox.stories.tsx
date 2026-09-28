@@ -6,7 +6,7 @@ import { Tooltip } from '../Tooltip/Tooltip'
 import { Checkbox, CheckboxGroup } from './Checkbox'
 
 const meta = {
-  title: 'Components/Checkbox',
+  title: 'Components/Data Entry/Checkbox',
   component: Checkbox,
   args: { children: 'Nhận thông báo qua email', isDisabled: false, isIndeterminate: false, isInvalid: false },
 } satisfies Meta<typeof Checkbox>

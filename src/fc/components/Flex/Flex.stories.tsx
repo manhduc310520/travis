@@ -3,7 +3,7 @@ import { DemoBox } from '../../docs/DemoBox'
 import { Flex } from './Flex'
 
 const meta = {
-  title: 'Components/Flex',
+  title: 'Components/Layout/Flex',
   component: Flex,
   args: { gap: 'sm', direction: 'row', wrap: false },
   argTypes: {

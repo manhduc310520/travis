@@ -73,7 +73,7 @@ function fakeRequest({ file, uid, onProgress, onSuccess, onError }: UploadReques
 }
 
 const meta = {
-  title: 'Components/Upload',
+  title: 'Components/Data Entry/Upload',
   component: Upload,
   args: {
     listType: 'text',

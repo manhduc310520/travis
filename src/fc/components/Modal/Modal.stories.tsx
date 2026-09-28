@@ -9,7 +9,7 @@ import { ConfirmModal, InfoModal, Modal, ModalTrigger, type ModalStatus } from '
 import { useModal } from './useModal'
 
 const meta = {
-  title: 'Components/Modal',
+  title: 'Components/Feedback/Modal',
   component: Modal,
   args: {
     title: 'Thông tin đơn hàng',

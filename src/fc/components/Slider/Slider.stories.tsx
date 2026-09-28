@@ -5,7 +5,7 @@ import { TextField } from '../Input/Input'
 import { Slider } from './Slider'
 
 const meta = {
-  title: 'Components/Slider',
+  title: 'Components/Data Entry/Slider',
   component: Slider,
   args: { label: 'Âm lượng chuông báo đơn mới', defaultValue: 30, isDisabled: false, isReversed: false, tooltip: 'auto' },
   argTypes: {

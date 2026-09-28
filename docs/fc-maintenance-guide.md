@@ -255,7 +255,7 @@ Chung cho mọi thay đổi:
 |---|---|---|
 | Component | `src/fc/components/<Name>/<Name>.tsx` | `Select/Select.tsx` |
 | Template | `src/components/<Name>.tsx`, dữ liệu `<name>Samples.ts` | `restaurantSamples.ts` |
-| Story | `Components/<Name>`, `Templates/<Name>`, `Design Tokens/<Trang>` | `Components/Button` |
+| Story | `Components/<Nhóm>/<Name>` (nhóm và thứ tự theo trang Figma, khai báo trong `storySort` của `.storybook/preview.tsx`), `Templates/<Name>`, `Design Tokens/<Trang>` | `Components/General/Button` |
 | Nhãn nhiều chuỗi | `<Name>Labels` | `TableLabels` |
 | Sao lưu Figma | `docs/migration/figma-backup-<việc>.json` | `figma-backup-wave5-legacy.json` |
 

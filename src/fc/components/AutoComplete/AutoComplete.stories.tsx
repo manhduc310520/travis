@@ -51,7 +51,7 @@ const GROUPED: AutoCompleteOption[] = [
 ]
 
 const meta = {
-  title: 'Components/AutoComplete',
+  title: 'Components/Data Entry/AutoComplete',
   component: AutoComplete,
   args: { label: 'Tên món', options: DISHES, placeholder: 'Nhập tên món', size: 'md', variant: 'outlined' },
   argTypes: {

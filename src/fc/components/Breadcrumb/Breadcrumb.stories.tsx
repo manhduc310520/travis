@@ -12,7 +12,7 @@ const basic: BreadcrumbItem[] = [
 ]
 
 const meta = {
-  title: 'Components/Breadcrumb',
+  title: 'Components/Navigation/Breadcrumb',
   component: Breadcrumb,
   args: { items: basic, separator: '/', isDisabled: false },
   argTypes: {

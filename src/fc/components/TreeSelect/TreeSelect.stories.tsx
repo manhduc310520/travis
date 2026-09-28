@@ -33,7 +33,7 @@ const BRANCHES: TreeNode[] = [
 ]
 
 const meta = {
-  title: 'Components/TreeSelect',
+  title: 'Components/Data Entry/TreeSelect',
   component: TreeSelect,
   args: { label: 'Danh mục món', items: MENU, placeholder: 'Chọn danh mục', size: 'md', variant: 'outlined' },
   argTypes: {

@@ -3,7 +3,7 @@ import { Button } from '../Button/Button'
 import { Popover, type PopoverPlacement } from './Popover'
 
 const meta = {
-  title: 'Components/Popover',
+  title: 'Components/Data Display/Popover',
   component: Popover,
   args: {
     title: 'Món chay',

@@ -12,7 +12,7 @@ const VARIANTS = ['outlined', 'filled', 'borderless', 'underlined'] as const
 const SIZES = ['sm', 'md', 'lg'] as const
 
 const meta = {
-  title: 'Components/TimePicker',
+  title: 'Components/Data Entry/TimePicker',
   component: TimePicker,
   args: { label: 'Giờ mở cửa', size: 'md', variant: 'outlined' },
   argTypes: {

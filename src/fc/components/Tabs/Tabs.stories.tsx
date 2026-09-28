@@ -16,7 +16,7 @@ const items: TabsItem[] = [
 ]
 
 const meta = {
-  title: 'Components/Tabs',
+  title: 'Components/Navigation/Tabs',
   component: Tabs,
   args: { items, variant: 'line', placement: 'top', size: 'md', defaultSelectedKey: 'info', 'aria-label': 'Cài đặt nhà hàng' },
   argTypes: {

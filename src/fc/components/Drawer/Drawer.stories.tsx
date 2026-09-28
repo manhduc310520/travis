@@ -7,7 +7,7 @@ import { Tag } from '../Tag/Tag'
 import { Drawer, DrawerTrigger, type DrawerPlacement } from './Drawer'
 
 const meta = {
-  title: 'Components/Drawer',
+  title: 'Components/Feedback/Drawer',
   component: Drawer,
   args: {
     title: 'Chi tiết đơn hàng',

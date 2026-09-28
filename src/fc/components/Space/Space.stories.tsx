@@ -6,7 +6,7 @@ import { Link } from '../Typography/Typography'
 import { Space } from './Space'
 
 const meta = {
-  title: 'Components/Space',
+  title: 'Components/Layout/Space',
   component: Space,
   args: { size: 'sm', direction: 'row' },
   argTypes: {

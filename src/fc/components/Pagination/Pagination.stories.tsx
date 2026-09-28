@@ -4,7 +4,7 @@ import { Select } from '../Select/Select'
 import { Pagination } from './Pagination'
 
 const meta = {
-  title: 'Components/Pagination',
+  title: 'Components/Navigation/Pagination',
   component: Pagination,
   args: { total: 50, pageSize: 10, defaultCurrent: 1, variant: 'default', size: 'md', showJumper: false, prevNext: 'icon', showTotal: false, isDisabled: false },
   argTypes: {

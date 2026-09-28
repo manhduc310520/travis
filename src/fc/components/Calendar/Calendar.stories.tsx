@@ -58,7 +58,7 @@ function renderNotes(date: CalendarDate, mode: CalendarMode) {
 const closedOnMonday = (d: DateValue) => getDayOfWeek(d, 'vi-VN', 'mon') === 0
 
 const meta = {
-  title: 'Components/Calendar',
+  title: 'Components/Data Display/Calendar',
   component: Calendar,
   args: { variant: 'full', defaultValue: DAY, showWeek: false },
   argTypes: {

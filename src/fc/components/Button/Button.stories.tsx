@@ -3,7 +3,7 @@ import { ChevronDown, Edit01, Plus, SearchMd, Trash01, Upload01 } from '../../..
 import { Button, ButtonGroup, type ButtonColor, type ButtonVariant } from './Button'
 
 const meta = {
-  title: 'Components/Button',
+  title: 'Components/General/Button',
   component: Button,
   args: { children: 'Lưu thay đổi', variant: 'default', size: 'md', shape: 'default', danger: false, ghost: false, isDisabled: false, isPending: false },
   argTypes: {

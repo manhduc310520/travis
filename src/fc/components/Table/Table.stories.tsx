@@ -115,7 +115,7 @@ const COLUMNS: TableColumn<Dish>[] = [nameColumn, categoryColumn, priceColumn, s
 const DishTable = Table<Dish>
 
 const meta = {
-  title: 'Components/Table',
+  title: 'Components/Data Display/Table',
   component: DishTable,
   args: {
     columns: COLUMNS,

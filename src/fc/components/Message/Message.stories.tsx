@@ -5,7 +5,7 @@ import { MessageCard, MessageRegion } from './Message'
 import { message } from './messageApi'
 
 const meta = {
-  title: 'Components/Message',
+  title: 'Components/Feedback/Message',
   component: MessageCard,
   args: { type: 'success', children: 'Đã lưu thực đơn' },
   argTypes: {

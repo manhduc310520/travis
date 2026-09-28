@@ -25,7 +25,7 @@ const column = { display: 'grid', gap: 'var(--fc-space-margin-base)', width: 320
 const wideColumn = { display: 'grid', gap: 'var(--fc-space-margin-base)', width: 400 } as const
 
 const meta = {
-  title: 'Components/DatePicker',
+  title: 'Components/Data Entry/DatePicker',
   component: DatePicker,
   args: { label: 'Ngày giao hàng', size: 'md', variant: 'outlined', picker: 'date', granularity: 'day' },
   argTypes: {

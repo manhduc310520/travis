@@ -8,7 +8,7 @@ import { NotificationCard, NotificationRegion } from './Notification'
 import { notification } from './notificationApi'
 
 const meta = {
-  title: 'Components/Notification',
+  title: 'Components/Feedback/Notification',
   component: NotificationCard,
   args: {
     type: 'info',

@@ -17,7 +17,7 @@ const DISHES: SelectOption[] = [
 ]
 
 const meta = {
-  title: 'Components/Select',
+  title: 'Components/Data Entry/Select',
   component: Select,
   args: { label: 'Thành phố', options: CITIES, placeholder: 'Chọn thành phố', size: 'md', variant: 'outlined' },
   argTypes: {

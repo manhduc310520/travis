@@ -5,7 +5,7 @@ import { OtpField } from './OtpField'
 import { SearchField } from './SearchField'
 
 const meta = {
-  title: 'Components/Input',
+  title: 'Components/Data Entry/Input',
   component: TextField,
   args: {
     label: 'Tên nhà hàng',

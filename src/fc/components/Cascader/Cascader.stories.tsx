@@ -57,7 +57,7 @@ const MENU: CascaderOption[] = [
 const OPEN_PATH = ['hn', 'hoan-kiem', 'trang-tien']
 
 const meta = {
-  title: 'Components/Cascader',
+  title: 'Components/Data Entry/Cascader',
   component: Cascader,
   args: { label: 'Khu vực giao hàng', options: AREAS, placeholder: 'Chọn tỉnh / quận / phường', size: 'md', variant: 'outlined' },
   argTypes: {

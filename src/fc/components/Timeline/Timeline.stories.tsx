@@ -13,7 +13,7 @@ const orderHistory: TimelineItem[] = [
 ]
 
 const meta = {
-  title: 'Components/Timeline',
+  title: 'Components/Data Display/Timeline',
   component: Timeline,
   args: { items: orderHistory, orientation: 'vertical', textPlacement: 'end', reverse: false, 'aria-label': 'Lịch sử đơn #1024' },
   argTypes: {

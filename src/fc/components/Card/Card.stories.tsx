@@ -30,7 +30,7 @@ const actions = [
 ]
 
 const meta = {
-  title: 'Components/Card',
+  title: 'Components/Data Display/Card',
   component: Card,
   args: {
     title: 'Chi nhánh Quận 1',

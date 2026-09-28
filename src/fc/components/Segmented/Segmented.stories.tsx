@@ -22,7 +22,7 @@ const CHANNELS: SegmentedOption[] = [
 ]
 
 const meta = {
-  title: 'Components/Segmented',
+  title: 'Components/Data Display/Segmented',
   component: Segmented,
   args: { options: PERIODS, defaultSelectedKey: 'week', 'aria-label': 'Kỳ báo cáo', size: 'md', shape: 'default', block: false, orientation: 'horizontal', isDisabled: false },
   argTypes: {

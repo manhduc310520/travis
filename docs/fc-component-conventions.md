@@ -43,7 +43,8 @@
 - **Vùng tối cố định** (ví dụ Menu Dark): đặt `data-mode="dark"` trên phần tử gốc; token tự tính lại (token component khai báo trên mọi phần tử có `data-mode`). Không tự chế màu tối.
 
 ## Story
-- `title: 'Components/<Name>'`, `component`, `args`, `argTypes`. Prop màu có tên (palette) dùng `control: 'select'`.
+- `title: 'Components/<Nhóm>/<Name>'` với nhóm theo danh sách trang Figma: General, Layout, Navigation, Data Entry, Data Display, Feedback. Thêm tên component vào đúng nhóm, đúng vị trí như Figma, trong `storySort` ở `.storybook/preview.tsx`.
+- `component`, `args`, `argTypes`. Prop màu có tên (palette) dùng `control: 'select'`.
 - Mỗi variant trong Figma có ít nhất một story. Danh sách variant: `docs/migration/figma-variant-inventory.md`. Use case cũ: `docs/migration/legacy-antd-stories-2026-09-26.zip`.
 - JSDoc trên mỗi story ghi Figma set / property tương ứng.
 - Nội dung ví dụ bằng tiếng Việt, ngữ cảnh nhà hàng / POS (FABi CMS).

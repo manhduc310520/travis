@@ -12,7 +12,7 @@ const BUN = dish('#ffadd2', '#a8071a', '#ff7a45', 'Bún bò Huế')
 const COM = dish('#b7eb8f', '#3f6600', '#fff1b8', 'Cơm tấm')
 
 const meta = {
-  title: 'Components/Image',
+  title: 'Components/Data Display/Image',
   component: Image,
   args: { src: PHO, alt: 'Phở bò tái chín', width: 200, height: 200 },
   argTypes: {

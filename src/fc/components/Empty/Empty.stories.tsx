@@ -4,7 +4,7 @@ import { Button } from '../Button/Button'
 import { Empty } from './Empty'
 
 const meta = {
-  title: 'Components/Empty',
+  title: 'Components/Data Display/Empty',
   component: Empty,
   args: { size: 'md', description: 'Không có dữ liệu' },
   argTypes: {

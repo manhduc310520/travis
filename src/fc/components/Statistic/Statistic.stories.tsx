@@ -7,7 +7,7 @@ import { Col, Row } from '../Grid/Grid'
 import { Countdown, Statistic } from './Statistic'
 
 const meta = {
-  title: 'Components/Statistic',
+  title: 'Components/Data Display/Statistic',
   component: Statistic,
   args: { title: 'Doanh thu hôm nay', value: 12450000, suffix: '₫' },
   argTypes: {

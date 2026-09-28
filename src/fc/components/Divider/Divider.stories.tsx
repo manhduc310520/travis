@@ -5,7 +5,7 @@ import { Divider } from './Divider'
 const text = 'Nhà hàng đang mở cửa từ 9:00 đến 22:00. Thực đơn được cập nhật mỗi tuần.'
 
 const meta = {
-  title: 'Components/Divider',
+  title: 'Components/Layout/Divider',
   component: Divider,
   args: { variant: 'solid', plain: false, titlePlacement: 'center' },
   argTypes: {

@@ -16,7 +16,7 @@ const items: CollapseItem[] = [
 ]
 
 const meta = {
-  title: 'Components/Collapse',
+  title: 'Components/Data Display/Collapse',
   component: Collapse,
   args: { items, defaultExpandedKeys: ['info'], variant: 'outlined', size: 'md', expandIconPosition: 'start', allowsMultipleExpanded: true, isDisabled: false },
   argTypes: {

@@ -76,7 +76,24 @@ const preview: Preview = {
       test: 'todo',
     },
     options: {
-      storySort: { order: ['Introduction', 'Design Tokens', 'Components', 'Templates'] },
+      // Components follow the Figma page list: its groups and its order inside each group
+      // (components Figma has but fc does not yet build are left out).
+      storySort: {
+        order: [
+          'Introduction',
+          'Design Tokens',
+          'Components',
+          [
+            'General', ['Button', 'Typography'],
+            'Layout', ['Divider', 'Grid', 'Space', 'Flex'],
+            'Navigation', ['Breadcrumb', 'Dropdown', 'Menu', 'Pagination', 'Steps', 'Tabs'],
+            'Data Entry', ['AutoComplete', 'Checkbox', 'DatePicker', 'TimePicker', 'Form', 'Input', 'Cascader', 'Select', 'TreeSelect', 'InputNumber', 'Radio', 'Slider', 'Switch', 'Transfer', 'Upload'],
+            'Data Display', ['Avatar', 'Badge', 'Calendar', 'Card', 'Collapse', 'Descriptions', 'Empty', 'Image', 'Popover', 'Segmented', 'Statistic', 'Table', 'Tooltip', 'Tag', 'Timeline', 'Tree'],
+            'Feedback', ['Alert', 'Drawer', 'Message', 'Notification', 'Modal', 'Progress', 'Result', 'Popconfirm', 'Skeleton', 'Spin'],
+          ],
+          'Templates',
+        ],
+      },
     },
   },
 }

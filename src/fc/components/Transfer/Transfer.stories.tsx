@@ -29,7 +29,7 @@ const TITLES: [string, string] = ['Thực đơn hệ thống', 'Bán tại chi n
 const vnd = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' })
 
 const meta = {
-  title: 'Components/Transfer',
+  title: 'Components/Data Entry/Transfer',
   component: Transfer,
   args: {
     dataSource: DISHES,

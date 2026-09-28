@@ -5,7 +5,7 @@ import { PALETTE_HUES } from '../../palette'
 import { CheckableTag, Tag, TagAddButton, type TagVariant } from './Tag'
 
 const meta = {
-  title: 'Components/Tag',
+  title: 'Components/Data Display/Tag',
   component: Tag,
   args: { children: 'Món chay', color: 'default', variant: 'outlined' },
   argTypes: {

@@ -9,7 +9,7 @@ const PHOTO = `data:image/svg+xml;utf8,${encodeURIComponent(
 )}`
 
 const meta = {
-  title: 'Components/Avatar',
+  title: 'Components/Data Display/Avatar',
   component: Avatar,
   args: { alt: 'Nguyễn Minh Anh', children: 'MA', size: 'md', shape: 'circle', color: 'default' },
   argTypes: {

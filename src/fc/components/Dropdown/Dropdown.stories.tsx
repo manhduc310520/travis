@@ -26,7 +26,7 @@ const ORDER_ACTIONS: DropdownItem[] = [
 ]
 
 const meta = {
-  title: 'Components/Dropdown',
+  title: 'Components/Navigation/Dropdown',
   component: Dropdown,
   args: {
     items: ORDER_ACTIONS,

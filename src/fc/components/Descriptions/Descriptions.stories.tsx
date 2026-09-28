@@ -28,7 +28,7 @@ const order: DescriptionsItem[] = [
 ]
 
 const meta = {
-  title: 'Components/Descriptions',
+  title: 'Components/Data Display/Descriptions',
   component: Descriptions,
   args: {
     title: 'Thông tin nhà hàng',

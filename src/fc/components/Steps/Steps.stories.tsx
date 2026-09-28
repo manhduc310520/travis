@@ -18,7 +18,7 @@ const setupSteps: StepItem[] = [
 ]
 
 const meta = {
-  title: 'Components/Steps',
+  title: 'Components/Navigation/Steps',
   component: Steps,
   args: { items: orderSteps, current: 1, type: 'default', orientation: 'horizontal', size: 'md', labelPlacement: 'horizontal', variant: 'filled' },
   argTypes: {

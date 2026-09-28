@@ -5,7 +5,7 @@ import { Progress, type ProgressColor } from './Progress'
 const COLORS: ProgressColor[] = ['default', 'success', 'warning', 'danger', ...PALETTE_HUES]
 
 const meta = {
-  title: 'Components/Progress',
+  title: 'Components/Feedback/Progress',
   component: Progress,
   args: {
     percent: 40,

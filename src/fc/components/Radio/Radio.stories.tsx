@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Radio, RadioGroup } from './Radio'
 
 const meta = {
-  title: 'Components/Radio',
+  title: 'Components/Data Entry/Radio',
   component: RadioGroup,
   args: { label: 'Hình thức phục vụ', defaultValue: 'tai-quan', isDisabled: false, isInvalid: false, orientation: 'horizontal' },
   argTypes: { orientation: { control: 'inline-radio', options: ['horizontal', 'vertical'] } },

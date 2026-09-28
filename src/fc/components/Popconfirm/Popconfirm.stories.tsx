@@ -5,7 +5,7 @@ import type { PopoverPlacement } from '../Popover/Popover'
 import { Popconfirm } from './Popconfirm'
 
 const meta = {
-  title: 'Components/Popconfirm',
+  title: 'Components/Feedback/Popconfirm',
   component: Popconfirm,
   args: {
     title: 'Xóa món ăn?',

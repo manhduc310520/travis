@@ -109,7 +109,7 @@ function FieldTypes() {
 }
 
 const meta = {
-  title: 'Components/Form',
+  title: 'Components/Data Entry/Form',
   component: Form,
   args: { layout: 'vertical', size: 'md', requiredMark: true, colon: true, labelAlign: 'end' },
   argTypes: {

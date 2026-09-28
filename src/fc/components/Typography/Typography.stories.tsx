@@ -4,7 +4,7 @@ import { Flex } from '../Flex/Flex'
 import { Link, Paragraph, Text, Title } from './Typography'
 
 const meta = {
-  title: 'Components/Typography',
+  title: 'Components/General/Typography',
   component: Text,
   args: { children: 'Nhà hàng Phố Cổ', tone: 'default', size: 'base' },
   argTypes: {

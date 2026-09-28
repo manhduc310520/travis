@@ -115,7 +115,7 @@ const EXPANDED_WIDTH = 'calc(var(--fc-size-control-base) * 8)'
 const OPEN_POPOVER = { docs: { story: { inline: false, height: '520px' } } }
 
 const meta = {
-  title: 'Components/Menu',
+  title: 'Components/Navigation/Menu',
   component: Menu,
   args: {
     items: NAV,

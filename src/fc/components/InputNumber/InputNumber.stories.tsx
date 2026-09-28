@@ -6,7 +6,7 @@ import { Form, FormItem } from '../Form/Form'
 import { InputNumber } from './InputNumber'
 
 const meta = {
-  title: 'Components/InputNumber',
+  title: 'Components/Data Entry/InputNumber',
   component: InputNumber,
   args: {
     label: 'Số lượng',

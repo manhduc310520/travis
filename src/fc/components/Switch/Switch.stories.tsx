@@ -3,7 +3,7 @@ import { Check, X } from '../../../icons'
 import { Switch } from './Switch'
 
 const meta = {
-  title: 'Components/Switch',
+  title: 'Components/Data Entry/Switch',
   component: Switch,
   args: { children: 'Nhận đơn trực tuyến', size: 'md', isDisabled: false, defaultSelected: true },
   argTypes: { size: { control: 'inline-radio', options: ['sm', 'md'] } },
