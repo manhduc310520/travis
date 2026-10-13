@@ -1,0 +1,18 @@
+{
+ "f8550b0ab470": "Vertical display timeline.",
+ "fbccaa6c147d": "## When To Use\n\n- When a series of information needs to be ordered by time (ascending or descending).\n- When you need a timeline to make a visual connection.\n\n## Examples",
+ "632b31a03d38": "## API\n\nCommon props ref：[Common props](https://ant.design/docs/react/common-props)\n\n### Timeline\n\n| Property | Description | Type | Default | Version | [Global Config](https://ant.design/components/config-provider#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| items | Each node of timeline | [Items](#items)[] | - |  | × |\n| mode | By sending `alternate` the timeline will distribute the nodes to the left and right | `start` \\| `alternate` \\| `end` | `start` |  | × |\n| orientation | Set the direction of the timeline | `vertical` \\| `horizontal` | `vertical` |  | × |\n| ~~pending~~ | Set the last ghost node's existence or its content. Use `item.loading` instead | ReactNode | false |  | × |\n| ~~pendingDot~~ | Set the dot of the last ghost node when pending is true. Use `item.icon` instead | ReactNode | &lt;LoadingOutlined /&gt; |  | × |\n| reverse | Whether reverse nodes or not | boolean | false |  | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| titleSpan | Set the title span space. It is the distance to the center of the dot &lt;InlinePopover previewURL=\"https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*1NJISa7bpqgAAAAAR5AAAAgAerJ8AQ/original\">&lt;/InlinePopover> | number \\| string | 12 |  | × |\n| variant | Config style variant | `filled` \\| `outlined` | `outlined` |  | × |\n\n### Items\n\nNode of timeline.\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| color | Set the circle's color to `blue`, `red`, `green`, `gray` or other custom colors | string | `blue` |\n| content | Set the content | ReactNode | - |\n| ~~children~~ | Set the content. Please use `content` instead | ReactNode | - |\n| ~~dot~~ | Customize timeline dot. Please use `icon` instead | ReactNode | - |\n| icon | Customize node icon | ReactNode | - |\n| ~~label~~ | Set the label. Please use `title` instead | ReactNode | - |\n| loading | Set loading state | boolean | false |\n| placement | Customize node placement | `start` \\| `end` | - |\n| ~~position~~ | Customize node position. Please use `placement` instead | `start` \\| `end` | - |\n| title | Set the title | ReactNode | - |\n\n## Semantic DOM\n\n### Timeline",
+ "39fe3e5741c9": "### Timeline Items",
+ "cbcb3662c8f2": "## Design Token",
+ "d48f10297132": "Basic timeline.",
+ "38f86c4d4642": "Use the `variant` to set the style of the timeline.",
+ "ab8a02da6000": "Node supports `loading` to indicate loading, and `reverse` property to control the order of nodes.",
+ "36435731555b": "Alternate timeline.",
+ "3cdd61803db9": "Horizontal layout.",
+ "9f43b4c713e2": "Set a node as an icon or other custom element.",
+ "ed61d22d3acd": "End alternate timeline.",
+ "bc4a392d8bab": "Use `title` show time alone.",
+ "cb4742b5444e": "Use `titleSpan` to set the title span space.",
+ "1903faa38773": "Achieve richer custom styles by using semantic structure.",
+ "bea7c920a309": "You can customize the [semantic dom](#semantic-dom) style of Timeline by passing objects/functions through `classNames` and `styles`."
+}

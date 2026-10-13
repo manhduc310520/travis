@@ -1,0 +1,18 @@
+{
+ "7af5c1cc12c7": "Placeholder cho trạng thái rỗng.",
+ "4f292e85a0a4": "## Khi nào dùng\n\n- Khi không có dữ liệu để hiển thị, dùng để đưa ra gợi ý thân thiện.\n- Hướng dẫn người dùng tạo một thứ gì đó trong tình huống hoàn toàn mới.\n\n## Ví dụ",
+ "fcd027143ef7": "Cách dùng đơn giản nhất.",
+ "aa2c96dacf00": "Cơ bản",
+ "b0896455ca70": "Bạn có thể chọn một kiểu `image` khác bằng cách đặt image thành `Empty.PRESENTED_IMAGE_SIMPLE`.",
+ "6c406be551d1": "Chọn hình ảnh",
+ "8faa28cd5ce1": "Tuỳ chỉnh nguồn hình ảnh, kích thước hình ảnh, mô tả và nội dung bổ sung.",
+ "239dce622324": "Tuỳ chỉnh",
+ "691a27673e37": "Dùng ConfigProvider để đặt kiểu Empty chung.",
+ "5ccb7e04ec28": "ConfigProvider",
+ "e66689b14c31": "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Empty bằng cách truyền object/function qua `classNames` và `styles`.",
+ "98c73c20d22e": "Tuỳ chỉnh style semantic dom",
+ "d98f3d60518f": "Cách dùng đơn giản nhất, không có mô tả.",
+ "f354c94fcf63": "Không có mô tả",
+ "54d4292bde82": "## API\n\nProps chung tham khảo：[Common props](https://ant.design/docs/react/common-props)\n\n```jsx\n<Empty>\n  <Button>Create</Button>\n</Empty>\n```\n\n| Property | Description | Type | Default | Version | [Global Config](https://ant.design/components/config-provider#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - |  | 5.23.0 |\n| description | Tuỳ chỉnh mô tả | ReactNode | - |  | × |\n| image | Tuỳ chỉnh hình ảnh. Nếu truyền string thì được coi là URL hình ảnh | ReactNode | `Empty.PRESENTED_IMAGE_DEFAULT` |  | 5.27.0 |\n| ~~imageStyle~~ | Style của hình ảnh, hãy dùng `styles.image` thay thế | CSSProperties | - |  | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 5.23.0 |\n\n## Hình ảnh có sẵn\n\n- Empty.PRESENTED_IMAGE_SIMPLE\n\n  <div class=\"site-empty-buildIn-img site-empty-buildIn-simple\"><div>\n\n- Empty.PRESENTED_IMAGE_DEFAULT\n\n  <div class=\"site-empty-buildIn-img site-empty-buildIn-default\"></div>\n\n\n## Semantic DOM",
+ "cbcb3662c8f2": "## Design Token"
+}

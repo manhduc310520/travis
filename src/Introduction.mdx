@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { En, Vi } from '../.storybook/locale'
+
+<Meta title="Introduction" />
+
+{/* Two languages (Language toolbar, .storybook/locale.tsx): only the active one renders. */}
+
+<Vi>
+
+# FABi CMS Design System
+
+Thư viện component và tài liệu của FABi CMS.
+
+- **Bắt đầu**: cài gói `@fabi/ui`, bọc ứng dụng bằng `FabiProvider`, bảng đổi import và tiền tố class.
+- **Design Tokens**: cách đổi theme, bảng token Seed / Map / Alias, màu, chế độ tối, font, bố cục,
+  đổ bóng, chuyển động.
+- **Component**: mỗi trang gồm giới thiệu, ví dụ, API, Semantic DOM, Design Token và câu hỏi thường gặp.
+- Mỗi ví dụ là một story; bấm **Show code** dưới ví dụ để xem code (import từ `@fabi/ui`, chép sang ứng dụng là chạy).
+- Brand: màu chính **Geek Blue** (`#2f54eb`), font **Be Vietnam Pro**, card bo góc **8px** với tiêu đề
+  **Medium 500**. Mọi bảng dùng kiểu có viền (`bordered`).
+- Thanh **Language** (VN / EN) đổi ngôn ngữ tài liệu: tiêu đề và mô tả. Code, tên component, tên story và chữ do
+  component tự hiển thị giữ nguyên.
+
+Sinh bằng `npm run convert` và `npm run convert:pages`; không sửa tay các file được sinh ra.
+
+</Vi>
+
+<En>
+
+# FABi CMS Design System
+
+Component library and documentation of FABi CMS.
+
+- **Getting Started**: install the `@fabi/ui` package, wrap the app in `FabiProvider`, the import and class prefix maps.
+- **Design Tokens**: changing the theme, the Seed / Map / Alias token tables, colors, dark mode, font, layout,
+  shadow, motion.
+- **Components**: each page has an introduction, examples, API, Semantic DOM, Design Token and FAQ.
+- Every example is a story; click **Show code** under an example to see its code (it imports from `@fabi/ui` and runs
+  as is in an app).
+- Brand: primary color **Geek Blue** (`#2f54eb`), font **Be Vietnam Pro**, cards with an **8px** radius and
+  **Medium 500** titles. Every table uses the bordered style (`bordered`).
+- The **Language** toolbar (VN / EN) switches the docs language: titles and descriptions. Code, component names, story
+  names and the text the components draw themselves stay as they are.
+
+Generated with `npm run convert` and `npm run convert:pages`; do not edit the generated files by hand.
+
+</En>

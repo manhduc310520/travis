@@ -1,0 +1,5 @@
+{
+ "eda791581ad2": "Chế độ tối (Dark mode) là giao diện trong đó toàn bộ thành phần UI được làm tối đi.\n\n## Khi nào dùng\n\n- Nên dùng chế độ tối khi bạn ở trong môi trường thiếu sáng vì nó giúp tránh mỏi mắt.\n- Chế độ tối rất phù hợp để làm nổi bật nội dung quan trọng\n  > Nó hoạt động tương tự như việc tắt đèn trong rạp chiếu phim.\n\n## Nguyên tắc thiết kế\n\n1. **Sự thoải mái khi đọc nội dung**\n\nTránh dùng màu hoặc nội dung có độ tương phản quá cao trong chế độ tối. Dùng liên tục sẽ gây mỏi mắt.\n\n2. **Sự nhất quán của thông tin**\n\nNội dung thông tin trong chế độ tối cần nhất quán với chế độ sáng, và quan hệ phân cấp ban đầu không được bị phá vỡ.\n\n## Màu sắc\n\nKhi áp dụng màu sắc, chúng tôi dựa trên 12 bộ swatch cơ bản và kết hợp thêm các quy tắc xử lý dài hơn để màu hoà trộn tốt hơn trên các nền màu môi trường khác nhau.\n\n### Bảng màu",
+ "6475b2f8e9e0": "### Công cụ tạo bảng màu\n\nNgoài ra, chúng tôi còn cung cấp một bộ công cụ để tạo bảng màu cho chế độ tối. Bạn cần chọn màu chủ đạo và màu nền của trang. Chúng tôi sẽ tạo một bảng màu chế độ tối cho bạn.",
+ "e7f8b9dcdb12": "Chế độ tối"
+}

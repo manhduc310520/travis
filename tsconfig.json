@@ -1,7 +1,21 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": false,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "types": ["vite/client"],
+    "paths": {
+      "dumi": ["./src/shims/dumi.tsx"],
+      "@fabi/ui": ["./packages/fabi-ui/src/index.ts"],
+      "@fabi/ui/fabi-icons": ["./packages/fabi-ui/src/fabi-icons.ts"],
+      "@fabi/ui/*": ["./packages/fabi-ui/dist/*"]
+    }
+  },
+  "include": ["src", ".storybook"]
 }

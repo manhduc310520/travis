@@ -1,57 +1,85 @@
-import { addons } from 'storybook/manager-api'
+import { addons, type API } from 'storybook/manager-api'
 import { create } from 'storybook/theming'
+import { DOCS_ENTRY_VI, GROUP_LABELS_VI, PAGE_TITLES_VI } from './labels'
 
-/**
- * The manager (sidebar/toolbar) chrome, not the previewed components — those
- * keep FABi CMS's own Figma-sourced brand via ConfigProvider in preview.tsx.
- * Requested to match Narmi's own Storybook chrome; every value below was
- * measured live off narmi.github.io/design_system (getComputedStyle,
- * elementFromPoint), not guessed. `brandTitle` stays "FABi CMS Design System" —
- * the layout/color/font conventions are copied, not Narmi's own name or logo.
- */
-const theme = create({
-  base: 'light',
-  brandTitle: 'FABi CMS Design System',
-  brandUrl: 'https://github.com/manhduc310520/travis',
+const BRAND_NAME = 'FABi CMS Design System'
+// Same default as .storybook/locale.tsx (not imported: that file pulls in React, which the manager must not bundle)
+const DEFAULT_LOCALE = 'en'
+let titleApi: API | undefined
 
-  fontBase: '"Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif',
-  fontCode: 'Monaco, Consolas, monospace',
+type SidebarItem = { type: string; name: string; title?: string }
 
-  colorPrimary: '#00376A',
-  // Specifically the selected sidebar item's fill (Storybook's own
-  // `LeafNodeStyleWrapper` reads `theme.color.secondary` for that one
-  // background, separate from `colorPrimary`/`booleanSelectedBg` — traced via
-  // the actual manager bundle source, not guessed). Requested directly.
-  colorSecondary: '#003EB3',
+// renderLabel is also called without an api (e.g. outside the sidebar tree): fall back to the shared one.
+const localeOf = (api?: Pick<API, 'getGlobals'>) => (api ?? titleApi)?.getGlobals?.()?.locale ?? DEFAULT_LOCALE
 
-  // Picked by hand via the browser color picker on the live sidebar element
-  // (verified: rgb(252, 251, 233)). Storybook derives the sidebar background
-  // AND the fade-to-background glow above the sticky "Run tests" button from
-  // this same value, so both update together automatically.
-  appBg: '#FCFBE9',
-  appContentBg: '#FFFFFF',
-  appPreviewBg: '#FFFFFF',
-  appBorderColor: 'rgba(38, 74, 115, 0.15)',
-  appBorderRadius: 4,
+/** Vietnamese label of a sidebar group or docs page ('' when it keeps its English name). */
+const labelVi = (item: SidebarItem) => {
+  if (item.type === 'root' || item.type === 'group') return GROUP_LABELS_VI[item.name] ?? ''
+  if (item.type === 'docs') return item.name === 'Docs' ? DOCS_ENTRY_VI : PAGE_TITLES_VI[item.title ?? ''] ?? ''
+  return ''
+}
 
-  textColor: '#2E3438',
-  textInverseColor: '#FFFFFF',
-  textMutedColor: '#767676',
+// Sidebar labels follow the Language toolbar (globals.locale, default vi): groups and docs pages in
+// Vietnamese; component and story names stay English. Plain strings only: returning a React element built
+// with this file's own 'react' import broke the manager (no browser tab title any more).
+// Always return a label: switching between undefined (Storybook's default) and a string re-renders the tree
+// item with a different hook path and React then breaks the manager (no browser tab title).
+const sidebarLabel = (item: SidebarItem, api?: API) => (localeOf(api) === 'vi' && labelVi(item)) || item.name
 
-  barTextColor: '#2E3438',
-  barSelectedColor: '#00376A',
-  barBg: '#FFFFFF',
-
-  buttonBg: '#FFFFFF',
-  buttonBorder: 'rgba(38, 74, 115, 0.15)',
-
-  booleanBg: '#FFFFFF',
-  booleanSelectedBg: '#00376A',
-
-  inputBg: '#FFFFFF',
-  inputBorder: 'rgba(38, 74, 115, 0.15)',
-  inputTextColor: '#2E3438',
-  inputBorderRadius: 4,
+// Sidebar brand: the FABi CMS logo (public/brand/logo.svg, the owner's file, unchanged); its alt
+// text is brandTitle. The favicon (public/favicon.png) is linked in manager-head.html.
+addons.setConfig({
+  theme: create({
+    base: 'light',
+    brandTitle: BRAND_NAME,
+    brandImage: './brand/logo.svg',
+    brandUrl: './',
+    colorPrimary: '#2f54eb',
+    colorSecondary: '#2f54eb',
+    fontBase: "'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+  }),
+  sidebar: { renderLabel: sidebarLabel },
 })
 
-addons.setConfig({ theme })
+// Browser tab title: "<group> / <page> - <entry> ⋅ FABi CMS Design System", with Vietnamese group, page and
+// "Docs" names in VN (story and component names stay English). Written here from the current entry: with a
+// sidebar renderLabel set, Storybook 10.6 stops writing the title itself.
+/** "Components / General / Button - Docs" in Vietnamese: groups, docs page names and "Docs" (not component names). */
+const titleVi = (title: string) => {
+  const m = title.match(/^(.*?)(?: - (.*))?$/) as RegExpMatchArray
+  const parts = m[1].split(' / ')
+  const page = PAGE_TITLES_VI[parts.join('/')]
+  const path = parts.map((p, i) => (i < parts.length - 1 ? GROUP_LABELS_VI[p] ?? p : page ?? p)).join(' / ')
+  return m[2] === undefined ? path : `${path} - ${m[2] === 'Docs' ? DOCS_ENTRY_VI : m[2]}`
+}
+let titleLocale: unknown
+const tabTitle = () => {
+  const entry = titleApi?.getCurrentStoryData?.() as { title?: string; name?: string } | undefined
+  if (!entry?.title) return
+  const base = `${entry.title.split('/').join(' / ')} - ${entry.name}`
+  const locale = titleLocale ?? localeOf(titleApi)
+  const next = `${locale === 'vi' ? titleVi(base) : base} ⋅ ${BRAND_NAME}`
+  if (next !== document.title) document.title = next
+}
+// Storybook may still write its own "… ⋅ Storybook" title (e.g. without renderLabel): put ours back.
+new MutationObserver(() => { if (/Storybook$/.test(document.title)) tabTitle() }).observe(document.head, { childList: true, subtree: true, characterData: true })
+
+// Sidebar items are memoised, so a language change alone does not redraw their labels. Re-applying a
+// pass-through filter rebuilds the index: every item becomes a new object and renders its label again.
+addons.register('fabi/locale-labels', (api) => {
+  titleApi = api
+  let shown: unknown = DEFAULT_LOCALE
+  const relabel = ({ globals }: { globals?: Record<string, unknown> }) => {
+    const locale = globals?.locale ?? DEFAULT_LOCALE
+    titleLocale = locale
+    tabTitle()
+    if (locale === shown) return
+    shown = locale
+    api.experimental_setFilter('fabi-locale', () => true)
+  }
+  api.on('setGlobals', relabel)
+  api.on('globalsUpdated', relabel)
+  // the current entry changes: story / docs selected and rendered
+  for (const event of ['storyChanged', 'setCurrentStory', 'storyRendered', 'docsRendered', 'storyPrepared']) api.on(event, () => setTimeout(tabTitle))
+  setTimeout(tabTitle)
+})

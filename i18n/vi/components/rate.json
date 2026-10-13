@@ -1,0 +1,21 @@
+{
+ "65a65e42de96": "Dùng để đánh giá một đối tượng nào đó.",
+ "e2f5e1695953": "## When To Use\n\n- Hiển thị đánh giá.\n- Thao tác đánh giá nhanh một đối tượng.\n\n## Examples",
+ "1dad0dcbcc51": "Cách dùng đơn giản nhất.",
+ "aa2c96dacf00": "Basic",
+ "7046e76f3c24": "Ba kích thước.",
+ "96de489fe3c2": "Sizes",
+ "2f88f73d802a": "Hỗ trợ chọn nửa sao.",
+ "4e817c34a215": "Half star",
+ "efa392f5e663": "Thêm chữ mô tả vào component rate.",
+ "0341cb600a82": "Show copywriting",
+ "5115f48516fe": "Chỉ đọc, không thể tương tác bằng chuột.",
+ "601dcc1c87c3": "Read only",
+ "4e28dd1e8709": "Cho phép xoá đánh giá khi nhấp lại vào cùng một ngôi sao.",
+ "29992e8bef12": "Clear star",
+ "02bfb0e298df": "Thay ngôi sao mặc định bằng ký tự khác như chữ cái, chữ số, iconfont hoặc thậm chí chữ Hán.",
+ "4e0876252818": "Other Character",
+ "40ed37b16326": "Có thể tuỳ chỉnh từng ký tự bằng `(RateProps) => ReactNode`.",
+ "d235d4995657": "Customize character",
+ "17d375b3e9e5": "## API\n\nProp chung, tham khảo：[Common props](https://ant.design/docs/react/common-props)\n\n| Property | Description | Type | Default | Version | [Global Config](https://ant.design/components/config-provider#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| allowClear | Có cho phép xoá khi nhấp lại hay không | boolean | true |  | × |\n| allowHalf | Có cho phép chọn nửa sao hay không | boolean | false |  | × |\n| character | Ký tự tuỳ chỉnh của rate | ReactNode \\| (RateProps) => ReactNode | &lt;StarFilled /> | function(): 4.4.0 | × |\n| count | Số lượng sao | number | 5 |  | × |\n| defaultValue | Giá trị mặc định | number | 0 |  | × |\n| disabled | Nếu chỉ đọc thì không thể tương tác | boolean | false |  | × |\n| keyboard | Hỗ trợ thao tác bằng bàn phím | boolean | true | 5.18.0 | × |\n| size | Kích thước sao | 'small' \\| 'medium' \\| 'large' | 'medium' |  | × |\n| tooltips | Tuỳ chỉnh tooltip cho từng ký tự | [TooltipProps](https://ant.design/components/tooltip#api)[] \\| string\\[] | - |  | × |\n| value | Giá trị hiện tại | number | - |  | × |\n| onBlur | Hàm callback khi component mất focus | function() | - |  | × |\n| onChange | Hàm callback khi chọn giá trị | function(value: number) | - |  | × |\n| onFocus | Hàm callback khi component nhận focus | function() | - |  | × |\n| onHoverChange | Hàm callback khi rê chuột vào một mục | function(value: number) | - |  | × |\n| onKeyDown | Hàm callback khi nhấn phím trên component | function(event) | - |  | × |\n\n## Methods\n\n| Name    | Description  |\n| ------- | ------------ |\n| blur()  | Bỏ focus |\n| focus() | Đặt focus    |\n\n## Design Token"
+}

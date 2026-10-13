@@ -1,0 +1,20 @@
+{
+ "ec4963ad5c24": "Đường phân cách dùng để ngăn cách các nội dung khác nhau.",
+ "99abda8b9ecf": "## Khi nào dùng\n\n- Phân chia các phần của một bài viết.\n- Phân cách văn bản và liên kết nằm cùng dòng, ví dụ cột thao tác của bảng.\n\n## Ví dụ",
+ "b5b9fa0bb941": "Divider mặc định là `horizontal`. Bạn có thể thêm văn bản vào bên trong Divider.",
+ "4f57a1ce99e6": "Ngang",
+ "035b7ff4a003": "Divider có tiêu đề bên trong, đặt `titlePlacement=\"start/end\"` để căn vị trí tiêu đề.",
+ "fc1408e02dbb": "Divider có tiêu đề",
+ "4409b24030d2": "Kích thước khoảng cách.",
+ "947e593a89ad": "Đặt kích thước khoảng cách của Divider",
+ "0410cc5d2039": "Bạn có thể dùng kiểu chữ không phải heading cho văn bản của Divider bằng cách đặt thuộc tính `plain`.",
+ "598ff769ac93": "Văn bản không dùng kiểu heading",
+ "a26f4cdafdd1": "Dùng `orientation=\"vertical\"` hoặc `vertical` để chuyển Divider sang dạng dọc.",
+ "4b937cc841d8": "Dọc",
+ "1c7311735679": "Divider mặc định có variant là `solid`. Bạn có thể đổi sang `dashed` hoặc `dotted`.",
+ "cc91b1ea2c16": "Variant",
+ "6573cff8519f": "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Divider bằng cách truyền object/hàm qua `classNames` và `styles`.",
+ "98c73c20d22e": "Tuỳ chỉnh style semantic dom",
+ "a079f9873fa4": "## API\n\nCác props chung：[Common props](https://ant.design/docs/react/common-props)\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Phiên bản | [Cấu hình chung](https://ant.design/components/config-provider#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| children | Tiêu đề bên trong | ReactNode | - |  | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| dashed | Đường kẻ có phải nét đứt hay không | boolean | false |  | × |\n| orientation | Đường kẻ nằm ngang hay dọc | `horizontal` \\| `vertical` | `horizontal` | - | × |\n| ~~orientationMargin~~ | Khoảng cách margin trái/phải giữa tiêu đề và đường viền gần nhất, khi `titlePlacement` không phải `center`. Nếu truyền giá trị số dạng `string` không có đơn vị thì mặc định hiểu là pixel (px). | string \\| number | - |  | × |\n| plain | Hiển thị văn bản của Divider theo kiểu thường | boolean | false | 4.2.0 | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n| size | Kích thước của Divider. Chỉ có hiệu lực với bố cục ngang | `small` \\| `medium` \\| `large` | - | 5.25.0 | × |\n| titlePlacement | Vị trí của tiêu đề bên trong Divider | `start` \\| `end` \\| `center` | `center` | - | × |\n| ~~type~~ | Kiểu hướng của Divider | `horizontal` \\| `vertical` | `horizontal` | - | × |\n| variant | Đường kẻ là nét đứt, chấm hay liền | `dashed` \\| `dotted` \\| `solid` | solid | 5.20.0 | × |\n| vertical | Hướng, cấu hình đồng thời với `orientation` thì ưu tiên `orientation` | boolean | false | - | × |\n\n## Semantic DOM",
+ "cbcb3662c8f2": "## Design Token"
+}

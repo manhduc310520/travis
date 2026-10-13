@@ -1,0 +1,36 @@
+import React from 'react';
+import { App, Button, Space } from '@fabi/ui';
+
+// Sub page
+const Page: React.FC = () => {
+  const { message, notification } = App.useApp();
+
+  const showMessage = () => {
+    message.success('Success!');
+  };
+
+  const showNotification = () => {
+    notification.info({
+      title: 'Notification',
+      description: 'Hello, FABi CMS!!',
+    });
+  };
+
+  return (
+    <Space wrap>
+      <Button type="primary" onClick={showMessage}>
+        Message for only one
+      </Button>
+      <Button type="primary" onClick={showNotification}>
+        Notification for bottomLeft
+      </Button>
+    </Space>
+  );
+};
+
+// Entry component
+export default () => (
+  <App message={{ maxCount: 1 }} notification={{ placement: 'bottomLeft' }}>
+    <Page />
+  </App>
+);

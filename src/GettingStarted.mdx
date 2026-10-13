@@ -1,0 +1,262 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+import { En, Vi } from '../.storybook/locale'
+
+<Meta title="Getting Started" />
+
+{/* Two languages (Language toolbar, .storybook/locale.tsx): only the active one renders. Code blocks sit
+    outside <Vi> / <En>: they are the same in both. */}
+
+<Vi>
+
+# Bắt đầu
+
+Hướng dẫn cho developer dùng FABi CMS Design System trong ứng dụng React. Mọi component trong tài liệu này
+đến từ gói `@fabi/ui`: code ở mỗi ví dụ chép sang ứng dụng là chạy được.
+
+## Cài đặt
+
+</Vi>
+
+<En>
+
+# Getting Started
+
+A guide for developers who use FABi CMS Design System in a React app. Every component in these docs comes from
+the `@fabi/ui` package: the code of each example runs as is when copied into an app.
+
+## Installation
+
+</En>
+
+```bash
+# now: from the packed file
+npm install ./fabi-ui-0.1.0.tgz
+# once the dev team hosts it on the internal registry
+npm install @fabi/ui
+```
+
+<Vi>
+
+Cần `react` và `react-dom` từ bản 18. Bộ component, icon và các gói đi kèm đã nằm trong `@fabi/ui`:
+không cài thêm `antd` hay `@ant-design/icons` (hai bản cùng lúc sẽ không dùng chung theme).
+
+Một số ví dụ dùng thêm thư viện ngoài (`dayjs`, `@dnd-kit/core`, …): dòng **Cần cài thêm** dưới ví dụ
+liệt kê các gói đó.
+
+## Bọc ứng dụng một lần
+
+</Vi>
+
+<En>
+
+Requires `react` and `react-dom` 18 or later. The components, icons and bundled packages are all inside `@fabi/ui`:
+do not install `antd` or `@ant-design/icons` as well (two copies at once do not share the theme).
+
+Some examples use other libraries (`dayjs`, `@dnd-kit/core`, …): the **Also install** line under the example lists
+those packages.
+
+## Wrap the app once
+
+</En>
+
+```tsx
+import { FabiProvider } from '@fabi/ui'
+import '@fabi/ui/font.css'   // font Be Vietnam Pro 400 / 500 / 600 / 700
+import '@fabi/ui/styles.css' // colour-contrast fixes
+
+export function App() {
+  return (
+    <FabiProvider brand="geekblue">
+      <Routes />
+    </FabiProvider>
+  )
+}
+```
+
+<Vi>
+
+`FabiProvider` nhận mọi prop của `ConfigProvider`, thêm:
+
+| Prop | Mặc định | Mô tả |
+| --- | --- | --- |
+| `brand` | `'geekblue'` | màu chính: `'geekblue'` · `'cyan'` · `'volcano'` · `'purple'` · `'magenta'` |
+| `mode` | `'light'` | chế độ màu: `'light'` · `'dark'` (thuật toán dark của thư viện gốc với màu brand; xem Chế độ tối bên dưới) |
+| `a11yFixes` | `true` | bật các bản vá trợ năng (xem bên dưới) |
+| `theme` | | gộp sâu lên theme FABi (`token` và từng mục `components`) |
+
+### Chế độ tối
+
+</Vi>
+
+<En>
+
+`FabiProvider` takes every prop of `ConfigProvider`, plus:
+
+| Prop | Default | Description |
+| --- | --- | --- |
+| `brand` | `'geekblue'` | primary color: `'geekblue'` · `'cyan'` · `'volcano'` · `'purple'` · `'magenta'` |
+| `mode` | `'light'` | color mode: `'light'` · `'dark'` (the underlying library's dark algorithm with the brand color; see Dark mode below) |
+| `a11yFixes` | `true` | turns on the accessibility patches (see below) |
+| `theme` | | deep-merged over the FABi theme (`token` and each `components` entry) |
+
+### Dark mode
+
+</En>
+
+```tsx
+<FabiProvider brand="geekblue" mode="dark">…</FabiProvider>
+```
+
+<Vi>
+
+Dark dùng thuật toán dark của thư viện gốc (`theme.darkAlgorithm`) với cùng màu brand. Ứng dụng tự đặt nền trang bằng token `colorBgLayout` / `colorBgContainer` (`theme.useToken()`); thiếu nền, axe đo chữ trên nền trắng và báo lỗi tương phản giả.
+Nền màu (nút primary, Checkbox, Switch…) giữ màu tối của thư viện gốc; chữ màu brand dùng bậc 8 palette tối của brand (bậc 9 trên nền hover) để đạt WCAG AA. Link là một sắc nhạt riêng do thư viện gốc tính từ seed. Chỉ `FabiProvider` ngoài cùng đặt `data-fabi-mode` trên `<html>` và cấu hình API tĩnh (`message`, `notification`, `Modal.confirm`); vùng khác chế độ bên trong cần tự đặt `data-fabi-mode` và dùng `getPopupContainer`.
+Kiểm tra: `npm run test:a11y -- all dark` (axe chỉ đo trạng thái tĩnh).
+
+Các hàm tĩnh (`message.success()`, `notification.open()`, `Modal.confirm()`) cũng nhận đúng theme, tiền tố
+và ngôn ngữ. Code mới nên dùng `App.useApp()`.
+
+## Ngôn ngữ tiếng Việt
+
+Ngôn ngữ mặc định là tiếng Anh. Truyền `locale` và đặt ngôn ngữ cho `dayjs` (cài `dayjs` trong ứng dụng):
+
+</Vi>
+
+<En>
+
+Dark uses the underlying library's dark algorithm (`theme.darkAlgorithm`) with the same brand color. The app sets the page background itself with the `colorBgLayout` / `colorBgContainer` tokens (`theme.useToken()`); without a background, axe measures text on white and reports false contrast errors.
+Color fills (primary button, Checkbox, Switch…) keep the underlying library's dark colors; brand-colored text uses step 8 of the brand's dark palette (step 9 on hover backgrounds) to meet WCAG AA. Links are a separate light tint that the underlying library derives from the seed. Only the outermost `FabiProvider` sets `data-fabi-mode` on `<html>` and configures the static APIs (`message`, `notification`, `Modal.confirm`); a region in another mode inside it sets its own `data-fabi-mode` and uses `getPopupContainer`.
+Check: `npm run test:a11y -- all dark` (axe measures the static state only).
+
+The static functions (`message.success()`, `notification.open()`, `Modal.confirm()`) also get the right theme, prefix
+and locale. New code should use `App.useApp()`.
+
+## Vietnamese locale
+
+The default language is English. Pass `locale` and set the `dayjs` locale (install `dayjs` in the app):
+
+</En>
+
+```tsx
+import viVN from '@fabi/ui/locale/vi_VN'
+import dayjs from 'dayjs'
+import 'dayjs/locale/vi'
+
+dayjs.locale('vi')
+
+export function App() {
+  return (
+    <FabiProvider brand="geekblue" locale={viVN}>
+      <Routes />
+    </FabiProvider>
+  )
+}
+```
+
+<Vi>
+
+## Bảng đổi import
+
+Code cũ (import từ `antd`, `@ant-design/icons`…) đổi sang các đường dẫn sau; tên component và API giữ nguyên.
+
+| Trước | Sau |
+| --- | --- |
+| `antd` | `@fabi/ui` |
+| `antd/locale/<name>` | `@fabi/ui/locale/<name>` |
+| `antd/es/<path>` | `@fabi/ui/es/<path>` |
+| `@ant-design/icons` | `@fabi/ui/icons` |
+| `@ant-design/colors` | `@fabi/ui/colors` |
+| `@ant-design/cssinjs` | `@fabi/ui/cssinjs` |
+| `antd-style` | `@fabi/ui/style` |
+| `@ant-design/happy-work-theme` | `@fabi/ui/happy-work-theme` |
+| `antd-img-crop` | `@fabi/ui/img-crop` |
+| `@ant-design/static-style-extract` | `@fabi/ui/static-style-extract` |
+
+Icon import theo tên: `import { SearchOutlined } from '@fabi/ui/icons'`.
+
+## Tiền tố class và biến CSS
+
+| Trước | Sau |
+| --- | --- |
+| `.ant-btn`, `.ant-table`, … | `.fabi-btn`, `.fabi-table`, … |
+| `.anticon`, `.anticon-search` | `.fabi-icon`, `.fabi-icon-search` |
+| `--ant-color-primary`, … | `--fabi-color-primary`, … |
+
+CSS cũ nhắm vào `.ant-*`, `.anticon` hay `--ant-*` phải đổi tên. Ưu tiên chỉnh qua token của theme
+(`theme.token`, `theme.components`) thay vì ghi đè CSS.
+
+Riêng class `ant-wave-target` trên ô Checkbox / Radio vẫn giữ tiền tố `ant-`: thư viện gốc gắn cố định làm mốc cho
+hiệu ứng sóng khi bấm, không kèm CSS. Đừng viết CSS nhắm vào class này.
+
+## Trợ năng có sẵn
+
+`FabiProvider` tự cài các bản vá cho markup component tự sinh ra (tắt bằng `a11yFixes={false}`):
+
+- Transfer, Calendar: đặt tên cho checkbox, ô tìm kiếm, ô chọn năm / tháng.
+- Select, AutoComplete: danh sách gợi ý mang tên của ô chọn.
+- Table: chữ ẩn cho ô tiêu đề trống (cột mở rộng, kéo thả, thao tác).
+- Tabs, Skeleton, ColorPicker, Progress, icon tùy biến: sửa vai trò và tên cho trình đọc màn hình.
+- Vùng cuộn (Table, Transfer, Calendar, List) dùng được bằng bàn phím.
+- Ô nhập chưa có nhãn được đặt tên tạm từ placeholder. Vẫn nên gắn nhãn cho mọi field.
+
+`@fabi/ui/styles.css` làm đậm màu chữ / nền của Tag, Badge.Ribbon và nút màu để đạt tương phản 4.5:1.
+
+Màu chính của cả 5 brand đạt 4.5:1 với chữ trắng và khi làm màu chữ trên nền nhạt của chính nó (mục Menu đang chọn,
+ngày hôm nay của Calendar, Tag, nút `filled`). Cả 5 brand qua kiểm tra axe chế độ nghiêm ngặt.
+
+</Vi>
+
+<En>
+
+## Import map
+
+Existing code (imports from `antd`, `@ant-design/icons`…) changes to the paths below; component names and APIs stay
+the same.
+
+| Before | After |
+| --- | --- |
+| `antd` | `@fabi/ui` |
+| `antd/locale/<name>` | `@fabi/ui/locale/<name>` |
+| `antd/es/<path>` | `@fabi/ui/es/<path>` |
+| `@ant-design/icons` | `@fabi/ui/icons` |
+| `@ant-design/colors` | `@fabi/ui/colors` |
+| `@ant-design/cssinjs` | `@fabi/ui/cssinjs` |
+| `antd-style` | `@fabi/ui/style` |
+| `@ant-design/happy-work-theme` | `@fabi/ui/happy-work-theme` |
+| `antd-img-crop` | `@fabi/ui/img-crop` |
+| `@ant-design/static-style-extract` | `@fabi/ui/static-style-extract` |
+
+Icons are imported by name: `import { SearchOutlined } from '@fabi/ui/icons'`.
+
+## Class prefix and CSS variables
+
+| Before | After |
+| --- | --- |
+| `.ant-btn`, `.ant-table`, … | `.fabi-btn`, `.fabi-table`, … |
+| `.anticon`, `.anticon-search` | `.fabi-icon`, `.fabi-icon-search` |
+| `--ant-color-primary`, … | `--fabi-color-primary`, … |
+
+Existing CSS that targets `.ant-*`, `.anticon` or `--ant-*` must be renamed. Prefer adjusting the theme tokens
+(`theme.token`, `theme.components`) over CSS overrides.
+
+Only the `ant-wave-target` class on Checkbox / Radio inputs keeps the `ant-` prefix: the underlying library sets it as
+a fixed hook for the click wave effect, with no CSS. Do not write CSS that targets this class.
+
+## Built-in accessibility
+
+`FabiProvider` installs patches for the markup the components generate (turn them off with `a11yFixes={false}`):
+
+- Transfer, Calendar: names for checkboxes, search inputs and the year / month selects.
+- Select, AutoComplete: the option list carries the name of its input.
+- Table: hidden text for empty header cells (expand, drag and action columns).
+- Tabs, Skeleton, ColorPicker, Progress, custom icons: correct roles and names for screen readers.
+- Scroll areas (Table, Transfer, Calendar, List) work with the keyboard.
+- Inputs without a label get a temporary name from their placeholder. Still give every field a label.
+
+`@fabi/ui/styles.css` darkens the text / background colors of Tag, Badge.Ribbon and colored buttons to reach 4.5:1
+contrast.
+
+The primary color of all 5 brands reaches 4.5:1 with white text and as a text color on its own light background
+(selected Menu item, today in Calendar, Tag, `filled` buttons). All 5 brands pass the strict axe check.
+
+</En>

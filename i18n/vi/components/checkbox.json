@@ -1,0 +1,21 @@
+{
+ "1bb504bbe628": "Thu thập các lựa chọn của người dùng.",
+ "17c748c322ac": "## Khi nào dùng\n\n- Dùng để chọn nhiều giá trị từ một số tuỳ chọn.\n- Nếu chỉ dùng một checkbox, nó tương tự việc dùng Switch để chuyển đổi giữa hai trạng thái. Điểm khác biệt là Switch sẽ kích hoạt thay đổi trạng thái ngay lập tức, còn Checkbox chỉ đánh dấu trạng thái đã thay đổi và cần được gửi đi.\n\n## Ví dụ",
+ "96139ec0128c": "Cách dùng cơ bản của checkbox.",
+ "aa2c96dacf00": "Cơ bản",
+ "22b46b08c571": "Checkbox bị vô hiệu hoá.",
+ "f4f4473df8cb": "Vô hiệu hoá",
+ "b255f390ebe6": "Giao tiếp với các component khác.",
+ "1b7bc67ecb6b": "Checkbox controlled",
+ "8b05f307a508": "Tạo một nhóm checkbox từ một mảng.",
+ "f404d09a11aa": "Nhóm Checkbox",
+ "0c9e98f8e24b": "Thuộc tính `indeterminate` giúp bạn tạo hiệu ứng 'chọn tất cả'.",
+ "67b29711579f": "Chọn tất cả",
+ "597304dcfa1e": "Ta có thể dùng Checkbox và Grid trong Checkbox.Group để tạo bố cục phức tạp.",
+ "617a1947ccd3": "Dùng cùng Grid",
+ "caf41c1aefb8": "Bạn có thể tuỳ biến style của [semantic dom](#semantic-dom) trong Checkbox bằng cách truyền object/hàm qua `classNames` và `styles`.",
+ "98c73c20d22e": "Tuỳ biến style cho semantic dom",
+ "92ea62fb7825": "## API\n\nCommon props ref：[Common props](https://ant.design/docs/react/common-props)\n\n#### Checkbox\n\n| Property | Description | Type | Default | Version | [Global Config](https://ant.design/components/config-provider#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| checked | Chỉ định checkbox có được chọn hay không | boolean | false |  | × |\n| classNames | Tuỳ biến class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - |  | 6.0.0 |\n| defaultChecked | Chỉ định trạng thái ban đầu: checkbox có được chọn hay không | boolean | false |  | × |\n| disabled | Có vô hiệu hoá checkbox hay không | boolean | false |  | × |\n| indeterminate | Trạng thái chọn không xác định (indeterminate) của checkbox | boolean | false |  | × |\n| onChange | Hàm callback được kích hoạt khi trạng thái thay đổi | (e: CheckboxChangeEvent) => void | - |  | × |\n| onBlur | Được gọi khi rời khỏi component | function() | - |  | × |\n| onFocus | Được gọi khi vào component | function() | - |  | × |\n| styles | Tuỳ biến style inline cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 6.0.0 |\n\n#### Checkbox.Group\n\n| Property | Description | Type | Default | Version |\n| --- | --- | --- | --- | --- |\n| defaultValue | Giá trị được chọn mặc định | (string \\| number)\\[] | \\[] |  |\n| disabled | Có vô hiệu hoá tất cả checkbox hay không | boolean | false |  |\n| name | Thuộc tính `name` của tất cả các phần tử con `input[type=\"checkbox\"]` | string | - |  |\n| options | Chỉ định các tuỳ chọn | string\\[] \\| number\\[] \\| Option\\[] | \\[] |  |\n| value | Dùng để đặt giá trị đang được chọn | (string \\| number \\| boolean)\\[] | \\[] |  |\n| title | tiêu đề của tuỳ chọn | `string` | - |  |\n| className | className của tuỳ chọn | `string` | - | 5.25.0 |\n| style | style của tuỳ chọn | `React.CSSProperties` | - |  |\n| onChange | Hàm callback được kích hoạt khi trạng thái thay đổi | (checkedValue: T[]) => void | - |  |\n\n##### Option\n\n```typescript\ninterface Option {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n```\n\n### Phương thức\n\n#### Checkbox\n\n| Name          | Description                          | Version |\n| ------------- | ------------------------------------ | ------- |\n| blur()        | Bỏ focus                         |         |\n| focus()       | Đặt focus                            |         |\n| nativeElement | Trả về DOM node của Checkbox | 5.17.3  |\n\n## Semantic DOM",
+ "cbcb3662c8f2": "## Design Token",
+ "f970f063e7e2": "## Câu hỏi thường gặp\n\n### Vì sao không hoạt động trong Form.Item?\n\nForm.Item mặc định gán giá trị vào thuộc tính `value`, nhưng thuộc tính giá trị của Checkbox là `checked`. Bạn có thể dùng `valuePropName` để đổi thuộc tính được gán.\n\n```tsx | pure\n<Form.Item name=\"fieldA\" valuePropName=\"checked\">\n  <Checkbox />\n</Form.Item>\n```"
+}

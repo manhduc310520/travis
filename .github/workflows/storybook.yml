@@ -25,17 +25,25 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      # `@untitledui-pro/icons` is a paid private package (see .npmrc, which
-      # reads the token from this env var rather than storing it) — without
-      # this secret, npm ci fails to authenticate against pkg.untitledui.com.
+          cache-dependency-path: |
+            package-lock.json
+            packages/fabi-ui/package-lock.json
+      - run: npm ci --legacy-peer-deps
+      # @fabi/ui: Storybook reads its subpath stubs (@fabi/ui/icons, /charts, /locale/…) from dist/
       - run: npm ci
+        working-directory: packages/fabi-ui
+      - run: npm run build
+        working-directory: packages/fabi-ui
+      # Every story renders and passes axe (strict) in Light and Dark
+      - run: npx playwright install --with-deps chromium
+      - run: npx vitest run --project storybook
         env:
-          UNTITLEDUI_PRO_TOKEN: ${{ secrets.UNTITLEDUI_PRO_TOKEN }}
-      # Rebuilds the fc tokens from the Figma export; fails on dangling --fc-*
-      # references or media queries off the breakpoint tokens.
-      - run: npm run build:tokens
-      # Every text / border token pair must meet WCAG in every brand and mode.
-      - run: npm run audit:contrast
+          VITE_A11Y_STRICT: '1'
+          VITE_MODE: light
+      - run: npx vitest run --project storybook
+        env:
+          VITE_A11Y_STRICT: '1'
+          VITE_MODE: dark
       - run: npm run build-storybook
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'

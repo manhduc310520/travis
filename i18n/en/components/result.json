@@ -1,0 +1,15 @@
+{
+ "391d97fdec47": "Used to feedback the processing results of a series of operations.",
+ "68b45bfd2ea0": "## When To Use\n\nUse when important operations need to inform the user to process the results and the feedback is more complicated.\n\n## Examples",
+ "faadb69fe65d": "## API\n\nCommon props ref：[Common props](https://ant.design/docs/react/common-props)\n\n| Property | Description | Type | Default | Version | [Global Config](https://ant.design/components/config-provider#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | 6.0.0 | 6.0.0 |\n| extra | Operating area | ReactNode | - |  | × |\n| icon | Custom back icon | ReactNode | - |  | × |\n| status | Result status, decide icons and colors | `success` \\| `error` \\| `info` \\| `warning` \\| `404` \\| `403` \\| `500` | `info` |  | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | 6.0.0 | 6.0.0 |\n| subTitle | The subTitle | ReactNode | - |  | × |\n| title | The title | ReactNode | - |  | × |\n\n## Semantic DOM",
+ "cbcb3662c8f2": "## Design Token",
+ "3281a8aa8d2e": "Show successful results.",
+ "743e945a1a45": "Show processing results.",
+ "26bb2bfdfa79": "The result of the warning.",
+ "b63ca9bf43ac": "you are not authorized to access this page.",
+ "bdd143b2cf35": "The page you visited does not exist.",
+ "d2c4c7ff1ae1": "Something went wrong on server.",
+ "fd9a2c35576a": "Complex error feedback.",
+ "d66c716491b0": "Custom icon.",
+ "9a5266e3f69d": "You can customize the [semantic dom](#semantic-dom) style of Result by passing objects/functions through `classNames` and `styles`."
+}

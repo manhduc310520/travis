@@ -1,7 +1,13 @@
-node_modules
-dist
-storybook-static
-*.local
-.DS_Store
-debug-storybook.log
+# installed / built (CI rebuilds them)
+node_modules/
+storybook-static/
+coverage/
+packages/fabi-ui/node_modules/
+packages/fabi-ui/dist/
+packages/fabi-ui/*.tgz
+
+# local only
 *.log
+WORKLOG.md
+convert-report.json
+.claude/

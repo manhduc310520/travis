@@ -1,0 +1,15 @@
+{
+ "7fbc2bb26db4": "Container bố cục flex dùng để căn chỉnh.",
+ "4d7867320d9d": "## Khi nào dùng\n\n- Phù hợp để thiết lập khoảng cách giữa các phần tử.\n- Phù hợp để thiết lập nhiều kiểu căn chỉnh ngang và dọc.\n\n### Khác biệt với component Space\n\n- Space dùng để thiết lập khoảng cách giữa các phần tử inline. Nó thêm một phần tử bao (wrapper) cho mỗi phần tử con để căn chỉnh inline. Phù hợp để sắp xếp đều khoảng cách nhiều phần tử con theo hàng và cột.\n- Flex dùng để thiết lập bố cục cho các phần tử block. Nó không thêm phần tử bao. Phù hợp để bố cục các phần tử con theo chiều dọc hoặc ngang, đồng thời linh hoạt và dễ kiểm soát hơn.\n\n## Ví dụ",
+ "63f0ff9b3501": "Cách dùng cơ bản.",
+ "aa2c96dacf00": "Cơ bản",
+ "d5b917b3765a": "Thiết lập căn chỉnh.",
+ "ae21c64a87f6": "align",
+ "4bd36db10387": "Thiết lập `gap` giữa các phần tử, có ba kích thước định sẵn: `small`, `medium` và `large`. Bạn cũng có thể tuỳ chỉnh kích thước khoảng cách.",
+ "81bf0145c8f2": "gap",
+ "7dcf211a0cc1": "Tự động xuống dòng.",
+ "c3447e7954fa": "Wrap",
+ "3eb29f5370ac": "Lồng nhau để tạo bố cục phức tạp hơn.",
+ "77ffa6b4ec61": "Kết hợp",
+ "279bd0362b42": "## API\n\n> Component này có từ `antd@5.10.0`. Mặc định, Flex ở chế độ ngang căn theo hướng lên trên, ở chế độ dọc thì căn stretch. Bạn có thể điều chỉnh qua các thuộc tính.\n\nCác thuộc tính chung: [Common props](https://ant.design/docs/react/common-props)\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Phiên bản | [Cấu hình chung](https://ant.design/components/config-provider#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| vertical | Hướng của flex có phải dọc hay không, dùng `flex-direction: column` | boolean | false | 5.10.0 | 5.10.0 |\n| wrap | Thiết lập phần tử hiển thị trên một dòng hay nhiều dòng | [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap) \\| boolean | nowrap | boolean: 5.17.0 | × |\n| justify | Thiết lập căn chỉnh các phần tử theo hướng trục chính | [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) | normal |  | × |\n| align | Thiết lập căn chỉnh các phần tử theo hướng trục chéo | [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) | normal |  | × |\n| flex | Thuộc tính viết tắt flex của CSS | [flex](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) | normal |  | × |\n| gap | Thiết lập khoảng cách giữa các ô | `small` \\| `medium` \\| `large` \\| string \\| number | - |  | × |\n| component | Kiểu phần tử tuỳ chỉnh | React.ComponentType | `div` |  | × |\n| orientation | Hướng của flex | `horizontal` \\| `vertical` | `horizontal` | - | × |\n\n## Design Token"
+}

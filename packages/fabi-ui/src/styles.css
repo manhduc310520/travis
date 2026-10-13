@@ -1,0 +1,155 @@
+/*
+ * @fabi/ui accessibility CSS: contrast fixes that antd's theme tokens cannot express (WCAG AA, 2026-09-30).
+ * Selectors use the FABi class prefix (fabi-). The Storybook imports this file.
+ * antd injects its CSS-in-JS after this file, so selectors repeat a class to win on specificity.
+ * All colours are antd palette steps.
+ */
+
+/*
+ * Light only: the rules below that colour text on a light surface (preset Tags, outlined / text / link
+ * Buttons) skip [data-fabi-mode="dark"] (set on <html> by FabiProvider mode="dark") and everything inside
+ * it; antd's dark palette colours them there. Rules for white text on a colour (solid Tags, Ribbons,
+ * solid Buttons) hold in both modes. :where() keeps the specificity of the Light rules unchanged.
+ */
+
+/* Hovered danger menu items (Dropdown): white text on colorError is 3.4:1 → error step 5 */
+:where([data-fabi-mode='dark']) .fabi-dropdown-menu .fabi-dropdown-menu-item.fabi-dropdown-menu-item.fabi-dropdown-menu-item-danger:not(.fabi-dropdown-menu-item-disabled):hover { background-color: #ad393a; }
+/* Checked Radio.Button (outline style): antd writes the label in colorPrimary, the dark fill → brand text */
+:where([data-fabi-mode='dark']) .fabi-radio-group:not(.fabi-radio-group-solid) .fabi-radio-button-wrapper.fabi-radio-button-wrapper-checked:not(.fabi-radio-button-wrapper-disabled) { color: var(--fabi-color-primary-text); }
+:where([data-fabi-mode='dark']) .fabi-radio-group:not(.fabi-radio-group-solid) .fabi-radio-button-wrapper.fabi-radio-button-wrapper-checked:not(.fabi-radio-button-wrapper-disabled):hover { color: var(--fabi-color-primary-text-hover); }
+:where([data-fabi-mode='dark']) .fabi-radio-group:not(.fabi-radio-group-solid) .fabi-radio-button-wrapper.fabi-radio-button-wrapper-checked:not(.fabi-radio-button-wrapper-disabled):active { color: var(--fabi-color-primary-text-active); }
+/* Preset Tags: step-7 text on step-1 background is under 4.5:1 for these hues → step 8 (9 for gold/yellow/lime) */
+.fabi-tag.fabi-tag.fabi-tag-cyan:not(.fabi-tag-solid):not(:where([data-fabi-mode='dark'] *)) { color: #006d75; }
+.fabi-tag.fabi-tag.fabi-tag-green:not(.fabi-tag-solid):not(:where([data-fabi-mode='dark'] *)) { color: #237804; }
+.fabi-tag.fabi-tag.fabi-tag-lime:not(.fabi-tag-solid):not(:where([data-fabi-mode='dark'] *)) { color: #3f6600; }
+.fabi-tag.fabi-tag.fabi-tag-gold:not(.fabi-tag-solid):not(:where([data-fabi-mode='dark'] *)) { color: #874d00; }
+.fabi-tag.fabi-tag.fabi-tag-yellow:not(.fabi-tag-solid):not(:where([data-fabi-mode='dark'] *)) { color: #614700; }
+.fabi-tag.fabi-tag.fabi-tag-orange:not(.fabi-tag-solid):not(:where([data-fabi-mode='dark'] *)) { color: #ad4e00; }
+.fabi-tag.fabi-tag.fabi-tag-volcano:not(.fabi-tag-solid):not(:where([data-fabi-mode='dark'] *)) { color: #ad2102; }
+/* Solid Tags: white text needs a darker background */
+.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-green { background: #237804; border-color: #237804; }
+.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-cyan { background: #006d75; border-color: #006d75; }
+.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-blue { background: #0958d9; border-color: #0958d9; }
+.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-magenta { background: #c41d7f; border-color: #c41d7f; }
+.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-volcano { background: #d4380d; border-color: #d4380d; }
+.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-orange { background: #ad4e00; border-color: #ad4e00; }
+.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-lime { background: #3f6600; border-color: #3f6600; }
+.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-gold { background: #874d00; border-color: #874d00; }
+
+.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-red { background: #cf1322; border-color: #cf1322; }
+
+/* Badge.Ribbon in pink / magenta / red: white text on step 6 is under 4.5:1 → step 7 */
+.fabi-ribbon.fabi-ribbon.fabi-ribbon-color-pink,
+.fabi-ribbon.fabi-ribbon.fabi-ribbon-color-magenta { background: #c41d7f; }
+.fabi-ribbon.fabi-ribbon-color-pink .fabi-ribbon-corner,
+.fabi-ribbon.fabi-ribbon-color-magenta .fabi-ribbon-corner { color: #c41d7f; }
+.fabi-ribbon.fabi-ribbon.fabi-ribbon-color-red { background: #cf1322; }
+.fabi-ribbon.fabi-ribbon-color-red .fabi-ribbon-corner { color: #cf1322; }
+
+.fabi-ribbon.fabi-ribbon.fabi-ribbon-color-cyan { background: #006d75; }
+.fabi-ribbon.fabi-ribbon-color-cyan .fabi-ribbon-corner { color: #006d75; }
+.fabi-ribbon.fabi-ribbon.fabi-ribbon-color-green { background: #237804; }
+.fabi-ribbon.fabi-ribbon-color-green .fabi-ribbon-corner { color: #237804; }
+.fabi-ribbon.fabi-ribbon.fabi-ribbon-color-volcano { background: #d4380d; }
+.fabi-ribbon.fabi-ribbon-color-volcano .fabi-ribbon-corner { color: #d4380d; }
+.fabi-ribbon.fabi-ribbon.fabi-ribbon-color-blue { background: #0958d9; }
+.fabi-ribbon.fabi-ribbon-color-blue .fabi-ribbon-corner { color: #0958d9; }
+.fabi-ribbon.fabi-ribbon.fabi-ribbon-color-orange { background: #ad4e00; }
+.fabi-ribbon.fabi-ribbon-color-orange .fabi-ribbon-corner { color: #ad4e00; }
+.fabi-ribbon.fabi-ribbon.fabi-ribbon-color-gold { background: #874d00; }
+.fabi-ribbon.fabi-ribbon-color-gold .fabi-ribbon-corner { color: #874d00; }
+.fabi-ribbon.fabi-ribbon.fabi-ribbon-color-lime { background: #3f6600; }
+.fabi-ribbon.fabi-ribbon-color-lime .fabi-ribbon-corner { color: #3f6600; }
+
+/* Buttons in palette colours: outlined / text / link variants of these hues use step 6 text */
+.fabi-btn.fabi-btn.fabi-btn-color-green:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)) { color: #237804; border-color: #237804; }
+.fabi-btn.fabi-btn.fabi-btn-color-blue:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)) { color: #0958d9; border-color: #0958d9; }
+.fabi-btn.fabi-btn.fabi-btn-color-red:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)) { color: #cf1322; border-color: #cf1322; }
+.fabi-btn.fabi-btn.fabi-btn-color-yellow:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)) { color: #614700; border-color: #614700; }
+.fabi-btn.fabi-btn.fabi-btn-color-orange:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)) { color: #ad4e00; border-color: #ad4e00; }
+.fabi-btn.fabi-btn.fabi-btn-color-volcano:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)) { color: #ad2102; border-color: #ad2102; }
+.fabi-btn.fabi-btn.fabi-btn-color-gold:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)) { color: #874d00; border-color: #874d00; }
+.fabi-btn.fabi-btn.fabi-btn-color-lime:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)) { color: #3f6600; border-color: #3f6600; }
+
+/* Buttons in palette colours (Color & Variant): text / solid background → step 7 or 8 */
+.fabi-btn.fabi-btn.fabi-btn-color-cyan:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)) { color: #006d75; border-color: #006d75; }
+.fabi-btn.fabi-btn.fabi-btn-color-cyan.fabi-btn-variant-solid { background: #006d75; }
+.fabi-btn.fabi-btn.fabi-btn-color-magenta:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)),
+.fabi-btn.fabi-btn.fabi-btn-color-pink:not(.fabi-btn-variant-solid):not(:where([data-fabi-mode='dark'] *)) { color: #c41d7f; border-color: #c41d7f; }
+.fabi-btn.fabi-btn.fabi-btn-color-magenta.fabi-btn-variant-solid,
+.fabi-btn.fabi-btn.fabi-btn-color-pink.fabi-btn-variant-solid { background: #c41d7f; }
+
+/*
+ * Dark only (FabiProvider mode="dark"): antd's dark fills (brand, preset hues, error) are under 4.5:1 as
+ * text on the dark surfaces, and some are under 4.5:1 under white text. Where a component has no token
+ * that separates the two roles, text moves up the hue's dark palette (antd's --fabi-<hue>-<step> and
+ * --fabi-color-*-text variables, so they follow the brand) and white-text fills move down. See
+ * theme.ts darkTheme for the steps and ratios.
+ */
+/* native controls, scrollbars and CSS light-dark() follow the mode */
+[data-fabi-mode='dark'] { color-scheme: dark; }
+/* Brand colour as text: outlined / dashed / filled / text / link Buttons, the selected full-Calendar date,
+   "processing" Tags */
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-primary:not(.fabi-btn-variant-solid) {
+  --fabi-btn-color-base: var(--fabi-color-primary-text);
+  --fabi-btn-color-hover: var(--fabi-color-primary-text-hover);
+  --fabi-btn-color-active: var(--fabi-color-primary-text-active);
+}
+:where([data-fabi-mode='dark']) .fabi-picker-calendar.fabi-picker-calendar-full .fabi-picker-panel .fabi-picker-cell.fabi-picker-cell-selected .fabi-picker-calendar-date .fabi-picker-calendar-date-value.fabi-picker-calendar-date-value { color: var(--fabi-color-primary-text); }
+:where([data-fabi-mode='dark']) .fabi-tag.fabi-tag.fabi-tag-processing:not(.fabi-tag-solid):not(.fabi-tag-disabled) { color: var(--fabi-color-info-text); }
+/* Steps: outlined icons / the active outlined panel write the step text in the brand colour; hover text */
+:where([data-fabi-mode='dark']) .fabi-steps.fabi-steps.fabi-steps-outlined .fabi-steps-item.fabi-steps-item-process,
+:where([data-fabi-mode='dark']) .fabi-steps.fabi-steps.fabi-steps-outlined .fabi-steps-item.fabi-steps-item-finish { --fabi-cmp-steps-item-icon-text-color: var(--fabi-color-primary-text); }
+:where([data-fabi-mode='dark']) .fabi-steps.fabi-steps .fabi-steps-item.fabi-steps-item:not(.fabi-steps-item-error) { --fabi-cmp-steps-item-text-hover-color: var(--fabi-color-primary-text-hover); }
+/* Danger Button, solid: white text needs error step 5 (hover / active one / two steps darker) */
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-dangerous.fabi-btn-variant-solid {
+  --fabi-btn-color-base: #ad393a;
+  --fabi-btn-color-hover: #7e2e2f;
+  --fabi-btn-color-active: #5b2526;
+}
+/* Solid status Tags: white text needs error step 5, green step 5, gold step 4 */
+:where([data-fabi-mode='dark']) .fabi-tag.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-error { background: #ad393a; border-color: #ad393a; }
+:where([data-fabi-mode='dark']) .fabi-tag.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-success { background: #3c8618; border-color: #3c8618; }
+:where([data-fabi-mode='dark']) .fabi-tag.fabi-tag.fabi-tag.fabi-tag-solid.fabi-tag-warning { background: #7c5914; border-color: #7c5914; }
+/* Preset Tags: step-7 text on step-1 background is under 4.5:1 for these two hues → step 8 */
+:where([data-fabi-mode='dark']) .fabi-tag.fabi-tag.fabi-tag-geekblue:not(.fabi-tag-solid):not(.fabi-tag-disabled) { color: var(--fabi-geekblue-8); }
+:where([data-fabi-mode='dark']) .fabi-tag.fabi-tag.fabi-tag-purple:not(.fabi-tag-solid):not(.fabi-tag-disabled) { color: var(--fabi-purple-8); }
+/* Buttons in preset colours, not solid: antd's step-6 fill as text → step 8 (step 7 for the light hues
+   orange / yellow / gold / lime), hover one step lighter */
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-blue:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-blue-8); --fabi-btn-color-hover: var(--fabi-blue-9); --fabi-btn-color-active: var(--fabi-blue-8); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-geekblue:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-geekblue-8); --fabi-btn-color-hover: var(--fabi-geekblue-9); --fabi-btn-color-active: var(--fabi-geekblue-8); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-purple:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-purple-8); --fabi-btn-color-hover: var(--fabi-purple-9); --fabi-btn-color-active: var(--fabi-purple-8); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-cyan:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-cyan-8); --fabi-btn-color-hover: var(--fabi-cyan-9); --fabi-btn-color-active: var(--fabi-cyan-8); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-green:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-green-8); --fabi-btn-color-hover: var(--fabi-green-9); --fabi-btn-color-active: var(--fabi-green-8); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-magenta:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-magenta-8); --fabi-btn-color-hover: var(--fabi-magenta-9); --fabi-btn-color-active: var(--fabi-magenta-8); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-pink:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-pink-8); --fabi-btn-color-hover: var(--fabi-pink-9); --fabi-btn-color-active: var(--fabi-pink-8); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-red:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-red-8); --fabi-btn-color-hover: var(--fabi-red-9); --fabi-btn-color-active: var(--fabi-red-8); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-volcano:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-volcano-8); --fabi-btn-color-hover: var(--fabi-volcano-9); --fabi-btn-color-active: var(--fabi-volcano-8); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-orange:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-orange-7); --fabi-btn-color-hover: var(--fabi-orange-8); --fabi-btn-color-active: var(--fabi-orange-7); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-yellow:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-yellow-7); --fabi-btn-color-hover: var(--fabi-yellow-8); --fabi-btn-color-active: var(--fabi-yellow-7); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-gold:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-gold-7); --fabi-btn-color-hover: var(--fabi-gold-8); --fabi-btn-color-active: var(--fabi-gold-7); }
+:where([data-fabi-mode='dark']) .fabi-btn.fabi-btn.fabi-btn-color-lime:not(.fabi-btn-variant-solid) { --fabi-btn-color-base: var(--fabi-lime-7); --fabi-btn-color-hover: var(--fabi-lime-8); --fabi-btn-color-active: var(--fabi-lime-7); }
+
+/* Loading buttons are faded to 65% by antd, which drops white text under 4.5:1 */
+.fabi-btn.fabi-btn.fabi-btn-loading { opacity: 1; }
+
+/* Links inside running text must not rely on colour alone */
+.fabi-form .fabi-checkbox-label a:not(.fabi-btn),
+.fabi-form p a:not(.fabi-btn) { text-decoration: underline; }
+
+/* Visually hidden text for names added by installA11yFixes() (class <prefix>-sr-only) */
+.fabi-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* App header on the brand gradient (theme Layout.headerBg): a dark horizontal Menu in it shows the gradient
+   instead of its own #001529, and its items use white .85 (.65 is 3.9:1 on Magenta's gradient; .85 ≥ 5.8:1
+   for every brand) */
+.fabi-layout-header .fabi-menu-dark.fabi-menu-horizontal {
+  background: transparent;
+}
+.fabi-layout-header .fabi-menu-dark.fabi-menu-horizontal > .fabi-menu-item:not(.fabi-menu-item-selected),
+.fabi-layout-header .fabi-menu-dark.fabi-menu-horizontal > .fabi-menu-submenu:not(.fabi-menu-submenu-selected) > .fabi-menu-submenu-title {
+  color: rgba(255, 255, 255, 0.85);
+}

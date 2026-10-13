@@ -1,0 +1,100 @@
+{
+  "name": "@fabi/ui",
+  "version": "0.1.0",
+  "description": "FABi CMS Design System: Ant Design 6.6.5 with the FABi theme, the fabi- class prefix and accessibility fixes.",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "NOTICE.md"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./icons": {
+      "types": "./dist/icons.d.ts",
+      "default": "./dist/icons.js"
+    },
+    "./fabi-icons": {
+      "types": "./dist/fabi-icons.d.ts",
+      "default": "./dist/fabi-icons.js"
+    },
+    "./colors": {
+      "types": "./dist/colors.d.ts",
+      "default": "./dist/colors.js"
+    },
+    "./cssinjs": {
+      "types": "./dist/cssinjs.d.ts",
+      "default": "./dist/cssinjs.js"
+    },
+    "./style": {
+      "types": "./dist/style.d.ts",
+      "default": "./dist/style.js"
+    },
+    "./happy-work-theme": {
+      "types": "./dist/happy-work-theme.d.ts",
+      "default": "./dist/happy-work-theme.js"
+    },
+    "./img-crop": {
+      "types": "./dist/img-crop.d.ts",
+      "default": "./dist/img-crop.js"
+    },
+    "./static-style-extract": {
+      "types": "./dist/static-style-extract.d.ts",
+      "default": "./dist/static-style-extract.js"
+    },
+    "./charts": {
+      "types": "./dist/charts.d.ts",
+      "default": "./dist/charts.js"
+    },
+    "./locale/*": {
+      "types": "./dist/locale/*.d.ts",
+      "default": "./dist/locale/*.js"
+    },
+    "./es/*": {
+      "types": "./dist/es/*.d.ts",
+      "default": "./dist/es/*.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./font.css": "./dist/font.css",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "icons:fetch": "node scripts/fetch-fabi-icons.mjs",
+    "icons:gen": "node scripts/gen-fabi-icons.mjs",
+    "build": "tsc -p tsconfig.json && node scripts/gen-stubs.mjs",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@ant-design/colors": "8.0.1",
+    "@ant-design/cssinjs": "2.1.2",
+    "@ant-design/happy-work-theme": "2.0.0",
+    "@ant-design/icons": "6.3.4",
+    "@ant-design/plots": "2.6.7",
+    "@ant-design/static-style-extract": "2.1.0",
+    "antd": "6.6.5",
+    "antd-img-crop": "4.30.0",
+    "antd-style": "4.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "typescript": "6.0.3"
+  }
+}

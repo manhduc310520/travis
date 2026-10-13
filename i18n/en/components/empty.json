@@ -1,0 +1,12 @@
+{
+ "7af5c1cc12c7": "Empty state placeholder.",
+ "4f292e85a0a4": "## When To Use\n\n- When there is no data provided, display for friendly tips.\n- User tutorial to create something in fresh new situation.\n\n## Examples",
+ "54d4292bde82": "## API\n\nCommon props ref：[Common props](https://ant.design/docs/react/common-props)\n\n```jsx\n<Empty>\n  <Button>Create</Button>\n</Empty>\n```\n\n| Property | Description | Type | Default | Version | [Global Config](https://ant.design/components/config-provider#component-config) |\n| --- | --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - |  | 5.23.0 |\n| description | Customize description | ReactNode | - |  | × |\n| image | Customize image. Will treat as image url when string provided | ReactNode | `Empty.PRESENTED_IMAGE_DEFAULT` |  | 5.27.0 |\n| ~~imageStyle~~ | The style of image, please use `styles.image` instead | CSSProperties | - |  | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - |  | 5.23.0 |\n\n## Built-in images\n\n- Empty.PRESENTED_IMAGE_SIMPLE\n\n  <div class=\"site-empty-buildIn-img site-empty-buildIn-simple\"><div>\n\n- Empty.PRESENTED_IMAGE_DEFAULT\n\n  <div class=\"site-empty-buildIn-img site-empty-buildIn-default\"></div>\n\n\n## Semantic DOM",
+ "cbcb3662c8f2": "## Design Token",
+ "fcd027143ef7": "Simplest Usage.",
+ "b0896455ca70": "You can choose another style of `image` by setting image to `Empty.PRESENTED_IMAGE_SIMPLE`.",
+ "8faa28cd5ce1": "Customize image source, image size, description and extra content.",
+ "691a27673e37": "Use ConfigProvider set global Empty style.",
+ "e66689b14c31": "You can customize the [semantic dom](#semantic-dom) style of Empty by passing objects/functions through `classNames` and `styles`.",
+ "d98f3d60518f": "Simplest Usage with no description."
+}

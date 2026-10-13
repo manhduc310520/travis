@@ -1,0 +1,53 @@
+import React, { useRef, useState } from 'react';
+import { PlusOutlined } from '@fabi/ui/icons';
+import { Button, Divider, Input, Select, Space } from '@fabi/ui';
+import type { InputRef } from '@fabi/ui';
+
+let index = 0;
+
+const App: React.FC = () => {
+  const [items, setItems] = useState(['jack', 'lucy']);
+  const [name, setName] = useState('');
+  const inputRef = useRef<InputRef>(null);
+
+  const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value);
+  };
+
+  const addItem = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    e.preventDefault();
+    setItems([...items, name || `New item ${index++}`]);
+    setName('');
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 0);
+  };
+
+  return (
+    <Select aria-label="custom dropdown render"
+      style={{ width: 300 }}
+      placeholder="custom dropdown render"
+      popupRender={(menu) => (
+        <>
+          {menu}
+          <Divider style={{ margin: '8px 0' }} />
+          <Space style={{ padding: '0 8px 4px' }}>
+            <Input aria-label="Please enter item"
+              placeholder="Please enter item"
+              ref={inputRef}
+              value={name}
+              onChange={onNameChange}
+              onKeyDown={(e) => e.stopPropagation()}
+            />
+            <Button type="text" icon={<PlusOutlined />} onClick={addItem}>
+              Add item
+            </Button>
+          </Space>
+        </>
+      )}
+      options={items.map((item) => ({ label: item, value: item }))}
+    />
+  );
+};
+
+export default App;
