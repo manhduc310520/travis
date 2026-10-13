@@ -1,0 +1,150 @@
+/* Figma "❖ Carousel". Dots and arrows sit on the slide, so they use the on-solid colour
+   (slides are photos / solid fills).
+   Figma `Carousel / Carousel Dot`: Default 16 wide at 30 % opacity, Hover 70 %, Active 24 wide at
+   100 %, square corners. Figma draws the bar 3 px tall; code uses 4 px (--fc-size-scale-xxs)
+   because 3 is off the 4 px grid (open designer decision).
+   Figma `Carousel / Carousel Dots`: gap Space/Margin/XXS; 12 px from the edge.
+   Figma `Carousel / Arrow`: 16 × 16 chevron, 2 px stroke, 8 px (Space/Margin/XS) from the edge. */
+.root {
+  --_dot-width: var(--fc-size-scale-ms);
+  --_dot-width-active: var(--fc-size-scale-lg);
+  --_dot-height: var(--fc-size-scale-xxs);
+  --_dot-inset: var(--fc-space-padding-sm);
+  --_arrow-size: var(--fc-typography-size-lg);
+  --_arrow-pad: var(--fc-space-padding-xxs);
+  --_arrow-inset: calc(var(--fc-space-margin-xs) - var(--_arrow-pad));
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Focusable only when dots and arrows are both hidden (keyboard fallback). */
+.root[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.viewport {
+  overflow: hidden;
+  height: 100%;
+}
+
+.track {
+  display: flex;
+  height: 100%;
+  transform: translateX(calc(var(--_index) * -100%));
+  transition: transform 0.3s ease;
+}
+
+.root[data-vertical] .track {
+  flex-direction: column;
+  transform: translateY(calc(var(--_index) * -100%));
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.dots {
+  position: absolute;
+  display: flex;
+  gap: var(--fc-space-margin-xxs);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.root[data-placement='bottom'] .dots { inset-inline: 0; bottom: var(--_dot-inset); }
+.root[data-placement='top'] .dots { inset-inline: 0; top: var(--_dot-inset); }
+.root[data-placement='start'] .dots,
+.root[data-placement='end'] .dots { flex-direction: column; inset-block: 0; }
+.root[data-placement='start'] .dots { inset-inline-start: var(--_dot-inset); }
+.root[data-placement='end'] .dots { inset-inline-end: var(--_dot-inset); }
+
+.dot {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  inline-size: var(--_dot-width);
+  block-size: var(--_dot-height);
+  background: var(--fc-color-content-on-solid);
+  opacity: 0.3;
+  cursor: pointer;
+  transition: inline-size 0.2s, block-size 0.2s, opacity 0.2s;
+}
+
+/* Larger pointer target than the thin bar: 24 px across the bar, half the gap along it. */
+.dot::before {
+  content: '';
+  position: absolute;
+  inset-block: calc((var(--_dot-height) - var(--fc-size-control-sm)) / 2);
+  inset-inline: calc(var(--fc-space-margin-xxs) / -2);
+}
+
+.root[data-vertical] .dot {
+  inline-size: var(--_dot-height);
+  block-size: var(--_dot-width);
+}
+
+.root[data-vertical] .dot::before {
+  inset-inline: calc((var(--_dot-height) - var(--fc-size-control-sm)) / 2);
+  inset-block: calc(var(--fc-space-margin-xxs) / -2);
+}
+
+.dot[data-hovered] { opacity: 0.7; }
+.dot[data-active] { opacity: 1; inline-size: var(--_dot-width-active); }
+.root[data-vertical] .dot[data-active] { inline-size: var(--_dot-height); block-size: var(--_dot-width-active); }
+
+.dot[data-focus-visible],
+.arrow[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* Arrows: bare chevrons over the slide (no plate, no shadow). The padding widens the
+   pointer target to 24 px; the inset keeps the chevron itself 8 px from the edge. */
+.arrow {
+  all: unset;
+  box-sizing: content-box;
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: var(--_arrow-pad);
+  inline-size: var(--_arrow-size);
+  block-size: var(--_arrow-size);
+  border-radius: var(--fc-radius-sm);
+  color: var(--fc-color-content-on-solid);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.arrowIcon {
+  display: block;
+  inline-size: var(--_arrow-size);
+  block-size: var(--_arrow-size);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--fc-stroke-width-strong);
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+}
+
+.arrow[data-hovered] { opacity: 0.7; }
+.arrow[data-disabled] { opacity: 0.3; cursor: not-allowed; }
+
+.prev, .next { inset-block-start: 50%; translate: 0 -50%; }
+.prev { inset-inline-start: var(--_arrow-inset); }
+.next { inset-inline-end: var(--_arrow-inset); }
+
+.root[data-vertical] .prev,
+.root[data-vertical] .next { inset-inline-start: 50%; translate: -50% 0; inset-inline-end: auto; }
+.root[data-vertical] .prev { inset-block-start: var(--_arrow-inset); }
+.root[data-vertical] .next { inset-block-start: auto; inset-block-end: var(--_arrow-inset); }
+
+@media (prefers-reduced-motion: reduce) {
+  .track, .dot, .arrow { transition: none; }
+}

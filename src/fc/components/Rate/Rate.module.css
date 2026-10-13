@@ -1,0 +1,117 @@
+/* Figma `Rate` + `Rate / Rate Star`. Stars 8px apart (Space/Margin/XS), Untitled UI star-01 outline
+   at Stroke/Width/Icon, fill Color/Palette/Yellow/6. Figma star sizes 15 / 20 / 25 snap to
+   16 / 20 / 24 (4px grid). Figma binds no colour on the empty star; it uses Color/Border/Control (3:1). */
+.rate {
+  --_size: var(--fc-size-scale-md);
+  --_on: var(--fc-color-palette-yellow-6);
+  --_off: var(--fc-color-border-control);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+}
+
+.sm { --_size: var(--fc-size-control-xs); }
+.md { --_size: var(--fc-size-scale-md); }
+.lg { --_size: var(--fc-size-scale-lg); }
+
+.group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+}
+
+.star {
+  position: relative;
+  display: inline-flex;
+  width: var(--_size);
+  height: var(--_size);
+  flex: none;
+  transition: transform 0.2s ease;
+}
+
+.rate:not(.static) .star:hover { transform: scale(1.1); }
+
+.back,
+.front {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.back { color: var(--_off); }
+
+.front {
+  color: var(--_on);
+  width: 0;
+}
+.half .front { width: 50%; }
+.full .front { width: 100%; }
+
+.glyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_size);
+  height: var(--_size);
+  font-size: var(--_size);
+  line-height: 1;
+}
+
+.glyph > svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Default glyph (Star01): outline only on the back layer, filled on the front layer. */
+.svg path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--fc-stroke-width-icon);
+  vector-effect: non-scaling-stroke;
+}
+.front .svg path { fill: currentColor; }
+
+/* Hit areas: whole star, or left / right half when allowHalf. */
+.hit {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--fc-radius-sm);
+}
+.hitLeft { right: 50%; justify-content: flex-end; }
+.hitRight { left: 50%; justify-content: flex-start; }
+
+/* React Aria's visually hidden radio input is the tooltip anchor. Shrunk to its 1px wrapper and
+   placed by the flex alignment above, it sits at the star's centre in both hit-area layouts. */
+.hit input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.hit[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: var(--fc-stroke-width-base);
+}
+
+.static .hit { cursor: default; }
+.hit[data-disabled] { cursor: not-allowed; }
+
+/* Figma `Text?`: Typography Text, Base size, Color/Content/Neutral-Strong. */
+.text {
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  font-weight: var(--fc-typography-weight-regular);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star { transition: none; }
+  .rate:not(.static) .star:hover { transform: none; }
+}

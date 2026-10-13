@@ -1,0 +1,25 @@
+/*
+ * Masonry — Figma set `Masonry`. Equal-width columns (flex: 1) separated by
+ * `--_col-gap`; each column stacks its items with `--_row-gap`. Both default to
+ * `space/margin/base` (16px). Figma draws the set as an 8-row grid with a raw
+ * 16px row and column gap (no variable bound yet); the value matches. Items are
+ * not row-aligned on purpose.
+ */
+.masonry {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--_col-gap, var(--fc-space-margin-base));
+  inline-size: 100%;
+}
+
+.column {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  gap: var(--_row-gap, var(--fc-space-margin-base));
+  min-inline-size: 0;
+}
+
+.item {
+  min-inline-size: 0;
+}

@@ -1,0 +1,17 @@
+/*
+ * Affix — behaviour only (Figma ❖ Affix has no visuals of its own).
+ * `top` / `bottom` come from the offsetTop / offsetBottom props (inline style).
+ * No z-index token exists yet; 1 keeps the pinned content above the rows
+ * scrolling underneath it within the same stacking context.
+ */
+.affix {
+  position: sticky;
+  z-index: 1;
+}
+
+/* Zero-size marker in normal flow, used to detect the pinned state. */
+.sentinel {
+  block-size: 0;
+  inline-size: 100%;
+  pointer-events: none;
+}

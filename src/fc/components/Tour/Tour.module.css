@@ -1,0 +1,204 @@
+/*
+ * Figma "❖ Tour" (Type = Basic | Non-modal). Elevated surface, shadow and
+ * arrow come from overlay.module.css.
+ *   panel      padding Space/Padding/Base, gap Space/Padding/XS
+ *   content    cover → text gap Space/Margin/Base
+ *   text       title → description gap Space/Padding/XS, both 14px Neutral-Strong
+ *   footer     indicator … buttons (small, gap Space/Margin/XS)
+ *   close      top right inside the padding, Color/Content/Icon
+ * `.tour.basic` / `.tour.primary` (two classes) outrank `.surface`, whatever
+ * order the CSS loads in.
+ */
+.tour { max-width: var(--_max); }
+
+.tour.basic,
+.tour.primary {
+  --_radius: var(--fc-radius-lg);
+  --_padding: var(--fc-space-padding-base);
+}
+
+.dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-padding-xs);
+  outline: none;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-base);
+}
+
+/* Figma "Image Content" slot: full width, pushed below the close button. */
+.cover { padding-block-start: calc(var(--fc-size-control-sm) + var(--fc-space-padding-xs)); }
+.cover > svg,
+.cover > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-padding-xs);
+  overflow-wrap: anywhere;
+}
+
+.title {
+  margin: 0;
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  font-weight: var(--fc-typography-weight-semibold);
+  line-height: var(--fc-typography-line-height-base);
+}
+/* No cover: the title is the first line, so it keeps clear of the close button. */
+.text:first-child > .title {
+  padding-inline-end: calc(var(--fc-size-control-sm) + var(--fc-space-padding-xs));
+}
+
+.description {
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+/* ---------- close (Figma "_Button Close") ---------- */
+.close {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--fc-size-control-sm);
+  height: var(--fc-size-control-sm);
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-color-content-icon);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+.close svg {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+.close[data-hovered],
+.close[data-pressed] {
+  background: var(--fc-color-background-plain-hover);
+  color: var(--fc-color-content-icon-hover);
+}
+.close[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: var(--fc-stroke-width-base);
+}
+
+/* ---------- footer ---------- */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fc-space-padding-xs);
+}
+
+.actions {
+  display: inline-flex;
+  gap: var(--fc-space-margin-xs);
+}
+
+/* Figma Indicator Type=Number: "1/3", the slash padded by Space/Margin/XXS. */
+.number {
+  display: inline-flex;
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+.separator { padding-inline: var(--fc-space-margin-xxs); }
+
+/* Figma Indicator Type=Slider: dots, the current one Color/Solid/Accent. */
+.dots {
+  display: inline-flex;
+  gap: var(--fc-space-margin-xxs);
+}
+.dot {
+  width: var(--fc-space-margin-xs);
+  height: var(--fc-space-margin-xs);
+  border-radius: 50%;
+  background: var(--fc-color-content-neutral-light);
+}
+.dotActive { background: var(--fc-color-solid-accent); }
+
+/* ---------- Type=Non-modal (primary): accent panel ---------- */
+.tour.primary {
+  background: var(--fc-color-solid-accent);
+  color: var(--fc-color-content-on-solid);
+}
+.primary .title,
+.primary .description,
+.primary .number { color: var(--fc-color-content-on-solid); }
+.primary .dot { background: var(--fc-color-content-on-solid); opacity: 0.4; }
+.primary .dotActive { opacity: 1; }
+.tour.primary .arrowPrimary svg { fill: var(--fc-color-solid-accent); }
+
+/* Close on a dark background (Figma Background=Dark): On-Solid icon. */
+.primary .close { color: var(--fc-color-content-on-solid); }
+.primary .close[data-hovered],
+.primary .close[data-pressed] {
+  background: var(--fc-color-fill-neutral-light);
+  color: var(--fc-color-content-on-solid);
+}
+
+/*
+ * Next: default button filled Color/Content/On-Solid with a Solid/Accent label.
+ * Three classes outrank every Button fill and state rule (at most two), so the
+ * override holds whatever order the CSS loads in. Hover / pressed follow the
+ * Button outlined pattern (label steps to the hover / active accent).
+ */
+.tour.primary .nextOnAccent {
+  --_bg: var(--fc-color-content-on-solid);
+  --_border: var(--fc-color-content-on-solid);
+  --_fg: var(--fc-color-solid-accent);
+}
+.tour.primary .nextOnAccent[data-hovered] { --_fg: var(--fc-color-solid-accent-hover); }
+.tour.primary .nextOnAccent[data-pressed] { --_fg: var(--fc-color-solid-accent-active); }
+
+/* An accent focus ring would vanish on the accent panel: use On-Solid. */
+.tour.primary [data-focus-visible] { outline-color: var(--fc-color-content-on-solid); }
+
+/* ---------- mask ---------- */
+/* Target step: dims the page and leaves a hole around the target. */
+.spotlight {
+  position: fixed;
+  z-index: 1;
+  border-radius: var(--fc-radius-base);
+  box-shadow: 0 0 0 100vmax var(--fc-color-background-overlay);
+  pointer-events: none;
+}
+
+/* Step without a target: panel centred in the viewport. */
+.center {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: var(--fc-space-margin-base);
+  pointer-events: none;
+}
+.center > * { pointer-events: auto; }
+.center.centerMask {
+  background: var(--fc-color-background-overlay);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .close { transition: none; }
+}

@@ -1,0 +1,52 @@
+/* Figma "❖ Watermark". Mark = `Watermark / Watermark Item`: Text LG/Regular, fill Color/Fill/Neutral-Strong. */
+.root {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Decorative layer above the content; never catches the pointer or selection. */
+.layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  /* Figma rows and items are Fill: whole columns / rows stretch to cover the area. */
+  grid-template-columns: repeat(var(--_cols), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--_rows), minmax(0, 1fr));
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  color: var(--fc-color-fill-neutral-strong);
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.mark {
+  display: inline-flex;
+  transform: rotate(var(--_rotate));
+  white-space: nowrap;
+}
+
+.text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: var(--fc-typography-family-base);
+  font-size: var(--fc-typography-size-lg);
+  line-height: var(--fc-typography-line-height-lg);
+  font-weight: var(--fc-typography-weight-regular);
+}
+
+.line {
+  display: block;
+}
+
+.image {
+  display: block;
+  max-width: var(--_tile-w);
+}

@@ -1,0 +1,97 @@
+/*
+ * Box: the shared field chrome (Input.module.css: outlined / filled /
+ * underlined / borderless, status, sizes, multiline) on a React Aria Group,
+ * so focus, hover, disabled and invalid show as in Figma State=Focused.
+ * List: Figma "Dropdown Menu" (Arrow=None) = shared overlay surface + list rows
+ * with Component/Dropdown/* (padding 4, radius 8, row 32, row radius 4).
+ */
+
+/*
+ * Figma Mentions: one line is exactly the control height (Default 32, Small 24,
+ * Large 40), text centred, so the block padding is (height - line) / 2 minus
+ * the border. Small keeps 14 / 22 text (Figma Input Small binds
+ * Typography/Size/Base and Line-Height/Base).
+ */
+.box.box {
+  --_control-height: var(--fc-size-control-base);
+  --_line-height: var(--fc-typography-line-height-base);
+  position: relative;
+  padding-block: calc((var(--_control-height) - var(--_line-height)) / 2 - var(--fc-stroke-width-base));
+}
+.box.sm {
+  --_control-height: var(--fc-size-control-sm);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+.box.lg {
+  --_control-height: var(--fc-size-control-lg);
+  --_line-height: var(--fc-typography-line-height-lg);
+}
+
+/* The rows attribute sets the height (default 1 line); no TextArea minimum. */
+.textarea.textarea {
+  min-height: 0;
+  resize: vertical;
+}
+
+/* ---------- list (Figma "Dropdown Menu") ---------- */
+/*
+ * As wide as its content (Figma hugs the rows), never wider than the box.
+ * A column, so the list shrinks and scrolls when React Aria caps the height.
+ */
+.popover {
+  --_radius: var(--fc-component-dropdown-radius);
+  --_padding: var(--fc-component-dropdown-padding);
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  max-width: var(--trigger-width);
+}
+
+/* Scrolls after 8 rows; positioned so rows measure their offset from it. */
+.list.list {
+  --_list-max-height: calc(var(--fc-component-dropdown-item-height) * 8);
+  position: relative;
+  min-height: 0;
+  outline: none;
+}
+
+/* Figma "Dropdown Menu Item": 32 high, radius 4, 12 inline (Space/Padding-Inline/Control), gap 8. */
+.option.option {
+  --_item-height: var(--fc-component-dropdown-item-height);
+  --_item-padding-inline: var(--fc-space-padding-inline-control);
+  --_item-radius: var(--fc-component-dropdown-item-radius);
+  cursor: pointer;
+}
+.option[data-disabled] { cursor: not-allowed; }
+
+.optionText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Figma "Extra Item" Type=Text: 12 / 20, Content/Description, 8 after the label (the row gap). */
+.extra.extra {
+  padding-inline-start: 0;
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+}
+.option[data-disabled] .extra { color: inherit; }
+
+/* Figma "Dropdown Group Title": a 32-high row, 14 / 22 text in Content/Description, 12 inline. */
+.header.header {
+  box-sizing: border-box;
+  min-height: var(--fc-component-dropdown-item-height);
+  padding-block: calc((var(--fc-component-dropdown-item-height) - var(--fc-typography-line-height-base)) / 2);
+  padding-inline: var(--fc-space-padding-inline-control);
+  overflow: hidden;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Figma "Dropdown Divider": a Stroke/Width/Base line in Color/Border/Neutral-Faded, 4 above and below. */
+.separator.separator { background: var(--fc-color-border-neutral-faded); }

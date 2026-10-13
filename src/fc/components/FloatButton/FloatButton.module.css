@@ -1,0 +1,225 @@
+/*
+ * Figma `FloatButton`: 40 × 40 (Size/Control/LG), no padding, no gap,
+ * Shadow/Base — it truly floats above the page. Square = Radius/LG,
+ * Circle = pill. Icon and text: Content/Neutral-Strong (Default) or
+ * Content/On-Solid (Primary), in every state.
+ *
+ * Colours are local custom properties so the Group Item can restyle a button
+ * without fighting the state selectors:
+ *   --_bg       the surface (Background/Elevated or Solid/Accent*)
+ *   --_overlay  a Fill/* state layer stacked on the surface. Figma paints the
+ *               Default hover with Fill/Area alone (6% black); stacking it on
+ *               Elevated keeps the same look without letting page content show
+ *               through a floating button.
+ *   --_fg       icon and description colour
+ */
+.button {
+  --_bg: var(--fc-color-background-elevated);
+  --_overlay: transparent;
+  --_fg: var(--fc-color-content-neutral-strong);
+  /* Figma icon instance: 24px, unbound. No Component/FloatButton/Icon-Size yet. */
+  --_icon-size: var(--fc-size-control-sm);
+
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--fc-size-control-lg);
+  height: var(--fc-size-control-lg);
+  padding: 0;
+  border: 0;
+  margin: 0;
+  background-color: var(--_bg);
+  background-image: linear-gradient(var(--_overlay), var(--_overlay));
+  box-shadow: var(--fc-shadow-base);
+  color: var(--_fg);
+  font-family: inherit;
+  font-size: var(--fc-typography-size-sm);
+  font-weight: var(--fc-typography-weight-regular);
+  line-height: var(--fc-typography-line-height-sm);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.square { border-radius: var(--fc-radius-lg); }
+.circle { border-radius: 50%; }
+
+/* Figma Type=Default: Elevated; State=Hover adds Fill/Area. Pressed (not in Figma) goes one step further. */
+.default[data-hovered] { --_overlay: var(--fc-color-fill-area); }
+.default[data-pressed] { --_overlay: var(--fc-color-fill-area-hover); }
+
+/* Figma Type=Primary: Solid/Accent; State=Hover = Solid/Accent-Hover. Pressed = Accent-Active (as Button). */
+.primary {
+  --_bg: var(--fc-color-solid-accent);
+  --_fg: var(--fc-color-content-on-solid);
+}
+.primary[data-hovered] { --_bg: var(--fc-color-solid-accent-hover); }
+.primary[data-pressed] { --_bg: var(--fc-color-solid-accent-active); }
+
+.button[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: var(--fc-stroke-width-base);
+}
+
+/* No Disabled variant in Figma: the disabled fill is stacked on Elevated so the button stays opaque. */
+.button[data-disabled] {
+  --_bg: var(--fc-color-background-elevated);
+  --_overlay: var(--fc-color-background-container-disabled);
+  --_fg: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+.icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+}
+.icon svg {
+  flex: none;
+  width: var(--_icon-size);
+  height: var(--_icon-size);
+}
+/* Figma binds Stroke/Width/Icon on the 24px icon (the 16px close icon keeps its own stroke). */
+.icon svg:not(.closeIcon) [stroke-width] { stroke-width: var(--fc-stroke-width-icon); }
+/* Figma open Menu trigger: `_Button Close`, a 16px X like every close icon. */
+.icon .closeIcon {
+  width: var(--fc-typography-size-lg);
+  height: var(--fc-typography-size-lg);
+}
+
+/*
+ * Figma Description: 12px text (Typography/Size/SM, Line-Height/SM) under the
+ * icon; the button stays 40 × 40 and the content is centred (the line box may
+ * overhang the edge by a couple of px, as in Figma).
+ */
+.description {
+  flex: none;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*
+ * Figma Badge: the dot / count is centred on the point where a 45° line from
+ * the centre meets the rounded corner, i.e. radius × (1 − 1/√2) ≈ 0.29 × radius
+ * in from the top-right. Square: Radius/LG (Figma rounds it to 2px); Circle:
+ * half of Size/Control/LG (Figma 5px).
+ */
+.badged {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+.badgedSquare { --_badge-inset: calc(var(--fc-radius-lg) * 0.29); }
+.badgedCircle { --_badge-inset: calc(var(--fc-size-control-lg) / 2 * 0.29); }
+.badge {
+  position: absolute;
+  top: var(--_badge-inset);
+  inset-inline-end: var(--_badge-inset);
+  transform: translate(50%, -50%);
+  pointer-events: none;
+}
+
+/* ---- FloatButton Group ---- */
+.group {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+.group.horizontal { flex-direction: row; }
+
+/* Circle: separate round buttons, Space/Margin/Base apart. */
+.groupCircle { gap: var(--fc-space-margin-base); }
+
+/* Square: one shadowed Elevated panel, no padding; each item sits in a Wrapper cell with Space/Padding/XXS. */
+.groupSquare {
+  border-radius: var(--fc-radius-lg);
+  background: var(--fc-color-background-elevated);
+  box-shadow: var(--fc-shadow-base);
+}
+.groupCell {
+  display: flex;
+  padding: var(--fc-space-padding-xxs);
+}
+/* Figma Wrapper: a hairline of Border/Neutral-Faded under every item but the last, drawn inside the cell. */
+.groupSquare:not(.horizontal) > .groupCell:not(:last-child) {
+  box-shadow: inset 0 calc(var(--fc-stroke-width-base) * -1) 0 var(--fc-color-border-neutral-faded);
+}
+
+/* Figma Group Item: flat, Radius/SM, Background/Item-Hover on hover. Type is ignored inside a square group. */
+.groupSquare .button {
+  --_bg: transparent;
+  --_overlay: transparent;
+  --_fg: var(--fc-color-content-neutral-strong);
+  box-shadow: none;
+  border-radius: var(--fc-radius-sm);
+}
+.groupSquare .button[data-hovered] { --_bg: var(--fc-color-background-item-hover); }
+.groupSquare .button[data-pressed] { --_bg: var(--fc-color-fill-area); }
+.groupSquare .button[data-disabled] { --_fg: var(--fc-color-content-disabled); }
+
+/* ---- FloatButton Menu ---- */
+/* The Menu box is the trigger only; the items float Space/Margin/Base away from it (Figma: absolute Group). */
+.menu {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.menuItems {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--fc-space-margin-base);
+  animation: fc-float-menu-in 0.2s ease-out;
+}
+.menuItems.horizontal { flex-direction: row; }
+
+.menu-top .menuItems {
+  bottom: calc(100% + var(--fc-space-margin-base));
+  left: 50%;
+  translate: -50% 0;
+  transform-origin: bottom center;
+}
+.menu-bottom .menuItems {
+  top: calc(100% + var(--fc-space-margin-base));
+  left: 50%;
+  translate: -50% 0;
+  transform-origin: top center;
+}
+.menu-right .menuItems {
+  top: 50%;
+  left: calc(100% + var(--fc-space-margin-base));
+  translate: 0 -50%;
+  transform-origin: left center;
+}
+.menu-left .menuItems {
+  top: 50%;
+  right: calc(100% + var(--fc-space-margin-base));
+  translate: 0 -50%;
+  transform-origin: right center;
+}
+
+@keyframes fc-float-menu-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Pinned bottom-right like antd's default FloatButton position. Last, so it wins over `.menu { position: relative }`. */
+.affix {
+  position: fixed;
+  inset-inline-end: var(--fc-space-margin-lg);
+  bottom: var(--fc-space-margin-xxl);
+  z-index: 10;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+  .menuItems { animation: none; }
+}

@@ -1,0 +1,77 @@
+/* Story-only layout: a card-like scroll container with an order list. */
+.frame {
+  max-inline-size: calc(var(--fc-size-control-base) * 15);
+  block-size: calc(var(--fc-size-control-base) * 10);
+  overflow-y: auto;
+  background: var(--fc-color-background-container);
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+  border-radius: var(--fc-radius-lg);
+  color: var(--fc-color-content-neutral-strong);
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.intro {
+  padding: var(--fc-space-padding-base);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fc-space-padding-sm);
+  padding: var(--fc-space-padding-xs) var(--fc-space-padding-base);
+  background: var(--fc-color-background-container);
+  border-block-end: var(--fc-stroke-width-base) solid transparent;
+}
+
+.bar[data-affixed],
+[data-affixed] > .bar {
+  border-block-end-color: var(--fc-color-border-neutral-light);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--fc-space-padding-xs);
+  padding: var(--fc-space-padding-xs) var(--fc-space-padding-base);
+  background: var(--fc-color-background-container);
+  border-block-start: var(--fc-stroke-width-base) solid transparent;
+}
+
+[data-affixed] > .footer {
+  border-block-start-color: var(--fc-color-border-neutral-light);
+}
+
+.floating {
+  display: flex;
+  justify-content: flex-end;
+  padding-inline-end: var(--fc-space-padding-base);
+  pointer-events: none;
+}
+
+.floating > * {
+  pointer-events: auto;
+}
+
+/* A menu category: the parent element of its pinned heading. */
+.section + .section {
+  border-block-start: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--fc-space-padding-sm) var(--fc-space-padding-base);
+  border-block-start: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-light);
+}
+
+.title {
+  color: var(--fc-color-content-heading);
+  font-weight: var(--fc-typography-weight-semibold);
+}
+
+.frame:focus-visible {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}

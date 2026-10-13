@@ -1,0 +1,195 @@
+/* Figma sets `Splitter`, `Splitter / Bar Dragger` and `Splitter / Collapse Button`.
+   Colours and the collapse button's height, radius and icon size are bound
+   variables in Figma. The bar's own numbers are not bound there (6 px bar,
+   2 px line with 2 px on each side, 20 px trigger), so the nearest semantic
+   tokens stand in. No Component/Splitter/* variables exist. */
+
+.splitter {
+  display: flex;
+  flex-direction: row;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
+  color: var(--fc-color-content-neutral);
+}
+
+/* Figma `Orientation=Horizontal`: flat bars, panels stacked. */
+.splitter[data-orientation='horizontal'] {
+  flex-direction: column;
+}
+
+.slot {
+  flex-grow: 0;
+  flex-shrink: 1;
+  min-inline-size: 0;
+  min-block-size: 0;
+  overflow: auto;
+}
+
+.slot[data-collapsed] {
+  overflow: hidden;
+}
+
+.panel {
+  box-sizing: border-box;
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+/* ── Bar (Figma `Splitter / Bar Dragger`) ────────────── */
+
+.bar {
+  --_line: var(--fc-stroke-width-strong); /* Figma line 2 px and the 2 px on each side of it */
+  --_trigger: var(--fc-size-scale-md); /* Figma trigger 20 px */
+  --_button-long: var(--fc-size-control-sm); /* Figma Size/Control/SM */
+  --_button-short: var(--fc-typography-size-sm); /* hugs the icon, Figma Typography/Size/SM */
+  position: relative;
+  flex: none;
+  inline-size: calc(3 * var(--_line));
+}
+
+.bar[data-orientation='horizontal'] {
+  inline-size: auto;
+  block-size: calc(3 * var(--_line));
+}
+
+/* The separator fills the bar; it is the hit area and the focus target. */
+.handle {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: col-resize;
+  touch-action: none;
+  user-select: none;
+  outline: none;
+}
+
+.bar[data-orientation='horizontal'] > .handle {
+  cursor: row-resize;
+}
+
+/* Full-length line ("Ant Splitter Bar Dragger"). */
+.handle::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline: var(--_line);
+  background: var(--fc-color-background-item-hover);
+  transition: background-color 0.2s;
+}
+
+.bar[data-orientation='horizontal'] > .handle::before {
+  inset-block: var(--_line);
+  inset-inline: 0;
+}
+
+/* Short mark in the middle ("Ant Splitter Bar Trigger"). */
+.trigger {
+  position: relative;
+  inline-size: var(--_line);
+  block-size: var(--_trigger);
+  background: var(--fc-color-fill-neutral-strong);
+}
+
+.bar[data-orientation='horizontal'] .trigger {
+  inline-size: var(--_trigger);
+  block-size: var(--_line);
+}
+
+.handle[data-hovered]::before {
+  background: var(--fc-color-background-item-selected-hover);
+}
+
+.handle[data-dragging]::before {
+  background: var(--fc-color-background-item-selected);
+}
+
+.handle[data-focus-visible] .trigger {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: var(--fc-stroke-width-base);
+}
+
+.handle[data-disabled] {
+  cursor: default;
+}
+
+.handle[data-disabled] .trigger {
+  visibility: hidden;
+}
+
+/* ── Collapse buttons (Figma `Splitter / Collapse Button`) ─
+   Outside the bar on either side of the trigger: Direction=Left / Right on an
+   upright bar, Up / Down on a flat one. */
+
+.collapse {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--_button-short);
+  block-size: var(--_button-long);
+  inset-block-start: calc(50% - var(--_button-long) / 2);
+  padding: 0;
+  border: none;
+  border-radius: var(--fc-radius-xs);
+  background: var(--fc-color-background-item-hover);
+  color: var(--fc-color-content-icon);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.start {
+  inset-inline-end: 100%;
+}
+
+.end {
+  inset-inline-start: 100%;
+}
+
+.bar[data-orientation='horizontal'] > .collapse {
+  inline-size: var(--_button-long);
+  block-size: var(--_button-short);
+  inset-block-start: auto;
+  inset-inline: calc(50% - var(--_button-long) / 2) auto;
+}
+
+.bar[data-orientation='horizontal'] > .start {
+  inset-block-end: 100%;
+}
+
+.bar[data-orientation='horizontal'] > .end {
+  inset-block-start: 100%;
+}
+
+.collapse svg {
+  flex: none;
+  inline-size: var(--_button-short);
+  block-size: var(--_button-short);
+}
+
+.collapse[data-hovered] {
+  background: var(--fc-color-background-item-selected);
+  color: var(--fc-color-content-icon-hover);
+}
+
+.collapse[data-pressed] {
+  background: var(--fc-color-background-item-selected-hover);
+  color: var(--fc-color-content-icon-hover);
+}
+
+.collapse[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: var(--fc-stroke-width-base);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .handle::before,
+  .collapse {
+    transition: none;
+  }
+}

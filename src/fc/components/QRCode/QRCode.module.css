@@ -1,0 +1,108 @@
+/*
+ * Figma "❖ QRCode" (set `QR Code`, Type: Basic / Popover / Loading / Expired).
+ * Values read from the Figma bound variables. 160 × 160 by default, auto-layout
+ * centred. Basic / Loading / Expired: fill Color/Background/Container, stroke
+ * 1px inside Color/Border/Neutral-Faded, Radius/LG (8), padding Space/Padding/SM
+ * (12) around the modules (the quiet zone). Modules (136 × 136) fill
+ * Color/Content/Neutral-Strong via currentColor, so Dark mode draws light
+ * modules on the dark container, as in the Figma Dark frame.
+ *
+ * Loading / Expired: a "Mask" frame over the whole 160 × 160 (Radius/LG) at 96%
+ * opacity. In Figma that fill is an unbound white; here it is
+ * Color/Background/Container so the Dark mode text keeps 4.5:1 (deliberate).
+ * Loading holds the Spin (Size=Medium). Expired holds a vertical stack, gap 0:
+ * Text (Typography/Size/Base, regular, Color/Content/Neutral-Strong) and a
+ * Button Type=Link Size=Default "Refresh".
+ */
+.qr {
+  --_color: var(--fc-color-content-neutral-strong);
+  --_bg: var(--fc-color-background-container);
+
+  position: relative;
+  display: inline-flex;
+  box-sizing: border-box;
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  flex-shrink: 0;
+  color: var(--_color);
+  background: var(--_bg);
+  border-radius: var(--fc-radius-lg);
+  overflow: hidden;
+  vertical-align: middle;
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  line-height: var(--fc-typography-line-height-base);
+  font-weight: var(--fc-typography-weight-regular);
+}
+
+.bordered {
+  padding: var(--fc-space-padding-sm);
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-neutral-faded);
+}
+
+.code {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* Centre mark: sits on the background colour so it reads as a logo, not modules. */
+.icon {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  inline-size: var(--_icon-size);
+  block-size: var(--_icon-size);
+  padding: var(--fc-space-padding-xxs);
+  background: var(--_bg);
+  border-radius: var(--fc-radius-sm);
+  transform: translate(-50%, -50%);
+}
+.icon > :is(svg, img) {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.mask {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--fc-space-padding-sm);
+  text-align: center;
+}
+.mask::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--fc-color-background-container);
+  opacity: 0.96;
+}
+.mask > * {
+  position: relative;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text {
+  color: var(--fc-color-content-neutral-strong);
+}
+
+.scannedIcon {
+  color: var(--fc-color-content-success);
+}
+
+@media (forced-colors: active) {
+  .code { color: CanvasText; }
+  .mask::before { background: Canvas; }
+}

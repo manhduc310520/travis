@@ -1,0 +1,128 @@
+/*
+ * Figma "❖ Anchor". No Component/Anchor/* tokens exist; every value follows
+ * the variable Figma binds:
+ * - Anchor Direction=Vertical: Padding/XXS top and bottom, and a rail drawn as
+ *   an inside stroke (Stroke/Width/Strong, Border/Neutral-Faded). An inside
+ *   stroke takes no layout space, so the rail is a pseudo-element here and the
+ *   items start at the outer edge.
+ * - Anchor Direction=Horizontal: items Margin/Base apart, no rail.
+ * - Item text: Typography/Size/Base, Line-Height/Base, Weight/Regular,
+ *   Family/Base, Content/Neutral-Strong.
+ * - Item Level=1 vertical: Padding/XXS block, Padding/Base start, 0 end (30 tall).
+ * - Item Level=2 vertical: 2px block (not bound in Figma), Padding/Base on the
+ *   item plus Padding/Base on its Wrapper as the start inset (26 tall).
+ * - Item horizontal: Padding/XXS block, no inline padding.
+ * - State=Active: an inside Stroke/Width/Strong Solid/Accent stroke on the
+ *   start edge (vertical, over the rail) or the bottom edge (horizontal).
+ *   The active text uses Content/Accent (Figma binds Solid/Accent) so it keeps
+ *   4.5:1 in Dark.
+ * React Aria puts data-hovered / data-pressed / data-focus-visible on links.
+ */
+.anchor {
+  color: var(--fc-color-content-neutral-strong);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--fc-typography-size-base);
+  font-weight: var(--fc-typography-weight-regular);
+  line-height: var(--fc-typography-line-height-base);
+}
+
+.list,
+.sublist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Vertical: the rail, painted under the links so the active bar covers it. */
+.vertical .list {
+  position: relative;
+  padding-block: var(--fc-space-padding-xxs);
+}
+
+.vertical .list::before {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--fc-stroke-width-strong);
+  content: '';
+  background: var(--fc-color-border-neutral-faded);
+}
+
+.horizontal .list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fc-space-margin-base);
+}
+
+.item {
+  display: block;
+}
+
+.link {
+  position: relative;
+  display: block;
+  border-radius: var(--fc-radius-sm);
+  color: var(--fc-color-content-neutral-strong);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.2s;
+}
+
+.vertical .link {
+  padding-block: var(--fc-space-padding-xxs);
+  padding-inline: var(--fc-space-padding-base) 0;
+}
+
+/* Figma: Padding/Base on the item + Padding/Base on its Wrapper. */
+.vertical .level2 {
+  padding-block: calc(var(--fc-space-padding-xxs) / 2);
+  padding-inline-start: calc(var(--fc-space-padding-base) + var(--fc-space-padding-base));
+}
+
+.horizontal .link {
+  padding-block: var(--fc-space-padding-xxs);
+}
+
+.link[data-hovered] {
+  color: var(--fc-color-content-accent-hover);
+}
+
+.link[data-pressed] {
+  color: var(--fc-color-content-accent-active);
+}
+
+.link[data-active] {
+  color: var(--fc-color-content-accent);
+}
+
+.link[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* Active indicator: bar over the rail (vertical), underline (horizontal). */
+.link[data-active]::before {
+  position: absolute;
+  content: '';
+  background: var(--fc-color-solid-accent);
+}
+
+.vertical .link[data-active]::before {
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--fc-stroke-width-strong);
+}
+
+.horizontal .link[data-active]::before {
+  inset-inline: 0;
+  bottom: 0;
+  height: var(--fc-stroke-width-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}

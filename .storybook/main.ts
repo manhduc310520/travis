@@ -1,7 +1,13 @@
 import type { StorybookConfig } from '@storybook/react-vite'
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  // fc components (src/fc/components) are hidden from Storybook for now; the files stay in place.
+  // To show them again: add '../src/fc/components/**/*.stories.@(js|jsx|mjs|ts|tsx)'.
+  stories: [
+    '../src/*.mdx',
+    '../src/fc/docs/*.@(mdx|stories.tsx)',
+    '../src/components/*.stories.@(js|jsx|mjs|ts|tsx)',
+  ],
   addons: [
     '@chromatic-com/storybook',
     '@storybook/addon-vitest',

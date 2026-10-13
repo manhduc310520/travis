@@ -515,3 +515,37 @@ Anh/chị yêu cầu:
 - `src/components/Card.stories.tsx` (sửa lỗi lint có sẵn)
 - `package.json` (+ `react-aria`)
 - `docs/token-naming-spec.md`, `docs/fc-roadmap.md`, `AGENTS.md`, `docs/migration/*`
+
+## 25. 12 component còn thiếu so với trang Figma (2026-09-28, CHƯA COMMIT)
+
+Dựng trong code / Storybook (không đụng Figma): FloatButton, Masonry, Splitter, Anchor, Affix,
+ColorPicker, Rate, Mentions, Carousel, QRCode, Tour, Watermark. Có trong `storySort` (thứ tự trang
+Figma) và `src/fc/index.ts`. QRCode dùng gói `qrcode-generator` 2.0.4 (MIT).
+
+**Tối 28/09 — đối chiếu Figma xong cả 12:** đọc giá trị / biến thật bằng `use_figma` (chỉ đọc) rồi sửa code.
+Thêm: ColorPicker (Single / Gradient, chọn HEX / RGB / HSB, nhập kênh + alpha, nhóm preset thu gọn),
+Mentions (nhóm + cột phụ), Tour (bước không có target, panel giữa màn), Splitter (nút thu gọn giữa thanh,
+hover accent, `aria-controls`), Carousel (dot theo Figma, điều khiển bàn phím khi ẩn dots / arrows),
+FloatButton (màu hover theo Figma, tên cho nhóm menu + `aria-controls`).
+Kiểm tra: `tsc`, `oxlint`, `build:tokens` sạch; 101 story × Light / Dark / Compact render không lỗi; axe:
+
+- Affix `WithinSection`: vùng cuộn không focus được → đã sửa (tabIndex + region + focus ring).
+- Mentions: axe báo `aria-allowed-role` (minor) vì textarea mang role `combobox` — chấp nhận tạm, xem lại sau.
+- Watermark: chữ mờ 1.4:1 — cố ý (trang trí, `aria-hidden`); nếu muốn axe sạch thì vẽ chữ bằng SVG.
+
+**Chưa làm (dừng vì giới hạn 35% usage):** vòng soát độc lập lần 2 so với Figma; cập nhật
+`docs/fc-roadmap.md`, `docs/fc-variant-coverage.md`, mục 63 `docs/fc-maintenance-guide.md`, số component
+trong README / AGENTS.md; xem bằng mắt từng story so với Figma.
+
+**Cần designer quyết trong Figma** (code đang giữ phương án an toàn tương phản / lưới 4px):
+- Rate: sao Full / Half hỏng trong Figma (không fill), sao rỗng #000 không gắn biến, `Palette/Yellow-6` 1.4:1 trên nền trắng, cỡ 15/20/25 lệch lưới.
+- Anchor: chữ active Figma dùng `Solid/Accent` (code `Content/Accent`); padding Level 2 = 2px lệch lưới; ví dụ Level 2 có 2 mục active.
+- Carousel: dot màu `Background/Container` (tối ở Dark), cao 3px lệch lưới, dot mờ < 3:1; mũi tên dùng `Palette/White`.
+- Splitter: mũi tên trắng cứng trên nền nhạt ~1.1:1; thứ tự màu Hover / Active ngược nhau giữa 2 set; vùng bấm < 24px.
+- FloatButton: hover Default thay nền Elevated bằng Fill/Area (nhìn xuyên thấu); icon 24 không gắn biến; chữ description dùng SF Pro Text; Group Item bo 4px.
+- Tour: bo 6 (quy tắc 8), Shadow/Light (quy tắc Base), rộng 438 / 520, nút đóng 22, dot 6px, nhiều màu trắng raw.
+- ColorPicker: swatch 18px, cột 226, viền input dùng Border/Neutral, dấu tick trắng raw, chevron đen raw.
+- Mentions: menu rộng cố định 100 (cắt chữ), không có max-height, khoảng cách menu lệch theo size.
+- Masonry: gap 16 không gắn biến; `Type 1/2/3` chỉ khác số ô / độ cao; mặc định Figma 4 cột (code 3).
+- QRCode: mask trắng 96% raw, Popover shadow raw, chữ Expired tiếng Anh, icon Refresh không dùng.
+- Watermark: lưới 4×4 co giãn khác cách code lặp theo khoảng cách; master 358×232 lệch lưới.

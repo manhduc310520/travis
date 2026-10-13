@@ -1,0 +1,370 @@
+/*
+ * ColorPicker — Figma "❖ ColorPicker". Values read from the Figma sets:
+ * - Trigger: height Size/Control/SM | Base | LG, padding 4, gap Space/Margin/XS,
+ *   radius Radius/SM (Small) or Radius/Base, Border/Control (Active → Solid/Accent,
+ *   Disabled → Border/Neutral on Container-Disabled). Colour block = height − 8,
+ *   Radius/XS (Small) or Radius/SM, hairline Border/Neutral-Faded. Text Base
+ *   (LG on Large), chevron 14.
+ * - Popup: Elevated, Radius/LG, Shadow/Base (overlay.module.css), padding
+ *   Space/Padding/SM, gap Space/Margin/SM, content 256 wide, arrow 16 × 8.
+ * - Palette 160 high, Radius/SM, hairline Border/Neutral-Faded. Sliders 8 high,
+ *   Radius/SM, 12 apart (Space/Margin/SM); alpha has a Neutral-Faded hairline.
+ *   Handles 8 + a 2px Background/Container ring outside; the edited gradient
+ *   stop adds a 1px Solid/Accent-Active ring. Preview 28, hairline Border/Neutral.
+ * - Format row gap Space/Margin/XXS (fc Select / TextField / InputNumber, Small).
+ * - Presets: chevron 14 + Text SM Neutral-Strong (gap 4), swatches Radius/SM
+ *   with a Border/Neutral hairline and a tick when selected, 10 a row
+ *   (9 when horizontal), group gap Space/Margin/XS.
+ * React Aria paints the area / slider gradients and the thumb colours inline;
+ * the trigger swatch and the gradient bar get their CSS gradient via --_fill.
+ */
+.trigger {
+  --_h: var(--fc-size-control-base);
+  --_radius: var(--fc-radius-base);
+  --_swatch-radius: var(--fc-radius-sm);
+  --_font-size: var(--fc-typography-size-base);
+  --_line-height: var(--fc-typography-line-height-base);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xs);
+  box-sizing: border-box;
+  min-width: var(--_h);
+  height: var(--_h);
+  /* Figma padding 4 sits inside the 1px stroke. */
+  padding: calc(var(--fc-space-padding-xxs) - var(--fc-stroke-width-base));
+  border: var(--fc-stroke-width-base) solid var(--fc-color-border-control);
+  border-radius: var(--_radius);
+  background: var(--fc-color-background-container);
+  color: var(--fc-color-content-neutral-strong);
+  font-family: var(--fc-typography-family-base), system-ui, sans-serif;
+  font-size: var(--_font-size);
+  line-height: var(--_line-height);
+  font-weight: 400;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.sm {
+  --_h: var(--fc-size-control-sm);
+  --_radius: var(--fc-radius-sm);
+  --_swatch-radius: var(--fc-radius-xs);
+}
+.md { --_h: var(--fc-size-control-base); }
+.lg {
+  --_h: var(--fc-size-control-lg);
+  --_font-size: var(--fc-typography-size-lg);
+  --_line-height: var(--fc-typography-line-height-lg);
+}
+
+.trigger[data-hovered] { border-color: var(--fc-color-solid-accent-hover); }
+/* Figma State=Active: accent border while pressed / open. */
+.trigger[data-pressed],
+.trigger[aria-expanded='true'] {
+  border-color: var(--fc-color-solid-accent);
+}
+.trigger[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.trigger[data-disabled] {
+  border-color: var(--fc-color-border-neutral);
+  background: var(--fc-color-background-container-disabled);
+  color: var(--fc-color-content-disabled);
+  cursor: not-allowed;
+}
+
+.swatchBox {
+  display: inline-flex;
+  flex: none;
+  width: calc(var(--_h) - 2 * var(--fc-space-padding-xxs));
+  height: calc(var(--_h) - 2 * var(--fc-space-padding-xxs));
+}
+.swatch {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--_swatch-radius, var(--fc-radius-sm));
+  box-shadow: inset 0 0 0 var(--fc-stroke-width-base) var(--_hairline, var(--fc-color-border-neutral-faded));
+}
+/* Figma "Color Clear": container tile with a 2px Solid/Danger diagonal. */
+.cleared {
+  background:
+    linear-gradient(
+      to top right,
+      transparent calc(50% - var(--fc-stroke-width-base)),
+      var(--fc-color-solid-danger) calc(50% - var(--fc-stroke-width-base)),
+      var(--fc-color-solid-danger) calc(50% + var(--fc-stroke-width-base)),
+      transparent calc(50% + var(--fc-stroke-width-base))
+    ),
+    var(--fc-color-background-container);
+}
+/* A gradient (--_fill) over the transparency checkerboard. */
+.checker {
+  background-image:
+    var(--_fill),
+    repeating-conic-gradient(var(--fc-color-fill-neutral) 0% 25%, var(--fc-color-background-container) 0% 50%);
+  background-size: 100% 100%, var(--fc-space-padding-xs) var(--fc-space-padding-xs);
+}
+.text { white-space: nowrap; }
+.chevron {
+  flex: none;
+  width: var(--fc-typography-size-base);
+  height: var(--fc-typography-size-base);
+  color: var(--fc-color-content-neutral);
+  transition: rotate 0.2s;
+}
+/* Figma State=Active shows chevron-up. */
+.trigger[aria-expanded='true'] .chevron { rotate: 180deg; }
+.trigger[data-disabled] .chevron { color: inherit; }
+
+/* ---------- Panel ---------- */
+.panel {
+  --_radius: var(--fc-radius-lg);
+  --_padding: var(--fc-space-padding-sm);
+}
+.dialog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-sm);
+  outline: none;
+}
+/* Figma Direction=Horizontal: presets | vertical divider | picker. The divider carries the spacing. */
+.horizontal {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+}
+.pickerCol,
+.presetCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-sm);
+  width: calc(var(--fc-size-control-base) * 8);
+}
+.horizontal .pickerCol,
+.horizontal .presetCol {
+  width: calc(var(--fc-size-control-base) * 7);
+}
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+}
+/* Segmented on the left, "no colour" on the right. */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.clear {
+  display: inline-flex;
+  flex: none;
+  box-sizing: border-box;
+  width: var(--fc-size-control-xs);
+  height: var(--fc-size-control-xs);
+  margin-inline-start: auto;
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+/* Next to the Segmented the tile matches its height (Figma 24 = Size/Control/SM). */
+.clearTall {
+  width: var(--fc-size-control-sm);
+  height: var(--fc-size-control-sm);
+}
+.clear[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.area {
+  width: 100%;
+  height: calc(var(--fc-size-control-lg) * 4);
+  border-radius: var(--fc-radius-sm);
+  box-shadow: inset 0 0 0 var(--fc-stroke-width-base) var(--fc-color-border-neutral-faded);
+}
+/* Figma Slider Handle: 8 fill + 2px Background/Container ring outside. */
+.thumb {
+  box-sizing: border-box;
+  width: calc(var(--fc-space-padding-xs) + 2 * var(--fc-stroke-width-strong));
+  height: calc(var(--fc-space-padding-xs) + 2 * var(--fc-stroke-width-strong));
+  border: var(--fc-stroke-width-strong) solid var(--fc-color-background-container);
+  border-radius: 50%;
+  box-shadow: var(--fc-shadow-light);
+}
+.thumb[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+.sliders {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-sm);
+}
+.sliderStack {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--fc-space-margin-sm);
+  min-width: 0;
+}
+.slider { width: 100%; }
+.track {
+  height: var(--fc-space-padding-xs);
+  border-radius: var(--fc-radius-sm);
+}
+.alphaTrack { box-shadow: inset 0 0 0 var(--fc-stroke-width-base) var(--fc-color-border-neutral-faded); }
+.sliderThumb { top: 50%; }
+/* Figma Color Preview 28 = the two 8px tracks + the 12px gap between them. */
+.preview {
+  --_hairline: var(--fc-color-border-neutral);
+
+  flex: none;
+  width: calc(2 * var(--fc-space-padding-xs) + var(--fc-space-margin-sm));
+  height: calc(2 * var(--fc-space-padding-xs) + var(--fc-space-margin-sm));
+}
+/* Without alpha there is one track: keep the preview at control-SM. */
+.noAlpha .preview {
+  width: var(--fc-size-control-sm);
+  height: var(--fc-size-control-sm);
+}
+
+.fields {
+  display: flex;
+  align-items: center;
+  gap: var(--fc-space-margin-xxs);
+}
+.format { flex: none; }
+.channel {
+  flex: 1 1 0;
+  min-width: 0;
+}
+/* Figma Color Select HEX: the alpha box is 60 next to a flexible hex box. */
+.alphaField { flex: 0 0 calc(var(--fc-size-control-lg) * 1.5); }
+
+/* Figma Divider: flush in the panel gap (horizontal) / Margin-Inline-Vertical on both sides (vertical). */
+.dialog .rule { margin: 0; }
+.horizontal .rule {
+  align-self: stretch;
+  height: auto;
+  margin-inline: var(--fc-component-divider-margin-inline-vertical);
+}
+
+/* ---------- Gradient bar ---------- */
+.gradient {
+  position: relative;
+  height: var(--fc-space-padding-xs);
+  border-radius: var(--fc-radius-sm);
+  cursor: pointer;
+  touch-action: none;
+}
+.stop {
+  position: absolute;
+  top: 50%;
+  box-sizing: border-box;
+  width: calc(var(--fc-space-padding-xs) + 2 * var(--fc-stroke-width-strong));
+  height: calc(var(--fc-space-padding-xs) + 2 * var(--fc-stroke-width-strong));
+  border: var(--fc-stroke-width-strong) solid var(--fc-color-background-container);
+  border-radius: 50%;
+  box-shadow: var(--fc-shadow-light);
+  translate: -50% -50%;
+  cursor: grab;
+  outline: none;
+}
+/* Figma Slider Handle Active=True: the stop the picker is editing. */
+.stop[data-active] {
+  box-shadow: 0 0 0 var(--fc-stroke-width-base) var(--fc-color-solid-accent-active);
+}
+.stop[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+
+/* ---------- Presets ---------- */
+.presetCol {
+  --_columns: 10;
+
+  padding-block-end: var(--fc-space-padding-xs);
+}
+.horizontal .presetCol { --_columns: 9; }
+.presets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fc-space-margin-xs);
+}
+.presetTrigger {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: var(--fc-space-margin-xxs);
+  padding: 0;
+  border: 0;
+  border-radius: var(--fc-radius-sm);
+  background: transparent;
+  color: var(--fc-color-content-neutral-strong);
+  font: inherit;
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+  cursor: pointer;
+  outline: none;
+}
+.presetTrigger[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+.presetChevron {
+  flex: none;
+  width: var(--fc-typography-size-base);
+  height: var(--fc-typography-size-base);
+  transition: rotate 0.2s;
+}
+/* Collapsed: the chevron points at the label. */
+.presets:not([data-expanded]) .presetChevron { rotate: -90deg; }
+.presetEmpty {
+  color: var(--fc-color-content-description);
+  font-size: var(--fc-typography-size-sm);
+  line-height: var(--fc-typography-line-height-sm);
+}
+.swatchGrid {
+  display: grid;
+  grid-template-columns: repeat(var(--_columns), 1fr);
+  gap: var(--fc-space-margin-xs);
+  outline: none;
+}
+.swatchItem {
+  --_hairline: var(--fc-color-border-neutral);
+
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--fc-radius-sm);
+  cursor: pointer;
+  outline: none;
+}
+.swatchItem[data-focus-visible] {
+  outline: var(--fc-stroke-width-outline) solid var(--fc-color-solid-accent);
+  outline-offset: 1px;
+}
+/* Figma Color Preset: a tick on the selected swatch. */
+.check {
+  position: absolute;
+  inset: 0;
+  width: var(--fc-typography-size-base);
+  height: var(--fc-typography-size-base);
+  margin: auto;
+  pointer-events: none;
+}
+.checkLight { color: var(--fc-color-content-on-solid); }
+.checkDark { color: var(--fc-color-content-on-solid-neutral); }
+.checkNeutral { color: var(--fc-color-content-neutral-strong); }
+
+@media (prefers-reduced-motion: reduce) {
+  .trigger,
+  .chevron,
+  .presetChevron { transition: none; }
+}
