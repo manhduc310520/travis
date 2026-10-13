@@ -9,12 +9,13 @@ import type { InputRef } from 'antd'
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
 import { ChevronDownLine, ChevronUpLine, ClockLine, CornerDownLeftLine, SearchSmLine, XCircleLine } from './fabi-icons.js'
+import { useFabiLang } from './useFabiLang.js'
 
 export interface SearchModalItem {
   key: string
   /** Text of the result; the search matches it */
   label: string
-  /** More words that should find this item, e.g. "món ăn, sản phẩm" */
+  /** More words that should find this item, e.g. "dish, product" */
   keywords?: string
   /** Content at the end of the row, e.g. a count */
   extra?: ReactNode
@@ -22,7 +23,7 @@ export interface SearchModalItem {
 
 export interface SearchModalGroup {
   key: string
-  /** Where the items live, e.g. ['Nhà hàng', 'Danh sách nhà hàng'] (shown above them, and searched) */
+  /** Where the items live, e.g. ['Restaurants', 'Restaurant list'] (shown above them, and searched) */
   path: string[]
   items: SearchModalItem[]
 }
@@ -30,9 +31,9 @@ export interface SearchModalGroup {
 export interface SearchModalPanelProps {
   /** Everything that can be found, grouped by where it lives */
   groups: SearchModalGroup[]
-  /** Recent choices, shown while the field is empty ("Gần đây") */
+  /** Recent choices, shown while the field is empty (under "Recent") */
   history?: SearchModalItem[]
-  /** Shows "Xoá lịch sử" next to the history */
+  /** Shows a "Clear history" button next to the history */
   onClearHistory?: () => void
   /** A result was chosen (click or Enter); the Modal closes after it */
   onSelect?: (item: SearchModalItem, group?: SearchModalGroup) => void
@@ -49,7 +50,7 @@ export interface SearchModalPanelProps {
   autoFocus?: boolean
   /** Height of the panel (default 450, as designed; never taller than the screen) */
   height?: number
-  /** Shows "Đóng" next to the field on phones (< sm), where the key hints are hidden; SearchModal passes its onClose */
+  /** Shows a close button next to the field on phones (< sm), where the key hints are hidden; SearchModal passes its onClose */
   onCancel?: () => void
   className?: string
   style?: CSSProperties
@@ -63,22 +64,44 @@ export interface SearchModalProps extends SearchModalPanelProps {
   width?: number
 }
 
-const TEXT = {
-  placeholder: 'Tìm kiếm',
-  dialog: 'Tìm kiếm tính năng',
-  hint: 'Nhập từ khoá để tìm tính năng',
-  example: 'Ví dụ: “Sản phẩm”',
-  recent: 'Gần đây',
-  clearHistory: 'Xoá lịch sử',
-  noResult: 'Không tìm thấy kết quả',
-  noResultHint: 'Vui lòng nhập từ khoá khác để tìm kiếm',
-  close: 'Đóng lại',
-  move: 'Di chuyển lên xuống',
-  choose: 'Chọn',
-  keys: 'Mũi tên lên, xuống để di chuyển, Enter để chọn, Esc để đóng',
-  cancel: 'Đóng',
-  searchingStatus: 'Đang tìm kiếm',
-  count: (n: number) => `${n} kết quả`,
+// built-in texts: Vietnamese by default, English with an English antd locale (useFabiLang)
+const TEXTS = {
+  vi: {
+    placeholder: 'Tìm kiếm',
+    dialog: 'Tìm kiếm tính năng',
+    hint: 'Nhập từ khoá để tìm tính năng',
+    example: 'Ví dụ: “Sản phẩm”',
+    recent: 'Gần đây',
+    clearHistory: 'Xoá lịch sử',
+    clear: 'Xoá nội dung',
+    noResult: 'Không tìm thấy kết quả',
+    noResultHint: 'Vui lòng nhập từ khoá khác để tìm kiếm',
+    close: 'Đóng lại',
+    move: 'Di chuyển lên xuống',
+    choose: 'Chọn',
+    keys: 'Mũi tên lên, xuống để di chuyển, Enter để chọn, Esc để đóng',
+    cancel: 'Đóng',
+    searchingStatus: 'Đang tìm kiếm',
+    count: (n: number) => `${n} kết quả`,
+  },
+  en: {
+    placeholder: 'Search',
+    dialog: 'Search features',
+    hint: 'Type a keyword to find a feature',
+    example: 'For example: “Products”',
+    recent: 'Recent',
+    clearHistory: 'Clear history',
+    clear: 'Clear',
+    noResult: 'No results found',
+    noResultHint: 'Try another keyword',
+    close: 'Close',
+    move: 'Move up and down',
+    choose: 'Select',
+    keys: 'Up and down arrows to move, Enter to select, Esc to close',
+    cancel: 'Close',
+    searchingStatus: 'Searching',
+    count: (n: number) => `${n} ${n === 1 ? 'result' : 'results'}`,
+  },
 }
 
 /** Lower case without Vietnamese accents: "Hoá đơn" → "hoa don" */
@@ -104,13 +127,14 @@ function SearchPanel({
   onChange,
   loading = false,
   filter = defaultFilter,
-  placeholder = TEXT.placeholder,
+  placeholder,
   autoFocus = true,
   height = 450,
   onCancel,
   className,
   style,
 }: SearchModalPanelProps) {
+  const TEXT = TEXTS[useFabiLang()]
   const { token } = antdTheme.useToken()
   const screens = Grid.useBreakpoint()
   const id = useId()
@@ -297,9 +321,9 @@ function SearchPanel({
           value={query}
           onChange={(e) => change(e.target.value)}
           onKeyDown={keyDown}
-          placeholder={placeholder}
+          placeholder={placeholder ?? TEXT.placeholder}
           prefix={<SearchSmLine />}
-          allowClear={{ clearIcon: <XCircleLine title="Xoá nội dung" style={{ color: token.colorText }} /> }}
+          allowClear={{ clearIcon: <XCircleLine title={TEXT.clear} style={{ color: token.colorText }} /> }}
           role="combobox"
           aria-label={TEXT.dialog}
           aria-expanded={listed}
@@ -346,6 +370,7 @@ function SearchPanel({
 }
 
 function SearchModalRoot({ open, onClose, width = 650, onSelect, ...panel }: SearchModalProps) {
+  const TEXT = TEXTS[useFabiLang()]
   return (
     <Modal
       open={open}

@@ -9,10 +9,44 @@ import { En, Vi } from '../../.storybook/locale'
 
 # Mẫu trang
 
-Mẫu trang (layout) của FABi CMS, ghép từ các component trong mục **Component**: khung ứng dụng, header,
-trang danh sách, trang form… Mỗi mẫu là một story để xem trực tiếp và chép code sang ứng dụng.
+Mẫu trang của FABi CMS, ghép từ các component trong mục **Component**. Mỗi mẫu là một story để xem trực tiếp;
+chép thư mục của mẫu (trong `src/template/`) sang ứng dụng rồi thay dữ liệu mẫu bằng API thật.
 
-Chưa có mẫu nào. Các mẫu mới sẽ được thêm vào nhóm này.
+| Mẫu | Dùng cho | Thư mục |
+| --- | --- | --- |
+| **Dashboard** | Trang chủ: số liệu, biểu đồ, top 5 | `dashboard/` |
+| **Restaurant list** | Danh sách nhà hàng: tìm kiếm, lọc, chọn cột, bảng, phân trang; trạng thái rỗng và không có kết quả | `restaurant-list/` |
+| **Create restaurant** | Tạo nhà hàng: form chia tab và khối, Lưu lại khi có thay đổi, báo lưu thành công / thất bại | `restaurant-form/` |
+| **Restaurant detail** | Chi tiết nhà hàng: trạng thái, thông tin, lịch sử thay đổi | `detail-page/` |
+| **Login** | Đăng nhập (ngoài khung ứng dụng) | `login/` |
+| **Error 403 / 404 / 500** | Trang lỗi trong khung ứng dụng | `error-page/` |
+
+## Khung ứng dụng
+
+Mọi mẫu (trừ Login) nằm trong `AppShell` (`shell/AppShell.tsx`): header theo brand (tìm kiếm, ⌘ K / Ctrl K, AI,
+ngôn ngữ, thông báo, tài khoản), menu bên (icon line, mục đang chọn icon solid), locale tiếng Việt. Màn hình dưới
+768px: menu mở bằng nút ☰, ô tìm kiếm thành nút; 768–991px menu thu gọn; từ 992px menu đầy đủ (xem
+**Design Tokens / Thích ứng màn hình**). Trang truyền mã mục menu đang chọn và nội dung:
+
+```tsx
+<AppShell selected="restaurant-list">
+  <PageHeader
+    breadcrumb={[{ title: 'Trang chủ' }, { title: 'Nhà hàng' }, { title: 'Danh sách nhà hàng' }]}
+    extra={<Button type="primary">Tạo nhà hàng</Button>}
+    footer={<FilterBar>…</FilterBar>}
+  />
+  <Layout.Content>…</Layout.Content>
+</AppShell>
+```
+
+## Quy ước dùng trong các mẫu
+
+- Mỗi trang **một** nút primary (ở `PageHeader`); các nút khác là default.
+- Trạng thái trong bảng và trang chi tiết dùng `Tag` của DS với màu trạng thái (`success`, `processing`, `warning`, `default`) và `variant="filled"`.
+- Bảng rỗng: "Chưa có dữ liệu" + nút tạo mới; lọc không ra kết quả: "Không tìm thấy dữ liệu" + nút xoá tìm kiếm và bộ lọc.
+- Nhãn bắt buộc có dấu `*` ngay sau chữ; lỗi bắt buộc ghi theo mẫu "Tên điểm không được để trống" (`validateMessages` của Form).
+- Số, tiền, ngày dùng `formatMoney`, `formatNumber`, `formatDate`, `formatDateTime` của `@fabi/ui` (9.615.933 ₫, 02/11/2026).
+- Bảng rộng cuộn ngang trong card (`scroll={{ x: 'max-content' }}`), trang không bao giờ cuộn ngang.
 
 </Vi>
 
@@ -20,9 +54,43 @@ Chưa có mẫu nào. Các mẫu mới sẽ được thêm vào nhóm này.
 
 # Template
 
-Page templates (layouts) of FABi CMS, built from the components in **Components**: app shell, header,
-list page, form page… Each template is a story to view live and copy into an app.
+Page templates of FABi CMS, built from the components in **Components**. Each template is a story to view
+live; copy its folder (in `src/template/`) into the app and replace the demo data with the real API.
 
-There are no templates yet. New templates will be added to this group.
+| Template | For | Folder |
+| --- | --- | --- |
+| **Dashboard** | Home: figures, charts, top 5 lists | `dashboard/` |
+| **Restaurant list** | Restaurant list: search, filters, column settings, table, pagination; empty and no-match states | `restaurant-list/` |
+| **Create restaurant** | Create a restaurant: form in tabs and sections, Save once something changed, save success / error | `restaurant-form/` |
+| **Restaurant detail** | Restaurant details: status, information, change history | `detail-page/` |
+| **Login** | Sign in (outside the app shell) | `login/` |
+| **Error 403 / 404 / 500** | Error pages inside the app shell | `error-page/` |
+
+## App shell
+
+Every template except Login sits in `AppShell` (`shell/AppShell.tsx`): brand header (search, ⌘ K / Ctrl K, AI,
+language, notifications, account), side menu (line icons, the selected item in solid), Vietnamese locale. Below
+768px the menu opens from a ☰ button and the search field becomes a button; 768–991px the menu is collapsed; from
+992px it is full (see **Design Tokens / Responsive**). A page passes its menu key and its content:
+
+```tsx
+<AppShell selected="restaurant-list">
+  <PageHeader
+    breadcrumb={[{ title: 'Trang chủ' }, { title: 'Nhà hàng' }, { title: 'Danh sách nhà hàng' }]}
+    extra={<Button type="primary">Tạo nhà hàng</Button>}
+    footer={<FilterBar>…</FilterBar>}
+  />
+  <Layout.Content>…</Layout.Content>
+</AppShell>
+```
+
+## Conventions in the templates
+
+- **One** primary button per page (in `PageHeader`); the others are default buttons.
+- Statuses in tables and detail pages use the DS `Tag` with a status colour (`success`, `processing`, `warning`, `default`) and `variant="filled"`.
+- Empty table: a "no data yet" message + a create button; no match: a "no data found" message + a button that clears the search and filters.
+- Required labels have the `*` right after the text; the required error says, in Vietnamese, that the field cannot be empty (the Form's `validateMessages`).
+- Numbers, money and dates use `formatMoney`, `formatNumber`, `formatDate`, `formatDateTime` from `@fabi/ui` (9.615.933 ₫, 02/11/2026).
+- Wide tables scroll sideways inside their card (`scroll={{ x: 'max-content' }}`); the page never scrolls sideways.
 
 </En>

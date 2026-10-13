@@ -67,6 +67,13 @@ function fix(root: ParentNode, p: string, icon: string) {
   // empty table header cells
   root.querySelectorAll(`.${p}-table-thead th.${p}-table-row-expand-icon-cell`).forEach((th) => srText(th, 'Expand row'))
   root.querySelectorAll(`.${p}-table-thead th`).forEach((th) => { if (!th.textContent?.trim() && !th.querySelector('input,button')) srText(th, 'Actions') })
+  // the hidden measure row of a scrolling Table copies the header cells (select-all checkbox, sorters): keep
+  // those copies out of the tab order
+  root.querySelectorAll(`.${p}-table-measure-row input, .${p}-table-measure-row button, .${p}-table-measure-row [tabindex]`).forEach((el) => el.setAttribute('tabindex', '-1'))
+  // QRCode draws on a <canvas role="img"> with no name: take the QRCode's aria-label, else "QR code"
+  root.querySelectorAll(`.${p}-qrcode canvas[role=img]:not([aria-label])`).forEach((c) => {
+    c.setAttribute('aria-label', c.closest(`.${p}-qrcode`)?.getAttribute('aria-label') || 'QR code')
+  })
   // Tabs: tablist must only contain tabs
   root.querySelectorAll(`.${p}-tabs-nav[role=tablist]`).forEach((nav) => {
     const list = nav.querySelector(`.${p}-tabs-nav-list`)

@@ -1,6 +1,6 @@
 {
   "name": "@fabi/ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "FABi CMS Design System: Ant Design 6.6.5 with the FABi theme, the fabi- class prefix and accessibility fixes.",
   "license": "MIT",
   "private": false,
@@ -11,7 +11,8 @@
   "files": [
     "dist",
     "README.md",
-    "NOTICE.md"
+    "NOTICE.md",
+    "CHANGELOG.md"
   ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",

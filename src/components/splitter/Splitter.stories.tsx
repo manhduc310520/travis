@@ -11,19 +11,21 @@ import Demo2 from "./demo/vertical"
 import Demo2Source from "./demo/vertical.tsx?raw"
 import Demo3 from "./demo/collapsible"
 import Demo3Source from "./demo/collapsible.tsx?raw"
-import Demo4 from "./demo/multiple"
-import Demo4Source from "./demo/multiple.tsx?raw"
-import Demo5 from "./demo/group"
-import Demo5Source from "./demo/group.tsx?raw"
-import Demo6 from "./demo/lazy"
-import Demo6Source from "./demo/lazy.tsx?raw"
-import Demo7 from "./demo/customize"
-import Demo7Source from "./demo/customize.tsx?raw"
-import Demo8 from "./demo/style-class"
-import Demo8Source from "./demo/style-class.tsx?raw"
-import Demo9 from "./demo/reset"
-import Demo9Source from "./demo/reset.tsx?raw"
-import Demo10 from "./demo/_semantic"
+import Demo4 from "./demo/collapsibleIcon"
+import Demo4Source from "./demo/collapsibleIcon.tsx?raw"
+import Demo5 from "./demo/multiple"
+import Demo5Source from "./demo/multiple.tsx?raw"
+import Demo6 from "./demo/group"
+import Demo6Source from "./demo/group.tsx?raw"
+import Demo7 from "./demo/lazy"
+import Demo7Source from "./demo/lazy.tsx?raw"
+import Demo8 from "./demo/customize"
+import Demo8Source from "./demo/customize.tsx?raw"
+import Demo9 from "./demo/style-class"
+import Demo9Source from "./demo/style-class.tsx?raw"
+import Demo10 from "./demo/reset"
+import Demo10Source from "./demo/reset.tsx?raw"
+import Demo11 from "./demo/_semantic"
 
 const css = ""
 
@@ -48,7 +50,9 @@ function DocsPage() {
       <h3 id="splitter-demo-collapsible" className="fabi-sb-demo-title" lang="en">Collapsible</h3>
       <DocMarkdown>{vi ? "Đặt `collapsible` để bật thu gọn. Có thể dùng `min` để giới hạn việc kéo mở rộng khi đang thu gọn." : "Set `collapsible` to enable collapse. Can through `min` to limit dragging to expand when collapsed."}</DocMarkdown>
       <DocCanvas of={Collapsible} sourceState="hidden" />
-      <DocMarkdown>{vi ? "<code src=\"./demo/collapsibleIcon.tsx\" version=\"5.27.0\">\n  Điều khiển icon thu gọn\n</code>" : "<code src=\"./demo/collapsibleIcon.tsx\" version=\"5.27.0\">\n  Control collapsible icons\n</code>"}</DocMarkdown>
+      <h3 id="splitter-demo-collapsibleicon" className="fabi-sb-demo-title" lang="en">Control collapsible icons</h3>
+      <DocMarkdown>{vi ? "Đặt `collapsible.showCollapsibleIcon` để điều khiển cách hiển thị icon thu gọn." : "Set `collapsible.showCollapsibleIcon` to control the display mode of collapsible icons."}</DocMarkdown>
+      <DocCanvas of={ControlCollapsibleIcons} sourceState="hidden" />
       <h3 id="splitter-demo-multiple" className="fabi-sb-demo-title" lang="en">Multiple panels</h3>
       <DocMarkdown>{vi ? "Nhiều panel." : "Multiple panels."}</DocMarkdown>
       <DocCanvas of={MultiplePanels} sourceState="hidden" />
@@ -67,8 +71,8 @@ function DocsPage() {
       <h3 id="splitter-demo-reset" className="fabi-sb-demo-title" lang="en">Double-clicked reset</h3>
       <DocMarkdown>{vi ? "Double-click vào dragger để đặt lại Splitter.Panel về kích thước mặc định." : "Double-click the dragger to reset the Splitter.Panel to its default size."}</DocMarkdown>
       <DocCanvas of={DoubleClickedReset} sourceState="hidden" />
-      <DocMarkdown>{vi ? "## API\n\n> Component Splitter cần tính kích thước panel thông qua các phần tử con, vì vậy phần tử con của nó chỉ hỗ trợ `Splitter.Panel`.\n\n### Splitter\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Phiên bản | Cấu hình chung |\n| --- | --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | 6.0.0 | 6.0.0 |\n| collapsible | `motion` để bật hiệu ứng thu gọn, `icon` để tuỳ chỉnh icon thu gọn | `{ motion?: boolean; icon?: { start?: ReactNode; end?: ReactNode } }` | - | 6.4.0 | × |\n| ~~collapsibleIcon~~ | Icon thu gọn tuỳ chỉnh | `{start?: ReactNode; end?: ReactNode}` | - | 6.0.0 | × |\n| destroyOnHidden | Huỷ nội dung panel khi thu gọn (kích thước bằng 0). Áp dụng cho tất cả panel, có thể ghi đè ở từng panel | `boolean` | `false` | 6.4.0 | × |\n| draggerIcon | Icon dragger tuỳ chỉnh | `ReactNode` | - | 6.0.0 | × |\n| ~~layout~~ | Hướng bố cục | `horizontal` \\| `vertical` | `horizontal` | - | × |\n| lazy | Chế độ lazy | `boolean` | `false` | 5.23.0 | × |\n| onCollapse | Hàm callback khi mở rộng hoặc thu gọn | `(collapsed: boolean[], sizes: number[]) => void` | - | 5.28.0 | × |\n| orientation | Hướng | `horizontal` \\| `vertical` | `horizontal` | 6.0.0 | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | 6.0.0 | 6.0.0 |\n| vertical | Hướng. Nếu có đồng thời với `orientation` thì `orientation` được ưu tiên | boolean | `false` | 6.0.0 | × |\n| onDraggerDoubleClick | Hàm callback được kích hoạt khi double-click vào dragger | `(index: number) => void` | - | 6.3.0 | × |\n| onResize | Hàm callback khi kích thước panel thay đổi | `(sizes: number[]) => void` | - | - | × |\n| onResizeEnd | Hàm callback khi kết thúc kéo | `(sizes: number[]) => void` | - | - | × |\n| onResizeStart | Hàm callback trước khi bắt đầu kéo | `(sizes: number[]) => void` | - | - | × |\n\n### Panel\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Phiên bản |\n| --- | --- | --- | --- | --- |\n| collapsible | Thu gọn nhanh | `boolean \\| { start?: boolean; end?: boolean; showCollapsibleIcon?: boolean \\| 'auto' }` | `false` | showCollapsibleIcon: 5.27.0 |\n| defaultSize | Kích thước panel ban đầu, hỗ trợ số (px) hoặc 'percent%' | `number \\| string` | - | - |\n| destroyOnHidden | Huỷ nội dung panel khi thu gọn (kích thước bằng 0). Ghi đè `destroyOnHidden` của Splitter | `boolean` | - | 6.4.0 |\n| max | Ngưỡng tối đa, hỗ trợ số (px) hoặc 'percent%' | `number \\| string` | - | - |\n| min | Ngưỡng tối thiểu, hỗ trợ số (px) hoặc 'percent%' | `number \\| string` | - | - |\n| resizable | Có bật kéo thả hay không | `boolean` | `true` | - |\n| size | Kích thước panel được điều khiển, hỗ trợ số (px) hoặc 'percent%' | `number \\| string` | - | - |\n\n## Semantic DOM" : "## API\n\n> The Splitter component needs to calculate the panel size through its child elements, so its child elements only support `Splitter.Panel`.\n\n### Splitter\n\n| Property | Description | Type | Default | Version | Global Config |\n| --- | --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | 6.0.0 | 6.0.0 |\n| collapsible | `motion` to enable collapse animation, `icon` to customize collapse icons | `{ motion?: boolean; icon?: { start?: ReactNode; end?: ReactNode } }` | - | 6.4.0 | × |\n| ~~collapsibleIcon~~ | custom collapsible icon | `{start?: ReactNode; end?: ReactNode}` | - | 6.0.0 | × |\n| destroyOnHidden | Destroy panel content when collapsed (size is 0). Applies to all panels, can be overridden per panel | `boolean` | `false` | 6.4.0 | × |\n| draggerIcon | custom dragger icon | `ReactNode` | - | 6.0.0 | × |\n| ~~layout~~ | Layout direction | `horizontal` \\| `vertical` | `horizontal` | - | × |\n| lazy | Lazy mode | `boolean` | `false` | 5.23.0 | × |\n| onCollapse | Callback when expanding or collapsing | `(collapsed: boolean[], sizes: number[]) => void` | - | 5.28.0 | × |\n| orientation | Orientation direction | `horizontal` \\| `vertical` | `horizontal` | 6.0.0 | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | 6.0.0 | 6.0.0 |\n| vertical | Orientation. Simultaneously existing with `orientation`, `orientation` takes priority | boolean | `false` | 6.0.0 | × |\n| onDraggerDoubleClick | Callback triggered when the dragger is double-clicked | `(index: number) => void` | - | 6.3.0 | × |\n| onResize | Panel size change callback | `(sizes: number[]) => void` | - | - | × |\n| onResizeEnd | Drag end callback | `(sizes: number[]) => void` | - | - | × |\n| onResizeStart | Callback before dragging starts | `(sizes: number[]) => void` | - | - | × |\n\n### Panel\n\n| Property | Description | Type | Default | Version |\n| --- | --- | --- | --- | --- |\n| collapsible | Quick folding | `boolean \\| { start?: boolean; end?: boolean; showCollapsibleIcon?: boolean \\| 'auto' }` | `false` | showCollapsibleIcon: 5.27.0 |\n| defaultSize | Initial panel size support number for px or 'percent%' usage | `number \\| string` | - | - |\n| destroyOnHidden | Destroy panel content when collapsed (size is 0). Overrides Splitter's `destroyOnHidden` | `boolean` | - | 6.4.0 |\n| max | Maximum threshold support number for px or 'percent%' usage | `number \\| string` | - | - |\n| min | Minimum threshold support number for px or 'percent%' usage | `number \\| string` | - | - |\n| resizable | Whether to enable drag and drop | `boolean` | `true` | - |\n| size | Controlled panel size support number for px or 'percent%' usage | `number \\| string` | - | - |\n\n## Semantic DOM"}</DocMarkdown>
-      <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo10 /></div></DocUnstyled>
+      <DocMarkdown>{vi ? "## API\n\n> Component Splitter cần tính kích thước panel thông qua các phần tử con, vì vậy phần tử con của nó chỉ hỗ trợ `Splitter.Panel`.\n\n### Splitter\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| collapsible | `motion` để bật hiệu ứng thu gọn, `icon` để tuỳ chỉnh icon thu gọn | `{ motion?: boolean; icon?: { start?: ReactNode; end?: ReactNode } }` | - | × |\n| destroyOnHidden | Huỷ nội dung panel khi thu gọn (kích thước bằng 0). Áp dụng cho tất cả panel, có thể ghi đè ở từng panel | `boolean` | `false` | × |\n| draggerIcon | Icon dragger tuỳ chỉnh | `ReactNode` | - | × |\n| lazy | Chế độ lazy | `boolean` | `false` | × |\n| onCollapse | Hàm callback khi mở rộng hoặc thu gọn | `(collapsed: boolean[], sizes: number[]) => void` | - | × |\n| orientation | Hướng | `horizontal` \\| `vertical` | `horizontal` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| vertical | Hướng. Nếu có đồng thời với `orientation` thì `orientation` được ưu tiên | boolean | `false` | × |\n| onDraggerDoubleClick | Hàm callback được kích hoạt khi double-click vào dragger | `(index: number) => void` | - | × |\n| onResize | Hàm callback khi kích thước panel thay đổi | `(sizes: number[]) => void` | - | × |\n| onResizeEnd | Hàm callback khi kết thúc kéo | `(sizes: number[]) => void` | - | × |\n| onResizeStart | Hàm callback trước khi bắt đầu kéo | `(sizes: number[]) => void` | - | × |\n\n### Panel\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| collapsible | Thu gọn nhanh | `boolean \\| { start?: boolean; end?: boolean; showCollapsibleIcon?: boolean \\| 'auto' }` | `false` |\n| defaultSize | Kích thước panel ban đầu, hỗ trợ số (px) hoặc 'percent%' | `number \\| string` | - |\n| destroyOnHidden | Huỷ nội dung panel khi thu gọn (kích thước bằng 0). Ghi đè `destroyOnHidden` của Splitter | `boolean` | - |\n| max | Ngưỡng tối đa, hỗ trợ số (px) hoặc 'percent%' | `number \\| string` | - |\n| min | Ngưỡng tối thiểu, hỗ trợ số (px) hoặc 'percent%' | `number \\| string` | - |\n| resizable | Có bật kéo thả hay không | `boolean` | `true` |\n| size | Kích thước panel được điều khiển, hỗ trợ số (px) hoặc 'percent%' | `number \\| string` | - |\n\n## Semantic DOM" : "## API\n\n> The Splitter component needs to calculate the panel size through its child elements, so its child elements only support `Splitter.Panel`.\n\n### Splitter\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| collapsible | `motion` to enable collapse animation, `icon` to customize collapse icons | `{ motion?: boolean; icon?: { start?: ReactNode; end?: ReactNode } }` | - | × |\n| destroyOnHidden | Destroy panel content when collapsed (size is 0). Applies to all panels, can be overridden per panel | `boolean` | `false` | × |\n| draggerIcon | custom dragger icon | `ReactNode` | - | × |\n| lazy | Lazy mode | `boolean` | `false` | × |\n| onCollapse | Callback when expanding or collapsing | `(collapsed: boolean[], sizes: number[]) => void` | - | × |\n| orientation | Orientation direction | `horizontal` \\| `vertical` | `horizontal` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| vertical | Orientation. Simultaneously existing with `orientation`, `orientation` takes priority | boolean | `false` | × |\n| onDraggerDoubleClick | Callback triggered when the dragger is double-clicked | `(index: number) => void` | - | × |\n| onResize | Panel size change callback | `(sizes: number[]) => void` | - | × |\n| onResizeEnd | Drag end callback | `(sizes: number[]) => void` | - | × |\n| onResizeStart | Callback before dragging starts | `(sizes: number[]) => void` | - | × |\n\n### Panel\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| collapsible | Quick folding | `boolean \\| { start?: boolean; end?: boolean; showCollapsibleIcon?: boolean \\| 'auto' }` | `false` |\n| defaultSize | Initial panel size support number for px or 'percent%' usage | `number \\| string` | - |\n| destroyOnHidden | Destroy panel content when collapsed (size is 0). Overrides Splitter's `destroyOnHidden` | `boolean` | - |\n| max | Maximum threshold support number for px or 'percent%' usage | `number \\| string` | - |\n| min | Minimum threshold support number for px or 'percent%' usage | `number \\| string` | - |\n| resizable | Whether to enable drag and drop | `boolean` | `true` |\n| size | Controlled panel size support number for px or 'percent%' usage | `number \\| string` | - |\n\n## Semantic DOM"}</DocMarkdown>
+      <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo11 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token\n\n&lt;ComponentTokenTable component='Splitter'>&lt;/ComponentTokenTable>"}</DocMarkdown>
     </>
   )
@@ -134,14 +138,26 @@ export const Collapsible: Story = {
   },
 }
 
-/** Multiple panels */
-export const MultiplePanels: Story = {
-  name: "Multiple panels",
+/** Control collapsible icons */
+export const ControlCollapsibleIcons: Story = {
+  name: "Control collapsible icons",
   render: () => <Demo4 />,
   parameters: {
     docs: {
-      description: { story: "Nhiều panel." },
+      description: { story: "Đặt `collapsible.showCollapsibleIcon` để điều khiển cách hiển thị icon thu gọn." },
       source: { code: Demo4Source, language: 'tsx' },
+    },
+  },
+}
+
+/** Multiple panels */
+export const MultiplePanels: Story = {
+  name: "Multiple panels",
+  render: () => <Demo5 />,
+  parameters: {
+    docs: {
+      description: { story: "Nhiều panel." },
+      source: { code: Demo5Source, language: 'tsx' },
     },
   },
 }
@@ -149,11 +165,11 @@ export const MultiplePanels: Story = {
 /** Complex combination */
 export const ComplexCombination: Story = {
   name: "Complex combination",
-  render: () => <Demo5 />,
+  render: () => <Demo6 />,
   parameters: {
     docs: {
       description: { story: "Panel kết hợp phức tạp, thu gọn nhanh, không cho phép đổi kích thước" },
-      source: { code: Demo5Source, language: 'tsx' },
+      source: { code: Demo6Source, language: 'tsx' },
     },
   },
 }
@@ -161,11 +177,11 @@ export const ComplexCombination: Story = {
 /** Lazy */
 export const Lazy: Story = {
   name: "Lazy",
-  render: () => <Demo6 />,
+  render: () => <Demo7 />,
   parameters: {
     docs: {
       description: { story: "Chế độ lazy, khi kéo kích thước không cập nhật ngay mà chỉ cập nhật khi thả ra." },
-      source: { code: Demo6Source, language: 'tsx' },
+      source: { code: Demo7Source, language: 'tsx' },
     },
   },
 }
@@ -173,11 +189,11 @@ export const Lazy: Story = {
 /** Customize */
 export const Customize: Story = {
   name: "Customize",
-  render: () => <Demo7 />,
+  render: () => <Demo8 />,
   parameters: {
     docs: {
       description: { story: "Tuỳ chỉnh phần tử và style của handle" },
-      source: { code: Demo7Source, language: 'tsx' },
+      source: { code: Demo8Source, language: 'tsx' },
     },
   },
 }
@@ -185,11 +201,11 @@ export const Customize: Story = {
 /** Custom semantic dom styling */
 export const CustomSemanticDomStyling: Story = {
   name: "Custom semantic dom styling",
-  render: () => <Demo8 />,
+  render: () => <Demo9 />,
   parameters: {
     docs: {
       description: { story: "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Splitter bằng cách truyền object/function qua `classNames` và `styles`." },
-      source: { code: Demo8Source, language: 'tsx' },
+      source: { code: Demo9Source, language: 'tsx' },
     },
   },
 }
@@ -197,11 +213,11 @@ export const CustomSemanticDomStyling: Story = {
 /** Double-clicked reset */
 export const DoubleClickedReset: Story = {
   name: "Double-clicked reset",
-  render: () => <Demo9 />,
+  render: () => <Demo10 />,
   parameters: {
     docs: {
       description: { story: "Double-click vào dragger để đặt lại Splitter.Panel về kích thước mặc định." },
-      source: { code: Demo9Source, language: 'tsx' },
+      source: { code: Demo10Source, language: 'tsx' },
     },
   },
 }

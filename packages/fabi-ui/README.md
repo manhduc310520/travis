@@ -8,7 +8,7 @@ Every antd component and API is re-exported unchanged, so the antd documentation
 
 ```bash
 # now: from the packed file
-npm install ./fabi-ui-0.1.0.tgz
+npm install ./fabi-ui-0.2.0.tgz
 # later: from the internal registry
 npm install @fabi/ui
 ```
@@ -157,6 +157,17 @@ import { Home03Line, Home03Solid } from '@fabi/ui/fabi-icons'
 - Update from the design: `npm run icons:fetch -- --file <file key> --line <section id> --solid <section id>`
   (with `FIGMA_ACCESS_TOKEN`), then `npm run icons:gen` and `npm run build`. The SVGs and the catalog
   live in `icons/`; `src/fabi-icons.ts` is generated, never edited by hand.
+
+## Page building blocks
+
+- `PageHeader`: breadcrumb, back, title (the page h1), tags, description, actions (one primary).
+- `FilterBar`: the filter row above a list; pass antd fields as children, `onReset` + `active` show "Xoá bộ lọc".
+- `StatisticCard`, `SearchModal`: see their Storybook pages.
+- Formats (vi-VN): `formatMoney(9615933)` → "9.615.933 ₫", `formatNumber`, `formatPercent(12.5)` → "12,5%",
+  `formatDate` → "02/11/2026", `formatDateTime`; `DATE_FORMAT` for DatePicker `format`.
+
+Page templates (Dashboard, list, form, detail, login, error pages) are in Storybook under **Template**.
+Changes per version: `CHANGELOG.md`.
 
 ## Class names and CSS variables
 

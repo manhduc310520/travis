@@ -304,11 +304,11 @@ export default function ResponsivePage() {
             )}</td>
             <td>{L(
               `Sider thu gọn còn ${SIDER_COLLAPSED}px (chỉ có icon). Nút “Mở” ở cuối menu để mở rộng.`,
-              `Sider collapsed to ${SIDER_COLLAPSED}px (icons only). “Mở” at the bottom expands it.`,
+              `Sider collapsed to ${SIDER_COLLAPSED}px (icons only). The expand button at the bottom opens it.`,
             )}</td>
             <td>{L(
               `Sider rộng ${SIDER_WIDTH}px. Nút “Thu gọn” ở cuối menu thu về ${SIDER_COLLAPSED}px.`,
-              `Sider ${SIDER_WIDTH}px wide. “Thu gọn” at the bottom collapses it to ${SIDER_COLLAPSED}px.`,
+              `Sider ${SIDER_WIDTH}px wide. The collapse button at the bottom shrinks it to ${SIDER_COLLAPSED}px.`,
             )}</td>
           </tr>
           <tr>
@@ -336,7 +336,7 @@ export default function ResponsivePage() {
             <th scope="row">{L('Thanh bộ lọc', 'Filter bar')}</th>
             <td>{L(
               `Mỗi ô rộng hết màn hình. Khoảng ngày tách thành hai DatePicker (“Từ ngày”, “Đến ngày”): popup của RangePicker rộng ${pickerPanel * 2}px, popup của một DatePicker chỉ ${pickerPanel}px.`,
-              `Each field takes the full width. The date range is two DatePickers (“Từ ngày”, “Đến ngày”): the RangePicker popup is ${pickerPanel * 2}px wide, a single DatePicker popup ${pickerPanel}px.`,
+              `Each field takes the full width. The date range is two DatePickers (start date, end date): the RangePicker popup is ${pickerPanel * 2}px wide, a single DatePicker popup ${pickerPanel}px.`,
             )}</td>
             <td colSpan={2}>{L(
               `Một RangePicker; Select nhà hàng rộng tối thiểu ${SELECT_MIN}px. Các ô xuống dòng khi không đủ chỗ.`,
@@ -367,7 +367,7 @@ export default function ResponsivePage() {
           <li>
             The header is sticky at the top. The Sider is sticky right under it ({headerHeight}px from the top, the header height)
             and one screen tall: its menu scrolls inside, the scrollbar shows only while the pointer or the focus is in the menu,
-            and “Thu gọn” stays at the bottom.
+            and the collapse button stays at the bottom.
           </li>
           <li>
             Crossing {lg} collapses or expands the Sider by itself (<code>breakpoint="lg"</code>); the user can still toggle it.
@@ -395,22 +395,22 @@ export default function ResponsivePage() {
             <td>{L('Luôn rộng hết hàng.', 'Always full width.')}</td>
           </tr>
           <tr>
-            <th scope="row">{L('4 StatisticCard: Giảm giá và chi phí, Tổng hoá đơn, Số khách, Số hoá đơn điện tử', '4 StatisticCards: Giảm giá và chi phí, Tổng hoá đơn, Số khách, Số hoá đơn điện tử')}</th>
+            <th scope="row">{L('4 StatisticCard: Giảm giá và chi phí, Tổng hoá đơn, Số khách, Số hoá đơn điện tử', '4 StatisticCards: discounts and costs, total invoices, customers, e-invoices')}</th>
             <td><code>xs={'{24}'} sm={'{12}'} xl={'{6}'}</code></td>
             <td>{L(`1 card mỗi hàng dưới ${sm}, 2 card từ ${sm}, 4 card từ ${xl}.`, `1 per row below ${sm}, 2 from ${sm}, 4 from ${xl}.`)}</td>
           </tr>
           <tr>
-            <th scope="row">{L('Doanh thu theo ngày (biểu đồ cột), Top 5 mặt hàng bán chạy', 'Doanh thu theo ngày (column chart), Top 5 mặt hàng bán chạy')}</th>
+            <th scope="row">{L('Doanh thu theo ngày (biểu đồ cột), Top 5 mặt hàng bán chạy', 'Revenue by day (column chart), top 5 best-selling items')}</th>
             <td><code>xs={'{24}'} xl={'{16}'}</code>, <code>xs={'{24}'} xl={'{8}'}</code></td>
             <td>{L(`Rộng hết hàng dưới ${xl}; từ ${xl} chia 2/3 và 1/3.`, `Full width below ${xl}; two thirds and one third from ${xl}.`)}</td>
           </tr>
           <tr>
-            <th scope="row">{L('Top 5 nguồn đơn, Top 5 chương trình khuyến mại, Top 5 phương thức thanh toán (biểu đồ tròn)', 'Top 5 nguồn đơn, Top 5 chương trình khuyến mại, Top 5 phương thức thanh toán (donut chart)')}</th>
+            <th scope="row">{L('Top 5 nguồn đơn, Top 5 chương trình khuyến mại, Top 5 phương thức thanh toán (biểu đồ tròn)', 'Top 5 order sources, top 5 promotions, top 5 payment methods (donut chart)')}</th>
             <td><code>xs={'{24}'} lg={'{8}'}</code></td>
             <td>{L(`Rộng hết hàng dưới ${lg}; 3 card mỗi hàng từ ${lg}.`, `Full width below ${lg}; 3 per row from ${lg}.`)}</td>
           </tr>
           <tr>
-            <th scope="row">Đơn từ kênh: Shopee, Báo cáo lãi lỗ tháng</th>
+            <th scope="row">{L('Đơn từ kênh: Shopee, Báo cáo lãi lỗ tháng', 'Orders by channel: Shopee, monthly profit and loss')}</th>
             <td><code>xs={'{24}'} xl={'{12}'}</code></td>
             <td>{L(`Rộng hết hàng dưới ${xl}; 2 card mỗi hàng từ ${xl}.`, `Full width below ${xl}; 2 per row from ${xl}.`)}</td>
           </tr>
@@ -445,7 +445,7 @@ export default function ResponsivePage() {
           </li>
           <li>{SEARCH_MODAL_HEIGHT}px tall, never taller than the screen minus {token.padding * 2}px; the result list scrolls inside.</li>
           <li>
-            Below sm ({sm}): the key hints (ESC, ↑ ↓, Enter) are hidden, since phones have no keyboard, and a “Đóng” button sits
+            Below sm ({sm}): the key hints (ESC, ↑ ↓, Enter) are hidden, since phones have no keyboard, and a close button sits
             next to the field.
           </li>
         </ul>

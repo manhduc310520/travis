@@ -72,7 +72,8 @@ const COMPACT_CODE = `import { FabiProvider, theme } from '@fabi/ui'
 const code = (src: string) => `\n\n\`\`\`tsx\n${src}\n\`\`\``
 
 export default function CustomizeThemePage() {
-  const t = TEXT[useDocsLocale() === 'vi' ? 'vi' : 'en']
+  const lang = useDocsLocale() === 'vi' ? 'vi' : 'en'
+  const t = TEXT[lang]
   return (
     <>
       <h1 className="fabi-sb-page-title">{t.title}</h1>
@@ -113,11 +114,11 @@ export default function CustomizeThemePage() {
         </div>
       </DocUnstyled>
       <DocMarkdown>{`${t.brandsNote}\n\n${t.use}${code(ROOT_CODE)}`}</DocMarkdown>
-      <Example code={BrandModeSource} description={t.demo}><BrandMode /></Example>
+      <Example code={BrandModeSource} description={t.demo}><BrandMode lang={lang} /></Example>
       <DocMarkdown>{`${t.compact}${code(COMPACT_CODE)}\n\n${t.nested}`}</DocMarkdown>
-      <Example code={DarkAreaSource} description={t.nestedDemo}><DarkArea /></Example>
+      <Example code={DarkAreaSource} description={t.nestedDemo}><DarkArea lang={lang} /></Example>
       <DocMarkdown>{t.tokens}</DocMarkdown>
-      <Example code={UseTokenSource} description={t.tokensDemo}><UseToken /></Example>
+      <Example code={UseTokenSource} description={t.tokensDemo}><UseToken lang={lang} /></Example>
       <DocMarkdown>{t.rules}</DocMarkdown>
     </>
   )

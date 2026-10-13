@@ -153,3 +153,16 @@
 .fabi-layout-header .fabi-menu-dark.fabi-menu-horizontal > .fabi-menu-submenu:not(.fabi-menu-submenu-selected) > .fabi-menu-submenu-title {
   color: rgba(255, 255, 255, 0.85);
 }
+
+/* Required fields read "Tên điểm *": antd's star moves after the label text (CLAUDE.md "dấu * sau chữ").
+   The label is an inline-flex box, so the ::before star only needs a later order (the colon ::after stays first). */
+.fabi-form-item-label > label.fabi-form-item-required:not(.fabi-form-item-required-mark-optional)::before {
+  order: 2;
+  margin-inline-end: 0;
+  margin-inline-start: 4px;
+}
+/* vertical forms show no colon, but antd keeps a hidden one that would push the star away */
+.fabi-form-vertical .fabi-form-item-label > label::after,
+.fabi-form-item-vertical .fabi-form-item-label > label::after {
+  display: none;
+}

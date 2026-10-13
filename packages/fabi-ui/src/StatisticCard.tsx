@@ -9,6 +9,7 @@ import { Button, Card, ConfigProvider, Flex, Skeleton, Statistic, Tag, Typograph
 import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
 import { ArrowDownLine, ArrowUpLine, MinusLine, RefreshCw01Line } from './fabi-icons.js'
 import { FONT_WEIGHT_MEDIUM, fabiDarkAlgorithm } from './theme.js'
+import { useFabiLang } from './useFabiLang.js'
 
 /** Category colours: antd's preset palettes */
 export type StatisticCardColor = 'blue' | 'geekblue' | 'cyan' | 'green' | 'lime' | 'gold' | 'orange' | 'volcano' | 'red' | 'magenta' | 'purple'
@@ -16,7 +17,7 @@ export type StatisticCardColor = 'blue' | 'geekblue' | 'cyan' | 'green' | 'lime'
 export interface StatisticCardProps {
   /** 'default': white card with an icon tile; 'primary': the brand surface for the headline figure */
   type?: 'default' | 'primary'
-  /** Label, e.g. "Tổng hoá đơn" (a ReactNode, so it can be a Dropdown that switches the figure) */
+  /** Label, e.g. "Total invoices" (a ReactNode, so it can be a Dropdown that switches the figure) */
   title: ReactNode
   /** The figure; null / undefined shows the empty state */
   value?: number | null
@@ -26,9 +27,9 @@ export interface StatisticCardProps {
   precision?: number
   /** Change against the comparison period, in percent: > 0 up, < 0 down, 0 unchanged */
   trend?: number
-  /** Comparison text after the trend, e.g. "so với Từ ngày 01/05 đến ngày 31/05" */
+  /** Comparison text after the trend, e.g. "vs. 01/05 – 31/05" */
   comparison?: ReactNode
-  /** Secondary line, e.g. "Trung bình 160.266 ₫ / hoá đơn" */
+  /** Secondary line, e.g. "Average 160.266 ₫ per invoice" */
   description?: ReactNode
   /** Content under the figure, e.g. Tags */
   extra?: ReactNode
@@ -43,7 +44,7 @@ export interface StatisticCardProps {
   error?: ReactNode
   /** Retry action in the error state */
   onRetry?: () => void
-  /** Text of the empty state (default "Chưa có dữ liệu") */
+  /** Text of the empty state (default: "No data yet" in the app language) */
   emptyText?: ReactNode
   /** Makes the whole card a button (e.g. open the detail report): hover and focus states */
   onClick?: () => void
@@ -52,9 +53,9 @@ export interface StatisticCardProps {
 }
 
 const TREND = {
-  up: { color: 'success', icon: <ArrowUpLine />, label: 'Tăng' },
-  down: { color: 'error', icon: <ArrowDownLine />, label: 'Giảm' },
-  flat: { color: 'default', icon: <MinusLine />, label: 'Không đổi' },
+  up: { color: 'success', icon: <ArrowUpLine />, label: { vi: 'Tăng', en: 'Up' } },
+  down: { color: 'error', icon: <ArrowDownLine />, label: { vi: 'Giảm', en: 'Down' } },
+  flat: { color: 'default', icon: <MinusLine />, label: { vi: 'Không đổi', en: 'No change' } },
 } as const
 
 /** "8%", "12,5%": vi-VN decimal comma, like the figures */
@@ -92,12 +93,14 @@ export function StatisticCard({
   loading = false,
   error,
   onRetry,
-  emptyText = 'Chưa có dữ liệu',
+  emptyText,
   onClick,
   className,
   style,
 }: StatisticCardProps) {
   const { token } = antdTheme.useToken()
+  // built-in texts: Vietnamese by default, English with an English antd locale
+  const lang = useFabiLang()
   const primary = type === 'primary'
   // primary: white on the brand gradient (two steps below the primary → the primary; light ≥ 4.5:1 on
   // every brand, dark: antd's dark fills ≥ 6.7:1), darkened 20% more by the dot layer.
@@ -125,14 +128,14 @@ export function StatisticCard({
       <Typography.Text style={{ color: textColor }}>{error}</Typography.Text>
       {onRetry && (
         <Button size={primary ? 'middle' : 'small'} ghost={primary} icon={<RefreshCw01Line />} onClick={(e) => { e.stopPropagation(); onRetry() }}>
-          Thử lại
+          {lang === 'en' ? 'Retry' : 'Thử lại'}
         </Button>
       )}
     </Flex>
   ) : empty ? (
     <Flex align="baseline" gap="middle" wrap>
       <Typography.Text strong style={{ color: textColor, fontSize: valueSize, lineHeight: valueLineHeight }} aria-hidden>—</Typography.Text>
-      <Typography.Text {...secondary}>{emptyText}</Typography.Text>
+      <Typography.Text {...secondary}>{emptyText ?? (lang === 'en' ? 'No data yet' : 'Chưa có dữ liệu')}</Typography.Text>
     </Flex>
   ) : (
     <>
@@ -147,7 +150,7 @@ export function StatisticCard({
         />
         {dir && (
           <Tag color={TREND[dir].color} icon={TREND[dir].icon} variant="filled" style={{ marginInlineEnd: 0 }}>
-            <span className="fabi-sr-only">{TREND[dir].label} </span>
+            <span className="fabi-sr-only">{TREND[dir].label[lang]} </span>
             {percent(trend as number)}
           </Tag>
         )}

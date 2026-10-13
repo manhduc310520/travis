@@ -24,7 +24,8 @@ const config: StorybookConfig = {
     // MDX pages (Getting Started…) use markdown tables: GitHub-flavoured markdown is not in MDX by default
     { name: '@storybook/addon-docs', options: { mdxPluginOptions: { mdxCompileOptions: { remarkPlugins: [remarkGfm] } } } },
     '@storybook/addon-a11y',
-    '@storybook/addon-vitest'
+    '@storybook/addon-vitest',
+    '@chromatic-com/storybook'
   ],
   // Local sample images and data used instead of remote ones (scripts/make-assets.mjs).
   staticDirs: ['../public'],

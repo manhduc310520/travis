@@ -2,26 +2,34 @@ import React, { useState } from 'react';
 import { BRANDS, Button, FabiProvider, Flex, Input, Segmented, Select, Switch, Tag, Typography, theme } from '@fabi/ui';
 import type { BrandKey, FabiMode } from '@fabi/ui';
 
+// sample texts in the docs language (Language toolbar)
+const TEXT = {
+  vi: { save: 'Lưu', cancel: 'Huỷ', details: 'Xem chi tiết', dish: 'Tên món', onSale: 'Đang bán' },
+  en: { save: 'Save', cancel: 'Cancel', details: 'View details', dish: 'Dish name', onSale: 'On sale' },
+};
+type Lang = keyof typeof TEXT;
+
 /** What the chosen theme looks like: a few common components on the page surface */
-const Preview: React.FC = () => {
+const Preview: React.FC<{ lang: Lang }> = ({ lang }) => {
   const { token } = theme.useToken();
+  const t = TEXT[lang];
   return (
     <Flex vertical gap="middle" style={{ padding: token.padding, background: token.colorBgContainer, borderRadius: token.borderRadiusLG }}>
       <Flex gap="small" wrap>
-        <Button type="primary">Lưu</Button>
-        <Button>Huỷ</Button>
-        <Typography.Link>Xem chi tiết</Typography.Link>
+        <Button type="primary">{t.save}</Button>
+        <Button>{t.cancel}</Button>
+        <Typography.Link>{t.details}</Typography.Link>
       </Flex>
       <Flex gap="small" wrap align="center">
-        <Input placeholder="Tên món" aria-label="Tên món" style={{ maxWidth: 240 }} />
-        <Switch defaultChecked aria-label="Đang bán" />
-        <Tag color="processing">Đang bán</Tag>
+        <Input placeholder={t.dish} aria-label={t.dish} style={{ maxWidth: 240 }} />
+        <Switch defaultChecked aria-label={t.onSale} />
+        <Tag color="processing">{t.onSale}</Tag>
       </Flex>
     </Flex>
   );
 };
 
-const App: React.FC = () => {
+const App: React.FC<{ lang?: Lang }> = ({ lang = 'vi' }) => {
   const [brand, setBrand] = useState<BrandKey>('geekblue');
   const [mode, setMode] = useState<FabiMode>('light');
   const [compact, setCompact] = useState(false);
@@ -50,7 +58,7 @@ const App: React.FC = () => {
       </Flex>
       {/* the whole app: one FabiProvider at the root; changing a prop switches the theme */}
       <FabiProvider brand={brand} mode={mode} theme={compact ? { algorithm: theme.compactAlgorithm } : {}}>
-        <Preview />
+        <Preview lang={lang} />
       </FabiProvider>
     </Flex>
   );

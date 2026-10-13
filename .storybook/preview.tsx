@@ -3,6 +3,7 @@ import type { Preview } from '@storybook/react-vite'
 import { DocsContainer, DocsContext } from '@storybook/addon-docs/blocks'
 import { FabiProvider, theme } from '@fabi/ui'
 import type { BrandKey, FabiMode } from '@fabi/ui'
+import enUS from '@fabi/ui/locale/en_US'
 import { create } from 'storybook/theming'
 import { BRANDS, DEFAULT_BRAND, DEFAULT_MODE, FONT_FAMILY, MODES, brandThemeFor } from './brand'
 import { DEFAULT_LOCALE, LOCALES, LocaleProvider, isLocale, type DocsLocale } from './locale'
@@ -151,10 +152,12 @@ const preview: Preview = {
   initialGlobals: { brand: INITIAL_BRAND, mode: INITIAL_MODE, locale: INITIAL_LOCALE },
   // Stories (on their own and inside docs pages) render inside FabiProvider, as an app does: the selected
   // brand theme and mode, fabi- class names, --fabi-* CSS variables and the accessibility patches.
-  // LocaleProvider: examples that show site text (Semantic DOM labels) follow the Language toolbar.
+  // LocaleProvider: examples that show site text (Semantic DOM labels) follow the Language toolbar. In EN the
+  // components get antd's English locale, so the texts FABi's own components draw ("Quay lại", "Xoá bộ lọc"…)
+  // are English too; antd's own texts are English either way (no locale = antd's default).
   decorators: [(Story, ctx) => (
     <LocaleProvider locale={ctx.globals.locale} documentLang={ctx.viewMode !== 'docs'}>
-      <FabiProvider brand={ctx.globals.brand} mode={ctx.globals.mode}><Story /></FabiProvider>
+      <FabiProvider brand={ctx.globals.brand} mode={ctx.globals.mode} locale={ctx.globals.locale === 'en' ? enUS : undefined}><Story /></FabiProvider>
     </LocaleProvider>
   )],
   parameters: {

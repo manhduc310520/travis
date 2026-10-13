@@ -1,7 +1,7 @@
 // Illustrated icons of the dashboard's small figure cards (StatisticCard `icon`): the design's own artwork.
 // Each layer sits in its box as drawn, in % of the card's icon tile (top right bottom left), so it scales
 // with the tile; an image that carries its drop shadow overflows its box by `bleed` and the tile clips it.
-import React from 'react';
+
 import type { CSSProperties } from 'react';
 import discount from './assets/stat-discount.svg';
 import customersBack from './assets/stat-customers-back.svg';

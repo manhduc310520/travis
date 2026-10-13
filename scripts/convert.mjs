@@ -15,6 +15,7 @@ import { createCatalog, glossaryHeading } from './i18n.mjs'
 import { applyBrandEdits } from './brand-edits.mjs'
 import { PLAYGROUNDS, argTypesFromApi, playCode } from './playgrounds.mjs'
 import { depsNote, fabiCode, fabiDocs } from './fabi-names.mjs'
+import { dropVersionNotes } from './doc-cleanup.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ANTD = path.resolve(ROOT, '../antd-src/ant-design-6.6.5')
@@ -33,13 +34,17 @@ if (!fs.existsSync(SITE_HELPERS)) {
   fs.rmSync(path.join(SITE_HELPERS, 'tsconfig.json'), { force: true })
 }
 
+// Components without a docs page (user decision 2026-10-14): List is deprecated by antd 6.6 in favour of Listy
+// (it stays exported from @fabi/ui so existing code keeps working).
+const HIDDEN = new Set(['list'])
+
 const args = process.argv.slice(2)
 const names = args.length
   ? args
   : fs.readdirSync(SRC_COMPONENTS).filter((n) => {
       const doc = path.join(SRC_COMPONENTS, n, 'index.en-US.md')
       // component pages only: they have examples (the Overview page has none)
-      return fs.existsSync(doc) && fs.existsSync(path.join(SRC_COMPONENTS, n, 'demo'))
+      return !HIDDEN.has(n) && fs.existsSync(doc) && fs.existsSync(path.join(SRC_COMPONENTS, n, 'demo'))
     })
 
 // ---------- house style: changes to the upstream demos ----------
@@ -589,7 +594,8 @@ function debrand(md, lang = 'vi') {
   }).join('\n')
   // sentence-level brand edits (scripts/brand-edits.mjs), the library name in prose, then the
   // @fabi/ui package names and fabi- prefixes (scripts/fabi-names.mjs)
-  return halfWidth(fabiDocs(neutralLibraryName(applyBrandEdits(md, lang), lang), lang)).replace(/\n{3,}/g, '\n\n').trim()
+  // then the version history (scripts/doc-cleanup.mjs)
+  return dropVersionNotes(halfWidth(fabiDocs(neutralLibraryName(applyBrandEdits(md, lang), lang), lang))).replace(/\n{3,}/g, '\n\n').trim()
 }
 
 // ---------- two languages on one page (Language toolbar, user decision 2026-10-01) ----------
@@ -701,8 +707,15 @@ function parseDoc(body) {
   const lines = body.split(/\r?\n/)
   let inFence = false
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i]
+    let line = lines[i]
     if (/^\s*(```|~~~)/.test(line)) inFence = !inFence
+    // a demo tag written over several lines (Splitter "Control collapsible icons") → one line
+    if (!inFence && /^\s*<code src="\.\/demo\/[^"]+"[^>]*>(?!.*<\/code>)/.test(line)) {
+      let j = i
+      while (j + 1 < lines.length && !/<\/code>/.test(lines[j])) j++
+      line = lines.slice(i, j + 1).map((l) => l.trim()).join('')
+      i = j
+    }
     if (!inFence && /^\s*<style>/.test(line)) {
       const css = []
       for (i++; i < lines.length && !/^\s*<\/style>/.test(lines[i]); i++) css.push(lines[i])

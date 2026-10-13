@@ -2,7 +2,7 @@
 // Generated components (packages/fabi-ui/scripts/gen-fabi-icons.mjs); the catalog lists each icon name
 // with its category, keywords and its line / solid components.
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { App, Empty, Flex, Input, Segmented, Typography, theme } from '@fabi/ui'
 import * as FabiIcons from '@fabi/ui/fabi-icons'
 import type { FabiIcon } from '@fabi/ui/fabi-icons'
