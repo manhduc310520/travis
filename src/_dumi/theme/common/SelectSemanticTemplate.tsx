@@ -5,22 +5,6 @@ import useLocale, { useUiText } from '../../hooks/useLocale';
 import SemanticPreview, { SemanticActiveContext } from './SemanticPreview';
 
 export const locales = {
-  cn: {
-    root: '根元素，包含相对定位、行内 flex 布局、光标样式、过渡动画、边框等选择器容器的基础样式',
-    prefix: '前缀元素，包含前缀内容的布局和样式',
-    suffix: '后缀元素，包含后缀内容的布局和样式，如清除按钮、箭头图标等',
-    input: '输入框元素，包含搜索输入框的样式、光标控制、字体继承等搜索相关样式，去除了边框样式',
-    content: '多选容器，包含已选项的布局、间距、换行相关样式',
-    clear: '清除按钮元素，包含清除按钮的布局、样式和交互效果',
-    item: '多选项元素，包含边框、背景、内边距、外边距样式',
-    itemContent: '多选项内容区域，包含文字的省略样式',
-    itemRemove: '多选项移除按钮，包含字体相关样式',
-    placeholder: '占位符元素，包含占位符文本的字体样式和颜色',
-    'popup.root': '弹出菜单元素，包含弹出层的定位、层级、背景、边框、阴影等弹出容器样式',
-    'popup.list': '弹出菜单列表元素，包含选项列表的布局、滚动、最大高度等列表容器样式',
-    'popup.listItem':
-      '弹出菜单条目元素，包含选项项的内边距、悬浮效果、选中状态、禁用状态等选项交互样式',
-  },
   en: {
     root: 'Root element with relative positioning, inline-flex layout, cursor styles, transitions, border and other basic selector container styles',
     prefix: 'Prefix element with layout and styling for prefix content',
@@ -69,13 +53,13 @@ const Block: React.FC<BlockProps> = ({
   const t = useUiText();
   const divRef = React.useRef<HTMLDivElement>(null);
   const activeSemantic = use(SemanticActiveContext);
-  // 多选模式下，优先使用 multipleProps 中的 defaultValue
+  // multiple mode: the defaultValue in multipleProps comes first
   const multipleDefaultValue = (multipleProps as any)?.defaultValue;
   const initialValue = mode === 'single' ? defaultValue : multipleDefaultValue;
   const [value, setValue] = React.useState(initialValue);
   const [valueMode, setValueMode] = React.useState(mode);
 
-  // 单选和多选的取值结构不同，切换模式时同步重置，避免把上一个模式的值渲染出去
+  // single and multiple modes hold different value shapes: reset when the mode changes
   if (valueMode !== mode) {
     setValueMode(mode);
     setValue(initialValue);

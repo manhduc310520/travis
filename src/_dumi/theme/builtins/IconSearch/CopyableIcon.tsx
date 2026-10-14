@@ -100,9 +100,6 @@ const useStyle = createStyles(({ cssVar, token, css }) => {
 });
 
 const locales = {
-  cn: {
-    errMessage: '复制名称失败，请重试',
-  },
   en: {
     errMessage: 'Copy icon name failed, please try again.',
   },
@@ -142,7 +139,7 @@ const CopyableIcon: React.FC<CopyableIconProps> = (props) => {
       onClick={() => onCopy(`<${name} />`)}
       style={{ cursor: 'pointer' }}
     >
-      {isNew && <span className={styles.newIconVersion}>{newIconVersion}</span>}
+      {/* FABi: no "new in version" badge, the docs describe one version only */}
       {React.createElement(allIcons[name])}
       <span className={styles.anticonCls}>{name}</span>
     </li>

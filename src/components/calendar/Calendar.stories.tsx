@@ -15,15 +15,13 @@ import Demo3 from "./demo/card"
 import Demo3Source from "./demo/card.tsx?raw"
 import Demo4 from "./demo/select"
 import Demo4Source from "./demo/select.tsx?raw"
-import Demo5 from "./demo/lunar"
-import Demo5Source from "./demo/lunar.tsx?raw"
-import Demo6 from "./demo/week"
-import Demo6Source from "./demo/week.tsx?raw"
-import Demo7 from "./demo/customize-header"
-import Demo7Source from "./demo/customize-header.tsx?raw"
-import Demo8 from "./demo/style-class"
-import Demo8Source from "./demo/style-class.tsx?raw"
-import Demo9 from "./demo/_semantic"
+import Demo5 from "./demo/week"
+import Demo5Source from "./demo/week.tsx?raw"
+import Demo6 from "./demo/customize-header"
+import Demo6Source from "./demo/customize-header.tsx?raw"
+import Demo7 from "./demo/style-class"
+import Demo7Source from "./demo/style-class.tsx?raw"
+import Demo8 from "./demo/_semantic"
 
 const css = ""
 
@@ -63,10 +61,6 @@ function DocsPage() {
       <DocMarkdown>{vi ? "Component lịch cơ bản với chuyển đổi Năm/Tháng." : "A basic calendar component with Year/Month switch."}</DocMarkdown>
       <DocCanvas of={SelectableCalendar} sourceState="hidden" />
       <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="calendar-demo-lunar" className="fabi-sb-demo-title" lang="en">Lunar Calendar</h3>
-      <DocMarkdown>{vi ? "Hiển thị lịch âm, tiết khí và các thông tin khác." : "Display lunar calendar, solar terms and other information."}</DocMarkdown>
-      <DocCanvas of={LunarCalendar} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>clsx</code>, <code>dayjs</code>, <code>lunar-typescript</code></p>
       <h3 id="calendar-demo-week" className="fabi-sb-demo-title" lang="en">Show Week</h3>
       <DocMarkdown>{vi ? "Hiển thị số tuần trong lịch toàn màn hình bằng cách đặt prop `showWeek` là `true`." : "Show week number in fullscreen calendar by setting `showWeek` prop to `true`."}</DocMarkdown>
       <DocCanvas of={ShowWeek} sourceState="hidden" />
@@ -79,7 +73,7 @@ function DocsPage() {
       <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
       <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
       <DocMarkdown>{[vi ? "## API\n\n**Lưu ý:** Một phần locale của Calendar được đọc từ `value`. Vì vậy hãy đặt locale của `dayjs` cho đúng.\n\n" : "## API\n\n**Note:** Part of the Calendar's locale is read from `value`. So, please set the locale of `dayjs` correctly.\n\n", "```jsx\n// The default locale is en-US, if you want to use other locale, just set locale in entry file globally.\n// import dayjs from 'dayjs';\n// import 'dayjs/locale/zh-cn';\n// dayjs.locale('zh-cn');\n\n<Calendar cellRender={cellRender} onPanelChange={onPanelChange} onSelect={onSelect} />\n```", vi ? "\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| cellRender | Tuỳ chỉnh nội dung ô | function(current: dayjs, info: { prefixCls: string, originNode: React.ReactElement, today: dayjs, range?: 'start' \\| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| fullCellRender | Tuỳ chỉnh nội dung ô | function(current: dayjs, info: { prefixCls: string, originNode: React.ReactElement, today: dayjs, range?: 'start' \\| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | × |\n| defaultValue | Ngày được chọn mặc định | [dayjs](https://day.js.org/) | - | × |\n| disabledDate | Hàm chỉ định các ngày không thể chọn, `currentDate` là cùng một đối tượng dayjs với prop `value` nên bạn không được thay đổi trực tiếp | (currentDate: Dayjs) => boolean | - | × |\n| fullscreen | Có hiển thị toàn màn hình hay không | boolean | true | × |\n| showWeek | Có hiển thị số tuần hay không | boolean | false | × |\n| styles | Tuỳ chỉnh style inline cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| headerRender | Render header tuỳ chỉnh trong panel | function(object:{value: Dayjs, type: 'year' \\| 'month', onChange: f(), onTypeChange: f()}) | - | × |\n| locale | Locale của lịch | object | (default) | × |\n| mode | Chế độ hiển thị của lịch | `month` \\| `year` | `month` | × |\n| validRange | Đặt khoảng hợp lệ | \\[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - | × |\n| value | Ngày đang được chọn | [dayjs](https://day.js.org/) | - | × |\n| onChange | Hàm callback khi ngày thay đổi | function(date: Dayjs) | - | × |\n| onPanelChange | Hàm callback khi panel thay đổi | function(date: Dayjs, mode: string) | - | × |\n| onSelect | Hàm callback khi một ngày được chọn, bao gồm thông tin nguồn | function(date: Dayjs, info: { source: 'year' \\| 'month' \\| 'date' \\| 'customize' }) | - | × |\n\n## Semantic DOM" : "\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| cellRender | Customize cell content | function(current: dayjs, info: { prefixCls: string, originNode: React.ReactElement, today: dayjs, range?: 'start' \\| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| fullCellRender | Customize cell content | function(current: dayjs, info: { prefixCls: string, originNode: React.ReactElement, today: dayjs, range?: 'start' \\| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | × |\n| defaultValue | The date selected by default | [dayjs](https://day.js.org/) | - | × |\n| disabledDate | Function that specifies the dates that cannot be selected, `currentDate` is same dayjs object as `value` prop which you shouldn't mutate it | (currentDate: Dayjs) => boolean | - | × |\n| fullscreen | Whether to display in full-screen | boolean | true | × |\n| showWeek | Whether to display week number | boolean | false | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| headerRender | Render custom header in panel | function(object:{value: Dayjs, type: 'year' \\| 'month', onChange: f(), onTypeChange: f()}) | - | × |\n| locale | The calendar's locale | object | (default) | × |\n| mode | The display mode of the calendar | `month` \\| `year` | `month` | × |\n| validRange | To set valid range | \\[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - | × |\n| value | The current selected date | [dayjs](https://day.js.org/) | - | × |\n| onChange | Callback for when date changes | function(date: Dayjs) | - | × |\n| onPanelChange | Callback for when panel changes | function(date: Dayjs, mode: string) | - | × |\n| onSelect | Callback for when a date is selected, include source info | function(date: Dayjs, info: { source: 'year' \\| 'month' \\| 'date' \\| 'customize' }) | - | × |\n\n## Semantic DOM"].join('')}</DocMarkdown>
-      <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo9 /></div></DocUnstyled>
+      <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo8 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block"><ComponentTokenTable component="Calendar" /></div></DocUnstyled>
       <DocMarkdown>{[vi ? "## Câu hỏi thường gặp\n\n### Làm sao đặt locale cho các component liên quan đến ngày tháng?\n\nXem Cách đặt locale cho các component ngày tháng\n\n### Làm sao lấy ngày từ thao tác nhấn trên panel?\n\n`onSelect` cung cấp `info.source` để hỗ trợ việc này:\n\n" : "## FAQ\n\n### How to set locale for date-related components?\n\nSee How to set locale for date-related components\n\n### How to get date from panel click?\n\n`onSelect` provide `info.source` to help on this:\n\n", "```tsx\n<Calendar\n  onSelect={(date, { source }) => {\n    if (source === 'date') {\n      console.log('Panel Select:', source);\n    }\n  }}\n/>\n```", ""].join('')}</DocMarkdown>
@@ -177,26 +171,14 @@ export const SelectableCalendar: Story = {
   },
 }
 
-/** Lunar Calendar */
-export const LunarCalendar: Story = {
-  name: "Lunar Calendar",
-  render: () => <Demo5 />,
-  parameters: {
-    docs: {
-      description: { story: "Hiển thị lịch âm, tiết khí và các thông tin khác." },
-      source: { code: Demo5Source, language: 'tsx' },
-    },
-  },
-}
-
 /** Show Week */
 export const ShowWeek: Story = {
   name: "Show Week",
-  render: () => <Demo6 />,
+  render: () => <Demo5 />,
   parameters: {
     docs: {
       description: { story: "Hiển thị số tuần trong lịch toàn màn hình bằng cách đặt prop `showWeek` là `true`." },
-      source: { code: Demo6Source, language: 'tsx' },
+      source: { code: Demo5Source, language: 'tsx' },
     },
   },
 }
@@ -204,11 +186,11 @@ export const ShowWeek: Story = {
 /** Customize Header */
 export const CustomizeHeader: Story = {
   name: "Customize Header",
-  render: () => <Demo7 />,
+  render: () => <Demo6 />,
   parameters: {
     docs: {
       description: { story: "Tuỳ chỉnh nội dung header của Calendar." },
-      source: { code: Demo7Source, language: 'tsx' },
+      source: { code: Demo6Source, language: 'tsx' },
     },
   },
 }
@@ -216,11 +198,11 @@ export const CustomizeHeader: Story = {
 /** Custom semantic dom styling */
 export const CustomSemanticDomStyling: Story = {
   name: "Custom semantic dom styling",
-  render: () => <Demo8 />,
+  render: () => <Demo7 />,
   parameters: {
     docs: {
       description: { story: "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Calendar bằng cách truyền object/hàm qua `classNames` và `styles`." },
-      source: { code: Demo8Source, language: 'tsx' },
+      source: { code: Demo7Source, language: 'tsx' },
     },
   },
 }

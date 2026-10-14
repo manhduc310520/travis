@@ -32,10 +32,10 @@ import {
   Upload,
 } from '@fabi/ui';
 import enUS from '@fabi/ui/locale/en_US';
-import zhCN from '@fabi/ui/locale/zh_CN';
+import viVN from '@fabi/ui/locale/vi_VN';
 import dayjs from 'dayjs';
 
-import 'dayjs/locale/zh-cn';
+import 'dayjs/locale/vi';
 
 type Locale = ConfigProviderProps['locale'];
 
@@ -243,7 +243,7 @@ const App: React.FC = () => {
     if (!localeValue) {
       dayjs.locale('en');
     } else {
-      dayjs.locale('zh-cn');
+      dayjs.locale('vi');
     }
   };
 
@@ -255,8 +255,8 @@ const App: React.FC = () => {
           <Radio.Button key="en" value={enUS}>
             English
           </Radio.Button>
-          <Radio.Button key="cn" value={zhCN}>
-            中文
+          <Radio.Button key="vi" value={viVN}>
+            Vietnamese
           </Radio.Button>
         </Radio.Group>
       </div>

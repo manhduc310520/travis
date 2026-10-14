@@ -16,6 +16,7 @@ import { applyBrandEdits } from './brand-edits.mjs'
 import { PLAYGROUNDS, argTypesFromApi, playCode } from './playgrounds.mjs'
 import { depsNote, fabiCode, fabiDocs } from './fabi-names.mjs'
 import { dropVersionNotes } from './doc-cleanup.mjs'
+import { CHINESE_ONLY_DEMOS, dropCnLocale, dropZhSection, findChinese, noChinese } from './no-chinese.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ANTD = path.resolve(ROOT, '../antd-src/ant-design-6.6.5')
@@ -78,10 +79,10 @@ function globalPatch(code) {
     .replace(/\bAntDesignOutlined\b/g, 'AppstoreOutlined')
     // sample text naming Ant's team / company
     .replace(/Ant UED Team/g, 'the FABi CMS team').replace(/Ant UED/g, 'FABi CMS')
-    .replace(/（蚂蚁集团[^）]*）/g, '').replace(/蚂蚁集团/g, 'FABi CMS').replace(/蚂蚁的/g, '').replace(/蚂蚁/g, '')
+    .replace(/\uff08\u8682\u8681\u96c6\u56e2[^\uff09]*\uff09/g, '').replace(/\u8682\u8681\u96c6\u56e2/g, 'FABi CMS').replace(/\u8682\u8681\u7684/g, '').replace(/\u8682\u8681/g, '')
     .replace(/key: 'alipay'/g, "key: 'external-link'")
     // Typography sample paragraph advertised AntV (Ant Group) in Chinese
-    .replace(/`AntV 是[^`]*`/g, '`FABi CMS helps restaurants run menus, orders, staff and reports from one place. It is built for busy teams: every screen favours clear information, fast actions and consistent patterns, so new staff learn it quickly and managers see what matters at a glance.`')
+    .replace(/`AntV \u662f[^`]*`/g, '`FABi CMS helps restaurants run menus, orders, staff and reports from one place. It is built for busy teams: every screen favours clear information, fast actions and consistent patterns, so new staff learn it quickly and managers see what matters at a glance.`')
     .replace(/antd is an enterprise-class/g, 'FABi CMS is an enterprise-class')
     // the name split over two lines of JSX text (Typography "Ellipsis" demo)
     .replace(/\bAnt(\s*\n\s*)Design\b(?! Pro)/g, 'FABi$1CMS')
@@ -309,7 +310,7 @@ const DEMO_PATCHES = {
   // Semantic DOM preview: the "Toggle Border" label follows the docs language (useLocale, i18n/vi/ui.json) and
   // also names the switch
   descriptions: (code, file) => (file !== '_semantic.tsx' ? code : code
-    .replace(/( {2}cn: \{\n)/, "$1    toggleBorder: '切换边框',\n")
+    .replace(/( {2}cn: \{\n)/, "$1    toggleBorder: '\u5207\u6362\u8fb9\u6846',\n")
     .replace(/( {2}en: \{\n)/, "$1    toggleBorder: 'Toggle Border',\n")
     .replace(/(const \[bordered, setBordered\] = React\.useState\(false\);\n)/, '$1  const [locale] = useLocale(locales);\n')
     .replace(/<Switch aria-label="Switch" checked=\{bordered\} onChange=\{setBordered\} \/>\n(\s*)Toggle Border/, '<Switch aria-label={locale.toggleBorder} checked={bordered} onChange={setBordered} />\n$1{locale.toggleBorder}')),
@@ -358,7 +359,7 @@ const HTML_TAGS = new Set('a abbr b blockquote br code del div em h1 h2 h3 h4 h5
  */
 function fixMarkdown(md) {
   let inFence = false
-  return md
+  const out = md
     .replace(/<!--[\s\S]*?-->/g, '')
     .split(/\r?\n/)
     .map((line) => {
@@ -379,6 +380,9 @@ function fixMarkdown(md) {
     })
     .join('\n')
     .trim()
+  // full-width Chinese punctuation (\uff1a\uff0c\u3001\uff08\uff09…) → ASCII already in the source, so no Chinese characters reach the
+  // translation catalogs either (no-Chinese rule, scripts/no-chinese.mjs)
+  return halfWidth(out)
 }
 
 /**
@@ -461,26 +465,26 @@ function dropPointerText(text, lang) {
   const points = (s) => kinds(s).some((k) => k === 'pointer' || k === 'page')
   const words = (s) => wordCount(s.replace(TOKEN, (m, i) => (kind(+i) === 'code' ? 'x' : tokens[+i].match(MD_LINK)[1])))
   // parentheses: "(#5605)", "([how it looks](issue))", "(since 5.1.0, [sandbox demo](…))"
-  let out = masked.replace(/[ \t]*[,，]?[ \t]*[（(]([^()（）]*)[）)]/g, (m, inner) => {
+  let out = masked.replace(/[ \t]*[,\uff0c]?[ \t]*[\uff08(]([^()\uff08\uff09]*)[\uff09)]/g, (m, inner) => {
     const k = kinds(inner)
     if (!k.length) return m
-    if (!inner.replace(TOKEN, '').replace(/[\s,，、]/g, '') && k.every((x) => x !== 'code' && x !== 'other')) return ''
+    if (!inner.replace(TOKEN, '').replace(/[\s,\uff0c\u3001]/g, '') && k.every((x) => x !== 'code' && x !== 'other')) return ''
     if (!points(inner)) return m
-    const kept = inner.split(/(?<=[,，])/).filter((c) => !points(c)).join('').trim().replace(/[,，]$/, '')
-    return kept ? m.replace(/[（(][^()（）]*[）)]/, `(${kept})`) : ''
+    const kept = inner.split(/(?<=[,\uff0c])/).filter((c) => !points(c)).join('').trim().replace(/[,\uff0c]$/, '')
+    return kept ? m.replace(/[\uff08(][^()\uff08\uff09]*[\uff09)]/, `(${kept})`) : ''
   })
-  out = out.split(/(?<=[.!?。])\s+/).map((s) => {
+  out = out.split(/(?<=[.!?\u3002])\s+/).map((s) => {
     if (!points(s)) return s
     if (kinds(s).includes('page')) return ''
-    const end = s.trim().match(/[.!?。]$/)?.[0] ?? '.'
+    const end = s.trim().match(/[.!?\u3002]$/)?.[0] ?? '.'
     // "…: <link>" ending the sentence (a sandbox, a bare URL): what comes before the colon usually still says something
-    let rest = s.replace(/\s*[:：]\s*\u0001(\d+)\u0002\s*[.。]?\s*$/, (m, i) => (kind(+i) === 'pointer' ? end : m))
+    let rest = s.replace(/\s*[:\uff1a]\s*\u0001(\d+)\u0002\s*[.\u3002]?\s*$/, (m, i) => (kind(+i) === 'pointer' ? end : m))
     let short = rest === s ? SHORT[lang] : 4
     // else the clauses (between commas / semicolons) that hold one
     if (points(rest)) {
-      rest = rest.split(/(?<=[,，;；])/).filter((c) => !points(c)).join('').trim().replace(/[,，;；]$/, '')
+      rest = rest.split(/(?<=[,\uff0c;\uff1b])/).filter((c) => !points(c)).join('').trim().replace(/[,\uff0c;\uff1b]$/, '')
       short = SHORT[lang]
-      if (rest && end && !/[.!?。:]$/.test(rest)) rest += end
+      if (rest && end && !/[.!?\u3002:]$/.test(rest)) rest += end
     }
     rest = rest.replace(/\s+([.,;:!?])/g, '$1').replace(/[ \t]{2,}/g, ' ').trim()
     return words(rest) <= short ? '' : rest
@@ -498,14 +502,14 @@ function dropPointers(md, lang) {
     const prefix = line.match(/^\s*(?:>\s*)*(?:[-*+]\s+|\d+\.\s+)?/)[0]
     const body = line.slice(prefix.length)
     if (/^\s*\|/.test(line)) return line.split(/((?<!\\)\|)/).map((c) => (c === '|' || !c.includes('](') ? c : ` ${dropPointerText(c.trim(), lang)} `)).join('')
-    // a list item that refers to an article or a site page goes whole ("Want to …? You can refer to 《…》")
+    // a list item that refers to an article or a site page goes whole ("Want to …? You can refer to \u300a…\u300b")
     if (/[-*+]\s+$/.test(prefix) && [...body.matchAll(new RegExp(MD_LINK, 'g'))].some(([, , u]) => ANT_LINK.test(u) && POINTER_PAGES.test(u))) return GONE
     const next = dropPointerText(body, lang)
     return next === body ? line : next ? prefix + next : GONE
   })
   // a short lead-in ("Ref:", "Related issues:") whose list went
   for (let i = lines.length - 1; i >= 0; i--) {
-    if (lines[i] === GONE || !/[:：]\s*$/.test(lines[i]) || wordCount(lines[i]) > 3 || /^#{1,6} /.test(lines[i])) continue
+    if (lines[i] === GONE || !/[:\uff1a]\s*$/.test(lines[i]) || wordCount(lines[i]) > 3 || /^#{1,6} /.test(lines[i])) continue
     let j = i + 1
     while (j < lines.length && !lines[j].trim()) j++
     if (lines[j] === GONE) lines[i] = GONE
@@ -536,20 +540,20 @@ const POINTER_EDITS = [
 ]
 
 /**
- * Full-width Chinese punctuation copied from the source ("ref：", "（For example …）", "prefixCls ？") → the
+ * Full-width Chinese punctuation copied from the source ("ref\uff1a", "\uff08For example …\uff09", "prefixCls \uff1f") → the
  * ASCII marks, outside code. Both languages.
  */
 function halfWidth(md) {
   let fence = false
   return md.split('\n').map((line) => {
     if (/^\s*(```|~~~)/.test(line)) { fence = !fence; return line }
-    if (fence || !/[：，（）；？！、。《》]/.test(line)) return line
+    if (fence || !/[\uff1a\uff0c\uff08\uff09\uff1b\uff1f\uff01\u3001\u3002\u300a\u300b]/.test(line)) return line
     return line.split(/(`+[^`]*`+)/).map((p) => (p.startsWith('`') ? p : p
-      .replace(/:\s*：/g, ':')
-      .replace(/\s*：\s*/g, ': ').replace(/\s*，\s*/g, ', ').replace(/\s*；\s*/g, '; ').replace(/\s*、\s*/g, ', ')
-      .replace(/\s*。\s*/g, '. ').replace(/\s*？/g, '?').replace(/\s*！/g, '!')
-      .replace(/(^|\S)\s*（\s*/g, (m, pre) => (pre ? `${pre} (` : '(')).replace(/\s*）/g, ')')
-      .replace(/《/g, '“').replace(/》/g, '”'))).join('')
+      .replace(/:\s*\uff1a/g, ':')
+      .replace(/\s*\uff1a\s*/g, ': ').replace(/\s*\uff0c\s*/g, ', ').replace(/\s*\uff1b\s*/g, '; ').replace(/\s*\u3001\s*/g, ', ')
+      .replace(/\s*\u3002\s*/g, '. ').replace(/\s*\uff1f/g, '?').replace(/\s*\uff01/g, '!')
+      .replace(/(^|\S)\s*\uff08\s*/g, (m, pre) => (pre ? `${pre} (` : '(')).replace(/\s*\uff09/g, ')')
+      .replace(/\u300a/g, '“').replace(/\u300b/g, '”'))).join('')
       .replace(/[ \t]+$/, '').replace(/(\S) {2,}/g, '$1 ')
   }).join('\n')
 }
@@ -710,7 +714,7 @@ function parseDoc(body) {
     let line = lines[i]
     if (/^\s*(```|~~~)/.test(line)) inFence = !inFence
     // a demo tag written over several lines (Splitter "Control collapsible icons") → one line
-    if (!inFence && /^\s*<code src="\.\/demo\/[^"]+"[^>]*>(?!.*<\/code>)/.test(line)) {
+    if (!inFence && /^\s*<code src="\.\/demo\/[^"]+"(?:[^>"]|"[^"]*")*>(?!.*<\/code>)/.test(line)) {
       let j = i
       while (j + 1 < lines.length && !/<\/code>/.test(lines[j])) j++
       line = lines.slice(i, j + 1).map((l) => l.trim()).join('')
@@ -722,7 +726,8 @@ function parseDoc(body) {
       styles.push(css.join('\n'))
       continue
     }
-    const demo = !inFence && line.match(/^\s*<code src="\.\/demo\/([^"]+)"([^>]*)>(.*?)<\/code>\s*$/)
+    // attributes may hold ">" in quotes (version=">= 5.10.0")
+    const demo = !inFence && line.match(/^\s*<code src="\.\/demo\/([^"]+)"((?:[^>"]|"[^"]*")*)>(.*?)<\/code>\s*$/)
     if (demo) {
       flush()
       const [, file, attrs, label] = demo
@@ -759,16 +764,26 @@ function convert(name) {
   const outDir = path.join(OUT, name)
   // Update in place (write only what changed) so a running Storybook keeps its index.
   fs.mkdirSync(outDir, { recursive: true })
+  // debug demos never become stories (parseDoc below): they are not copied either (they hold Chinese text)
+  const debugDemos = new Set(parseDoc(body).segments.filter((x) => x.type === 'demo' && x.debug).map((x) => x.file.replace(/\.(tsx|ts|jsx)$/, '')))
   for (const f of fs.readdirSync(path.join(srcDir, 'demo'), { recursive: true })) {
     const from = path.join(srcDir, 'demo', f)
     if (fs.statSync(from).isDirectory()) continue
+    if (debugDemos.has(f.replace(/\\/g, '/').replace(/\.(tsx|ts|jsx|md)$/, ''))) continue
+    // Chinese-only demos are not copied at all (scripts/no-chinese.mjs)
+    if (CHINESE_ONLY_DEMOS.has(`${name}/${f.replace(/\.md$/, '.tsx')}`)) continue
     const patch = DEMO_PATCHES[name]
     let content = fs.readFileSync(from)
     if (/\.(tsx|ts|jsx)$/.test(f)) {
       // @fabi/ui imports and fabi- class names: the code shown is the code that runs (B5)
       content = a11yPatch(fabiCode(globalPatch(content.toString('utf8'))))
       if (patch) content = patch(content, f)
+      // no Chinese in the design system (scripts/no-chinese.mjs)
+      content = noChinese(content, name, path.basename(f))
+      if (path.basename(f).startsWith('_semantic')) content = dropCnLocale(content)
       if (DARK_DEMOS[name]?.includes(f)) content = darkPatch(content)
+    } else if (/\.md$/.test(f)) {
+      content = halfWidth(dropZhSection(content.toString('utf8')))
     }
     writeIfChanged(path.join(outDir, 'demo', f), content)
   }
@@ -885,6 +900,7 @@ ${pc.play}}`)
     if (!abs) { skipped.push(`${seg.file} (file not found)`); continue }
     if (seg.debug) { skipped.push(`${seg.file} (debug)`); continue }
     if (SKIP_DEMOS.has(`${name}/${path.basename(abs)}`)) { skipped.push(`${seg.file} (Alibaba CDN)`); continue }
+    if (CHINESE_ONLY_DEMOS.has(`${name}/${path.basename(abs)}`)) { skipped.push(`${seg.file} (Chinese only)`); continue }
     const rel = './' + path.relative(outDir, path.join(outDir, 'demo', path.relative(path.join(srcDir, 'demo'), abs))).replace(/\\/g, '/')
     const imp = `Demo${n}`
     imports.push(`import ${imp} from ${js(rel.replace(/\.(tsx|ts|jsx)$/, ''))}`)
@@ -895,6 +911,8 @@ ${pc.play}}`)
     }
     imports.push(`import ${imp}Source from ${js(rel + '?raw')}`)
     const id = identifier(seg.label || path.basename(seg.file, path.extname(seg.file)), used)
+    const leftChinese = findChinese(fs.readFileSync(path.join(outDir, rel), 'utf8'))
+    if (leftChinese.length) skipped.push(`${seg.file} (CHINESE LEFT: ${leftChinese[0].trim().slice(0, 60)})`)
     const descSource = demoDescription(abs.replace(/\.(tsx|ts|jsx)$/, '.md'))
     const desc = links.vi(debrand(cat.t(descSource), 'vi'))
     const descEn = links.en(debrand(descSource, 'en'))
@@ -977,7 +995,7 @@ function escapeJsxText(s) {
   return s.replace(/[{}<>]/g, (c) => `{${js(c)}}`)
 }
 
-export { ANTD, ROOT, SITE, ANT_MEDIA, js, splitFrontmatter, demoDescription, fixMarkdown, containers, debrand, writeIfChanged, escapeJsxText, bilingual, mdBlock, jsxText, pageAnchors }
+export { ANTD, ROOT, SITE, ANT_MEDIA, js, splitFrontmatter, demoDescription, fixMarkdown, halfWidth, containers, debrand, writeIfChanged, escapeJsxText, bilingual, mdBlock, jsxText, pageAnchors }
 
 // Run only when called directly (scripts/convert-pages.mjs imports the helpers above).
 const isMain = process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href

@@ -25,9 +25,6 @@ export const check = [
   '√',
   '✔',
   '✓',
-  '勾',
-  '对',
-  '正确',
   'right',
 ] as const;
 
@@ -57,10 +54,8 @@ export const financial = [
 
 export const ellipsis = [
   '...',
-  '。。。',
   '…',
   'more',
-  '更多',
   'dots',
   'ellipsis',
   'expand',

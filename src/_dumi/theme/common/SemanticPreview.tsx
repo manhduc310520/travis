@@ -1,7 +1,7 @@
 import React from 'react';
 import { InfoCircleOutlined, PushpinOutlined } from '@ant-design/icons';
 import { get, set } from '@rc-component/util';
-import { Button, Col, ConfigProvider, Flex, Popover, Row, Tag, theme, Typography } from 'antd';
+import { Button, Col, ConfigProvider, Flex, Popover, Row, theme, Typography } from 'antd';
 import { createStaticStyles } from 'antd-style';
 import { clsx } from 'clsx';
 import Prism from 'prismjs';
@@ -201,12 +201,11 @@ const SemanticPreview: React.FC<SemanticPreviewProps> = (props) => {
               >
                 <Flex vertical gap="small">
                   <Flex gap="small" align="center" justify="space-between">
-                    {/* Title + Version */}
+                    {/* Title (FABi: no version tag, the docs describe one version only) */}
                     <Flex gap="small" align="center">
                       <Typography.Title level={5} style={{ margin: 0 }}>
                         {semantic.name}
                       </Typography.Title>
-                      {semantic.version && <Tag color="blue">{semantic.version}</Tag>}
                     </Flex>
 
                     {/* Pin + Sample */}

@@ -13,7 +13,7 @@ const App: React.FC = () => {
         />
       </Spin>
       <p>
-        Loading state：
+        Loading state: 
         <Switch aria-label="Switch" checked={loading} onChange={setLoading} />
       </p>
     </Flex>

@@ -24,7 +24,7 @@ const items: MenuProps['items'] = [
     type: 'divider',
   },
   {
-    label: '3rd menu item（disabled）',
+    label: '3rd menu item (disabled)',
     key: '3',
     disabled: true,
   },

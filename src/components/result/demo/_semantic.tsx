@@ -5,14 +5,6 @@ import SemanticPreview from '../../../_dumi/theme/common/SemanticPreview';
 import useLocale from '../../../_dumi/hooks/useLocale';
 
 const locales = {
-  cn: {
-    root: '根元素，包含文本对齐、布局样式等基础容器样式',
-    title: '标题元素，包含字体大小、文字颜色、行高、对齐方式等文字样式',
-    subTitle: '副标题元素，包含字体大小、文字颜色、行高等文字样式',
-    body: '内容元素，包含外边距、内边距、背景色等内容区域样式',
-    extra: '操作区域元素，包含外边距、文本对齐、内部元素间距等布局样式',
-    icon: '图标元素，包含外边距、文本对齐、字体大小、状态颜色等图标样式',
-  },
   en: {
     root: 'Root element with text alignment, layout styles and other basic container styles',
     title:

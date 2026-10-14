@@ -5,14 +5,6 @@ import SemanticPreview from '../../../_dumi/theme/common/SemanticPreview';
 import useLocale from '../../../_dumi/hooks/useLocale';
 
 const locales = {
-  cn: {
-    root: '根元素，包含日历组件的背景色、边框、圆角等基础样式和整体布局结构',
-    header: '头部元素，包含年份选择器、月份选择器、模式切换器的布局和样式控制',
-    body: '主体元素，包含日历表格的内边距、布局控制等样式，用于容纳日历网格',
-    content: '内容元素，包含日历表格的宽度、高度等尺寸控制和表格样式',
-    item: '条目元素，包含日历单元格的背景色、边框、悬停态、选中态等交互样式',
-    itemContent: '条目内容元素，包含日历单元格内自定义内容区域的高度、溢出等样式控制',
-  },
   en: {
     root: 'Root element containing background, border, border-radius and overall layout structure of the calendar component',
     header:

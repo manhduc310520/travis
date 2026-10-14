@@ -20,43 +20,6 @@ const COLOR_KEYS = [
 ] as const;
 
 const locales = {
-  cn: {
-    redTitle: '薄暮',
-    redDescription: '斗志、奔放',
-
-    volcanoTitle: '火山',
-    volcanoDescription: '醒目、澎湃',
-
-    orangeTitle: '日暮',
-    orangeDescription: '温暖、欢快',
-
-    limeTitle: '青柠',
-    limeDescription: '自然、生机',
-
-    goldTitle: '金盏花',
-    goldDescription: '活力、积极',
-
-    yellowTitle: '日出',
-    yellowDescription: '出生、阳光',
-
-    greenTitle: '极光绿',
-    greenDescription: '健康、创新',
-
-    cyanTitle: '明青',
-    cyanDescription: '希望、坚强',
-
-    blueTitle: '拂晓蓝',
-    blueDescription: '包容、科技、普惠',
-
-    geekblueTitle: '极客蓝',
-    geekblueDescription: '探索、钻研',
-
-    purpleTitle: '酱紫',
-    purpleDescription: '优雅、浪漫',
-
-    magentaTitle: '法式洋红',
-    magentaDescription: '明快、感性',
-  },
   en: {
     redTitle: 'Dust Red',
     redDescription: 'Fighting Spirit, Unrestrained',

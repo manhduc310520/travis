@@ -5,14 +5,6 @@ import SemanticPreview from '../../../_dumi/theme/common/SemanticPreview';
 import useLocale from '../../../_dumi/hooks/useLocale';
 
 const locales = {
-  cn: {
-    root: '根元素，设置相对定位、高度、边距、内边距、光标样式和触摸事件控制',
-    track: '轨道选取条元素，设置绝对定位、背景色、圆角和过渡动画样式',
-    tracks: '多段轨道容器元素，设置绝对定位和过渡动画样式',
-    rail: '背景轨道元素，设置绝对定位、背景色、圆角和过渡动画样式',
-    handle:
-      '滑块控制点元素，设置绝对定位、尺寸、轮廓线、用户选择、背景色、边框阴影、圆角、光标样式和过渡动画',
-  },
   en: {
     root: 'Root element with relative positioning, height, margin, padding, cursor style and touch action control',
     track:

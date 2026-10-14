@@ -52,7 +52,7 @@ const App: React.FC = () => {
         </Popconfirm>
         <br />
         <br />
-        Whether directly execute：
+        Whether directly execute: 
         <Switch aria-label="Switch" defaultChecked onChange={changeCondition} />
       </div>
     </>

@@ -1,17 +1,3 @@
-## zh-CN
-
-使用 `actions` 属性可以自定义操作按钮。
-
-当 `actions` 传入字符串数组时，会使用默认的 Button 组件，并将字符串作为按钮文本。
-
-当 `actions` 传入 React 元素数组时，会直接使用这些元素作为操作按钮，这样你可以使用自定义的按钮组件，如本例中的带有加载状态的按钮。
-
-注意：
-
-1. 当使用自定义按钮时，Transfer 组件会自动处理按钮的禁用状态和点击事件。
-2. 你可以在自定义按钮上添加 `disabled` 属性来控制按钮的禁用状态。
-3. 你可以在自定义按钮上添加 `onClick` 事件处理函数，它会与 Transfer 组件的内部处理函数合并执行。
-
 ## en-US
 
 You can customize operations with the `actions` prop. This example demonstrates how to customize actions, including handling disabled and loading states.

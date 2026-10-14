@@ -6,16 +6,6 @@ import SemanticPreview from '../../../_dumi/theme/common/SemanticPreview';
 import type { SemanticPreviewInjectionProps } from '../../../_dumi/theme/common/SemanticPreview';
 
 const locales = {
-  cn: {
-    root: '根元素',
-    wrapper: '节点内裹元素',
-    icon: '节点图标元素',
-    header: '节点头部元素',
-    title: '节点标题元素',
-    section: '节点区域元素',
-    content: '节点内容元素',
-    rail: '节点连接线元素',
-  },
   en: {
     root: 'Root element',
     wrapper: 'Item wrapper element',

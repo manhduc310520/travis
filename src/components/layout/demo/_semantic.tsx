@@ -7,10 +7,6 @@ import SemanticPreview from '../../../_dumi/theme/common/SemanticPreview';
 const { Sider } = Layout;
 
 const locales = {
-  cn: {
-    root: '根元素，包含 Sider 的布局、主题、宽度和折叠状态样式',
-    body: '内容包裹元素，包含 Sider 子内容的布局和展示样式',
-  },
   en: {
     root: 'Root element with Sider layout, theme, width and collapsed state styles',
     body: 'Body element that wraps Sider children layout and display styles',

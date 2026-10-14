@@ -5,8 +5,8 @@ import { useUiText } from '../../../hooks/useLocale';
 
 export interface VisualizerProps {
   /**
-   * 控制点坐标
-   * @description 控制点坐标范围 [0, 1]
+   * Control point coordinates
+   * @description Control point range [0, 1]
    * @example [0.78, 0.14, 0.15, 0.86]
    */
   controls: [number, number, number, number];
@@ -25,20 +25,20 @@ const Visualizer: React.FC<VisualizerProps> = (props) => {
   // antd-storybook: the SVG title follows the docs language
   const t = useUiText();
 
-  // 坐标转换到SVG视图
+  // coordinates → SVG view
   const scale = (val: number, axis: 'x' | 'y') =>
     axis === 'x' ? val * width : height - val * height;
 
-  const gridStep = width / 5; // 网格步长
-  const patternId = useId(); // 生成唯一ID
+  const gridStep = width / 5; // grid step
+  const patternId = useId(); // unique id
 
   return (
     <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
       <title>{t('Cubic Bezier Visualizer')}</title>
-      {/* 背景 */}
+      {/* background */}
       <rect width="100%" height="100%" fill={token.colorBgContainer} />
 
-      {/* 修正后的网格 */}
+      {/* grid */}
       <pattern id={patternId} width={gridStep} height={gridStep} patternUnits="userSpaceOnUse">
         <path
           d={`
@@ -54,7 +54,7 @@ const Visualizer: React.FC<VisualizerProps> = (props) => {
       </pattern>
       <rect width="100%" height="100%" fill={`url(#${patternId})`} />
 
-      {/* 贝塞尔曲线路径 */}
+      {/* Bezier curve path */}
       <path
         d={`
           M 0 ${height}
@@ -67,7 +67,7 @@ const Visualizer: React.FC<VisualizerProps> = (props) => {
         strokeWidth={token.controlOutlineWidth * 2}
       />
 
-      {/* 控制点连线 */}
+      {/* control point lines */}
       <path
         d={`
           M 0 ${height}
@@ -81,7 +81,7 @@ const Visualizer: React.FC<VisualizerProps> = (props) => {
         strokeWidth={token.controlOutlineWidth}
       />
 
-      {/* 控制点 */}
+      {/* control points */}
       <circle cx={scale(x1, 'x')} cy={scale(y1, 'y')} r="5" fill={token['red-6']} />
       <circle cx={scale(x2, 'x')} cy={scale(y2, 'y')} r="5" fill={token['green-6']} />
     </svg>

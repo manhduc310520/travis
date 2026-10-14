@@ -6,16 +6,12 @@ import { FormattedMessage } from 'dumi';
 import useLocale from '../../../hooks/useLocale';
 import ColorPatterns from './ColorPatterns';
 
-const primaryMinSaturation = 70; // 主色推荐最小饱和度
-const primaryMinBrightness = 70; // 主色推荐最小亮度
+const primaryMinSaturation = 70; // recommended minimum saturation of the primary colour
+const primaryMinBrightness = 70; // recommended minimum brightness of the primary colour
 
 // antd-storybook: templates instead of functions, so useLocale can give them in the docs language
 // (i18n/vi/ui.json); {min} / {value} are filled in below
 const locales = {
-  cn: {
-    saturation: '饱和度建议不低于{min}（当前值 {value}）',
-    brightness: '亮度建议不低于{min}（当前值 {value}）',
-  },
   en: {
     saturation: 'Saturation is recommended not to be lower than {min} (currently {value})',
     brightness: 'Brightness is recommended not to be lower than {min} (currently {value})',

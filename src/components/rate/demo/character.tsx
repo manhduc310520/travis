@@ -6,7 +6,7 @@ const App: React.FC = () => (
   <Flex vertical gap="medium">
     <Rate character={<HeartOutlined />} allowHalf />
     <Rate character="A" allowHalf style={{ fontSize: 36 }} />
-    <Rate character="好" allowHalf />
+    <Rate character="A" allowHalf />
   </Flex>
 );
 

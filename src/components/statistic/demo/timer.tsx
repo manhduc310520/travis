@@ -72,7 +72,7 @@ const Demo: React.FC = () => {
           type="countdown"
           title="Day Level (Countdown)"
           value={deadline}
-          format="D 天 H 时 m 分 s 秒"
+          format="D [d] H [h] m [m] s [s]"
         />
       </Col>
       <Col span={24} style={{ marginTop: 32 }}>
@@ -81,7 +81,7 @@ const Demo: React.FC = () => {
           type="countup"
           title="Day Level (Countup)"
           value={before}
-          format="D 天 H 时 m 分 s 秒"
+          format="D [d] H [h] m [m] s [s]"
         />
       </Col>
     </Row>

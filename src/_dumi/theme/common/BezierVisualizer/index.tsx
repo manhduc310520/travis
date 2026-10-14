@@ -12,9 +12,6 @@ export interface BezierVisualizerProps {
 const RE = /^cubic-bezier\((.*)\)$/;
 
 const locales = {
-  cn: {
-    open: '在 cubic-bezier.com 中打开',
-  },
   en: {
     open: 'Open in cubic-bezier.com',
   },

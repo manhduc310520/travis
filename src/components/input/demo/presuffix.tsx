@@ -15,10 +15,10 @@ const App: React.FC = () => (
     />
     <br />
     <br />
-    <Input aria-label="Input" prefix="￥" suffix="RMB" />
+    <Input aria-label="Input" prefix="₫" suffix="VND" />
     <br />
     <br />
-    <Input aria-label="Input" prefix="￥" suffix="RMB" disabled />
+    <Input aria-label="Input" prefix="₫" suffix="VND" disabled />
     <br />
     <br />
     <Input.Password aria-label="input password support suffix"

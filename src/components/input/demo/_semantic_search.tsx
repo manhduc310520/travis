@@ -6,17 +6,6 @@ import useLocale from '../../../_dumi/hooks/useLocale';
 import SemanticPreview from '../../../_dumi/theme/common/SemanticPreview';
 
 const locales = {
-  cn: {
-    root: '根元素',
-    input: '输入框元素',
-    prefix: '前缀的包裹元素',
-    suffix: '后缀的包裹元素',
-    clear: '清除按钮元素',
-    count: '文字计数元素',
-    'button.root': '按钮根元素',
-    'button.icon': '按钮图标元素',
-    'button.content': '按钮内容元素',
-  },
   en: {
     root: 'root element',
     input: 'input element',

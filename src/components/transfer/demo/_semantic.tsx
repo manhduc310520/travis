@@ -5,38 +5,6 @@ import useLocale from '../../../_dumi/hooks/useLocale';
 import SemanticPreview from '../../../_dumi/theme/common/SemanticPreview';
 
 const locales = {
-  cn: {
-    root: '根元素，设置flex布局、穿梭框容器的基础样式和布局控制',
-    section: '区域元素，设置flex布局、宽度、高度、最小高度、边框、圆角等单侧穿梭框的容器样式',
-    'source.section': '源区域元素，仅作用于左侧穿梭框容器样式',
-    'target.section': '目标区域元素，仅作用于右侧穿梭框容器样式',
-    'source.header': '源头部元素，仅作用于左侧头部区域样式',
-    'target.header': '目标头部元素，仅作用于右侧头部区域样式',
-    'source.title': '源标题元素，仅作用于左侧标题文本样式',
-    'target.title': '目标标题元素，仅作用于右侧标题文本样式',
-    'source.body': '源内容元素，仅作用于左侧列表主体区域样式',
-    'target.body': '目标内容元素，仅作用于右侧列表主体区域样式',
-    'source.list': '源列表元素，仅作用于左侧列表内容区域样式',
-    'target.list': '目标列表元素，仅作用于右侧列表内容区域样式',
-    'source.item': '源列表项元素，仅作用于左侧列表项样式',
-    'target.item': '目标列表项元素，仅作用于右侧列表项样式',
-    'source.itemIcon': '源列表项图标元素，仅作用于左侧图标样式',
-    'target.itemIcon': '目标列表项图标元素，仅作用于右侧图标样式',
-    'source.itemContent': '源列表项内容元素，仅作用于左侧文本内容样式',
-    'target.itemContent': '目标列表项内容元素，仅作用于右侧文本内容样式',
-    'source.footer': '源页脚元素，仅作用于左侧页脚区域样式',
-    'target.footer': '目标页脚元素，仅作用于右侧页脚区域样式',
-    header:
-      '头部元素，设置flex布局、对齐方式、高度、内边距、颜色、背景色、下边框、圆角等头部区域的样式',
-    title: '标题元素，设置文本省略、flex占比、文本对齐、自动左边距等标题文字的布局和样式',
-    body: '内容元素，设置列表主体区域的容器样式和布局控制',
-    list: '列表元素，设置列表内容的样式、布局和滚动控制',
-    item: '列表项元素，设置相对定位、内边距、边框、悬停态、选中态、禁用态等列表项的交互样式',
-    itemIcon: '列表项图标元素，设置复选框等图标的样式和交互状态',
-    itemContent: '列表项内容元素，设置文本省略、内边距等列表项文本内容的展示样式',
-    footer: '页脚元素，设置底部操作区域的样式和布局',
-    actions: '操作元素，设置穿梭按钮组的样式、布局和交互状态',
-  },
   en: {
     root: 'Root element with flex layout, transfer container base styles and layout control',
     section:

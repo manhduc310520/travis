@@ -17,17 +17,6 @@ const styles = createStaticStyles(({ css }) => ({
 }));
 
 const locales = {
-  cn: {
-    root: '根元素，设置相对定位和行内块布局样式',
-    image: '图片元素，设置宽度、高度和垂直对齐样式',
-    cover: '悬浮图片显示的提示元素，设置绝对定位、背景色、透明度和过渡动画样式',
-    'popup.root': '预览根元素，设置固定定位、层级和背景遮罩样式',
-    'popup.mask': '预览遮罩元素，设置绝对定位和半透明背景样式',
-    'popup.body': '预览内容元素，设置flex布局、居中对齐和指针事件样式',
-    'popup.footer': '预览页脚元素，设置绝对定位、居中布局和底部操作区域样式',
-    'popup.actions': '预览操作组元素，设置flex布局、背景色、圆角和操作按钮样式',
-    'popup.close': '预览关闭按钮元素，设置按钮的基础样式',
-  },
   en: {
     root: 'Root element, sets relative positioning and inline-block layout styles',
     image: 'Image element, sets width, height and vertical alignment styles',

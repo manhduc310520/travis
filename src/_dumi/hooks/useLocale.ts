@@ -8,7 +8,8 @@ export interface LocaleMap<
   K extends PropertyKey = PropertyKey,
   V extends string | ((...params: any[]) => string) = string,
 > {
-  cn: Record<K, V>;
+  /** antd-storybook: the Chinese tables are removed (no Chinese in the design system) */
+  cn?: Record<K, V>;
   en: Record<K, V>;
 }
 

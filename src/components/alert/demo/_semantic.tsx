@@ -5,15 +5,6 @@ import useLocale from '../../../_dumi/hooks/useLocale';
 import SemanticPreview from '../../../_dumi/theme/common/SemanticPreview';
 
 const locales = {
-  cn: {
-    root: '根元素，包含边框、背景色、内边距、圆角、位置布局等警告提示框的基础样式',
-    section: '内容元素，采用 flex 布局控制内容区域的排版和最小宽度',
-    icon: '图标元素，包含图标的颜色、行高、外边距等样式，支持不同类型的状态图标',
-    title: '标题元素，包含标题文字的颜色、字体等样式',
-    description: '描述元素，包含描述文字的字体大小、行高等排版样式',
-    actions: '操作组元素，包含操作按钮的布局和间距样式',
-    close: '关闭按钮元素，包含按钮的基础样式',
-  },
   en: {
     root: 'Root element with border, background, padding, border-radius, and positioning styles for the alert container',
     section:

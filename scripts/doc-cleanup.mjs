@@ -133,13 +133,31 @@ const NOTE_EDITS = [
 const FENCE = /^[ \t]*(`{3,}|~{3,})[^\n]*\n[\s\S]*?^[ \t]*\1[ \t]*$/gm
 const notes = (text) => NOTE_EDITS.reduce((t, [find, repl]) => t.replace(find, repl), text)
 
+/** Version notes inside a code block (comments only; the code stays). */
+const codeNotes = (code) => code
+  // comment lines that only date a prop ("/** `info` added in `5.16.0` */")
+  .replace(/^[ \t]*\/\*\*[^\n]*\badded in `?\d+\.\d+\.\d+`?[^\n]*\*\/[ \t]*\n/gm, '')
+  // "// 5.13.0+" on its own line, or after the code
+  .replace(/^[ \t]*\/\/ \d+\.\d+\.\d+\+[ \t]*\n/gm, '')
+  .replace(/[ \t]*\/\/ \d+\.\d+\.\d+\+[ \t]*$/gm, '')
+  // Modal: "// on 4.8.0 or above, you can pass a function…"
+  .replace(/\/\/ on \d+\.\d+\.\d+ or above, you can/g, '// you can also')
+  // Form: "// New in 5.5.0. Only validate content…"
+  .replace(/\/\/ New in \d+\.\d+\.\d+\. /g, '// ')
+  // "// support after 5.21.0" at the end of a line
+  .replace(/[ \t]*\/\/ support after v?\d+\.\d+(?:\.\d+)?[ \t]*$/gm, '')
+  // Descriptions: "// works when >= 5.8.0, recommended" above the current usage, and the old usage after
+  // "// works when <5.8.0 , deprecated…" (removed with its code)
+  .replace(/^[ \t]*\/\/ works when >= ?\d+\.\d+\.\d+[^\n]*\n+/gm, '')
+  .replace(/\n+[ \t]*\/\/ works when < ?\d+\.\d+\.\d+[^\n]*\n[\s\S]*?(?=\n[ \t]*(?:`{3,}|~{3,}))/g, '')
+
 /** Remove version history from one markdown text (either language); code blocks stay as they are. */
 export function dropVersionNotes(md) {
   const blocks = cleanBlocks(md)
   let out = ''
   let last = 0
   for (const m of blocks.matchAll(FENCE)) {
-    out += notes(blocks.slice(last, m.index)) + m[0]
+    out += notes(blocks.slice(last, m.index)) + codeNotes(m[0])
     last = m.index + m[0].length
   }
   return out + notes(blocks.slice(last))

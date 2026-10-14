@@ -6,15 +6,6 @@ import useLocale from '../../../_dumi/hooks/useLocale';
 import SemanticPreview from '../../../_dumi/theme/common/SemanticPreview';
 
 const locales = {
-  cn: {
-    toggleBorder: '切换边框',
-    root: '根元素，包含描述列表容器的基础样式、重置样式、边框样式、布局方向等整体样式',
-    header: '头部元素，包含flex布局、对齐方式、下边距等头部区域的布局和样式控制',
-    title: '标题元素，包含文本省略、flex占比、颜色、字体权重、字体大小、行高等标题文字样式',
-    extra: '额外内容元素，包含左边距、颜色、字体大小等额外操作区域的样式',
-    label: '标签元素，包含颜色、字体权重、字体大小、行高、文本对齐、冒号样式等标签文字的样式',
-    content: '内容元素，包含表格单元格布局、颜色、字体大小、行高、文字换行等内容展示样式',
-  },
   en: {
     toggleBorder: 'Toggle Border',
     root: 'Root element with basic styles, reset styles, border styles, layout direction and other overall styles for description list container',

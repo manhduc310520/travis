@@ -7,13 +7,6 @@ import useLocale from '../../../_dumi/hooks/useLocale';
 const { Meta } = Card;
 
 const locales = {
-  cn: {
-    root: '设置元信息根元素',
-    section: '设置元信息内容元素',
-    avatar: '设置元信息图标',
-    title: '设置元信息标题',
-    description: '设置元信息描述',
-  },
   en: {
     root: 'set `root` of Card.Meta',
     section: 'set `section` of Card.Meta',

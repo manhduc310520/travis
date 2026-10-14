@@ -51,9 +51,14 @@ const translateMeta = (meta: VersionTokenMeta, desc: (en: string) => string): Ve
 };
 
 const vi = viTokens as Record<string, string>;
+// FABi docs describe one version only: no "In v5, we added…" / "Từ v5, có thêm…" in token descriptions
+const noVersion = (s: string) =>
+  s
+    .replace(/In v5, we added a layer of (\w+) color derivation algorithm to produce/g, 'A $1 color derivation algorithm produces')
+    .replace(/Từ v5, có thêm một lớp thuật toán/g, 'Một lớp thuật toán');
 const tokenMetaByLocale = {
-  vi: translateMeta(rawTokenMeta as VersionTokenMeta, (en) => vi[en] || en),
-  en: translateMeta(rawTokenMeta as VersionTokenMeta, debrandEn),
+  vi: translateMeta(rawTokenMeta as VersionTokenMeta, (en) => noVersion(vi[en] || en)),
+  en: translateMeta(rawTokenMeta as VersionTokenMeta, (en) => noVersion(debrandEn(en))),
 };
 
 /** Token meta in the docs language. */

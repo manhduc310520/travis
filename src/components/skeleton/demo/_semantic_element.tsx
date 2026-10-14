@@ -40,10 +40,6 @@ const PreviewContent: React.FC<PreviewContentProps> = (props) => {
 };
 
 const locales = {
-  cn: {
-    root: '根元素',
-    content: '内容元素',
-  },
   en: {
     root: 'Root element',
     content: 'Content element',

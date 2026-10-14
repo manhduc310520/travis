@@ -23,8 +23,8 @@ const LocalizedModal = () => {
         open={open}
         onOk={hideModal}
         onCancel={hideModal}
-        okText="确认"
-        cancelText="取消"
+        okText="OK"
+        cancelText="Cancel"
       >
         <p>Bla bla ...</p>
         <p>Bla bla ...</p>
@@ -42,8 +42,8 @@ const App: React.FC = () => {
       title: 'Confirm',
       icon: <ExclamationCircleOutlined />,
       content: 'Bla bla ...',
-      okText: '确认',
-      cancelText: '取消',
+      okText: 'OK',
+      cancelText: 'Cancel',
     });
   };
 

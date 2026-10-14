@@ -1,4 +1,4 @@
-// 用于 color.md 中的颜色对比
+// colour comparison used on the Colors page
 import React from 'react';
 import { FastColor } from '@ant-design/fast-color';
 import { Flex, theme } from 'antd';
@@ -92,7 +92,7 @@ const TokenCompare: React.FC<TokenCompareProps> = (props) => {
       const meta = tokenMeta.global?.[tokenName];
       const name = lang === 'cn' ? meta.name : meta.nameEn;
       return {
-        name: t(name.replace('颜色', '').replace('色', '').replace('Color', '').trim()),
+        name: t(name.replace('Color', '').trim()),
         light: color2Rgba((lightTokens as any)[tokenName]),
         dark: color2Rgba((darkTokens as any)[tokenName]),
       };

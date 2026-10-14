@@ -107,9 +107,9 @@ function DocsPage() {
       <h3 id="input-demo-show-count" className="fabi-sb-demo-title" lang="en">With character counting</h3>
       <DocMarkdown>{vi ? "Hiển thị bộ đếm ký tự." : "Show character counting."}</DocMarkdown>
       <DocCanvas of={WithCharacterCounting} sourceState="hidden" />
-      <h3 id="input-demo-advance-count" className="fabi-sb-demo-title" lang="en">= 5.10.0"{">"}Custom count logic</h3>
+      <h3 id="input-demo-advance-count" className="fabi-sb-demo-title" lang="en">Custom count logic</h3>
       <DocMarkdown>{vi ? "Trong một số trường hợp cần tuỳ chỉnh cách đếm (ví dụ độ dài emoji được tính là 1), có thể thực hiện qua thuộc tính `count`. Dùng thuộc tính `count.max` để vượt giới hạn của `maxLength` gốc." : "It is necessary to customize the counting ability in some scenarios (such as emoji length is counted as 1), which can be achieved through the `count` attribute. Use `count.max` attribute exceeds the limit of the native `maxLength`."}</DocMarkdown>
-      <DocCanvas of={Example5100CustomCountLogic} sourceState="hidden" />
+      <DocCanvas of={CustomCountLogic} sourceState="hidden" />
       <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>runes2</code></p>
       <h3 id="input-demo-status" className="fabi-sb-demo-title" lang="en">Status</h3>
       <DocMarkdown>{vi ? "Thêm trạng thái cho Input bằng `status`, có thể là `error` hoặc `warning`." : "Add status to Input with `status`, which could be `error` or `warning`."}</DocMarkdown>
@@ -335,9 +335,9 @@ export const WithCharacterCounting: Story = {
   },
 }
 
-/** = 5.10.0">Custom count logic */
-export const Example5100CustomCountLogic: Story = {
-  name: "= 5.10.0\">Custom count logic",
+/** Custom count logic */
+export const CustomCountLogic: Story = {
+  name: "Custom count logic",
   render: () => <Demo14 />,
   parameters: {
     docs: {

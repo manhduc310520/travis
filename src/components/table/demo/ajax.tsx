@@ -75,7 +75,7 @@ const getRandomuserParams = (params: TableParams) => {
     result.order = sortOrder === 'ascend' ? 'asc' : 'desc';
   }
 
-  // 处理其他参数
+  // other parameters
   Object.entries(restParams).forEach(([key, value]) => {
     if (isNonNullable(value)) {
       result[key] = value;
