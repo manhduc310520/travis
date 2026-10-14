@@ -303,3 +303,10 @@ export function mergeTheme(base: ThemeConfig, extra?: ThemeConfig): ThemeConfig 
     components: components as ThemeConfig['components'],
   }
 }
+
+/**
+ * antd's `theme` with FABi's algorithms as `defaultAlgorithm` / `darkAlgorithm` (re-exported by the '@fabi/ui'
+ * entry in place of antd's), so a nested area that switches mode with them gets FABi's accessible colours instead
+ * of the other mode's pinned ones. Defined here, not in index.ts, so the entry stays a pure list of re-exports.
+ */
+export const theme: typeof antdTheme = { ...antdTheme, defaultAlgorithm: fabiLightAlgorithm, darkAlgorithm: fabiDarkAlgorithm }

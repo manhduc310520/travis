@@ -1,6 +1,10 @@
 import { addons, type API } from 'storybook/manager-api'
 import { create } from 'storybook/theming'
 import { DOCS_ENTRY_VI, GROUP_LABELS_VI, PAGE_TITLES_VI } from './labels'
+import { installStaleChunkReload } from './staleChunkReload'
+
+// The manager's own lazy chunks after a deploy: reload once too (staleChunkReload.ts)
+installStaleChunkReload()
 
 const BRAND_NAME = 'FABi CMS Design System'
 // Same default as .storybook/locale.tsx (not imported: that file pulls in React, which the manager must not bundle)

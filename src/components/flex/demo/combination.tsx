@@ -21,7 +21,7 @@ const App: React.FC = () => (
       />
       <Flex vertical align="flex-end" justify="space-between" style={{ padding: 32 }}>
         <Typography.Title level={3}>
-          “FABi CMS is an enterprise-class UI design language and React UI library.”
+          “FABi CMS keeps the menus, orders and staff of every branch in one place.”
         </Typography.Title>
         <Button type="primary" href="https://example.com" target="_blank">
           Get Started

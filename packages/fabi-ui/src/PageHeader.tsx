@@ -6,7 +6,7 @@
 import { Breadcrumb, Button, Flex, Typography, theme as antdTheme } from 'antd'
 import type { BreadcrumbProps } from 'antd'
 import type { CSSProperties, ReactNode } from 'react'
-import { ArrowLeftLine } from './fabi-icons.js'
+import { ArrowLeftLine } from './fabi-icons-provider.js'
 import { useFabiLang } from './useFabiLang.js'
 
 export interface PageHeaderProps {

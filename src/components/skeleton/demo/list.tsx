@@ -13,9 +13,9 @@ const listData = Array.from({ length: 3 }).map((_, i) => ({
   title: `FABi CMS part ${i + 1}`,
   avatar: `/mock-assets/avatar-${(Math.abs(Number(i)) % 12) + 1}.svg`,
   description:
-    'FABi CMS, a design language for background applications, is refined by the FABi CMS team.',
+    'FABi CMS, a back office for restaurants, keeps menus, orders and staff in one place.',
   content:
-    'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
+    'Each module comes with short guides, checklists and import templates, so a new branch can set up its menu and tables in a day.',
 }));
 
 const IconText: React.FC<IconTextProps> = ({ icon, text }) => (

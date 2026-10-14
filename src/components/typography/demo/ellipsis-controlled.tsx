@@ -25,7 +25,7 @@ const App = () => {
         }}
         copyable
       >
-        {'FABi CMS, a design language for background applications, is refined by the FABi CMS team.'.repeat(
+        {'FABi CMS, a back office for restaurants, keeps menus, orders and staff in one place.'.repeat(
           20,
         )}
       </Typography.Paragraph>

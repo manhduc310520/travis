@@ -14,11 +14,9 @@ const App: React.FC = () => {
   return (
     <Space vertical style={{ width: '100%' }} size={16}>
       <Skeleton loading={loading}>
-        <h4 style={{ marginBottom: 16 }}>FABi CMS, a design language</h4>
+        <h4 style={{ marginBottom: 16 }}>FABi CMS, a back office for restaurants</h4>
         <p>
-          We supply a series of design principles, practical patterns and high quality design
-          resources (Sketch and Axure), to help people create their product prototypes beautifully
-          and efficiently.
+          Each module comes with short guides, checklists and import templates, so a new branch can set up its menu and tables in a day.
         </p>
       </Skeleton>
       <Button onClick={showSkeleton} disabled={loading}>

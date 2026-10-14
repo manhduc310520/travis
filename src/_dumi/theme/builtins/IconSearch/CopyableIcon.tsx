@@ -1,5 +1,6 @@
 import React from 'react';
-import * as AntdIcons from '@ant-design/icons';
+// the icon list, not the package entry (see IconSearch.tsx)
+import * as AntdIcons from '@ant-design/icons/es/icons';
 import { App } from 'antd';
 import { createStyles } from 'antd-style';
 import copy from 'antd/es/_util/copy';

@@ -9,6 +9,8 @@ import { BRANDS, DEFAULT_BRAND, DEFAULT_MODE, FONT_FAMILY, MODES, brandThemeFor 
 import { DEFAULT_LOCALE, LOCALES, LocaleProvider, isLocale, type DocsLocale } from './locale'
 import { FabiDocsRenderer } from './docsRenderer'
 import { installMockApi } from './mockApi'
+import { installStaleChunkReload } from './staleChunkReload'
+import { addons } from 'storybook/preview-api'
 import { VIEWPORTS } from './viewports'
 // Accessibility CSS of the package (contrast fixes, .fabi-sr-only); the DOM patches are installed by FabiProvider.
 import '@fabi/ui/styles.css'
@@ -16,6 +18,12 @@ import './docs.css'
 
 // Demos call /mock-api/… instead of outside servers; answer them locally.
 installMockApi()
+
+// A tab opened before a deploy asks for chunks that are gone: reload once (staleChunkReload.ts).
+installStaleChunkReload((handler) => {
+  // 'storyThrewException' (core-events STORY_THREW_EXCEPTION; not imported, so the test runner has no extra dependency to optimize)
+  addons.ready().then((channel) => channel.on('storyThrewException', handler)).catch(() => {})
+})
 
 // Starting brand / mode: VITE_BRAND=<key>, VITE_MODE=light|dark (tests: npm run test:a11y -- <key> <mode>).
 const ENV_BRAND = import.meta.env.VITE_BRAND as string | undefined

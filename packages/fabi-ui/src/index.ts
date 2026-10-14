@@ -2,12 +2,10 @@
 // Everything antd exports is re-exported; import from '@fabi/ui' instead of 'antd'. One difference:
 // `theme.defaultAlgorithm` / `theme.darkAlgorithm` are FABi's (see theme.ts), so a nested area that
 // switches mode with them gets FABi's accessible colours instead of the other mode's pinned ones.
-import { theme as antdTheme } from 'antd'
-import { fabiDarkAlgorithm, fabiLightAlgorithm } from './theme.js'
-
+// Only re-exports here (`theme` is defined in theme.ts): a bundler can then skip this module and load just the parts
+// a page imports, instead of running every antd component first.
 export * from 'antd'
-
-export const theme: typeof antdTheme = { ...antdTheme, defaultAlgorithm: fabiLightAlgorithm, darkAlgorithm: fabiDarkAlgorithm }
+export { theme } from './theme.js'
 
 export { FABI_MODE_ATTR, FabiProvider } from './FabiProvider.js'
 export type { FabiProviderProps } from './FabiProvider.js'

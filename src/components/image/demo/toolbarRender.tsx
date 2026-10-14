@@ -43,14 +43,12 @@ const imageList = [
 ];
 
 // you can download flipped and rotated image
-// https://codesandbox.io/s/zi-ding-yi-gong-ju-lan-antd-5-7-0-forked-c9jvmp
 const App: React.FC = () => {
   const { styles } = useStyles();
 
   const [current, setCurrent] = React.useState(0);
 
   // or you can download flipped and rotated image
-  // https://codesandbox.io/s/zi-ding-yi-gong-ju-lan-antd-5-7-0-forked-c9jvmp
   const onDownload = () => {
     const url = imageList[current];
     const suffix = url.slice(url.lastIndexOf('.'));

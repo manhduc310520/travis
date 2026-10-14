@@ -16,28 +16,28 @@ const App: React.FC = () => {
       />
 
       <Paragraph ellipsis={ellipsis}>
-        FABi CMS, a design language for background applications, is refined by the FABi CMS team. FABi
-        CMS, a design language for background applications, is refined by the FABi CMS team. FABi
-        CMS, a design language for background applications, is refined by the FABi CMS team. FABi
-        CMS, a design language for background applications, is refined by the FABi CMS team. FABi
-        CMS, a design language for background applications, is refined by the FABi CMS team. FABi
-        CMS, a design language for background applications, is refined by the FABi CMS team.
+        FABi CMS, a back office for restaurants, keeps menus, orders and staff in one place. FABi
+        CMS, a back office for restaurants, keeps menus, orders and staff in one place. FABi
+        CMS, a back office for restaurants, keeps menus, orders and staff in one place. FABi
+        CMS, a back office for restaurants, keeps menus, orders and staff in one place. FABi
+        CMS, a back office for restaurants, keeps menus, orders and staff in one place. FABi
+        CMS, a back office for restaurants, keeps menus, orders and staff in one place.
       </Paragraph>
 
       <Paragraph ellipsis={ellipsis ? { rows: 2, expandable: true, symbol: 'more' } : false}>
-        FABi CMS, a design language for background applications, is refined by the FABi CMS team. FABi
-        CMS, a design language for background applications, is refined by the FABi CMS team. FABi
-        CMS, a design language for background applications, is refined by the FABi CMS team. FABi
-        CMS, a design language for background applications, is refined by the FABi CMS team. FABi
-        CMS, a design language for background applications, is refined by the FABi CMS team. FABi
-        CMS, a design language for background applications, is refined by the FABi CMS team.
+        FABi CMS, a back office for restaurants, keeps menus, orders and staff in one place. FABi
+        CMS, a back office for restaurants, keeps menus, orders and staff in one place. FABi
+        CMS, a back office for restaurants, keeps menus, orders and staff in one place. FABi
+        CMS, a back office for restaurants, keeps menus, orders and staff in one place. FABi
+        CMS, a back office for restaurants, keeps menus, orders and staff in one place. FABi
+        CMS, a back office for restaurants, keeps menus, orders and staff in one place.
       </Paragraph>
 
       <Text
         style={ellipsis ? { width: 200 } : undefined}
         ellipsis={ellipsis ? { tooltip: 'I am ellipsis now!' } : false}
       >
-        FABi CMS, a design language for background applications, is refined by the FABi CMS team.
+        FABi CMS, a back office for restaurants, keeps menus, orders and staff in one place.
       </Text>
 
       <Text
@@ -45,7 +45,7 @@ const App: React.FC = () => {
         style={ellipsis ? { width: 200 } : undefined}
         ellipsis={ellipsis ? { tooltip: 'I am ellipsis now!' } : false}
       >
-        FABi CMS, a design language for background applications, is refined by the FABi CMS team.
+        FABi CMS, a back office for restaurants, keeps menus, orders and staff in one place.
       </Text>
     </>
   );

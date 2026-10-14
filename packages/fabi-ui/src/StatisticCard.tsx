@@ -7,7 +7,7 @@
 import { presetDarkPalettes, presetPalettes } from '@ant-design/colors'
 import { Button, Card, ConfigProvider, Flex, Skeleton, Statistic, Tag, Typography, theme as antdTheme } from 'antd'
 import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
-import { ArrowDownLine, ArrowUpLine, MinusLine, RefreshCw01Line } from './fabi-icons.js'
+import { ArrowDownLine, ArrowUpLine, MinusLine, RefreshCw01Line } from './fabi-icons-provider.js'
 import { FONT_WEIGHT_MEDIUM, fabiDarkAlgorithm } from './theme.js'
 import { useFabiLang } from './useFabiLang.js'
 

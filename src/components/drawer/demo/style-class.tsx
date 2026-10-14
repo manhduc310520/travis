@@ -10,15 +10,15 @@ const lineStyle: React.CSSProperties = {
 const sharedContent = (
   <>
     <div style={lineStyle}>
-      Following the FABi CMS specification, we developed a React UI library antd that contains a
-      set of high quality components and demos for building rich, interactive user interfaces.
+      FABi CMS brings the daily work of a restaurant into one back office: menus, orders, tables,
+      staff and stock, the same in every branch.
     </div>
-    <div style={lineStyle}>🌈 Enterprise-class UI designed for web applications.</div>
-    <div style={lineStyle}>📦 A set of high-quality React components out of the box.</div>
-    <div style={lineStyle}>🛡 Written in TypeScript with predictable static types.</div>
-    <div style={lineStyle}>⚙️ Whole package of design resources and development tools.</div>
-    <div style={lineStyle}>🌍 Internationalization support for dozens of languages.</div>
-    <div style={lineStyle}>🎨 Powerful theme customization in every detail.</div>
+    <div style={lineStyle}>🍜 Menus and prices shared by every branch.</div>
+    <div style={lineStyle}>🧾 Orders from the counter, tables and delivery in one list.</div>
+    <div style={lineStyle}>👥 Staff shifts, roles and permissions.</div>
+    <div style={lineStyle}>📦 Stock levels with low-stock alerts.</div>
+    <div style={lineStyle}>📊 Daily sales reports per branch.</div>
+    <div style={lineStyle}>🎨 Your brand colours on every screen.</div>
   </>
 );
 

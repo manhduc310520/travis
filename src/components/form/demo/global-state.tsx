@@ -41,7 +41,7 @@ const CustomizedForm: React.FC<CustomizedFormProps> = ({ onChange, fields }) => 
 const App: React.FC = () => {
   const [fields, setFields] = useState<FieldData[]>([
     { name: ['username'], value: 'FABi CMS' },
-    { name: ['profile', 'email'], value: 'antd@example.com' },
+    { name: ['profile', 'email'], value: 'manager@example.com' },
   ]);
 
   return (

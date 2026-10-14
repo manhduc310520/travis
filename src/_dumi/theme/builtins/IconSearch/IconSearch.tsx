@@ -1,6 +1,9 @@
 import type { CSSProperties } from 'react';
 import React, { useCallback, useMemo, useState } from 'react';
-import Icon, * as AntdIcons from '@ant-design/icons';
+import Icon from '@ant-design/icons/es/components/Icon';
+// the icon list itself, not the package entry: a namespace of the entry would make every page that imports one icon
+// load all of them in the static build (src/shims/ant-design-icons.ts)
+import * as AntdIcons from '@ant-design/icons/es/icons';
 import { Affix, Empty, Input, Segmented } from 'antd';
 import { createStaticStyles, useTheme } from 'antd-style';
 import type { SegmentedOptions } from 'antd/es/segmented';

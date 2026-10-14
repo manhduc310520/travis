@@ -91,7 +91,7 @@ const App: React.FC = () => {
             <DescriptionItem title="Full Name" content="Lily" />
           </Col>
           <Col span={12}>
-            <DescriptionItem title="Account" content="AntDesign@example.com" />
+            <DescriptionItem title="Account" content="lily@example.com" />
           </Col>
         </Row>
         <Row>
@@ -148,7 +148,7 @@ const App: React.FC = () => {
         <p className={styles.profileTitle}>Contacts</p>
         <Row>
           <Col span={12}>
-            <DescriptionItem title="Email" content="AntDesign@example.com" />
+            <DescriptionItem title="Email" content="lily@example.com" />
           </Col>
           <Col span={12}>
             <DescriptionItem title="Phone Number" content="+86 181 0000 0000" />
@@ -164,7 +164,7 @@ const App: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  github.com/ant-design/ant-design
+                  example.com/lily
                 </a>
               }
             />

@@ -31,7 +31,7 @@ const useStyles = createStyles((props) => {
 const Title: React.FC<Readonly<{ title?: string }>> = (props) => (
   <Flex align="center" justify="space-between">
     {props.title}
-    <a href="https://www.google.com/search?q=antd" target="_blank" rel="noopener noreferrer">
+    <a href="https://example.com" target="_blank" rel="noopener noreferrer">
       more
     </a>
   </Flex>
@@ -51,16 +51,16 @@ const renderItem = (title: string, count: number) => ({
 
 const options = [
   {
-    label: <Title title="Libraries" />,
-    options: [renderItem('AntDesign', 10000), renderItem('AntDesign UI', 10600)],
+    label: <Title title="Dishes" />,
+    options: [renderItem('Beef pho', 10000), renderItem('Chicken pho', 10600)],
   },
   {
-    label: <Title title="Solutions" />,
-    options: [renderItem('AntDesign UI FAQ', 60100), renderItem('AntDesign FAQ', 30010)],
+    label: <Title title="Branches" />,
+    options: [renderItem('District 1 branch', 60100), renderItem('District 3 branch', 30010)],
   },
   {
-    label: <Title title="Articles" />,
-    options: [renderItem('AntDesign design language', 100000)],
+    label: <Title title="Reports" />,
+    options: [renderItem('Daily sales report', 100000)],
   },
 ];
 

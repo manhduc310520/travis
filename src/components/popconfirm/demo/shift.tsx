@@ -16,7 +16,7 @@ const App: React.FC = () => {
   }, []);
   return (
     <div style={style}>
-      <Popconfirm title="Thanks for using antd. Have a nice day !" open getPopupContainer={(trigger) => trigger.parentElement ?? document.body}>
+      <Popconfirm title="Thanks for using FABi CMS. Have a nice day!" open getPopupContainer={(trigger) => trigger.parentElement ?? document.body}>
         <Button type="primary">Scroll The Window</Button>
       </Popconfirm>
     </div>

@@ -61,7 +61,7 @@ const pick = (s, n) => ([...s].reduce((a, c) => a + c.charCodeAt(0), 0) % n) + 1
 const ANT_SITE = /https?:\/\/(?:[a-z0-9-]+\.)*(?:ant\.design|antgroup\.com|antfin\.com|alipay\.com|taobao\.com|tmall\.com|aliyun\.com|luohanacademy\.com)(?:\/[^'"`\s)<>]*)?/g
 const IMAGE_HOSTS = /https?:\/\/(?:(?:gw|zos|os|mdn)\.alipayobjects\.com|images\.unsplash\.com|user-images\.githubusercontent\.com)\/[^'"`\s)<>]*/g
 function globalPatch(code) {
-  return code
+  return sampleText(code
     .replace(/^[ \t]*\/\/ https:\/\/github\.com\/mockapi-io\/[^\n]*\n/gm, '')
     .replace(/https:\/\/660d2bd96ddfa2943b33731c\.mockapi\.io\/api\//g, '/mock-api/')
     .replace(/https:\/\/api\.github\.com\/search\/users/g, '/mock-api/github/search/users')
@@ -83,13 +83,60 @@ function globalPatch(code) {
     .replace(/key: 'alipay'/g, "key: 'external-link'")
     // Typography sample paragraph advertised AntV (Ant Group) in Chinese
     .replace(/`AntV \u662f[^`]*`/g, '`FABi CMS helps restaurants run menus, orders, staff and reports from one place. It is built for busy teams: every screen favours clear information, fast actions and consistent patterns, so new staff learn it quickly and managers see what matters at a glance.`')
-    .replace(/antd is an enterprise-class/g, 'FABi CMS is an enterprise-class')
     // the name split over two lines of JSX text (Typography "Ellipsis" demo)
     .replace(/\bAnt(\s*\n\s*)Design\b(?! Pro)/g, 'FABi$1CMS')
     .split('\n')
     .map((line) => (/^\s*import\b/.test(line) || /_dumi/.test(line) ? line : line.replace(/Ant Design(?! Pro)/gi, 'FABi CMS')))
-    .join('\n')
+    .join('\n'))
 }
+
+// Sample text that still described antd (a design language, a React UI library, Sketch / Axure resources, the
+// antd repo and e-mail) → neutral FABi / restaurant samples in English, like the other demos (review 2026-10-14).
+// Applied after "Ant Design" → "FABi CMS" above; words may wrap over lines in JSX text, hence \s+.
+const phrase = (s) => new RegExp(s.trim().split(/\s+/).map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('\\s+'), 'g')
+const SAMPLE_TEXT = [
+  // Typography (basic, ellipsis, _semantic), Skeleton, Steps: "FABi CMS, a design language for background applications…"
+  [phrase('FABi CMS is a design language for background applications, refined by the FABi CMS team. It aims to uniform the user interface specs for internal background projects, lower the unnecessary cost of design differences and implementation and liberate the resources of design and front-end development.'),
+    'FABi CMS is a back office for restaurants: menus, orders, tables, staff and stock in one place. It\n        aims to keep every branch on the same menu and prices, cut the time spent on daily reports and\n        let managers see sales and stock at a glance.'],
+  [phrase('a design language for background applications, is refined by the FABi CMS team'), 'a back office for restaurants, keeps menus, orders and staff in one place'],
+  [/FABi CMS, a design language(?=<)/g, 'FABi CMS, a back office for restaurants'],
+  // Skeleton "children", "list"
+  [phrase('We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.'),
+    'Each module comes with short guides, checklists and import templates, so a new branch can set up its menu and tables in a day.'],
+  // Flex "combination"
+  [/(?:antd|FABi CMS) is an enterprise-class UI design language and React UI library\./g, 'FABi CMS keeps the menus, orders and staff of every branch in one place.'],
+  // Drawer / Modal "style-class": the antd intro and its feature list
+  [/Following the FABi CMS specification, we developed a React UI library antd that contains a\s+set of high quality components and demos for building rich, interactive user interfaces\./g,
+    'FABi CMS brings the daily work of a restaurant into one back office: menus, orders, tables,\n      staff and stock, the same in every branch.'],
+  [/🌈 Enterprise-class UI designed for web applications\./g, '🍜 Menus and prices shared by every branch.'],
+  [/📦 A set of high-quality React components out of the box\./g, '🧾 Orders from the counter, tables and delivery in one list.'],
+  [/🛡 Written in TypeScript with predictable static types\./g, '👥 Staff shifts, roles and permissions.'],
+  [/⚙️ Whole package of design resources and development tools\./g, '📦 Stock levels with low-stock alerts.'],
+  [/🌍 Internationalization support for dozens of languages\./g, '📊 Daily sales reports per branch.'],
+  [/🎨 Powerful theme customization in every detail\./g, '🎨 Your brand colours on every screen.'],
+  // Tooltip / Popover / Popconfirm "shift"
+  [/Thanks for using antd\. Have a nice day !/g, 'Thanks for using FABi CMS. Have a nice day!'],
+  // AutoComplete "certain-category": search groups of a restaurant back office
+  [/href="https:\/\/www\.google\.com\/search\?q=antd"/g, 'href="https://example.com"'],
+  [/<Title title="Libraries" \/>,\s*options: \[renderItem\('AntDesign', 10000\), renderItem\('AntDesign UI', 10600\)\]/g,
+    "<Title title=\"Dishes\" />,\n    options: [renderItem('Beef pho', 10000), renderItem('Chicken pho', 10600)]"],
+  [/<Title title="Solutions" \/>,\s*options: \[renderItem\('AntDesign UI FAQ', 60100\), renderItem\('AntDesign FAQ', 30010\)\]/g,
+    "<Title title=\"Branches\" />,\n    options: [renderItem('District 1 branch', 60100), renderItem('District 3 branch', 30010)]"],
+  [/<Title title="Articles" \/>,\s*options: \[renderItem\('AntDesign design language', 100000\)\]/g,
+    "<Title title=\"Reports\" />,\n    options: [renderItem('Daily sales report', 100000)]"],
+  // Input "advance-count" (same lengths: 12 characters over a max of 10; 6 runes at a max of 6)
+  [/"Hello, antd!"/g, '"Hello, FABi!"'],
+  [/"🔥 antd"/g, '"🔥 FABi"'],
+  // Drawer "user-profile", Space "compact", Form "global-state"
+  [/AntDesign@example\.com/g, 'lily@example.com'],
+  [/(>\s*)github\.com\/ant-design\/ant-design(\s*<)/g, '$1example.com/lily$2'],
+  [/git@github\.com:ant-design\/ant-design\.git/g, 'git@example.com:fabi/menu.git'],
+  [/'antd@example\.com'/g, "'manager@example.com'"],
+  // code comments shown in "Show code": an antd CodeSandbox reproduction, the antd site's header
+  [/^[ \t]*\/\/ https:\/\/codesandbox\.io\/[^\n]*\n/gm, ''],
+  [/\/\/ antd site header height/g, '// height of a sticky page header'],
+]
+const sampleText = (code) => SAMPLE_TEXT.reduce((s, [find, repl]) => s.replace(find, repl), code)
 
 // ---------- accessibility patches for demo code (WCAG, user request 2026-09-30) ----------
 // Controls that only have a placeholder get an aria-label (from the placeholder, else a generic
@@ -332,6 +379,45 @@ const DEMO_PATCHES = {
   },
   // "shift" demos: an always-open popup on a button in the middle of a 300vw area. In <body> it sits far right
   // of the docs page and widens it on a phone; inside the demo area the canvas clips and scrolls it.
+  // "basic": antd's site intro (a design language, Sketch / Axure resources, links to antd site pages that are
+  // 404 here) → a restaurant back-office intro; the same headings, paragraphs, list of links and keyboard hint
+  typography: (code, file) => (file !== 'basic.tsx' ? code : code.replace(/(    <Title>)Introduction<\/Title>[\s\S]*?<\/ul>\n    <\/Paragraph>/, `$1Introduction</Title>
+
+    <Paragraph>
+      A restaurant group runs menus, orders, staff and stock in many branches. When every branch keeps
+      its own spreadsheets and habits, prices drift apart, reports disagree and new staff need longer to
+      learn the job.
+    </Paragraph>
+
+    <Paragraph>
+      FABi CMS brings this work into one back office, which aims to{' '}
+      <Text strong>
+        keep every branch on the same menu, prices and processes, cut the time spent on daily reports
+        and let managers see sales and stock at a glance
+      </Text>
+      .
+    </Paragraph>
+
+    <Title level={2}>Guides and Resources</Title>
+
+    <Paragraph>
+      Each module comes with short guides, checklists and import templates (<Text code>Excel</Text> and{' '}
+      <Text code>CSV</Text>), so a new branch can set up its menu and tables in a day.
+    </Paragraph>
+
+    <Paragraph>
+      <ul>
+        <li>
+          <Link href="https://example.com">Menu setup guide</Link>
+        </li>
+        <li>
+          <Link href="https://example.com">Opening checklist</Link>
+        </li>
+        <li>
+          <Link href="https://example.com">Import templates</Link>
+        </li>
+      </ul>
+    </Paragraph>`)),
   tooltip: (code, file) => shiftPopupInDemo(code, file),
   popover: (code, file) => shiftPopupInDemo(code, file),
   popconfirm: (code, file) => shiftPopupInDemo(code, file),
@@ -413,7 +499,7 @@ function containers(md, lang = 'vi') {
 // Ant Group / Alibaba properties and antd project pages (issues, CodeSandbox reproductions,
 // react-component demos, iconfont, npm pages of @ant-design packages, antd authors' repos)
 const ANT_HOST = String.raw`(?:[a-z0-9-]+\.)*(?:ant\.design|antgroup\.com|alipay\.com|alipayobjects\.com|alicdn\.com|antfin\.com|antv\.vision|antv\.antgroup\.com|umijs\.org|yuque\.com|iconfont\.cn|react-component\.now\.sh)`
-const ANT_LINK = new RegExp(String.raw`^(?:https?:)?\/\/(?:${ANT_HOST}|github\.com\/(?:ant-design|antvis|react-component|umijs|afc163|nanxiaobei\/antd|Beven91\/webpack-ant)|codesandbox\.io|zhuanlan\.zhihu\.com|upload-react-component\.vercel\.app|unpkg\.com\/antd|(?:www\.)?npmjs\.com\/package\/@ant-design)`, 'i')
+const ANT_LINK = new RegExp(String.raw`^(?:https?:)?\/\/(?:${ANT_HOST}|github\.com\/(?:ant-design|antvis|react-component|umijs|afc163|dvajs|nanxiaobei\/antd|Beven91\/webpack-ant)|codesandbox\.io|codepen\.io\/afc163|zhuanlan\.zhihu\.com|upload-react-component\.vercel\.app|unpkg\.com\/antd|(?:www\.)?npmjs\.com\/package\/@ant-design)`, 'i')
 const ANT_MEDIA = new RegExp(String.raw`(?:https?:)?\/\/(?:${ANT_HOST}|user-images\.githubusercontent\.com|github\.com\/ant-design\/[^\s)"']*\/assets)[^\s)"']*`, 'i')
 // ## / ### sections that only promote Ant products or packages; the Vietnamese text has the glossary heading
 // (scripts/i18n.mjs HEADING_GLOSSARY fixes it)
@@ -449,7 +535,7 @@ function neutralLibraryName(md, lang = 'vi') {
 // pages whose sentence always goes (articles, the antd site's FAQ / blog / guides)
 const POINTER_PAGES = /^https?:\/\/(?:5x\.ant\.design|motion\.ant\.design|zhuanlan\.zhihu\.com|ant\.design\/docs\/(?:blog\/|react\/(?:faq|common-props|use-custom-date-library|i18n#adding-new-language)))/i
 // link texts that say nothing without their link
-const POINTER_TEXT = /^(?:#\d+|(?:https?:)?\/\/\S+|(?:see |xem )?(?:an? |this |the |a complete |online |sandbox )?(?:example|demo|here|codesandbox|more|ví dụ|tại đây|đây|bản demo|demo này)s?)$/i
+const POINTER_TEXT = /^(?:#\d+|(?:https?:)?\/\/\S+|(?:see |xem )?(?:an? |this |the |a complete |online |sandbox )?(?:example|demo|here|codesandbox|more|ví dụ|tại đây|đây|bản demo|demo này)s?|(?:example|ví dụ) (?:on|trên) codepen|rc-field-form demo|demo rc-field-form)$/i
 const MD_LINK = /\[([^\]\n]*)\]\(([^)\s]+)\)/
 const TOKEN = /\u0001(\d+)\u0002/g
 const wordCount = (s) => s.split(/\s+/).filter((w) => /\p{L}/u.test(w)).length
@@ -584,6 +670,8 @@ function debrand(md, lang = 'vi') {
     .replace(new RegExp(String.raw`<img[^>]*${ANT_MEDIA.source}[^>]*>`, 'gi'), '')
     .replace(new RegExp(String.raw`<video[^>]*${ANT_MEDIA.source}[\s\S]*?(?:<\/video>|\/>)`, 'gi'), '')
     .replace(/<(ImagePreview|FlexWithImagePreview)[^>]*>\s*<\/\1>/g, '')
+    // a site popover that previews an Ant-hosted screenshot (Timeline titleSpan, ConfigProvider popupOverflow)
+    .replace(/[ \t]*(?:<|&lt;)InlinePopover[^>]*>\s*(?:<|&lt;)\/InlinePopover>/g, '')
   // other dumi site components that leak as raw text: <Badge>…</Badge> → bold, <Antd component="Alert" title="…"> → note
   md = md
     .replace(/(?:<|&lt;)Badge[^>]*>([^<&]*)(?:<|&lt;)\/Badge>/g, '**$1**')
@@ -609,7 +697,39 @@ function debrand(md, lang = 'vi') {
   // sentence-level brand edits (scripts/brand-edits.mjs), the library name in prose, then the
   // @fabi/ui package names and fabi- prefixes (scripts/fabi-names.mjs)
   // then the version history (scripts/doc-cleanup.mjs)
-  return dropVersionNotes(halfWidth(fabiDocs(neutralLibraryName(applyBrandEdits(md, lang), lang), lang))).replace(/\n{3,}/g, '\n\n').trim()
+  return codeEscapes(dropVersionNotes(halfWidth(fabiDocs(neutralLibraryName(applyBrandEdits(md, lang), lang), lang)))).replace(/\n{3,}/g, '\n\n').trim()
+}
+
+/**
+ * Escapes fixMarkdown leaves visible (review 2026-10-14). Applied after translation, so the catalog keys stay:
+ * - `\<` in the source markdown (Select optionRender "FlattenOptionData\<BaseOptionType\>") became `\&lt;`, which
+ *   shows "&lt;": the backslash goes (and the one before `>`), `&lt;` renders as `<`;
+ * - an indented code block (Typography "copyable": `Promise<string>`) is not a fence, so its `<` was escaped too
+ *   and code shows entities as written: back to `<` there.
+ */
+function codeEscapes(md) {
+  let fence = false
+  let code = false
+  let prev = '' // the line before
+  let lastText = '' // the last non-blank line before
+  return md.split('\n').map((line) => {
+    const fenceLine = /^\s*(```|~~~)/.test(line)
+    if (fenceLine) fence = !fence
+    let out = line
+    if (fence || fenceLine) code = false
+    else {
+      // an indented block starts after a blank line that does not follow a list item or a table row, and goes on
+      // until a line that is not indented
+      if (/^ {4,}\S/.test(line)) code ||= !prev.trim() && !/^\s*(?:[-*+]|\d+\.)\s|^\s*\|/.test(lastText)
+      else if (line.trim()) code = false
+      out = code
+        ? line.replace(/&lt;/g, '<')
+        : line.split(/(`+[^`]*`+)/).map((p) => (p.startsWith('`') ? p : p.replace(/\\&lt;/g, '&lt;').replace(/\\>/g, '>'))).join('')
+    }
+    prev = line
+    if (line.trim()) lastText = line
+    return out
+  }).join('\n')
 }
 
 // ---------- two languages on one page (Language toolbar, user decision 2026-10-01) ----------
@@ -744,8 +864,9 @@ function parseDoc(body) {
       segments.push({ type: 'demo', file, label: label.trim(), debug: /\bdebug\b/.test(attrs), semantic: path.basename(file).startsWith('_') })
       continue
     }
-    const tok = !inFence && line.match(/^\s*<ComponentTokenTable component="([^"]+)"[^>]*>\s*<\/ComponentTokenTable>\s*$/)
-    if (tok) { flush(); segments.push({ type: 'tokens', component: tok[1] }); continue }
+    // either quote: Splitter writes component='Splitter'
+    const tok = !inFence && line.match(/^\s*<ComponentTokenTable component=(["'])([^"']+)\1[^>]*>\s*<\/ComponentTokenTable>\s*$/)
+    if (tok) { flush(); segments.push({ type: 'tokens', component: tok[2] }); continue }
     // other antd site widgets used on component pages (Icon: searchable icon list)
     const widget = !inFence && line.match(/^\s*<(IconSearch)\s*(?:\/>|><\/\1>)\s*$/)
     if (widget) { flush(); segments.push({ type: 'widget', name: widget[1] }); continue }

@@ -11,7 +11,7 @@ const App: React.FC = () => (
           show: true,
           max: 10,
         }}
-        defaultValue="Hello, antd!"
+        defaultValue="Hello, FABi!"
       />
     </div>
 
@@ -35,7 +35,7 @@ const App: React.FC = () => (
           strategy: (txt) => runes(txt).length,
           exceedFormatter: (txt, { max }) => runes(txt).slice(0, max).join(''),
         }}
-        defaultValue="🔥 antd"
+        defaultValue="🔥 FABi"
       />
     </div>
   </Flex>

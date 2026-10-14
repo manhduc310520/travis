@@ -46,7 +46,7 @@ const App: React.FC = () => (
         <List.Item.Meta
           avatar={<Avatar alt="Avatar" src={`/mock-assets/avatar-${(Math.abs(Number(index)) % 12) + 1}.svg`} />}
           title={<a href="https://example.com">{item.title}</a>}
-          description="FABi CMS, a design language for background applications, is refined by the FABi CMS team"
+          description="FABi CMS, a back office for restaurants, keeps menus, orders and staff in one place"
         />
         <Steps
           style={{ marginTop: 8 }}

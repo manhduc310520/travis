@@ -8,7 +8,7 @@ import { Button, Flex, Grid, Input, Modal, Result, Spin, Typography, theme as an
 import type { InputRef } from 'antd'
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
-import { ChevronDownLine, ChevronUpLine, ClockLine, CornerDownLeftLine, SearchSmLine, XCircleLine } from './fabi-icons.js'
+import { ChevronDownLine, ChevronUpLine, ClockLine, CornerDownLeftLine, SearchSmLine, XCircleLine } from './fabi-icons-provider.js'
 import { useFabiLang } from './useFabiLang.js'
 
 export interface SearchModalItem {

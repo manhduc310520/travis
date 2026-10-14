@@ -34,7 +34,7 @@ const App: React.FC = () => (
     <Space.Compact block>
       <Input aria-label="Input"
         style={{ width: 'calc(100% - 200px)' }}
-        defaultValue="git@github.com:ant-design/ant-design.git"
+        defaultValue="git@example.com:fabi/menu.git"
       />
       <Tooltip title="copy git url">
         <Button icon={<CopyOutlined />} />

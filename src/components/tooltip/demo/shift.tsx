@@ -16,7 +16,7 @@ const App: React.FC = () => {
   }, []);
   return (
     <div style={style}>
-      <Tooltip title="Thanks for using antd. Have a nice day !" open getPopupContainer={(trigger) => trigger.parentElement ?? document.body}>
+      <Tooltip title="Thanks for using FABi CMS. Have a nice day!" open getPopupContainer={(trigger) => trigger.parentElement ?? document.body}>
         <Button type="primary">Scroll The Window</Button>
       </Tooltip>
     </div>

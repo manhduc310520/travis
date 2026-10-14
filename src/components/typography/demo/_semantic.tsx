@@ -35,10 +35,9 @@ const Block: React.FC<Readonly<TypographyProps>> = (props) => {
         style={{ width: '100%' }}
         {...props}
       >
-        FABi CMS is a design language for background applications, refined by the FABi CMS team. It
-        aims to uniform the user interface specs for internal background projects, lower the
-        unnecessary cost of design differences and implementation and liberate the resources of
-        design and front-end development.
+        FABi CMS is a back office for restaurants: menus, orders, tables, staff and stock in one place. It
+        aims to keep every branch on the same menu and prices, cut the time spent on daily reports and
+        let managers see sales and stock at a glance.
       </Typography.Paragraph>
     </Flex>
   );

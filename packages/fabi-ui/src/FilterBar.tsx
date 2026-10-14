@@ -4,7 +4,7 @@
 import { Button, Flex, Grid, theme as antdTheme } from 'antd'
 import { Children, cloneElement, isValidElement } from 'react'
 import type { CSSProperties, ReactNode } from 'react'
-import { FilterLinesLine } from './fabi-icons.js'
+import { FilterLinesLine } from './fabi-icons-provider.js'
 import { useFabiLang } from './useFabiLang.js'
 
 export interface FilterBarProps {
