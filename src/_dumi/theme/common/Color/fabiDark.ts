@@ -1,5 +1,6 @@
-// FABi Dark mode: the antd site styles the colour pages for a light page only. In Dark, swatch labels
-// take black or white, whichever reads better on the swatch; Light keeps the site's colours.
+// The antd site picks swatch label colours by position (white from the 7th step), which leaves some labels
+// under 4.5:1 (orange-7, gray-7, the dark palettes on a light page…). Swatch labels take black or white,
+// whichever reads better on the swatch, in Light and Dark.
 const luminance = (hex: string) => {
   const f = (i: number) => {
     const v = Number.parseInt(hex.slice(i, i + 2), 16) / 255

@@ -3,7 +3,8 @@ import { presetDarkPalettes } from '@ant-design/colors';
 import { App, theme } from 'antd';
 
 import { useUiText } from '../../../hooks/useLocale';
-import { isDarkSurface, textOn } from './fabiDark';
+import { gray } from './ColorStyle';
+import { textOn } from './fabiDark';
 import copy from 'antd/es/_util/copy';
 
 const rgbToHex = (rgbString: string): string => {
@@ -42,7 +43,6 @@ const Palette: React.FC<PaletteProps> = (props) => {
   const { message } = App.useApp();
   const t = useUiText();
   const { token } = theme.useToken();
-  const fabiDark = isDarkSurface(token.colorBgContainer);
 
   useEffect(() => {
     const colors: Record<string, string> = {};
@@ -86,7 +86,7 @@ const Palette: React.FC<PaletteProps> = (props) => {
         className={`main-color-item palette-${name}-${i + 1}`}
         style={{
           color:
-            (fabiDark && textOn(defaultBgStyle || (token as any)[`${name}-${i + 1}`])) ||
+            textOn(defaultBgStyle || (name === 'gray' ? gray[i + 1] : (token as any)[`${name}-${i + 1}`])) ||
             ((name === 'yellow' ? i > 6 : i > 5) ? firstColor : lastColor),
           fontWeight: i === 6 ? 'bold' : 'normal',
           backgroundColor: defaultBgStyle,

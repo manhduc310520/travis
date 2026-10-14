@@ -16,7 +16,7 @@ const App: React.FC = () => {
   }, []);
   return (
     <div style={style}>
-      <Popover content="Thanks for using antd. Have a nice day !" open>
+      <Popover content="Thanks for using antd. Have a nice day !" open getPopupContainer={(trigger) => trigger.parentElement ?? document.body}>
         <Button type="primary">Scroll The Window</Button>
       </Popover>
     </div>

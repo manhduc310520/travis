@@ -2,6 +2,7 @@ import { ConfigProvider } from 'antd'
 import type { ConfigProviderProps } from 'antd'
 import { createContext, useContext, useEffect, useLayoutEffect, useMemo } from 'react'
 import { installA11yFixes } from './a11yFixes.js'
+import { fabiComponentIcons, mergeComponentIcons } from './componentIcons.js'
 import { DEFAULT_BRAND, DEFAULT_MODE, FABI_ICON_PREFIX, FABI_PREFIX, fabiTheme, mergeTheme } from './theme.js'
 import type { BrandKey, FabiMode } from './theme.js'
 
@@ -19,6 +20,9 @@ export interface FabiProviderProps extends ConfigProviderProps {
   mode?: FabiMode
   /** Install the runtime accessibility DOM patches on mount (default true). */
   a11yFixes?: boolean
+  /** FABi icons inside antd components (Select / picker icons, close buttons, Alert and Modal status icons…),
+   *  default true. Component props you pass (e.g. `select={{ suffixIcon }}`) still win; false keeps antd's icons. */
+  componentIcons?: boolean
 }
 
 const NestedContext = createContext(false)
@@ -40,6 +44,7 @@ export function FabiProvider({
   brand = DEFAULT_BRAND,
   mode = DEFAULT_MODE,
   a11yFixes = true,
+  componentIcons = true,
   theme,
   prefixCls = FABI_PREFIX,
   iconPrefixCls = FABI_ICON_PREFIX,
@@ -56,6 +61,10 @@ export function FabiProvider({
     return { ...(nested && { inherit: false }), ...t, cssVar: { prefix: prefixCls, ...t.cssVar } }
   }, [nested, brand, mode, theme, prefixCls])
 
+  // ConfigProvider component props with the FABi icons, merged under the app's own (see componentIcons.tsx)
+  const icons = useMemo(() => (componentIcons ? fabiComponentIcons(prefixCls, rest.direction) : undefined), [componentIcons, prefixCls, rest.direction])
+  const iconProps = icons ? mergeComponentIcons(icons, rest) : {}
+
   // Static APIs (message.success(), notification, Modal.confirm) render outside this tree and read
   // antd's global config. Set it during render, not in an effect: child effects run before the
   // parent's, so a child calling message.success() on mount would otherwise still get `ant-` classes.
@@ -68,12 +77,12 @@ export function FabiProvider({
       iconPrefixCls,
       theme: mergedTheme,
       holderRender: (node) => (
-        <ConfigProvider prefixCls={prefixCls} iconPrefixCls={iconPrefixCls} theme={mergedTheme} locale={rest.locale} direction={rest.direction}>
+        <ConfigProvider {...icons} prefixCls={prefixCls} iconPrefixCls={iconPrefixCls} theme={mergedTheme} locale={rest.locale} direction={rest.direction}>
           {node}
         </ConfigProvider>
       ),
     })
-  }, [nested, prefixCls, iconPrefixCls, mergedTheme, rest.locale, rest.direction])
+  }, [nested, prefixCls, iconPrefixCls, mergedTheme, rest.locale, rest.direction, icons])
 
   // Popups render into <body>, outside any wrapper, so the mode goes on <html>. Only outermost
   // providers write it (a nested one, e.g. a dark area, must not flip the whole page); with several
@@ -95,7 +104,7 @@ export function FabiProvider({
 
   return (
     <NestedContext.Provider value>
-      <ConfigProvider {...rest} prefixCls={prefixCls} iconPrefixCls={iconPrefixCls} theme={mergedTheme}>
+      <ConfigProvider {...rest} {...iconProps} prefixCls={prefixCls} iconPrefixCls={iconPrefixCls} theme={mergedTheme}>
         {children}
       </ConfigProvider>
     </NestedContext.Provider>

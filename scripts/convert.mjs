@@ -330,6 +330,16 @@ const DEMO_PATCHES = {
     const role = { Header: 'group', Footer: 'group', Sider: 'region' }
     return code.replace(/<(Header|Footer|Sider)(?=[\s>])/g, (m, tag) => `<${tag} role="${role[tag]}" aria-label="${tag} ${++n[tag]}"`)
   },
+  // "shift" demos: an always-open popup on a button in the middle of a 300vw area. In <body> it sits far right
+  // of the docs page and widens it on a phone; inside the demo area the canvas clips and scrolls it.
+  tooltip: (code, file) => shiftPopupInDemo(code, file),
+  popover: (code, file) => shiftPopupInDemo(code, file),
+  popconfirm: (code, file) => shiftPopupInDemo(code, file),
+}
+
+function shiftPopupInDemo(code, file) {
+  if (file !== 'shift.tsx') return code
+  return code.replace(/ open>/, ' open getPopupContainer={(trigger) => trigger.parentElement ?? document.body}>')
 }
 
 // ---------- helpers ----------

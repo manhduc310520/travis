@@ -506,5 +506,7 @@
  "Multiple": "Chọn nhiều",
  "Copied: {value}": "Đã sao chép: {value}",
  "@{name} copied: {value}": "Đã sao chép @{name}: {value}",
- "click to copy color": "Bấm để sao chép màu"
+ "click to copy color": "Bấm để sao chép màu",
+ "Pin {name}": "Ghim {name}",
+ "Example: {name}": "Ví dụ: {name}"
 }

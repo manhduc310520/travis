@@ -67,3 +67,25 @@ html[data-fabi-mode='dark'] .fabi-sb-example-toggle { color: var(--fabi-sb-dark-
 html[data-fabi-mode='dark'] .sbdocs a code,
 html[data-fabi-mode='dark'] .sbdocs code a { color: var(--fabi-sb-dark-link-code); }
 html[data-fabi-mode='dark'] .fabi-sb-deps { color: var(--fabi-sb-dark-text-secondary); }
+
+/* ---------- Narrow screens ----------
+ * Wide blocks scroll inside their own box instead of widening the docs page (phones). On a wide screen
+ * these blocks fit, so nothing scrolls and nothing changes. */
+.fabi-sb-block .fabi-table-content,
+.sbdocs-content .fabi-table-content { overflow-x: auto; }
+.sbdocs-content pre { max-width: 100%; overflow-x: auto; }
+@media (max-width: 767px) {
+  /* inline code and long links wrap instead of running off the page */
+  .sbdocs-content :not(pre) > code { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+  .sbdocs-content p a, .sbdocs-content li a { overflow-wrap: anywhere; }
+  .sbdocs-content :is(h1, h2, h3, h4) { overflow-wrap: break-word; }
+  /* Segmented tabs in docs widgets (Icon search) scroll instead of pushing the page wide */
+  .sbdocs-content .fabi-sb-block .fabi-segmented { max-width: 100%; overflow-x: auto; }
+  /* colour palette rows (Design Tokens): the swatches keep their width and the row scrolls */
+  .sbdocs-content .main-color { overflow-x: auto; }
+}
+
+/* Controls table, boolean toggle: Storybook writes the unselected "True" / "False" at half the text colour
+   (2.8:1 on the toggle's light track) → Storybook's own muted text colour (5:1). The selected side keeps its
+   colour (Storybook's rule for it is more specific). Light only: the dark docs theme draws its own. */
+:where(html:not([data-fabi-mode='dark'])) .docblock-argstable label:has(> input[role='switch']) > span { color: #5c6870; }

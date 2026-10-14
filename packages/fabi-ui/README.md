@@ -39,6 +39,7 @@ export function App() {
 | `brand` | `'geekblue'` | `'geekblue'` · `'cyan'` · `'volcano'` · `'purple'` · `'magenta'` |
 | `mode` | `'light'` | `'light'` · `'dark'` (antd's dark algorithm with the brand colour) |
 | `a11yFixes` | `true` | installs the runtime DOM patches below on mount |
+| `componentIcons` | `true` | FABi icons inside antd components (see [Icons inside antd components](#icons-inside-antd-components)); `false` keeps antd's |
 | `theme` | | deep-merged over the FABi theme (`token` and each `components` entry merge; `algorithm` adds to the mode's, e.g. `compactAlgorithm`; other keys replace) |
 
 It also calls `ConfigProvider.config()`, so static calls (`message.success()`, `notification.open()`,
@@ -157,6 +158,46 @@ import { Home03Line, Home03Solid } from '@fabi/ui/fabi-icons'
 - Update from the design: `npm run icons:fetch -- --file <file key> --line <section id> --solid <section id>`
   (with `FIGMA_ACCESS_TOKEN`), then `npm run icons:gen` and `npm run build`. The SVGs and the catalog
   live in `icons/`; `src/fabi-icons.ts` is generated, never edited by hand.
+
+### Icons inside antd components
+
+`FabiProvider` passes FABi icons to antd's `ConfigProvider` component props, so the icons antd draws itself
+use the FABi set. Your own props win: `select={{ variant: 'filled' }}` keeps the FABi arrow, `select={{ suffixIcon }}`
+or a `suffixIcon` on one Select replaces it; `componentIcons={false}` turns it all off. The icons come from
+`src/fabi-icons-provider.ts` (generated, `PROVIDER_ICONS` in `scripts/gen-fabi-icons.mjs`), so the main entry
+does not load the whole set.
+
+| Component | antd icon → FABi icon |
+| --- | --- |
+| Select, Cascader | arrow `DownOutlined` → `ChevronDownLine`, clear `CloseCircleFilled` → `XCircleSolid`, tag remove `CloseOutlined` → `XCloseLine`, loading → `Loading02Line` (spin); Cascader also expand `RightOutlined` → `ChevronRightLine` (`ChevronLeftLine` in RTL), search → `SearchMdLine` |
+| DatePicker, TimePicker | `CalendarOutlined` / `ClockCircleOutlined` → `CalendarLine` / `ClockLine` (Form.Item validation icon kept), clear → `XCircleSolid`, RangePicker separator `SwapRightOutlined` → `ArrowRightLine` |
+| Input.Password, Input.Search | `EyeOutlined` / `EyeInvisibleOutlined` → `EyeLine` / `EyeOffLine`; search button `SearchOutlined` → `SearchMdLine` |
+| Alert, Modal (confirm, `Modal.info()`…) | success / info / warning / error → `CheckCircleSolid` / `InfoCircleSolid` / `AlertCircleSolid` / `XCircleSolid`; close → `XCloseLine` |
+| Drawer, Notification, Tour, Image preview, FloatButton.Group | close `CloseOutlined` → `XCloseLine` |
+| FloatButton.BackTop | `VerticalAlignTopOutlined` → `AlignTop01Line` |
+| Tabs (editable card) | remove → `XCloseLine`, add `PlusOutlined` → `PlusLine` |
+| Collapse, Menu (submenu arrow) | `RightOutlined` / antd's CSS arrow → `ChevronRightLine` / `ChevronDownLine`, turned like antd's (Menu needs `@fabi/ui/styles.css`) |
+| Breadcrumb dropdown, Transfer selections | `DownOutlined` → `ChevronDownLine` |
+| Button `loading`, Form label `tooltip` | `LoadingOutlined` → `Loading02Line` (spin), `QuestionCircleOutlined` → `HelpCircleLine` |
+
+Icon-only buttons that antd names through its icon (Alert close, Input.Search button, a loading icon-only Button,
+BackTop) get the name in the app's language ("Đóng" / "Close", "Tìm kiếm" / "Search", "Đang tải" / "Loading",
+"Lên đầu trang" / "Back to top").
+
+antd 6.6.5 has no `ConfigProvider` setting for the rest, so they stay antd's icons; pass them per component if
+a screen needs it:
+
+- TreeSelect arrow / clear (TreeSelect ignores the `select` settings) and Tree / TreeSelect switchers: `suffixIcon`, `switcherIcon`.
+- Select: the search icon while an open Select is searchable and the selected-option check of `mode="multiple"`
+  (a setting would turn search on, or add a check to single Selects too): `suffixIcon`, `menuItemSelectedIcon`.
+- Input, TextArea, Mentions clear icon (the setting would turn `allowClear` on everywhere): `allowClear={{ clearIcon }}`.
+- Tag close (the setting would make every Tag closable): `closeIcon`. Tabs overflow `…` (the setting would beat a
+  Tabs `moreIcon` prop): `more={{ icon }}`.
+- Pagination arrows, Table sorter / filter, InputNumber arrows, Upload list, Message / Notification / Result /
+  Popconfirm status icons, Steps, Progress, Rate, Typography copy / edit, Image preview toolbar, Transfer arrows:
+  their own props (`prevIcon`, `sortIcon`, `controls`, `iconRender`, `icon`…).
+- Table expand button and the Spin indicator are drawn with CSS, not icons.
+- `closable={{ closeIcon: true }}` asks antd for its own default close icon.
 
 ## Page building blocks
 

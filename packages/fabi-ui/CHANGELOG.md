@@ -21,6 +21,11 @@ components or options, a patch fixes things, a major version can break existing 
 - **Charts** `@fabi/ui/charts`: Ant's statistical charts (`@ant-design/plots` 2.6.7).
 
 ### Changed
+- **Icons inside antd components**: FabiProvider gives antd's `ConfigProvider` FABi icons (Select / Cascader arrow,
+  clear and remove, DatePicker / TimePicker icons, Input.Password eye, Input.Search, Alert and Modal status and close
+  icons, Drawer / Notification / Tour / Image close, Collapse and Menu arrows, Tabs add / remove, Breadcrumb,
+  Transfer, Button loading, Form tooltip). App props still win; `componentIcons={false}` keeps antd's icons. The
+  README lists what antd gives no setting for (TreeSelect, Pagination, Table sorter, Upload list…).
 - SearchModal, StatisticCard, PageHeader and FilterBar draw their own texts ("Quay lại", "Xoá bộ lọc", "Chưa có dữ
   liệu"…) in Vietnamese by default and in English when the app gives an English antd locale (`locale={enUS}` on
   FabiProvider). StatisticCard `emptyText` has no fixed default any more (it follows the language).

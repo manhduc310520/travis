@@ -3,7 +3,7 @@ import { css, Global } from '@emotion/react';
 import { isDarkSurface } from './fabiDark';
 import { useTheme } from 'antd-style';
 
-const gray: { [key: number]: string } = {
+export const gray: { [key: number]: string } = {
   1: '#fff',
   2: '#fafafa',
   3: '#f5f5f5',
@@ -198,7 +198,7 @@ ${makeGrayPalette(index + 1)}
 
         .color-description {
           display: block;
-          color: ${fabiDark ? token.colorTextDescription : '#777'};
+          color: ${fabiDark ? token.colorTextDescription : '#737373'}; /* #777 was 4.47:1 on white */
           font-weight: lighter;
           font-size: ${token.fontSize}px;
         }

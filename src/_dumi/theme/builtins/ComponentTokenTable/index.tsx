@@ -61,9 +61,9 @@ const useStyle = createStyles(({ cssVar }) => ({
   help: css`
     font-size: ${cssVar.fontSizeSM};
     font-weight: normal;
-    color: #999;
+    color: ${cssVar.colorTextSecondary};
     a {
-      color: #999;
+      color: ${cssVar.colorTextSecondary};
     }
   `,
   tokenTitle: css`

@@ -166,3 +166,11 @@
 .fabi-form-item-vertical .fabi-form-item-label > label::after {
   display: none;
 }
+
+/* FABi submenu arrow (FabiProvider componentIcons): a chevron-down icon in antd's arrow slot. antd's slot is a
+   10px box for its CSS arrow, so the icon keeps its own width; it points down in inline menus (up when open)
+   and right in pop-up submenus (left in RTL), like antd's arrow. */
+.fabi-menu-submenu-title > .fabi-menu-submenu-expand-icon.fabi-icon { width: auto; }
+.fabi-menu-inline .fabi-menu-submenu-open > .fabi-menu-submenu-title > .fabi-menu-submenu-expand-icon.fabi-icon { transform: translateY(-50%) rotate(180deg); }
+.fabi-menu-vertical .fabi-menu-submenu-title > .fabi-menu-submenu-expand-icon.fabi-icon { transform: translateY(-50%) rotate(-90deg); }
+.fabi-menu-vertical.fabi-menu-rtl .fabi-menu-submenu-title > .fabi-menu-submenu-expand-icon.fabi-icon { transform: translateY(-50%) rotate(90deg); }

@@ -8,6 +8,7 @@ import Prism from 'prismjs';
 import 'prismjs/components/prism-jsx';
 
 import Markers from './Markers';
+import { useUiText } from '../../hooks/useLocale';
 
 export interface SemanticPreviewInjectionProps {
   classNames?: Record<string, string>;
@@ -138,6 +139,7 @@ const SemanticPreview: React.FC<SemanticPreviewProps> = (props) => {
     motion = false,
   } = props;
   const { token } = theme.useToken();
+  const t = useUiText();
 
   const semanticClassNames = React.useMemo<Record<string, string>>(() => {
     let classNames: Record<string, string> = {};
@@ -211,7 +213,8 @@ const SemanticPreview: React.FC<SemanticPreviewProps> = (props) => {
                     {/* Pin + Sample */}
                     <Flex gap="small" align="center">
                       <Button
-                        aria-hidden="true"
+                        aria-label={t('Pin {name}', { name: semantic.name })}
+                        aria-pressed={pinSemantic === semantic.name}
                         size="small"
                         variant={pinSemantic === semantic.name ? 'solid' : 'text'}
                         color={pinSemantic === semantic.name ? 'primary' : 'default'}
@@ -236,7 +239,7 @@ const SemanticPreview: React.FC<SemanticPreviewProps> = (props) => {
                         }
                       >
                         <Button
-                          aria-hidden="true"
+                          aria-label={t('Example: {name}', { name: semantic.name })}
                           size="small"
                           type="text"
                           icon={<InfoCircleOutlined />}

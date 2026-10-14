@@ -506,5 +506,7 @@
  "Disabled Text": "Disabled Text",
  "Default Border": "Default Border",
  "Separator": "Separator",
- "Layout Background": "Layout Background"
+ "Layout Background": "Layout Background",
+ "Pin {name}": "Pin {name}",
+ "Example: {name}": "Example: {name}"
 }

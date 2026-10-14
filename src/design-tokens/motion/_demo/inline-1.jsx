@@ -30,7 +30,7 @@ function Principle() {
     <Col key={item.title} sm={24} md={8}>
       <div className="principle">
         <div>
-          <img src={item.img} width="80%" />
+          <img alt="" src={item.img} width="80%" />
         </div>
         <h4>{item.title}</h4>
         <p>{item.content}</p>

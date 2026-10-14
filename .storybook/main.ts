@@ -58,6 +58,9 @@ const config: StorybookConfig = {
         ...(viteConfig.optimizeDeps?.include ?? []),
         'react-countup/build/index.js', 'react-fast-marquee/dist/index.js', 'react-highlight-words', 'react-infinite-scroll-component',
         'react-sticky-box', 'react-draggable', 'lunar-typescript', 'runes2',
+        // @fabi/ui's picker suffix reads Form.Item's context from antd's internals: listed so Vite pre-bundles it at
+        // start instead of discovering it during a run and reloading (the tests would restart)
+        'antd/es/form/context.js',
       ],
     },
   }),

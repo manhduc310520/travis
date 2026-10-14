@@ -9,10 +9,12 @@ const styles = createStaticStyles(({ css, cssVar }) => ({
     display: flex;
     gap: ${cssVar.padding};
     > *:first-child {
-      flex: 0 0 328px;
+      flex: 0 1 328px;
+      min-width: 0;
     }
     > *:last-child {
       flex: 1;
+      min-width: 0;
     }
   `,
   fallbackWrapper: css`

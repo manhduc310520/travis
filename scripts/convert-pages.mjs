@@ -60,8 +60,10 @@ function parsePage(body, pageDir, outDir) {
       const code = []
       for (i++; i < lines.length && !/^\s*```\s*$/.test(lines[i]); i++) code.push(lines[i])
       const file = `_demo/inline-${++inline}.${live[1]}`
-      // Ant-hosted images in inline examples (Motion principles) → local illustration
-      writeIfChanged(path.join(outDir, file), fabiCode(code.join('\n').replace(new RegExp(ANT_MEDIA.source, 'gi'), '/mock-assets/illustration.svg')) + '\n')
+      // Ant-hosted images in inline examples (Motion principles) → local illustration; the illustration is
+      // decorative (the title and text under it say it all), so an <img> without alt gets alt="" (image-alt)
+      const inlineCode = code.join('\n').replace(new RegExp(ANT_MEDIA.source, 'gi'), '/mock-assets/illustration.svg').replace(/<img (?![^>]*\balt=)/g, '<img alt="" ')
+      writeIfChanged(path.join(outDir, file), fabiCode(inlineCode) + '\n')
       segments.push({ type: 'demo', file: `./${file}`, label: '', abs: path.join(outDir, file), inline: true })
       continue
     }

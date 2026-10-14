@@ -48,6 +48,7 @@ const BezierVisualizer: React.FC<BezierVisualizerProps> = (props) => {
             type="link"
             href={`https://cubic-bezier.com/#${controls.join(',')}`}
             target="_blank"
+            aria-label={locale.open}
             icon={<ExternalLinkIcon />}
           />
         </Tooltip>
