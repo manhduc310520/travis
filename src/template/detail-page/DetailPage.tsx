@@ -1,7 +1,7 @@
-// Detail page (a restaurant): PageHeader with back, status Tag and the page actions (one primary) →
+// Detail page (a restaurant): PageHeader without a title (breadcrumb + actions, one primary), tabs in the header →
 // Tabs: details in Descriptions (bordered, 2 columns from md) and the change history in a Timeline.
 import React from 'react';
-import { Button, Card, Col, Descriptions, Flex, Layout, PageHeader, Row, Tabs, Timeline, Typography, Tag, formatDateTime, theme } from '@fabi/ui';
+import { Button, Card, Col, Descriptions, Flex, PageHeader, Row, Tabs, Timeline, Typography, Tag, formatDateTime, theme } from '@fabi/ui';
 import { Edit01Line } from '@fabi/ui/fabi-icons';
 import AppShell, { useIsPhone } from '../shell/AppShell';
 import { CITIES, LICENSE_STATUS, RESTAURANTS } from '../data/restaurants';
@@ -66,26 +66,26 @@ const DetailPage: React.FC = () => {
   );
   return (
     <AppShell selected="restaurant-list">
+      {/* like "Tạo nhà hàng": no title row, the breadcrumb and the actions share one row (the last breadcrumb item
+          is the page's h1 for screen readers), the tabs sit in the white header right under it */}
       <PageHeader
-        title={restaurant.name}
         breadcrumb={[{ title: 'Trang chủ' }, { title: 'Nhà hàng' }, { title: 'Danh sách nhà hàng' }, { title: restaurant.name }]}
-        onBack={() => history.back()}
-        tags={tag}
         extra={
           <>
             <Button danger>Xoá</Button>
             <Button type="primary" icon={<Edit01Line />}>Sửa</Button>
           </>
         }
+        style={{ borderBottom: 0, paddingBottom: 0 }}
       />
-      <Layout.Content style={{ padding: token.padding }}>
-        <Tabs
-          items={[
-            { key: 'info', label: 'Thông tin', children: details },
-            { key: 'history', label: 'Lịch sử thay đổi', children: historyTab },
-          ]}
-        />
-      </Layout.Content>
+      <Tabs
+        styles={{ body: { padding: token.padding } }}
+        tabBarStyle={{ margin: 0, paddingInline: token.padding, background: token.colorBgContainer, borderBottom: `${token.lineWidth}px solid ${token.colorBorderSecondary}` }}
+        items={[
+          { key: 'info', label: 'Thông tin', children: details },
+          { key: 'history', label: 'Lịch sử thay đổi', children: historyTab },
+        ]}
+      />
     </AppShell>
   );
 };

@@ -25,8 +25,8 @@ interface LoginForm {
 const PHOTO_INSET = '-13.86% -8.28%';
 const PILL_BACKGROUND = 'rgba(0, 0, 0, 0.6)';
 const PILL_RADIUS = 9999;
-// the design's form column: 370 wide inside the 32px card padding
-const FORM_WIDTH = 370;
+// the card and the bottom pill share one width (user: the card as wide as the pill's actions; 4px grid)
+const LOGIN_WIDTH = 496;
 
 const LANGUAGES: NonNullable<MenuProps['items']> = [
   { key: 'vi', icon: <FlagVietnam />, label: 'Tiếng Việt' },
@@ -68,7 +68,7 @@ const Login: React.FC = () => {
         >
           <Card
             variant="borderless"
-            style={{ width: '100%', maxWidth: FORM_WIDTH + token.paddingXL * 2, boxShadow: token.boxShadowTertiary }}
+            style={{ width: '100%', maxWidth: LOGIN_WIDTH, boxShadow: token.boxShadowTertiary }}
             styles={{ body: { padding: isPhone ? token.paddingLG : token.paddingXL } }}
           >
             <Flex vertical gap={token.marginXL}>
@@ -141,12 +141,15 @@ const Login: React.FC = () => {
           <Flex
             component="footer"
             align="center"
+            justify="center"
             gap={isPhone ? 0 : token.marginMD}
             style={{
               position: 'absolute',
               bottom: token.marginXL,
               left: '50%',
               transform: 'translateX(-50%)',
+              boxSizing: 'border-box',
+              width: `min(${LOGIN_WIDTH}px, calc(100% - ${token.padding * 2}px))`,
               padding: `${token.paddingXS}px ${isPhone ? token.paddingXS : token.paddingLG}px`,
               borderRadius: PILL_RADIUS,
               background: PILL_BACKGROUND,
