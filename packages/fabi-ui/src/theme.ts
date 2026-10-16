@@ -33,18 +33,20 @@ export const FABI_ICON_PREFIX = 'fabi-icon'
  */
 /*
  * Brands. `step` is the palette step of the primary colour (1–10); hover / active are one / two
- * steps darker. Every brand keeps white text ≥ 4.5:1 on the primary colour: Geek Blue 6 (5.9:1) ·
+ * steps darker. Every brand keeps white text ≥ 4.5:1 on the primary colour: Geek Blue 7 (8.6:1; user 2026-10-16: one step darker than 6) ·
  * Golden Purple 6 (6.9:1) · Volcano 8 (6.9:1) · Magenta 7 (5.5:1) · Cyan 8 (6.1:1; step 7 is only 3.6:1).
  * The primary is also text on its own lightest tint (selected Menu item, Calendar today, filled Button,
  * Tag, Steps panel), so it must reach 4.5:1 on step 1 too: Volcano 7 is 4.8:1 on white but only 4.4:1 on
  * volcano-1, hence Volcano 8 (6.3:1) (2026-10-01).
+ * `header` is the top step of the app header gradient (see lightTheme): two steps darker than the primary,
+ * except Geek Blue, whose header stays 8 → 7 when its primary moved to 7 (user 2026-10-16: 9 → 8 too dark).
  */
 export const BRANDS = {
-  geekblue: { name: 'Geek Blue', palette: geekblue, step: 6 },
-  cyan: { name: 'Cyan', palette: cyan, step: 8 },
-  volcano: { name: 'Volcano', palette: volcano, step: 8 },
-  purple: { name: 'Golden Purple', palette: purple, step: 6 },
-  magenta: { name: 'Magenta', palette: magenta, step: 7 },
+  geekblue: { name: 'Geek Blue', palette: geekblue, step: 7, header: 8 },
+  cyan: { name: 'Cyan', palette: cyan, step: 8, header: 10 },
+  volcano: { name: 'Volcano', palette: volcano, step: 8, header: 10 },
+  purple: { name: 'Golden Purple', palette: purple, step: 6, header: 8 },
+  magenta: { name: 'Magenta', palette: magenta, step: 7, header: 9 },
 } as const
 export type BrandKey = keyof typeof BRANDS
 export const DEFAULT_BRAND: BrandKey = 'geekblue'
@@ -149,7 +151,7 @@ export function fabiTheme(brand: BrandKey | (string & {}) = DEFAULT_BRAND, mode:
 }
 
 function lightTheme(brand: BrandKey | (string & {})): ThemeConfig {
-  const { palette: p, step } = BRANDS[brand as BrandKey] ?? BRANDS[DEFAULT_BRAND]
+  const { palette: p, step, header } = BRANDS[brand as BrandKey] ?? BRANDS[DEFAULT_BRAND]
   const base = p[step - 1] // palette arrays are 0-based: step 6 = p[5]
   return {
     ...baseTheme,
@@ -157,9 +159,9 @@ function lightTheme(brand: BrandKey | (string & {})): ThemeConfig {
     token: { ...baseTheme.token, colorPrimary: base, colorInfo: base },
     components: {
       ...baseTheme.components,
-      // App header: the brand's two steps below the primary, top to bottom (Geek Blue 8 → 7, like the old
+      // App header: the brand's `header` step and the one above it, top to bottom (Geek Blue 8 → 7, like the old
       // FABi header blue-8 → blue-7); white text ≥ 7.7:1 on both, every brand (user 2026-10-13)
-      Layout: { headerBg: `linear-gradient(180deg, ${p[step + 1]} 0%, ${p[step]} 100%)`, headerColor: '#fff' },
+      Layout: { headerBg: `linear-gradient(180deg, ${p[header - 1]} 0%, ${p[header - 2]} 100%)`, headerColor: '#fff' },
     },
   }
 }

@@ -19,7 +19,7 @@ export const BRAND_EDITS = [
   ['Ant Design có 3 loại Tabs', 'FABi CMS Design System có 3 loại Tabs'],
   ['content="Ant Design"', 'content="FABi CMS"'],
   ['Màu thương hiệu của Ant Design lấy từ màu blue trong bảng màu cơ bản, giá trị Hex là `#1677ff`',
-    'Màu thương hiệu của FABi CMS Design System là Geek Blue trong bảng màu cơ bản, giá trị Hex là `#2f54eb`'],
+    'Màu thương hiệu của FABi CMS Design System là Geek Blue trong bảng màu cơ bản, giá trị Hex là `#1d39c4`'],
   ['Ant Design ưu tiên họ font mặc định của hệ thống, sau đó cung cấp thêm một bộ font thay thế',
     'FABi CMS Design System dùng font Be Vietnam Pro, kèm một bộ font thay thế'],
 
@@ -111,7 +111,7 @@ export const BRAND_EDITS_EN = [
   ['Ant Design has 3 types of Tabs', 'FABi CMS Design System has 3 types of Tabs'],
   ['content="Ant Design"', 'content="FABi CMS"'],
   ["Ant Design's brand color comes from blue of the base color palette, it's Hex value is `#1677ff`",
-    "FABi CMS Design System's brand color is Geek Blue of the base color palette, its Hex value is `#2f54eb`"],
+    "FABi CMS Design System's brand color is Geek Blue of the base color palette, its Hex value is `#1d39c4`"],
   ['Ant Design prefers the system default font family and then also provides a set of alternative font libraries',
     'FABi CMS Design System uses the Be Vietnam Pro font, with a set of alternative font libraries'],
 

@@ -262,7 +262,7 @@ placeholder, quaternary and disabled text, error / success / warning colours, Ca
 dates and the Switch "off" track are darkened to reach 4.5:1 (`color-contrast`). Primary hover /
 active use darker palette steps so white text stays readable on every brand.
 
-Brand primaries (palette step): Geek Blue 6, Golden Purple 6, Cyan 8, Magenta 7, Volcano 8. The primary
+Brand primaries (palette step): Geek Blue 7, Golden Purple 6, Cyan 8, Magenta 7, Volcano 8. The primary
 is also text on its own lightest tint (selected Menu item, Calendar today, filled Button, Tag, Steps
 panel), so it reaches 4.5:1 on white text **and** on palette step 1. The primary / info tints (steps
 1–4) and text shades (steps 8–10) come from the brand palette itself: antd would derive greyish tints

@@ -2,11 +2,12 @@
 // component has a search field, grouped results with keyboard navigation and the key hints together; built from
 // Modal + Input + Result + Button + Typography and the FABi icons. States as designed: hint (no query, no
 // history) · history ("Gần đây") · results grouped by where they live · no result · loading.
-// Keyboard: ↑ / ↓ move, Enter chooses, Esc closes. Screen readers get a combobox + listbox.
+// Keyboard: ↑ / ↓ move, Enter chooses, Esc closes. Screen readers get a combobox + listbox. With getAnchor the
+// dialog opens over the field that opened it (user 2026-10-16: like the header search itself, not mid-screen).
 // SearchModal.Panel is the same content without the Modal (docs, or an inline search page).
 import { Button, Flex, Grid, Input, Modal, Result, Spin, Typography, theme as antdTheme } from 'antd'
 import type { InputRef } from 'antd'
-import { useEffect, useId, useMemo, useRef, useState } from 'react'
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
 import { ChevronDownLine, ChevronUpLine, ClockLine, CornerDownLeftLine, SearchSmLine, XCircleLine } from './fabi-icons-provider.js'
 import { useFabiLang } from './useFabiLang.js'
@@ -62,6 +63,11 @@ export interface SearchModalProps extends SearchModalPanelProps {
   onClose?: () => void
   /** Width of the dialog (default 650, as designed; never wider than the screen) */
   width?: number
+  /**
+   * The field that opens the search (e.g. the header search): the dialog opens over it, its field on the same line,
+   * centred on it, instead of in the middle of the screen. Without it, or when it is not on screen: centred.
+   */
+  getAnchor?: () => HTMLElement | null
 }
 
 // built-in texts: Vietnamese by default, English with an English antd locale (useFabiLang)
@@ -369,23 +375,50 @@ function SearchPanel({
   )
 }
 
-function SearchModalRoot({ open, onClose, width = 650, onSelect, ...panel }: SearchModalProps) {
+/** Where the dialog goes over its anchor: its field (large, padding from the top) on the anchor's line, centred on it, inside the screen, at least marginXS below the top edge */
+function useAnchoredPlace(open: boolean, width: number, getAnchor?: () => HTMLElement | null) {
+  const { token } = antdTheme.useToken()
+  const [place, setPlace] = useState<{ top: number; left: number; width: number } | null>(null)
+  useLayoutEffect(() => {
+    if (!open || !getAnchor) return setPlace(null)
+    const measure = () => {
+      const rect = getAnchor()?.getBoundingClientRect()
+      if (!rect || rect.width === 0) return setPlace(null)
+      const room = document.documentElement.clientWidth
+      const w = Math.min(width, room - token.padding * 2)
+      const left = Math.min(Math.max(rect.left + rect.width / 2 - w / 2, token.padding), room - token.padding - w)
+      const top = Math.max(rect.top + rect.height / 2 - token.padding - token.controlHeightLG / 2, token.marginXS)
+      setPlace({ top, left, width: w })
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [open, width, getAnchor, token.padding, token.controlHeightLG, token.marginXS])
+  return place
+}
+
+function SearchModalRoot({ open, onClose, width = 650, getAnchor, onSelect, ...panel }: SearchModalProps) {
   const TEXT = TEXTS[useFabiLang()]
+  const { token } = antdTheme.useToken()
+  const place = useAnchoredPlace(open, width, getAnchor)
   return (
     <Modal
       open={open}
       onCancel={onClose}
       footer={null}
       closable={false}
-      centered
+      centered={!place}
       destroyOnHidden
-      width={width}
+      width={place?.width ?? width}
+      // over the anchor: placed from the top-left of the screen (the Modal's wrap), no bottom room
+      style={place ? { top: place.top, left: place.left, margin: 0, paddingBottom: 0 } : undefined}
       // the dialog's name for screen readers; the design shows no title
       title={<span className="fabi-sr-only">{TEXT.dialog}</span>}
       styles={{ container: { padding: 0, overflow: 'hidden' }, header: { margin: 0, padding: 0 }, body: { padding: 0 } }}
     >
       <SearchPanel
         {...panel}
+        style={place ? { maxHeight: `calc(100vh - ${place.top + token.padding}px)`, ...panel.style } : panel.style}
         onCancel={onClose}
         onSelect={(item, group) => {
           onSelect?.(item, group)

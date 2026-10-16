@@ -3,6 +3,16 @@
 All notable changes to `@fabi/ui`. Versions follow [semver](https://semver.org): a minor version adds
 components or options, a patch fixes things, a major version can break existing code.
 
+## Unreleased
+
+### Added
+- **SearchModal** `getAnchor`: the dialog opens over the field that opened it (e.g. the header search), its field
+  on the same line, instead of in the middle of the screen.
+
+### Changed
+- Geek Blue (the default brand) uses step 7 `#1d39c4` instead of 6: darker primary, white text 8.6:1. The app
+  header keeps its gradient (Geek Blue 8 → 7): brands now set its step (`header`) on their own.
+
 ## 0.2.0 (2026-10-13)
 
 ### Added

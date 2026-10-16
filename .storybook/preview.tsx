@@ -173,7 +173,7 @@ const preview: Preview = {
 
     docs: {
       // Docs typography in the brand font (Be Vietnam Pro, loaded in preview-head.html).
-      theme: create({ base: 'light', fontBase: FONT_FAMILY, colorPrimary: '#2f54eb', colorSecondary: '#2f54eb' }),
+      theme: create({ base: 'light', fontBase: FONT_FAMILY, colorPrimary: '#1d39c4', colorSecondary: '#1d39c4' }),
       toc: { headingSelector: 'h2, h3' },
       // Docs-page widgets outside stories (token tables, palettes, examples) get it too.
       container: BrandDocsContainer,

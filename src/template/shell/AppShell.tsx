@@ -5,7 +5,7 @@
 // Dashboard ("Trang chủ") of FABi CMS: header with search and account, side menu, filter bar and the
 // overview cards. Built only from @fabi/ui components (StatisticCard for the figures, @fabi/ui/charts for the
 // charts); numbers and dates follow the FABi convention (9.615.933 ₫, 23,3M, 02/11/2026).
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import 'dayjs/locale/vi';
 import {
   Avatar,
@@ -224,6 +224,8 @@ const AppShell: React.FC<AppShellProps> = ({ selected: selectedKey = 'home', chi
     if (!phone) setNavOpen(false);
   }, [phone]);
   const [searchOpen, setSearchOpen] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const getSearchAnchor = useCallback(() => searchRef.current, []);
   const [history, setHistory] = useState<SearchModalItem[]>(SEARCH_HISTORY);
   // ⌘ K / Ctrl K opens the search anywhere on the page
   useEffect(() => {
@@ -275,7 +277,7 @@ const AppShell: React.FC<AppShellProps> = ({ selected: selectedKey = 'home', chi
           </Flex>
           {!phone && (
             // the wrapper takes clicks on the icon, the hint and the padding too
-            <div style={{ maxWidth: 480, flex: 2, minWidth: 0 }} onClick={() => setSearchOpen(true)}>
+            <div ref={searchRef} style={{ maxWidth: 480, flex: 2, minWidth: 0 }} onClick={() => setSearchOpen(true)}>
               <Input
                 readOnly
                 aria-label="Tìm kiếm"
@@ -298,6 +300,8 @@ const AppShell: React.FC<AppShellProps> = ({ selected: selectedKey = 'home', chi
         <SearchModal
           open={searchOpen}
           onClose={() => setSearchOpen(false)}
+          // opens over the header search (phones: no field there, so centred)
+          getAnchor={getSearchAnchor}
           groups={SEARCH_GROUPS}
           history={history}
           onClearHistory={() => setHistory([])}
