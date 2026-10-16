@@ -12,6 +12,8 @@ components or options, a patch fixes things, a major version can break existing 
 ### Changed
 - Geek Blue (the default brand) uses step 7 `#1d39c4` instead of 6: darker primary, white text 8.6:1. The app
   header keeps its gradient (Geek Blue 8 → 7): brands now set its step (`header`) on their own.
+- **StatisticCard**: no data yet (`value` null / undefined) shows 0, so `emptyText` is gone; a clickable card
+  lifts with the light shadow (`boxShadowTertiary`) on hover instead of antd's hoverable card shadow.
 
 ## 0.2.0 (2026-10-13)
 

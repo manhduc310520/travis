@@ -6,6 +6,7 @@
 // The category colour only tells cards apart (CLAUDE.md: palette colours are for categories).
 import { presetDarkPalettes, presetPalettes } from '@ant-design/colors'
 import { Button, Card, ConfigProvider, Flex, Skeleton, Statistic, Tag, Typography, theme as antdTheme } from 'antd'
+import { useState } from 'react'
 import type { CSSProperties, KeyboardEvent, ReactNode } from 'react'
 import { ArrowDownLine, ArrowUpLine, MinusLine, RefreshCw01Line } from './fabi-icons-provider.js'
 import { FONT_WEIGHT_MEDIUM, fabiDarkAlgorithm } from './theme.js'
@@ -19,7 +20,7 @@ export interface StatisticCardProps {
   type?: 'default' | 'primary'
   /** Label, e.g. "Total invoices" (a ReactNode, so it can be a Dropdown that switches the figure) */
   title: ReactNode
-  /** The figure; null / undefined shows the empty state */
+  /** The figure; null / undefined (no data yet) shows 0 */
   value?: number | null
   /** Unit after the figure, e.g. "₫" (none by default: counts have no unit) */
   suffix?: ReactNode
@@ -44,9 +45,7 @@ export interface StatisticCardProps {
   error?: ReactNode
   /** Retry action in the error state */
   onRetry?: () => void
-  /** Text of the empty state (default: "No data yet" in the app language) */
-  emptyText?: ReactNode
-  /** Makes the whole card a button (e.g. open the detail report): hover and focus states */
+  /** Makes the whole card a button (e.g. open the detail report): hover (the light shadow) and focus states */
   onClick?: () => void
   className?: string
   style?: CSSProperties
@@ -93,7 +92,6 @@ export function StatisticCard({
   loading = false,
   error,
   onRetry,
-  emptyText,
   onClick,
   className,
   style,
@@ -112,11 +110,12 @@ export function StatisticCard({
   const dark = isDark(token.colorBgContainer)
   const p = (dark ? presetDarkPalettes : presetPalettes)[color] ?? presetPalettes.blue
   const tint = dark ? p[1] : p[0]
-  const empty = !loading && !error && (value === null || value === undefined)
   const dir = trend === undefined ? undefined : trend > 0 ? 'up' : trend < 0 ? 'down' : 'flat'
   // figure: Heading 3 (24 / 32) on the primary surface, Heading 5 (16 / 24) on a default card
   const valueSize = primary ? token.fontSizeHeading3 : token.fontSizeHeading5
   const valueLineHeight = primary ? token.lineHeightHeading3 : token.lineHeightHeading5
+  // clickable: on hover the light shadow (boxShadowTertiary), not antd's heavier hoverable card shadow
+  const [hover, setHover] = useState(false)
   const keyDown = onClick ? (e: KeyboardEvent) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } } : undefined
 
   const skeleton = <Skeleton active title={{ width: '45%' }} paragraph={{ rows: 1, width: '75%' }} />
@@ -132,16 +131,12 @@ export function StatisticCard({
         </Button>
       )}
     </Flex>
-  ) : empty ? (
-    <Flex align="baseline" gap="middle" wrap>
-      <Typography.Text strong style={{ color: textColor, fontSize: valueSize, lineHeight: valueLineHeight }} aria-hidden>—</Typography.Text>
-      <Typography.Text {...secondary}>{emptyText ?? (lang === 'en' ? 'No data yet' : 'Chưa có dữ liệu')}</Typography.Text>
-    </Flex>
   ) : (
     <>
       <Flex align="center" gap={token.marginSM} wrap>
         <Statistic
-          value={value as number}
+          // no data yet = 0 (user 2026-10-16: the empty state only shows 0)
+          value={value ?? 0}
           precision={precision}
           groupSeparator="."
           decimalSeparator=","
@@ -169,8 +164,9 @@ export function StatisticCard({
   return (
     <Card
       variant={primary ? 'borderless' : undefined}
-      hoverable={!!onClick}
       onClick={onClick}
+      onMouseEnter={onClick ? () => setHover(true) : undefined}
+      onMouseLeave={onClick ? () => setHover(false) : undefined}
       onKeyDown={keyDown}
       tabIndex={onClick ? 0 : undefined}
       role={onClick ? 'button' : 'group'}
@@ -182,6 +178,8 @@ export function StatisticCard({
           : `linear-gradient(180deg, ${token.colorBgContainer} 45%, ${tint} 100%)`,
         color: textColor,
         cursor: onClick ? 'pointer' : undefined,
+        boxShadow: onClick && hover ? token.boxShadowTertiary : undefined,
+        transition: onClick ? `box-shadow ${token.motionDurationMid}` : undefined,
         height: '100%',
         ...style,
       }}

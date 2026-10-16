@@ -40,7 +40,8 @@ const meta: Meta<typeof StatisticCard> = {
     onClick: { control: false },
     onRetry: { control: false },
   },
-  decorators: [(Story) => <div style={{ maxWidth: 360 }}><Story /></div>],
+  // one card: 360 wide; parameters.wide: the full width (the primary surface, the dashboard grid)
+  decorators: [(Story, { parameters }) => (parameters.wide ? <Story /> : <div style={{ maxWidth: 360 }}><Story /></div>)],
   render: (args, { globals, parameters }) => {
     const t = TEXT[lang(globals.locale)]
     const sample: StatisticCardProps = SAMPLES[(parameters.sample as keyof typeof SAMPLES) ?? 'invoices'](t)
@@ -51,14 +52,13 @@ export default meta
 type Story = StoryObj<typeof StatisticCard>
 
 const revenue = { type: 'primary' as const, value: 9615933, suffix: '₫', trend: 8, icon: undefined }
-const wide: Story['decorators'] = [(Story) => <div style={{ maxWidth: 'none' }}><Story /></div>]
 
 export const Default: Story = {}
-export const Primary: Story = { args: revenue, decorators: wide, parameters: { sample: 'revenue' } }
+export const Primary: Story = { args: revenue, parameters: { wide: true, sample: 'revenue' } }
 
 /** The dashboard: one component, the headline figure on the brand surface and four category colours */
 export const Dashboard: Story = {
-  decorators: wide,
+  parameters: { wide: true },
   render: (_, { globals }) => {
     const t = TEXT[lang(globals.locale)]
     return (
@@ -83,16 +83,16 @@ export const Dashboard: Story = {
   },
 }
 
-export const TrendDown: Story = { name: 'Trend Down', args: { ...revenue, value: 7215400, trend: -12.5 }, decorators: wide, parameters: { sample: 'revenue' } }
-export const NoChange: Story = { name: 'No Change', args: { ...revenue, trend: 0 }, decorators: wide, parameters: { sample: 'revenue' } }
+export const TrendDown: Story = { name: 'Trend Down', args: { ...revenue, value: 7215400, trend: -12.5 }, parameters: { wide: true, sample: 'revenue' } }
+export const NoChange: Story = { name: 'No Change', args: { ...revenue, trend: 0 }, parameters: { wide: true, sample: 'revenue' } }
 export const WithTags: Story = {
   name: 'With Tags',
   args: { value: 900, icon: <FileCheck02Line />, color: 'magenta', extra: <><Tag>Chanhdev</Tag><Tag>+5</Tag></> },
   parameters: { sample: 'einvoices' },
 }
 export const Loading: Story = { args: { loading: true } }
-export const LoadingPrimary: Story = { name: 'Loading (Primary)', args: { ...revenue, loading: true }, decorators: wide, parameters: { sample: 'revenue' } }
+export const LoadingPrimary: Story = { name: 'Loading (Primary)', args: { ...revenue, loading: true }, parameters: { wide: true, sample: 'revenue' } }
 export const Empty: Story = { args: { value: null } }
 export const ErrorState: Story = { name: 'Error', args: { value: undefined, onRetry: fn() }, parameters: { error: true } }
-export const ErrorPrimary: Story = { name: 'Error (Primary)', args: { ...revenue, value: undefined, onRetry: fn() }, decorators: wide, parameters: { sample: 'revenue', error: true } }
+export const ErrorPrimary: Story = { name: 'Error (Primary)', args: { ...revenue, value: undefined, onRetry: fn() }, parameters: { wide: true, sample: 'revenue', error: true } }
 export const Clickable: Story = { args: { onClick: fn() } }
