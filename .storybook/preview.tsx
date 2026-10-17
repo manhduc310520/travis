@@ -193,7 +193,7 @@ const preview: Preview = {
 
     options: {
       storySort: {
-        order: ['Introduction', 'Getting Started', 'Design Tokens', ['Customize Theme', 'Colors', 'Dark Mode', 'Font', 'Layout', 'Responsive', 'Shadow', 'Motion', 'Token Naming'], 'Components', ['General', 'Layout', 'Navigation', 'Data Entry', 'Data Display', 'Feedback', 'Other'], 'Template', ['Overview']],
+        order: ['Introduction', 'Getting Started', 'Design Tokens', ['Customize Theme', 'Colors', 'Dark Mode', 'Font', 'Layout', 'Responsive', 'Shadow', 'Motion'], 'Components', ['General', 'Layout', 'Navigation', 'Data Entry', 'Data Display', 'Feedback', 'Other'], 'Template', ['Overview']],
       },
     },
 

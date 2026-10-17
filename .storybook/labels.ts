@@ -28,7 +28,6 @@ export const PAGE_TITLES_VI: Record<string, string> = {
   'Design Tokens/Responsive': 'Thích ứng màn hình',
   'Design Tokens/Shadow': 'Đổ bóng',
   'Design Tokens/Motion': 'Chuyển động',
-  'Design Tokens/Token Naming': 'Đặt tên token',
   'Template/Overview': 'Tổng quan',
 }
 
