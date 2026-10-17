@@ -117,9 +117,9 @@ const Rank: React.FC<{ n: number }> = ({ n }) => {
   return <Avatar size="small" style={{ background: bg, color: fg, flex: 'none' }}>{n}</Avatar>;
 };
 
-/** Ranked names and amounts ("Top 5 mặt hàng bán chạy"). */
+/** Ranked names and amounts ("Top 5 mặt hàng bán chạy"); rows 24px apart (user 2026-10-17: more air between rows). */
 const RankList: React.FC<{ items: { name: string; value: number }[] }> = ({ items }) => (
-  <Flex vertical gap="middle" component="ol" style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+  <Flex vertical gap="large" component="ol" style={{ margin: 0, padding: 0, listStyle: 'none' }}>
     {items.map((item, i) => (
       <Flex key={item.name} component="li" align="center" gap="middle">
         <Rank n={i + 1} />

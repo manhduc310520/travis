@@ -97,6 +97,11 @@ function useLocaleDocsContext(context: DocsProps['context'], locale: DocsLocale)
  * and the page text follows the Language toolbar. Toolbar changes re-render the page in place (FabiDocsRenderer);
  * the blocks inside get the docs context as Storybook made it.
  */
+// The docs page's own CSS variables (--fabi-*): the theme writes them on this class. Widgets copied from the
+// underlying library's site (token tables, previews) style themselves with var(--fabi-…); without the class on a
+// wrapper those variables were unset on docs pages and their gaps / sizes fell back to nothing (user 2026-10-17).
+const DOCS_CSS_VAR = 'fabi-docs-vars'
+
 function BrandDocsContainer(props: DocsProps) {
   const ctx = props.context as unknown as DocsCtx
   const [brand, setBrand] = useState(ctx.store?.userGlobals?.globals?.brand ?? INITIAL_BRAND)
@@ -115,10 +120,12 @@ function BrandDocsContainer(props: DocsProps) {
   const context = useLocaleDocsContext(props.context, docsLocale)
   return (
     <LocaleProvider locale={docsLocale}>
-      <FabiProvider brand={brand as BrandKey} mode={mode as FabiMode}>
-        <DocsContainer context={context} theme={mode === 'dark' ? DOCS_THEME_DARK : props.theme}>
-          <DocsContext.Provider value={props.context}>{props.children}</DocsContext.Provider>
-        </DocsContainer>
+      <FabiProvider brand={brand as BrandKey} mode={mode as FabiMode} theme={{ cssVar: { key: DOCS_CSS_VAR } }}>
+        <div className={DOCS_CSS_VAR}>
+          <DocsContainer context={context} theme={mode === 'dark' ? DOCS_THEME_DARK : props.theme}>
+            <DocsContext.Provider value={props.context}>{props.children}</DocsContext.Provider>
+          </DocsContainer>
+        </div>
       </FabiProvider>
     </LocaleProvider>
   )

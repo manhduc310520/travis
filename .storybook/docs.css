@@ -50,6 +50,21 @@
   font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+/* Headings and rules as on the underlying library's site (user 2026-10-17: lines above and below headings looked
+ * random): no line under h2, one thin rule only where the page has an <hr>, the site's sizes and margins. Weight
+ * 600, not the site's 500 or Storybook's 700: FABi uses 400 / 600 only. Demo titles keep their own style. */
+.sbdocs-content :is(h2, h3, h4):not(.fabi-sb-demo-title, .sb-unstyled, nav *) {
+  clear: both;
+  margin: 1.6em 0 0.6em;
+  padding-bottom: 0;
+  border: 0;
+  font-weight: 600;
+}
+.sbdocs-content h2:not(.sb-unstyled, nav *) { font-size: 24px; line-height: 32px; }
+.sbdocs-content h3:not(.fabi-sb-demo-title, .sb-unstyled, nav *) { font-size: 18px; line-height: 26px; }
+.sbdocs-content h4:not(.sb-unstyled, nav *) { font-size: 16px; line-height: 24px; }
+.sbdocs-content hr { clear: both; height: 1px; margin: 24px 0; border: 0; background: var(--fabi-color-split); }
+
 /* ---------- Dark mode (Mode toolbar) ----------
  * FabiProvider sets html[data-fabi-mode]; the variables are antd's dark tokens (preview.tsx). The story
  * canvas, docs page and example boxes take the dark container surface and text colour, so demos sit on
