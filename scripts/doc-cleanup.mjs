@@ -27,6 +27,7 @@ function cleanTable(lines) {
 }
 
 const DEPRECATED_HEADING = /^(#{2,6}) .*\*\*(?:Deprecated|Ngừng hỗ trợ|Đã ngừng hỗ trợ)\*\*/
+const DEPRECATED_NOTE = /^> \*\*(?:Deprecated|Ngừng hỗ trợ|Đã ngừng hỗ trợ)\*\*/
 
 /** Tables and deprecated sections, outside code fences. */
 function cleanBlocks(md) {
@@ -42,6 +43,12 @@ function cleanBlocks(md) {
       if (h && skipLevel && h[1].length <= skipLevel) skipLevel = 0
       const dep = line.match(DEPRECATED_HEADING)
       if (dep) { skipLevel = dep[1].length; continue }
+      // a section whose first line is a "> **Deprecated**" note (Collapse.Panel)
+      if (h) {
+        let j = i + 1
+        while (j < lines.length && !lines[j].trim()) j++
+        if (DEPRECATED_NOTE.test(lines[j] ?? '')) { skipLevel = h[1].length; continue }
+      }
     }
     if (skipLevel) continue
     if (!fence && /^\|/.test(line)) {

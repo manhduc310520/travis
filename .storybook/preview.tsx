@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type ComponentProps } from 'react'
 import type { Preview } from '@storybook/react-vite'
 import { DocsContainer, DocsContext } from '@storybook/addon-docs/blocks'
+import FabiDocsPage from './FabiDocsPage'
 import { FabiProvider, theme } from '@fabi/ui'
 import type { BrandKey, FabiMode } from '@fabi/ui'
 import enUS from '@fabi/ui/locale/en_US'
@@ -184,13 +185,15 @@ const preview: Preview = {
       toc: { headingSelector: 'h2, h3' },
       // Docs-page widgets outside stories (token tables, palettes, examples) get it too.
       container: BrandDocsContainer,
+      // autodocs pages (FABi's own components) laid out like the generated component pages (FabiDocsPage.tsx)
+      page: FabiDocsPage,
       // toolbar changes re-render a docs page in place instead of reloading it (docsRenderer.tsx)
       renderer: async () => new FabiDocsRenderer(),
     },
 
     options: {
       storySort: {
-        order: ['Introduction', 'Getting Started', 'Design Tokens', ['Customize Theme', 'Colors', 'Dark Mode', 'Font', 'Layout', 'Responsive', 'Shadow', 'Motion'], 'Components', ['General', 'Layout', 'Navigation', 'Data Entry', 'Data Display', 'Feedback', 'Other'], 'Template', ['Overview']],
+        order: ['Introduction', 'Getting Started', 'Design Tokens', ['Customize Theme', 'Colors', 'Dark Mode', 'Font', 'Layout', 'Responsive', 'Shadow', 'Motion', 'Token Naming'], 'Components', ['General', 'Layout', 'Navigation', 'Data Entry', 'Data Display', 'Feedback', 'Other'], 'Template', ['Overview']],
       },
     },
 

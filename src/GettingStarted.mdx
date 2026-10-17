@@ -157,6 +157,77 @@ export function App() {
 
 <Vi>
 
+## Icon
+
+FABi có bộ icon riêng `@fabi/ui/fabi-icons` (2.361 icon trên lưới 24 × 24). Mỗi icon có bản nét `…Line` và bản đặc
+`…Solid`: dùng bản nét mặc định, bản đặc cho trạng thái đang chọn (ví dụ mục menu đang chọn). Xem toàn bộ ở
+**Component › Chung › FABi Icons**. `@fabi/ui/icons` là bộ icon của thư viện gốc, chỉ giữ cho code cũ.
+
+## Định dạng số, tiền và ngày
+
+Không tự gọi `Intl` hay tự ghép chuỗi: dùng các hàm có sẵn, theo quy ước vi-VN của FABi CMS.
+
+| Hàm | Kết quả |
+| --- | --- |
+| `formatNumber(9615933)` | 9.615.933 |
+| `formatMoney(9615933)` | 9.615.933 ₫ |
+| `formatPercent(12.5)` | 12,5% |
+| `formatDate(value)` | 02/11/2026 |
+| `formatDateTime(value)` | 02/11/2026 14:05 |
+| `DATE_FORMAT` / `DATE_TIME_FORMAT` | prop `format` của DatePicker |
+
+## Component riêng của FABi
+
+Ngoài component của thư viện gốc, `@fabi/ui` có thêm: `StatisticCard` (số liệu dashboard), `SearchModal` (tìm
+kiếm tính năng), `PageHeader` (đầu trang: breadcrumb, tiêu đề, thao tác) và `FilterBar` (hàng bộ lọc). Bố cục các
+trang hoàn chỉnh ở mục **Mẫu trang**.
+
+</Vi>
+
+<En>
+
+## Icons
+
+FABi has its own icon set, `@fabi/ui/fabi-icons` (2,361 icons on a 24 × 24 grid). Every icon has a line version
+`…Line` and a solid one `…Solid`: use the line one by default and the solid one for the selected state (for example
+the selected menu item). Browse them all in **Components › General › FABi Icons**. `@fabi/ui/icons` is the
+underlying library's icon set, kept for existing code only.
+
+## Number, money and date formats
+
+Don't call `Intl` or build the strings yourself: use these helpers, which follow the FABi CMS vi-VN convention.
+
+| Helper | Result |
+| --- | --- |
+| `formatNumber(9615933)` | 9.615.933 |
+| `formatMoney(9615933)` | 9.615.933 ₫ |
+| `formatPercent(12.5)` | 12,5% |
+| `formatDate(value)` | 02/11/2026 |
+| `formatDateTime(value)` | 02/11/2026 14:05 |
+| `DATE_FORMAT` / `DATE_TIME_FORMAT` | the `format` prop of DatePicker |
+
+## FABi's own components
+
+Besides the underlying library's components, `@fabi/ui` adds `StatisticCard` (dashboard figures), `SearchModal`
+(feature search), `PageHeader` (page top: breadcrumb, title, actions) and `FilterBar` (the filter row). Complete
+page layouts are under **Template**.
+
+</En>
+
+```tsx
+import { DATE_FORMAT, DatePicker, formatDate, formatMoney } from '@fabi/ui'
+import { Home03Line, Home03Solid } from '@fabi/ui/fabi-icons'
+
+formatMoney(9615933) // "9.615.933 ₫"
+formatDate('2026-11-02') // "02/11/2026"
+
+<DatePicker format={DATE_FORMAT} />
+<Home03Line /> // idle
+<Home03Solid /> // selected
+```
+
+<Vi>
+
 ## Bảng đổi import
 
 Code cũ (import từ `antd`, `@ant-design/icons`…) đổi sang các đường dẫn sau; tên component và API giữ nguyên.

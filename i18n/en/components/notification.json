@@ -13,7 +13,6 @@
  "6e7259424cf7": "Update content with unique key.",
  "815be1484f20": "Stack configuration, enabled by default. Notifications will be stacked when the amount is over `threshold`. Up to 3 notifications are shown in the collapsed stack.",
  "2b6f8fbc9159": "Show progress bar for auto-closing notification.",
- "aa4b5821ee92": "Static methods cannot consume Context provided by `ConfigProvider`. When enable `layer`, they may also cause style errors. Please use hooks version or `App` provided instance first.",
  "a216bc4ddaef": "Customize the progress bar color by configuring the component token.",
  "7346e7d36cd2": "You can customize the [semantic dom](#semantic-dom) style of Notification with `classNames` and `styles`."
 }

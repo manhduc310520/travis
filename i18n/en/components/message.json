@@ -11,6 +11,5 @@
  "920a28906b67": "Display a global loading indicator, which is dismissed by itself asynchronously.",
  "b84a01ebef93": "`message` provides a promise interface for `onClose`. The above example will display a new message when the old message is about to close.",
  "12da7ac9abf9": "You can customize the [semantic dom](#semantic-dom) style of messages with `classNames` and `styles`.",
- "51117c9c433d": "Update message content with unique `key`.",
- "aa4b5821ee92": "Static methods cannot consume Context provided by `ConfigProvider`. When enable `layer`, they may also cause style errors. Please use hooks version or `App` provided instance first."
+ "51117c9c433d": "Update message content with unique `key`."
 }

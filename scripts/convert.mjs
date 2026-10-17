@@ -895,8 +895,9 @@ function convert(name) {
   const outDir = path.join(OUT, name)
   // Update in place (write only what changed) so a running Storybook keeps its index.
   fs.mkdirSync(outDir, { recursive: true })
-  // debug demos never become stories (parseDoc below): they are not copied either (they hold Chinese text)
-  const debugDemos = new Set(parseDoc(body).segments.filter((x) => x.type === 'demo' && x.debug).map((x) => x.file.replace(/\.(tsx|ts|jsx)$/, '')))
+  // debug demos never become stories (parseDoc below): they are not copied either (they hold Chinese text);
+  // neither are demos of deprecated APIs
+  const debugDemos = new Set(parseDoc(body).segments.filter((x) => x.type === 'demo' && (x.debug || /\(deprecated\)/i.test(x.label))).map((x) => x.file.replace(/\.(tsx|ts|jsx)$/, '')))
   for (const f of fs.readdirSync(path.join(srcDir, 'demo'), { recursive: true })) {
     const from = path.join(srcDir, 'demo', f)
     if (fs.statSync(from).isDirectory()) continue
@@ -1030,6 +1031,8 @@ ${pc.play}}`)
     const abs = resolveDemo(srcDir, seg.file)
     if (!abs) { skipped.push(`${seg.file} (file not found)`); continue }
     if (seg.debug) { skipped.push(`${seg.file} (debug)`); continue }
+    // no deprecated items in the docs (user 2026-10-14): demos of deprecated APIs ("Static method (deprecated)")
+    if (/\(deprecated\)/i.test(seg.label)) { skipped.push(`${seg.file} (deprecated)`); continue }
     if (SKIP_DEMOS.has(`${name}/${path.basename(abs)}`)) { skipped.push(`${seg.file} (Alibaba CDN)`); continue }
     if (CHINESE_ONLY_DEMOS.has(`${name}/${path.basename(abs)}`)) { skipped.push(`${seg.file} (Chinese only)`); continue }
     const rel = './' + path.relative(outDir, path.join(outDir, 'demo', path.relative(path.join(srcDir, 'demo'), abs))).replace(/\\/g, '/')

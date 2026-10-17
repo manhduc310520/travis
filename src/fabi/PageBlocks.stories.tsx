@@ -51,7 +51,7 @@ const SAMPLES: Record<string, (t: Texts) => PageHeaderProps> = {
 }
 
 const meta: Meta<typeof PageHeader> = {
-  title: 'Components/Layout/Page Header',
+  title: 'Components/Layout/PageHeader',
   component: PageHeader,
   tags: ['autodocs'],
   parameters: { layout: 'fullscreen' },

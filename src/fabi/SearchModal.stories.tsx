@@ -68,7 +68,7 @@ const Surface = ({ children }: { children: ReactNode }) => {
 }
 
 const meta: Meta<typeof SearchModal.Panel> = {
-  title: 'Components/Navigation/Search Modal',
+  title: 'Components/Navigation/SearchModal',
   component: SearchModal.Panel,
   tags: ['autodocs'],
   args: { autoFocus: false, onSelect: fn() },

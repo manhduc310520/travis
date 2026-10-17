@@ -7,4 +7,9 @@
 <!-- Sidebar logo: brand/logo.svg is drawn at 70×24; show it at 40px tall so "Powered by iPOS.vn" stays readable -->
 <style>
   img[src$="brand/logo.svg"] { height: 40px; width: auto; }
+  /* Narrow windows (tablets): the Brand / Mode / Language toolbar buttons show their icon only, so the toolbar
+     fits (at 768 the Share button ran off the edge); the full value stays in the button's aria-label and menu. */
+  @media (max-width: 1023px) {
+    button[aria-label^="Brand colour "], button[aria-label^="Colour mode "], button[aria-label^="Docs language "] { font-size: 0; gap: 0; }
+  }
 </style>

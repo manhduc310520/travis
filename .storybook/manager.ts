@@ -32,16 +32,18 @@ const sidebarLabel = (item: SidebarItem, api?: API) => (localeOf(api) === 'vi' &
 
 // Sidebar brand: the FABi CMS logo (public/brand/logo.svg, the owner's file, unchanged); its alt
 // text is brandTitle. The favicon (public/favicon.png) is linked in manager-head.html.
+const FONT_BASE = "'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+const BRAND = { brandTitle: BRAND_NAME, brandImage: './brand/logo.svg', brandUrl: './', fontBase: FONT_BASE }
+const LIGHT_THEME = create({ base: 'light', ...BRAND, colorPrimary: '#1d39c4', colorSecondary: '#1d39c4' })
+// The Mode toolbar's Dark also darkens Storybook's own frame (sidebar, toolbar, panels; user 2026-10-17). The
+// manager cannot load the theme package: the values are the dark theme's (preview.tsx DARK): brand text step 8,
+// container #141414.
+// The logo file is navy on light (the owner's file, unchanged), unreadable on the dark sidebar: Dark shows the
+// brand name as text instead.
+const DARK_THEME = create({ base: 'dark', ...BRAND, brandImage: undefined, colorPrimary: '#7f9ef3', colorSecondary: '#7f9ef3', appContentBg: '#141414', appPreviewBg: '#141414' })
+
 addons.setConfig({
-  theme: create({
-    base: 'light',
-    brandTitle: BRAND_NAME,
-    brandImage: './brand/logo.svg',
-    brandUrl: './',
-    colorPrimary: '#1d39c4',
-    colorSecondary: '#1d39c4',
-    fontBase: "'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-  }),
+  theme: LIGHT_THEME,
   sidebar: { renderLabel: sidebarLabel },
 })
 
@@ -73,7 +75,12 @@ new MutationObserver(() => { if (/Storybook$/.test(document.title)) tabTitle() }
 addons.register('fabi/locale-labels', (api) => {
   titleApi = api
   let shown: unknown = DEFAULT_LOCALE
+  let shownMode: unknown = 'light'
   const relabel = ({ globals }: { globals?: Record<string, unknown> }) => {
+    if (globals?.mode && globals.mode !== shownMode) {
+      shownMode = globals.mode
+      api.setOptions({ theme: globals.mode === 'dark' ? DARK_THEME : LIGHT_THEME })
+    }
     const locale = globals?.locale ?? DEFAULT_LOCALE
     titleLocale = locale
     tabTitle()

@@ -29,7 +29,7 @@ const SAMPLES = {
 const lang = (locale: unknown) => (locale === 'vi' ? 'vi' : 'en')
 
 const meta: Meta<typeof StatisticCard> = {
-  title: 'Components/Data Display/Statistic Card',
+  title: 'Components/Data Display/StatisticCard',
   component: StatisticCard,
   tags: ['autodocs'],
   args: { value: 60, icon: <File06Line />, color: 'orange' },
