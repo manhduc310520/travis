@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Alert } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -51,46 +52,46 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Khi cần hiển thị thông báo cảnh báo cho người dùng.\n- Khi cần một vùng chứa tĩnh, tồn tại lâu và người dùng có thể đóng được.\n\n## Ví dụ" : "## When To Use\n\n- When you need to show alert messages to users.\n- When you need a persistent static container which is closable by user actions.\n\n## Examples"}</DocMarkdown>
-      <h3 id="alert-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng đơn giản nhất cho các thông báo ngắn." : "The simplest usage for short messages."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="alert-demo-style" className="fabi-sb-demo-title" lang="en">More types</h3>
-      <DocMarkdown>{vi ? "Alert có 4 loại: `success`, `info`, `warning`, `error`." : "There are 4 types of Alert: `success`, `info`, `warning`, `error`."}</DocMarkdown>
-      <DocCanvas of={MoreTypes} sourceState="hidden" />
-      <h3 id="alert-demo-filled" className="fabi-sb-demo-title" lang="en">Filled</h3>
-      <DocMarkdown>{vi ? "Ẩn viền bằng `variant=\"filled\"`." : "Hide the border with `variant=\"filled\"`."}</DocMarkdown>
-      <DocCanvas of={Filled} sourceState="hidden" />
-      <h3 id="alert-demo-closable" className="fabi-sb-demo-title" lang="en">Closable</h3>
-      <DocMarkdown>{vi ? "Hiển thị nút đóng." : "To show close button."}</DocMarkdown>
-      <DocCanvas of={Closable} sourceState="hidden" />
-      <h3 id="alert-demo-description" className="fabi-sb-demo-title" lang="en">Description</h3>
-      <DocMarkdown>{vi ? "Mô tả bổ sung cho thông báo của alert." : "Additional description for alert message."}</DocMarkdown>
-      <DocCanvas of={Description} sourceState="hidden" />
-      <h3 id="alert-demo-icon" className="fabi-sb-demo-title" lang="en">Icon</h3>
-      <DocMarkdown>{vi ? "Một icon phù hợp giúp thông tin rõ ràng và thân thiện hơn." : "A relevant icon will make information clearer and more friendly."}</DocMarkdown>
-      <DocCanvas of={Icon} sourceState="hidden" />
-      <h3 id="alert-demo-banner" className="fabi-sb-demo-title" lang="en">Banner</h3>
-      <DocMarkdown>{vi ? "Hiển thị Alert dạng banner ở đầu trang." : "Display Alert as a banner at top of page."}</DocMarkdown>
-      <DocCanvas of={Banner} sourceState="hidden" />
-      <h3 id="alert-demo-loop-banner" className="fabi-sb-demo-title" lang="en">Loop Banner</h3>
-      <DocMarkdown>{vi ? "Hiển thị banner chạy vòng bằng cách dùng cùng [react-text-loop-next](https://npmjs.com/package/react-text-loop-next) hoặc [react-fast-marquee](https://npmjs.com/package/react-fast-marquee)." : "Show a loop banner by using with [react-text-loop-next](https://npmjs.com/package/react-text-loop-next) or [react-fast-marquee](https://npmjs.com/package/react-fast-marquee)."}</DocMarkdown>
-      <DocCanvas of={LoopBanner} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>react-fast-marquee</code></p>
-      <h3 id="alert-demo-smooth-closed" className="fabi-sb-demo-title" lang="en">Smoothly Unmount</h3>
-      <DocMarkdown>{vi ? "Gỡ Alert một cách mượt mà khi đóng." : "Smoothly unmount Alert upon close."}</DocMarkdown>
-      <DocCanvas of={SmoothlyUnmount} sourceState="hidden" />
-      <h3 id="alert-demo-error-boundary" className="fabi-sb-demo-title" lang="en">ErrorBoundary</h3>
-      <DocMarkdown>{vi ? "Component ErrorBoundary giúp xử lý lỗi dễ dàng hơn trong [React](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)." : "ErrorBoundary Component for making error handling easier in [React](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)."}</DocMarkdown>
-      <DocCanvas of={ErrorBoundary} sourceState="hidden" />
-      <h3 id="alert-demo-action" className="fabi-sb-demo-title" lang="en">Custom action</h3>
-      <DocMarkdown>{vi ? "Hành động tuỳ biến." : "Custom action."}</DocMarkdown>
-      <DocCanvas of={CustomAction} sourceState="hidden" />
-      <h3 id="alert-demo-custom-title-alignment" className="fabi-sb-demo-title" lang="en">Custom title alignment</h3>
-      <DocMarkdown>{vi ? "Khi không đặt `description`, Alert căn giữa theo chiều dọc icon, nội dung, hành động và nút đóng như một nhóm. Thư viện không chuyển layout mặc định này sang `flex-start` với các độ lệch suy ra từ token, vì `styles` tuỳ biến có thể thay đổi cỡ chữ, chiều cao dòng hoặc kích thước hành động, khiến các độ lệch đó không còn khớp với style thực tế được render. Khi một tiêu đề xuống dòng và bạn muốn căn các phần tử đó theo dòng đầu tiên, hãy điều chỉnh chúng bằng `styles` semantic." : "When `description` is not set, Alert vertically centers the icon, content, action, and close button as a group. The library does not switch this default layout to `flex-start` with token-derived offsets because customized `styles` may change font size, line height, or action size, making those offsets no longer match the actual rendered styles. When a wrapping title should align those elements with the first line, adjust them with semantic `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomTitleAlignment} sourceState="hidden" />
-      <h3 id="alert-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ biến style của [semantic dom](#semantic-dom) trong Alert bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Alert by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="alert-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng đơn giản nhất cho các thông báo ngắn." : "The simplest usage for short messages."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-style" title="More types" of={MoreTypes} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Alert có 4 loại: `success`, `info`, `warning`, `error`." : "There are 4 types of Alert: `success`, `info`, `warning`, `error`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-filled" title="Filled" of={Filled} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Ẩn viền bằng `variant=\"filled\"`." : "Hide the border with `variant=\"filled\"`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-closable" title="Closable" of={Closable} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Hiển thị nút đóng." : "To show close button."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-description" title="Description" of={Description} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Mô tả bổ sung cho thông báo của alert." : "Additional description for alert message."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-icon" title="Icon" of={Icon} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Một icon phù hợp giúp thông tin rõ ràng và thân thiện hơn." : "A relevant icon will make information clearer and more friendly."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-banner" title="Banner" of={Banner} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Hiển thị Alert dạng banner ở đầu trang." : "Display Alert as a banner at top of page."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-loop-banner" title="Loop Banner" of={LoopBanner} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Hiển thị banner chạy vòng bằng cách dùng cùng [react-text-loop-next](https://npmjs.com/package/react-text-loop-next) hoặc [react-fast-marquee](https://npmjs.com/package/react-fast-marquee)." : "Show a loop banner by using with [react-text-loop-next](https://npmjs.com/package/react-text-loop-next) or [react-fast-marquee](https://npmjs.com/package/react-fast-marquee)."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>react-fast-marquee</code></p>
+      </DemoBox>
+      <DemoBox id="alert-demo-smooth-closed" title="Smoothly Unmount" of={SmoothlyUnmount} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Gỡ Alert một cách mượt mà khi đóng." : "Smoothly unmount Alert upon close."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-error-boundary" title="ErrorBoundary" of={ErrorBoundary} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Component ErrorBoundary giúp xử lý lỗi dễ dàng hơn trong [React](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)." : "ErrorBoundary Component for making error handling easier in [React](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-action" title="Custom action" of={CustomAction} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Hành động tuỳ biến." : "Custom action."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-custom-title-alignment" title="Custom title alignment" of={CustomTitleAlignment} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Khi không đặt `description`, Alert căn giữa theo chiều dọc icon, nội dung, hành động và nút đóng như một nhóm. Thư viện không chuyển layout mặc định này sang `flex-start` với các độ lệch suy ra từ token, vì `styles` tuỳ biến có thể thay đổi cỡ chữ, chiều cao dòng hoặc kích thước hành động, khiến các độ lệch đó không còn khớp với style thực tế được render. Khi một tiêu đề xuống dòng và bạn muốn căn các phần tử đó theo dòng đầu tiên, hãy điều chỉnh chúng bằng `styles` semantic." : "When `description` is not set, Alert vertically centers the icon, content, action, and close button as a group. The library does not switch this default layout to `flex-start` with token-derived offsets because customized `styles` may change font size, line height, or action size, making those offsets no longer match the actual rendered styles. When a wrapping title should align those elements with the first line, adjust them with semantic `styles`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="alert-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ biến style của [semantic dom](#semantic-dom) trong Alert bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Alert by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| action | Hành động của Alert | ReactNode | - | × |\n| banner | Có hiển thị dạng banner hay không | boolean | false | × |\n| variant | Biến thể style của Alert | `outlined` \\| `filled` | `outlined` | ✓ |\n| classNames | Tuỳ biến class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| closable | Cấu hình đóng | boolean \\| [ClosableType](#closabletype) & React.AriaAttributes | `false` | ✓ |\n| closeIcon | (Chỉ hỗ trợ cấu hình chung) Icon đóng tuỳ biến | ReactNode | - | ✓ |\n| description | Nội dung bổ sung của Alert | ReactNode | - | × |\n| errorIcon | (Chỉ hỗ trợ cấu hình chung) Icon lỗi tuỳ biến trong icon của Alert | ReactNode | - | ✓ |\n| icon | Icon tuỳ biến, có hiệu lực khi `showIcon` là true | ReactNode | - | × |\n| infoIcon | (Chỉ hỗ trợ cấu hình chung) Icon thông tin tuỳ biến trong icon của Alert | ReactNode | - | ✓ |\n| showIcon | Có hiển thị icon hay không | boolean | false; ở chế độ `banner` mặc định là true | × |\n| styles | Tuỳ biến style inline cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| successIcon | (Chỉ hỗ trợ cấu hình chung) Icon thành công tuỳ biến trong icon của Alert | ReactNode | - | ✓ |\n| title | Nội dung của Alert | ReactNode | - | × |\n| type | Kiểu style của Alert, các lựa chọn: `success`, `info`, `warning`, `error` | string | `info`; ở chế độ `banner` mặc định là `warning` | × |\n| warningIcon | (Chỉ hỗ trợ cấu hình chung) Icon cảnh báo tuỳ biến trong icon của Alert | ReactNode | - | ✓ |\n\n### ClosableType\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| afterClose | Được gọi khi hiệu ứng đóng kết thúc | function | - |\n| closeIcon | Icon đóng tuỳ biến | ReactNode | - |\n| onClose | Hàm callback khi Alert được đóng | (e: MouseEvent) => void | - |\n\n### Alert.ErrorBoundary\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| description | Mô tả lỗi tuỳ biến để hiển thị | ReactNode | {{ error stack }} |\n| title | Tiêu đề lỗi tuỳ biến để hiển thị | ReactNode | {{ error }} |\n\n## Semantic DOM" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| action | The action of Alert | ReactNode | - | × |\n| banner | Whether to show as banner | boolean | false | × |\n| variant | Variant of Alert style | `outlined` \\| `filled` | `outlined` | ✓ |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| closable | The config of closable | boolean \\| [ClosableType](#closabletype) & React.AriaAttributes | `false` | ✓ |\n| closeIcon | (Only supports global configuration) Custom close icon | ReactNode | - | ✓ |\n| description | Additional content of Alert | ReactNode | - | × |\n| errorIcon | (Only supports global configuration) Custom error icon in Alert icon | ReactNode | - | ✓ |\n| icon | Custom icon, effective when `showIcon` is true | ReactNode | - | × |\n| infoIcon | (Only supports global configuration) Custom info icon in Alert icon | ReactNode | - | ✓ |\n| showIcon | Whether to show icon | boolean | false, in `banner` mode default is true | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| successIcon | (Only supports global configuration) Custom success icon in Alert icon | ReactNode | - | ✓ |\n| title | Content of Alert | ReactNode | - | × |\n| type | Type of Alert styles, options: `success`, `info`, `warning`, `error` | string | `info`, in `banner` mode default is `warning` | × |\n| warningIcon | (Only supports global configuration) Custom warning icon in Alert icon | ReactNode | - | ✓ |\n\n### ClosableType\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| afterClose | Called when close animation is finished | function | - |\n| closeIcon | Custom close icon | ReactNode | - |\n| onClose | Callback when Alert is closed | (e: MouseEvent) => void | - |\n\n### Alert.ErrorBoundary\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| description | Custom error description to show | ReactNode | {{ error stack }} |\n| title | Custom error title to show | ReactNode | {{ error }} |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo13 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Descriptions } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -41,30 +42,30 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{[vi ? "## Khi nào dùng\n\nThường được hiển thị ở trang chi tiết.\n\n" : "## When To Use\n\nCommonly displayed on the details page.\n\n", "```tsx | pure\nconst items: DescriptionsProps['items'] = [\n  {\n    key: '1',\n    label: 'UserName',\n    children: <p>Zhou Maomao</p>,\n  },\n  {\n    key: '2',\n    label: 'Telephone',\n    children: <p>1810000000</p>,\n  },\n  {\n    key: '3',\n    label: 'Live',\n    children: <p>Hangzhou, Zhejiang</p>,\n  },\n  {\n    key: '4',\n    label: 'Remark',\n    children: <p>empty</p>,\n  },\n  {\n    key: '5',\n    label: 'Address',\n    children: <p>No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China</p>,\n  },\n];\n\n<Descriptions title=\"User Info\" items={items} />;\n```", vi ? "\n\n## Ví dụ" : "\n\n## Examples"].join('')}</DocMarkdown>
-      <h3 id="descriptions-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "Simplest Usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="descriptions-demo-border" className="fabi-sb-demo-title" lang="en">border</h3>
-      <DocMarkdown>{vi ? "Descriptions có viền và màu nền." : "Descriptions with border and background color."}</DocMarkdown>
-      <DocCanvas of={Border} sourceState="hidden" />
-      <h3 id="descriptions-demo-size" className="fabi-sb-demo-title" lang="en">Custom size</h3>
-      <DocMarkdown>{vi ? "Kích thước tuỳ chỉnh để vừa với nhiều loại container." : "Custom sizes to fit in a variety of containers."}</DocMarkdown>
-      <DocCanvas of={CustomSize} sourceState="hidden" />
-      <h3 id="descriptions-demo-responsive" className="fabi-sb-demo-title" lang="en">responsive</h3>
-      <DocMarkdown>{vi ? "Cấu hình responsive giúp hiển thị hoàn hảo trên các thiết bị màn hình nhỏ." : "Responsive configuration enables perfect presentation on small screen devices."}</DocMarkdown>
-      <DocCanvas of={Responsive} sourceState="hidden" />
-      <h3 id="descriptions-demo-vertical" className="fabi-sb-demo-title" lang="en">Vertical</h3>
-      <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "Simplest Usage."}</DocMarkdown>
-      <DocCanvas of={Vertical} sourceState="hidden" />
-      <h3 id="descriptions-demo-vertical-border" className="fabi-sb-demo-title" lang="en">Vertical border</h3>
-      <DocMarkdown>{vi ? "Descriptions có viền và màu nền." : "Descriptions with border and background color."}</DocMarkdown>
-      <DocCanvas of={VerticalBorder} sourceState="hidden" />
-      <h3 id="descriptions-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Descriptions bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Descriptions by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
-      <h3 id="descriptions-demo-block" className="fabi-sb-demo-title" lang="en">row</h3>
-      <DocMarkdown>{vi ? "Hiển thị trên toàn bộ dòng." : "Display of the entire line."}</DocMarkdown>
-      <DocCanvas of={Row} sourceState="hidden" />
+      <DemoBox id="descriptions-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "Simplest Usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="descriptions-demo-border" title="border" of={Border} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Descriptions có viền và màu nền." : "Descriptions with border and background color."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="descriptions-demo-size" title="Custom size" of={CustomSize} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Kích thước tuỳ chỉnh để vừa với nhiều loại container." : "Custom sizes to fit in a variety of containers."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="descriptions-demo-responsive" title="responsive" of={Responsive} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Cấu hình responsive giúp hiển thị hoàn hảo trên các thiết bị màn hình nhỏ." : "Responsive configuration enables perfect presentation on small screen devices."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="descriptions-demo-vertical" title="Vertical" of={Vertical} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "Simplest Usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="descriptions-demo-vertical-border" title="Vertical border" of={VerticalBorder} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Descriptions có viền và màu nền." : "Descriptions with border and background color."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="descriptions-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Descriptions bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Descriptions by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="descriptions-demo-block" title="row" of={Row} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Hiển thị trên toàn bộ dòng." : "Display of the entire line."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Descriptions\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| bordered | Có hiển thị viền hay không | boolean | false | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| colon | Thay đổi giá trị mặc định của prop `colon` của Descriptions.Item. Cho biết có hiển thị dấu hai chấm sau nhãn hay không | boolean | true | × |\n| column | Số lượng `DescriptionItems` trên một hàng, có thể là object (như `{ xs: 8, sm: 16, md: 24}`, nhưng phải có `bordered={true}`) hoặc một số | number \\| Record&lt;Breakpoint, number> | 3 | × |\n| extra | Vùng hành động của danh sách mô tả, đặt ở góc trên bên phải | ReactNode | - | × |\n| items | Mô tả nội dung của các mục trong danh sách | [DescriptionsItem](#descriptionitem)[] | - | × |\n| layout | Định nghĩa layout của phần mô tả | `horizontal` \\| `vertical` | `horizontal` | × |\n| size | Đặt kích thước của danh sách. Có thể đặt là `medium`,`small`, hoặc để trống | `large` \\| `medium` \\| `small` | `large` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| title | Tiêu đề của danh sách mô tả, đặt ở phía trên | ReactNode | - | × |\n\n### DescriptionItem\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| label | Phần mô tả của nội dung | ReactNode | - |\n| span | Số cột được bao gồm (`filled` lấp đầy phần còn lại của hàng hiện tại) | number \\| `filled` \\| Screens | 1 |\n\n> Số cột mà Description.Item chiếm (span). Span={2} chiếm độ rộng của hai DescriptionItem. Khi cấu hình đồng thời `style` và `labelStyle` (hoặc `contentStyle`), cả hai đều có tác dụng. Khi xung đột, cái sau sẽ ghi đè cái trước.\n\n## Semantic DOM" : "## API\n\n### Descriptions\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| bordered | Whether to display the border | boolean | false | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| colon | Change default props `colon` value of Descriptions.Item. Indicates whether the colon after the label is displayed | boolean | true | × |\n| column | The number of `DescriptionItems` in a row, could be an object (like `{ xs: 8, sm: 16, md: 24}`, but must have `bordered={true}`) or a number | number \\| Record&lt;Breakpoint, number> | 3 | × |\n| extra | The action area of the description list, placed at the top-right | ReactNode | - | × |\n| items | Describe the contents of the list item | [DescriptionsItem](#descriptionitem)[] | - | × |\n| layout | Define description layout | `horizontal` \\| `vertical` | `horizontal` | × |\n| size | Set the size of the list. Can be set to `medium`,`small`, or not filled | `large` \\| `medium` \\| `small` | `large` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| title | The title of the description list, placed at the top | ReactNode | - | × |\n\n### DescriptionItem\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| label | The description of the content | ReactNode | - |\n| span | The number of columns included(`filled` Fill the remaining part of the current row) | number \\| `filled` \\| Screens | 1 |\n\n> The number of span Description.Item. Span={2} takes up the width of two DescriptionItems. When both `style` and `labelStyle`(or `contentStyle`) configured, both of them will work. And next one will overwrite first when conflict.\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo8 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import Demo0 from "./demo/basic"
 import Demo0Source from "./demo/basic.tsx?raw"
@@ -25,21 +26,21 @@ function DocsPage() {
       <DocTitle />
       <DocMarkdown>{vi ? "Container bố cục flex dùng để căn chỉnh." : "A flex layout container for alignment."}</DocMarkdown>
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Phù hợp để thiết lập khoảng cách giữa các phần tử.\n- Phù hợp để thiết lập nhiều kiểu căn chỉnh ngang và dọc.\n\n### Khác biệt với component Space\n\n- Space dùng để thiết lập khoảng cách giữa các phần tử inline. Nó thêm một phần tử bao (wrapper) cho mỗi phần tử con để căn chỉnh inline. Phù hợp để sắp xếp đều khoảng cách nhiều phần tử con theo hàng và cột.\n- Flex dùng để thiết lập bố cục cho các phần tử block. Nó không thêm phần tử bao. Phù hợp để bố cục các phần tử con theo chiều dọc hoặc ngang, đồng thời linh hoạt và dễ kiểm soát hơn.\n\n## Ví dụ" : "## When To Use\n\n- Good for setting spacing between elements.\n- Suitable for setting various horizontal and vertical alignments.\n\n### Difference with Space component\n\n- Space is used to set the spacing between inline elements. It will add a wrapper element for each child element for inline alignment. Suitable for equidistant arrangement of multiple child elements in rows and columns.\n- Flex is used to set the layout of block-level elements. It does not add a wrapper element. Suitable for layout of child elements in vertical or horizontal direction, and provides more flexibility and control.\n\n## Examples"}</DocMarkdown>
-      <h3 id="flex-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng cơ bản." : "The basic usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="flex-demo-align" className="fabi-sb-demo-title" lang="en">align</h3>
-      <DocMarkdown>{vi ? "Thiết lập căn chỉnh." : "Set align."}</DocMarkdown>
-      <DocCanvas of={Align} sourceState="hidden" />
-      <h3 id="flex-demo-gap" className="fabi-sb-demo-title" lang="en">gap</h3>
-      <DocMarkdown>{vi ? "Thiết lập `gap` giữa các phần tử, có ba kích thước định sẵn: `small`, `medium` và `large`. Bạn cũng có thể tuỳ chỉnh kích thước khoảng cách." : "Set the `gap` between elements, which has three preset sizes: `small`, `medium`, and `large`. You can also customize the gap size."}</DocMarkdown>
-      <DocCanvas of={Gap} sourceState="hidden" />
-      <h3 id="flex-demo-wrap" className="fabi-sb-demo-title" lang="en">Wrap</h3>
-      <DocMarkdown>{vi ? "Tự động xuống dòng." : "Auto wrap line."}</DocMarkdown>
-      <DocCanvas of={Wrap} sourceState="hidden" />
-      <h3 id="flex-demo-combination" className="fabi-sb-demo-title" lang="en">combination</h3>
-      <DocMarkdown>{vi ? "Lồng nhau để tạo bố cục phức tạp hơn." : "Nesting can achieve more complex layouts."}</DocMarkdown>
-      <DocCanvas of={Combination} sourceState="hidden" />
+      <DemoBox id="flex-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng cơ bản." : "The basic usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="flex-demo-align" title="align" of={Align} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Thiết lập căn chỉnh." : "Set align."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="flex-demo-gap" title="gap" of={Gap} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Thiết lập `gap` giữa các phần tử, có ba kích thước định sẵn: `small`, `medium` và `large`. Bạn cũng có thể tuỳ chỉnh kích thước khoảng cách." : "Set the `gap` between elements, which has three preset sizes: `small`, `medium`, and `large`. You can also customize the gap size."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="flex-demo-wrap" title="Wrap" of={Wrap} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Tự động xuống dòng." : "Auto wrap line."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="flex-demo-combination" title="combination" of={Combination} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Lồng nhau để tạo bố cục phức tạp hơn." : "Nesting can achieve more complex layouts."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\nMặc định, Flex ở chế độ ngang căn theo hướng lên trên, ở chế độ dọc thì căn stretch. Bạn có thể điều chỉnh qua các thuộc tính.\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| vertical | Hướng của flex có phải dọc hay không, dùng `flex-direction: column` | boolean | false | ✓ |\n| wrap | Thiết lập phần tử hiển thị trên một dòng hay nhiều dòng | [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap) \\| boolean | nowrap | × |\n| justify | Thiết lập căn chỉnh các phần tử theo hướng trục chính | [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) | normal | × |\n| align | Thiết lập căn chỉnh các phần tử theo hướng trục chéo | [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) | normal | × |\n| flex | Thuộc tính viết tắt flex của CSS | [flex](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) | normal | × |\n| gap | Thiết lập khoảng cách giữa các ô | `small` \\| `medium` \\| `large` \\| string \\| number | - | × |\n| component | Kiểu phần tử tuỳ chỉnh | React.ComponentType | `div` | × |\n| orientation | Hướng của flex | `horizontal` \\| `vertical` | `horizontal` | × |\n\n## Design Token" : "## API\n\nThe default behavior of Flex in horizontal mode is to align upward, In vertical mode, aligns the stretch, You can adjust this via properties.\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| vertical | Is direction of the flex vertical, use `flex-direction: column` | boolean | false | ✓ |\n| wrap | Set whether the element is displayed in a single line or in multiple lines | [flex-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap) \\| boolean | nowrap | × |\n| justify | Sets the alignment of elements in the direction of the main axis | [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content) | normal | × |\n| align | Sets the alignment of elements in the direction of the cross axis | [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items) | normal | × |\n| flex | flex CSS shorthand properties | [flex](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) | normal | × |\n| gap | Sets the gap between grids | `small` \\| `medium` \\| `large` \\| string \\| number | - | × |\n| component | custom element type | React.ComponentType | `div` | × |\n| orientation | direction of the flex | `horizontal` \\| `vertical` | `horizontal` | × |\n\n## Design Token"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block"><ComponentTokenTable component="Flex" /></div></DocUnstyled>
     </>

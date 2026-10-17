@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Collapse } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -49,42 +50,42 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Có thể dùng để nhóm hoặc ẩn các vùng phức tạp nhằm giữ trang gọn gàng.\n- `Accordion` là một dạng đặc biệt của `Collapse`, chỉ cho phép mở rộng một panel tại một thời điểm.\n\n## Ví dụ" : "## When To Use\n\n- Can be used to group or hide complex regions to keep the page clean.\n- `Accordion` is a special kind of `Collapse`, which allows only one panel to be expanded at a time.\n\n## Examples"}</DocMarkdown>
-      <h3 id="collapse-demo-basic" className="fabi-sb-demo-title" lang="en">Collapse</h3>
-      <DocMarkdown>{vi ? "Mặc định, có thể mở rộng bất kỳ số lượng panel nào cùng lúc. Trong ví dụ này panel đầu tiên được mở rộng." : "By default, any number of panels can be expanded at a time. The first panel is expanded in this example."}</DocMarkdown>
-      <DocCanvas of={Collapse2} sourceState="hidden" />
-      <h3 id="collapse-demo-size" className="fabi-sb-demo-title" lang="en">Size</h3>
-      <DocMarkdown>{vi ? "FABi CMS Design System hỗ trợ kích thước collapse mặc định cũng như kích thước lớn và nhỏ.\n\nNếu muốn collapse lớn hoặc nhỏ, hãy đặt thuộc tính `size` là `large` hoặc `small` tương ứng. Bỏ qua thuộc tính `size` để có collapse với kích thước `medium` mặc định." : "FABi CMS Design System supports a default collapse size as well as a large and small size.\n\nIf a large or small collapse is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a collapse with the default `medium` size."}</DocMarkdown>
-      <DocCanvas of={Size} sourceState="hidden" />
-      <h3 id="collapse-demo-accordion" className="fabi-sb-demo-title" lang="en">Accordion</h3>
-      <DocMarkdown>{vi ? "Ở chế độ accordion, chỉ một panel được mở rộng tại một thời điểm." : "In accordion mode, only one panel can be expanded at a time."}</DocMarkdown>
-      <DocCanvas of={Accordion} sourceState="hidden" />
-      <h3 id="collapse-demo-mix" className="fabi-sb-demo-title" lang="en">Nested panel</h3>
-      <DocMarkdown>{vi ? "`Collapse` được lồng bên trong `Collapse`." : "`Collapse` is nested inside the `Collapse`."}</DocMarkdown>
-      <DocCanvas of={NestedPanel} sourceState="hidden" />
-      <h3 id="collapse-demo-borderless" className="fabi-sb-demo-title" lang="en">Borderless</h3>
-      <DocMarkdown>{vi ? "Kiểu Collapse không viền." : "A borderless style of Collapse."}</DocMarkdown>
-      <DocCanvas of={Borderless} sourceState="hidden" />
-      <h3 id="collapse-demo-custom" className="fabi-sb-demo-title" lang="en">Custom Panel</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh nền, viền, margin và icon cho từng panel." : "Customize the background, border, margin styles and icon for each panel."}</DocMarkdown>
-      <DocCanvas of={CustomPanel} sourceState="hidden" />
-      <h3 id="collapse-demo-icon" className="fabi-sb-demo-title" lang="en">Panel with icon</h3>
-      <DocMarkdown>{vi ? "Thêm icon vào tiêu đề panel. Một `<svg>` trần từ thư viện icon bên thứ ba (ví dụ lucide, react-icons) vẫn được canh giữa theo chiều dọc so với chữ tiêu đề." : "Add an icon to the panel title. A bare `<svg>` from a third-party icon library (e.g. lucide, react-icons) stays vertically centred with the title text."}</DocMarkdown>
-      <DocCanvas of={PanelWithIcon} sourceState="hidden" />
-      <h3 id="collapse-demo-noarrow" className="fabi-sb-demo-title" lang="en">No arrow</h3>
-      <DocMarkdown>{vi ? "Bạn có thể ẩn icon mũi tên bằng cách truyền `showArrow={false}` cho component `CollapsePanel`." : "You can hide the arrow icon by passing `showArrow={false}` to `CollapsePanel` component."}</DocMarkdown>
-      <DocCanvas of={NoArrow} sourceState="hidden" />
-      <h3 id="collapse-demo-extra" className="fabi-sb-demo-title" lang="en">Extra node</h3>
-      <DocMarkdown>{vi ? "Render một phần tử bổ sung ở góc trên bên phải của mỗi panel." : "Render extra element in the top-right corner of each panel."}</DocMarkdown>
-      <DocCanvas of={ExtraNode} sourceState="hidden" />
-      <h3 id="collapse-demo-ghost" className="fabi-sb-demo-title" lang="en">Ghost Collapse</h3>
-      <DocMarkdown>{vi ? "Làm nền của collapse trong suốt." : "Making collapse's background to transparent."}</DocMarkdown>
-      <DocCanvas of={GhostCollapse} sourceState="hidden" />
-      <h3 id="collapse-demo-collapsible" className="fabi-sb-demo-title" lang="en">Collapsible</h3>
-      <DocMarkdown>{vi ? "Chỉ định vùng kích hoạt của collapsible bằng `collapsible`." : "Specify the trigger area of collapsible by `collapsible`."}</DocMarkdown>
-      <DocCanvas of={Collapsible} sourceState="hidden" />
-      <h3 id="collapse-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Collapse bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Collapse by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="collapse-demo-basic" title="Collapse" of={Collapse2} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Mặc định, có thể mở rộng bất kỳ số lượng panel nào cùng lúc. Trong ví dụ này panel đầu tiên được mở rộng." : "By default, any number of panels can be expanded at a time. The first panel is expanded in this example."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-size" title="Size" of={Size} code={Demo1Source}>
+        <DocMarkdown>{vi ? "FABi CMS Design System hỗ trợ kích thước collapse mặc định cũng như kích thước lớn và nhỏ.\n\nNếu muốn collapse lớn hoặc nhỏ, hãy đặt thuộc tính `size` là `large` hoặc `small` tương ứng. Bỏ qua thuộc tính `size` để có collapse với kích thước `medium` mặc định." : "FABi CMS Design System supports a default collapse size as well as a large and small size.\n\nIf a large or small collapse is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a collapse with the default `medium` size."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-accordion" title="Accordion" of={Accordion} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Ở chế độ accordion, chỉ một panel được mở rộng tại một thời điểm." : "In accordion mode, only one panel can be expanded at a time."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-mix" title="Nested panel" of={NestedPanel} code={Demo3Source}>
+        <DocMarkdown>{vi ? "`Collapse` được lồng bên trong `Collapse`." : "`Collapse` is nested inside the `Collapse`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-borderless" title="Borderless" of={Borderless} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Kiểu Collapse không viền." : "A borderless style of Collapse."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-custom" title="Custom Panel" of={CustomPanel} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh nền, viền, margin và icon cho từng panel." : "Customize the background, border, margin styles and icon for each panel."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-icon" title="Panel with icon" of={PanelWithIcon} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Thêm icon vào tiêu đề panel. Một `<svg>` trần từ thư viện icon bên thứ ba (ví dụ lucide, react-icons) vẫn được canh giữa theo chiều dọc so với chữ tiêu đề." : "Add an icon to the panel title. A bare `<svg>` from a third-party icon library (e.g. lucide, react-icons) stays vertically centred with the title text."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-noarrow" title="No arrow" of={NoArrow} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Bạn có thể ẩn icon mũi tên bằng cách truyền `showArrow={false}` cho component `CollapsePanel`." : "You can hide the arrow icon by passing `showArrow={false}` to `CollapsePanel` component."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-extra" title="Extra node" of={ExtraNode} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Render một phần tử bổ sung ở góc trên bên phải của mỗi panel." : "Render extra element in the top-right corner of each panel."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-ghost" title="Ghost Collapse" of={GhostCollapse} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Làm nền của collapse trong suốt." : "Making collapse's background to transparent."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-collapsible" title="Collapsible" of={Collapsible} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Chỉ định vùng kích hoạt của collapsible bằng `collapsible`." : "Specify the trigger area of collapsible by `collapsible`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="collapse-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Collapse bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Collapse by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Collapse\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| accordion | Nếu là true, Collapse được render dạng Accordion | boolean | false | × |\n| activeKey | Key của panel đang hoạt động | string\\[] \\| string <br/> number\\[] \\| number | Không có giá trị mặc định. Ở [chế độ accordion](#collapse-demo-accordion), đó là key của panel đầu tiên | × |\n| bordered | Bật/tắt việc render viền quanh khối collapse | boolean | true | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| collapsible | Chỉ định cách kích hoạt Collapse: nhấp vào icon, nhấp vào bất kỳ vùng nào ở header, hoặc vô hiệu hoá chính chức năng collapse | `header` \\| `icon` \\| `disabled` | - | × |\n| defaultActiveKey | Key của panel được kích hoạt ban đầu | string\\[] \\| string <br/> number\\[] \\| number | - | × |\n| destroyOnHidden | Huỷ panel không hoạt động | boolean | false | × |\n| expandIcon | Tuỳ chỉnh icon mở rộng của collapse | (panelProps) => ReactNode | - | ✓ |\n| expandIconPlacement | Đặt vị trí của icon mở rộng | `start` \\| `end` | `start` | × |\n| ghost | Làm collapse không viền và nền trong suốt | boolean | false | × |\n| size | Đặt kích thước của collapse | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| onChange | Hàm callback được thực thi khi panel đang hoạt động thay đổi | function | - | × |\n| items | Nội dung các mục của collapse | [ItemType](#itemtype) | - | × |\n\n### ItemType\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| classNames | className của cấu trúc semantic | [`Record<header \\| body, string>`](#semantic-dom) | - |\n| collapsible | Chỉ định panel có thể thu gọn hay không, hoặc vùng kích hoạt của collapsible | `header` \\| `icon` \\| `disabled` | - |\n| children | Nội dung vùng body | ReactNode | - |\n| extra | Phần tử bổ sung ở góc | ReactNode | - |\n| forceRender | Bắt buộc render nội dung của panel, thay vì render lười sau khi nhấp vào header | boolean | false |\n| key | Key duy nhất để phân biệt panel với các panel cùng cấp | string \\| number | - |\n| label | Tiêu đề của panel | ReactNode | - |\n| showArrow | Nếu là false, panel sẽ không hiển thị icon mũi tên. Nếu là false, collapsible không thể đặt là icon | boolean | true |\n| styles | Style của Semantic DOM | [`Record<header \\| body, CSSProperties>`](#semantic-dom) | - |\n\n### Collapse.Panel\n\n> **Ngừng hỗ trợ**\n>\n> Nên cấu hình panel bằng `items`.\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| collapsible | Chỉ định panel có thể thu gọn hay không, hoặc vùng kích hoạt của collapsible | `header` \\| `icon` \\| `disabled` | - |\n| extra | Phần tử bổ sung ở góc | ReactNode | - |\n| forceRender | Bắt buộc render nội dung của panel, thay vì render lười sau khi nhấp vào header | boolean | false |\n| header | Tiêu đề của panel | ReactNode | - |\n| key | Key duy nhất để phân biệt panel với các panel cùng cấp | string \\| number | - |\n| showArrow | Nếu là false, panel sẽ không hiển thị icon mũi tên. Nếu là false, collapsible không thể đặt là icon | boolean | true |\n\n## Semantic DOM" : "## API\n\n### Collapse\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| accordion | If true, Collapse renders as Accordion | boolean | false | × |\n| activeKey | Key of the active panel | string\\[] \\| string <br/> number\\[] \\| number | No default value. In [accordion mode](#collapse-demo-accordion), it's the key of the first panel | × |\n| bordered | Toggles rendering of the border around the collapse block | boolean | true | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| collapsible | Specify how to trigger Collapse. Either by clicking icon or by clicking any area in header or disable collapse functionality itself | `header` \\| `icon` \\| `disabled` | - | × |\n| defaultActiveKey | Key of the initial active panel | string\\[] \\| string <br/> number\\[] \\| number | - | × |\n| destroyOnHidden | Destroy Inactive Panel | boolean | false | × |\n| expandIcon | Customize the collapse expand icon | (panelProps) => ReactNode | - | ✓ |\n| expandIconPlacement | Set expand icon placement | `start` \\| `end` | `start` | × |\n| ghost | Make the collapse borderless and its background transparent | boolean | false | × |\n| size | Set the size of collapse | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| onChange | Callback function executed when active panel is changed | function | - | × |\n| items | collapse items content | [ItemType](#itemtype) | - | × |\n\n### ItemType\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| classNames | Semantic structure className | [`Record<header \\| body, string>`](#semantic-dom) | - |\n| collapsible | Specify whether the panel be collapsible or the trigger area of collapsible | `header` \\| `icon` \\| `disabled` | - |\n| children | Body area content | ReactNode | - |\n| extra | The extra element in the corner | ReactNode | - |\n| forceRender | Forced render of content on panel, instead of lazy rendering after clicking on header | boolean | false |\n| key | Unique key identifying the panel from among its siblings | string \\| number | - |\n| label | Title of the panel | ReactNode | - |\n| showArrow | If false, panel will not show arrow icon. If false, collapsible can't be set as icon | boolean | true |\n| styles | Semantic DOM style | [`Record<header \\| body, CSSProperties>`](#semantic-dom) | - |\n\n### Collapse.Panel\n\n> **Deprecated**\n>\n> We recommend configuring the panels with `items`.\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| collapsible | Specify whether the panel be collapsible or the trigger area of collapsible | `header` \\| `icon` \\| `disabled` | - |\n| extra | The extra element in the corner | ReactNode | - |\n| forceRender | Forced render of content on panel, instead of lazy rendering after clicking on header | boolean | false |\n| header | Title of the panel | ReactNode | - |\n| key | Unique key identifying the panel from among its siblings | string \\| number | - |\n| showArrow | If false, panel will not show arrow icon. If false, collapsible can't be set as icon | boolean | true |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo12 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

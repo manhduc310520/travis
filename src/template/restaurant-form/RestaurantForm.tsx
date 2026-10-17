@@ -33,6 +33,7 @@ import {
 import type { UploadFile } from '@fabi/ui';
 import { HelpCircleLine, ImagePlusLine, Trash01Line } from '@fabi/ui/fabi-icons';
 import AppShell from '../shell/AppShell';
+import FillHeight from '../shell/FillHeight';
 import { BANKS, CITIES } from '../data/restaurants';
 
 /** "?" after a label: the explanation in a Tooltip */
@@ -380,7 +381,7 @@ const RestaurantFormInner: React.FC = () => {
           tabBarStyle={{ margin: 0, paddingInline: token.padding, background: token.colorBgContainer, borderBottom: `${token.lineWidth}px solid ${token.colorBorderSecondary}` }}
           items={[
             { key: 'details', label: 'Thông tin chi tiết', children: details },
-            { key: 'devices', label: 'Thiết bị', children: <Card><Empty description="Chưa có thiết kế cho phần này" /></Card> },
+            { key: 'devices', label: 'Thiết bị', children: <Card><FillHeight><Empty description="Chưa có thiết kế cho phần này" /></FillHeight></Card> },
             { key: 'advanced', label: 'Cấu hình nâng cao', children: advanced },
           ]}
           renderTabBar={(props, TabBar) => (

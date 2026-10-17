@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Calendar } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -41,37 +42,37 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nKhi dữ liệu có dạng ngày tháng, ví dụ lịch trình, thời khoá biểu, lịch giá, lịch âm. Component này cũng hỗ trợ chuyển đổi Năm/Tháng.\n\n## Ví dụ" : "## When To Use\n\nWhen data is in the form of dates, such as schedules, timetables, prices calendar, lunar calendar. This component also supports Year/Month switch.\n\n## Examples"}</DocMarkdown>
-      <h3 id="calendar-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Component lịch cơ bản với chuyển đổi Năm/Tháng." : "A basic calendar component with Year/Month switch."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="calendar-demo-notice-calendar" className="fabi-sb-demo-title" lang="en">Notice Calendar</h3>
-      <DocMarkdown>{vi ? "Có thể render component này bằng `dateCellRender` và `monthCellRender` với dữ liệu bạn cần." : "This component can be rendered by using `dateCellRender` and `monthCellRender` with the data you need."}</DocMarkdown>
-      <DocCanvas of={NoticeCalendar} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="calendar-demo-event-range" className="fabi-sb-demo-title" lang="en">Event Range</h3>
-      <DocMarkdown>{vi ? "Render các khoảng sự kiện trải dài qua nhiều ngày bằng `cellRender`. Ví dụ tính xem mỗi ngày là đầu, giữa, cuối hay sự kiện trong một ngày, rồi vẽ các thanh khoảng gọn nhẹ." : "Render event ranges across days with `cellRender`. The example calculates whether each date is the start, middle, end, or a single-day event and draws compact range bars."}</DocMarkdown>
-      <DocCanvas of={EventRange} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>clsx</code>, <code>dayjs</code></p>
-      <h3 id="calendar-demo-card" className="fabi-sb-demo-title" lang="en">Card</h3>
-      <DocMarkdown>{vi ? "Lồng trong một phần tử container để render trong không gian hạn chế." : "Nested inside a container element for rendering in limited space."}</DocMarkdown>
-      <DocCanvas of={Card} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="calendar-demo-select" className="fabi-sb-demo-title" lang="en">Selectable Calendar</h3>
-      <DocMarkdown>{vi ? "Component lịch cơ bản với chuyển đổi Năm/Tháng." : "A basic calendar component with Year/Month switch."}</DocMarkdown>
-      <DocCanvas of={SelectableCalendar} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="calendar-demo-week" className="fabi-sb-demo-title" lang="en">Show Week</h3>
-      <DocMarkdown>{vi ? "Hiển thị số tuần trong lịch toàn màn hình bằng cách đặt prop `showWeek` là `true`." : "Show week number in fullscreen calendar by setting `showWeek` prop to `true`."}</DocMarkdown>
-      <DocCanvas of={ShowWeek} sourceState="hidden" />
-      <h3 id="calendar-demo-customize-header" className="fabi-sb-demo-title" lang="en">Customize Header</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh nội dung header của Calendar." : "Customize Calendar header content."}</DocMarkdown>
-      <DocCanvas of={CustomizeHeader} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="calendar-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Calendar bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Calendar by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      <DemoBox id="calendar-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Component lịch cơ bản với chuyển đổi Năm/Tháng." : "A basic calendar component with Year/Month switch."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="calendar-demo-notice-calendar" title="Notice Calendar" of={NoticeCalendar} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Có thể render component này bằng `dateCellRender` và `monthCellRender` với dữ liệu bạn cần." : "This component can be rendered by using `dateCellRender` and `monthCellRender` with the data you need."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="calendar-demo-event-range" title="Event Range" of={EventRange} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Render các khoảng sự kiện trải dài qua nhiều ngày bằng `cellRender`. Ví dụ tính xem mỗi ngày là đầu, giữa, cuối hay sự kiện trong một ngày, rồi vẽ các thanh khoảng gọn nhẹ." : "Render event ranges across days with `cellRender`. The example calculates whether each date is the start, middle, end, or a single-day event and draws compact range bars."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>clsx</code>, <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="calendar-demo-card" title="Card" of={Card} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Lồng trong một phần tử container để render trong không gian hạn chế." : "Nested inside a container element for rendering in limited space."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="calendar-demo-select" title="Selectable Calendar" of={SelectableCalendar} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Component lịch cơ bản với chuyển đổi Năm/Tháng." : "A basic calendar component with Year/Month switch."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="calendar-demo-week" title="Show Week" of={ShowWeek} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Hiển thị số tuần trong lịch toàn màn hình bằng cách đặt prop `showWeek` là `true`." : "Show week number in fullscreen calendar by setting `showWeek` prop to `true`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="calendar-demo-customize-header" title="Customize Header" of={CustomizeHeader} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh nội dung header của Calendar." : "Customize Calendar header content."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="calendar-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Calendar bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Calendar by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
       <DocMarkdown>{[vi ? "## API\n\n**Lưu ý:** Một phần locale của Calendar được đọc từ `value`. Vì vậy hãy đặt locale của `dayjs` cho đúng.\n\n" : "## API\n\n**Note:** Part of the Calendar's locale is read from `value`. So, please set the locale of `dayjs` correctly.\n\n", "```jsx\n// The default locale is en-US, if you want to use other locale, just set locale in entry file globally.\n// import dayjs from 'dayjs';\n// import 'dayjs/locale/zh-cn';\n// dayjs.locale('zh-cn');\n\n<Calendar cellRender={cellRender} onPanelChange={onPanelChange} onSelect={onSelect} />\n```", vi ? "\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| cellRender | Tuỳ chỉnh nội dung ô | function(current: dayjs, info: { prefixCls: string, originNode: React.ReactElement, today: dayjs, range?: 'start' \\| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| fullCellRender | Tuỳ chỉnh nội dung ô | function(current: dayjs, info: { prefixCls: string, originNode: React.ReactElement, today: dayjs, range?: 'start' \\| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | × |\n| defaultValue | Ngày được chọn mặc định | [dayjs](https://day.js.org/) | - | × |\n| disabledDate | Hàm chỉ định các ngày không thể chọn, `currentDate` là cùng một đối tượng dayjs với prop `value` nên bạn không được thay đổi trực tiếp | (currentDate: Dayjs) => boolean | - | × |\n| fullscreen | Có hiển thị toàn màn hình hay không | boolean | true | × |\n| showWeek | Có hiển thị số tuần hay không | boolean | false | × |\n| styles | Tuỳ chỉnh style inline cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| headerRender | Render header tuỳ chỉnh trong panel | function(object:{value: Dayjs, type: 'year' \\| 'month', onChange: f(), onTypeChange: f()}) | - | × |\n| locale | Locale của lịch | object | (default) | × |\n| mode | Chế độ hiển thị của lịch | `month` \\| `year` | `month` | × |\n| validRange | Đặt khoảng hợp lệ | \\[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - | × |\n| value | Ngày đang được chọn | [dayjs](https://day.js.org/) | - | × |\n| onChange | Hàm callback khi ngày thay đổi | function(date: Dayjs) | - | × |\n| onPanelChange | Hàm callback khi panel thay đổi | function(date: Dayjs, mode: string) | - | × |\n| onSelect | Hàm callback khi một ngày được chọn, bao gồm thông tin nguồn | function(date: Dayjs, info: { source: 'year' \\| 'month' \\| 'date' \\| 'customize' }) | - | × |\n\n## Semantic DOM" : "\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| cellRender | Customize cell content | function(current: dayjs, info: { prefixCls: string, originNode: React.ReactElement, today: dayjs, range?: 'start' \\| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| fullCellRender | Customize cell content | function(current: dayjs, info: { prefixCls: string, originNode: React.ReactElement, today: dayjs, range?: 'start' \\| 'end', type: PanelMode, locale?: Locale, subType?: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | × |\n| defaultValue | The date selected by default | [dayjs](https://day.js.org/) | - | × |\n| disabledDate | Function that specifies the dates that cannot be selected, `currentDate` is same dayjs object as `value` prop which you shouldn't mutate it | (currentDate: Dayjs) => boolean | - | × |\n| fullscreen | Whether to display in full-screen | boolean | true | × |\n| showWeek | Whether to display week number | boolean | false | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| headerRender | Render custom header in panel | function(object:{value: Dayjs, type: 'year' \\| 'month', onChange: f(), onTypeChange: f()}) | - | × |\n| locale | The calendar's locale | object | (default) | × |\n| mode | The display mode of the calendar | `month` \\| `year` | `month` | × |\n| validRange | To set valid range | \\[[dayjs](https://day.js.org/), [dayjs](https://day.js.org/)] | - | × |\n| value | The current selected date | [dayjs](https://day.js.org/) | - | × |\n| onChange | Callback for when date changes | function(date: Dayjs) | - | × |\n| onPanelChange | Callback for when panel changes | function(date: Dayjs, mode: string) | - | × |\n| onSelect | Callback for when a date is selected, include source info | function(date: Dayjs, info: { source: 'year' \\| 'month' \\| 'date' \\| 'customize' }) | - | × |\n\n## Semantic DOM"].join('')}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo8 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

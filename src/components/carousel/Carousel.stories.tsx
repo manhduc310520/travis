@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import Demo0 from "./demo/basic"
 import Demo0Source from "./demo/basic.tsx?raw"
@@ -27,24 +28,24 @@ function DocsPage() {
       <DocTitle />
       <DocMarkdown>{vi ? "Một tập hợp các vùng carousel." : "A set of carousel areas."}</DocMarkdown>
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Khi có một nhóm nội dung cùng cấp.\n- Khi không đủ chỗ cho nội dung, có thể dùng để tiết kiệm không gian theo dạng cửa quay.\n- Thường dùng cho một nhóm hình ảnh/card.\n\n## Ví dụ" : "## When To Use\n\n- When there is a group of content on the same level.\n- When there is insufficient content space, it can be used to save space in the form of a revolving door.\n- Commonly used for a group of pictures/cards.\n\n## Examples"}</DocMarkdown>
-      <h3 id="carousel-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng cơ bản." : "Basic usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="carousel-demo-placement" className="fabi-sb-demo-title" lang="en">Position</h3>
-      <DocMarkdown>{vi ? "Có 4 tuỳ chọn vị trí." : "There are 4 position options available."}</DocMarkdown>
-      <DocCanvas of={Position} sourceState="hidden" />
-      <h3 id="carousel-demo-autoplay" className="fabi-sb-demo-title" lang="en">Scroll automatically</h3>
-      <DocMarkdown>{vi ? "Thời điểm cuộn sang card/ảnh tiếp theo." : "Timing of scrolling to the next card/picture."}</DocMarkdown>
-      <DocCanvas of={ScrollAutomatically} sourceState="hidden" />
-      <h3 id="carousel-demo-fade" className="fabi-sb-demo-title" lang="en">Fade in</h3>
-      <DocMarkdown>{vi ? "Các slide chuyển cảnh bằng hiệu ứng mờ dần." : "Slides use fade for transition."}</DocMarkdown>
-      <DocCanvas of={FadeIn} sourceState="hidden" />
-      <h3 id="carousel-demo-arrows" className="fabi-sb-demo-title" lang="en">Arrows for switching</h3>
-      <DocMarkdown>{vi ? "Hiển thị mũi tên để chuyển slide." : "Show the arrows for switching."}</DocMarkdown>
-      <DocCanvas of={ArrowsForSwitching} sourceState="hidden" />
-      <h3 id="carousel-demo-dot-duration" className="fabi-sb-demo-title" lang="en">Progress of dots</h3>
-      <DocMarkdown>{vi ? "Hiển thị tiến trình của các dấu chấm." : "Show progress of dots."}</DocMarkdown>
-      <DocCanvas of={ProgressOfDots} sourceState="hidden" />
+      <DemoBox id="carousel-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng cơ bản." : "Basic usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="carousel-demo-placement" title="Position" of={Position} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Có 4 tuỳ chọn vị trí." : "There are 4 position options available."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="carousel-demo-autoplay" title="Scroll automatically" of={ScrollAutomatically} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Thời điểm cuộn sang card/ảnh tiếp theo." : "Timing of scrolling to the next card/picture."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="carousel-demo-fade" title="Fade in" of={FadeIn} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Các slide chuyển cảnh bằng hiệu ứng mờ dần." : "Slides use fade for transition."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="carousel-demo-arrows" title="Arrows for switching" of={ArrowsForSwitching} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Hiển thị mũi tên để chuyển slide." : "Show the arrows for switching."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="carousel-demo-dot-duration" title="Progress of dots" of={ProgressOfDots} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Hiển thị tiến trình của các dấu chấm." : "Show progress of dots."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| arrows | Có hiển thị mũi tên chuyển slide hay không | boolean | false | × |\n| autoplay | Có tự động cuộn hay không, bạn có thể chỉ định `autoplay={{ dotDuration: true }}` để hiển thị thanh tiến trình | boolean \\| { dotDuration?: boolean } | false | × |\n| autoplaySpeed | Độ trễ giữa mỗi lần tự động cuộn (tính bằng mili giây) | number | 3000 | × |\n| adaptiveHeight | Tự động điều chỉnh chiều cao của slide | boolean | false | × |\n| dotPlacement | Vị trí của các dấu chấm, có thể là một trong `top` `bottom` `start` `end` | string | `bottom` | × |\n| dots | Có hiển thị các dấu chấm ở dưới cùng của gallery hay không, `object` dùng cho `dotsClass` | boolean \\| { className?: string } | true | × |\n| draggable | Cho phép cuộn bằng cách kéo trên desktop | boolean | false | × |\n| fade | Có dùng hiệu ứng chuyển mờ dần hay không | boolean | false | × |\n| infinite | Lặp vô hạn nội dung | boolean | true | × |\n| speed | Tốc độ animation tính bằng mili giây | number | 500 | × |\n| easing | Tên hàm nội suy của hiệu ứng chuyển | string | `linear` | × |\n| effect | Hiệu ứng chuyển | `scrollx` \\| `fade` | `scrollx` | × |\n| afterChange | Hàm callback được gọi sau khi chỉ số hiện tại thay đổi | (current: number) => void | - | × |\n| beforeChange | Hàm callback được gọi trước khi chỉ số hiện tại thay đổi | (current: number, next: number) => void | - | × |\n| waitForAnimate | Có chờ animation khi chuyển hay không | boolean | false | × |\n\nXem thêm các API trong [tài liệu](https://react-slick.neostack.com/docs/api) của react-slick.\n\n## Phương thức\n\n| Tên | Mô tả |\n| --- | --- |\n| goTo(slideNumber, dontAnimate) | Chuyển đến slide theo chỉ số, nếu dontAnimate=true thì chuyển không có animation |\n| next() | Chuyển slide hiện tại sang slide kế tiếp |\n| prev() | Chuyển slide hiện tại về slide trước đó |\n\n## Design Token" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| arrows | Whether to show switch arrows | boolean | false | × |\n| autoplay | Whether to scroll automatically, you can specify `autoplay={{ dotDuration: true }}` to display the progress bar | boolean \\| { dotDuration?: boolean } | false | × |\n| autoplaySpeed | Delay between each auto scroll (in milliseconds) | number | 3000 | × |\n| adaptiveHeight | Adjust the slide's height automatically | boolean | false | × |\n| dotPlacement | The position of the dots, which can be one of `top` `bottom` `start` `end` | string | `bottom` | × |\n| dots | Whether to show the dots at the bottom of the gallery, `object` for `dotsClass` | boolean \\| { className?: string } | true | × |\n| draggable | Enable scrollable via dragging on desktop | boolean | false | × |\n| fade | Whether to use fade transition | boolean | false | × |\n| infinite | Infinitely wrap around contents | boolean | true | × |\n| speed | Animation speed in milliseconds | number | 500 | × |\n| easing | Transition interpolation function name | string | `linear` | × |\n| effect | Transition effect | `scrollx` \\| `fade` | `scrollx` | × |\n| afterChange | Callback function called after the current index changes | (current: number) => void | - | × |\n| beforeChange | Callback function called before the current index changes | (current: number, next: number) => void | - | × |\n| waitForAnimate | Whether to wait for the animation when switching | boolean | false | × |\n\nFind more APIs in react-slick [documentation](https://react-slick.neostack.com/docs/api).\n\n## Methods\n\n| Name | Description |\n| --- | --- |\n| goTo(slideNumber, dontAnimate) | Go to slide index, if dontAnimate=true, it happens without animation |\n| next() | Change current slide to next slide |\n| prev() | Change current slide to previous slide |\n\n## Design Token"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block"><ComponentTokenTable component="Carousel" /></div></DocUnstyled>
       <DocMarkdown>{vi ? "## Câu hỏi thường gặp" : "## FAQ"}</DocMarkdown>

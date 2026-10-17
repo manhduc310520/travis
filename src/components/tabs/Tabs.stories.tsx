@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { expect, fn, screen, waitFor, within } from 'storybook/test'
 import { Tabs } from '@fabi/ui'
@@ -58,56 +59,56 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "### Khi nào dùng\n\nFABi CMS Design System có 3 loại Tabs cho các tình huống khác nhau.\n\n- Card Tabs: để quản lý nhiều chế độ xem có thể đóng.\n- Normal Tabs: cho các khía cạnh chức năng của một trang.\n- Radio.Button: cho các tab thứ cấp.\n\n## Ví dụ" : "### When To Use\n\nFABi CMS Design System has 3 types of Tabs for different situations.\n\n- Card Tabs: for managing too many closeable views.\n- Normal Tabs: for functional aspects of a page.\n- Radio.Button: for secondary tabs.\n\n## Examples"}</DocMarkdown>
-      <h3 id="tabs-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Mặc định kích hoạt tab đầu tiên." : "Default activate first tab."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="tabs-demo-disabled" className="fabi-sb-demo-title" lang="en">Disabled</h3>
-      <DocMarkdown>{vi ? "Vô hiệu hoá một tab." : "Disabled a tab."}</DocMarkdown>
-      <DocCanvas of={Disabled} sourceState="hidden" />
-      <h3 id="tabs-demo-centered" className="fabi-sb-demo-title" lang="en">Centered</h3>
-      <DocMarkdown>{vi ? "Tabs canh giữa." : "Centered tabs."}</DocMarkdown>
-      <DocCanvas of={Centered} sourceState="hidden" />
-      <h3 id="tabs-demo-icon" className="fabi-sb-demo-title" lang="en">Icon</h3>
-      <DocMarkdown>{vi ? "Tab có icon. `icon` cũng nhận một phần tử `<svg>` trần từ thư viện icon bên thứ ba, và nó vẫn được canh giữa theo chiều dọc so với nhãn." : "The Tab with Icon. `icon` also accepts a bare `<svg>` element from a third-party icon library, which stays vertically centred with the label."}</DocMarkdown>
-      <DocCanvas of={Icon} sourceState="hidden" />
-      <h3 id="tabs-demo-custom-indicator" className="fabi-sb-demo-title" lang="en">Indicator</h3>
-      <DocMarkdown>{vi ? "Đặt prop `indicator` để tuỳ chỉnh kích thước và căn chỉnh của indicator." : "Set `indicator` prop to custom indicator size and align."}</DocMarkdown>
-      <DocCanvas of={Indicator} sourceState="hidden" />
-      <h3 id="tabs-demo-slide" className="fabi-sb-demo-title" lang="en">Slide</h3>
-      <DocMarkdown>{vi ? "Để chứa được nhiều tab hơn, các tab có thể trượt sang trái và phải (hoặc lên và xuống)." : "In order to fit in more tabs, they can slide left and right (or up and down)."}</DocMarkdown>
-      <DocCanvas of={Slide} sourceState="hidden" />
-      <h3 id="tabs-demo-extra" className="fabi-sb-demo-title" lang="en">Extra content</h3>
-      <DocMarkdown>{vi ? "Bạn có thể thêm các hành động bổ sung ở bên phải, bên trái hoặc cả hai bên của Tabs." : "You can add extra actions to the right or left or even both side of Tabs."}</DocMarkdown>
-      <DocCanvas of={ExtraContent} sourceState="hidden" />
-      <h3 id="tabs-demo-size" className="fabi-sb-demo-title" lang="en">Size</h3>
-      <DocMarkdown>{vi ? "Tabs kích thước lớn thường dùng ở header trang, còn kích thước nhỏ có thể dùng trong Modal." : "Large size tabs are usually used in page header, and small size could be used in Modal."}</DocMarkdown>
-      <DocCanvas of={Size} sourceState="hidden" />
-      <h3 id="tabs-demo-placement" className="fabi-sb-demo-title" lang="en">Placement</h3>
-      <DocMarkdown>{vi ? "Vị trí của tab: start, end, top hoặc bottom. Sẽ tự chuyển sang `top` trên mobile." : "Tab's placement: start, end, top or bottom. Will auto switch to `top` in mobile."}</DocMarkdown>
-      <DocCanvas of={Placement} sourceState="hidden" />
-      <h3 id="tabs-demo-popuprender-search" className="fabi-sb-demo-title" lang="en">Custom Popup Search</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh menu dropdown \"more\" của Tabs qua prop `popupRender`, hỗ trợ tìm kiếm và điều hướng bằng bàn phím." : "Customize the Tabs more dropdown menu via `popupRender` prop, supporting search and keyboard navigation."}</DocMarkdown>
-      <DocCanvas of={CustomPopupSearch} sourceState="hidden" />
-      <h3 id="tabs-demo-card" className="fabi-sb-demo-title" lang="en">Card type tab</h3>
-      <DocMarkdown>{vi ? "Một kiểu Tabs khác, không hỗ trợ chế độ dọc." : "Another type of Tabs, which doesn't support vertical mode."}</DocMarkdown>
-      <DocCanvas of={CardTypeTab} sourceState="hidden" />
-      <h3 id="tabs-demo-editable-card" className="fabi-sb-demo-title" lang="en">Add & close tab</h3>
-      <DocMarkdown>{vi ? "Chỉ Tabs kiểu card mới hỗ trợ thêm & đóng. +Dùng `closable={false}` để tắt việc đóng." : "Only card type Tabs support adding & closable. +Use `closable={false}` to disable close."}</DocMarkdown>
-      <DocCanvas of={AddCloseTab} sourceState="hidden" />
-      <h3 id="tabs-demo-custom-add-trigger" className="fabi-sb-demo-title" lang="en">Customized trigger of new tab</h3>
-      <DocMarkdown>{vi ? "Ẩn icon dấu cộng mặc định, và gắn sự kiện cho nút kích hoạt tuỳ chỉnh." : "Hide default plus icon, and bind event for customized trigger."}</DocMarkdown>
-      <DocCanvas of={CustomizedTriggerOfNewTab} sourceState="hidden" />
-      <h3 id="tabs-demo-custom-tab-bar" className="fabi-sb-demo-title" lang="en">Customized bar of tab</h3>
-      <DocMarkdown>{vi ? "Dùng [react-sticky-box](https://www.npmjs.com/package/react-sticky-box) và `renderTabBar`." : "Use [react-sticky-box](https://www.npmjs.com/package/react-sticky-box) and `renderTabBar`."}</DocMarkdown>
-      <DocCanvas of={CustomizedBarOfTab} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>react-sticky-box</code></p>
-      <h3 id="tabs-demo-custom-tab-bar-node" className="fabi-sb-demo-title" lang="en">Draggable Tabs</h3>
-      <DocMarkdown>{vi ? "Dùng [dnd-kit](https://github.com/clauderic/dnd-kit) để làm cho tab có thể kéo thả." : "Use [dnd-kit](https://github.com/clauderic/dnd-kit) to make tabs draggable."}</DocMarkdown>
-      <DocCanvas of={DraggableTabs} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>@dnd-kit/core</code>, <code>@dnd-kit/sortable</code>, <code>@dnd-kit/utilities</code></p>
-      <h3 id="tabs-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Tabs bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Tabs by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="tabs-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Mặc định kích hoạt tab đầu tiên." : "Default activate first tab."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-disabled" title="Disabled" of={Disabled} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Vô hiệu hoá một tab." : "Disabled a tab."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-centered" title="Centered" of={Centered} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Tabs canh giữa." : "Centered tabs."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-icon" title="Icon" of={Icon} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Tab có icon. `icon` cũng nhận một phần tử `<svg>` trần từ thư viện icon bên thứ ba, và nó vẫn được canh giữa theo chiều dọc so với nhãn." : "The Tab with Icon. `icon` also accepts a bare `<svg>` element from a third-party icon library, which stays vertically centred with the label."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-custom-indicator" title="Indicator" of={Indicator} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Đặt prop `indicator` để tuỳ chỉnh kích thước và căn chỉnh của indicator." : "Set `indicator` prop to custom indicator size and align."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-slide" title="Slide" of={Slide} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Để chứa được nhiều tab hơn, các tab có thể trượt sang trái và phải (hoặc lên và xuống)." : "In order to fit in more tabs, they can slide left and right (or up and down)."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-extra" title="Extra content" of={ExtraContent} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Bạn có thể thêm các hành động bổ sung ở bên phải, bên trái hoặc cả hai bên của Tabs." : "You can add extra actions to the right or left or even both side of Tabs."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-size" title="Size" of={Size} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Tabs kích thước lớn thường dùng ở header trang, còn kích thước nhỏ có thể dùng trong Modal." : "Large size tabs are usually used in page header, and small size could be used in Modal."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-placement" title="Placement" of={Placement} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Vị trí của tab: start, end, top hoặc bottom. Sẽ tự chuyển sang `top` trên mobile." : "Tab's placement: start, end, top or bottom. Will auto switch to `top` in mobile."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-popuprender-search" title="Custom Popup Search" of={CustomPopupSearch} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh menu dropdown \"more\" của Tabs qua prop `popupRender`, hỗ trợ tìm kiếm và điều hướng bằng bàn phím." : "Customize the Tabs more dropdown menu via `popupRender` prop, supporting search and keyboard navigation."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-card" title="Card type tab" of={CardTypeTab} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Một kiểu Tabs khác, không hỗ trợ chế độ dọc." : "Another type of Tabs, which doesn't support vertical mode."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-editable-card" title="Add & close tab" of={AddCloseTab} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Chỉ Tabs kiểu card mới hỗ trợ thêm & đóng. +Dùng `closable={false}` để tắt việc đóng." : "Only card type Tabs support adding & closable. +Use `closable={false}` to disable close."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-custom-add-trigger" title="Customized trigger of new tab" of={CustomizedTriggerOfNewTab} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Ẩn icon dấu cộng mặc định, và gắn sự kiện cho nút kích hoạt tuỳ chỉnh." : "Hide default plus icon, and bind event for customized trigger."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="tabs-demo-custom-tab-bar" title="Customized bar of tab" of={CustomizedBarOfTab} code={Demo13Source}>
+        <DocMarkdown>{vi ? "Dùng [react-sticky-box](https://www.npmjs.com/package/react-sticky-box) và `renderTabBar`." : "Use [react-sticky-box](https://www.npmjs.com/package/react-sticky-box) and `renderTabBar`."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>react-sticky-box</code></p>
+      </DemoBox>
+      <DemoBox id="tabs-demo-custom-tab-bar-node" title="Draggable Tabs" of={DraggableTabs} code={Demo14Source}>
+        <DocMarkdown>{vi ? "Dùng [dnd-kit](https://github.com/clauderic/dnd-kit) để làm cho tab có thể kéo thả." : "Use [dnd-kit](https://github.com/clauderic/dnd-kit) to make tabs draggable."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>@dnd-kit/core</code>, <code>@dnd-kit/sortable</code>, <code>@dnd-kit/utilities</code></p>
+      </DemoBox>
+      <DemoBox id="tabs-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo15Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Tabs bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Tabs by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Tabs\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| activeKey | Key của TabPane hiện tại | string | - | × |\n| addIcon | Tuỳ chỉnh icon thêm, chỉ có tác dụng với `type=\"editable-card\"` | ReactNode | `<PlusOutlined />` | ✓ |\n| animated | Có chuyển tab kèm animation hay không. | boolean \\| { inkBar: boolean, tabPane: boolean } | { inkBar: true, tabPane: false } | × |\n| centered | Canh giữa các tab | boolean | false | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultActiveKey | Key của TabPane được kích hoạt ban đầu, nếu chưa đặt `activeKey` | string | `The key of first tab` | × |\n| hideAdd | Có ẩn icon dấu cộng hay không. Chỉ có tác dụng khi `type=\"editable-card\"` | boolean | false | × |\n| indicator | Tuỳ chỉnh `size` và `align` của indicator | { size?: number \\| (origin: number) => number; align: `start` \\| `center` \\| `end`; } | - | ✓ |\n| items | Cấu hình nội dung tab | [TabItemType](#tabitemtype) | [] | × |\n| more | Tuỳ chỉnh menu thu gọn | [MoreProps](#moreprops) | { icon: `<EllipsisOutlined />` , trigger: 'hover' } | ✓ |\n| removeIcon | Icon xoá tuỳ chỉnh, chỉ có tác dụng với `type=\"editable-card\"` | ReactNode | `<CloseOutlined />` | ✓ |\n| renderTabBar | Thay thế TabBar | (props: DefaultTabBarProps, DefaultTabBar: React.ComponentClass) => React.ReactElement | - | × |\n| size | Kích thước thanh tab có sẵn | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| tabBarExtraContent | Nội dung bổ sung trong thanh tab | ReactNode \\| {left?: ReactNode, right?: ReactNode} | - | × |\n| tabBarGutter | Khoảng cách giữa các tab | number | - | × |\n| tabBarStyle | Object style của thanh tab | CSSProperties | - | × |\n| tabPlacement | Vị trí của các tab | `top` \\| `end` \\| `bottom` \\| `start` | `top` | × |\n| destroyOnHidden | Có huỷ TabPane không hoạt động khi đổi tab hay không | boolean | false | × |\n| type | Style cơ bản của tabs | `line` \\| `card` \\| `editable-card` | `line` | × |\n| onChange | Hàm callback được thực thi khi tab đang hoạt động thay đổi | (activeKey: string) => void | - | × |\n| onEdit | Hàm callback được thực thi khi tab được thêm hoặc xoá. Chỉ có tác dụng khi `type=\"editable-card\"` | (action === 'add' ? event : targetKey, action) => void | - | × |\n| onTabClick | Hàm callback được thực thi khi nhấp vào tab | (key: string, event: MouseEvent) => void | - | × |\n| onTabScroll | Kích hoạt khi tab cuộn | ({ direction: `left` \\| `right` \\| `top` \\| `bottom` }) => void | - | × |\n\nXem thêm tuỳ chọn tại @rc-component/tabs\n\n### TabItemType\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| closeIcon | Tuỳ chỉnh icon đóng ở phần đầu của TabPane. Chỉ có tác dụng khi `type=\"editable-card\"`. Nút đóng sẽ bị ẩn khi đặt là `null` hoặc `false` | ReactNode | - |\n| destroyOnHidden | Có huỷ TabPane không hoạt động khi đổi tab hay không | boolean | false |\n| disabled | Vô hiệu hoá TabPane | boolean | false |\n| forceRender | Bắt buộc render nội dung trong tabs, không render lười sau khi nhấp vào tab | boolean | false |\n| key | Key của TabPane | string | - |\n| label | Phần tử văn bản ở đầu tab | ReactNode | - |\n| icon | Phần tử icon ở đầu tab | ReactNode | - |\n| children | Phần tử nội dung tab | ReactNode | - |\n| closable | Có hiển thị nút đóng (x) hay không, chỉ có tác dụng khi `type=\"editable-card\"` | boolean | true |\n\n### MoreProps\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| icon | Icon tuỳ chỉnh | ReactNode | - |\n| popupRender | Tuỳ chỉnh việc render menu dropdown | (menu: ReactElement, info: { restTabs: Tab[], onClose: () => void }) => ReactElement | - |\n| DropdownProps | Hỗ trợ các prop khác của Dropdown |  |  |\n\n## Semantic DOM" : "## API\n\n### Tabs\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| activeKey | Current TabPane's key | string | - | × |\n| addIcon | Customize add icon, only works with `type=\"editable-card\"` | ReactNode | `<PlusOutlined />` | ✓ |\n| animated | Whether to change tabs with animation. | boolean \\| { inkBar: boolean, tabPane: boolean } | { inkBar: true, tabPane: false } | × |\n| centered | Centers tabs | boolean | false | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultActiveKey | Initial active TabPane's key, if `activeKey` is not set | string | `The key of first tab` | × |\n| hideAdd | Hide plus icon or not. Only works while `type=\"editable-card\"` | boolean | false | × |\n| indicator | Customize `size` and `align` of indicator | { size?: number \\| (origin: number) => number; align: `start` \\| `center` \\| `end`; } | - | ✓ |\n| items | Configure tab content | [TabItemType](#tabitemtype) | [] | × |\n| more | Customize the collapse menu | [MoreProps](#moreprops) | { icon: `<EllipsisOutlined />` , trigger: 'hover' } | ✓ |\n| removeIcon | The custom icon of remove, only works with `type=\"editable-card\"` | ReactNode | `<CloseOutlined />` | ✓ |\n| renderTabBar | Replace the TabBar | (props: DefaultTabBarProps, DefaultTabBar: React.ComponentClass) => React.ReactElement | - | × |\n| size | Preset tab bar size | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| tabBarExtraContent | Extra content in tab bar | ReactNode \\| {left?: ReactNode, right?: ReactNode} | - | × |\n| tabBarGutter | The gap between tabs | number | - | × |\n| tabBarStyle | Tab bar style object | CSSProperties | - | × |\n| tabPlacement | Placement of tabs | `top` \\| `end` \\| `bottom` \\| `start` | `top` | × |\n| destroyOnHidden | Whether destroy inactive TabPane when change tab | boolean | false | × |\n| type | Basic style of tabs | `line` \\| `card` \\| `editable-card` | `line` | × |\n| onChange | Callback executed when active tab is changed | (activeKey: string) => void | - | × |\n| onEdit | Callback executed when tab is added or removed. Only works while `type=\"editable-card\"` | (action === 'add' ? event : targetKey, action) => void | - | × |\n| onTabClick | Callback executed when tab is clicked | (key: string, event: MouseEvent) => void | - | × |\n| onTabScroll | Trigger when tab scroll | ({ direction: `left` \\| `right` \\| `top` \\| `bottom` }) => void | - | × |\n\nMore option at @rc-component/tabs\n\n### TabItemType\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| closeIcon | Customize close icon in TabPane's head. Only works while `type=\"editable-card\"`. Close button will be hidden when setting to `null` or `false` | ReactNode | - |\n| destroyOnHidden | Whether destroy inactive TabPane when change tab | boolean | false |\n| disabled | Set TabPane disabled | boolean | false |\n| forceRender | Forced render of content in tabs, not lazy render after clicking on tabs | boolean | false |\n| key | TabPane's key | string | - |\n| label | Tab header text element | ReactNode | - |\n| icon | Tab header icon element | ReactNode | - |\n| children | Tab content element | ReactNode | - |\n| closable | Whether a close (x) button is visible, Only works while `type=\"editable-card\"` | boolean | true |\n\n### MoreProps\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| icon | The custom icon | ReactNode | - |\n| popupRender | Customize the dropdown menu render | (menu: ReactElement, info: { restTabs: Tab[], onClose: () => void }) => ReactElement | - |\n| DropdownProps | Support other Dropdown props |  |  |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo16 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

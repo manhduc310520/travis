@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import Demo0 from "./demo/basic"
 import Demo0Source from "./demo/basic.tsx?raw"
@@ -42,46 +43,46 @@ function DocsPage() {
       <DocTitle />
       <DocMarkdown>{vi ? "Dùng để nhắc đến (mention) ai đó hoặc điều gì đó trong một ô nhập liệu." : "Used to mention someone or something in an input."}</DocMarkdown>
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nKhi bạn cần nhắc đến ai đó hoặc điều gì đó.\n\n## Ví dụ" : "## When To Use\n\nWhen you need to mention someone or something.\n\n## Examples"}</DocMarkdown>
-      <h3 id="mentions-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng cơ bản." : "Basic usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="mentions-demo-size" className="fabi-sb-demo-title" lang="en">Size</h3>
-      <DocMarkdown>{vi ? "Cấu hình kích thước qua thuộc tính `size`." : "Configure size via `size` property."}</DocMarkdown>
-      <DocCanvas of={Size} sourceState="hidden" />
-      <h3 id="mentions-demo-variant" className="fabi-sb-demo-title" lang="en">Variants</h3>
-      <DocMarkdown>{vi ? "Các biến thể của Mentions, có bốn biến thể: `outlined` `filled` `borderless` và `underlined`." : "Variants of Mentions, there are four variants: `outlined` `filled` `borderless` and `underlined`."}</DocMarkdown>
-      <DocCanvas of={Variants} sourceState="hidden" />
-      <h3 id="mentions-demo-async" className="fabi-sb-demo-title" lang="en">Asynchronous loading</h3>
-      <DocMarkdown>{vi ? "Bất đồng bộ." : "async."}</DocMarkdown>
-      <DocCanvas of={AsynchronousLoading} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>lodash</code></p>
-      <h3 id="mentions-demo-form" className="fabi-sb-demo-title" lang="en">With Form</h3>
-      <DocMarkdown>{vi ? "Chế độ controlled, ví dụ khi dùng cùng `Form`." : "Controlled mode, for example, to work with `Form`."}</DocMarkdown>
-      <DocCanvas of={WithForm} sourceState="hidden" />
-      <h3 id="mentions-demo-prefix" className="fabi-sb-demo-title" lang="en">Customize Trigger Token</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh Trigger Token bằng prop `prefix`. Mặc định là `@`, cũng hỗ trợ `Array<string>`." : "Customize Trigger Token by `prefix` props. Default to `@`, `Array<string>` also supported."}</DocMarkdown>
-      <DocCanvas of={CustomizeTriggerToken} sourceState="hidden" />
-      <h3 id="mentions-demo-readonly" className="fabi-sb-demo-title" lang="en">disabled or readOnly</h3>
-      <DocMarkdown>{vi ? "Cấu hình `disabled` và `readOnly`." : "Configure `disabled` and `readOnly`."}</DocMarkdown>
-      <DocCanvas of={DisabledOrReadOnly} sourceState="hidden" />
-      <h3 id="mentions-demo-placement" className="fabi-sb-demo-title" lang="en">Placement</h3>
-      <DocMarkdown>{vi ? "Thay đổi vị trí hiển thị của danh sách gợi ý." : "Change the suggestions placement."}</DocMarkdown>
-      <DocCanvas of={Placement} sourceState="hidden" />
-      <h3 id="mentions-demo-popuprender" className="fabi-sb-demo-title" lang="en">Customize Popup</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh việc render menu dropdown qua `popupRender`." : "Customize the dropdown menu rendering via `popupRender`."}</DocMarkdown>
-      <DocCanvas of={CustomizePopup} sourceState="hidden" />
-      <h3 id="mentions-demo-allowclear" className="fabi-sb-demo-title" lang="en">With clear icon</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh nút xoá." : "Customize clear button."}</DocMarkdown>
-      <DocCanvas of={WithClearIcon} sourceState="hidden" />
-      <h3 id="mentions-demo-autosize" className="fabi-sb-demo-title" lang="en">autoSize</h3>
-      <DocMarkdown>{vi ? "Chiều cao tự động điều chỉnh (autoSize)." : "Height autoSize."}</DocMarkdown>
-      <DocCanvas of={AutoSize} sourceState="hidden" />
-      <h3 id="mentions-demo-status" className="fabi-sb-demo-title" lang="en">Status</h3>
-      <DocMarkdown>{vi ? "Thêm trạng thái cho Mentions bằng `status`, có thể là `error` hoặc `warning`." : "Add status to Mentions with `status`, which could be `error` or `warning`."}</DocMarkdown>
-      <DocCanvas of={Status} sourceState="hidden" />
-      <h3 id="mentions-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Mentions bằng cách truyền object/hàm qua `classNames` và `styles`. Ví dụ, cho phép textarea thay đổi kích thước." : "You can customize the [semantic dom](#semantic-dom) style of Mentions by passing objects/functions through `classNames` and `styles`. For example, set the textarea to be resizable."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="mentions-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng cơ bản." : "Basic usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-size" title="Size" of={Size} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Cấu hình kích thước qua thuộc tính `size`." : "Configure size via `size` property."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-variant" title="Variants" of={Variants} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Các biến thể của Mentions, có bốn biến thể: `outlined` `filled` `borderless` và `underlined`." : "Variants of Mentions, there are four variants: `outlined` `filled` `borderless` and `underlined`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-async" title="Asynchronous loading" of={AsynchronousLoading} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Bất đồng bộ." : "async."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>lodash</code></p>
+      </DemoBox>
+      <DemoBox id="mentions-demo-form" title="With Form" of={WithForm} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Chế độ controlled, ví dụ khi dùng cùng `Form`." : "Controlled mode, for example, to work with `Form`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-prefix" title="Customize Trigger Token" of={CustomizeTriggerToken} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh Trigger Token bằng prop `prefix`. Mặc định là `@`, cũng hỗ trợ `Array<string>`." : "Customize Trigger Token by `prefix` props. Default to `@`, `Array<string>` also supported."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-readonly" title="disabled or readOnly" of={DisabledOrReadOnly} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Cấu hình `disabled` và `readOnly`." : "Configure `disabled` and `readOnly`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-placement" title="Placement" of={Placement} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Thay đổi vị trí hiển thị của danh sách gợi ý." : "Change the suggestions placement."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-popuprender" title="Customize Popup" of={CustomizePopup} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh việc render menu dropdown qua `popupRender`." : "Customize the dropdown menu rendering via `popupRender`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-allowclear" title="With clear icon" of={WithClearIcon} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh nút xoá." : "Customize clear button."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-autosize" title="autoSize" of={AutoSize} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Chiều cao tự động điều chỉnh (autoSize)." : "Height autoSize."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-status" title="Status" of={Status} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Thêm trạng thái cho Mentions bằng `status`, có thể là `error` hoặc `warning`." : "Add status to Mentions with `status`, which could be `error` or `warning`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="mentions-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Mentions bằng cách truyền object/hàm qua `classNames` và `styles`. Ví dụ, cho phép textarea thay đổi kích thước." : "You can customize the [semantic dom](#semantic-dom) style of Mentions by passing objects/functions through `classNames` and `styles`. For example, set the textarea to be resizable."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Mention\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| allowClear | Có hiển thị icon xoá để xoá nội dung mention hay không | boolean \\| { clearIcon?: ReactNode, disabled?: boolean } | false | ✓ |\n| autoSize | Tính năng tự động điều chỉnh chiều cao của textarea, có thể đặt là true \\| false hoặc một object { minRows: 2, maxRows: 6 } | boolean \\| object | false | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultValue | Giá trị mặc định | string | - | × |\n| filterOption | Tuỳ chỉnh logic lọc tuỳ chọn | false \\| (input: string, option: OptionProps) => boolean | - | × |\n| getPopupContainer | Đặt HTML node để gắn danh sách gợi ý vào | () => HTMLElement | - | × |\n| notFoundContent | Đặt nội dung của mentions khi không có kết quả khớp | ReactNode | `No data` | × |\n| placement | Đặt vị trí của popup | `top` \\| `bottom` | `bottom` | × |\n| popupRender | Tuỳ chỉnh việc render menu dropdown | (menu: React.ReactElement) => ReactNode | - | × |\n| prefix | Đặt từ khoá tiền tố kích hoạt | string \\| string\\[] | `@` | × |\n| split | Đặt chuỗi phân tách trước và sau mention đã chọn | string | ` ` | × |\n| size | Kích thước của ô nhập | `large` \\| `medium` \\| `small` | - | × |\n| status | Đặt trạng thái validate | 'error' \\| 'warning' \\| 'success' \\| 'validating' | - | × |\n| validateSearch | Tuỳ chỉnh logic tìm kiếm khi kích hoạt | (text: string, props: MentionsProps) => void | - | × |\n| value | Đặt giá trị của mentions | string | - | × |\n| variant | Biến thể của Input | `outlined` \\| `borderless` \\| `filled` \\| `underlined` | `outlined` | ✓ |\n| onBlur | Được gọi khi mentions mất focus | () => void | - | × |\n| onChange | Được gọi khi giá trị thay đổi | (text: string) => void | - | × |\n| onClear | Hàm callback khi nhấn nút xoá | () => void | - | × |\n| onFocus | Được gọi khi mentions nhận focus | () => void | - | × |\n| onResize | Hàm callback được gọi khi textarea thay đổi kích thước | function({ width, height }) | - | × |\n| onSearch | Được gọi khi khớp tiền tố | (text: string, prefix: string) => void | - | × |\n| onSelect | Được gọi khi người dùng chọn một tuỳ chọn | (option: OptionProps, prefix: string) => void | - | × |\n| onPopupScroll | Được gọi khi cuộn danh sách mentions | (e: Event) => void | - | × |\n| options | Cấu hình các tuỳ chọn | [Options](#option) | \\[] | × |\n| styles | Tuỳ chỉnh style inline cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n### Phương thức của Mention\n\n| Tên | Mô tả |\n| --- | --- |\n| blur() | Bỏ focus |\n| focus() | Nhận focus |\n\n### Option\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| value | Giá trị được chèn vào khi chọn | string | - |\n| label | Tiêu đề của tuỳ chọn | React.ReactNode | - |\n| key | Giá trị key của tuỳ chọn | string | - |\n| disabled | Tuỳ chọn | boolean | - |\n| className | className | string | - |\n| style | Style của tuỳ chọn | React.CSSProperties | - |\n\n## Semantic DOM" : "## API\n\n### Mention\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| allowClear | Whether to show a clear icon to remove mentions content | boolean \\| { clearIcon?: ReactNode, disabled?: boolean } | false | ✓ |\n| autoSize | Textarea height autosize feature, can be set to true \\| false or an object { minRows: 2, maxRows: 6 } | boolean \\| object | false | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultValue | Default value | string | - | × |\n| filterOption | Customize filter option logic | false \\| (input: string, option: OptionProps) => boolean | - | × |\n| getPopupContainer | Set the mount HTML node for suggestions | () => HTMLElement | - | × |\n| notFoundContent | Set mentions content when not match | ReactNode | `No data` | × |\n| placement | Set popup placement | `top` \\| `bottom` | `bottom` | × |\n| popupRender | Customize the dropdown menu rendering | (menu: React.ReactElement) => ReactNode | - | × |\n| prefix | Set trigger prefix keyword | string \\| string\\[] | `@` | × |\n| split | Set split string before and after selected mention | string | ` ` | × |\n| size | The size of the input box | `large` \\| `medium` \\| `small` | - | × |\n| status | Set validation status | 'error' \\| 'warning' \\| 'success' \\| 'validating' | - | × |\n| validateSearch | Customize trigger search logic | (text: string, props: MentionsProps) => void | - | × |\n| value | Set value of mentions | string | - | × |\n| variant | Variants of Input | `outlined` \\| `borderless` \\| `filled` \\| `underlined` | `outlined` | ✓ |\n| onBlur | Trigger when mentions lose focus | () => void | - | × |\n| onChange | Trigger when value changed | (text: string) => void | - | × |\n| onClear | Callback when click the clear button | () => void | - | × |\n| onFocus | Trigger when mentions get focus | () => void | - | × |\n| onResize | The callback function that is triggered when textarea resize | function({ width, height }) | - | × |\n| onSearch | Trigger when prefix hit | (text: string, prefix: string) => void | - | × |\n| onSelect | Trigger when user select the option | (option: OptionProps, prefix: string) => void | - | × |\n| onPopupScroll | Trigger when mentions scroll | (e: Event) => void | - | × |\n| options | Option Configuration | [Options](#option) | \\[] | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n### Mention methods\n\n| Name | Description |\n| ------- | ------------ |\n| blur() | Remove focus |\n| focus() | Get focus |\n\n### Option\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| value | Value inserted when selected | string | - |\n| label | Title of the option | React.ReactNode | - |\n| key | The key value of the option | string | - |\n| disabled | Optional | boolean | - |\n| className | className | string | - |\n| style | The style of the option | React.CSSProperties | - |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo13 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

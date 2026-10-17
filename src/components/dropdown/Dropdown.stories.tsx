@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import Demo0 from "./demo/basic"
 import Demo0Source from "./demo/basic.tsx?raw"
@@ -50,57 +51,57 @@ function DocsPage() {
       <DocTitle />
       <DocMarkdown>{vi ? "Danh sách dropdown." : "A dropdown list."}</DocMarkdown>
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nKhi có nhiều hơn một vài tuỳ chọn để chọn, bạn có thể bọc chúng trong `Dropdown`. Khi rê chuột hoặc bấm vào trigger, một menu dropdown sẽ xuất hiện, cho phép bạn chọn một tuỳ chọn và thực hiện thao tác tương ứng.\n\n## Ví dụ" : "## When To Use\n\nWhen there are more than a few options to choose from, you can wrap them in a `Dropdown`. By hovering or clicking on the trigger, a dropdown menu will appear, which allows you to choose an option and execute the relevant action.\n\n## Examples"}</DocMarkdown>
-      <h3 id="dropdown-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Menu dropdown cơ bản nhất." : "The most basic dropdown menu."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="dropdown-demo-extra" className="fabi-sb-demo-title" lang="en">Extra node</h3>
-      <DocMarkdown>{vi ? "Menu dropdown có phím tắt." : "The dropdown menu with shortcut."}</DocMarkdown>
-      <DocCanvas of={ExtraNode} sourceState="hidden" />
-      <h3 id="dropdown-demo-placement" className="fabi-sb-demo-title" lang="en">Placement</h3>
-      <DocMarkdown>{vi ? "Hỗ trợ 12 vị trí." : "Support 12 placements."}</DocMarkdown>
-      <DocCanvas of={Placement} sourceState="hidden" />
-      <h3 id="dropdown-demo-arrow" className="fabi-sb-demo-title" lang="en">Arrow</h3>
-      <DocMarkdown>{vi ? "Bạn có thể hiển thị mũi tên." : "You could display an arrow."}</DocMarkdown>
-      <DocCanvas of={Arrow} sourceState="hidden" />
-      <h3 id="dropdown-demo-item" className="fabi-sb-demo-title" lang="en">Other elements</h3>
-      <DocMarkdown>{vi ? "Đường phân cách và mục menu bị vô hiệu hoá." : "Divider and disabled menu item."}</DocMarkdown>
-      <DocCanvas of={OtherElements} sourceState="hidden" />
-      <h3 id="dropdown-demo-arrow-center" className="fabi-sb-demo-title" lang="en">Arrow pointing at the center</h3>
-      <DocMarkdown>{vi ? "Khi chỉ định prop `arrow` với `{ pointAtCenter: true }`, mũi tên sẽ trỏ vào giữa phần tử đích." : "By specifying `arrow` prop with `{ pointAtCenter: true }`, the arrow will point to the center of the target element."}</DocMarkdown>
-      <DocCanvas of={ArrowPointingAtTheCenter} sourceState="hidden" />
-      <h3 id="dropdown-demo-trigger" className="fabi-sb-demo-title" lang="en">Trigger mode</h3>
-      <DocMarkdown>{vi ? "Chế độ trigger mặc định là `hover`, bạn có thể đổi sang `click`." : "The default trigger mode is `hover`, you can change it to `click`."}</DocMarkdown>
-      <DocCanvas of={TriggerMode} sourceState="hidden" />
-      <h3 id="dropdown-demo-event" className="fabi-sb-demo-title" lang="en">Click event</h3>
-      <DocMarkdown>{vi ? "Một sự kiện sẽ được kích hoạt khi bạn bấm vào các mục menu, trong đó bạn có thể thực hiện các thao tác khác nhau tuỳ theo key của mục." : "An event will be triggered when you click menu items, in which you can make different operations according to item's key."}</DocMarkdown>
-      <DocCanvas of={ClickEvent} sourceState="hidden" />
-      <h3 id="dropdown-demo-dropdown-button" className="fabi-sb-demo-title" lang="en">Button with dropdown menu</h3>
-      <DocMarkdown>{vi ? "Một nút ở bên trái, và menu chức năng liên quan ở bên phải. Bạn có thể đặt thuộc tính icon để đổi icon bên phải." : "A button is on the left, and a related functional menu is on the right. You can set the icon property to modify the icon of right."}</DocMarkdown>
-      <DocCanvas of={ButtonWithDropdownMenu} sourceState="hidden" />
-      <h3 id="dropdown-demo-custom-dropdown" className="fabi-sb-demo-title" lang="en">Custom dropdown</h3>
-      <DocMarkdown>{vi ? "Tuỳ biến menu dropdown qua `popupRender`. Nếu không cần nội dung Menu, hãy dùng trực tiếp component Popover." : "Customize the dropdown menu via `popupRender`. If you don't need the Menu content, use the Popover component directly."}</DocMarkdown>
-      <DocCanvas of={CustomDropdown} sourceState="hidden" />
-      <h3 id="dropdown-demo-sub-menu" className="fabi-sb-demo-title" lang="en">Cascading menu</h3>
-      <DocMarkdown>{vi ? "Menu có nhiều cấp." : "The menu has multiple levels."}</DocMarkdown>
-      <DocCanvas of={CascadingMenu} sourceState="hidden" />
-      <h3 id="dropdown-demo-overlay-open" className="fabi-sb-demo-title" lang="en">The way of hiding menu.</h3>
-      <DocMarkdown>{vi ? "Mặc định menu sẽ đóng khi bạn bấm vào các mục menu, tính năng này có thể tắt đi." : "The default is to close the menu when you click on menu items, this feature can be turned off."}</DocMarkdown>
-      <DocCanvas of={TheWayOfHidingMenu} sourceState="hidden" />
-      <h3 id="dropdown-demo-context-menu" className="fabi-sb-demo-title" lang="en">Context Menu</h3>
-      <DocMarkdown>{vi ? "Chế độ trigger mặc định là `hover`, bạn có thể đổi sang `contextMenu`. Vị trí menu bật ra sẽ theo vị trí bấm chuột phải." : "The default trigger mode is `hover`, you can change it to `contextMenu`. The pop-up menu position will follow the right-click position."}</DocMarkdown>
-      <DocCanvas of={ContextMenu} sourceState="hidden" />
-      <h3 id="dropdown-demo-loading" className="fabi-sb-demo-title" lang="en">Loading</h3>
-      <DocMarkdown>{vi ? "Có thể thêm chỉ báo đang tải vào nút bằng cách đặt thuộc tính `loading`." : "A loading indicator can be added to a button by setting the `loading` property."}</DocMarkdown>
-      <DocCanvas of={Loading} sourceState="hidden" />
-      <h3 id="dropdown-demo-selectable" className="fabi-sb-demo-title" lang="en">Selectable Menu</h3>
-      <DocMarkdown>{vi ? "Cấu hình thuộc tính `selectable` trong `menu` để bật khả năng chọn." : "Configure the `selectable` property in `menu` to enable selectable ability."}</DocMarkdown>
-      <DocCanvas of={SelectableMenu} sourceState="hidden" />
-      <h3 id="dropdown-demo-selection" className="fabi-sb-demo-title" lang="en">Selection actions</h3>
-      <DocMarkdown>{vi ? "Dùng `Dropdown` với Selection API của trình duyệt để hiển thị các thao tác tuỳ biến sau khi chọn văn bản." : "Use `Dropdown` with the browser Selection API to show custom actions after selecting text."}</DocMarkdown>
-      <DocCanvas of={SelectionActions} sourceState="hidden" />
-      <h3 id="dropdown-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ biến style của [semantic dom](#semantic-dom) trong Dropdown bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of the Dropdown by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="dropdown-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Menu dropdown cơ bản nhất." : "The most basic dropdown menu."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-extra" title="Extra node" of={ExtraNode} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Menu dropdown có phím tắt." : "The dropdown menu with shortcut."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-placement" title="Placement" of={Placement} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Hỗ trợ 12 vị trí." : "Support 12 placements."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-arrow" title="Arrow" of={Arrow} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Bạn có thể hiển thị mũi tên." : "You could display an arrow."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-item" title="Other elements" of={OtherElements} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Đường phân cách và mục menu bị vô hiệu hoá." : "Divider and disabled menu item."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-arrow-center" title="Arrow pointing at the center" of={ArrowPointingAtTheCenter} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Khi chỉ định prop `arrow` với `{ pointAtCenter: true }`, mũi tên sẽ trỏ vào giữa phần tử đích." : "By specifying `arrow` prop with `{ pointAtCenter: true }`, the arrow will point to the center of the target element."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-trigger" title="Trigger mode" of={TriggerMode} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Chế độ trigger mặc định là `hover`, bạn có thể đổi sang `click`." : "The default trigger mode is `hover`, you can change it to `click`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-event" title="Click event" of={ClickEvent} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Một sự kiện sẽ được kích hoạt khi bạn bấm vào các mục menu, trong đó bạn có thể thực hiện các thao tác khác nhau tuỳ theo key của mục." : "An event will be triggered when you click menu items, in which you can make different operations according to item's key."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-dropdown-button" title="Button with dropdown menu" of={ButtonWithDropdownMenu} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Một nút ở bên trái, và menu chức năng liên quan ở bên phải. Bạn có thể đặt thuộc tính icon để đổi icon bên phải." : "A button is on the left, and a related functional menu is on the right. You can set the icon property to modify the icon of right."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-custom-dropdown" title="Custom dropdown" of={CustomDropdown} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Tuỳ biến menu dropdown qua `popupRender`. Nếu không cần nội dung Menu, hãy dùng trực tiếp component Popover." : "Customize the dropdown menu via `popupRender`. If you don't need the Menu content, use the Popover component directly."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-sub-menu" title="Cascading menu" of={CascadingMenu} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Menu có nhiều cấp." : "The menu has multiple levels."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-overlay-open" title="The way of hiding menu." of={TheWayOfHidingMenu} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Mặc định menu sẽ đóng khi bạn bấm vào các mục menu, tính năng này có thể tắt đi." : "The default is to close the menu when you click on menu items, this feature can be turned off."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-context-menu" title="Context Menu" of={ContextMenu} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Chế độ trigger mặc định là `hover`, bạn có thể đổi sang `contextMenu`. Vị trí menu bật ra sẽ theo vị trí bấm chuột phải." : "The default trigger mode is `hover`, you can change it to `contextMenu`. The pop-up menu position will follow the right-click position."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-loading" title="Loading" of={Loading} code={Demo13Source}>
+        <DocMarkdown>{vi ? "Có thể thêm chỉ báo đang tải vào nút bằng cách đặt thuộc tính `loading`." : "A loading indicator can be added to a button by setting the `loading` property."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-selectable" title="Selectable Menu" of={SelectableMenu} code={Demo14Source}>
+        <DocMarkdown>{vi ? "Cấu hình thuộc tính `selectable` trong `menu` để bật khả năng chọn." : "Configure the `selectable` property in `menu` to enable selectable ability."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-selection" title="Selection actions" of={SelectionActions} code={Demo15Source}>
+        <DocMarkdown>{vi ? "Dùng `Dropdown` với Selection API của trình duyệt để hiển thị các thao tác tuỳ biến sau khi chọn văn bản." : "Use `Dropdown` with the browser Selection API to show custom actions after selecting text."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="dropdown-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo16Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ biến style của [semantic dom](#semantic-dom) trong Dropdown bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of the Dropdown by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Dropdown\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| arrow | Có hiển thị mũi tên của dropdown hay không | boolean \\| { pointAtCenter: boolean } | false | × |\n| autoAdjustOverflow | Có tự động điều chỉnh vị trí dropdown khi dropdown bị tràn khỏi màn hình hay không | boolean | true | × |\n| classNames | Tuỳ biến class cho từng cấu trúc semantic bên trong component Dropdown. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| disabled | Menu dropdown có bị vô hiệu hoá hay không | boolean | - | × |\n| destroyOnHidden | Có huỷ dropdown khi ẩn hay không | boolean | false | × |\n| popupRender | Tuỳ biến nội dung popup | (menus: ReactNode) => ReactNode | - | × |\n| getPopupContainer | Đặt container cho menu dropdown. Mặc định tạo một phần tử div trong body, nhưng bạn có thể đổi sang vùng cuộn và định vị tương đối lại. | (triggerNode: HTMLElement) => HTMLElement | () => document.body | × |\n| menu | Các prop của menu | MenuProps | - | × |\n| placement | Vị trí của menu popup: `top` `topLeft` `topRight` `bottom` `bottomLeft` `bottomRight` `left` `leftTop` `leftBottom` `right` `rightTop` `rightBottom` | string | `bottomLeft` | × |\n| styles | Tuỳ biến style inline cho từng cấu trúc semantic bên trong component Dropdown. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| trigger | Chế độ trigger kích hoạt thao tác dropdown. Lưu ý hover không dùng được trên màn hình cảm ứng | Array&lt;`click`\\|`hover`\\|`contextMenu`> | \\[`hover`] | × |\n| open | Menu dropdown hiện có đang mở hay không | boolean | - | × |\n| onOpenChange | Được gọi khi trạng thái mở thay đổi. Không kích hoạt khi ẩn do bấm vào một mục | (open: boolean, info: { source: 'trigger' \\| 'menu' }) => void | - | × |\n\n## Lưu ý\n\nHãy đảm bảo node con của `Dropdown` nhận được các sự kiện `onMouseEnter`, `onMouseLeave`, `onFocus`, `onClick`.\n\n## Semantic DOM" : "## API\n\n### Dropdown\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| arrow | Whether the dropdown arrow should be visible | boolean \\| { pointAtCenter: boolean } | false | × |\n| autoAdjustOverflow | Whether to adjust dropdown placement automatically when dropdown is off screen | boolean | true | × |\n| classNames | Customize class for each semantic structure inside the Dropdown component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| disabled | Whether the dropdown menu is disabled | boolean | - | × |\n| destroyOnHidden | Whether destroy dropdown when hidden | boolean | false | × |\n| popupRender | Customize popup content | (menus: ReactNode) => ReactNode | - | × |\n| getPopupContainer | To set the container of the dropdown menu. The default is to create a div element in body, but you can reset it to the scrolling area and make a relative reposition. | (triggerNode: HTMLElement) => HTMLElement | () => document.body | × |\n| menu | The menu props | MenuProps | - | × |\n| placement | Placement of popup menu: `top` `topLeft` `topRight` `bottom` `bottomLeft` `bottomRight` `left` `leftTop` `leftBottom` `right` `rightTop` `rightBottom` | string | `bottomLeft` | × |\n| styles | Customize inline style for each semantic structure inside the Dropdown component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| trigger | The trigger mode which executes the dropdown action. Note that hover can't be used on touchscreens | Array&lt;`click`\\|`hover`\\|`contextMenu`> | \\[`hover`] | × |\n| open | Whether the dropdown menu is currently open | boolean | - | × |\n| onOpenChange | Called when the open state is changed. Not trigger when hidden by click item | (open: boolean, info: { source: 'trigger' \\| 'menu' }) => void | - | × |\n\n## Note\n\nPlease ensure that the child node of `Dropdown` accepts `onMouseEnter`, `onMouseLeave`, `onFocus`, `onClick` events.\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo17 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

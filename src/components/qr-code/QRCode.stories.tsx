@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { QRCode } from '@fabi/ui'
 import Demo0 from "./demo/base"
@@ -47,39 +48,39 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nDùng khi cần chuyển một đoạn văn bản thành mã QR.\n\n## Ví dụ" : "## When To Use\n\nUsed when the text needs to be converted into a QR Code.\n\n## Examples"}</DocMarkdown>
-      <h3 id="qr-code-demo-base" className="fabi-sb-demo-title" lang="en">base</h3>
-      <DocMarkdown>{vi ? "Cách dùng cơ bản." : "Basic Usage."}</DocMarkdown>
-      <DocCanvas of={Base} sourceState="hidden" />
-      <h3 id="qr-code-demo-icon" className="fabi-sb-demo-title" lang="en">With Icon</h3>
-      <DocMarkdown>{vi ? "QRCode có icon." : "QRCode with Icon."}</DocMarkdown>
-      <DocCanvas of={WithIcon} sourceState="hidden" />
-      <h3 id="qr-code-demo-status" className="fabi-sb-demo-title" lang="en">other status</h3>
-      <DocMarkdown>{vi ? "Trạng thái được điều khiển qua giá trị `status`, có bốn giá trị: `active`, `expired`, `loading`, `scanned`." : "The status can be controlled by the value `status`, four values ​​of `active`, `expired`, `loading`, `scanned` are provided."}</DocMarkdown>
-      <DocCanvas of={OtherStatus} sourceState="hidden" />
-      <h3 id="qr-code-demo-customstatusrender" className="fabi-sb-demo-title" lang="en">custom status render</h3>
-      <DocMarkdown>{vi ? "Bạn có thể điều khiển logic render của mã QR ở từng trạng thái thông qua giá trị `statusRender`." : "You can control the rendering logic of the QR code in different states through the value of `statusRender`."}</DocMarkdown>
-      <DocCanvas of={CustomStatusRender} sourceState="hidden" />
-      <h3 id="qr-code-demo-type" className="fabi-sb-demo-title" lang="en">Custom Render Type</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh kết quả render bằng `type`, có hai tuỳ chọn `canvas` và `svg`." : "Customize the rendering results by `type`, provide options `canvas` and `svg`."}</DocMarkdown>
-      <DocCanvas of={CustomRenderType} sourceState="hidden" />
-      <h3 id="qr-code-demo-customsize" className="fabi-sb-demo-title" lang="en">Custom Size</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh kích thước." : "Custom Size."}</DocMarkdown>
-      <DocCanvas of={CustomSize} sourceState="hidden" />
-      <h3 id="qr-code-demo-customcolor" className="fabi-sb-demo-title" lang="en">Custom Color</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh màu sắc." : "Custom Color."}</DocMarkdown>
-      <DocCanvas of={CustomColor} sourceState="hidden" />
-      <h3 id="qr-code-demo-download" className="fabi-sb-demo-title" lang="en">Download QRCode</h3>
-      <DocMarkdown>{vi ? "Một cách để tải xuống QRCode." : "A way to download QRCode."}</DocMarkdown>
-      <DocCanvas of={DownloadQRCode} sourceState="hidden" />
-      <h3 id="qr-code-demo-errorlevel" className="fabi-sb-demo-title" lang="en">Error Level</h3>
-      <DocMarkdown>{vi ? "Đặt mức sửa lỗi (Error Level)." : "set Error Level."}</DocMarkdown>
-      <DocCanvas of={ErrorLevel} sourceState="hidden" />
-      <h3 id="qr-code-demo-popover" className="fabi-sb-demo-title" lang="en">Advanced Usage</h3>
-      <DocMarkdown>{vi ? "Dùng với Popover." : "With Popover."}</DocMarkdown>
-      <DocCanvas of={AdvancedUsage} sourceState="hidden" />
-      <h3 id="qr-code-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của QRCode bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of QRCode by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="qr-code-demo-base" title="base" of={Base} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng cơ bản." : "Basic Usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="qr-code-demo-icon" title="With Icon" of={WithIcon} code={Demo1Source}>
+        <DocMarkdown>{vi ? "QRCode có icon." : "QRCode with Icon."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="qr-code-demo-status" title="other status" of={OtherStatus} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Trạng thái được điều khiển qua giá trị `status`, có bốn giá trị: `active`, `expired`, `loading`, `scanned`." : "The status can be controlled by the value `status`, four values ​​of `active`, `expired`, `loading`, `scanned` are provided."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="qr-code-demo-customstatusrender" title="custom status render" of={CustomStatusRender} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Bạn có thể điều khiển logic render của mã QR ở từng trạng thái thông qua giá trị `statusRender`." : "You can control the rendering logic of the QR code in different states through the value of `statusRender`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="qr-code-demo-type" title="Custom Render Type" of={CustomRenderType} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh kết quả render bằng `type`, có hai tuỳ chọn `canvas` và `svg`." : "Customize the rendering results by `type`, provide options `canvas` and `svg`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="qr-code-demo-customsize" title="Custom Size" of={CustomSize} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh kích thước." : "Custom Size."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="qr-code-demo-customcolor" title="Custom Color" of={CustomColor} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh màu sắc." : "Custom Color."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="qr-code-demo-download" title="Download QRCode" of={DownloadQRCode} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Một cách để tải xuống QRCode." : "A way to download QRCode."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="qr-code-demo-errorlevel" title="Error Level" of={ErrorLevel} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Đặt mức sửa lỗi (Error Level)." : "set Error Level."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="qr-code-demo-popover" title="Advanced Usage" of={AdvancedUsage} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Dùng với Popover." : "With Popover."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="qr-code-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của QRCode bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of QRCode by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{[vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| :-- | :-- | :-- | :-- | --- |\n| value | Văn bản được quét | `string \\| string[]` | - | × |\n| type | Kiểu render | `canvas \\| svg` | `canvas` | × |\n| icon | Đường dẫn ảnh được chèn vào (chỉ hỗ trợ link ảnh) | string | - | × |\n| size | Kích thước QRCode | number | 160 | × |\n| iconSize | Kích thước ảnh được chèn vào | number \\| { width: number; height: number } | 40 | × |\n| color | Màu của QRCode | string | `#000` | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| bgColor | Màu nền của QRCode | string | `transparent` | × |\n| marginSize | Kích thước vùng trống xung quanh (tính theo module). `0` nghĩa là không có lề | number | `0` | × |\n| bordered | Có viền hay không | boolean | true | × |\n| errorLevel | Mức sửa lỗi | `'L' \\| 'M' \\| 'Q' \\| 'H'` | `M` | × |\n| boostLevel | Nếu bật, mức sửa lỗi của kết quả có thể cao hơn mức sửa lỗi đã chỉ định | `boolean` | true | × |\n| status | Trạng thái của QRCode | `active \\| expired \\| loading \\| scanned` | `active` | × |\n| statusRender | Tuỳ chỉnh render trạng thái | (info: StatusRenderInfo) => React.ReactNode | - | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n### StatusRenderInfo\n\n" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| :-- | :-- | :-- | :-- | --- |\n| value | scanned text | `string \\| string[]` | - | × |\n| type | render type | `canvas \\| svg` | `canvas` | × |\n| icon | include image url (only image link are supported) | string | - | × |\n| size | QRCode size | number | 160 | × |\n| iconSize | include image size | number \\| { width: number; height: number } | 40 | × |\n| color | QRCode Color | string | `#000` | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| bgColor | QRCode Background Color | string | `transparent` | × |\n| marginSize | Quiet zone size (in modules). `0` means no margin | number | `0` | × |\n| bordered | Whether has border style | boolean | true | × |\n| errorLevel | Error Code Level | `'L' \\| 'M' \\| 'Q' \\| 'H'` | `M` | × |\n| boostLevel | If enabled, the Error Correction Level of the result may be higher than the specified Error Correction Level | `boolean` | true | × |\n| status | QRCode status | `active \\| expired \\| loading \\| scanned` | `active` | × |\n| statusRender | custom status render | (info: StatusRenderInfo) => React.ReactNode | - | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n### StatusRenderInfo\n\n", "```typescript\ntype StatusRenderInfo = {\n  status: QRStatus;\n  locale: Locale['QRCode'];\n  onRefresh?: () => void;\n};\n```", "\n\n## Semantic DOM"].join('')}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo11 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

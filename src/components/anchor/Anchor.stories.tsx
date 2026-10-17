@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import Demo0 from "./demo/basic"
 import Demo0Source from "./demo/basic.tsx?raw"
@@ -34,33 +35,33 @@ function DocsPage() {
       <DocTitle />
       <DocMarkdown>{vi ? "Các liên kết để cuộn trong cùng một trang." : "Hyperlinks to scroll on one page."}</DocMarkdown>
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nDùng để hiển thị các liên kết neo (anchor) trên trang và nhảy giữa chúng.\n\n> Lưu ý cho developer\n>\n\n## Ví dụ" : "## When To Use\n\nFor displaying anchor hyperlinks on page and jumping between them.\n\n> Notes for developers\n>\n\n## Examples"}</DocMarkdown>
-      <h3 id="anchor-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "The simplest usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="anchor-demo-horizontal" className="fabi-sb-demo-title" lang="en">Horizontal Anchor</h3>
-      <DocMarkdown>{vi ? "Các anchor căn theo chiều ngang" : "Horizontally aligned anchors"}</DocMarkdown>
-      <DocCanvas of={HorizontalAnchor} sourceState="hidden" />
-      <h3 id="anchor-demo-static" className="fabi-sb-demo-title" lang="en">Static Anchor</h3>
-      <DocMarkdown>{vi ? "Không thay đổi trạng thái khi trang đang cuộn." : "Do not change state when page is scrolling."}</DocMarkdown>
-      <DocCanvas of={StaticAnchor} sourceState="hidden" />
-      <h3 id="anchor-demo-onclick" className="fabi-sb-demo-title" lang="en">Customize the onClick event</h3>
-      <DocMarkdown>{vi ? "Bấm vào anchor không ghi lại lịch sử." : "Clicking on an anchor does not record history."}</DocMarkdown>
-      <DocCanvas of={CustomizeTheOnClickEvent} sourceState="hidden" />
-      <h3 id="anchor-demo-customizehighlight" className="fabi-sb-demo-title" lang="en">Customize the anchor highlight</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh anchor được đánh dấu." : "Customize the anchor highlight."}</DocMarkdown>
-      <DocCanvas of={CustomizeTheAnchorHighlight} sourceState="hidden" />
-      <h3 id="anchor-demo-targetoffset" className="fabi-sb-demo-title" lang="en">Set Anchor scroll offset</h3>
-      <DocMarkdown>{vi ? "Cuộn phần tử đích của anchor về giữa màn hình." : "Anchor target scroll to screen center."}</DocMarkdown>
-      <DocCanvas of={SetAnchorScrollOffset} sourceState="hidden" />
-      <h3 id="anchor-demo-onchange" className="fabi-sb-demo-title" lang="en">Listening for anchor link change</h3>
-      <DocMarkdown>{vi ? "Lắng nghe thay đổi của liên kết anchor." : "Listening for anchor link change."}</DocMarkdown>
-      <DocCanvas of={ListeningForAnchorLinkChange} sourceState="hidden" />
-      <h3 id="anchor-demo-replace" className="fabi-sb-demo-title" lang="en">Replace href in history</h3>
-      <DocMarkdown>{vi ? "Thay thế đường dẫn trong lịch sử trình duyệt, để nút quay lại đưa về trang trước thay vì anchor trước đó." : "Replace path in browser history, so back button returns to previous page instead of previous anchor item."}</DocMarkdown>
-      <DocCanvas of={ReplaceHrefInHistory} sourceState="hidden" />
-      <h3 id="anchor-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Anchor bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Anchor by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="anchor-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "The simplest usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="anchor-demo-horizontal" title="Horizontal Anchor" of={HorizontalAnchor} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Các anchor căn theo chiều ngang" : "Horizontally aligned anchors"}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="anchor-demo-static" title="Static Anchor" of={StaticAnchor} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Không thay đổi trạng thái khi trang đang cuộn." : "Do not change state when page is scrolling."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="anchor-demo-onclick" title="Customize the onClick event" of={CustomizeTheOnClickEvent} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Bấm vào anchor không ghi lại lịch sử." : "Clicking on an anchor does not record history."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="anchor-demo-customizehighlight" title="Customize the anchor highlight" of={CustomizeTheAnchorHighlight} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh anchor được đánh dấu." : "Customize the anchor highlight."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="anchor-demo-targetoffset" title="Set Anchor scroll offset" of={SetAnchorScrollOffset} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Cuộn phần tử đích của anchor về giữa màn hình." : "Anchor target scroll to screen center."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="anchor-demo-onchange" title="Listening for anchor link change" of={ListeningForAnchorLinkChange} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Lắng nghe thay đổi của liên kết anchor." : "Listening for anchor link change."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="anchor-demo-replace" title="Replace href in history" of={ReplaceHrefInHistory} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Thay thế đường dẫn trong lịch sử trình duyệt, để nút quay lại đưa về trang trước thay vì anchor trước đó." : "Replace path in browser history, so back button returns to previous page instead of previous anchor item."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="anchor-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Anchor bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Anchor by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Props của Anchor\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| affix | Chế độ cố định của Anchor | boolean \\| Omit&lt;AffixProps, 'offsetTop' \\| 'target' \\| 'children'> | true | × |\n| bounds | Khoảng cách giới hạn của vùng anchor | number | 5 | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| getContainer | Container cuộn | () => HTMLElement | () => window | × |\n| getCurrentAnchor | Tuỳ chỉnh anchor được đánh dấu | (activeLink: string) => string | - | × |\n| offsetTop | Số pixel lệch từ phía trên khi tính vị trí cuộn | number | 0 | × |\n| showInkInFixed | Có hiển thị ink-square khi `affix={false}` hay không | boolean | false | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| targetOffset | Offset cuộn của anchor, mặc định bằng `offsetTop`, [ví dụ](#anchor-demo-targetoffset) | number | - | × |\n| onChange | Lắng nghe thay đổi của liên kết anchor | (currentActiveLink: string) => void | - | × |\n| onClick | Đặt handler xử lý sự kiện `click` | (e: MouseEvent, link: object) => void | - | × |\n| items | Nội dung cấu hình dữ liệu, hỗ trợ lồng nhau qua children | { key, href, title, target, children }\\[] [see](#anchoritem) | - | × |\n| direction | Đặt hướng của Anchor | `vertical` \\| `horizontal` | `vertical` | × |\n| replace | Thay thế href của các item trong lịch sử trình duyệt thay vì thêm mới | boolean | false | × |\n\n### AnchorItem\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| key | Định danh duy nhất của Anchor Link | string \\| number | - |\n| href | Đích của liên kết | string | - |\n| target | Chỉ định nơi hiển thị URL được liên kết | string | - |\n| title | Nội dung của liên kết | ReactNode | - |\n| children | Anchor Link lồng nhau, `Attention: This attribute does not support horizontal orientation` | [AnchorItem](#anchoritem)\\[] | - |\n| replace | Thay thế href của item trong lịch sử trình duyệt thay vì thêm mới | boolean | false |\n| targetOffset | Tuỳ chỉnh offset cuộn cho liên kết anchor này. Được ưu tiên hơn prop `targetOffset` của component Anchor | number | - |\n\n### Props của Link\n\nChúng tôi khuyên dùng dạng items thay thế.\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| href | Đích của liên kết | string | - |\n| target | Chỉ định nơi hiển thị URL được liên kết | string | - |\n| title | Nội dung của liên kết | ReactNode | - |\n| targetOffset | Tuỳ chỉnh offset cuộn cho liên kết anchor này. Được ưu tiên hơn prop `targetOffset` của component Anchor | number | - |\n\n## Semantic DOM" : "## API\n\n### Anchor Props\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| affix | Fixed mode of Anchor | boolean \\| Omit&lt;AffixProps, 'offsetTop' \\| 'target' \\| 'children'> | true | × |\n| bounds | Bounding distance of anchor area | number | 5 | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| getContainer | Scrolling container | () => HTMLElement | () => window | × |\n| getCurrentAnchor | Customize the anchor highlight | (activeLink: string) => string | - | × |\n| offsetTop | Pixels to offset from top when calculating position of scroll | number | 0 | × |\n| showInkInFixed | Whether show ink-square when `affix={false}` | boolean | false | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| targetOffset | Anchor scroll offset, default as `offsetTop`, [example](#anchor-demo-targetoffset) | number | - | × |\n| onChange | Listening for anchor link change | (currentActiveLink: string) => void | - | × |\n| onClick | Set the handler to handle `click` event | (e: MouseEvent, link: object) => void | - | × |\n| items | Data configuration option content, support nesting through children | { key, href, title, target, children }\\[] [see](#anchoritem) | - | × |\n| direction | Set Anchor direction | `vertical` \\| `horizontal` | `vertical` | × |\n| replace | Replace items' href in browser history instead of pushing it | boolean | false | × |\n\n### AnchorItem\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| key | The unique identifier of the Anchor Link | string \\| number | - |\n| href | The target of hyperlink | string | - |\n| target | Specifies where to display the linked URL | string | - |\n| title | The content of hyperlink | ReactNode | - |\n| children | Nested Anchor Link, `Attention: This attribute does not support horizontal orientation` | [AnchorItem](#anchoritem)\\[] | - |\n| replace | Replace item href in browser history instead of pushing it | boolean | false |\n| targetOffset | Customize scroll offset for this anchor link. It takes precedence over the `targetOffset` prop of the Anchor component | number | - |\n\n### Link Props\n\nWe recommend using the items form instead.\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| href | The target of hyperlink | string | - |\n| target | Specifies where to display the linked URL | string | - |\n| title | The content of hyperlink | ReactNode | - |\n| targetOffset | Customize scroll offset for this anchor link. It takes precedence over the `targetOffset` prop of the Anchor component | number | - |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo9 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

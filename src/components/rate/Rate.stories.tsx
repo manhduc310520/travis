@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { expect, fn, screen, waitFor, within } from 'storybook/test'
 import { Rate } from '@fabi/ui'
@@ -41,30 +42,30 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Hiển thị đánh giá.\n- Thao tác đánh giá nhanh một đối tượng.\n\n## Ví dụ" : "## When To Use\n\n- Show evaluation.\n- A quick rating operation on something.\n\n## Examples"}</DocMarkdown>
-      <h3 id="rate-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "The simplest usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="rate-demo-size" className="fabi-sb-demo-title" lang="en">Sizes</h3>
-      <DocMarkdown>{vi ? "Ba kích thước." : "Three sizes."}</DocMarkdown>
-      <DocCanvas of={Sizes} sourceState="hidden" />
-      <h3 id="rate-demo-half" className="fabi-sb-demo-title" lang="en">Half star</h3>
-      <DocMarkdown>{vi ? "Hỗ trợ chọn nửa sao." : "Support select half star."}</DocMarkdown>
-      <DocCanvas of={HalfStar} sourceState="hidden" />
-      <h3 id="rate-demo-text" className="fabi-sb-demo-title" lang="en">Show copywriting</h3>
-      <DocMarkdown>{vi ? "Thêm chữ mô tả vào component rate." : "Add copywriting in rate components."}</DocMarkdown>
-      <DocCanvas of={ShowCopywriting} sourceState="hidden" />
-      <h3 id="rate-demo-disabled" className="fabi-sb-demo-title" lang="en">Read only</h3>
-      <DocMarkdown>{vi ? "Chỉ đọc, không thể tương tác bằng chuột." : "Read only, can't use mouse to interact."}</DocMarkdown>
-      <DocCanvas of={ReadOnly} sourceState="hidden" />
-      <h3 id="rate-demo-clear" className="fabi-sb-demo-title" lang="en">Clear star</h3>
-      <DocMarkdown>{vi ? "Cho phép xoá đánh giá khi nhấp lại vào cùng một ngôi sao." : "Allow clearing the rating when clicking the same star again."}</DocMarkdown>
-      <DocCanvas of={ClearStar} sourceState="hidden" />
-      <h3 id="rate-demo-character" className="fabi-sb-demo-title" lang="en">Other Character</h3>
-      <DocMarkdown>{vi ? "Thay ngôi sao mặc định bằng ký tự khác như chữ cái, chữ số, iconfont hoặc thậm chí chữ Hán." : "Replace the default star to other character like alphabet, digit, iconfont or even Chinese word."}</DocMarkdown>
-      <DocCanvas of={OtherCharacter} sourceState="hidden" />
-      <h3 id="rate-demo-character-function" className="fabi-sb-demo-title" lang="en">Customize character</h3>
-      <DocMarkdown>{vi ? "Có thể tuỳ chỉnh từng ký tự bằng `(RateProps) => ReactNode`." : "Can customize each character using `(RateProps) => ReactNode`."}</DocMarkdown>
-      <DocCanvas of={CustomizeCharacter} sourceState="hidden" />
+      <DemoBox id="rate-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "The simplest usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="rate-demo-size" title="Sizes" of={Sizes} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Ba kích thước." : "Three sizes."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="rate-demo-half" title="Half star" of={HalfStar} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Hỗ trợ chọn nửa sao." : "Support select half star."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="rate-demo-text" title="Show copywriting" of={ShowCopywriting} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Thêm chữ mô tả vào component rate." : "Add copywriting in rate components."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="rate-demo-disabled" title="Read only" of={ReadOnly} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Chỉ đọc, không thể tương tác bằng chuột." : "Read only, can't use mouse to interact."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="rate-demo-clear" title="Clear star" of={ClearStar} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Cho phép xoá đánh giá khi nhấp lại vào cùng một ngôi sao." : "Allow clearing the rating when clicking the same star again."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="rate-demo-character" title="Other Character" of={OtherCharacter} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Thay ngôi sao mặc định bằng ký tự khác như chữ cái, chữ số, iconfont hoặc thậm chí chữ Hán." : "Replace the default star to other character like alphabet, digit, iconfont or even Chinese word."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="rate-demo-character-function" title="Customize character" of={CustomizeCharacter} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Có thể tuỳ chỉnh từng ký tự bằng `(RateProps) => ReactNode`." : "Can customize each character using `(RateProps) => ReactNode`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| allowClear | Có cho phép xoá khi nhấp lại hay không | boolean | true | × |\n| allowHalf | Có cho phép chọn nửa sao hay không | boolean | false | × |\n| character | Ký tự tuỳ chỉnh của rate | ReactNode \\| (RateProps) => ReactNode | &lt;StarFilled /> | × |\n| count | Số lượng sao | number | 5 | × |\n| defaultValue | Giá trị mặc định | number | 0 | × |\n| disabled | Nếu chỉ đọc thì không thể tương tác | boolean | false | × |\n| keyboard | Hỗ trợ thao tác bằng bàn phím | boolean | true | × |\n| size | Kích thước sao | 'small' \\| 'medium' \\| 'large' | 'medium' | × |\n| tooltips | Tuỳ chỉnh tooltip cho từng ký tự | TooltipProps[] \\| string\\[] | - | × |\n| value | Giá trị hiện tại | number | - | × |\n| onBlur | Hàm callback khi component mất focus | function() | - | × |\n| onChange | Hàm callback khi chọn giá trị | function(value: number) | - | × |\n| onFocus | Hàm callback khi component nhận focus | function() | - | × |\n| onHoverChange | Hàm callback khi rê chuột vào một mục | function(value: number) | - | × |\n| onKeyDown | Hàm callback khi nhấn phím trên component | function(event) | - | × |\n\n## Phương thức\n\n| Tên | Mô tả |\n| ------- | ------------ |\n| blur() | Bỏ focus |\n| focus() | Đặt focus |\n\n## Design Token" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| allowClear | Whether to allow clear when click again | boolean | true | × |\n| allowHalf | Whether to allow semi selection | boolean | false | × |\n| character | The custom character of rate | ReactNode \\| (RateProps) => ReactNode | &lt;StarFilled /> | × |\n| count | Star count | number | 5 | × |\n| defaultValue | The default value | number | 0 | × |\n| disabled | If read only, unable to interact | boolean | false | × |\n| keyboard | Support keyboard operation | boolean | true | × |\n| size | Star size | 'small' \\| 'medium' \\| 'large' | 'medium' | × |\n| tooltips | Customize tooltip by each character | TooltipProps[] \\| string\\[] | - | × |\n| value | The current value | number | - | × |\n| onBlur | Callback when component lose focus | function() | - | × |\n| onChange | Callback when select value | function(value: number) | - | × |\n| onFocus | Callback when component get focus | function() | - | × |\n| onHoverChange | Callback when hover item | function(value: number) | - | × |\n| onKeyDown | Callback when keydown on component | function(event) | - | × |\n\n## Methods\n\n| Name | Description |\n| ------- | ------------ |\n| blur() | Remove focus |\n| focus() | Get focus |\n\n## Design Token"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block"><ComponentTokenTable component="Rate" /></div></DocUnstyled>
     </>

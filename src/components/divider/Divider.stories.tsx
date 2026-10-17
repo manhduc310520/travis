@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Divider } from '@fabi/ui'
 import Demo0 from "./demo/horizontal"
@@ -39,27 +40,27 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Phân chia các phần của một bài viết.\n- Phân cách văn bản và liên kết nằm cùng dòng, ví dụ cột thao tác của bảng.\n\n## Ví dụ" : "## When To Use\n\n- Divide sections of an article.\n- Divide inline text and links such as the operation column of table.\n\n## Examples"}</DocMarkdown>
-      <h3 id="divider-demo-horizontal" className="fabi-sb-demo-title" lang="en">Horizontal</h3>
-      <DocMarkdown>{vi ? "Divider mặc định là `horizontal`. Bạn có thể thêm văn bản vào bên trong Divider." : "A Divider is `horizontal` by default. You can add text within Divider."}</DocMarkdown>
-      <DocCanvas of={Horizontal} sourceState="hidden" />
-      <h3 id="divider-demo-with-text" className="fabi-sb-demo-title" lang="en">Divider with title</h3>
-      <DocMarkdown>{vi ? "Divider có tiêu đề bên trong, đặt `titlePlacement=\"start/end\"` để căn vị trí tiêu đề." : "Divider with inner title, set `titlePlacement=\"start/end\"` to align it."}</DocMarkdown>
-      <DocCanvas of={DividerWithTitle} sourceState="hidden" />
-      <h3 id="divider-demo-size" className="fabi-sb-demo-title" lang="en">Set the spacing size of the divider</h3>
-      <DocMarkdown>{vi ? "Kích thước khoảng cách." : "The size of the spacing."}</DocMarkdown>
-      <DocCanvas of={SetTheSpacingSizeOfTheDivider} sourceState="hidden" />
-      <h3 id="divider-demo-plain" className="fabi-sb-demo-title" lang="en">Text without heading style</h3>
-      <DocMarkdown>{vi ? "Bạn có thể dùng kiểu chữ không phải heading cho văn bản của Divider bằng cách đặt thuộc tính `plain`." : "You can use non-heading style of divider text by setting the `plain` property."}</DocMarkdown>
-      <DocCanvas of={TextWithoutHeadingStyle} sourceState="hidden" />
-      <h3 id="divider-demo-vertical" className="fabi-sb-demo-title" lang="en">Vertical</h3>
-      <DocMarkdown>{vi ? "Dùng `orientation=\"vertical\"` hoặc `vertical` để chuyển Divider sang dạng dọc." : "Use `orientation=\"vertical\"` or `vertical` to make the divider vertical."}</DocMarkdown>
-      <DocCanvas of={Vertical} sourceState="hidden" />
-      <h3 id="divider-demo-variant" className="fabi-sb-demo-title" lang="en">Variant</h3>
-      <DocMarkdown>{vi ? "Divider mặc định có variant là `solid`. Bạn có thể đổi sang `dashed` hoặc `dotted`." : "Divider is of `solid` variant by default. You can change that to either `dashed` or `dotted`."}</DocMarkdown>
-      <DocCanvas of={Variant} sourceState="hidden" />
-      <h3 id="divider-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Divider bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of divider by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="divider-demo-horizontal" title="Horizontal" of={Horizontal} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Divider mặc định là `horizontal`. Bạn có thể thêm văn bản vào bên trong Divider." : "A Divider is `horizontal` by default. You can add text within Divider."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="divider-demo-with-text" title="Divider with title" of={DividerWithTitle} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Divider có tiêu đề bên trong, đặt `titlePlacement=\"start/end\"` để căn vị trí tiêu đề." : "Divider with inner title, set `titlePlacement=\"start/end\"` to align it."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="divider-demo-size" title="Set the spacing size of the divider" of={SetTheSpacingSizeOfTheDivider} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Kích thước khoảng cách." : "The size of the spacing."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="divider-demo-plain" title="Text without heading style" of={TextWithoutHeadingStyle} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Bạn có thể dùng kiểu chữ không phải heading cho văn bản của Divider bằng cách đặt thuộc tính `plain`." : "You can use non-heading style of divider text by setting the `plain` property."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="divider-demo-vertical" title="Vertical" of={Vertical} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Dùng `orientation=\"vertical\"` hoặc `vertical` để chuyển Divider sang dạng dọc." : "Use `orientation=\"vertical\"` or `vertical` to make the divider vertical."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="divider-demo-variant" title="Variant" of={Variant} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Divider mặc định có variant là `solid`. Bạn có thể đổi sang `dashed` hoặc `dotted`." : "Divider is of `solid` variant by default. You can change that to either `dashed` or `dotted`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="divider-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Divider bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of divider by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| children | Tiêu đề bên trong | ReactNode | - | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| dashed | Đường kẻ có phải nét đứt hay không | boolean | false | × |\n| orientation | Đường kẻ nằm ngang hay dọc | `horizontal` \\| `vertical` | `horizontal` | × |\n| plain | Hiển thị văn bản của Divider theo kiểu thường | boolean | false | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| size | Kích thước của Divider. Chỉ có hiệu lực với bố cục ngang | `small` \\| `medium` \\| `large` | - | × |\n| titlePlacement | Vị trí của tiêu đề bên trong Divider | `start` \\| `end` \\| `center` | `center` | × |\n| variant | Đường kẻ là nét đứt, chấm hay liền | `dashed` \\| `dotted` \\| `solid` | solid | × |\n| vertical | Hướng, cấu hình đồng thời với `orientation` thì ưu tiên `orientation` | boolean | false | × |\n\n## Semantic DOM" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| children | The wrapped title | ReactNode | - | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| dashed | Whether line is dashed | boolean | false | × |\n| orientation | Whether line is horizontal or vertical | `horizontal` \\| `vertical` | `horizontal` | × |\n| plain | Divider text show as plain style | boolean | false | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| size | The size of divider. Only valid for horizontal layout | `small` \\| `medium` \\| `large` | - | × |\n| titlePlacement | The position of title inside divider | `start` \\| `end` \\| `center` | `center` | × |\n| variant | Whether line is dashed, dotted or solid | `dashed` \\| `dotted` \\| `solid` | solid | × |\n| vertical | Orientation, Simultaneously configure with `orientation` and prioritize `orientation` | boolean | false | × |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo7 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

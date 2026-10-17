@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { ColorPicker } from '@fabi/ui'
 import Demo0 from "./demo/base"
@@ -53,48 +54,48 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nDùng khi người dùng cần chọn màu tuỳ chỉnh.\n\n## Ví dụ" : "## When To Use\n\nUsed when the user needs to make a customized color selection.\n\n## Examples"}</DocMarkdown>
-      <h3 id="color-picker-demo-base" className="fabi-sb-demo-title" lang="en">Basic Usage</h3>
-      <DocMarkdown>{vi ? "Cách dùng cơ bản." : "Basic Usage."}</DocMarkdown>
-      <DocCanvas of={BasicUsage} sourceState="hidden" />
-      <h3 id="color-picker-demo-size" className="fabi-sb-demo-title" lang="en">Trigger size</h3>
-      <DocMarkdown>{vi ? "FABi CMS Design System hỗ trợ ba kích thước trigger: nhỏ, mặc định và lớn.\n\nNếu muốn trigger lớn hoặc nhỏ, đặt thuộc tính `size` thành `large` hoặc `small` tương ứng. Bỏ qua thuộc tính `size` để dùng trigger cỡ mặc định." : "FABi CMS Design System supports three trigger sizes: small, default and large.\n\nIf a large or small trigger is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a trigger with the default size."}</DocMarkdown>
-      <DocCanvas of={TriggerSize} sourceState="hidden" />
-      <h3 id="color-picker-demo-controlled" className="fabi-sb-demo-title" lang="en">controlled mode</h3>
-      <DocMarkdown>{vi ? "Đặt component ở chế độ được điều khiển. Sẽ khoá màu hiển thị nếu được điều khiển bởi `onChangeComplete`." : "Set the component to controlled mode. Will lock the display color if controlled by `onChangeComplete`."}</DocMarkdown>
-      <DocCanvas of={ControlledMode} sourceState="hidden" />
-      <h3 id="color-picker-demo-line-gradient" className="fabi-sb-demo-title" lang="en">Line Gradient</h3>
-      <DocMarkdown>{vi ? "Đặt màu đơn hoặc màu gradient thông qua `mode`." : "Set the color to a single or a gradient color via `mode`."}</DocMarkdown>
-      <DocCanvas of={LineGradient} sourceState="hidden" />
-      <h3 id="color-picker-demo-text-render" className="fabi-sb-demo-title" lang="en">Rendering Trigger Text</h3>
-      <DocMarkdown>{vi ? "Hiển thị văn bản mặc định của trigger, có hiệu lực khi `showText` là `true`. Khi tuỳ chỉnh văn bản, có thể dùng `showText` như một function để trả về văn bản tuỳ chỉnh." : "Renders the default text of the trigger, effective when `showText` is `true`. When customizing text, you can use `showText` as a function to return custom text."}</DocMarkdown>
-      <DocCanvas of={RenderingTriggerText} sourceState="hidden" />
-      <h3 id="color-picker-demo-disabled" className="fabi-sb-demo-title" lang="en">Disable</h3>
-      <DocMarkdown>{vi ? "Đặt về trạng thái vô hiệu hoá." : "Set to disabled state."}</DocMarkdown>
-      <DocCanvas of={Disable} sourceState="hidden" />
-      <h3 id="color-picker-demo-disabled-alpha" className="fabi-sb-demo-title" lang="en">Disabled Alpha</h3>
-      <DocMarkdown>{vi ? "Vô hiệu hoá alpha của màu." : "Disabled color alpha."}</DocMarkdown>
-      <DocCanvas of={DisabledAlpha} sourceState="hidden" />
-      <h3 id="color-picker-demo-allowclear" className="fabi-sb-demo-title" lang="en">Clear Color</h3>
-      <DocMarkdown>{vi ? "Xoá màu." : "Clear Color."}</DocMarkdown>
-      <DocCanvas of={ClearColor} sourceState="hidden" />
-      <h3 id="color-picker-demo-trigger" className="fabi-sb-demo-title" lang="en">Custom Trigger</h3>
-      <DocMarkdown>{vi ? "Trigger tuỳ chỉnh cho bảng màu." : "Triggers for customizing color panels."}</DocMarkdown>
-      <DocCanvas of={CustomTrigger} sourceState="hidden" />
-      <h3 id="color-picker-demo-trigger-event" className="fabi-sb-demo-title" lang="en">Custom Trigger Event</h3>
-      <DocMarkdown>{vi ? "Sự kiện kích hoạt bảng màu tuỳ chỉnh, cung cấp các lựa chọn `click` và `hover`." : "Triggers event for customizing color panels, provide options `click` and `hover`."}</DocMarkdown>
-      <DocCanvas of={CustomTriggerEvent} sourceState="hidden" />
-      <h3 id="color-picker-demo-format" className="fabi-sb-demo-title" lang="en">Color Format</h3>
-      <DocMarkdown>{vi ? "Các định dạng mã hoá, hỗ trợ `HEX`, `HSB`, `RGB`." : "Encoding formats, support `HEX`, `HSB`, `RGB`."}</DocMarkdown>
-      <DocCanvas of={ColorFormat} sourceState="hidden" />
-      <h3 id="color-picker-demo-presets" className="fabi-sb-demo-title" lang="en">Preset Colors</h3>
-      <DocMarkdown>{vi ? "Đặt các màu cài sẵn cho color picker." : "Set the presets color of the color picker."}</DocMarkdown>
-      <DocCanvas of={PresetColors} sourceState="hidden" />
-      <h3 id="color-picker-demo-panel-render" className="fabi-sb-demo-title" lang="en">Custom Render Panel</h3>
-      <DocMarkdown>{vi ? "Render bảng điều khiển tuỳ ý thông qua `panelRender`." : "Rendering of the free control panel via `panelRender`."}</DocMarkdown>
-      <DocCanvas of={CustomRenderPanel} sourceState="hidden" />
-      <h3 id="color-picker-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của ColorPicker bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of ColorPicker by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="color-picker-demo-base" title="Basic Usage" of={BasicUsage} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng cơ bản." : "Basic Usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-size" title="Trigger size" of={TriggerSize} code={Demo1Source}>
+        <DocMarkdown>{vi ? "FABi CMS Design System hỗ trợ ba kích thước trigger: nhỏ, mặc định và lớn.\n\nNếu muốn trigger lớn hoặc nhỏ, đặt thuộc tính `size` thành `large` hoặc `small` tương ứng. Bỏ qua thuộc tính `size` để dùng trigger cỡ mặc định." : "FABi CMS Design System supports three trigger sizes: small, default and large.\n\nIf a large or small trigger is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a trigger with the default size."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-controlled" title="controlled mode" of={ControlledMode} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Đặt component ở chế độ được điều khiển. Sẽ khoá màu hiển thị nếu được điều khiển bởi `onChangeComplete`." : "Set the component to controlled mode. Will lock the display color if controlled by `onChangeComplete`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-line-gradient" title="Line Gradient" of={LineGradient} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Đặt màu đơn hoặc màu gradient thông qua `mode`." : "Set the color to a single or a gradient color via `mode`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-text-render" title="Rendering Trigger Text" of={RenderingTriggerText} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Hiển thị văn bản mặc định của trigger, có hiệu lực khi `showText` là `true`. Khi tuỳ chỉnh văn bản, có thể dùng `showText` như một function để trả về văn bản tuỳ chỉnh." : "Renders the default text of the trigger, effective when `showText` is `true`. When customizing text, you can use `showText` as a function to return custom text."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-disabled" title="Disable" of={Disable} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Đặt về trạng thái vô hiệu hoá." : "Set to disabled state."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-disabled-alpha" title="Disabled Alpha" of={DisabledAlpha} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Vô hiệu hoá alpha của màu." : "Disabled color alpha."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-allowclear" title="Clear Color" of={ClearColor} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Xoá màu." : "Clear Color."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-trigger" title="Custom Trigger" of={CustomTrigger} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Trigger tuỳ chỉnh cho bảng màu." : "Triggers for customizing color panels."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-trigger-event" title="Custom Trigger Event" of={CustomTriggerEvent} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Sự kiện kích hoạt bảng màu tuỳ chỉnh, cung cấp các lựa chọn `click` và `hover`." : "Triggers event for customizing color panels, provide options `click` and `hover`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-format" title="Color Format" of={ColorFormat} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Các định dạng mã hoá, hỗ trợ `HEX`, `HSB`, `RGB`." : "Encoding formats, support `HEX`, `HSB`, `RGB`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-presets" title="Preset Colors" of={PresetColors} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Đặt các màu cài sẵn cho color picker." : "Set the presets color of the color picker."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-panel-render" title="Custom Render Panel" of={CustomRenderPanel} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Render bảng điều khiển tuỳ ý thông qua `panelRender`." : "Rendering of the free control panel via `panelRender`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="color-picker-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo13Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của ColorPicker bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of ColorPicker by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{[vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| :-- | :-- | :-- | :-- | --- |\n| allowClear | Cho phép xoá màu đã chọn | boolean | false | × |\n| arrow | Cấu hình cho mũi tên của popup | `boolean \\| { pointAtCenter: boolean }` | true | ✓ |\n| children | Trigger của ColorPicker | React.ReactNode | - | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultValue | Giá trị mặc định của màu | [ColorType](#colortype) | - | × |\n| defaultFormat | Định dạng mặc định của màu | `rgb` \\| `hex` \\| `hsb` | `hex` | × |\n| disabled | Vô hiệu hoá ColorPicker | boolean | - | × |\n| disabledAlpha | Vô hiệu hoá Alpha | boolean | - | × |\n| disabledFormat | Vô hiệu hoá định dạng của màu | boolean | - | × |\n| destroyOnHidden | Có huỷ dom khi đóng hay không | `boolean` | false | × |\n| format | Định dạng của màu | `rgb` \\| `hex` \\| `hsb` | - | × |\n| mode | Cấu hình màu đơn hoặc gradient | `'single' \\| 'gradient' \\| ('single' \\| 'gradient')[]` | `single` | × |\n| open | Có hiển thị popup hay không | boolean | - | × |\n| presets | Các màu cài sẵn | [PresetColorType](#presetcolortype) | - | × |\n| placement | Vị trí của popup | Thiết kế của tham số placement giống với component `Tooltips`. | `bottomLeft` | × |\n| panelRender | Panel render tuỳ chỉnh | `(panel: React.ReactNode, extra: { components: { Picker: FC; Presets: FC } }) => React.ReactNode` | - | × |\n| showText | Hiển thị văn bản màu | boolean \\| `(color: Color) => React.ReactNode` | - | × |\n| size | Đặt kích thước trigger | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| trigger | Chế độ trigger của ColorPicker | `hover` \\| `click` | `click` | × |\n| value | Giá trị của màu | [ColorType](#colortype) | - | × |\n| onChange | Hàm callback khi `value` thay đổi | `(value: Color, css: string) => void` | - | × |\n| onChangeComplete | Được gọi khi kết thúc việc chọn màu. Sẽ không đổi màu hiển thị khi `value` được điều khiển bởi `onChangeComplete` | `(value: Color) => void` | - | × |\n| onFormatChange | Hàm callback khi `format` thay đổi | `(format: 'hex' \\| 'rgb' \\| 'hsb') => void` | - | × |\n| onOpenChange | Hàm callback khi `open` thay đổi | `(open: boolean) => void` | - | × |\n| onClear | Được gọi khi xoá | `() => void` | - | × |\n\n#### ColorType\n\n" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| :-- | :-- | :-- | :-- | --- |\n| allowClear | Allow clearing color selected | boolean | false | × |\n| arrow | Configuration for popup arrow | `boolean \\| { pointAtCenter: boolean }` | true | ✓ |\n| children | Trigger of ColorPicker | React.ReactNode | - | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultValue | Default value of color | [ColorType](#colortype) | - | × |\n| defaultFormat | Default format of color | `rgb` \\| `hex` \\| `hsb` | `hex` | × |\n| disabled | Disable ColorPicker | boolean | - | × |\n| disabledAlpha | Disable Alpha | boolean | - | × |\n| disabledFormat | Disable format of color | boolean | - | × |\n| destroyOnHidden | Whether destroy dom when close | `boolean` | false | × |\n| format | Format of color | `rgb` \\| `hex` \\| `hsb` | - | × |\n| mode | Configure single or gradient color | `'single' \\| 'gradient' \\| ('single' \\| 'gradient')[]` | `single` | × |\n| open | Whether to show popup | boolean | - | × |\n| presets | Preset colors | [PresetColorType](#presetcolortype) | - | × |\n| placement | Placement of popup | The design of the placement parameter is the same as the `Tooltips` component. | `bottomLeft` | × |\n| panelRender | Custom Render Panel | `(panel: React.ReactNode, extra: { components: { Picker: FC; Presets: FC } }) => React.ReactNode` | - | × |\n| showText | Show color text | boolean \\| `(color: Color) => React.ReactNode` | - | × |\n| size | Setting the trigger size | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| trigger | ColorPicker trigger mode | `hover` \\| `click` | `click` | × |\n| value | Value of color | [ColorType](#colortype) | - | × |\n| onChange | Callback when `value` is changed | `(value: Color, css: string) => void` | - | × |\n| onChangeComplete | Called when color pick ends. Will not change the display color when `value` controlled by `onChangeComplete` | `(value: Color) => void` | - | × |\n| onFormatChange | Callback when `format` is changed | `(format: 'hex' \\| 'rgb' \\| 'hsb') => void` | - | × |\n| onOpenChange | Callback when `open` is changed | `(open: boolean) => void` | - | × |\n| onClear | Called when clear | `() => void` | - | × |\n\n#### ColorType\n\n", "```typescript\ntype ColorType =\n  | string\n  | Color\n  | {\n      color: string;\n      percent: number;\n    }[];\n```", "\n\n#### PresetColorType\n\n", "```typescript\ntype PresetColorType = {\n  label: React.ReactNode;\n  defaultOpen?: boolean;\n  key?: React.Key;\n  colors: ColorType[];\n};\n```", vi ? "\n\n### Màu sắc\n\n| Thuộc tính | Mô tả | Kiểu |\n| :-- | :-- | :-- |\n| toCssString | Chuyển sang định dạng CSS hỗ trợ | `() => string` |\n| toHex | Chuyển sang chuỗi ký tự định dạng `hex`, kiểu trả về như: `1677ff` | `() => string` |\n| toHexString | Chuyển sang chuỗi màu định dạng `hex`, kiểu trả về như: `#1677ff` | `() => string` |\n| toHsb | Chuyển sang object `hsb` | `() => ({ h: number, s: number, b: number, a: number })` |\n| toHsbString | Chuyển sang chuỗi màu định dạng `hsb`, kiểu trả về như: `hsb(215, 91%, 100%)` | `() => string` |\n| toRgb | Chuyển sang object `rgb` | `() => ({ r: number, g: number, b: number, a: number })` |\n| toRgbString | Chuyển sang chuỗi màu định dạng `rgb`, kiểu trả về như: `rgb(22, 119, 255)` | `() => string` |\n\n## Semantic DOM" : "\n\n### Color\n\n| Property | Description | Type |\n| :-- | :-- | :-- |\n| toCssString | Convert to CSS support format | `() => string` |\n| toHex | Convert to `hex` format characters, the return type like: `1677ff` | `() => string` |\n| toHexString | Convert to `hex` format color string, the return type like: `#1677ff` | `() => string` |\n| toHsb | Convert to `hsb` object | `() => ({ h: number, s: number, b: number, a: number })` |\n| toHsbString | Convert to `hsb` format color string, the return type like: `hsb(215, 91%, 100%)` | `() => string` |\n| toRgb | Convert to `rgb` object | `() => ({ r: number, g: number, b: number, a: number })` |\n| toRgbString | Convert to `rgb` format color string, the return type like: `rgb(22, 119, 255)` | `() => string` |\n\n## Semantic DOM"].join('')}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo14 /></div></DocUnstyled>
       <DocMarkdown>{vi ? "## Câu hỏi thường gặp\n\n### Các câu hỏi về việc gán màu\n\nGiá trị của bộ chọn màu hỗ trợ cả giá trị màu dạng chuỗi lẫn object `Color` do bộ chọn tạo ra. Tuy nhiên, vì việc chuyển đổi qua lại giữa các chuỗi màu ở những định dạng khác nhau có sai số về độ chính xác, nên khuyến nghị dùng object `Color` do bộ chọn tạo ra cho thao tác gán giá trị trong các trường hợp được điều khiển, để tránh vấn đề độ chính xác, đảm bảo giá trị chính xác và bộ chọn hoạt động đúng như mong đợi." : "## FAQ\n\n### Questions about color assignment\n\nThe value of the color selector supports both string color values and selector-generated `Color` objects. However, since there is a precision error when converting color strings of different formats to each other, it is recommended to use selector-generated `Color` objects for assignment operations in controlled scenarios, so that the precision problem can be avoided and the values are guaranteed to be accurate and the selector can work as expected."}</DocMarkdown>

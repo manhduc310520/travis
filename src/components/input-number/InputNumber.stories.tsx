@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { InputNumber } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -53,48 +54,48 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nKhi cần nhập một giá trị số.\n\n## Ví dụ" : "## When To Use\n\nWhen a numeric value needs to be provided.\n\n## Examples"}</DocMarkdown>
-      <h3 id="input-number-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Ô nhập chỉ nhận số." : "Numeric-only input box."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="input-number-demo-size" className="fabi-sb-demo-title" lang="en">Sizes</h3>
-      <DocMarkdown>{vi ? "Ô nhập số có ba kích thước. Mặc định là `32px`. Hai kích thước còn lại là `large` và `small`, tương ứng `40px` và `24px`." : "There are three sizes available to a numeric input box. By default, the size is `32px`. The two additional sizes are `large` and `small` which means `40px` and `24px`, respectively."}</DocMarkdown>
-      <DocCanvas of={Sizes} sourceState="hidden" />
-      <h3 id="input-number-demo-disabled" className="fabi-sb-demo-title" lang="en">Disabled</h3>
-      <DocMarkdown>{vi ? "Nhấp nút để chuyển đổi giữa trạng thái khả dụng và vô hiệu hoá." : "Click the button to toggle between available and disabled states."}</DocMarkdown>
-      <DocCanvas of={Disabled} sourceState="hidden" />
-      <h3 id="input-number-demo-digit" className="fabi-sb-demo-title" lang="en">High precision decimals</h3>
-      <DocMarkdown>{vi ? "Dùng `stringMode` để hỗ trợ số thập phân độ chính xác cao. Khi đó `onChange` sẽ trả về giá trị dạng chuỗi. Bạn cần polyfill BigInt nếu trình duyệt không hỗ trợ." : "Use `stringMode` to support high precision decimals support. `onChange` will return string value instead. You need polyfill of BigInt if browser not support."}</DocMarkdown>
-      <DocCanvas of={HighPrecisionDecimals} sourceState="hidden" />
-      <h3 id="input-number-demo-formatter" className="fabi-sb-demo-title" lang="en">Formatter</h3>
-      <DocMarkdown>{vi ? "Hiển thị giá trị theo ngữ cảnh của nó bằng `formatter`, và thường dùng `parser` cùng lúc." : "Display value within it's situation with `formatter`, and we usually use `parser` at the same time."}</DocMarkdown>
-      <DocCanvas of={Formatter} sourceState="hidden" />
-      <h3 id="input-number-demo-keyboard" className="fabi-sb-demo-title" lang="en">Keyboard</h3>
-      <DocMarkdown>{vi ? "Điều khiển hành vi bàn phím bằng `keyboard`." : "Control keyboard behavior by `keyboard`."}</DocMarkdown>
-      <DocCanvas of={Keyboard} sourceState="hidden" />
-      <h3 id="input-number-demo-change-on-wheel" className="fabi-sb-demo-title" lang="en">Wheel</h3>
-      <DocMarkdown>{vi ? "Điều khiển bằng con lăn chuột." : "Control with mouse wheel."}</DocMarkdown>
-      <DocCanvas of={Wheel} sourceState="hidden" />
-      <h3 id="input-number-demo-variant" className="fabi-sb-demo-title" lang="en">Variants</h3>
-      <DocMarkdown>{vi ? "Các variant của InputNumber, có bốn variant: `outlined` `filled` `borderless` và `underlined`." : "Variants of InputNumber, there are four variants: `outlined` `filled` `borderless` and `underlined`."}</DocMarkdown>
-      <DocCanvas of={Variants} sourceState="hidden" />
-      <h3 id="input-number-demo-spinner" className="fabi-sb-demo-title" lang="en">Spinner</h3>
-      <DocMarkdown>{vi ? "Nút tăng giảm số." : "Digit spinner."}</DocMarkdown>
-      <DocCanvas of={Spinner} sourceState="hidden" />
-      <h3 id="input-number-demo-out-of-range" className="fabi-sb-demo-title" lang="en">Out of range</h3>
-      <DocMarkdown>{vi ? "Hiển thị style cảnh báo khi `value` vượt ngoài khoảng cho phép do điều khiển." : "Show warning style when `value` is out of range by control."}</DocMarkdown>
-      <DocCanvas of={OutOfRange} sourceState="hidden" />
-      <h3 id="input-number-demo-presuffix" className="fabi-sb-demo-title" lang="en">Prefix / Suffix</h3>
-      <DocMarkdown>{vi ? "Thêm tiền tố hoặc hậu tố bên trong ô nhập." : "Add a prefix or suffix inside input."}</DocMarkdown>
-      <DocCanvas of={PrefixSuffix} sourceState="hidden" />
-      <h3 id="input-number-demo-status" className="fabi-sb-demo-title" lang="en">Status</h3>
-      <DocMarkdown>{vi ? "Thêm trạng thái cho InputNumber bằng `status`, có thể là `error` hoặc `warning`." : "Add status to InputNumber with `status`, which could be `error` or `warning`."}</DocMarkdown>
-      <DocCanvas of={Status} sourceState="hidden" />
-      <h3 id="input-number-demo-focus" className="fabi-sb-demo-title" lang="en">Focus</h3>
-      <DocMarkdown>{vi ? "Focus với tuỳ chọn bổ sung." : "Focus with additional option."}</DocMarkdown>
-      <DocCanvas of={Focus} sourceState="hidden" />
-      <h3 id="input-number-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của InputNumber bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of the InputNumber by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="input-number-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Ô nhập chỉ nhận số." : "Numeric-only input box."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-size" title="Sizes" of={Sizes} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Ô nhập số có ba kích thước. Mặc định là `32px`. Hai kích thước còn lại là `large` và `small`, tương ứng `40px` và `24px`." : "There are three sizes available to a numeric input box. By default, the size is `32px`. The two additional sizes are `large` and `small` which means `40px` and `24px`, respectively."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-disabled" title="Disabled" of={Disabled} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Nhấp nút để chuyển đổi giữa trạng thái khả dụng và vô hiệu hoá." : "Click the button to toggle between available and disabled states."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-digit" title="High precision decimals" of={HighPrecisionDecimals} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Dùng `stringMode` để hỗ trợ số thập phân độ chính xác cao. Khi đó `onChange` sẽ trả về giá trị dạng chuỗi. Bạn cần polyfill BigInt nếu trình duyệt không hỗ trợ." : "Use `stringMode` to support high precision decimals support. `onChange` will return string value instead. You need polyfill of BigInt if browser not support."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-formatter" title="Formatter" of={Formatter} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Hiển thị giá trị theo ngữ cảnh của nó bằng `formatter`, và thường dùng `parser` cùng lúc." : "Display value within it's situation with `formatter`, and we usually use `parser` at the same time."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-keyboard" title="Keyboard" of={Keyboard} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Điều khiển hành vi bàn phím bằng `keyboard`." : "Control keyboard behavior by `keyboard`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-change-on-wheel" title="Wheel" of={Wheel} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Điều khiển bằng con lăn chuột." : "Control with mouse wheel."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-variant" title="Variants" of={Variants} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Các variant của InputNumber, có bốn variant: `outlined` `filled` `borderless` và `underlined`." : "Variants of InputNumber, there are four variants: `outlined` `filled` `borderless` and `underlined`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-spinner" title="Spinner" of={Spinner} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Nút tăng giảm số." : "Digit spinner."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-out-of-range" title="Out of range" of={OutOfRange} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Hiển thị style cảnh báo khi `value` vượt ngoài khoảng cho phép do điều khiển." : "Show warning style when `value` is out of range by control."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-presuffix" title="Prefix / Suffix" of={PrefixSuffix} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Thêm tiền tố hoặc hậu tố bên trong ô nhập." : "Add a prefix or suffix inside input."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-status" title="Status" of={Status} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Thêm trạng thái cho InputNumber bằng `status`, có thể là `error` hoặc `warning`." : "Add status to InputNumber with `status`, which could be `error` or `warning`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-focus" title="Focus" of={Focus} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Focus với tuỳ chọn bổ sung." : "Focus with additional option."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="input-number-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo13Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của InputNumber bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of the InputNumber by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| changeOnBlur | Kích hoạt `onChange` khi blur. Ví dụ: đặt lại giá trị về trong khoảng khi blur | boolean | true | × |\n| changeOnWheel | Cho phép điều khiển bằng con lăn chuột | boolean | - | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| controls | Có hiển thị nút điều khiển `+-` hay không, hoặc đặt icon mũi tên tuỳ chỉnh | boolean \\| { upIcon?: React.ReactNode; downIcon?: React.ReactNode; } | - | × |\n| decimalSeparator | Dấu phân cách thập phân | string | - | × |\n| placeholder | Chữ gợi ý khi ô trống | string | - | × |\n| defaultValue | Giá trị ban đầu | number | - | × |\n| disabled | Ô nhập có bị vô hiệu hoá hay không | boolean | false | × |\n| formatter | Chỉ định định dạng của giá trị hiển thị | function(value: number \\| string, info: { userTyping: boolean, input: string }): string | - | × |\n| keyboard | Có bật hành vi bàn phím hay không | boolean | true | × |\n| max | Giá trị lớn nhất | number | [Number.MAX_SAFE_INTEGER](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) | × |\n| min | Giá trị nhỏ nhất | number | [Number.MIN_SAFE_INTEGER](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MIN_SAFE_INTEGER) | × |\n| parser | Chỉ định giá trị được trích xuất từ formatter | function(string): number | - | × |\n| precision | Độ chính xác của giá trị nhập. Sẽ dùng `formatter` khi có cấu hình `formatter` | number | - | × |\n| readOnly | Ô nhập có ở chế độ chỉ đọc hay không | boolean | false | × |\n| status | Đặt trạng thái xác thực | 'error' \\| 'warning' | - | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| prefix | Icon tiền tố của Input | ReactNode | - | × |\n| suffix | Icon hậu tố của Input | ReactNode | - | × |\n| size | Chiều cao của ô nhập | `large` \\| `medium` \\| `small` | - | × |\n| step | Số mà giá trị hiện tại được tăng hoặc giảm mỗi lần. Có thể là số nguyên hoặc số thập phân | number \\| string | 1 | × |\n| stringMode | Đặt giá trị dạng chuỗi để hỗ trợ số thập phân độ chính xác cao. `onChange` sẽ trả về giá trị dạng chuỗi | boolean | false | × |\n| mode | Hiển thị ô nhập hoặc spinner | `'input' \\| 'spinner'` | `'input'` | × |\n| value | Giá trị hiện tại của component | number | - | × |\n| variant | Các variant của Input | `outlined` \\| `borderless` \\| `filled` \\| `underlined` | `outlined` | ✓ |\n| onChange | Hàm callback được kích hoạt khi giá trị thay đổi | function(value: number \\| string \\| null) | - | × |\n| onPressEnter | Hàm callback được kích hoạt khi nhấn phím Enter | function(e) | - | × |\n| onStep | Hàm callback được kích hoạt khi nhấp nút tăng/giảm, dùng bàn phím hoặc con lăn chuột | (value: number, info: { offset: number, type: 'up' \\| 'down', emitter: 'handler' \\| 'keydown' \\| 'wheel' }) => void | - | × |\n\n## Ref\n\n| Tên | Mô tả | Kiểu |\n| --- | --- | --- |\n| blur() | Bỏ focus | - |\n| focus() | Đặt focus | (option?: { preventScroll?: boolean, cursor?: 'start' \\| 'end' \\| 'all' }) |\n| nativeElement | Phần tử DOM gốc | - |\n\n## Semantic DOM" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| changeOnBlur | Trigger `onChange` when blur. e.g. reset value in range by blur | boolean | true | × |\n| changeOnWheel | Allows control with mouse wheel | boolean | - | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| controls | Whether to show `+-` controls, or set custom arrow icons | boolean \\| { upIcon?: React.ReactNode; downIcon?: React.ReactNode; } | - | × |\n| decimalSeparator | Decimal separator | string | - | × |\n| placeholder | Placeholder | string | - | × |\n| defaultValue | The initial value | number | - | × |\n| disabled | If the input is disabled | boolean | false | × |\n| formatter | Specifies the format of the value presented | function(value: number \\| string, info: { userTyping: boolean, input: string }): string | - | × |\n| keyboard | If keyboard behavior is enabled | boolean | true | × |\n| max | The max value | number | [Number.MAX_SAFE_INTEGER](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER) | × |\n| min | The min value | number | [Number.MIN_SAFE_INTEGER](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MIN_SAFE_INTEGER) | × |\n| parser | Specifies the value extracted from formatter | function(string): number | - | × |\n| precision | The precision of input value. Will use `formatter` when config of `formatter` | number | - | × |\n| readOnly | If the input is readonly | boolean | false | × |\n| status | Set validation status | 'error' \\| 'warning' | - | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| prefix | The prefix icon for the Input | ReactNode | - | × |\n| suffix | The suffix icon for the Input | ReactNode | - | × |\n| size | The height of input box | `large` \\| `medium` \\| `small` | - | × |\n| step | The number to which the current value is increased or decreased. It can be an integer or decimal | number \\| string | 1 | × |\n| stringMode | Set value as string to support high precision decimals. Will return string value by `onChange` | boolean | false | × |\n| mode | Show input or spinner | `'input' \\| 'spinner'` | `'input'` | × |\n| value | The current value of the component | number | - | × |\n| variant | Variants of Input | `outlined` \\| `borderless` \\| `filled` \\| `underlined` | `outlined` | ✓ |\n| onChange | The callback triggered when the value is changed | function(value: number \\| string \\| null) | - | × |\n| onPressEnter | The callback function that is triggered when Enter key is pressed | function(e) | - | × |\n| onStep | The callback function that is triggered when click up or down buttons / Keyboard / Wheel | (value: number, info: { offset: number, type: 'up' \\| 'down', emitter: 'handler' \\| 'keydown' \\| 'wheel' }) => void | - | × |\n\n## Ref\n\n| Name | Description | Type |\n| --- | --- | --- |\n| blur() | Remove focus | - |\n| focus() | Get focus | (option?: { preventScroll?: boolean, cursor?: 'start' \\| 'end' \\| 'all' }) |\n| nativeElement | The native DOM element | - |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo14 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

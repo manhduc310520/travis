@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import Demo0 from "./demo/basic"
 import Demo0Source from "./demo/basic.tsx?raw"
@@ -45,49 +46,49 @@ function DocsPage() {
       <DocTitle />
       <DocMarkdown>{vi ? "Nút nổi ở đầu trang." : "A button that floats at the top of the page."}</DocMarkdown>
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Cho các chức năng toàn cục của trang.\n- Các nút cần thấy được ở bất cứ đâu khi duyệt trang.\n\n## Ví dụ" : "## When To Use\n\n- For global functionality on the site.\n- Buttons that can be seen wherever you browse.\n\n## Examples"}</DocMarkdown>
-      <h3 id="float-button-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng cơ bản nhất." : "The most basic usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="float-button-demo-type" className="fabi-sb-demo-title" lang="en">Type</h3>
-      <DocMarkdown>{vi ? "Đổi kiểu của FloatButton bằng thuộc tính `type`." : "Change the type of the FloatButton with the `type` property."}</DocMarkdown>
-      <DocCanvas of={Type} sourceState="hidden" />
-      <h3 id="float-button-demo-shape" className="fabi-sb-demo-title" lang="en">Shape</h3>
-      <DocMarkdown>{vi ? "Đổi hình dạng của FloatButton bằng thuộc tính `shape`." : "Change the shape of the FloatButton with the `shape` property."}</DocMarkdown>
-      <DocCanvas of={Shape} sourceState="hidden" />
-      <h3 id="float-button-demo-content" className="fabi-sb-demo-title" lang="en">Content</h3>
-      <DocMarkdown>{vi ? "Đặt thuộc tính `content` để hiển thị FloatButton kèm mô tả.\n\n> chỉ hỗ trợ khi `shape` là `square`. Vì chỗ chứa văn bản hẹp, nên dùng câu ngắn." : "Setting the `content` property allows you to show a FloatButton with a description.\n\n> supported only when `shape` is `square`. Due to narrow space for text, short sentence is recommended."}</DocMarkdown>
-      <DocCanvas of={Content} sourceState="hidden" />
-      <h3 id="float-button-demo-tooltip" className="fabi-sb-demo-title" lang="en">FloatButton with tooltip</h3>
-      <DocMarkdown>{vi ? "Đặt thuộc tính `tooltip` để hiển thị FloatButton kèm tooltip." : "Setting the `tooltip` property shows the FloatButton with a tooltip."}</DocMarkdown>
-      <DocCanvas of={FloatButtonWithTooltip} sourceState="hidden" />
-      <h3 id="float-button-demo-group" className="fabi-sb-demo-title" lang="en">FloatButton Group</h3>
-      <DocMarkdown>{vi ? "Khi dùng nhiều nút cùng nhau, nên dùng `<FloatButton.Group />`. Bằng cách đặt thuộc tính `shape` của FloatButton.Group, bạn có thể đổi hình dạng của cả nhóm. `shape` của FloatButton.Group sẽ ghi đè `shape` của các FloatButton bên trong." : "When multiple buttons are used together, `<FloatButton.Group />` is recommended. By setting the `shape` property of FloatButton.Group, you can change the shape of group. The `shape` of the FloatButton.Group will override the `shape` of FloatButtons inside."}</DocMarkdown>
-      <DocCanvas of={FloatButtonGroup} sourceState="hidden" />
-      <h3 id="float-button-demo-group-menu" className="fabi-sb-demo-title" lang="en">Menu mode</h3>
-      <DocMarkdown>{vi ? "Mở chế độ menu với `trigger`, có thể là `hover` hoặc `click`." : "Open menu mode with `trigger`, which could be `hover` or `click`."}</DocMarkdown>
-      <DocCanvas of={MenuMode} sourceState="hidden" />
-      <h3 id="float-button-demo-controlled" className="fabi-sb-demo-title" lang="en">Controlled mode</h3>
-      <DocMarkdown>{vi ? "Đặt component ở chế độ controlled qua `open`, cần dùng cùng với `trigger`." : "Set the component to controlled mode through `open`, which need to be used together with `trigger`."}</DocMarkdown>
-      <DocCanvas of={ControlledMode} sourceState="hidden" />
-      <h3 id="float-button-demo-placement" className="fabi-sb-demo-title" lang="en">placement</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh vị trí animation, có sẵn bốn vị trí: `top`, `right`, `bottom`, `left`, mặc định là `top`." : "Customize animation placement, providing four preset placement: `top`, `right`, `bottom`, `left`, the `top` position by default."}</DocMarkdown>
-      <DocCanvas of={Placement} sourceState="hidden" />
-      <h3 id="float-button-demo-draggable" className="fabi-sb-demo-title" lang="en">draggable</h3>
-      <DocMarkdown>{vi ? "Triển khai chức năng kéo thả bằng thư viện bên thứ ba." : "Implement drag-and-drop functionality with third-party libraries."}</DocMarkdown>
-      <DocCanvas of={Draggable} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>@dnd-kit/core</code>, <code>@dnd-kit/utilities</code></p>
-      <h3 id="float-button-demo-back-top" className="fabi-sb-demo-title" lang="en">BackTop</h3>
-      <DocMarkdown>{vi ? "`BackTop` giúp quay về đầu trang dễ dàng." : "`BackTop` makes it easy to go back to the top of the page."}</DocMarkdown>
-      <DocCanvas of={BackTop} sourceState="hidden" />
-      <h3 id="float-button-demo-progress-ring" className="fabi-sb-demo-title" lang="en">Progress ring</h3>
-      <DocMarkdown>{vi ? "Dùng `showProgress` để hiển thị tiến độ cuộn hiện tại quanh viền nút BackTop." : "Use `showProgress` to display the current scroll progress around the BackTop button edge."}</DocMarkdown>
-      <DocCanvas of={ProgressRing} sourceState="hidden" />
-      <h3 id="float-button-demo-badge" className="fabi-sb-demo-title" lang="en">badge</h3>
-      <DocMarkdown>{vi ? "FloatButton kèm Badge." : "FloatButton with Badge."}</DocMarkdown>
-      <DocCanvas of={Badge} sourceState="hidden" />
-      <h3 id="float-button-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của FloatButton bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of FloatButton by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="float-button-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng cơ bản nhất." : "The most basic usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-type" title="Type" of={Type} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Đổi kiểu của FloatButton bằng thuộc tính `type`." : "Change the type of the FloatButton with the `type` property."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-shape" title="Shape" of={Shape} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Đổi hình dạng của FloatButton bằng thuộc tính `shape`." : "Change the shape of the FloatButton with the `shape` property."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-content" title="Content" of={Content} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Đặt thuộc tính `content` để hiển thị FloatButton kèm mô tả.\n\n> chỉ hỗ trợ khi `shape` là `square`. Vì chỗ chứa văn bản hẹp, nên dùng câu ngắn." : "Setting the `content` property allows you to show a FloatButton with a description.\n\n> supported only when `shape` is `square`. Due to narrow space for text, short sentence is recommended."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-tooltip" title="FloatButton with tooltip" of={FloatButtonWithTooltip} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Đặt thuộc tính `tooltip` để hiển thị FloatButton kèm tooltip." : "Setting the `tooltip` property shows the FloatButton with a tooltip."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-group" title="FloatButton Group" of={FloatButtonGroup} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Khi dùng nhiều nút cùng nhau, nên dùng `<FloatButton.Group />`. Bằng cách đặt thuộc tính `shape` của FloatButton.Group, bạn có thể đổi hình dạng của cả nhóm. `shape` của FloatButton.Group sẽ ghi đè `shape` của các FloatButton bên trong." : "When multiple buttons are used together, `<FloatButton.Group />` is recommended. By setting the `shape` property of FloatButton.Group, you can change the shape of group. The `shape` of the FloatButton.Group will override the `shape` of FloatButtons inside."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-group-menu" title="Menu mode" of={MenuMode} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Mở chế độ menu với `trigger`, có thể là `hover` hoặc `click`." : "Open menu mode with `trigger`, which could be `hover` or `click`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-controlled" title="Controlled mode" of={ControlledMode} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Đặt component ở chế độ controlled qua `open`, cần dùng cùng với `trigger`." : "Set the component to controlled mode through `open`, which need to be used together with `trigger`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-placement" title="placement" of={Placement} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh vị trí animation, có sẵn bốn vị trí: `top`, `right`, `bottom`, `left`, mặc định là `top`." : "Customize animation placement, providing four preset placement: `top`, `right`, `bottom`, `left`, the `top` position by default."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-draggable" title="draggable" of={Draggable} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Triển khai chức năng kéo thả bằng thư viện bên thứ ba." : "Implement drag-and-drop functionality with third-party libraries."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>@dnd-kit/core</code>, <code>@dnd-kit/utilities</code></p>
+      </DemoBox>
+      <DemoBox id="float-button-demo-back-top" title="BackTop" of={BackTop} code={Demo10Source}>
+        <DocMarkdown>{vi ? "`BackTop` giúp quay về đầu trang dễ dàng." : "`BackTop` makes it easy to go back to the top of the page."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-progress-ring" title="Progress ring" of={ProgressRing} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Dùng `showProgress` để hiển thị tiến độ cuộn hiện tại quanh viền nút BackTop." : "Use `showProgress` to display the current scroll progress around the BackTop button edge."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-badge" title="badge" of={Badge} code={Demo12Source}>
+        <DocMarkdown>{vi ? "FloatButton kèm Badge." : "FloatButton with Badge."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="float-button-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo13Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của FloatButton bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of FloatButton by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### API chung\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| icon | Đặt component icon của nút | ReactNode | - | ✓ |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| content | Văn bản và các nội dung khác | ReactNode | - | × |\n| tooltip | Văn bản hiển thị trong tooltip | ReactNode \\| TooltipProps | - | × |\n| type | Đặt kiểu của nút | `default` \\| `primary` | `default` | × |\n| shape | Đặt hình dạng của nút | `circle` \\| `square` | `circle` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| onClick | Đặt handler xử lý sự kiện `click` | (event) => void | - | × |\n| href | Đích của liên kết | string | - | × |\n| target | Chỉ định nơi hiển thị URL được liên kết | string | - | × |\n| htmlType | Đặt `type` html gốc của `button`, xem: [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type) | `submit` \\| `reset` \\| `button` | `button` | × |\n| badge | Gắn Badge vào FloatButton. Không hỗ trợ `status` và các props liên quan khác. | BadgeProps | - | × |\n| disabled | Nút có bị vô hiệu hoá hay không | boolean | - | × |\n\n### FloatButton.Group\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| open | Menu có hiển thị hay không, dùng cùng với trigger | boolean | - | × |\n| closeIcon | Tuỳ chỉnh icon nút đóng | React.ReactNode | `<CloseOutlined />` | ✓ |\n| placement | Tuỳ chỉnh vị trí animation của menu | `top` \\| `left` \\| `right` \\| `bottom` | `top` | × |\n| shape | Đặt hình dạng của các nút con | `circle` \\| `square` | `circle` | × |\n| trigger | Hành động nào có thể mở/đóng menu | `click` \\| `hover` | - | × |\n| onOpenChange | Hàm callback chạy khi menu đang hiển thị thay đổi, dùng cùng với trigger | (open: boolean) => void | - | × |\n| onClick | Đặt handler xử lý sự kiện `click` (chỉ hoạt động ở `Menu mode`) | (event) => void | - | × |\n\n### FloatButton.BackTop\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| duration | Thời gian quay về đầu trang (ms). Thuộc tính này bị bỏ qua khi bật giảm chuyển động (`prefers-reduced-motion: reduce`) | number | 450 |\n| showProgress | Hiển thị vòng tiến độ cuộn hiện tại quanh viền nút BackTop | boolean | false |\n| target | Chỉ định dom node của vùng có thể cuộn | () => HTMLElement | () => window |\n| visibilityHeight | Nút BackTop chỉ hiện khi chiều cao cuộn đạt giá trị này | number | 400 |\n| onClick | Hàm callback chạy khi bấm vào nút | () => void | - |\n\n## Semantic DOM\n\n### FloatButton" : "## API\n\n### common API\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| icon | Set the icon component of button | ReactNode | - | ✓ |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| content | Text and other | ReactNode | - | × |\n| tooltip | The text shown in the tooltip | ReactNode \\| TooltipProps | - | × |\n| type | Setting button type | `default` \\| `primary` | `default` | × |\n| shape | Setting button shape | `circle` \\| `square` | `circle` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| onClick | Set the handler to handle `click` event | (event) => void | - | × |\n| href | The target of hyperlink | string | - | × |\n| target | Specifies where to display the linked URL | string | - | × |\n| htmlType | Set the original html `type` of `button`, see: [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type) | `submit` \\| `reset` \\| `button` | `button` | × |\n| badge | Attach Badge to FloatButton. `status` and other props related are not supported. | BadgeProps | - | × |\n| disabled | Whether the button is disabled | boolean | - | × |\n\n### FloatButton.Group\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| open | Whether the menu is visible or not, use it with trigger | boolean | - | × |\n| closeIcon | Customize close button icon | React.ReactNode | `<CloseOutlined />` | ✓ |\n| placement | Customize menu animation placement | `top` \\| `left` \\| `right` \\| `bottom` | `top` | × |\n| shape | Setting button shape of children | `circle` \\| `square` | `circle` | × |\n| trigger | Which action can trigger menu open/close | `click` \\| `hover` | - | × |\n| onOpenChange | Callback executed when active menu is changed, use it with trigger | (open: boolean) => void | - | × |\n| onClick | Set the handler to handle `click` event (only work in `Menu mode`) | (event) => void | - | × |\n\n### FloatButton.BackTop\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| duration | Time to return to top (ms). This property is ignored when enables reduced motion (`prefers-reduced-motion: reduce`) | number | 450 |\n| showProgress | Show the current scroll progress ring around the BackTop button edge | boolean | false |\n| target | Specifies the scrollable area dom node | () => HTMLElement | () => window |\n| visibilityHeight | The BackTop button will not show until the scroll height reaches this value | number | 400 |\n| onClick | A callback function, which can be executed when you click the button | () => void | - |\n\n## Semantic DOM\n\n### FloatButton"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo14 /></div></DocUnstyled>
       <DocMarkdown>{"### FloatButton.Group"}</DocMarkdown>

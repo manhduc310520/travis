@@ -30,6 +30,7 @@ import {
 import type { TableProps, UploadFile } from '@fabi/ui';
 import { ChevronDownLine, Columns03Line, HelpCircleLine, ImagePlusLine, PlusLine, SearchSmLine } from '@fabi/ui/fabi-icons';
 import AppShell from '../shell/AppShell';
+import FillHeight from '../shell/FillHeight';
 import { CITIES, LICENSE_STATUS, RESTAURANTS } from '../data/restaurants';
 import type { Restaurant } from '../data/restaurants';
 
@@ -217,7 +218,8 @@ const RestaurantListInner: React.FC<RestaurantListProps> = ({ data = RESTAURANTS
             rowKey="key"
             columns={columns}
             dataSource={rows}
-            locale={{ emptyText: empty }}
+            // empty / no match: the card reaches the bottom of the screen, the message centred in it
+            locale={{ emptyText: <FillHeight>{empty}</FillHeight> }}
             scroll={{ x: 'max-content' }}
             pagination={
               rows.length > 0 && {

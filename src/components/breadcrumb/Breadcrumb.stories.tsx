@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Breadcrumb } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -41,30 +42,30 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Khi hệ thống có hơn hai tầng phân cấp.\n- Khi cần cho người dùng biết họ đang ở đâu.\n- Khi người dùng có thể cần điều hướng ngược lên cấp cao hơn.\n\n## Ví dụ" : "## When To Use\n\n- When the system has more than two layers in a hierarchy.\n- When you need to inform the user of where they are.\n- When the user may need to navigate back to a higher level.\n\n## Examples"}</DocMarkdown>
-      <h3 id="breadcrumb-demo-basic" className="fabi-sb-demo-title" lang="en">Basic Usage</h3>
-      <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "The simplest use."}</DocMarkdown>
-      <DocCanvas of={BasicUsage} sourceState="hidden" />
-      <h3 id="breadcrumb-demo-withicon" className="fabi-sb-demo-title" lang="en">With an Icon</h3>
-      <DocMarkdown>{vi ? "Icon nên đặt phía trước văn bản. Một `<svg>` thuần từ thư viện icon bên thứ ba (ví dụ lucide, react-icons) sẽ tự căn giữa theo chiều dọc với văn bản và có khoảng cách với văn bản." : "The icon should be placed in front of the text. A bare `<svg>` from a third-party icon library (e.g. lucide, react-icons) stays vertically centred with, and spaced from, the text."}</DocMarkdown>
-      <DocCanvas of={WithAnIcon} sourceState="hidden" />
-      <h3 id="breadcrumb-demo-withparams" className="fabi-sb-demo-title" lang="en">With Params</h3>
-      <DocMarkdown>{vi ? "Với tham số route." : "With route params."}</DocMarkdown>
-      <DocCanvas of={WithParams} sourceState="hidden" />
-      <h3 id="breadcrumb-demo-separator" className="fabi-sb-demo-title" lang="en">Configuring the Separator</h3>
-      <DocMarkdown>{vi ? "Có thể tuỳ chỉnh dấu phân cách bằng thuộc tính separator: `separator=\">\"`." : "The separator can be customized by setting the separator property: `separator=\">\"`."}</DocMarkdown>
-      <DocCanvas of={ConfiguringTheSeparator} sourceState="hidden" />
-      <h3 id="breadcrumb-demo-overlay" className="fabi-sb-demo-title" lang="en">Bread crumbs with drop down menu</h3>
-      <DocMarkdown>{vi ? "Breadcrumb hỗ trợ menu thả xuống." : "Breadcrumbs support drop down menu."}</DocMarkdown>
-      <DocCanvas of={BreadCrumbsWithDropDownMenu} sourceState="hidden" />
-      <h3 id="breadcrumb-demo-separator-component" className="fabi-sb-demo-title" lang="en">Configuring the Separator Independently</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh dấu phân cách riêng cho từng vị trí." : "Customize separator for each other."}</DocMarkdown>
-      <DocCanvas of={ConfiguringTheSeparatorIndependently} sourceState="hidden" />
-      <h3 id="breadcrumb-demo-debug-routes" className="fabi-sb-demo-title" lang="en">Debug Routes</h3>
-      <DocMarkdown>{vi ? "Gỡ lỗi `routes` gốc." : "Origin `routes` debug."}</DocMarkdown>
-      <DocCanvas of={DebugRoutes} sourceState="hidden" />
-      <h3 id="breadcrumb-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Breadcrumb bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Breadcrumb by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="breadcrumb-demo-basic" title="Basic Usage" of={BasicUsage} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "The simplest use."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="breadcrumb-demo-withicon" title="With an Icon" of={WithAnIcon} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Icon nên đặt phía trước văn bản. Một `<svg>` thuần từ thư viện icon bên thứ ba (ví dụ lucide, react-icons) sẽ tự căn giữa theo chiều dọc với văn bản và có khoảng cách với văn bản." : "The icon should be placed in front of the text. A bare `<svg>` from a third-party icon library (e.g. lucide, react-icons) stays vertically centred with, and spaced from, the text."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="breadcrumb-demo-withparams" title="With Params" of={WithParams} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Với tham số route." : "With route params."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="breadcrumb-demo-separator" title="Configuring the Separator" of={ConfiguringTheSeparator} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Có thể tuỳ chỉnh dấu phân cách bằng thuộc tính separator: `separator=\">\"`." : "The separator can be customized by setting the separator property: `separator=\">\"`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="breadcrumb-demo-overlay" title="Bread crumbs with drop down menu" of={BreadCrumbsWithDropDownMenu} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Breadcrumb hỗ trợ menu thả xuống." : "Breadcrumbs support drop down menu."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="breadcrumb-demo-separator-component" title="Configuring the Separator Independently" of={ConfiguringTheSeparatorIndependently} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh dấu phân cách riêng cho từng vị trí." : "Customize separator for each other."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="breadcrumb-demo-debug-routes" title="Debug Routes" of={DebugRoutes} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Gỡ lỗi `routes` gốc." : "Origin `routes` debug."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="breadcrumb-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Breadcrumb bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Breadcrumb by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{[vi ? "## API\n\n### Breadcrumb\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| dropdownIcon | Icon dropdown tuỳ chỉnh | ReactNode | `<DownOutlined />` | ✓ |\n| items | Thông tin ngăn xếp route của router | [ItemType\\[\\]](#itemtype) | - | × |\n| itemRender | Hàm render item tuỳ chỉnh, dùng cùng react-router, xem [ví dụ](#dung-vi-browserhistory) | (route, params, routes, paths) => ReactNode | - | × |\n| params | Tham số route | object | - | × |\n| separator | Dấu phân cách tuỳ chỉnh | ReactNode | `/` | ✓ |\n| styles | Tuỳ chỉnh style inline cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n### ItemType\n\n> type ItemType = Omit&lt;[RouteItemType](#routeitemtype), 'title' | 'path'> | [SeparatorType](#separatortype)\n\n### RouteItemType\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| className | Class css bổ sung | string | - |\n| dropdownProps | Props của dropdown | Dropdown | - |\n| href | Đích của hyperlink. Không dùng được cùng `path` | string | - |\n| path | Đường dẫn nối tiếp. Mỗi path sẽ nối với path trước đó. Không dùng được cùng `href` | string | - |\n| menu | Props của menu | MenuProps | - |\n| onClick | Thiết lập hàm xử lý sự kiện click | (e:MouseEvent) => void | - |\n| title | Tên của item | ReactNode | - |\n\n### SeparatorType\n\n" : "## API\n\n### Breadcrumb\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| dropdownIcon | Custom dropdown icon | ReactNode | `<DownOutlined />` | ✓ |\n| items | The routing stack information of router | [ItemType\\[\\]](#itemtype) | - | × |\n| itemRender | Custom item renderer, work with react-router, see [example](#use-with-browserhistory) | (route, params, routes, paths) => ReactNode | - | × |\n| params | Routing parameters | object | - | × |\n| separator | Custom separator | ReactNode | `/` | ✓ |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n### ItemType\n\n> type ItemType = Omit&lt;[RouteItemType](#routeitemtype), 'title' | 'path'> | [SeparatorType](#separatortype)\n\n### RouteItemType\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| className | The additional css class | string | - |\n| dropdownProps | The dropdown props | Dropdown | - |\n| href | Target of hyperlink. Can not work with `path` | string | - |\n| path | Connected path. Each path will connect with prev one. Can not work with `href` | string | - |\n| menu | The menu props | MenuProps | - |\n| onClick | Set the handler to handle click event | (e:MouseEvent) => void | - |\n| title | item name | ReactNode | - |\n\n### SeparatorType\n\n", "```ts\nconst item = {\n  type: 'separator', // Must have\n  separator: '/',\n};\n```", vi ? "\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| type | Đánh dấu là dấu phân cách | `separator` |  |\n| separator | Dấu phân cách tuỳ chỉnh | ReactNode | `/` |\n\n### Dùng với browserHistory\n\nLink của item Breadcrumb mặc định trỏ tới `#`. Bạn có thể dùng `itemRender` để tạo một Link cho `browserHistory`.\n\n" : "\n\n| Property | Description | Type | Default |\n| --------- | ----------------- | ----------- | ------- |\n| type | Mark as separator | `separator` |  |\n| separator | Custom separator | ReactNode | `/` |\n\n### Use with browserHistory\n\nThe link of Breadcrumb item targets `#` by default, you can use `itemRender` to make a `browserHistory` Link.\n\n", "```jsx\nimport { Link } from 'react-router';\n\nconst items = [\n  {\n    path: '/index',\n    title: 'home',\n  },\n  {\n    path: '/first',\n    title: 'first',\n    children: [\n      {\n        path: '/general',\n        title: 'General',\n      },\n      {\n        path: '/layout',\n        title: 'Layout',\n      },\n      {\n        path: '/navigation',\n        title: 'Navigation',\n      },\n    ],\n  },\n  {\n    path: '/second',\n    title: 'second',\n  },\n];\n\nfunction itemRender(currentRoute, params, items, paths) {\n  const isLast = currentRoute?.path === items[items.length - 1]?.path;\n\n  return isLast ? (\n    <span>{currentRoute.title}</span>\n  ) : (\n    <Link to={`/${paths.join('/')}`}>{currentRoute.title}</Link>\n  );\n}\n\nreturn <Breadcrumb itemRender={itemRender} items={items} />;\n```", "\n\n## Semantic DOM"].join('')}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo8 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

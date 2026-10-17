@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Pagination } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -51,44 +52,44 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Khi việc tải/render toàn bộ các mục mất nhiều thời gian.\n- Khi muốn duyệt dữ liệu bằng cách chuyển qua từng trang.\n\n## Ví dụ" : "## When To Use\n\n- When it will take a long time to load/render all items.\n- If you want to browse the data by navigating through pages.\n\n## Examples"}</DocMarkdown>
-      <h3 id="pagination-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Phân trang cơ bản." : "Basic pagination."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="pagination-demo-align" className="fabi-sb-demo-title" lang="en">Align</h3>
-      <DocCanvas of={Align} sourceState="hidden" />
-      <h3 id="pagination-demo-more" className="fabi-sb-demo-title" lang="en">More</h3>
-      <DocMarkdown>{vi ? "Nhiều trang hơn." : "More pages."}</DocMarkdown>
-      <DocCanvas of={More} sourceState="hidden" />
-      <h3 id="pagination-demo-changer" className="fabi-sb-demo-title" lang="en">Changer</h3>
-      <DocMarkdown>{vi ? "Thay đổi `pageSize`." : "Change `pageSize`."}</DocMarkdown>
-      <DocCanvas of={Changer} sourceState="hidden" />
-      <h3 id="pagination-demo-jump" className="fabi-sb-demo-title" lang="en">Jumper</h3>
-      <DocMarkdown>{vi ? "Chuyển thẳng đến một trang." : "Jump to a page directly."}</DocMarkdown>
-      <DocCanvas of={Jumper} sourceState="hidden" />
-      <h3 id="pagination-demo-mini" className="fabi-sb-demo-title" lang="en">Size</h3>
-      <DocMarkdown>{vi ? "Phân trang cỡ nhỏ và cỡ lớn." : "Small and large size pagination."}</DocMarkdown>
-      <DocCanvas of={Size} sourceState="hidden" />
-      <h3 id="pagination-demo-simple" className="fabi-sb-demo-title" lang="en">Simple mode</h3>
-      <DocMarkdown>{vi ? "Chế độ đơn giản." : "Simple mode."}</DocMarkdown>
-      <DocCanvas of={SimpleMode} sourceState="hidden" />
-      <h3 id="pagination-demo-controlled" className="fabi-sb-demo-title" lang="en">Controlled</h3>
-      <DocMarkdown>{vi ? "Số trang được điều khiển." : "Controlled page number."}</DocMarkdown>
-      <DocCanvas of={Controlled} sourceState="hidden" />
-      <h3 id="pagination-demo-total" className="fabi-sb-demo-title" lang="en">Total number</h3>
-      <DocMarkdown>{vi ? "Bạn có thể hiển thị tổng số dữ liệu bằng cách đặt `showTotal`." : "You can show the total number of data by setting `showTotal`."}</DocMarkdown>
-      <DocCanvas of={TotalNumber} sourceState="hidden" />
-      <h3 id="pagination-demo-all" className="fabi-sb-demo-title" lang="en">Show All</h3>
-      <DocMarkdown>{vi ? "Hiển thị tất cả các prop đã cấu hình." : "Show all configured prop."}</DocMarkdown>
-      <DocCanvas of={ShowAll} sourceState="hidden" />
-      <h3 id="pagination-demo-itemrender" className="fabi-sb-demo-title" lang="en">Prev and next</h3>
-      <DocMarkdown>{vi ? "Dùng liên kết văn bản cho nút trước và sau." : "Use text link for prev and next button."}</DocMarkdown>
-      <DocCanvas of={PrevAndNext} sourceState="hidden" />
-      <h3 id="pagination-demo-components" className="fabi-sb-demo-title" lang="en">Custom component</h3>
-      <DocMarkdown>{vi ? "Thay thế bộ đổi số dòng mỗi trang bằng `components`." : "Replace the page size changer with `components`."}</DocMarkdown>
-      <DocCanvas of={CustomComponent} sourceState="hidden" />
-      <h3 id="pagination-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Pagination bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Pagination by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="pagination-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Phân trang cơ bản." : "Basic pagination."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-align" title="Align" of={Align} code={Demo1Source}>
+      </DemoBox>
+      <DemoBox id="pagination-demo-more" title="More" of={More} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Nhiều trang hơn." : "More pages."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-changer" title="Changer" of={Changer} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Thay đổi `pageSize`." : "Change `pageSize`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-jump" title="Jumper" of={Jumper} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Chuyển thẳng đến một trang." : "Jump to a page directly."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-mini" title="Size" of={Size} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Phân trang cỡ nhỏ và cỡ lớn." : "Small and large size pagination."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-simple" title="Simple mode" of={SimpleMode} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Chế độ đơn giản." : "Simple mode."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-controlled" title="Controlled" of={Controlled} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Số trang được điều khiển." : "Controlled page number."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-total" title="Total number" of={TotalNumber} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Bạn có thể hiển thị tổng số dữ liệu bằng cách đặt `showTotal`." : "You can show the total number of data by setting `showTotal`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-all" title="Show All" of={ShowAll} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Hiển thị tất cả các prop đã cấu hình." : "Show all configured prop."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-itemrender" title="Prev and next" of={PrevAndNext} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Dùng liên kết văn bản cho nút trước và sau." : "Use text link for prev and next button."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-components" title="Custom component" of={CustomComponent} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Thay thế bộ đổi số dòng mỗi trang bằng `components`." : "Replace the page size changer with `components`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="pagination-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Pagination bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Pagination by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{["## API\n\n", "```jsx\n<Pagination onChange={onChange} total={50} />\n```", vi ? "\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| align | Căn chỉnh | start \\| center \\| end | - | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| components | Tuỳ chỉnh các component bên trong | { sizeChanger?: React.ComponentType } | - | × |\n| current | Số trang hiện tại | number | - | × |\n| defaultCurrent | Số trang ban đầu mặc định | number | 1 | × |\n| defaultPageSize | Số mục dữ liệu mỗi trang mặc định | number | 10 | × |\n| disabled | Vô hiệu hoá phân trang | boolean | - | × |\n| hideOnSinglePage | Có ẩn bộ phân trang khi chỉ có một trang hay không | boolean | false | × |\n| itemRender | Tuỳ chỉnh innerHTML của mục | (page, type: 'page' \\| 'prev' \\| 'next', originalElement) => React.ReactNode | - | × |\n| pageSize | Số mục dữ liệu mỗi trang | number | - | × |\n| pageSizeOptions | Chỉ định các lựa chọn của sizeChanger | number\\[] | \\[`10`, `20`, `50`, `100`] | × |\n| responsive | Nếu không chỉ định `size`, `Pagination` sẽ đổi kích thước theo chiều rộng của cửa sổ | boolean | - | × |\n| showLessItems | Hiển thị ít mục trang hơn | boolean | false | × |\n| showQuickJumper | Xác định có thể chuyển thẳng đến một trang hay không | boolean \\| { goButton: ReactNode } | false | × |\n| showSizeChanger | Xác định có hiển thị select `pageSize` hay không | boolean \\| SelectProps | - | ✓ |\n| showTitle | Hiển thị title của mục trang | boolean | true | × |\n| showTotal | Hiển thị tổng số và phạm vi | function(total, range) | - | × |\n| simple | Có dùng chế độ đơn giản hay không | boolean \\| { readOnly?: boolean } | - | × |\n| size | Kích thước component | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| total | Tổng số mục dữ liệu | number | 0 | × |\n| totalBoundaryShowSizeChanger | Khi `total` lớn hơn giá trị này, `showSizeChanger` sẽ là true | number | 50 | ✓ |\n| onChange | Được gọi khi số trang hoặc `pageSize` thay đổi, nhận số trang và pageSize mới làm tham số | function(page, pageSize) | - | × |\n| onShowSizeChange | Được gọi khi `pageSize` thay đổi | function(current, size) | - | × |\n\n## Semantic DOM" : "\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| align | Align | start \\| center \\| end | - | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| components | Customize internal components | { sizeChanger?: React.ComponentType } | - | × |\n| current | Current page number | number | - | × |\n| defaultCurrent | Default initial page number | number | 1 | × |\n| defaultPageSize | Default number of data items per page | number | 10 | × |\n| disabled | Disable pagination | boolean | - | × |\n| hideOnSinglePage | Whether to hide pager on single page | boolean | false | × |\n| itemRender | To customize item's innerHTML | (page, type: 'page' \\| 'prev' \\| 'next', originalElement) => React.ReactNode | - | × |\n| pageSize | Number of data items per page | number | - | × |\n| pageSizeOptions | Specify the sizeChanger options | number\\[] | \\[`10`, `20`, `50`, `100`] | × |\n| responsive | If `size` is not specified, `Pagination` would resize according to the width of the window | boolean | - | × |\n| showLessItems | Show less page items | boolean | false | × |\n| showQuickJumper | Determine whether you can jump to pages directly | boolean \\| { goButton: ReactNode } | false | × |\n| showSizeChanger | Determine whether to show `pageSize` select | boolean \\| SelectProps | - | ✓ |\n| showTitle | Show page item's title | boolean | true | × |\n| showTotal | To display the total number and range | function(total, range) | - | × |\n| simple | Whether to use simple mode | boolean \\| { readOnly?: boolean } | - | × |\n| size | Component size | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| total | Total number of data items | number | 0 | × |\n| totalBoundaryShowSizeChanger | When `total` larger than it, `showSizeChanger` will be true | number | 50 | ✓ |\n| onChange | Called when the page number or `pageSize` is changed, and it takes the resulting page number and pageSize as its arguments | function(page, pageSize) | - | × |\n| onShowSizeChange | Called when `pageSize` is changed | function(current, size) | - | × |\n\n## Semantic DOM"].join('')}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo13 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

@@ -937,7 +937,7 @@ function convert(name) {
   const description = debrand(cat.t(fixMarkdown(meta.description ?? '')), 'vi')
   const descriptionEn = debrand(fixMarkdown(meta.description ?? ''), 'en')
   // names the generated file already uses; story exports must not collide with them
-  const used = new Set(['DocCanvas', 'LocalizedControls', 'DocMarkdown', 'DocTitle', 'DocUnstyled', 'ComponentTokenTable', 'DocsPage', 'meta', 'Story', 'css', 'argDocsVi', 'useDocsLocale'])
+  const used = new Set(['DemoBox', 'DocCanvas', 'LocalizedControls', 'DocMarkdown', 'DocTitle', 'DocUnstyled', 'ComponentTokenTable', 'DocsPage', 'meta', 'Story', 'css', 'argDocsVi', 'useDocsLocale'])
   const imports = []
   const stories = []
   const page = []
@@ -1065,12 +1065,14 @@ export const ${id}: Story = {
 ${demoPlay.play}}`)
     // id as on the antd site (#date-picker-demo-format), which the docs text links to; lang: the title is English
     const anchor = `${name}-demo-${seg.file.replace(/\.(tsx|ts|jsx)$/, '').replace(/\/index$/, '').split('/').pop()}`.toLowerCase()
-    page.push(`      <h3 id=${js(anchor)} className="fabi-sb-demo-title" lang="en">${escapeJsxText(label)}</h3>`)
-    if (desc || descEn) page.push(mdBlock(desc, descEn))
-    page.push(`      <DocCanvas of={${id}} sourceState="hidden" />`)
     // packages the example needs besides @fabi/ui and React
     const deps = depsNote(fs.readFileSync(path.join(outDir, rel), 'utf8'))
-    if (deps) page.push(`      ${deps}`)
+    // the library site's code box: demo, then title on the border, description, icon actions
+    // (.storybook/DemoBox.tsx; user 2026-10-17, piloted on Button)
+    page.push(`      <DemoBox id=${js(anchor)} title=${js(label)} of={${id}} code={${imp}Source}>`)
+    if (desc || descEn) page.push(mdBlock(desc, descEn, '        '))
+    if (deps) page.push(`        ${deps}`)
+    page.push('      </DemoBox>')
     n++
   }
 
@@ -1078,7 +1080,8 @@ ${demoPlay.play}}`)
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
-${argDocsVi ? "import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'\n" : ''}import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
+${argDocsVi ? "import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'\n" : ''}import DemoBox from '../../../.storybook/DemoBox'
+import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 ${/play:|fn\(\)/.test(stories.join('\n')) ? "import { expect, fn, screen, waitFor, within } from 'storybook/test'\n" : ''}${imports.join('\n')}
 
 const css = ${js(css)}

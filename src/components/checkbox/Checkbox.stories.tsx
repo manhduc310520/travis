@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Checkbox } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -39,28 +40,28 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Dùng để chọn nhiều giá trị từ một số tuỳ chọn.\n- Nếu chỉ dùng một checkbox, nó tương tự việc dùng Switch để chuyển đổi giữa hai trạng thái. Điểm khác biệt là Switch sẽ kích hoạt thay đổi trạng thái ngay lập tức, còn Checkbox chỉ đánh dấu trạng thái đã thay đổi và cần được gửi đi.\n\n## Ví dụ" : "## When To Use\n\n- Used for selecting multiple values from several options.\n- If you use only one checkbox, it is the same as using Switch to toggle between two states. The difference is that Switch will trigger the state change directly, but Checkbox just marks the state as changed and this needs to be submitted.\n\n## Examples"}</DocMarkdown>
-      <h3 id="checkbox-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng cơ bản của checkbox." : "Basic usage of checkbox."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="checkbox-demo-disabled" className="fabi-sb-demo-title" lang="en">Disabled</h3>
-      <DocMarkdown>{vi ? "Checkbox bị vô hiệu hoá." : "Disabled checkbox."}</DocMarkdown>
-      <DocCanvas of={Disabled} sourceState="hidden" />
-      <h3 id="checkbox-demo-controller" className="fabi-sb-demo-title" lang="en">Controlled Checkbox</h3>
-      <DocMarkdown>{vi ? "Giao tiếp với các component khác." : "Communicated with other components."}</DocMarkdown>
-      <DocCanvas of={ControlledCheckbox} sourceState="hidden" />
-      <h3 id="checkbox-demo-group" className="fabi-sb-demo-title" lang="en">Checkbox Group</h3>
-      <DocMarkdown>{vi ? "Tạo một nhóm checkbox từ một mảng." : "Generate a group of checkboxes from an array."}</DocMarkdown>
-      <DocCanvas of={CheckboxGroup} sourceState="hidden" />
-      <h3 id="checkbox-demo-check-all" className="fabi-sb-demo-title" lang="en">Check all</h3>
-      <DocMarkdown>{vi ? "Thuộc tính `indeterminate` giúp bạn tạo hiệu ứng 'chọn tất cả'." : "The `indeterminate` property can help you to achieve a 'check all' effect."}</DocMarkdown>
-      <DocCanvas of={CheckAll} sourceState="hidden" />
-      <h3 id="checkbox-demo-layout" className="fabi-sb-demo-title" lang="en">Use with Grid</h3>
-      <DocMarkdown>{vi ? "Ta có thể dùng Checkbox và Grid trong Checkbox.Group để tạo bố cục phức tạp." : "We can use Checkbox and Grid in Checkbox.Group, to implement complex layout."}</DocMarkdown>
-      <DocCanvas of={UseWithGrid} sourceState="hidden" />
-      <h3 id="checkbox-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ biến style của [semantic dom](#semantic-dom) trong Checkbox bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Checkbox by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>clsx</code></p>
+      <DemoBox id="checkbox-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng cơ bản của checkbox." : "Basic usage of checkbox."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="checkbox-demo-disabled" title="Disabled" of={Disabled} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Checkbox bị vô hiệu hoá." : "Disabled checkbox."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="checkbox-demo-controller" title="Controlled Checkbox" of={ControlledCheckbox} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Giao tiếp với các component khác." : "Communicated with other components."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="checkbox-demo-group" title="Checkbox Group" of={CheckboxGroup} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Tạo một nhóm checkbox từ một mảng." : "Generate a group of checkboxes from an array."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="checkbox-demo-check-all" title="Check all" of={CheckAll} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Thuộc tính `indeterminate` giúp bạn tạo hiệu ứng 'chọn tất cả'." : "The `indeterminate` property can help you to achieve a 'check all' effect."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="checkbox-demo-layout" title="Use with Grid" of={UseWithGrid} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Ta có thể dùng Checkbox và Grid trong Checkbox.Group để tạo bố cục phức tạp." : "We can use Checkbox and Grid in Checkbox.Group, to implement complex layout."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="checkbox-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ biến style của [semantic dom](#semantic-dom) trong Checkbox bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Checkbox by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>clsx</code></p>
+      </DemoBox>
       <DocMarkdown>{[vi ? "## API\n\n#### Checkbox\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| checked | Chỉ định checkbox có được chọn hay không | boolean | false | × |\n| classNames | Tuỳ biến class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultChecked | Chỉ định trạng thái ban đầu: checkbox có được chọn hay không | boolean | false | × |\n| disabled | Có vô hiệu hoá checkbox hay không | boolean | false | × |\n| indeterminate | Trạng thái chọn không xác định (indeterminate) của checkbox | boolean | false | × |\n| onChange | Hàm callback được kích hoạt khi trạng thái thay đổi | (e: CheckboxChangeEvent) => void | - | × |\n| onBlur | Được gọi khi rời khỏi component | function() | - | × |\n| onFocus | Được gọi khi vào component | function() | - | × |\n| styles | Tuỳ biến style inline cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n#### Checkbox.Group\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| defaultValue | Giá trị được chọn mặc định | (string \\| number)\\[] | \\[] |\n| disabled | Có vô hiệu hoá tất cả checkbox hay không | boolean | false |\n| name | Thuộc tính `name` của tất cả các phần tử con `input[type=\"checkbox\"]` | string | - |\n| options | Chỉ định các tuỳ chọn | string\\[] \\| number\\[] \\| Option\\[] | \\[] |\n| value | Dùng để đặt giá trị đang được chọn | (string \\| number \\| boolean)\\[] | \\[] |\n| title | tiêu đề của tuỳ chọn | `string` | - |\n| className | className của tuỳ chọn | `string` | - |\n| style | style của tuỳ chọn | `React.CSSProperties` | - |\n| onChange | Hàm callback được kích hoạt khi trạng thái thay đổi | (checkedValue: T[]) => void | - |\n\n##### Option\n\n" : "## API\n\n#### Checkbox\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| checked | Specifies whether the checkbox is selected | boolean | false | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultChecked | Specifies the initial state: whether or not the checkbox is selected | boolean | false | × |\n| disabled | If disable checkbox | boolean | false | × |\n| indeterminate | The indeterminate checked state of checkbox | boolean | false | × |\n| onChange | The callback function that is triggered when the state changes | (e: CheckboxChangeEvent) => void | - | × |\n| onBlur | Called when leaving the component | function() | - | × |\n| onFocus | Called when entering the component | function() | - | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n#### Checkbox.Group\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| defaultValue | Default selected value | (string \\| number)\\[] | \\[] |\n| disabled | If disable all checkboxes | boolean | false |\n| name | The `name` property of all `input[type=\"checkbox\"]` children | string | - |\n| options | Specifies options | string\\[] \\| number\\[] \\| Option\\[] | \\[] |\n| value | Used for setting the currently selected value | (string \\| number \\| boolean)\\[] | \\[] |\n| title | title of the option | `string` | - |\n| className | className of the option | `string` | - |\n| style | styles of the option | `React.CSSProperties` | - |\n| onChange | The callback function that is triggered when the state changes | (checkedValue: T[]) => void | - |\n\n##### Option\n\n", "```typescript\ninterface Option {\n  label: string;\n  value: string;\n  disabled?: boolean;\n}\n```", vi ? "\n\n### Phương thức\n\n#### Checkbox\n\n| Tên | Mô tả |\n| ------------- | ------------------------------------ |\n| blur() | Bỏ focus |\n| focus() | Đặt focus |\n| nativeElement | Trả về DOM node của Checkbox |\n\n## Semantic DOM" : "\n\n### Methods\n\n#### Checkbox\n\n| Name | Description |\n| ------------- | ------------------------------------ |\n| blur() | Remove focus |\n| focus() | Get focus |\n| nativeElement | Returns the DOM node of the Checkbox |\n\n## Semantic DOM"].join('')}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo7 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

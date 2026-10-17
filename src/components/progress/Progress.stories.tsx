@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Progress } from '@fabi/ui'
 import Demo0 from "./demo/line"
@@ -57,54 +58,54 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nNếu một thao tác mất nhiều thời gian để hoàn thành, bạn có thể dùng `Progress` để hiển thị tiến độ và trạng thái hiện tại.\n\n- Khi một thao tác làm gián đoạn giao diện hiện tại, hoặc cần chạy nền hơn 2 giây.\n- Khi cần hiển thị phần trăm hoàn thành của một thao tác.\n\n## Ví dụ" : "## When To Use\n\nIf it will take a long time to complete an operation, you can use `Progress` to show the current progress and status.\n\n- When an operation will interrupt the current interface, or it needs to run in the background for more than 2 seconds.\n- When you need to display the completion percentage of an operation.\n\n## Examples"}</DocMarkdown>
-      <h3 id="progress-demo-line" className="fabi-sb-demo-title" lang="en">Progress bar</h3>
-      <DocMarkdown>{vi ? "Thanh tiến độ tiêu chuẩn." : "A standard progress bar."}</DocMarkdown>
-      <DocCanvas of={ProgressBar} sourceState="hidden" />
-      <h3 id="progress-demo-circle" className="fabi-sb-demo-title" lang="en">Circular progress bar</h3>
-      <DocMarkdown>{vi ? "Thanh tiến độ hình tròn." : "A circular progress bar."}</DocMarkdown>
-      <DocCanvas of={CircularProgressBar} sourceState="hidden" />
-      <h3 id="progress-demo-line-mini" className="fabi-sb-demo-title" lang="en">Mini size progress bar</h3>
-      <DocMarkdown>{vi ? "Phù hợp với vùng hẹp." : "Appropriate for a narrow area."}</DocMarkdown>
-      <DocCanvas of={MiniSizeProgressBar} sourceState="hidden" />
-      <h3 id="progress-demo-circle-micro" className="fabi-sb-demo-title" lang="en">Responsive circular progress bar</h3>
-      <DocMarkdown>{vi ? "Thanh tiến độ hình tròn responsive. Khi `width` nhỏ hơn 20, thông tin tiến độ sẽ hiển thị trong Tooltip." : "Responsive circular progress bar. When `width` is smaller than 20, progress information will be displayed in Tooltip."}</DocMarkdown>
-      <DocCanvas of={ResponsiveCircularProgressBar} sourceState="hidden" />
-      <h3 id="progress-demo-circle-mini" className="fabi-sb-demo-title" lang="en">Mini size circular progress bar</h3>
-      <DocMarkdown>{vi ? "Thanh tiến độ hình tròn nhỏ hơn." : "A smaller circular progress bar."}</DocMarkdown>
-      <DocCanvas of={MiniSizeCircularProgressBar} sourceState="hidden" />
-      <h3 id="progress-demo-dynamic" className="fabi-sb-demo-title" lang="en">Dynamic</h3>
-      <DocMarkdown>{vi ? "Thanh tiến độ động sẽ tốt hơn." : "A dynamic progress bar is better."}</DocMarkdown>
-      <DocCanvas of={Dynamic} sourceState="hidden" />
-      <h3 id="progress-demo-format" className="fabi-sb-demo-title" lang="en">Custom text format</h3>
-      <DocMarkdown>{vi ? "Bạn có thể đặt văn bản tuỳ chỉnh qua prop `format`." : "You can set a custom text by setting the `format` prop."}</DocMarkdown>
-      <DocCanvas of={CustomTextFormat} sourceState="hidden" />
-      <h3 id="progress-demo-dashboard" className="fabi-sb-demo-title" lang="en">Dashboard</h3>
-      <DocMarkdown>{vi ? "Đặt `type=dashboard` để dễ dàng có kiểu tiến độ dạng dashboard." : "By setting `type=dashboard`, you can get a dashboard style of progress easily."}</DocMarkdown>
-      <DocCanvas of={Dashboard} sourceState="hidden" />
-      <h3 id="progress-demo-segment" className="fabi-sb-demo-title" lang="en">Progress bar with success segment</h3>
-      <DocMarkdown>{vi ? "Hiển thị nhiều phần của tiến độ với các trạng thái khác nhau." : "Show several parts of progress with different status."}</DocMarkdown>
-      <DocCanvas of={ProgressBarWithSuccessSegment} sourceState="hidden" />
-      <h3 id="progress-demo-linecap" className="fabi-sb-demo-title" lang="en">Stroke Linecap</h3>
-      <DocMarkdown>{vi ? "Đặt `strokeLinecap=\"butt\"` để đổi đầu nét từ `round` sang `butt`, xem [stroke-linecap](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-linecap) để biết thêm." : "By setting `strokeLinecap=\"butt\"`, you can change the linecaps from `round` to `butt`, see [stroke-linecap](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-linecap) for more information."}</DocMarkdown>
-      <DocCanvas of={StrokeLinecap} sourceState="hidden" />
-      <h3 id="progress-demo-gradient-line" className="fabi-sb-demo-title" lang="en">Custom line gradient</h3>
-      <DocMarkdown>{vi ? "Gradient bao quanh, `circle` và `dashboard` sẽ bỏ qua `strokeLinecap` khi đặt gradient." : "Gradient encapsulation, `circle` and `dashboard` will ignore `strokeLinecap` when setting gradient."}</DocMarkdown>
-      <DocCanvas of={CustomLineGradient} sourceState="hidden" />
-      <h3 id="progress-demo-steps" className="fabi-sb-demo-title" lang="en">Progress bar with steps</h3>
-      <DocMarkdown>{vi ? "Thanh tiến độ theo từng bước." : "A progress bar with steps."}</DocMarkdown>
-      <DocCanvas of={ProgressBarWithSteps} sourceState="hidden" />
-      <h3 id="progress-demo-circle-steps" className="fabi-sb-demo-title" lang="en">Circular progress bar with steps</h3>
-      <DocMarkdown>{vi ? "Thanh tiến độ hình tròn hỗ trợ các bước và phân đoạn màu, khoảng hở mặc định là 2px." : "A circular progress bar that support steps and color segments, default gap is 2px."}</DocMarkdown>
-      <DocCanvas of={CircularProgressBarWithSteps} sourceState="hidden" />
-      <h3 id="progress-demo-size" className="fabi-sb-demo-title" lang="en">Progress size</h3>
-      <DocMarkdown>{vi ? "Kích thước của tiến độ." : "The size of progress."}</DocMarkdown>
-      <DocCanvas of={ProgressSize} sourceState="hidden" />
-      <h3 id="progress-demo-info-position" className="fabi-sb-demo-title" lang="en">Change progress value position</h3>
-      <DocMarkdown>{vi ? "Đổi vị trí của giá trị tiến độ, bạn có thể dùng `percentPosition` để điều chỉnh sao cho giá trị nằm bên trong, bên ngoài hoặc ở phía dưới thanh tiến độ." : "Change the position of the progress value, you can use `percentPosition` to adjust it so that the progress bar value is inside, outside or at the bottom of the progress bar."}</DocMarkdown>
-      <DocCanvas of={ChangeProgressValuePosition} sourceState="hidden" />
-      <h3 id="progress-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Progress bằng cách truyền object hoặc function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Progress by passing objects or functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="progress-demo-line" title="Progress bar" of={ProgressBar} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Thanh tiến độ tiêu chuẩn." : "A standard progress bar."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-circle" title="Circular progress bar" of={CircularProgressBar} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Thanh tiến độ hình tròn." : "A circular progress bar."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-line-mini" title="Mini size progress bar" of={MiniSizeProgressBar} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Phù hợp với vùng hẹp." : "Appropriate for a narrow area."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-circle-micro" title="Responsive circular progress bar" of={ResponsiveCircularProgressBar} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Thanh tiến độ hình tròn responsive. Khi `width` nhỏ hơn 20, thông tin tiến độ sẽ hiển thị trong Tooltip." : "Responsive circular progress bar. When `width` is smaller than 20, progress information will be displayed in Tooltip."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-circle-mini" title="Mini size circular progress bar" of={MiniSizeCircularProgressBar} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Thanh tiến độ hình tròn nhỏ hơn." : "A smaller circular progress bar."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-dynamic" title="Dynamic" of={Dynamic} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Thanh tiến độ động sẽ tốt hơn." : "A dynamic progress bar is better."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-format" title="Custom text format" of={CustomTextFormat} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Bạn có thể đặt văn bản tuỳ chỉnh qua prop `format`." : "You can set a custom text by setting the `format` prop."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-dashboard" title="Dashboard" of={Dashboard} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Đặt `type=dashboard` để dễ dàng có kiểu tiến độ dạng dashboard." : "By setting `type=dashboard`, you can get a dashboard style of progress easily."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-segment" title="Progress bar with success segment" of={ProgressBarWithSuccessSegment} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Hiển thị nhiều phần của tiến độ với các trạng thái khác nhau." : "Show several parts of progress with different status."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-linecap" title="Stroke Linecap" of={StrokeLinecap} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Đặt `strokeLinecap=\"butt\"` để đổi đầu nét từ `round` sang `butt`, xem [stroke-linecap](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-linecap) để biết thêm." : "By setting `strokeLinecap=\"butt\"`, you can change the linecaps from `round` to `butt`, see [stroke-linecap](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-linecap) for more information."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-gradient-line" title="Custom line gradient" of={CustomLineGradient} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Gradient bao quanh, `circle` và `dashboard` sẽ bỏ qua `strokeLinecap` khi đặt gradient." : "Gradient encapsulation, `circle` and `dashboard` will ignore `strokeLinecap` when setting gradient."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-steps" title="Progress bar with steps" of={ProgressBarWithSteps} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Thanh tiến độ theo từng bước." : "A progress bar with steps."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-circle-steps" title="Circular progress bar with steps" of={CircularProgressBarWithSteps} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Thanh tiến độ hình tròn hỗ trợ các bước và phân đoạn màu, khoảng hở mặc định là 2px." : "A circular progress bar that support steps and color segments, default gap is 2px."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-size" title="Progress size" of={ProgressSize} code={Demo13Source}>
+        <DocMarkdown>{vi ? "Kích thước của tiến độ." : "The size of progress."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-info-position" title="Change progress value position" of={ChangeProgressValuePosition} code={Demo14Source}>
+        <DocMarkdown>{vi ? "Đổi vị trí của giá trị tiến độ, bạn có thể dùng `percentPosition` để điều chỉnh sao cho giá trị nằm bên trong, bên ngoài hoặc ở phía dưới thanh tiến độ." : "Change the position of the progress value, you can use `percentPosition` to adjust it so that the progress bar value is inside, outside or at the bottom of the progress bar."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="progress-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo15Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Progress bằng cách truyền object hoặc function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Progress by passing objects or functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\nCác thuộc tính dùng chung cho mọi kiểu.\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| format | Hàm template của nội dung | function(percent, successPercent) | (percent) => percent + `%` | × |\n| percent | Đặt phần trăm hoàn thành | number | 0 | × |\n| railColor | Màu của phần chưa được lấp đầy | string | - | × |\n| showInfo | Có hiển thị giá trị tiến độ và icon trạng thái hay không | boolean | true | × |\n| status | Đặt trạng thái của Progress, các lựa chọn: `success` `exception` `normal` `active`(chỉ với line) | string | - | × |\n| strokeColor | Màu của thanh tiến độ | string | - | × |\n| strokeLinecap | Đặt kiểu đầu nét của tiến độ | `round` \\| `butt` \\| `square`, xem [stroke-linecap](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-linecap) | `round` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| success | Cấu hình cho phần tiến độ thành công | { percent: number, strokeColor: string } | - | × |\n| type | Đặt kiểu, các lựa chọn: `line` `circle` `dashboard` | string | `line` | × |\n| size | Kích thước Progress | number \\| \\[number \\| string, number] \\| { width: number, height: number } \\| \"small\" \\| \"medium\" | \"medium\" | × |\n\n### `type=\"line\"`\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| steps | Tổng số bước | number | - |\n| rounding | Hàm làm tròn giá trị | (step: number) => number | Math.round |\n| strokeColor | Màu của thanh tiến độ, render `linear-gradient` khi truyền object, có thể nhận `string[]` khi có `steps`. | string \\| string[] \\| { from: string; to: string; direction: string } | - |\n| percentPosition | Vị trí giá trị tiến độ, truyền vào object, `align` chỉ vị trí ngang của giá trị, `type` chỉ giá trị nằm bên trong hay bên ngoài thanh tiến độ | { align: string; type: string } | { align: \\\"end\\\", type: \\\"outer\\\" } |\n\n### `type=\"circle\"`\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| steps | Tổng số bước. Khi truyền object, `count` là số bước và `gap` là khoảng cách giữa chúng. Khi truyền số, giá trị mặc định của `gap` là 2. | number \\| { count: number, gap: number } | - |\n| strokeColor | Màu của tiến độ hình tròn, render gradient khi truyền object | string \\| { number%: string } | - |\n| strokeWidth | Đặt độ rộng của tiến độ hình tròn, đơn vị: phần trăm chiều rộng canvas | number | 6 |\n\n### `type=\"dashboard\"`\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| steps | Tổng số bước. Khi truyền object, `count` là số bước và `gap` là khoảng cách giữa chúng. Khi truyền số, giá trị mặc định của `gap` là 2. | number \\| { count: number, gap: number } | - |\n| gapDegree | Góc hở của nửa vòng tròn, 0 ~ 295 | number | 75 |\n| gapPlacement | Vị trí khoảng hở, các lựa chọn: `top` `bottom` `start` `end` | string | `bottom` |\n| strokeWidth | Đặt độ rộng của tiến độ dashboard, đơn vị: phần trăm chiều rộng canvas | number | 6 |\n\n## Semantic DOM" : "## API\n\nProperties that shared by all types.\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| format | The template function of the content | function(percent, successPercent) | (percent) => percent + `%` | × |\n| percent | To set the completion percentage | number | 0 | × |\n| railColor | The color of unfilled part | string | - | × |\n| showInfo | Whether to display the progress value and the status icon | boolean | true | × |\n| status | To set the status of the Progress, options: `success` `exception` `normal` `active`(line only) | string | - | × |\n| strokeColor | The color of progress bar | string | - | × |\n| strokeLinecap | To set the style of the progress linecap | `round` \\| `butt` \\| `square`, see [stroke-linecap](https://developer.mozilla.org/docs/Web/SVG/Attribute/stroke-linecap) | `round` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| success | Configs of successfully progress bar | { percent: number, strokeColor: string } | - | × |\n| type | To set the type, options: `line` `circle` `dashboard` | string | `line` | × |\n| size | Progress size | number \\| \\[number \\| string, number] \\| { width: number, height: number } \\| \"small\" \\| \"medium\" | \"medium\" | × |\n\n### `type=\"line\"`\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| steps | The total step count | number | - |\n| rounding | The function to round the value | (step: number) => number | Math.round |\n| strokeColor | The color of progress bar, render `linear-gradient` when passing an object, could accept `string[]` when has `steps`. | string \\| string[] \\| { from: string; to: string; direction: string } | - |\n| percentPosition | Progress value position, passed in object, `align` indicates the horizontal position of the value, `type` indicates whether the value is inside or outside the progress bar | { align: string; type: string } | { align: \\\"end\\\", type: \\\"outer\\\" } |\n\n### `type=\"circle\"`\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| steps | The total step count. When passing an object, `count` refers to the number of steps, and `gap` refers to the distance between them. When passing a number, the default value for `gap` is 2. | number \\| { count: number, gap: number } | - |\n| strokeColor | The color of circular progress, render gradient when passing an object | string \\| { number%: string } | - |\n| strokeWidth | To set the width of the circular progress, unit: percentage of the canvas width | number | 6 |\n\n### `type=\"dashboard\"`\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| steps | The total step count. When passing an object, `count` refers to the number of steps, and `gap` refers to the distance between them. When passing a number, the default value for `gap` is 2. | number \\| { count: number, gap: number } | - |\n| gapDegree | The gap degree of half circle, 0 ~ 295 | number | 75 |\n| gapPlacement | The gap placement, options: `top` `bottom` `start` `end` | string | `bottom` |\n| strokeWidth | To set the width of the dashboard progress, unit: percentage of the canvas width | number | 6 |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo16 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Avatar } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -38,28 +39,28 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Ví dụ" : "## Examples"}</DocMarkdown>
-      <h3 id="avatar-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Có ba kích thước và hai hình dạng." : "Three sizes and two shapes are available."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="avatar-demo-type" className="fabi-sb-demo-title" lang="en">Type</h3>
-      <DocMarkdown>{vi ? "Hỗ trợ hình ảnh, icon và chữ cái; hai loại avatar sau có thể tuỳ chỉnh màu chữ và màu nền." : "Image, Icon and letter are supported, and the latter two kinds of avatar can have custom colors and background colors."}</DocMarkdown>
-      <DocCanvas of={Type} sourceState="hidden" />
-      <h3 id="avatar-demo-dynamic" className="fabi-sb-demo-title" lang="en">Autoset Font Size</h3>
-      <DocMarkdown>{vi ? "Với Avatar dạng chữ cái, khi chữ quá dài không hiển thị hết, cỡ chữ có thể tự động điều chỉnh theo độ rộng của Avatar. Bạn cũng có thể dùng `gap` để đặt khoảng cách đơn vị giữa hai bên trái và phải." : "For letter type Avatar, when the letters are too long to display, the font size can be automatically adjusted according to the width of the Avatar. You can also use `gap` to set the unit distance between left and right sides."}</DocMarkdown>
-      <DocCanvas of={AutosetFontSize} sourceState="hidden" />
-      <h3 id="avatar-demo-badge" className="fabi-sb-demo-title" lang="en">With Badge</h3>
-      <DocMarkdown>{vi ? "Thường dùng cho nhắc nhở và thông báo." : "Usually used for reminders and notifications."}</DocMarkdown>
-      <DocCanvas of={WithBadge} sourceState="hidden" />
-      <h3 id="avatar-demo-group" className="fabi-sb-demo-title" lang="en">Avatar.Group</h3>
-      <DocMarkdown>{vi ? "Hiển thị nhóm avatar." : "Avatar group display."}</DocMarkdown>
-      <DocCanvas of={AvatarGroup} sourceState="hidden" />
-      <h3 id="avatar-demo-max-count" className="fabi-sb-demo-title" lang="en">maxCount includes overflow</h3>
-      <DocMarkdown>{vi ? "Bọc `Avatar.Group` bằng HOC để thêm prop `overflowInFinal`. Khi bật, `max.count` biểu thị tổng số phần tử cần hiển thị và dành 1 vị trí cho chỉ báo phần tràn." : "Wrap `Avatar.Group` with HOC to add `overflowInFinal` prop. When enabled, `max.count` represents the total number of elements to display and reserves 1 slot for the overflow indicator."}</DocMarkdown>
-      <DocCanvas of={MaxCountIncludesOverflow} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>@rc-component/util</code></p>
-      <h3 id="avatar-demo-responsive" className="fabi-sb-demo-title" lang="en">Responsive Size</h3>
-      <DocMarkdown>{vi ? "Kích thước avatar có thể tự động điều chỉnh theo kích thước màn hình." : "Avatar size can be automatically adjusted based on the screen size."}</DocMarkdown>
-      <DocCanvas of={ResponsiveSize} sourceState="hidden" />
+      <DemoBox id="avatar-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Có ba kích thước và hai hình dạng." : "Three sizes and two shapes are available."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="avatar-demo-type" title="Type" of={Type} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Hỗ trợ hình ảnh, icon và chữ cái; hai loại avatar sau có thể tuỳ chỉnh màu chữ và màu nền." : "Image, Icon and letter are supported, and the latter two kinds of avatar can have custom colors and background colors."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="avatar-demo-dynamic" title="Autoset Font Size" of={AutosetFontSize} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Với Avatar dạng chữ cái, khi chữ quá dài không hiển thị hết, cỡ chữ có thể tự động điều chỉnh theo độ rộng của Avatar. Bạn cũng có thể dùng `gap` để đặt khoảng cách đơn vị giữa hai bên trái và phải." : "For letter type Avatar, when the letters are too long to display, the font size can be automatically adjusted according to the width of the Avatar. You can also use `gap` to set the unit distance between left and right sides."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="avatar-demo-badge" title="With Badge" of={WithBadge} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Thường dùng cho nhắc nhở và thông báo." : "Usually used for reminders and notifications."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="avatar-demo-group" title="Avatar.Group" of={AvatarGroup} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Hiển thị nhóm avatar." : "Avatar group display."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="avatar-demo-max-count" title="maxCount includes overflow" of={MaxCountIncludesOverflow} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Bọc `Avatar.Group` bằng HOC để thêm prop `overflowInFinal`. Khi bật, `max.count` biểu thị tổng số phần tử cần hiển thị và dành 1 vị trí cho chỉ báo phần tràn." : "Wrap `Avatar.Group` with HOC to add `overflowInFinal` prop. When enabled, `max.count` represents the total number of elements to display and reserves 1 slot for the overflow indicator."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>@rc-component/util</code></p>
+      </DemoBox>
+      <DemoBox id="avatar-demo-responsive" title="Responsive Size" of={ResponsiveSize} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Kích thước avatar có thể tự động điều chỉnh theo kích thước màn hình." : "Avatar size can be automatically adjusted based on the screen size."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Avatar\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| alt | Thuộc tính này định nghĩa văn bản thay thế mô tả hình ảnh | string | - | × |\n| gap | Khoảng cách đơn vị giữa hai bên trái và phải của avatar dạng chữ cái | number | 4 | × |\n| icon | Kiểu icon tuỳ chỉnh cho avatar dạng icon | ReactNode | - | × |\n| shape | Hình dạng của avatar | `circle` \\| `square` | `circle` | × |\n| size | Kích thước của avatar | number \\| `large` \\| `medium` \\| `small` \\| { xs: number, sm: number, ...} | `medium` | × |\n| src | Địa chỉ của hình ảnh cho avatar dạng ảnh hoặc phần tử ảnh | string \\| ReactNode | - | × |\n| srcSet | Danh sách nguồn ảnh dùng cho các độ phân giải màn hình khác nhau | string | - | × |\n| draggable | Có cho phép kéo ảnh hay không | boolean \\| `'true'` \\| `'false'` | true | × |\n| crossOrigin | Các thuộc tính cài đặt CORS | `'anonymous'` \\| `'use-credentials'` \\| `''` | - | × |\n| onError | Hàm xử lý khi ảnh tải lỗi, trả về false để ngăn hành vi fallback mặc định | () => boolean | - | × |\n\n> Mẹo: Bạn có thể đặt `icon` hoặc `children` làm fallback khi ảnh tải lỗi, với độ ưu tiên `icon` > `children`\n\n### Avatar.Group\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| max | Đặt các cấu hình liên quan đến số lượng hiển thị tối đa | `{ count?: number; style?: CSSProperties; popover?: PopoverProps }` | - |\n| size | Kích thước của avatar | number \\| `large` \\| `medium` \\| `small` \\| { xs: number, sm: number, ...} | `medium` |\n| shape | Hình dạng của avatar | `circle` \\| `square` | `circle` |\n\n## Design Token" : "## API\n\n### Avatar\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| alt | This attribute defines the alternative text describing the image | string | - | × |\n| gap | Letter type unit distance between left and right sides | number | 4 | × |\n| icon | Custom icon type for an icon avatar | ReactNode | - | × |\n| shape | The shape of avatar | `circle` \\| `square` | `circle` | × |\n| size | The size of the avatar | number \\| `large` \\| `medium` \\| `small` \\| { xs: number, sm: number, ...} | `medium` | × |\n| src | The address of the image for an image avatar or image element | string \\| ReactNode | - | × |\n| srcSet | A list of sources to use for different screen resolutions | string | - | × |\n| draggable | Whether the picture is allowed to be dragged | boolean \\| `'true'` \\| `'false'` | true | × |\n| crossOrigin | CORS settings attributes | `'anonymous'` \\| `'use-credentials'` \\| `''` | - | × |\n| onError | Handler when img load error, return false to prevent default fallback behavior | () => boolean | - | × |\n\n> Tip: You can set `icon` or `children` as the fallback for image load error, with the priority of `icon` > `children`\n\n### Avatar.Group\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| max | Set maximum display related configurations | `{ count?: number; style?: CSSProperties; popover?: PopoverProps }` | - |\n| size | The size of the avatar | number \\| `large` \\| `medium` \\| `small` \\| { xs: number, sm: number, ...} | `medium` |\n| shape | The shape of the avatar | `circle` \\| `square` | `circle` |\n\n## Design Token"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block"><ComponentTokenTable component="Avatar" /></div></DocUnstyled>
     </>

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { expect, fn, screen, waitFor, within } from 'storybook/test'
 import { Button } from '@fabi/ui'
@@ -56,50 +57,50 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nMột button đại diện cho một thao tác (hoặc một chuỗi thao tác). Nhấn vào button sẽ kích hoạt logic nghiệp vụ tương ứng.\n\nFABi CMS Design System cung cấp 5 loại button.\n\n- 🔵 Primary button: dùng cho hành động chính, mỗi khu vực có tối đa một primary button.\n- ⚪️ Default button: dùng cho một chuỗi hành động không có thứ tự ưu tiên.\n- 😶 Dashed button: thường dùng để thêm hành động.\n- 🔤 Text button: dùng cho hành động phụ nhất.\n- 🔗 Link button: dùng cho liên kết ngoài.\n\nVà thêm 4 thuộc tính khác.\n\n- 🔴 `danger`: dùng cho các hành động có rủi ro, như xoá hoặc cấp quyền.\n- 👻 `ghost`: dùng trong bối cảnh nền phức tạp, thường là trang chủ.\n- 🚫 `disabled`: dùng khi hành động không khả dụng.\n- 🔃 `loading`: thêm biểu tượng đang tải vào button, đồng thời tránh gửi nhiều lần.\n\n## Ví dụ" : "## When To Use\n\nA button means an operation (or a series of operations). Clicking a button will trigger its corresponding business logic.\n\nFABi CMS Design System provides 5 types of button.\n\n- 🔵 Primary button: used for the main action, there can be at most one primary button in a section.\n- ⚪️ Default button: used for a series of actions without priority.\n- 😶 Dashed button: commonly used for adding more actions.\n- 🔤 Text button: used for the most secondary action.\n- 🔗 Link button: used for external links.\n\nAnd 4 other properties additionally.\n\n- 🔴 `danger`: used for actions of risk, like deletion or authorization.\n- 👻 `ghost`: used in situations with complex background, home pages usually.\n- 🚫 `disabled`: used when actions are not available.\n- 🔃 `loading`: adds a loading spinner in button, avoids multiple submits too.\n\n## Examples"}</DocMarkdown>
-      <h3 id="button-demo-basic" className="fabi-sb-demo-title" lang="en">Syntactic sugar</h3>
-      <DocMarkdown>{vi ? "Thông qua cú pháp rút gọn `type`, dùng các style button định sẵn: button `primary`, `default`, `dashed`, `text` và `link`." : "Through the `type` syntactic sugar, use the preset button styles: `primary` buttons, `default` buttons, `dashed` buttons, `text` buttons, and `link` buttons."}</DocMarkdown>
-      <DocCanvas of={SyntacticSugar} sourceState="hidden" />
-      <h3 id="button-demo-color-variant" className="fabi-sb-demo-title" lang="en">Color & Variant</h3>
-      <DocMarkdown>{vi ? "Bạn có thể đặt đồng thời các thuộc tính `color` và `variant` để tạo ra nhiều biến thể button hơn." : "You can set the `color` and `variant` attributes at the same time can derive more variant buttons."}</DocMarkdown>
-      <DocCanvas of={ColorVariant} sourceState="hidden" />
-      <h3 id="button-demo-icon" className="fabi-sb-demo-title" lang="en">Icon</h3>
-      <DocMarkdown>{vi ? "Bạn có thể thêm icon bằng thuộc tính `icon`." : "You can add an icon using the `icon` property."}</DocMarkdown>
-      <DocCanvas of={Icon} sourceState="hidden" />
-      <h3 id="button-demo-icon-placement" className="fabi-sb-demo-title" lang="en">Icon Placement</h3>
-      <DocMarkdown>{vi ? "Bạn có thể đặt vị trí icon của button bằng cách đặt `iconPlacement` là `start` hoặc `end`." : "You can set the position of a button's icon by setting the `iconPlacement` to `start` or `end` respectively."}</DocMarkdown>
-      <DocCanvas of={IconPlacement} sourceState="hidden" />
-      <h3 id="button-demo-size" className="fabi-sb-demo-title" lang="en">Size</h3>
-      <DocMarkdown>{vi ? "FABi CMS Design System hỗ trợ ba kích thước button: small, medium và large.\n\nNếu cần button lớn hoặc nhỏ, đặt thuộc tính `size` là `large` hoặc `small`. Bỏ qua thuộc tính `size` để có button kích thước `medium` mặc định." : "FABi CMS Design System supports three sizes of buttons: small, medium and large.\n\nIf a large or small button is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a button with the default `medium` size."}</DocMarkdown>
-      <DocCanvas of={Size} sourceState="hidden" />
-      <h3 id="button-demo-disabled" className="fabi-sb-demo-title" lang="en">Disabled</h3>
-      <DocMarkdown>{vi ? "Để đánh dấu một button là vô hiệu hoá, thêm thuộc tính `disabled` vào `Button`." : "To mark a button as disabled, add the `disabled` property to the `Button`."}</DocMarkdown>
-      <DocCanvas of={Disabled} sourceState="hidden" />
-      <h3 id="button-demo-loading" className="fabi-sb-demo-title" lang="en">Loading</h3>
-      <DocMarkdown>{vi ? "Có thể thêm biểu tượng đang tải vào button bằng cách đặt thuộc tính `loading` cho `Button`. Dùng `loading.icon` để tuỳ chỉnh icon đang tải." : "A loading indicator can be added to a button by setting the `loading` property on the `Button`. The `loading.icon` can be used to customize the loading icon."}</DocMarkdown>
-      <DocCanvas of={Loading} sourceState="hidden" />
-      <h3 id="button-demo-multiple" className="fabi-sb-demo-title" lang="en">Multiple Buttons</h3>
-      <DocMarkdown>{vi ? "Nếu cần nhiều button, chúng tôi khuyến nghị dùng 1 primary button + n button phụ. Nếu có hơn ba thao tác, bạn có thể gom bớt vào một Dropdown." : "If you need several buttons, we recommend that you use 1 primary button + n secondary buttons. If there are more than three operations, you can group some of them into a Dropdown."}</DocMarkdown>
-      <DocCanvas of={MultipleButtons} sourceState="hidden" />
-      <h3 id="button-demo-ghost" className="fabi-sb-demo-title" lang="en">Ghost Button</h3>
-      <DocMarkdown>{vi ? "Thuộc tính `ghost` làm nền button trong suốt, thường dùng trên nền có màu." : "The `ghost` property will make a button's background transparent, this is commonly used in colored background."}</DocMarkdown>
-      <DocCanvas of={GhostButton} sourceState="hidden" />
-      <h3 id="button-demo-danger" className="fabi-sb-demo-title" lang="en">Danger Buttons</h3>
-      <DocCanvas of={DangerButtons} sourceState="hidden" />
-      <h3 id="button-demo-block" className="fabi-sb-demo-title" lang="en">Block Button</h3>
-      <DocMarkdown>{vi ? "Thuộc tính `block` làm button vừa khít với độ rộng của phần tử cha." : "The `block` property will make a button fit to its parent width."}</DocMarkdown>
-      <DocCanvas of={BlockButton} sourceState="hidden" />
-      <h3 id="button-demo-linear-gradient" className="fabi-sb-demo-title" lang="en">Gradient Button</h3>
-      <DocMarkdown>{vi ? "Button có nền gradient." : "Buttons with a gradient background."}</DocMarkdown>
-      <DocCanvas of={GradientButton} sourceState="hidden" />
-      <h3 id="button-demo-wave" className="fabi-sb-demo-title" lang="en">Custom Wave</h3>
-      <DocMarkdown>{vi ? "Hiệu ứng wave (gợn sóng) tạo sự sinh động." : "Wave effect brings dynamic."}</DocMarkdown>
-      <DocCanvas of={CustomWave} sourceState="hidden" />
-      <h3 id="button-demo-custom-disabled-bg" className="fabi-sb-demo-title" lang="en">Custom disabled backgroundColor</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh màu nền khi vô hiệu hoá (áp dụng cho type `default` và `dashed`)" : "Customize the background color with disable (applicable to type `default` and `dashed`)"}</DocMarkdown>
-      <DocCanvas of={CustomDisabledBackgroundColor} sourceState="hidden" />
-      <h3 id="button-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Button bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Button by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="button-demo-basic" title="Syntactic sugar" of={SyntacticSugar} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Thông qua cú pháp rút gọn `type`, dùng các style button định sẵn: button `primary`, `default`, `dashed`, `text` và `link`." : "Through the `type` syntactic sugar, use the preset button styles: `primary` buttons, `default` buttons, `dashed` buttons, `text` buttons, and `link` buttons."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-color-variant" title="Color & Variant" of={ColorVariant} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Bạn có thể đặt đồng thời các thuộc tính `color` và `variant` để tạo ra nhiều biến thể button hơn." : "You can set the `color` and `variant` attributes at the same time can derive more variant buttons."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-icon" title="Icon" of={Icon} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Bạn có thể thêm icon bằng thuộc tính `icon`." : "You can add an icon using the `icon` property."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-icon-placement" title="Icon Placement" of={IconPlacement} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Bạn có thể đặt vị trí icon của button bằng cách đặt `iconPlacement` là `start` hoặc `end`." : "You can set the position of a button's icon by setting the `iconPlacement` to `start` or `end` respectively."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-size" title="Size" of={Size} code={Demo4Source}>
+        <DocMarkdown>{vi ? "FABi CMS Design System hỗ trợ ba kích thước button: small, medium và large.\n\nNếu cần button lớn hoặc nhỏ, đặt thuộc tính `size` là `large` hoặc `small`. Bỏ qua thuộc tính `size` để có button kích thước `medium` mặc định." : "FABi CMS Design System supports three sizes of buttons: small, medium and large.\n\nIf a large or small button is desired, set the `size` property to either `large` or `small` respectively. Omit the `size` property for a button with the default `medium` size."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-disabled" title="Disabled" of={Disabled} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Để đánh dấu một button là vô hiệu hoá, thêm thuộc tính `disabled` vào `Button`." : "To mark a button as disabled, add the `disabled` property to the `Button`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-loading" title="Loading" of={Loading} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Có thể thêm biểu tượng đang tải vào button bằng cách đặt thuộc tính `loading` cho `Button`. Dùng `loading.icon` để tuỳ chỉnh icon đang tải." : "A loading indicator can be added to a button by setting the `loading` property on the `Button`. The `loading.icon` can be used to customize the loading icon."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-multiple" title="Multiple Buttons" of={MultipleButtons} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Nếu cần nhiều button, chúng tôi khuyến nghị dùng 1 primary button + n button phụ. Nếu có hơn ba thao tác, bạn có thể gom bớt vào một Dropdown." : "If you need several buttons, we recommend that you use 1 primary button + n secondary buttons. If there are more than three operations, you can group some of them into a Dropdown."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-ghost" title="Ghost Button" of={GhostButton} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Thuộc tính `ghost` làm nền button trong suốt, thường dùng trên nền có màu." : "The `ghost` property will make a button's background transparent, this is commonly used in colored background."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-danger" title="Danger Buttons" of={DangerButtons} code={Demo9Source}>
+      </DemoBox>
+      <DemoBox id="button-demo-block" title="Block Button" of={BlockButton} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Thuộc tính `block` làm button vừa khít với độ rộng của phần tử cha." : "The `block` property will make a button fit to its parent width."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-linear-gradient" title="Gradient Button" of={GradientButton} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Button có nền gradient." : "Buttons with a gradient background."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-wave" title="Custom Wave" of={CustomWave} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Hiệu ứng wave (gợn sóng) tạo sự sinh động." : "Wave effect brings dynamic."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-custom-disabled-bg" title="Custom disabled backgroundColor" of={CustomDisabledBackgroundColor} code={Demo13Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh màu nền khi vô hiệu hoá (áp dụng cho type `default` và `dashed`)" : "Customize the background color with disable (applicable to type `default` and `dashed`)"}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="button-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo14Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Button bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Button by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\nCác style button khác nhau được tạo ra bằng cách đặt các thuộc tính của Button. Thứ tự khuyến nghị: `type` -> `shape` -> `size` -> `loading` -> `disabled`.\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| autoInsertSpace | Mặc định chúng tôi thêm một khoảng trắng giữa hai ký tự tiếng Trung, có thể tắt bằng cách đặt `autoInsertSpace` là `false`. | boolean | `true` | ✓ |\n| block | Tuỳ chọn để button vừa khít với độ rộng của phần tử cha | boolean | false | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| color | Đặt màu button | `default` \\| `primary` \\| `danger` \\| [PresetColors](#presetcolors) | `primary` when `variant=\"solid\"` | ✓ |\n| danger | Cú pháp rút gọn. Đặt trạng thái danger của button. Sẽ theo `color` nếu có | boolean | false | × |\n| disabled | Trạng thái vô hiệu hoá của button | boolean | false | × |\n| ghost | Làm nền trong suốt và đảo ngược màu chữ và viền | boolean | false | × |\n| href | URL chuyển hướng của link button | string | - | × |\n| htmlType | Đặt `type` html gốc của `button`, xem: [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type) | `submit` \\| `reset` \\| `button` | `button` | × |\n| icon | Đặt component icon của button | ReactNode | - | × |\n| iconPlacement | Đặt vị trí icon của button | `start` \\| `end` | `start` | × |\n| loading | Đặt trạng thái đang tải của button | boolean \\| { delay: number, icon: ReactNode } | false | × |\n| loadingIcon | (Chỉ hỗ trợ cấu hình chung) Đặt icon đang tải của button | ReactNode | `<LoadingOutlined />` | ✓ |\n| onClick | Đặt hàm xử lý sự kiện `click` | (event: React.MouseEvent&lt;HTMLElement, MouseEvent>) => void | - | × |\n| shape | Có thể dùng để đặt hình dạng button | `default` \\| `circle` \\| `round` | `default` | ✓ |\n| size | Đặt kích thước button | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Tuỳ chỉnh style inline cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| target | Giống thuộc tính target của thẻ a, có tác dụng khi chỉ định href | string | - | × |\n| type | Cú pháp rút gọn. Đặt loại button. Sẽ theo `variant` & `color` nếu có | `primary` \\| `dashed` \\| `link` \\| `text` \\| `default` | `default` | × |\n| variant | Đặt biến thể button | `outlined` \\| `dashed` \\| `solid` \\| `filled` \\| `text` \\| `link` | - | ✓ |\n\nNhận tất cả các props mà button gốc hỗ trợ.\n\n### PresetColors\n\n> type PresetColors = 'blue' | 'purple' | 'cyan' | 'green' | 'magenta' | 'pink' | 'red' | 'orange' | 'yellow' | 'volcano' | 'geekblue' | 'lime' | 'gold';\n\n## Semantic DOM" : "## API\n\nDifferent button styles generated by setting Button properties. The recommended order is: `type` -> `shape` -> `size` -> `loading` -> `disabled`.\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| autoInsertSpace | We add a space between two Chinese characters by default, which removed by setting `autoInsertSpace` to `false`. | boolean | `true` | ✓ |\n| block | Option to fit button width to its parent width | boolean | false | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| color | Set button color | `default` \\| `primary` \\| `danger` \\| [PresetColors](#presetcolors) | `primary` when `variant=\"solid\"` | ✓ |\n| danger | Syntactic sugar. Set the danger status of button. will follow `color` if provided | boolean | false | × |\n| disabled | Disabled state of button | boolean | false | × |\n| ghost | Make background transparent and invert text and border colors | boolean | false | × |\n| href | Redirect url of link button | string | - | × |\n| htmlType | Set the original html `type` of `button`, see: [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type) | `submit` \\| `reset` \\| `button` | `button` | × |\n| icon | Set the icon component of button | ReactNode | - | × |\n| iconPlacement | Set the icon position of button | `start` \\| `end` | `start` | × |\n| loading | Set the loading status of button | boolean \\| { delay: number, icon: ReactNode } | false | × |\n| loadingIcon | (Only supports global configuration) Set the loading icon of button | ReactNode | `<LoadingOutlined />` | ✓ |\n| onClick | Set the handler to handle `click` event | (event: React.MouseEvent&lt;HTMLElement, MouseEvent>) => void | - | × |\n| shape | Can be used to set button shape | `default` \\| `circle` \\| `round` | `default` | ✓ |\n| size | Set the size of button | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| target | Same as target attribute of a, works when href is specified | string | - | × |\n| type | Syntactic sugar. Set button type. Will follow `variant` & `color` if provided | `primary` \\| `dashed` \\| `link` \\| `text` \\| `default` | `default` | × |\n| variant | Set button variant | `outlined` \\| `dashed` \\| `solid` \\| `filled` \\| `text` \\| `link` | - | ✓ |\n\nIt accepts all props which native buttons support.\n\n### PresetColors\n\n> type PresetColors = 'blue' | 'purple' | 'cyan' | 'green' | 'magenta' | 'pink' | 'red' | 'orange' | 'yellow' | 'volcano' | 'geekblue' | 'lime' | 'gold';\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo15 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

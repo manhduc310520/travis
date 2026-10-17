@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Segmented } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -51,45 +52,45 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Khi hiển thị nhiều tuỳ chọn và người dùng có thể chọn một tuỳ chọn duy nhất;\n- Khi đổi tuỳ chọn đang chọn, nội dung của vùng liên kết thay đổi theo.\n\n## Ví dụ" : "## When To Use\n\n- When displaying multiple options and user can select a single option;\n- When switching the selected option, the content of the associated area changes.\n\n## Examples"}</DocMarkdown>
-      <h3 id="segmented-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng cơ bản nhất." : "The most basic usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="segmented-demo-vertical" className="fabi-sb-demo-title" lang="en">Vertical Direction</h3>
-      <DocMarkdown>{vi ? "Hiển thị theo chiều dọc." : "Make it vertical."}</DocMarkdown>
-      <DocCanvas of={VerticalDirection} sourceState="hidden" />
-      <h3 id="segmented-demo-block" className="fabi-sb-demo-title" lang="en">Block Segmented</h3>
-      <DocMarkdown>{vi ? "Thuộc tính `block` sẽ làm `Segmented` vừa với chiều rộng của phần tử cha." : "`block` property will make the `Segmented` fit to its parent width."}</DocMarkdown>
-      <DocCanvas of={BlockSegmented} sourceState="hidden" />
-      <h3 id="segmented-demo-shape" className="fabi-sb-demo-title" lang="en">Round shape</h3>
-      <DocMarkdown>{vi ? "Segmented dạng bo tròn." : "Round shape of Segmented."}</DocMarkdown>
-      <DocCanvas of={RoundShape} sourceState="hidden" />
-      <h3 id="segmented-demo-disabled" className="fabi-sb-demo-title" lang="en">Disabled</h3>
-      <DocMarkdown>{vi ? "Segmented bị vô hiệu hoá." : "Disabled Segmented."}</DocMarkdown>
-      <DocCanvas of={Disabled} sourceState="hidden" />
-      <h3 id="segmented-demo-controlled" className="fabi-sb-demo-title" lang="en">Controlled mode</h3>
-      <DocMarkdown>{vi ? "Segmented ở chế độ controlled." : "Controlled Segmented."}</DocMarkdown>
-      <DocCanvas of={ControlledMode} sourceState="hidden" />
-      <h3 id="segmented-demo-custom" className="fabi-sb-demo-title" lang="en">Custom Render</h3>
-      <DocMarkdown>{vi ? "Tuỳ biến từng mục của Segmented." : "Custom each Segmented Item."}</DocMarkdown>
-      <DocCanvas of={CustomRender} sourceState="hidden" />
-      <h3 id="segmented-demo-dynamic" className="fabi-sb-demo-title" lang="en">Dynamic</h3>
-      <DocMarkdown>{vi ? "Tải `options` một cách động." : "Load `options` dynamically."}</DocMarkdown>
-      <DocCanvas of={Dynamic} sourceState="hidden" />
-      <h3 id="segmented-demo-size" className="fabi-sb-demo-title" lang="en">Three sizes of Segmented</h3>
-      <DocMarkdown>{vi ? "Component Segmented có ba kích thước: `large` (40px), `medium` (32px) và `small` (24px)." : "There are three sizes of a Segmented component: `large` (40px), `medium` (32px), and `small` (24px)."}</DocMarkdown>
-      <DocCanvas of={ThreeSizesOfSegmented} sourceState="hidden" />
-      <h3 id="segmented-demo-with-icon" className="fabi-sb-demo-title" lang="en">With Icon</h3>
-      <DocMarkdown>{vi ? "Đặt `icon` cho mục của Segmented. `icon` cũng nhận một phần tử `<svg>` trần từ thư viện icon bên thứ ba, và nó vẫn được căn giữa theo chiều dọc với label." : "Set `icon` for Segmented Item. `icon` also accepts a bare `<svg>` element from a third-party icon library, which stays vertically centred with the label."}</DocMarkdown>
-      <DocCanvas of={WithIcon} sourceState="hidden" />
-      <h3 id="segmented-demo-icon-only" className="fabi-sb-demo-title" lang="en">With Icon only</h3>
-      <DocMarkdown>{vi ? "Đặt `icon` mà không có `label` cho mục của Segmented." : "Set `icon` without `label` for Segmented Item."}</DocMarkdown>
-      <DocCanvas of={WithIconOnly} sourceState="hidden" />
-      <h3 id="segmented-demo-with-name" className="fabi-sb-demo-title" lang="en">With name</h3>
-      <DocMarkdown>{vi ? "Truyền thuộc tính `name` cho tất cả `input[type=\"radio\"]` trong cùng một Segmented. Thường dùng để trình duyệt xem Segmented của bạn như một \"nhóm\" thực sự và giữ hành vi mặc định. Ví dụ: dùng phím mũi tên trái/phải trên bàn phím để đổi lựa chọn trong cùng một Segmented." : "Passing the `name` property to all `input[type=\"radio\"]` that are in the same Segmented. It is usually used to let the browser see your Segmented as a real \"group\" and keep the default behavior. For example, using left/right keyboard arrow to change your selection that in the same Segmented."}</DocMarkdown>
-      <DocCanvas of={WithName} sourceState="hidden" />
-      <h3 id="segmented-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ biến style của [semantic dom](#semantic-dom) trong Segmented bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of the Segmented by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="segmented-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng cơ bản nhất." : "The most basic usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-vertical" title="Vertical Direction" of={VerticalDirection} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Hiển thị theo chiều dọc." : "Make it vertical."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-block" title="Block Segmented" of={BlockSegmented} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Thuộc tính `block` sẽ làm `Segmented` vừa với chiều rộng của phần tử cha." : "`block` property will make the `Segmented` fit to its parent width."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-shape" title="Round shape" of={RoundShape} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Segmented dạng bo tròn." : "Round shape of Segmented."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-disabled" title="Disabled" of={Disabled} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Segmented bị vô hiệu hoá." : "Disabled Segmented."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-controlled" title="Controlled mode" of={ControlledMode} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Segmented ở chế độ controlled." : "Controlled Segmented."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-custom" title="Custom Render" of={CustomRender} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Tuỳ biến từng mục của Segmented." : "Custom each Segmented Item."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-dynamic" title="Dynamic" of={Dynamic} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Tải `options` một cách động." : "Load `options` dynamically."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-size" title="Three sizes of Segmented" of={ThreeSizesOfSegmented} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Component Segmented có ba kích thước: `large` (40px), `medium` (32px) và `small` (24px)." : "There are three sizes of a Segmented component: `large` (40px), `medium` (32px), and `small` (24px)."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-with-icon" title="With Icon" of={WithIcon} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Đặt `icon` cho mục của Segmented. `icon` cũng nhận một phần tử `<svg>` trần từ thư viện icon bên thứ ba, và nó vẫn được căn giữa theo chiều dọc với label." : "Set `icon` for Segmented Item. `icon` also accepts a bare `<svg>` element from a third-party icon library, which stays vertically centred with the label."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-icon-only" title="With Icon only" of={WithIconOnly} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Đặt `icon` mà không có `label` cho mục của Segmented." : "Set `icon` without `label` for Segmented Item."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-with-name" title="With name" of={WithName} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Truyền thuộc tính `name` cho tất cả `input[type=\"radio\"]` trong cùng một Segmented. Thường dùng để trình duyệt xem Segmented của bạn như một \"nhóm\" thực sự và giữ hành vi mặc định. Ví dụ: dùng phím mũi tên trái/phải trên bàn phím để đổi lựa chọn trong cùng một Segmented." : "Passing the `name` property to all `input[type=\"radio\"]` that are in the same Segmented. It is usually used to let the browser see your Segmented as a real \"group\" and keep the default behavior. For example, using left/right keyboard arrow to change your selection that in the same Segmented."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="segmented-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ biến style của [semantic dom](#semantic-dom) trong Segmented bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of the Segmented by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Segmented\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| block | Tuỳ chọn để vừa với chiều rộng của phần tử cha | boolean | false | × |\n| classNames | Tuỳ biến class cho từng cấu trúc semantic bên trong component Segmented. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultValue | Giá trị được chọn mặc định | string \\| number | Giá trị của mục đầu tiên trong `options` | × |\n| disabled | Vô hiệu hoá tất cả các segment | boolean | false | × |\n| onChange | Hàm callback được kích hoạt khi trạng thái thay đổi | function(value: string \\| number) |  | × |\n| options | Đặt các mục con có thể chọn | string\\[] \\| number\\[] \\| SegmentedItemType\\[] | [] | × |\n| orientation | Hướng hiển thị | `horizontal` \\| `vertical` | `horizontal` | × |\n| size | Kích thước của Segmented. | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Tuỳ biến style inline cho từng cấu trúc semantic bên trong component Segmented. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| vertical | Hướng hiển thị. Khi tồn tại cùng lúc với `orientation`, `orientation` được ưu tiên | boolean | `false` | × |\n| value | Giá trị đang được chọn | string \\| number |  | × |\n| shape | Hình dạng của Segmented | `default` \\| `round` | `default` | × |\n| name | Thuộc tính `name` của tất cả các phần tử con `input[type=\"radio\"]`. Nếu không đặt, sẽ dùng tên được sinh ngẫu nhiên | string |  | × |\n\n### SegmentedItemType\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| disabled | Trạng thái vô hiệu hoá của mục segmented | boolean | false |\n| className | CSS class bổ sung | string | - |\n| icon | Icon hiển thị cho mục Segmented | ReactNode | - |\n| label | Chữ hiển thị cho mục Segmented | ReactNode | - |\n| tooltip | tooltip cho mục Segmented | string \\| TooltipProps | - |\n| value | Giá trị của mục Segmented | string \\| number | - |\n\n## Semantic DOM" : "## API\n\n### Segmented\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| block | Option to fit width to its parent\\'s width | boolean | false | × |\n| classNames | Customize class for each semantic structure inside the Segmented component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultValue | Default selected value | string \\| number | Value of first item in `options` | × |\n| disabled | Disable all segments | boolean | false | × |\n| onChange | The callback function that is triggered when the state changes | function(value: string \\| number) |  | × |\n| options | Set children optional | string\\[] \\| number\\[] \\| SegmentedItemType\\[] | [] | × |\n| orientation | Orientation | `horizontal` \\| `vertical` | `horizontal` | × |\n| size | The size of the Segmented. | `large` \\| `medium` \\| `small` | `medium` | × |\n| styles | Customize inline style for each semantic structure inside the Segmented component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| vertical | Orientation. Simultaneously existing with `orientation`, `orientation` takes priority | boolean | `false` | × |\n| value | Currently selected value | string \\| number |  | × |\n| shape | shape of Segmented | `default` \\| `round` | `default` | × |\n| name | The `name` property of all `input[type=\"radio\"]` children. if not set, it will fallback to a randomly generated name | string |  | × |\n\n### SegmentedItemType\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| disabled | Disabled state of segmented item | boolean | false |\n| className | The additional css class | string | - |\n| icon | Display icon for Segmented item | ReactNode | - |\n| label | Display text for Segmented item | ReactNode | - |\n| tooltip | tooltip for Segmented item | string \\| TooltipProps | - |\n| value | Value for Segmented item | string \\| number | - |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo13 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

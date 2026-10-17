@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Badge, Avatar } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -50,42 +51,42 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nBadge thường xuất hiện gần thông báo hoặc avatar người dùng để thu hút sự chú ý, điển hình là hiển thị số tin nhắn chưa đọc.\n\n## Ví dụ" : "## When To Use\n\nBadge normally appears in proximity to notifications or user avatars with eye-catching appeal, typically displaying unread messages count.\n\n## Examples"}</DocMarkdown>
-      <h3 id="badge-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng đơn giản nhất. Badge sẽ bị ẩn khi `count` là `0`, nhưng có thể dùng `showZero` để hiển thị." : "Simplest Usage. Badge will be hidden when `count` is `0`, but we can use `showZero` to show it."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="badge-demo-no-wrapper" className="fabi-sb-demo-title" lang="en">Standalone</h3>
-      <DocMarkdown>{vi ? "Dùng độc lập khi không có children." : "Used in standalone when children is empty."}</DocMarkdown>
-      <DocCanvas of={Standalone} sourceState="hidden" />
-      <h3 id="badge-demo-overflow" className="fabi-sb-demo-title" lang="en">Overflow Count</h3>
-      <DocMarkdown>{vi ? "`${overflowCount}+` được hiển thị khi count lớn hơn `overflowCount`. Giá trị mặc định của `overflowCount` là `99`." : "`${overflowCount}+` is displayed when count is larger than `overflowCount`. The default value of `overflowCount` is `99`."}</DocMarkdown>
-      <DocCanvas of={OverflowCount} sourceState="hidden" />
-      <h3 id="badge-demo-dot" className="fabi-sb-demo-title" lang="en">Red badge</h3>
-      <DocMarkdown>{vi ? "Chỉ hiển thị một chấm đỏ, không kèm số cụ thể. Nếu count bằng 0, chấm sẽ không hiển thị." : "This will simply display a red badge, without a specific count. If count equals 0, it won't display the dot."}</DocMarkdown>
-      <DocCanvas of={RedBadge} sourceState="hidden" />
-      <h3 id="badge-demo-change" className="fabi-sb-demo-title" lang="en">Dynamic</h3>
-      <DocMarkdown>{vi ? "Số đếm sẽ có hiệu ứng chuyển động khi thay đổi." : "The count will be animated as it changes."}</DocMarkdown>
-      <DocCanvas of={Dynamic} sourceState="hidden" />
-      <h3 id="badge-demo-link" className="fabi-sb-demo-title" lang="en">Clickable</h3>
-      <DocMarkdown>{vi ? "Badge có thể được bọc bằng thẻ `a` để trở thành liên kết." : "The badge can be wrapped with `a` tag to make it linkable."}</DocMarkdown>
-      <DocCanvas of={Clickable} sourceState="hidden" />
-      <h3 id="badge-demo-offset" className="fabi-sb-demo-title" lang="en">Offset</h3>
-      <DocMarkdown>{vi ? "Đặt độ lệch của chấm badge, định dạng là `[left, top]`, biểu thị độ lệch của chấm trạng thái so với vị trí mặc định theo chiều trái và trên." : "Set offset of the badge dot, the format is `[left, top]`, which represents the offset of the status dot from the left and top of the default position."}</DocMarkdown>
-      <DocCanvas of={Offset} sourceState="hidden" />
-      <h3 id="badge-demo-size" className="fabi-sb-demo-title" lang="en">Size</h3>
-      <DocMarkdown>{vi ? "Đặt kích thước cho Badge dạng số." : "Set size of numeral Badge."}</DocMarkdown>
-      <DocCanvas of={Size} sourceState="hidden" />
-      <h3 id="badge-demo-status" className="fabi-sb-demo-title" lang="en">Status</h3>
-      <DocMarkdown>{vi ? "Badge độc lập kèm trạng thái." : "Standalone badge with status."}</DocMarkdown>
-      <DocCanvas of={Status} sourceState="hidden" />
-      <h3 id="badge-demo-colorful" className="fabi-sb-demo-title" lang="en">Colorful Badge</h3>
-      <DocMarkdown>{vi ? "Chúng tôi cài sẵn một loạt style Badge nhiều màu để dùng trong các tình huống khác nhau. Bạn cũng có thể đặt chuỗi màu hex để tuỳ chỉnh màu." : "We preset a series of colorful Badge styles for use in different situations. You can also set it to a hex color string for custom color."}</DocMarkdown>
-      <DocCanvas of={ColorfulBadge} sourceState="hidden" />
-      <h3 id="badge-demo-ribbon" className="fabi-sb-demo-title" lang="en">Ribbon</h3>
-      <DocMarkdown>{vi ? "Dùng badge dạng ruy băng." : "Use ribbon badge."}</DocMarkdown>
-      <DocCanvas of={Ribbon} sourceState="hidden" />
-      <h3 id="badge-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Badge bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Badge by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="badge-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng đơn giản nhất. Badge sẽ bị ẩn khi `count` là `0`, nhưng có thể dùng `showZero` để hiển thị." : "Simplest Usage. Badge will be hidden when `count` is `0`, but we can use `showZero` to show it."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-no-wrapper" title="Standalone" of={Standalone} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Dùng độc lập khi không có children." : "Used in standalone when children is empty."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-overflow" title="Overflow Count" of={OverflowCount} code={Demo2Source}>
+        <DocMarkdown>{vi ? "`${overflowCount}+` được hiển thị khi count lớn hơn `overflowCount`. Giá trị mặc định của `overflowCount` là `99`." : "`${overflowCount}+` is displayed when count is larger than `overflowCount`. The default value of `overflowCount` is `99`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-dot" title="Red badge" of={RedBadge} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Chỉ hiển thị một chấm đỏ, không kèm số cụ thể. Nếu count bằng 0, chấm sẽ không hiển thị." : "This will simply display a red badge, without a specific count. If count equals 0, it won't display the dot."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-change" title="Dynamic" of={Dynamic} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Số đếm sẽ có hiệu ứng chuyển động khi thay đổi." : "The count will be animated as it changes."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-link" title="Clickable" of={Clickable} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Badge có thể được bọc bằng thẻ `a` để trở thành liên kết." : "The badge can be wrapped with `a` tag to make it linkable."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-offset" title="Offset" of={Offset} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Đặt độ lệch của chấm badge, định dạng là `[left, top]`, biểu thị độ lệch của chấm trạng thái so với vị trí mặc định theo chiều trái và trên." : "Set offset of the badge dot, the format is `[left, top]`, which represents the offset of the status dot from the left and top of the default position."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-size" title="Size" of={Size} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Đặt kích thước cho Badge dạng số." : "Set size of numeral Badge."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-status" title="Status" of={Status} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Badge độc lập kèm trạng thái." : "Standalone badge with status."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-colorful" title="Colorful Badge" of={ColorfulBadge} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Chúng tôi cài sẵn một loạt style Badge nhiều màu để dùng trong các tình huống khác nhau. Bạn cũng có thể đặt chuỗi màu hex để tuỳ chỉnh màu." : "We preset a series of colorful Badge styles for use in different situations. You can also set it to a hex color string for custom color."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-ribbon" title="Ribbon" of={Ribbon} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Dùng badge dạng ruy băng." : "Use ribbon badge."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="badge-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Badge bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Badge by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Badge\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| color | Tuỳ chỉnh màu chấm của Badge | string | - | × |\n| count | Số hiển thị trong badge | ReactNode | - | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| dot | Có hiển thị chấm đỏ thay cho `count` hay không | boolean | false | × |\n| offset | Đặt độ lệch của chấm badge | \\[number, number] | - | × |\n| overflowCount | Số lớn nhất được hiển thị | number | 99 | × |\n| showZero | Có hiển thị badge khi `count` bằng không hay không | boolean | false | × |\n| size | Nếu đã đặt `count`, `size` đặt kích thước của badge | `medium` \\| `small` | - | × |\n| status | Đặt Badge thành chấm trạng thái | `success` \\| `processing` \\| `default` \\| `error` \\| `warning` | - | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| text | Nếu đã đặt `status`, `text` đặt văn bản hiển thị của `dot` trạng thái | ReactNode | - | × |\n| title | Văn bản hiển thị khi rê chuột lên badge. Đặt `null` hoặc `false` để bỏ tooltip mặc định của trình duyệt | string \\| null \\| false | - | × |\n\n### Badge.Ribbon\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| color | Tuỳ chỉnh màu của Ribbon | string | - | × |\n| placement | Vị trí của Ribbon, `start` và `end` theo hướng văn bản (RTL hoặc LTR) | `start` \\| `end` | `end` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| text | Nội dung bên trong Ribbon | ReactNode | - | × |\n\n## Semantic DOM\n\n### Badge" : "## API\n\n### Badge\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| color | Customize Badge dot color | string | - | × |\n| count | Number to show in badge | ReactNode | - | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| dot | Whether to display a red dot instead of `count` | boolean | false | × |\n| offset | Set offset of the badge dot | \\[number, number] | - | × |\n| overflowCount | Max count to show | number | 99 | × |\n| showZero | Whether to show badge when `count` is zero | boolean | false | × |\n| size | If `count` is set, `size` sets the size of badge | `medium` \\| `small` | - | × |\n| status | Set Badge as a status dot | `success` \\| `processing` \\| `default` \\| `error` \\| `warning` | - | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| text | If `status` is set, `text` sets the display text of the status `dot` | ReactNode | - | × |\n| title | Text to show when hovering over the badge. Set to `null` or `false` to remove the native tooltip | string \\| null \\| false | - | × |\n\n### Badge.Ribbon\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| color | Customize Ribbon color | string | - | × |\n| placement | The placement of the Ribbon, `start` and `end` follow text direction (RTL or LTR) | `start` \\| `end` | `end` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| text | Content inside the Ribbon | ReactNode | - | × |\n\n## Semantic DOM\n\n### Badge"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo12 /></div></DocUnstyled>
       <DocMarkdown>{"### Badge.Ribbon"}</DocMarkdown>

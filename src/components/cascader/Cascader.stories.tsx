@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import Demo0 from "./demo/basic"
 import Demo0Source from "./demo/basic.tsx?raw"
@@ -56,66 +57,66 @@ function DocsPage() {
       <DocTitle />
       <DocMarkdown>{vi ? "Ô chọn phân tầng (cascade)." : "Cascade selection box."}</DocMarkdown>
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Khi cần chọn từ một tập dữ liệu có liên kết với nhau, ví dụ tỉnh/thành phố/quận huyện, cấp bậc công ty, phân loại sự vật.\n- Khi chọn từ một tập dữ liệu lớn, với các phân loại nhiều cấp được tách ra để dễ chọn.\n- Chọn các mục phân tầng trong cùng một lớp nổi để có trải nghiệm tốt hơn.\n\n## Ví dụ" : "## When To Use\n\n- When you need to select from a set of associated data set. Such as province/city/district, company level, things classification.\n- When selecting from a large data set, with multi-stage classifications separated for easy selection.\n- Chooses cascade items in one float layer for better user experience.\n\n## Examples"}</DocMarkdown>
-      <h3 id="cascader-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Ô chọn phân tầng để chọn tỉnh/thành phố/quận huyện." : "Cascade selection box for selecting province/city/district."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="cascader-demo-default-value" className="fabi-sb-demo-title" lang="en">Default value</h3>
-      <DocMarkdown>{vi ? "Chỉ định giá trị mặc định bằng một mảng." : "Specifies default value by an array."}</DocMarkdown>
-      <DocCanvas of={DefaultValue} sourceState="hidden" />
-      <h3 id="cascader-demo-custom-trigger" className="fabi-sb-demo-title" lang="en">Custom trigger</h3>
-      <DocMarkdown>{vi ? "Tách riêng nút kích hoạt và kết quả." : "Separate trigger button and result."}</DocMarkdown>
-      <DocCanvas of={CustomTrigger} sourceState="hidden" />
-      <h3 id="cascader-demo-hover" className="fabi-sb-demo-title" lang="en">Hover</h3>
-      <DocMarkdown>{vi ? "Hover để mở rộng menu con, nhấn để chọn tuỳ chọn." : "Hover to expand sub menu, click to select option."}</DocMarkdown>
-      <DocCanvas of={Hover} sourceState="hidden" />
-      <h3 id="cascader-demo-disabled-option" className="fabi-sb-demo-title" lang="en">Disabled option</h3>
-      <DocMarkdown>{vi ? "Vô hiệu hoá tuỳ chọn bằng cách chỉ định thuộc tính `disabled` trong `options`." : "Disable option by specifying the `disabled` property in `options`."}</DocMarkdown>
-      <DocCanvas of={DisabledOption} sourceState="hidden" />
-      <h3 id="cascader-demo-change-on-select" className="fabi-sb-demo-title" lang="en">Change on select</h3>
-      <DocMarkdown>{vi ? "Cho phép chỉ chọn các tuỳ chọn cha." : "Allows the selection of only parent options."}</DocMarkdown>
-      <DocCanvas of={ChangeOnSelect} sourceState="hidden" />
-      <h3 id="cascader-demo-multiple" className="fabi-sb-demo-title" lang="en">Multiple</h3>
-      <DocMarkdown>{vi ? "Chọn nhiều tuỳ chọn. Vô hiệu hoá `checkbox` bằng cách thêm thuộc tính `disableCheckbox` cho một mục cụ thể. Style của trạng thái vô hiệu hoá có thể được thay đổi qua className." : "Select multiple options. Disable the `checkbox` by adding the `disableCheckbox` property and selecting a specific item. The style of the disable can be modified by the className."}</DocMarkdown>
-      <DocCanvas of={Multiple} sourceState="hidden" />
-      <h3 id="cascader-demo-showcheckedstrategy" className="fabi-sb-demo-title" lang="en">ShowCheckedStrategy</h3>
-      <DocMarkdown>{vi ? "Hiển thị một mục đã chọn trong ô bằng `showCheckedStrategy`." : "Shows a selected item in a box using `showCheckedStrategy`."}</DocMarkdown>
-      <DocCanvas of={ShowCheckedStrategy} sourceState="hidden" />
-      <h3 id="cascader-demo-size" className="fabi-sb-demo-title" lang="en">Size</h3>
-      <DocMarkdown>{vi ? "Ô chọn phân tầng với các kích thước khác nhau." : "Cascade selection box of different sizes."}</DocMarkdown>
-      <DocCanvas of={Size} sourceState="hidden" />
-      <h3 id="cascader-demo-custom-render" className="fabi-sb-demo-title" lang="en">Custom render</h3>
-      <DocMarkdown>{vi ? "Ví dụ, thêm một liên kết ngoài sau giá trị đã chọn." : "For instance, add an external link after the selected value."}</DocMarkdown>
-      <DocCanvas of={CustomRender} sourceState="hidden" />
-      <h3 id="cascader-demo-search" className="fabi-sb-demo-title" lang="en">Search</h3>
-      <DocMarkdown>{vi ? "Tìm kiếm và chọn tuỳ chọn trực tiếp.\n\n> Hiện tại `Cascader[showSearch]` chưa hỗ trợ tìm kiếm trên server." : "Search and select options directly.\n\n> Now, `Cascader[showSearch]` doesn't support search on server."}</DocMarkdown>
-      <DocCanvas of={Search} sourceState="hidden" />
-      <h3 id="cascader-demo-lazy" className="fabi-sb-demo-title" lang="en">Load Options Lazily</h3>
-      <DocMarkdown>{vi ? "Tải tuỳ chọn theo kiểu lazy bằng `loadData`.\n\n> Lưu ý: `loadData` không dùng được cùng `showSearch`." : "Load options lazily with `loadData`.\n\n> Note: `loadData` cannot work with `showSearch`."}</DocMarkdown>
-      <DocCanvas of={LoadOptionsLazily} sourceState="hidden" />
-      <h3 id="cascader-demo-fields-name" className="fabi-sb-demo-title" lang="en">Custom Field Names</h3>
-      <DocMarkdown>{vi ? "Tên trường tuỳ chỉnh." : "Custom field names."}</DocMarkdown>
-      <DocCanvas of={CustomFieldNames} sourceState="hidden" />
-      <h3 id="cascader-demo-suffix" className="fabi-sb-demo-title" lang="en">Prefix and Suffix</h3>
-      <DocMarkdown>{vi ? "Dùng `prefix` để tuỳ chỉnh nội dung prefix, dùng `suffixIcon` để tuỳ chỉnh icon suffix của ô chọn, và dùng `expandIcon` để tuỳ chỉnh icon mở rộng của mục hiện tại." : "Use `prefix` to customize the prefix content, use `suffixIcon` to customize the selection box suffix icon, and use `expandIcon` to customize the current item expand icon."}</DocMarkdown>
-      <DocCanvas of={PrefixAndSuffix} sourceState="hidden" />
-      <h3 id="cascader-demo-custom-dropdown" className="fabi-sb-demo-title" lang="en">Custom dropdown</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh menu dropdown qua `popupRender`." : "Customize the dropdown menu via `popupRender`."}</DocMarkdown>
-      <DocCanvas of={CustomDropdown} sourceState="hidden" />
-      <h3 id="cascader-demo-placement" className="fabi-sb-demo-title" lang="en">Placement</h3>
-      <DocMarkdown>{vi ? "Bạn có thể chỉ định thủ công vị trí của popup qua `placement`." : "You can manually specify the position of the popup via `placement`."}</DocMarkdown>
-      <DocCanvas of={Placement} sourceState="hidden" />
-      <h3 id="cascader-demo-variant" className="fabi-sb-demo-title" lang="en">Variants</h3>
-      <DocMarkdown>{vi ? "Các biến thể của Cascader, có bốn biến thể: `outlined` `filled` `borderless` và `underlined`." : "Variants of Cascader, there are four variants: `outlined` `filled` `borderless` and `underlined`."}</DocMarkdown>
-      <DocCanvas of={Variants} sourceState="hidden" />
-      <h3 id="cascader-demo-status" className="fabi-sb-demo-title" lang="en">Status</h3>
-      <DocMarkdown>{vi ? "Thêm trạng thái cho Cascader bằng `status`, có thể là `error` hoặc `warning`." : "Add status to Cascader with `status`, which could be `error` or `warning`."}</DocMarkdown>
-      <DocCanvas of={Status} sourceState="hidden" />
-      <h3 id="cascader-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Cascader bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Cascader by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
-      <h3 id="cascader-demo-panel" className="fabi-sb-demo-title" lang="en">Panel</h3>
-      <DocMarkdown>{vi ? "Dùng cho trường hợp hiển thị inline." : "Used for inline view case."}</DocMarkdown>
-      <DocCanvas of={Panel} sourceState="hidden" />
+      <DemoBox id="cascader-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Ô chọn phân tầng để chọn tỉnh/thành phố/quận huyện." : "Cascade selection box for selecting province/city/district."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-default-value" title="Default value" of={DefaultValue} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Chỉ định giá trị mặc định bằng một mảng." : "Specifies default value by an array."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-custom-trigger" title="Custom trigger" of={CustomTrigger} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Tách riêng nút kích hoạt và kết quả." : "Separate trigger button and result."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-hover" title="Hover" of={Hover} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Hover để mở rộng menu con, nhấn để chọn tuỳ chọn." : "Hover to expand sub menu, click to select option."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-disabled-option" title="Disabled option" of={DisabledOption} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Vô hiệu hoá tuỳ chọn bằng cách chỉ định thuộc tính `disabled` trong `options`." : "Disable option by specifying the `disabled` property in `options`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-change-on-select" title="Change on select" of={ChangeOnSelect} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Cho phép chỉ chọn các tuỳ chọn cha." : "Allows the selection of only parent options."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-multiple" title="Multiple" of={Multiple} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Chọn nhiều tuỳ chọn. Vô hiệu hoá `checkbox` bằng cách thêm thuộc tính `disableCheckbox` cho một mục cụ thể. Style của trạng thái vô hiệu hoá có thể được thay đổi qua className." : "Select multiple options. Disable the `checkbox` by adding the `disableCheckbox` property and selecting a specific item. The style of the disable can be modified by the className."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-showcheckedstrategy" title="ShowCheckedStrategy" of={ShowCheckedStrategy} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Hiển thị một mục đã chọn trong ô bằng `showCheckedStrategy`." : "Shows a selected item in a box using `showCheckedStrategy`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-size" title="Size" of={Size} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Ô chọn phân tầng với các kích thước khác nhau." : "Cascade selection box of different sizes."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-custom-render" title="Custom render" of={CustomRender} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Ví dụ, thêm một liên kết ngoài sau giá trị đã chọn." : "For instance, add an external link after the selected value."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-search" title="Search" of={Search} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Tìm kiếm và chọn tuỳ chọn trực tiếp.\n\n> Hiện tại `Cascader[showSearch]` chưa hỗ trợ tìm kiếm trên server." : "Search and select options directly.\n\n> Now, `Cascader[showSearch]` doesn't support search on server."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-lazy" title="Load Options Lazily" of={LoadOptionsLazily} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Tải tuỳ chọn theo kiểu lazy bằng `loadData`.\n\n> Lưu ý: `loadData` không dùng được cùng `showSearch`." : "Load options lazily with `loadData`.\n\n> Note: `loadData` cannot work with `showSearch`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-fields-name" title="Custom Field Names" of={CustomFieldNames} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Tên trường tuỳ chỉnh." : "Custom field names."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-suffix" title="Prefix and Suffix" of={PrefixAndSuffix} code={Demo13Source}>
+        <DocMarkdown>{vi ? "Dùng `prefix` để tuỳ chỉnh nội dung prefix, dùng `suffixIcon` để tuỳ chỉnh icon suffix của ô chọn, và dùng `expandIcon` để tuỳ chỉnh icon mở rộng của mục hiện tại." : "Use `prefix` to customize the prefix content, use `suffixIcon` to customize the selection box suffix icon, and use `expandIcon` to customize the current item expand icon."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-custom-dropdown" title="Custom dropdown" of={CustomDropdown} code={Demo14Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh menu dropdown qua `popupRender`." : "Customize the dropdown menu via `popupRender`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-placement" title="Placement" of={Placement} code={Demo15Source}>
+        <DocMarkdown>{vi ? "Bạn có thể chỉ định thủ công vị trí của popup qua `placement`." : "You can manually specify the position of the popup via `placement`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-variant" title="Variants" of={Variants} code={Demo16Source}>
+        <DocMarkdown>{vi ? "Các biến thể của Cascader, có bốn biến thể: `outlined` `filled` `borderless` và `underlined`." : "Variants of Cascader, there are four variants: `outlined` `filled` `borderless` and `underlined`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-status" title="Status" of={Status} code={Demo17Source}>
+        <DocMarkdown>{vi ? "Thêm trạng thái cho Cascader bằng `status`, có thể là `error` hoặc `warning`." : "Add status to Cascader with `status`, which could be `error` or `warning`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo18Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Cascader bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Cascader by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="cascader-demo-panel" title="Panel" of={Panel} code={Demo19Source}>
+        <DocMarkdown>{vi ? "Dùng cho trường hợp hiển thị inline." : "Used for inline view case."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{["## API\n\n", "```jsx\n<Cascader options={options} onChange={onChange} />\n```", vi ? "\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| allowClear | Hiển thị nút xoá | boolean \\| { clearIcon?: ReactNode } | true | ✓ |\n| changeOnSelect | Nếu đặt là true, giá trị sẽ thay đổi sau mỗi lần chọn, xem chi tiết ở demo phía trên | boolean | false | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultOpen | Trạng thái hiển thị ban đầu của popup cascader | boolean | - | × |\n| defaultValue | Giá trị được chọn ban đầu | string\\[] \\| number\\[] | \\[] | × |\n| disabled | Có vô hiệu hoá ô chọn hay không | boolean | false | × |\n| displayRender | Hàm render để hiển thị các tuỳ chọn đã chọn | (label, selectedOptions) => ReactNode | label => label.join(`/`) | × |\n| tagRender | Hàm render tuỳ chỉnh cho các tag ở chế độ `multiple` | (label: string, onClose: function, value: string) => ReactNode | - | × |\n| popupRender | Tuỳ chỉnh nội dung dropdown | (menus: ReactElement) => ReactNode | - | × |\n| expandIcon | Tuỳ chỉnh icon mở rộng của mục hiện tại | ReactNode | - | ✓ |\n| expandTrigger | Mở rộng mục hiện tại khi nhấn hoặc hover, một trong `click` `hover` | string | `click` | × |\n| fieldNames | Tên trường tuỳ chỉnh cho label, value và children | object | { label: `label`, value: `value`, children: `children` } | × |\n| getPopupContainer | Node cha mà bộ chọn được render vào. Mặc định là `body`. Khi gặp vấn đề về vị trí, hãy thử đổi thành nội dung cuộn được và định vị tương đối. | function(triggerNode) | () => document.body | × |\n| loadData | Tải tuỳ chọn theo kiểu lazy, và không dùng được cùng `showSearch` | (selectedOptions) => void | - | × |\n| loadingIcon | Tuỳ chỉnh icon đang tải | ReactNode | - | ✓ |\n| maxTagCount | Số lượng tag tối đa được hiển thị. `responsive` sẽ tốn hiệu năng render | number \\| `responsive` | - | × |\n| maxTagPlaceholder | Placeholder cho các tag không được hiển thị | ReactNode \\| function(omittedValues) | - | × |\n| maxTagTextLength | Độ dài văn bản tối đa của tag được hiển thị | number | - | × |\n| notFoundContent | Chỉ định nội dung hiển thị khi không có kết quả khớp | ReactNode | `No data` | × |\n| open | Đặt trạng thái hiển thị của popup cascader | boolean | - | × |\n| options | Các tuỳ chọn dữ liệu của cascade | [Option](#option)\\[] | - | × |\n| placeholder | Placeholder của ô nhập | string | - | × |\n| placement | Dùng cấu hình căn chỉnh popup định sẵn từ builtinPlacements | `bottomLeft` `bottomRight` `topLeft` `topRight` | `bottomLeft` | × |\n| prefix | Prefix tuỳ chỉnh | ReactNode | - | × |\n| showSearch | Có hiển thị ô tìm kiếm ở chế độ chọn đơn hay không | boolean \\| [Object](#showsearch) | false | ✓ |\n| size | Kích thước ô nhập | `large` \\| `medium` \\| `small` | `medium` | × |\n| status | Đặt trạng thái validate | 'error' \\| 'warning' | - | × |\n| styles | Tuỳ chỉnh style inline cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| suffixIcon | Icon suffix tuỳ chỉnh | ReactNode | - | ✓ |\n| value | Giá trị được chọn | string\\[] \\| number\\[] | - | × |\n| variant | Biến thể của bộ chọn | `outlined` \\| `borderless` \\| `filled` \\| `underlined` | `outlined` | ✓ |\n| onChange | Hàm callback khi hoàn tất việc chọn của cascader | (value, selectedOptions) => void | - | × |\n| onClear | Được gọi khi xoá | () => void | - | × |\n| onOpenChange | Hàm callback khi popup hiện hoặc ẩn | (open: boolean) => void | - | × |\n| multiple | Có hỗ trợ chọn nhiều hay không | boolean | - | × |\n| removeIcon | Icon xoá tuỳ chỉnh | ReactNode | - | ✓ |\n| showCheckedStrategy | Cách hiển thị các mục đã chọn trong ô (chỉ có hiệu lực khi `multiple` là `true`). `Cascader.SHOW_CHILD`: chỉ hiển thị treeNode con. `Cascader.SHOW_PARENT`: chỉ hiển thị treeNode cha (khi tất cả treeNode con bên dưới treeNode cha đều được chọn) | `Cascader.SHOW_PARENT` \\| `Cascader.SHOW_CHILD` | `Cascader.SHOW_PARENT` | × |\n| optionRender | Tuỳ chỉnh việc render các tuỳ chọn trong dropdown | (option: Option) => React.ReactNode | - | × |\n\n### showSearch\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| autoClearSearchValue | Có xoá nội dung tìm kiếm hiện tại khi chọn một mục hay không. Chỉ áp dụng khi `multiple` là `true` | boolean | true |\n| filter | Hàm nhận hai tham số là inputValue và option; nếu hàm trả về true, tuỳ chọn sẽ được đưa vào tập kết quả lọc; ngược lại sẽ bị loại | function(inputValue, path): boolean | - |\n| limit | Đặt số lượng mục sau khi lọc | number \\| false | 50 |\n| matchInputWidth | Độ rộng của danh sách có khớp với ô nhập hay không | boolean | true |\n| render | Dùng để render các tuỳ chọn đã lọc | function(inputValue, path): ReactNode | - |\n| sort | Dùng để sắp xếp các tuỳ chọn đã lọc | function(a, b, inputValue) | - |\n| searchValue | Đặt giá trị tìm kiếm, cần dùng cùng `showSearch` | string | - |\n| onSearch | Hàm callback được gọi khi nội dung nhập thay đổi | (search: string) => void | - |\n| searchIcon | Tuỳ chỉnh icon tìm kiếm | ReactNode | - |\n\n### Option\n\n" : "\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| allowClear | Show clear button | boolean \\| { clearIcon?: ReactNode } | true | ✓ |\n| changeOnSelect | Change value on each selection if set to true, see above demo for details | boolean | false | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultOpen | Initial visible of cascader popup | boolean | - | × |\n| defaultValue | Initial selected value | string\\[] \\| number\\[] | \\[] | × |\n| disabled | Whether disabled select | boolean | false | × |\n| displayRender | The render function of displaying selected options | (label, selectedOptions) => ReactNode | label => label.join(`/`) | × |\n| tagRender | Custom render function for tags in `multiple` mode | (label: string, onClose: function, value: string) => ReactNode | - | × |\n| popupRender | Customize dropdown content | (menus: ReactElement) => ReactNode | - | × |\n| expandIcon | Customize the current item expand icon | ReactNode | - | ✓ |\n| expandTrigger | expand current item when click or hover, one of `click` `hover` | string | `click` | × |\n| fieldNames | Custom field name for label and value and children | object | { label: `label`, value: `value`, children: `children` } | × |\n| getPopupContainer | Parent Node which the selector should be rendered to. Default to `body`. When position issues happen, try to modify it into scrollable content and position it relative. | function(triggerNode) | () => document.body | × |\n| loadData | To load option lazily, and it cannot work with `showSearch` | (selectedOptions) => void | - | × |\n| loadingIcon | Customize the loading icon | ReactNode | - | ✓ |\n| maxTagCount | Max tag count to show. `responsive` will cost render performance | number \\| `responsive` | - | × |\n| maxTagPlaceholder | Placeholder for not showing tags | ReactNode \\| function(omittedValues) | - | × |\n| maxTagTextLength | Max tag text length to show | number | - | × |\n| notFoundContent | Specify content to show when no result matches | ReactNode | `No data` | × |\n| open | Set visible of cascader popup | boolean | - | × |\n| options | The data options of cascade | [Option](#option)\\[] | - | × |\n| placeholder | The input placeholder | string | - | × |\n| placement | Use preset popup align config from builtinPlacements | `bottomLeft` `bottomRight` `topLeft` `topRight` | `bottomLeft` | × |\n| prefix | The custom prefix | ReactNode | - | × |\n| showSearch | Whether show search input in single mode | boolean \\| [Object](#showsearch) | false | ✓ |\n| size | The input size | `large` \\| `medium` \\| `small` | `medium` | × |\n| status | Set validation status | 'error' \\| 'warning' | - | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| suffixIcon | The custom suffix icon | ReactNode | - | ✓ |\n| value | The selected value | string\\[] \\| number\\[] | - | × |\n| variant | Variants of selector | `outlined` \\| `borderless` \\| `filled` \\| `underlined` | `outlined` | ✓ |\n| onChange | Callback when finishing cascader select | (value, selectedOptions) => void | - | × |\n| onClear | Called when clear | () => void | - | × |\n| onOpenChange | Callback when popup shown or hidden | (open: boolean) => void | - | × |\n| multiple | Support multiple or not | boolean | - | × |\n| removeIcon | The custom remove icon | ReactNode | - | ✓ |\n| showCheckedStrategy | The way to show selected items in the box (only effective when `multiple` is `true`). `Cascader.SHOW_CHILD`: just show child treeNode. `Cascader.SHOW_PARENT`: just show parent treeNode (when all child treeNode under the parent treeNode are checked) | `Cascader.SHOW_PARENT` \\| `Cascader.SHOW_CHILD` | `Cascader.SHOW_PARENT` | × |\n| optionRender | Customize the rendering dropdown options | (option: Option) => React.ReactNode | - | × |\n\n### showSearch\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| autoClearSearchValue | Whether the current search will be cleared on selecting an item. Only applies when `multiple` is `true` | boolean | true |\n| filter | The function will receive two arguments, inputValue and option, if the function returns true, the option will be included in the filtered set; Otherwise, it will be excluded | function(inputValue, path): boolean | - |\n| limit | Set the count of filtered items | number \\| false | 50 |\n| matchInputWidth | Whether the width of list matches input | boolean | true |\n| render | Used to render filtered options | function(inputValue, path): ReactNode | - |\n| sort | Used to sort filtered options | function(a, b, inputValue) | - |\n| searchValue | Set search value, Need work with `showSearch` | string | - |\n| onSearch | The callback function triggered when input changed | (search: string) => void | - |\n| searchIcon | Customize the search icon | ReactNode | - |\n\n### Option\n\n", "```typescript\ninterface Option {\n  value: string | number;\n  label?: React.ReactNode;\n  disabled?: boolean;\n  children?: Option[];\n  // Determines if this is a leaf node(effective when `loadData` is specified).\n  // `false` will force trade TreeNode as a parent node.\n  // Show expand icon even if the current node has no children.\n  isLeaf?: boolean;\n}\n```", vi ? "\n\n## Phương thức\n\n| Tên | Mô tả |\n| --- | --- |\n| blur() | Bỏ focus |\n| focus() | Nhận focus |\n\n## Semantic DOM" : "\n\n## Methods\n\n| Name | Description |\n| ------- | ------------ |\n| blur() | Remove focus |\n| focus() | Get focus |\n\n## Semantic DOM"].join('')}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo20 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

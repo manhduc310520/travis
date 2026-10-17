@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Timeline } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -48,39 +49,39 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Khi cần sắp xếp một chuỗi thông tin theo thời gian (tăng dần hoặc giảm dần).\n- Khi cần một timeline để tạo liên kết trực quan.\n\n## Ví dụ" : "## When To Use\n\n- When a series of information needs to be ordered by time (ascending or descending).\n- When you need a timeline to make a visual connection.\n\n## Examples"}</DocMarkdown>
-      <h3 id="timeline-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Timeline cơ bản." : "Basic timeline."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="timeline-demo-variant" className="fabi-sb-demo-title" lang="en">Variant</h3>
-      <DocMarkdown>{vi ? "Dùng `variant` để đặt kiểu của timeline." : "Use the `variant` to set the style of the timeline."}</DocMarkdown>
-      <DocCanvas of={Variant} sourceState="hidden" />
-      <h3 id="timeline-demo-pending" className="fabi-sb-demo-title" lang="en">Loading and Reversing</h3>
-      <DocMarkdown>{vi ? "Node hỗ trợ `loading` để biểu thị đang tải, và thuộc tính `reverse` để điều khiển thứ tự các node." : "Node supports `loading` to indicate loading, and `reverse` property to control the order of nodes."}</DocMarkdown>
-      <DocCanvas of={LoadingAndReversing} sourceState="hidden" />
-      <h3 id="timeline-demo-alternate" className="fabi-sb-demo-title" lang="en">Alternate</h3>
-      <DocMarkdown>{vi ? "Timeline xen kẽ." : "Alternate timeline."}</DocMarkdown>
-      <DocCanvas of={Alternate} sourceState="hidden" />
-      <h3 id="timeline-demo-horizontal" className="fabi-sb-demo-title" lang="en">Horizontal</h3>
-      <DocMarkdown>{vi ? "Bố cục ngang." : "Horizontal layout."}</DocMarkdown>
-      <DocCanvas of={Horizontal} sourceState="hidden" />
-      <h3 id="timeline-demo-custom" className="fabi-sb-demo-title" lang="en">Custom</h3>
-      <DocMarkdown>{vi ? "Đặt node là một icon hoặc phần tử tuỳ chỉnh khác." : "Set a node as an icon or other custom element."}</DocMarkdown>
-      <DocCanvas of={Custom} sourceState="hidden" />
-      <h3 id="timeline-demo-end" className="fabi-sb-demo-title" lang="en">End alternate</h3>
-      <DocMarkdown>{vi ? "Timeline xen kẽ về phía cuối." : "End alternate timeline."}</DocMarkdown>
-      <DocCanvas of={EndAlternate} sourceState="hidden" />
-      <h3 id="timeline-demo-title" className="fabi-sb-demo-title" lang="en">Title</h3>
-      <DocMarkdown>{vi ? "Dùng `title` để hiển thị riêng phần thời gian." : "Use `title` show time alone."}</DocMarkdown>
-      <DocCanvas of={Title} sourceState="hidden" />
-      <h3 id="timeline-demo-title-span" className="fabi-sb-demo-title" lang="en">Title Offset</h3>
-      <DocMarkdown>{vi ? "Dùng `titleSpan` để đặt độ rộng vùng tiêu đề." : "Use `titleSpan` to set the title span space."}</DocMarkdown>
-      <DocCanvas of={TitleOffset} sourceState="hidden" />
-      <h3 id="timeline-demo-semantic" className="fabi-sb-demo-title" lang="en">Semantic Sample</h3>
-      <DocMarkdown>{vi ? "Đạt được style tuỳ chỉnh phong phú hơn nhờ cấu trúc semantic." : "Achieve richer custom styles by using semantic structure."}</DocMarkdown>
-      <DocCanvas of={SemanticSample} sourceState="hidden" />
-      <h3 id="timeline-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Timeline bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Timeline by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="timeline-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Timeline cơ bản." : "Basic timeline."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="timeline-demo-variant" title="Variant" of={Variant} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Dùng `variant` để đặt kiểu của timeline." : "Use the `variant` to set the style of the timeline."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="timeline-demo-pending" title="Loading and Reversing" of={LoadingAndReversing} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Node hỗ trợ `loading` để biểu thị đang tải, và thuộc tính `reverse` để điều khiển thứ tự các node." : "Node supports `loading` to indicate loading, and `reverse` property to control the order of nodes."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="timeline-demo-alternate" title="Alternate" of={Alternate} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Timeline xen kẽ." : "Alternate timeline."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="timeline-demo-horizontal" title="Horizontal" of={Horizontal} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Bố cục ngang." : "Horizontal layout."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="timeline-demo-custom" title="Custom" of={Custom} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Đặt node là một icon hoặc phần tử tuỳ chỉnh khác." : "Set a node as an icon or other custom element."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="timeline-demo-end" title="End alternate" of={EndAlternate} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Timeline xen kẽ về phía cuối." : "End alternate timeline."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="timeline-demo-title" title="Title" of={Title} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Dùng `title` để hiển thị riêng phần thời gian." : "Use `title` show time alone."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="timeline-demo-title-span" title="Title Offset" of={TitleOffset} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Dùng `titleSpan` để đặt độ rộng vùng tiêu đề." : "Use `titleSpan` to set the title span space."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="timeline-demo-semantic" title="Semantic Sample" of={SemanticSample} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Đạt được style tuỳ chỉnh phong phú hơn nhờ cấu trúc semantic." : "Achieve richer custom styles by using semantic structure."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="timeline-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Timeline bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Timeline by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Timeline\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| items | Các node của timeline | [Items](#items)[] | - | × |\n| mode | Truyền `alternate` để timeline phân bố các node sang trái và phải | `start` \\| `alternate` \\| `end` | `start` | × |\n| orientation | Đặt hướng của timeline | `vertical` \\| `horizontal` | `vertical` | × |\n| reverse | Có đảo ngược thứ tự các node hay không | boolean | false | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| titleSpan | Đặt độ rộng vùng tiêu đề. Đó là khoảng cách đến tâm của dot | number \\| string | 12 | × |\n| variant | Cấu hình variant của style | `filled` \\| `outlined` | `outlined` | × |\n\n### Items\n\nNode của timeline.\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| color | Đặt màu của hình tròn là `blue`, `red`, `green`, `gray` hoặc màu tuỳ chỉnh khác | string | `blue` |\n| content | Đặt nội dung | ReactNode | - |\n| icon | Tuỳ chỉnh icon của node | ReactNode | - |\n| loading | Đặt trạng thái đang tải | boolean | false |\n| placement | Tuỳ chỉnh vị trí của node | `start` \\| `end` | - |\n| title | Đặt tiêu đề | ReactNode | - |\n\n## Semantic DOM\n\n### Timeline" : "## API\n\n### Timeline\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| items | Each node of timeline | [Items](#items)[] | - | × |\n| mode | By sending `alternate` the timeline will distribute the nodes to the left and right | `start` \\| `alternate` \\| `end` | `start` | × |\n| orientation | Set the direction of the timeline | `vertical` \\| `horizontal` | `vertical` | × |\n| reverse | Whether reverse nodes or not | boolean | false | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| titleSpan | Set the title span space. It is the distance to the center of the dot | number \\| string | 12 | × |\n| variant | Config style variant | `filled` \\| `outlined` | `outlined` | × |\n\n### Items\n\nNode of timeline.\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| color | Set the circle's color to `blue`, `red`, `green`, `gray` or other custom colors | string | `blue` |\n| content | Set the content | ReactNode | - |\n| icon | Customize node icon | ReactNode | - |\n| loading | Set loading state | boolean | false |\n| placement | Customize node placement | `start` \\| `end` | - |\n| title | Set the title | ReactNode | - |\n\n## Semantic DOM\n\n### Timeline"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo11 /></div></DocUnstyled>
       <DocMarkdown>{vi ? "### Các mục của Timeline" : "### Timeline Items"}</DocMarkdown>

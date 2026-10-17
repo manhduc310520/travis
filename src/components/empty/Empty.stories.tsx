@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Empty } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -37,24 +38,24 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Khi không có dữ liệu để hiển thị, dùng để đưa ra gợi ý thân thiện.\n- Hướng dẫn người dùng tạo một thứ gì đó trong tình huống hoàn toàn mới.\n\n## Ví dụ" : "## When To Use\n\n- When there is no data provided, display for friendly tips.\n- User tutorial to create something in fresh new situation.\n\n## Examples"}</DocMarkdown>
-      <h3 id="empty-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "Simplest Usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="empty-demo-simple" className="fabi-sb-demo-title" lang="en">Choose image</h3>
-      <DocMarkdown>{vi ? "Bạn có thể chọn một kiểu `image` khác bằng cách đặt image thành `Empty.PRESENTED_IMAGE_SIMPLE`." : "You can choose another style of `image` by setting image to `Empty.PRESENTED_IMAGE_SIMPLE`."}</DocMarkdown>
-      <DocCanvas of={ChooseImage} sourceState="hidden" />
-      <h3 id="empty-demo-customize" className="fabi-sb-demo-title" lang="en">Customize</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh nguồn hình ảnh, kích thước hình ảnh, mô tả và nội dung bổ sung." : "Customize image source, image size, description and extra content."}</DocMarkdown>
-      <DocCanvas of={Customize} sourceState="hidden" />
-      <h3 id="empty-demo-config-provider" className="fabi-sb-demo-title" lang="en">ConfigProvider</h3>
-      <DocMarkdown>{vi ? "Dùng ConfigProvider để đặt kiểu Empty chung." : "Use ConfigProvider set global Empty style."}</DocMarkdown>
-      <DocCanvas of={ConfigProvider} sourceState="hidden" />
-      <h3 id="empty-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Empty bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Empty by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
-      <h3 id="empty-demo-description" className="fabi-sb-demo-title" lang="en">No description</h3>
-      <DocMarkdown>{vi ? "Cách dùng đơn giản nhất, không có mô tả." : "Simplest Usage with no description."}</DocMarkdown>
-      <DocCanvas of={NoDescription} sourceState="hidden" />
+      <DemoBox id="empty-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "Simplest Usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="empty-demo-simple" title="Choose image" of={ChooseImage} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Bạn có thể chọn một kiểu `image` khác bằng cách đặt image thành `Empty.PRESENTED_IMAGE_SIMPLE`." : "You can choose another style of `image` by setting image to `Empty.PRESENTED_IMAGE_SIMPLE`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="empty-demo-customize" title="Customize" of={Customize} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh nguồn hình ảnh, kích thước hình ảnh, mô tả và nội dung bổ sung." : "Customize image source, image size, description and extra content."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="empty-demo-config-provider" title="ConfigProvider" of={ConfigProvider} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Dùng ConfigProvider để đặt kiểu Empty chung." : "Use ConfigProvider set global Empty style."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="empty-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Empty bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Empty by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="empty-demo-description" title="No description" of={NoDescription} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Cách dùng đơn giản nhất, không có mô tả." : "Simplest Usage with no description."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{["## API\n\n", "```jsx\n<Empty>\n  <Button>Create</Button>\n</Empty>\n```", vi ? "\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| description | Tuỳ chỉnh mô tả | ReactNode | - | × |\n| image | Tuỳ chỉnh hình ảnh. Nếu truyền string thì được coi là URL hình ảnh | ReactNode | `Empty.PRESENTED_IMAGE_DEFAULT` | ✓ |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n## Hình ảnh có sẵn\n\n- Empty.PRESENTED_IMAGE_SIMPLE\n\n  <div class=\"site-empty-buildIn-img site-empty-buildIn-simple\"><div>\n\n- Empty.PRESENTED_IMAGE_DEFAULT\n\n  <div class=\"site-empty-buildIn-img site-empty-buildIn-default\"></div>\n\n## Semantic DOM" : "\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| description | Customize description | ReactNode | - | × |\n| image | Customize image. Will treat as image url when string provided | ReactNode | `Empty.PRESENTED_IMAGE_DEFAULT` | ✓ |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n## Built-in images\n\n- Empty.PRESENTED_IMAGE_SIMPLE\n\n  <div class=\"site-empty-buildIn-img site-empty-buildIn-simple\"><div>\n\n- Empty.PRESENTED_IMAGE_DEFAULT\n\n  <div class=\"site-empty-buildIn-img site-empty-buildIn-default\"></div>\n\n## Semantic DOM"].join('')}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo6 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

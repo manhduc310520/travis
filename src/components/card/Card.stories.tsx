@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Card } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -48,39 +49,39 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nCard có thể dùng để hiển thị nội dung liên quan đến một chủ đề duy nhất. Nội dung có thể gồm nhiều phần tử với các kiểu và kích thước khác nhau.\n\n## Ví dụ" : "## When To Use\n\nA card can be used to display content related to a single subject. The content can consist of multiple elements of varying types and sizes.\n\n## Examples"}</DocMarkdown>
-      <h3 id="card-demo-basic" className="fabi-sb-demo-title" lang="en">Basic card</h3>
-      <DocMarkdown>{vi ? "Card cơ bản gồm tiêu đề, nội dung và nội dung bổ sung ở góc. Hỗ trợ hai kích thước: `medium` và `small`." : "A basic card containing a title, content and an extra corner content. Supports two sizes: `medium` and `small`."}</DocMarkdown>
-      <DocCanvas of={BasicCard} sourceState="hidden" />
-      <h3 id="card-demo-border-less" className="fabi-sb-demo-title" lang="en">No border</h3>
-      <DocMarkdown>{vi ? "Card không viền trên nền xám." : "A borderless card on a gray background."}</DocMarkdown>
-      <DocCanvas of={NoBorder} sourceState="hidden" />
-      <h3 id="card-demo-simple" className="fabi-sb-demo-title" lang="en">Simple card</h3>
-      <DocMarkdown>{vi ? "Card đơn giản chỉ có vùng nội dung." : "A simple card only containing a content area."}</DocMarkdown>
-      <DocCanvas of={SimpleCard} sourceState="hidden" />
-      <h3 id="card-demo-flexible-content" className="fabi-sb-demo-title" lang="en">Customized content</h3>
-      <DocMarkdown>{vi ? "Bạn có thể dùng `Card.Meta` để hỗ trợ nội dung linh hoạt hơn." : "You can use `Card.Meta` to support more flexible content."}</DocMarkdown>
-      <DocCanvas of={CustomizedContent} sourceState="hidden" />
-      <h3 id="card-demo-in-column" className="fabi-sb-demo-title" lang="en">Card in column</h3>
-      <DocMarkdown>{vi ? "Card thường kết hợp với layout cột dạng lưới ở trang tổng quan." : "Cards usually cooperate with grid column layout in overview page."}</DocMarkdown>
-      <DocCanvas of={CardInColumn} sourceState="hidden" />
-      <h3 id="card-demo-loading" className="fabi-sb-demo-title" lang="en">Loading card</h3>
-      <DocMarkdown>{vi ? "Hiển thị chỉ báo đang tải trong khi nội dung của card đang được lấy về." : "Shows a loading indicator while the contents of the card is being fetched."}</DocMarkdown>
-      <DocCanvas of={LoadingCard} sourceState="hidden" />
-      <h3 id="card-demo-grid-card" className="fabi-sb-demo-title" lang="en">Grid card</h3>
-      <DocMarkdown>{vi ? "Nội dung card dạng lưới." : "Grid style card content."}</DocMarkdown>
-      <DocCanvas of={GridCard} sourceState="hidden" />
-      <h3 id="card-demo-inner" className="fabi-sb-demo-title" lang="en">Inner card</h3>
-      <DocMarkdown>{vi ? "Có thể đặt bên trong card thông thường để hiển thị thông tin có cấu trúc nhiều cấp." : "It can be placed inside the ordinary card to display the information of the multilevel structure."}</DocMarkdown>
-      <DocCanvas of={InnerCard} sourceState="hidden" />
-      <h3 id="card-demo-tabs" className="fabi-sb-demo-title" lang="en">With tabs</h3>
-      <DocMarkdown>{vi ? "Có thể chứa thêm nhiều nội dung." : "More content can be hosted."}</DocMarkdown>
-      <DocCanvas of={WithTabs} sourceState="hidden" />
-      <h3 id="card-demo-meta" className="fabi-sb-demo-title" lang="en">Support more content configuration</h3>
-      <DocMarkdown>{vi ? "Card hỗ trợ `cover`, `avatar`, `title` và `description`." : "A Card that supports `cover`, `avatar`, `title` and `description`."}</DocMarkdown>
-      <DocCanvas of={SupportMoreContentConfiguration} sourceState="hidden" />
-      <h3 id="card-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Card bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Card by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="card-demo-basic" title="Basic card" of={BasicCard} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Card cơ bản gồm tiêu đề, nội dung và nội dung bổ sung ở góc. Hỗ trợ hai kích thước: `medium` và `small`." : "A basic card containing a title, content and an extra corner content. Supports two sizes: `medium` and `small`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="card-demo-border-less" title="No border" of={NoBorder} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Card không viền trên nền xám." : "A borderless card on a gray background."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="card-demo-simple" title="Simple card" of={SimpleCard} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Card đơn giản chỉ có vùng nội dung." : "A simple card only containing a content area."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="card-demo-flexible-content" title="Customized content" of={CustomizedContent} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Bạn có thể dùng `Card.Meta` để hỗ trợ nội dung linh hoạt hơn." : "You can use `Card.Meta` to support more flexible content."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="card-demo-in-column" title="Card in column" of={CardInColumn} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Card thường kết hợp với layout cột dạng lưới ở trang tổng quan." : "Cards usually cooperate with grid column layout in overview page."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="card-demo-loading" title="Loading card" of={LoadingCard} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Hiển thị chỉ báo đang tải trong khi nội dung của card đang được lấy về." : "Shows a loading indicator while the contents of the card is being fetched."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="card-demo-grid-card" title="Grid card" of={GridCard} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Nội dung card dạng lưới." : "Grid style card content."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="card-demo-inner" title="Inner card" of={InnerCard} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Có thể đặt bên trong card thông thường để hiển thị thông tin có cấu trúc nhiều cấp." : "It can be placed inside the ordinary card to display the information of the multilevel structure."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="card-demo-tabs" title="With tabs" of={WithTabs} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Có thể chứa thêm nhiều nội dung." : "More content can be hosted."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="card-demo-meta" title="Support more content configuration" of={SupportMoreContentConfiguration} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Card hỗ trợ `cover`, `avatar`, `title` và `description`." : "A Card that supports `cover`, `avatar`, `title` and `description`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="card-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Card bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Card by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{["## API\n\n", "```jsx\n<Card title=\"Card title\">Card content</Card>\n```", vi ? "\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| actions | Danh sách hành động, hiển thị ở cuối Card | Array&lt;ReactNode> | - | × |\n| activeTabKey | Key của TabPane hiện tại | string | - | × |\n| variant | Các variant của Card | `outlined` \\| `borderless` | `outlined` | ✓ |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| cover | Ảnh bìa của card | ReactNode | - | × |\n| defaultActiveTabKey | Key của TabPane được kích hoạt ban đầu, nếu chưa đặt `activeTabKey` | string | `The key of first tab` | × |\n| extra | Nội dung render ở góc trên bên phải của card | ReactNode | - | × |\n| hoverable | Nổi lên khi rê chuột vào card | boolean | false | × |\n| loading | Hiển thị chỉ báo đang tải trong khi nội dung của card đang được lấy về | boolean | false | × |\n| size | Kích thước của card | `medium` \\| `small` | `medium` | × |\n| tabBarExtraContent | Nội dung bổ sung trong thanh tab | ReactNode | - | × |\n| tabList | Danh sách phần đầu của các TabPane | TabItemType[] | - | × |\n| tabProps | Tabs | - | - | × |\n| title | Tiêu đề của card | ReactNode | - | × |\n| type | Kiểu style của card, có thể đặt là `inner` hoặc không đặt | string | - | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| onTabChange | Hàm callback khi chuyển tab | (key) => void | - | × |\n\n### Card.Grid\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --------- | ------------------------------- | ------- | ------- |\n| hoverable | Nổi lên khi rê chuột vào card grid | boolean | true |\n\n### Card.Meta\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| avatar | Avatar hoặc icon | ReactNode | - | × |\n| description | Nội dung mô tả | ReactNode | - | × |\n| title | Nội dung tiêu đề | ReactNode | - | × |\n\n## Semantic DOM\n\n### Card" : "\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| actions | The action list, shows at the bottom of the Card | Array&lt;ReactNode> | - | × |\n| activeTabKey | Current TabPane's key | string | - | × |\n| variant | Variants of Card | `outlined` \\| `borderless` | `outlined` | ✓ |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| cover | Card cover | ReactNode | - | × |\n| defaultActiveTabKey | Initial active TabPane's key, if `activeTabKey` is not set | string | `The key of first tab` | × |\n| extra | Content to render in the top-right corner of the card | ReactNode | - | × |\n| hoverable | Lift up when hovering card | boolean | false | × |\n| loading | Shows a loading indicator while the contents of the card are being fetched | boolean | false | × |\n| size | Size of card | `medium` \\| `small` | `medium` | × |\n| tabBarExtraContent | Extra content in tab bar | ReactNode | - | × |\n| tabList | List of TabPane's head | TabItemType[] | - | × |\n| tabProps | Tabs | - | - | × |\n| title | Card title | ReactNode | - | × |\n| type | Card style type, can be set to `inner` or not set | string | - | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| onTabChange | Callback when tab is switched | (key) => void | - | × |\n\n### Card.Grid\n\n| Property | Description | Type | Default |\n| --------- | ------------------------------- | ------- | ------- |\n| hoverable | Lift up when hovering card grid | boolean | true |\n\n### Card.Meta\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| avatar | Avatar or icon | ReactNode | - | × |\n| description | Description content | ReactNode | - | × |\n| title | Title content | ReactNode | - | × |\n\n## Semantic DOM\n\n### Card"].join('')}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo11 /></div></DocUnstyled>
       <DocMarkdown>{"### Card.Meta"}</DocMarkdown>

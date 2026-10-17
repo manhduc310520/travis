@@ -6,7 +6,6 @@
 }
 /* Semantic DOM preview and token tables are @fabi/ui components: let them use the full column. */
 .fabi-sb-semantic { margin: 16px 0 32px; }
-.fabi-sb-demo-title { margin-top: 32px; }
 /* @fabi/ui blocks rendered outside Storybook's docs typography get the theme's own font stack. */
 .fabi-sb-block {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
@@ -14,36 +13,10 @@
 }
 
 /* ---------- Design Tokens pages ---------- */
-.fabi-sb-page-title { font-size: 32px; font-weight: 700; margin: 0 0 16px; }
-.fabi-sb-example { margin: 16px 0 32px; }
-.fabi-sb-example-preview {
-  padding: 24px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background: #fff;
-}
-.fabi-sb-example-toggle {
-  margin: 8px 0;
-  padding: 4px 0;
-  border: 0;
-  background: none;
-  color: #1d39c4; /* brand: geekblue-7, see brand.ts */
-  font: inherit;
-  font-size: 13px;
-  cursor: pointer;
-}
-.fabi-sb-example-preview + .fabi-sb-example-description {
-  margin-top: -1px;
-  padding: 12px 24px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 8px 8px;
-  font-size: 14px;
-}
-.fabi-sb-example-preview:has(+ .fabi-sb-example-description) { border-radius: 8px 8px 0 0; }
-.fabi-sb-example-description p { margin: 0; }
+/* page title of the hand-written pages: as the generated pages' h1 (the library site's 30 / 38, weight 600) */
+.fabi-sb-page-title { margin: 8px 0 20px; font-size: 30px; line-height: 38px; font-weight: 600; }
 /* "Cần cài thêm: …" / "Also install: …" under an example: packages it imports besides @fabi/ui and React. */
 .sbdocs .fabi-sb-deps, .fabi-sb-deps { margin: -24px 0 24px; font-size: 12px; color: rgba(0, 0, 0, 0.65); }
-.fabi-sb-example .fabi-sb-deps { margin: 8px 0 0; }
 
 /* Brand font on docs pages (see brand.ts). */
 .sbdocs, .sbdocs-content, .sbdocs p, .sbdocs li, .sbdocs td, .sbdocs th, .sbdocs h1, .sbdocs h2, .sbdocs h3, .sbdocs h4, .fabi-sb-block, .fabi-sb-page-title {
@@ -53,7 +26,7 @@
 /* Headings and rules as on the underlying library's site (user 2026-10-17: lines above and below headings looked
  * random): no line under h2, one thin rule only where the page has an <hr>, the site's sizes and margins. Weight
  * 600, not the site's 500 or Storybook's 700: FABi uses 400 / 600 only. Demo titles keep their own style. */
-.sbdocs-content :is(h2, h3, h4):not(.fabi-sb-demo-title, .sb-unstyled, nav *) {
+.sbdocs-content :is(h2, h3, h4):not(.fabi-sb-codebox-title, .sb-unstyled, nav *) {
   clear: both;
   margin: 1.6em 0 0.6em;
   padding-bottom: 0;
@@ -61,9 +34,138 @@
   font-weight: 600;
 }
 .sbdocs-content h2:not(.sb-unstyled, nav *) { font-size: 24px; line-height: 32px; }
-.sbdocs-content h3:not(.fabi-sb-demo-title, .sb-unstyled, nav *) { font-size: 18px; line-height: 26px; }
+.sbdocs-content h3:not(.fabi-sb-codebox-title, .sb-unstyled, nav *) { font-size: 18px; line-height: 26px; }
 .sbdocs-content h4:not(.sb-unstyled, nav *) { font-size: 16px; line-height: 24px; }
 .sbdocs-content hr { clear: both; height: 1px; margin: 24px 0; border: 0; background: var(--fabi-color-split); }
+
+/* ---------- The library site's look (user 2026-10-17, piloted on Button, then every page) ----------
+ * Values: the site's styles (Markdown.tsx, Demo.tsx, DocAnchor.tsx), with FABi's weights (600 instead of 500),
+ * the brand font in tables, and theme variables instead of fixed colours. */
+
+/* A. Example box: demo on top, title on the border of the meta part, description, icon actions, code below */
+.fabi-sb-codebox {
+  margin: 0 0 16px;
+  background: var(--fabi-color-bg-container);
+  border: 1px solid var(--fabi-color-split);
+  border-radius: 8px;
+}
+.fabi-sb-codebox:has(.fabi-sb-codebox-title:target) { border-color: var(--fabi-color-primary); }
+.fabi-sb-codebox-demo {
+  padding: 42px 24px 50px;
+  overflow: auto;
+  color: var(--fabi-color-text);
+  border-bottom: 1px solid var(--fabi-color-split);
+  border-radius: 8px 8px 0 0;
+}
+.fabi-sb-codebox-demo-only { border-bottom: 0; border-radius: 8px; }
+/* The title sits on the line by a negative margin, not absolute positioning: the table of contents (tocbot)
+ * places headings by offsetTop, which a positioned ancestor breaks (wrong section marked as in view). */
+.sbdocs-content .fabi-sb-codebox-title {
+  display: table;
+  margin: -14px 0 0;
+  margin-inline-start: 16px;
+  padding: 1px 8px;
+  border: 0;
+  color: var(--fabi-color-text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26px;
+  background: var(--fabi-color-bg-container);
+  border-radius: 6px 6px 0 0;
+}
+.fabi-sb-codebox-description { padding: 18px 24px 12px; }
+.fabi-sb-codebox-title + .fabi-sb-codebox-description { padding-top: 4px; }
+.sbdocs-content .fabi-sb-codebox-description p { margin: 0; }
+.sbdocs-content .fabi-sb-codebox-description .fabi-sb-deps { margin: 8px 0 0; }
+.fabi-sb-codebox-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px dashed var(--fabi-color-split);
+}
+.fabi-sb-codebox-action {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  color: var(--fabi-color-text-secondary);
+  font-size: 16px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.24s;
+}
+.fabi-sb-codebox-action:hover { color: var(--fabi-color-text); }
+.fabi-sb-codebox-action:focus-visible { outline: 2px solid var(--fabi-color-primary-border); outline-offset: 2px; border-radius: 4px; }
+.fabi-sb-codebox-source { border-top: 1px dashed var(--fabi-color-split); }
+.fabi-sb-codebox-source .docblock-source { margin: 0; border: 0; border-radius: 0 0 8px 8px; box-shadow: none; }
+
+/* Storybook's own canvas (Playground, FABi component pages): the same frame as the example box */
+.sbdocs-content .sbdocs-preview { border: 1px solid var(--fabi-color-split); border-radius: 8px; box-shadow: none; }
+
+/* B. Text: page title, paragraphs, inline code, quotes, code blocks */
+.sbdocs-content h1 { margin: 8px 0 20px; font-size: 30px; line-height: 38px; font-weight: 600; }
+.sbdocs-content :is(p, li):not(.sb-unstyled *) { line-height: 2; }
+.sbdocs-content :not(pre) > code:not(.sb-unstyled *) {
+  margin: 0 1px;
+  padding: 0.2em 0.4em;
+  font-size: 0.9em;
+  background: var(--fabi-color-fill-tertiary);
+  border: 1px solid var(--fabi-color-split);
+  border-radius: 4px;
+}
+.sbdocs-content blockquote {
+  margin: 1em 0;
+  padding: 0;
+  padding-inline-start: 0.8em;
+  color: var(--fabi-color-text-secondary);
+  font-size: 90%;
+  border: 0;
+  border-inline-start: 4px solid var(--fabi-color-split);
+}
+.sbdocs-content blockquote p { margin: 0; }
+
+/* C. API tables (the page's markdown tables; not the Controls table or the token tables) */
+.sbdocs-content table:not(.docblock-argstable, .sb-unstyled *, .fabi-table *) {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5714;
+  border: 1px solid var(--fabi-color-split);
+  border-width: 0 1px;
+  border-collapse: collapse;
+}
+.sbdocs-content table:not(.docblock-argstable, .sb-unstyled *, .fabi-table *) :is(th, td) {
+  padding: 12px 24px;
+  text-align: start;
+  border: 1px solid var(--fabi-color-split);
+  border-width: 1px 0;
+}
+.sbdocs-content table:not(.docblock-argstable, .sb-unstyled *, .fabi-table *) th {
+  color: var(--fabi-color-text-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+  background: var(--fabi-color-fill-quaternary);
+  border-width: 1px 0 2px;
+}
+.sbdocs-content table:not(.docblock-argstable, .sb-unstyled *, .fabi-table *) tr { background: none; border: 0; }
+.sbdocs-content table:not(.docblock-argstable, .sb-unstyled *, .fabi-table *) tbody tr:hover { background: var(--fabi-color-fill-tertiary); }
+.sbdocs-content table:not(.docblock-argstable, .sb-unstyled *, .fabi-table *) td:first-child {
+  width: 18%;
+  min-width: 58px;
+  color: var(--fabi-color-text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.sbdocs-content table:not(.docblock-argstable, .sb-unstyled *, .fabi-table *) td:nth-child(2) { min-width: 160px; }
+/* full column width from tablets up; on phones the table stays a scrolling block (top of this file) */
+@media (min-width: 768px) {
+  .sbdocs-content table:not(.docblock-argstable, .sb-unstyled *, .fabi-table *) { display: table; width: 100%; }
+}
+
+/* D. Table of contents: 148 wide, 12px, the section in view marked by colour and a line, not by weight */
+#storybook-docs .toc-wrapper { width: 148px; }
+#storybook-docs .toc-wrapper a { font-size: 12px; line-height: 20px; }
+#storybook-docs .toc-wrapper .is-active-link { font-weight: 400; color: var(--fabi-color-primary); }
 
 /* ---------- Dark mode (Mode toolbar) ----------
  * FabiProvider sets html[data-fabi-mode]; the variables are antd's dark tokens (preview.tsx). The story
@@ -71,13 +173,6 @@
  * the surface they are designed for and axe measures them there. */
 html[data-fabi-mode='dark'] { color-scheme: dark; }
 html[data-fabi-mode='dark'] body { background: var(--fabi-sb-dark-bg); color: var(--fabi-sb-dark-text); }
-html[data-fabi-mode='dark'] .fabi-sb-example-preview {
-  background: var(--fabi-sb-dark-bg);
-  color: var(--fabi-sb-dark-text);
-  border-color: var(--fabi-sb-dark-border);
-}
-html[data-fabi-mode='dark'] .fabi-sb-example-preview + .fabi-sb-example-description { border-color: var(--fabi-sb-dark-border); }
-html[data-fabi-mode='dark'] .fabi-sb-example-toggle { color: var(--fabi-sb-dark-link); }
 /* links set in inline code (API tables): the link colour is 3.3:1 on the code background, one step lighter */
 html[data-fabi-mode='dark'] .sbdocs a code,
 html[data-fabi-mode='dark'] .sbdocs code a { color: var(--fabi-sb-dark-link-code); }

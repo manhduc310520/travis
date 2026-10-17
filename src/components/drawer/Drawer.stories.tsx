@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import Demo0 from "./demo/basic-right"
 import Demo0Source from "./demo/basic-right.tsx?raw"
@@ -42,45 +43,45 @@ function DocsPage() {
       <DocTitle />
       <DocMarkdown>{vi ? "Panel trượt ra từ mép màn hình." : "A panel that slides out from the edge of the screen."}</DocMarkdown>
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nDrawer là một panel thường được phủ lên trên trang và trượt vào từ cạnh bên. Nó chứa một tập hợp thông tin hoặc hành động. Vì người dùng có thể tương tác với Drawer mà không phải rời trang hiện tại, các tác vụ được hoàn thành hiệu quả hơn trong cùng một ngữ cảnh.\n\n- Dùng Form để tạo hoặc chỉnh sửa một nhóm thông tin.\n- Xử lý các tác vụ con. Khi tác vụ con quá nặng đối với Popover mà vẫn muốn giữ chúng trong ngữ cảnh của tác vụ chính, Drawer rất tiện.\n- Khi cần dùng cùng một Form ở nhiều nơi.\n\n> Lưu ý cho lập trình viên\n>\n> `loading` hiện khung Skeleton trong lúc tải nội dung, chỉ nhận kiểu `boolean`.\n\n## Ví dụ" : "## When To Use\n\nA Drawer is a panel that is typically overlaid on top of a page and slides in from the side. It contains a set of information or actions. Since the user can interact with the Drawer without leaving the current page, tasks can be achieved more efficiently within the same context.\n\n- Use a Form to create or edit a set of information.\n- Processing subtasks. When subtasks are too heavy for a Popover and we still want to keep the subtasks in the context of the main task, Drawer comes very handy.\n- When the same Form is needed in multiple places.\n\n> Notes for developers\n>\n> `loading` shows a Skeleton while the content loads and only accepts a `boolean`.\n\n## Examples"}</DocMarkdown>
-      <h3 id="drawer-demo-basic-right" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Drawer cơ bản." : "Basic drawer."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="drawer-demo-placement" className="fabi-sb-demo-title" lang="en">Custom Placement</h3>
-      <DocMarkdown>{vi ? "Drawer có thể xuất hiện từ bất kỳ cạnh nào của màn hình." : "The Drawer can appear from any edge of the screen."}</DocMarkdown>
-      <DocCanvas of={CustomPlacement} sourceState="hidden" />
-      <h3 id="drawer-demo-resizable" className="fabi-sb-demo-title" lang="en">Resizable</h3>
-      <DocMarkdown>{vi ? "Drawer có thể thay đổi kích thước, cho phép người dùng điều chỉnh chiều rộng hoặc chiều cao của drawer bằng cách kéo cạnh." : "Resizable drawer that allows users to adjust the drawer's width or height by dragging the edge."}</DocMarkdown>
-      <DocCanvas of={Resizable} sourceState="hidden" />
-      <h3 id="drawer-demo-loading" className="fabi-sb-demo-title" lang="en">Loading</h3>
-      <DocMarkdown>{vi ? "Đặt trạng thái đang tải của Drawer." : "Set the loading status of Drawer."}</DocMarkdown>
-      <DocCanvas of={Loading} sourceState="hidden" />
-      <h3 id="drawer-demo-extra" className="fabi-sb-demo-title" lang="en">Extra Actions</h3>
-      <DocMarkdown>{vi ? "Trong FABi CMS Design System, các hành động bổ sung nên đặt ở góc của drawer, bạn có thể dùng prop `extra` cho việc này." : "Extra actions should be placed at corner of drawer in FABi CMS Design System, you can use `extra` prop for that."}</DocMarkdown>
-      <DocCanvas of={ExtraActions} sourceState="hidden" />
-      <h3 id="drawer-demo-render-in-current" className="fabi-sb-demo-title" lang="en">Render in current dom</h3>
-      <DocMarkdown>{vi ? "Render trong DOM hiện tại. Container tuỳ chỉnh, xem `getContainer`.\n\n> Khi `getContainer` trả về một DOM node, bạn cần tự đặt `rootStyle` thành `{ position: 'absolute' }`." : "Render in current dom. custom container, check `getContainer`.\n\n> When `getContainer` returns a DOM node, you need to manually set `rootStyle` to `{ position: 'absolute' }`."}</DocMarkdown>
-      <DocCanvas of={RenderInCurrentDom} sourceState="hidden" />
-      <h3 id="drawer-demo-form-in-drawer" className="fabi-sb-demo-title" lang="en">Submit form in drawer</h3>
-      <DocMarkdown>{vi ? "Dùng form trong Drawer kèm nút gửi." : "Use a form in Drawer with a submit button."}</DocMarkdown>
-      <DocCanvas of={SubmitFormInDrawer} sourceState="hidden" />
-      <h3 id="drawer-demo-user-profile" className="fabi-sb-demo-title" lang="en">Preview drawer</h3>
-      <DocMarkdown>{vi ? "Dùng Drawer để xem nhanh chi tiết của một đối tượng, chẳng hạn các mục trong danh sách." : "Use Drawer to quickly preview details of an object, such as those in a list."}</DocMarkdown>
-      <DocCanvas of={PreviewDrawer} sourceState="hidden" />
-      <h3 id="drawer-demo-multi-level-drawer" className="fabi-sb-demo-title" lang="en">Multi-level drawer</h3>
-      <DocMarkdown>{vi ? "Mở một drawer mới phía trên drawer đang có để xử lý các tác vụ nhiều nhánh." : "Open a new drawer on top of an existing drawer to handle multi branch tasks."}</DocMarkdown>
-      <DocCanvas of={MultiLevelDrawer} sourceState="hidden" />
-      <h3 id="drawer-demo-size" className="fabi-sb-demo-title" lang="en">Preset size</h3>
-      <DocMarkdown>{vi ? "Chiều rộng (hoặc chiều cao) mặc định của Drawer là `378px`, và có sẵn kích thước lớn `736px`." : "The default width (or height) of Drawer is `378px`, and there is a preset large size `736px`."}</DocMarkdown>
-      <DocCanvas of={PresetSize} sourceState="hidden" />
-      <h3 id="drawer-demo-mask" className="fabi-sb-demo-title" lang="en">mask</h3>
-      <DocMarkdown>{vi ? "Hiệu ứng mask." : "mask effect."}</DocMarkdown>
-      <DocCanvas of={Mask} sourceState="hidden" />
-      <h3 id="drawer-demo-closable-placement" className="fabi-sb-demo-title" lang="en">Closable placement</h3>
-      <DocMarkdown>{vi ? "Drawer với vị trí nút đóng, tuỳ chỉnh vị trí nút đóng sang `end`, mặc định là `start`." : "Drawer with closable placement, customize the close placement to the `end`, defaults to `start`."}</DocMarkdown>
-      <DocCanvas of={ClosablePlacement} sourceState="hidden" />
-      <h3 id="drawer-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Drawer bằng cách truyền object hoặc hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Drawer by passing objects or functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="drawer-demo-basic-right" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Drawer cơ bản." : "Basic drawer."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-placement" title="Custom Placement" of={CustomPlacement} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Drawer có thể xuất hiện từ bất kỳ cạnh nào của màn hình." : "The Drawer can appear from any edge of the screen."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-resizable" title="Resizable" of={Resizable} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Drawer có thể thay đổi kích thước, cho phép người dùng điều chỉnh chiều rộng hoặc chiều cao của drawer bằng cách kéo cạnh." : "Resizable drawer that allows users to adjust the drawer's width or height by dragging the edge."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-loading" title="Loading" of={Loading} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Đặt trạng thái đang tải của Drawer." : "Set the loading status of Drawer."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-extra" title="Extra Actions" of={ExtraActions} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Trong FABi CMS Design System, các hành động bổ sung nên đặt ở góc của drawer, bạn có thể dùng prop `extra` cho việc này." : "Extra actions should be placed at corner of drawer in FABi CMS Design System, you can use `extra` prop for that."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-render-in-current" title="Render in current dom" of={RenderInCurrentDom} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Render trong DOM hiện tại. Container tuỳ chỉnh, xem `getContainer`.\n\n> Khi `getContainer` trả về một DOM node, bạn cần tự đặt `rootStyle` thành `{ position: 'absolute' }`." : "Render in current dom. custom container, check `getContainer`.\n\n> When `getContainer` returns a DOM node, you need to manually set `rootStyle` to `{ position: 'absolute' }`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-form-in-drawer" title="Submit form in drawer" of={SubmitFormInDrawer} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Dùng form trong Drawer kèm nút gửi." : "Use a form in Drawer with a submit button."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-user-profile" title="Preview drawer" of={PreviewDrawer} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Dùng Drawer để xem nhanh chi tiết của một đối tượng, chẳng hạn các mục trong danh sách." : "Use Drawer to quickly preview details of an object, such as those in a list."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-multi-level-drawer" title="Multi-level drawer" of={MultiLevelDrawer} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Mở một drawer mới phía trên drawer đang có để xử lý các tác vụ nhiều nhánh." : "Open a new drawer on top of an existing drawer to handle multi branch tasks."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-size" title="Preset size" of={PresetSize} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Chiều rộng (hoặc chiều cao) mặc định của Drawer là `378px`, và có sẵn kích thước lớn `736px`." : "The default width (or height) of Drawer is `378px`, and there is a preset large size `736px`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-mask" title="mask" of={Mask} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Hiệu ứng mask." : "mask effect."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-closable-placement" title="Closable placement" of={ClosablePlacement} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Drawer với vị trí nút đóng, tuỳ chỉnh vị trí nút đóng sang `end`, mặc định là `start`." : "Drawer with closable placement, customize the close placement to the `end`, defaults to `start`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="drawer-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Drawer bằng cách truyền object hoặc hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Drawer by passing objects or functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| afterOpenChange | Hàm callback sau khi animation kết thúc khi chuyển đổi drawer | function(open) | - | × |\n| className | Cấu hình className cho Drawer Panel. Dùng `rootClassName` nếu muốn cấu hình style cho DOM trên cùng | string | - | ✓ |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component Drawer. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| closable | Có hiển thị nút đóng hay không. Vị trí có thể cấu hình bằng `placement` | boolean \\| { closeIcon?: React.ReactNode; disabled?: boolean; placement?: 'start' \\| 'end' } | true | ✓ |\n| destroyOnHidden | Có unmount các component con khi đóng drawer hay không | boolean | false | × |\n| extra | Vùng hành động bổ sung ở góc | ReactNode | - | × |\n| footer | Footer của Drawer | ReactNode | - | × |\n| forceRender | Buộc render trước component Drawer | boolean | false | × |\n| focusable | Cấu hình quản lý focus trong Drawer | `{ trap?: boolean, focusTriggerAfterClose?: boolean }` | - | ✓ |\n| getContainer | Node được gắn vào và cửa sổ hiển thị của Drawer | HTMLElement \\| () => HTMLElement \\| Selectors \\| false | body | × |\n| keyboard | Có hỗ trợ nhấn esc để đóng hay không | boolean | true | × |\n| loading | Hiển thị Skeleton | boolean | false | × |\n| mask | Hiệu ứng mask | boolean \\| `{ enabled?: boolean, blur?: boolean, closable?: boolean }` | true | ✓ |\n| maxSize | Kích thước tối đa (chiều rộng hoặc chiều cao tuỳ theo `placement`) khi có thể thay đổi kích thước | number | - | × |\n| open | Hộp thoại Drawer có hiển thị hay không | boolean | false | × |\n| placement | Vị trí của Drawer | `top` \\| `right` \\| `bottom` \\| `left` | `right` | × |\n| push | Hành vi đẩy của các drawer lồng nhau | boolean \\| { distance: string \\| number } | { distance: 180 } | × |\n| resizable | Bật thay đổi kích thước bằng cách kéo | boolean \\| [ResizableConfig](#resizableconfig) | - | × |\n| rootStyle | Style của phần tử wrapper **bao gồm mask**, khác với `style` | CSSProperties | - | × |\n| size | Kích thước cài sẵn của drawer, mặc định `378px` và lớn `736px`, hoặc một số tuỳ chỉnh | 'default' \\| 'large' \\| number \\| string | 'default' | × |\n| style | Style của panel Drawer. Dùng `styles.body` nếu chỉ muốn cấu hình body | CSSProperties | - | ✓ |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component Drawer. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| title | Tiêu đề của Drawer | ReactNode | - | × |\n| zIndex | `z-index` của Drawer | number | 1000 | × |\n| onClose | Chỉ định hàm callback được gọi khi người dùng nhấn vào mask, nút đóng hoặc nút Cancel | function(e) | - | × |\n| drawerRender | Tuỳ chỉnh render nội dung drawer | (node: ReactNode) => ReactNode | - | × |\n\n### ResizableConfig\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| ------------- | --------------------------- | ---------------------- | ------- |\n| onResizeStart | Hàm callback khi bắt đầu thay đổi kích thước | () => void | - |\n| onResize | Hàm callback trong khi thay đổi kích thước | (size: number) => void | - |\n| onResizeEnd | Hàm callback khi kết thúc thay đổi kích thước | () => void | - |\n\n## Semantic DOM" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| afterOpenChange | Callback after the animation ends when switching drawers | function(open) | - | × |\n| className | Config Drawer Panel className. Use `rootClassName` if want to config top DOM style | string | - | ✓ |\n| classNames | Customize class for each semantic structure inside the Drawer component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| closable | Whether to show a close button. The position can be configured with `placement` | boolean \\| { closeIcon?: React.ReactNode; disabled?: boolean; placement?: 'start' \\| 'end' } | true | ✓ |\n| destroyOnHidden | Whether to unmount child components on closing drawer or not | boolean | false | × |\n| extra | Extra actions area at corner | ReactNode | - | × |\n| footer | The footer for Drawer | ReactNode | - | × |\n| forceRender | Pre-render Drawer component forcibly | boolean | false | × |\n| focusable | Configuration for focus management in the Drawer | `{ trap?: boolean, focusTriggerAfterClose?: boolean }` | - | ✓ |\n| getContainer | mounted node and display window for Drawer | HTMLElement \\| () => HTMLElement \\| Selectors \\| false | body | × |\n| keyboard | Whether support press esc to close | boolean | true | × |\n| loading | Show the Skeleton | boolean | false | × |\n| mask | Mask effect | boolean \\| `{ enabled?: boolean, blur?: boolean, closable?: boolean }` | true | ✓ |\n| maxSize | Maximum size (width or height depending on `placement`) when resizable | number | - | × |\n| open | Whether the Drawer dialog is visible or not | boolean | false | × |\n| placement | The placement of the Drawer | `top` \\| `right` \\| `bottom` \\| `left` | `right` | × |\n| push | Nested drawers push behavior | boolean \\| { distance: string \\| number } | { distance: 180 } | × |\n| resizable | Enable resizable by dragging | boolean \\| [ResizableConfig](#resizableconfig) | - | × |\n| rootStyle | Style of wrapper element which **contains mask** compare to `style` | CSSProperties | - | × |\n| size | preset size of drawer, default `378px` and large `736px`, or a custom number | 'default' \\| 'large' \\| number \\| string | 'default' | × |\n| style | Style of Drawer panel. Use `styles.body` if want to config body only | CSSProperties | - | ✓ |\n| styles | Customize inline style for each semantic structure inside the Drawer component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| title | The title for Drawer | ReactNode | - | × |\n| zIndex | The `z-index` of the Drawer | number | 1000 | × |\n| onClose | Specify a callback that will be called when a user clicks mask, close button or Cancel button | function(e) | - | × |\n| drawerRender | Custom drawer content render | (node: ReactNode) => ReactNode | - | × |\n\n### ResizableConfig\n\n| Property | Description | Type | Default |\n| ------------- | --------------------------- | ---------------------- | ------- |\n| onResizeStart | Callback when resize starts | () => void | - |\n| onResize | Callback during resizing | (size: number) => void | - |\n| onResizeEnd | Callback when resize ends | () => void | - |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo13 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

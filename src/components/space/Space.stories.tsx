@@ -2,6 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import Demo0 from "./demo/base"
 import Demo0Source from "./demo/base.tsx?raw"
@@ -36,36 +37,36 @@ function DocsPage() {
       <DocTitle />
       <DocMarkdown>{vi ? "Đặt khoảng cách giữa các component." : "Set components spacing."}</DocMarkdown>
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Tránh để các component dính vào nhau và đặt một khoảng cách thống nhất.\n- Dùng Space.Compact khi các component form con được nối liền với nhau và viền được gộp lại.\n\n### Khác biệt với component Flex\n\n- Space dùng để đặt khoảng cách giữa các phần tử inline. Nó thêm một phần tử bao cho mỗi phần tử con để căn chỉnh inline. Phù hợp để sắp xếp nhiều phần tử con cách đều nhau theo hàng và cột.\n- Flex dùng để đặt layout cho các phần tử block. Nó không thêm phần tử bao. Phù hợp để bố trí các phần tử con theo chiều dọc hoặc ngang, và cho phép linh hoạt, kiểm soát nhiều hơn.\n\n## Ví dụ" : "## When To Use\n\n- Avoid components clinging together and set a unified space.\n- Use Space.Compact when child form components are compactly connected and the border is collapsed.\n\n### Difference with Flex component\n\n- Space is used to set the spacing between inline elements. It will add a wrapper element for each child element for inline alignment. Suitable for equidistant arrangement of multiple child elements in rows and columns.\n- Flex is used to set the layout of block-level elements. It does not add a wrapper element. Suitable for layout of child elements in vertical or horizontal direction, and provides more flexibility and control.\n\n## Examples"}</DocMarkdown>
-      <h3 id="space-demo-base" className="fabi-sb-demo-title" lang="en">Basic Usage</h3>
-      <DocMarkdown>{vi ? "Khoảng cách ngang giữa các component sát nhau." : "Crowded components horizontal spacing."}</DocMarkdown>
-      <DocCanvas of={BasicUsage} sourceState="hidden" />
-      <h3 id="space-demo-vertical" className="fabi-sb-demo-title" lang="en">Vertical Space</h3>
-      <DocMarkdown>{vi ? "Khoảng cách dọc giữa các component sát nhau." : "Crowded components vertical spacing."}</DocMarkdown>
-      <DocCanvas of={VerticalSpace} sourceState="hidden" />
-      <h3 id="space-demo-size" className="fabi-sb-demo-title" lang="en">Space Size</h3>
-      <DocMarkdown>{vi ? "Dùng `size` để đặt khoảng cách. Có sẵn ba cỡ: `small`, `medium`, `large`. Bạn cũng có thể tuỳ chỉnh khoảng cách. Nếu không đặt `size`, khoảng cách là `small`." : "Use `size` to set the spacing. Three sizes are preset: `small`, `medium`, `large`. You can also customize the spacing. If `size` is not set, the spacing is `small`."}</DocMarkdown>
-      <DocCanvas of={SpaceSize} sourceState="hidden" />
-      <h3 id="space-demo-align" className="fabi-sb-demo-title" lang="en">Align</h3>
-      <DocMarkdown>{vi ? "Cấu hình căn chỉnh (align)." : "Config item align."}</DocMarkdown>
-      <DocCanvas of={Align} sourceState="hidden" />
-      <h3 id="space-demo-wrap" className="fabi-sb-demo-title" lang="en">Wrap</h3>
-      <DocMarkdown>{vi ? "Tự động xuống dòng." : "Auto wrap line."}</DocMarkdown>
-      <DocCanvas of={Wrap} sourceState="hidden" />
-      <h3 id="space-demo-separator" className="fabi-sb-demo-title" lang="en">separator</h3>
-      <DocMarkdown>{vi ? "Dấu phân cách giữa các component sát nhau." : "Crowded components separator."}</DocMarkdown>
-      <DocCanvas of={Separator} sourceState="hidden" />
-      <h3 id="space-demo-compact" className="fabi-sb-demo-title" lang="en">Compact Mode for form component</h3>
-      <DocMarkdown>{vi ? "Chế độ compact cho component form." : "Compact Mode for form component."}</DocMarkdown>
-      <DocCanvas of={CompactModeForFormComponent} sourceState="hidden" />
-      <h3 id="space-demo-compact-buttons" className="fabi-sb-demo-title" lang="en">Button Compact Mode</h3>
-      <DocMarkdown>{vi ? "Ví dụ compact cho component Button." : "Button component compact example."}</DocMarkdown>
-      <DocCanvas of={ButtonCompactMode} sourceState="hidden" />
-      <h3 id="space-demo-compact-button-vertical" className="fabi-sb-demo-title" lang="en">Vertical Compact Mode</h3>
-      <DocMarkdown>{vi ? "Chế độ dọc cho Space.Compact, chỉ hỗ trợ Button." : "Vertical Mode for Space.Compact, support Button only."}</DocMarkdown>
-      <DocCanvas of={VerticalCompactMode} sourceState="hidden" />
-      <h3 id="space-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Space bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Space by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="space-demo-base" title="Basic Usage" of={BasicUsage} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Khoảng cách ngang giữa các component sát nhau." : "Crowded components horizontal spacing."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="space-demo-vertical" title="Vertical Space" of={VerticalSpace} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Khoảng cách dọc giữa các component sát nhau." : "Crowded components vertical spacing."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="space-demo-size" title="Space Size" of={SpaceSize} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Dùng `size` để đặt khoảng cách. Có sẵn ba cỡ: `small`, `medium`, `large`. Bạn cũng có thể tuỳ chỉnh khoảng cách. Nếu không đặt `size`, khoảng cách là `small`." : "Use `size` to set the spacing. Three sizes are preset: `small`, `medium`, `large`. You can also customize the spacing. If `size` is not set, the spacing is `small`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="space-demo-align" title="Align" of={Align} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Cấu hình căn chỉnh (align)." : "Config item align."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="space-demo-wrap" title="Wrap" of={Wrap} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Tự động xuống dòng." : "Auto wrap line."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="space-demo-separator" title="separator" of={Separator} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Dấu phân cách giữa các component sát nhau." : "Crowded components separator."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="space-demo-compact" title="Compact Mode for form component" of={CompactModeForFormComponent} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Chế độ compact cho component form." : "Compact Mode for form component."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="space-demo-compact-buttons" title="Button Compact Mode" of={ButtonCompactMode} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Ví dụ compact cho component Button." : "Button component compact example."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="space-demo-compact-button-vertical" title="Vertical Compact Mode" of={VerticalCompactMode} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Chế độ dọc cho Space.Compact, chỉ hỗ trợ Button." : "Vertical Mode for Space.Compact, support Button only."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="space-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Space bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Space by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Space\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| align | Căn chỉnh các phần tử | `start` \\| `end` \\|`center` \\|`baseline` | - | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props: SpaceProps })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| orientation | Hướng của space | `vertical` \\| `horizontal` | `horizontal` | × |\n| size | Kích thước space | [Size](#kich-thc) \\| [Size\\[\\]](#kich-thc) | `small` | ✓ |\n| separator | Đặt dấu phân cách | ReactNode | - | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props: SpaceProps })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| vertical | Hướng, cấu hình đồng thời với `orientation` và ưu tiên `orientation` | boolean | false | × |\n| wrap | Tự động xuống dòng, có hiệu lực khi `horizontal` | boolean | false | × |\n\n### Kích thước\n\n`'small' | 'middle' | 'large' | number`\n\n### Space.Compact\n\nDùng Space.Compact khi các component form con được nối liền với nhau và viền được gộp lại. Các component được hỗ trợ:\n\n- Button\n- AutoComplete\n- Cascader\n- DatePicker\n- Input/Input.Search\n- InputNumber\n- Select\n- TimePicker\n- TreeSelect\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| block | Cho phép chiều rộng vừa với chiều rộng của phần tử cha | boolean | false |\n| orientation | Đặt hướng của layout | `vertical` \\| `horizontal` | `horizontal` |\n| vertical | Hướng, cấu hình đồng thời với `orientation` và ưu tiên `orientation` | boolean | false |\n| size | Đặt kích thước của component con | `large` \\| `medium` \\| `small` | `medium` |\n\n### Space.Addon\n\nDùng để tạo các ô tuỳ chỉnh trong layout compact.\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| -------- | -------------- | --------- | ------- |\n| children | Nội dung tuỳ chỉnh | ReactNode | - |\n\n## Semantic DOM" : "## API\n\n### Space\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| align | Align items | `start` \\| `end` \\|`center` \\|`baseline` | - | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props: SpaceProps })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| orientation | The space direction | `vertical` \\| `horizontal` | `horizontal` | × |\n| size | The space size | [Size](#size) \\| [Size\\[\\]](#size) | `small` | ✓ |\n| separator | Set separator | ReactNode | - | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props: SpaceProps })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| vertical | Orientation, Simultaneously configure with `orientation` and prioritize `orientation` | boolean | false | × |\n| wrap | Auto wrap line, when `horizontal` effective | boolean | false | × |\n\n### Size\n\n`'small' | 'middle' | 'large' | number`\n\n### Space.Compact\n\nUse Space.Compact when child form components are compactly connected and the border is collapsed. The supported components are:\n\n- Button\n- AutoComplete\n- Cascader\n- DatePicker\n- Input/Input.Search\n- InputNumber\n- Select\n- TimePicker\n- TreeSelect\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| block | Option to fit width to its parent\\'s width | boolean | false |\n| orientation | Set direction of layout | `vertical` \\| `horizontal` | `horizontal` |\n| vertical | Orientation, Simultaneously configure with `orientation` and prioritize `orientation` | boolean | false |\n| size | Set child component size | `large` \\| `medium` \\| `small` | `medium` |\n\n### Space.Addon\n\nUsed to create custom cells in compact layouts.\n\n| Property | Description | Type | Default |\n| -------- | -------------- | --------- | ------- |\n| children | Custom content | ReactNode | - |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo10 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

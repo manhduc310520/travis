@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { TimePicker } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -55,59 +56,59 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nKhi nhấn vào ô nhập, bạn có thể chọn một giờ từ panel popup.\n\n## Ví dụ" : "## When To Use\n\nBy clicking the input box, you can select a time from a popup panel.\n\n## Examples"}</DocMarkdown>
-      <h3 id="time-picker-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Nhấn vào `TimePicker`, sau đó có thể chọn hoặc nhập một giờ trong panel." : "Click `TimePicker`, and then we could select or input a time in panel."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="time-picker-demo-value" className="fabi-sb-demo-title" lang="en">Under Control</h3>
-      <DocMarkdown>{vi ? "`value` và `onChange` cần được dùng cùng nhau," : "`value` and `onChange` should be used together,"}</DocMarkdown>
-      <DocCanvas of={UnderControl} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="time-picker-demo-size" className="fabi-sb-demo-title" lang="en">Three Sizes</h3>
-      <DocMarkdown>{vi ? "Ô nhập có ba kích thước: large, medium và small. Kích thước large dùng trong form, còn medium là mặc định." : "The input box comes in three sizes: large, medium and small. Large is used in the form, while the medium size is the default."}</DocMarkdown>
-      <DocCanvas of={ThreeSizes} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="time-picker-demo-need-confirm" className="fabi-sb-demo-title" lang="en">Need Confirm</h3>
-      <DocMarkdown>{vi ? "TimePicker tự động xác định có hiển thị nút xác nhận hay không dựa theo thuộc tính `picker`. Bạn cũng có thể đặt thuộc tính `needConfirm` để quyết định có hiển thị nút xác nhận hay không. Khi đặt `needConfirm`, người dùng phải nhấn nút xác nhận để hoàn tất việc chọn. Nếu không, lựa chọn sẽ được gửi đi khi picker mất focus hoặc khi chọn một giờ." : "TimePicker will automatically determine whether to show a confirm button according to the `picker` property. You can also set the `needConfirm` property to determine whether to show a confirm button. When `needConfirm` is set, the user must click the confirm button to complete the selection. Otherwise, the selection will be submitted when the picker loses focus or select a time."}</DocMarkdown>
-      <DocCanvas of={NeedConfirm} sourceState="hidden" />
-      <h3 id="time-picker-demo-disabled" className="fabi-sb-demo-title" lang="en">disabled</h3>
-      <DocMarkdown>{vi ? "Trạng thái vô hiệu hoá của `TimePicker`." : "A disabled state of the `TimePicker`."}</DocMarkdown>
-      <DocCanvas of={Disabled} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="time-picker-demo-hide-column" className="fabi-sb-demo-title" lang="en">Hour and minute</h3>
-      <DocMarkdown>{vi ? "Khi bỏ bớt một phần của `format`, cột tương ứng trong panel cũng sẽ biến mất." : "While part of `format` is omitted, the corresponding column in panel will disappear, too."}</DocMarkdown>
-      <DocCanvas of={HourAndMinute} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="time-picker-demo-interval-options" className="fabi-sb-demo-title" lang="en">interval option</h3>
-      <DocMarkdown>{vi ? "Hiển thị các tuỳ chọn theo bước nhảy bằng `hourStep` `minuteStep` `secondStep`." : "Show stepped options by `hourStep` `minuteStep` `secondStep`."}</DocMarkdown>
-      <DocCanvas of={IntervalOption} sourceState="hidden" />
-      <h3 id="time-picker-demo-addon" className="fabi-sb-demo-title" lang="en">Addon</h3>
-      <DocMarkdown>{vi ? "Render nội dung bổ sung (addon) ở cuối panel của time picker." : "Render addon contents to time picker panel's bottom."}</DocMarkdown>
-      <DocCanvas of={Addon} sourceState="hidden" />
-      <h3 id="time-picker-demo-12hours" className="fabi-sb-demo-title" lang="en">12 hours</h3>
-      <DocMarkdown>{vi ? "TimePicker định dạng 12 giờ, với định dạng mặc định `h:mm:ss a`." : "TimePicker of 12 hours format, with default format `h:mm:ss a`."}</DocMarkdown>
-      <DocCanvas of={Example12Hours} sourceState="hidden" />
-      <h3 id="time-picker-demo-change-on-scroll" className="fabi-sb-demo-title" lang="en">Change on scroll</h3>
-      <DocMarkdown>{vi ? "Dùng `changeOnScroll` và `needConfirm` để đổi giá trị khi cuộn." : "Use `changeOnScroll` and `needConfirm` to change the value when scrolling."}</DocMarkdown>
-      <DocCanvas of={ChangeOnScroll} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="time-picker-demo-range-picker" className="fabi-sb-demo-title" lang="en">Time Range Picker</h3>
-      <DocMarkdown>{vi ? "Dùng bộ chọn khoảng thời gian với `TimePicker.RangePicker`." : "Use time range picker with `TimePicker.RangePicker`."}</DocMarkdown>
-      <DocCanvas of={TimeRangePicker} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="time-picker-demo-variant" className="fabi-sb-demo-title" lang="en">Variants</h3>
-      <DocMarkdown>{vi ? "Các biến thể của TimePicker, có bốn biến thể: `outlined` `filled` `borderless` và `underlined`." : "Variants of TimePicker, there are four variants: `outlined` `filled` `borderless` and `underlined`."}</DocMarkdown>
-      <DocCanvas of={Variants} sourceState="hidden" />
-      <h3 id="time-picker-demo-status" className="fabi-sb-demo-title" lang="en">Status</h3>
-      <DocMarkdown>{vi ? "Thêm trạng thái cho TimePicker bằng `status`, có thể là `error` hoặc `warning`." : "Add status to TimePicker with `status`, which could be `error` or `warning`."}</DocMarkdown>
-      <DocCanvas of={Status} sourceState="hidden" />
-      <h3 id="time-picker-demo-suffix" className="fabi-sb-demo-title" lang="en">Prefix and Suffix</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh `prefix` và `suffixIcon`." : "Custom `prefix` and `suffixIcon`."}</DocMarkdown>
-      <DocCanvas of={PrefixAndSuffix} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
-      <h3 id="time-picker-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của TimePicker bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of TimePicker by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="time-picker-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Nhấn vào `TimePicker`, sau đó có thể chọn hoặc nhập một giờ trong panel." : "Click `TimePicker`, and then we could select or input a time in panel."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-value" title="Under Control" of={UnderControl} code={Demo1Source}>
+        <DocMarkdown>{vi ? "`value` và `onChange` cần được dùng cùng nhau," : "`value` and `onChange` should be used together,"}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-size" title="Three Sizes" of={ThreeSizes} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Ô nhập có ba kích thước: large, medium và small. Kích thước large dùng trong form, còn medium là mặc định." : "The input box comes in three sizes: large, medium and small. Large is used in the form, while the medium size is the default."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-need-confirm" title="Need Confirm" of={NeedConfirm} code={Demo3Source}>
+        <DocMarkdown>{vi ? "TimePicker tự động xác định có hiển thị nút xác nhận hay không dựa theo thuộc tính `picker`. Bạn cũng có thể đặt thuộc tính `needConfirm` để quyết định có hiển thị nút xác nhận hay không. Khi đặt `needConfirm`, người dùng phải nhấn nút xác nhận để hoàn tất việc chọn. Nếu không, lựa chọn sẽ được gửi đi khi picker mất focus hoặc khi chọn một giờ." : "TimePicker will automatically determine whether to show a confirm button according to the `picker` property. You can also set the `needConfirm` property to determine whether to show a confirm button. When `needConfirm` is set, the user must click the confirm button to complete the selection. Otherwise, the selection will be submitted when the picker loses focus or select a time."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-disabled" title="disabled" of={Disabled} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Trạng thái vô hiệu hoá của `TimePicker`." : "A disabled state of the `TimePicker`."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-hide-column" title="Hour and minute" of={HourAndMinute} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Khi bỏ bớt một phần của `format`, cột tương ứng trong panel cũng sẽ biến mất." : "While part of `format` is omitted, the corresponding column in panel will disappear, too."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-interval-options" title="interval option" of={IntervalOption} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Hiển thị các tuỳ chọn theo bước nhảy bằng `hourStep` `minuteStep` `secondStep`." : "Show stepped options by `hourStep` `minuteStep` `secondStep`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-addon" title="Addon" of={Addon} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Render nội dung bổ sung (addon) ở cuối panel của time picker." : "Render addon contents to time picker panel's bottom."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-12hours" title="12 hours" of={Example12Hours} code={Demo8Source}>
+        <DocMarkdown>{vi ? "TimePicker định dạng 12 giờ, với định dạng mặc định `h:mm:ss a`." : "TimePicker of 12 hours format, with default format `h:mm:ss a`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-change-on-scroll" title="Change on scroll" of={ChangeOnScroll} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Dùng `changeOnScroll` và `needConfirm` để đổi giá trị khi cuộn." : "Use `changeOnScroll` and `needConfirm` to change the value when scrolling."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-range-picker" title="Time Range Picker" of={TimeRangePicker} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Dùng bộ chọn khoảng thời gian với `TimePicker.RangePicker`." : "Use time range picker with `TimePicker.RangePicker`."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-variant" title="Variants" of={Variants} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Các biến thể của TimePicker, có bốn biến thể: `outlined` `filled` `borderless` và `underlined`." : "Variants of TimePicker, there are four variants: `outlined` `filled` `borderless` and `underlined`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-status" title="Status" of={Status} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Thêm trạng thái cho TimePicker bằng `status`, có thể là `error` hoặc `warning`." : "Add status to TimePicker with `status`, which could be `error` or `warning`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-suffix" title="Prefix and Suffix" of={PrefixAndSuffix} code={Demo13Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh `prefix` và `suffixIcon`." : "Custom `prefix` and `suffixIcon`."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>dayjs</code></p>
+      </DemoBox>
+      <DemoBox id="time-picker-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo14Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của TimePicker bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of TimePicker by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{["## API\n\n---\n\n", "```jsx\nimport dayjs from 'dayjs';\nimport customParseFormat from 'dayjs/plugin/customParseFormat'\n\ndayjs.extend(customParseFormat)\n\n<TimePicker defaultValue={dayjs('13:30:56', 'HH:mm:ss')} />;\n```", vi ? "\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| allowClear | Tuỳ chỉnh icon xoá | boolean \\| { clearIcon?: ReactNode } | true | ✓ |\n| cellRender | Hàm render tuỳ chỉnh cho các ô của picker | (current: number, info: { originNode: React.ReactElement, today: dayjs, range?: 'start' \\| 'end', subType: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | × |\n| changeOnScroll | Kích hoạt việc chọn khi cuộn cột | boolean | false | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultValue | Đặt giờ mặc định | [dayjs](https://day.js.org/) | - | × |\n| disabled | Xác định TimePicker có bị vô hiệu hoá hay không | boolean | false | × |\n| disabledTime | Chỉ định các giờ không thể chọn | [DisabledTime](#disabledtime) | - | × |\n| format | Đặt định dạng giờ | string | `HH:mm:ss` | × |\n| getPopupContainer | Đặt container của lớp nổi, mặc định là tạo một phần tử div trong body | function(trigger) | - | × |\n| hideDisabledOptions | Có ẩn các tuỳ chọn không thể chọn hay không | boolean | false | × |\n| hourStep | Khoảng cách giữa các giờ trong picker | number | 1 | × |\n| inputReadOnly | Đặt thuộc tính `readonly` của thẻ input (tránh hiện bàn phím ảo trên thiết bị cảm ứng) | boolean | false | × |\n| minuteStep | Khoảng cách giữa các phút trong picker | number | 1 | × |\n| needConfirm | Cần nhấn nút xác nhận để kích hoạt thay đổi giá trị | boolean | - | × |\n| open | Có hiển thị panel popup hay không | boolean | false | × |\n| placeholder | Hiển thị khi chưa có giá trị | string \\| \\[string, string] | `Select a time` | × |\n| placement | Vị trí popup của ô chọn hiện ra | `bottomLeft` `bottomRight` `topLeft` `topRight` | bottomLeft | × |\n| prefix | Prefix tuỳ chỉnh | ReactNode | - | × |\n| previewValue | Khi người dùng hover vào một giờ trong tuỳ chọn, giá trị của ô nhập được thay đổi tạm thời | false \\| hover | hover | × |\n| renderExtraFooter | Được gọi từ panel time picker để render phần bổ sung ở cuối | () => ReactNode | - | × |\n| secondStep | Khoảng cách giữa các giây trong picker | number | 1 | × |\n| showNow | Có hiển thị nút `Now` trên panel hay không | boolean | - | × |\n| size | Xác định kích thước ô nhập, chiều cao của `large` và `small` lần lượt là 40px và 24px, còn kích thước mặc định là 32px | `large` \\| `medium` \\| `small` | - | × |\n| status | Đặt trạng thái validate | 'error' \\| 'warning' \\| 'success' \\| 'validating' | - | × |\n| styles | Tuỳ chỉnh style inline cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| suffixIcon | Icon suffix tuỳ chỉnh | ReactNode | - | ✓ |\n| use12Hours | Hiển thị định dạng 12 giờ, với định dạng mặc định `h:mm:ss a` | boolean | false | × |\n| value | Đặt giờ | [dayjs](https://day.js.org/) | - | × |\n| variant | Biến thể của picker | `outlined` \\| `borderless` \\| `filled` \\| `underlined` | `outlined` | ✓ |\n| onCalendarChange | Hàm callback, có thể được thực thi khi giờ bắt đầu hoặc giờ kết thúc của khoảng đang thay đổi. | function(dates: \\[dayjs, dayjs], dateStrings: \\[string, string], info: { range:`start`\\|`end` }) | - | × |\n| onChange | Hàm callback, có thể được thực thi khi giờ được chọn đang thay đổi | function(time: dayjs, timeString: string): void | - | × |\n| onClear | Hàm callback khi nhấn nút xoá | () => void | - | × |\n| onOpenChange | Hàm callback được gọi khi panel mở/đóng | (open: boolean) => void | - | × |\n\n#### DisabledTime\n\n" : "\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| allowClear | Customize clear icon | boolean \\| { clearIcon?: ReactNode } | true | ✓ |\n| cellRender | Custom rendering function for picker cells | (current: number, info: { originNode: React.ReactElement, today: dayjs, range?: 'start' \\| 'end', subType: 'hour' \\| 'minute' \\| 'second' \\| 'meridiem' }) => React.ReactNode | - | × |\n| changeOnScroll | Trigger selection when scroll the column | boolean | false | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultValue | To set default time | [dayjs](https://day.js.org/) | - | × |\n| disabled | Determine whether the TimePicker is disabled | boolean | false | × |\n| disabledTime | To specify the time that cannot be selected | [DisabledTime](#disabledtime) | - | × |\n| format | To set the time format | string | `HH:mm:ss` | × |\n| getPopupContainer | To set the container of the floating layer, while the default is to create a div element in body | function(trigger) | - | × |\n| hideDisabledOptions | Whether hide the options that can not be selected | boolean | false | × |\n| hourStep | Interval between hours in picker | number | 1 | × |\n| inputReadOnly | Set the `readonly` attribute of the input tag (avoids virtual keyboard on touch devices) | boolean | false | × |\n| minuteStep | Interval between minutes in picker | number | 1 | × |\n| needConfirm | Need click confirm button to trigger value change | boolean | - | × |\n| open | Whether to popup panel | boolean | false | × |\n| placeholder | Display when there's no value | string \\| \\[string, string] | `Select a time` | × |\n| placement | The position where the selection box pops up | `bottomLeft` `bottomRight` `topLeft` `topRight` | bottomLeft | × |\n| prefix | The custom prefix | ReactNode | - | × |\n| previewValue | When the user selects the time hover option, the value of the input field undergoes a temporary change | false \\| hover | hover | × |\n| renderExtraFooter | Called from time picker panel to render some addon to its bottom | () => ReactNode | - | × |\n| secondStep | Interval between seconds in picker | number | 1 | × |\n| showNow | Whether to show `Now` button on panel | boolean | - | × |\n| size | To determine the size of the input box, the height of `large` and `small`, are 40px and 24px respectively, while default size is 32px | `large` \\| `medium` \\| `small` | - | × |\n| status | Set validation status | 'error' \\| 'warning' \\| 'success' \\| 'validating' | - | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| suffixIcon | The custom suffix icon | ReactNode | - | ✓ |\n| use12Hours | Display as 12 hours format, with default format `h:mm:ss a` | boolean | false | × |\n| value | To set time | [dayjs](https://day.js.org/) | - | × |\n| variant | Variants of picker | `outlined` \\| `borderless` \\| `filled` \\| `underlined` | `outlined` | ✓ |\n| onCalendarChange | Callback function, can be executed when the start time or the end time of the range is changing. | function(dates: \\[dayjs, dayjs], dateStrings: \\[string, string], info: { range:`start`\\|`end` }) | - | × |\n| onChange | A callback function, can be executed when the selected time is changing | function(time: dayjs, timeString: string): void | - | × |\n| onClear | Callback when click the clear button | () => void | - | × |\n| onOpenChange | A callback function which will be called while panel opening/closing | (open: boolean) => void | - | × |\n\n#### DisabledTime\n\n", "```typescript\ntype DisabledTime = (now: Dayjs) => {\n  disabledHours?: () => number[];\n  disabledMinutes?: (selectedHour: number) => number[];\n  disabledSeconds?: (selectedHour: number, selectedMinute: number) => number[];\n  disabledMilliseconds?: (\n    selectedHour: number,\n    selectedMinute: number,\n    selectedSecond: number,\n  ) => number[];\n};\n```", vi ? "\n\n## Phương thức\n\n| Tên | Mô tả |\n| --- | --- |\n| blur() | Bỏ focus |\n| focus() | Nhận focus |\n\n### RangePicker\n\nCó các props giống RangePicker của DatePicker. Và bao gồm thêm các props:\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| disabledTime | Chỉ định các giờ không thể chọn | [RangeDisabledTime](#rangedisabledtime) | - |\n| order | Sắp xếp giờ bắt đầu và giờ kết thúc | boolean | true |\n\n### RangeDisabledTime\n\n" : "\n\n## Methods\n\n| Name | Description |\n| ------- | ------------ |\n| blur() | Remove focus |\n| focus() | Get focus |\n\n### RangePicker\n\nSame props from RangePicker of DatePicker. And includes additional props:\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| disabledTime | To specify the time that cannot be selected | [RangeDisabledTime](#rangedisabledtime) | - |\n| order | Order start and end time | boolean | true |\n\n### RangeDisabledTime\n\n", "```typescript\ntype RangeDisabledTime = (\n  now: Dayjs,\n  type = 'start' | 'end',\n) => {\n  disabledHours?: () => number[];\n  disabledMinutes?: (selectedHour: number) => number[];\n  disabledSeconds?: (selectedHour: number, selectedMinute: number) => number[];\n};\n```", "\n\n## Semantic DOM"].join('')}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo15 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

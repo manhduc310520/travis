@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Steps } from '@fabi/ui'
 import Demo0 from "./demo/simple"
@@ -52,45 +53,45 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nKhi một tác vụ phức tạp hoặc có thứ tự nhất định giữa các tác vụ con, ta có thể chia nhỏ thành nhiều bước để mọi thứ dễ thực hiện hơn.\n\n## Ví dụ" : "## When To Use\n\nWhen a given task is complicated or has a certain sequence in the series of subtasks, we can decompose it into several steps to make things easier.\n\n## Examples"}</DocMarkdown>
-      <h3 id="steps-demo-simple" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Thanh bước cơ bản nhất. Dùng thuộc tính `variant` để đặt các style khác nhau và `size` để điều khiển kích thước." : "The most basic step bar. Use the `variant` property to set different styles and `size` to control the size."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="steps-demo-error" className="fabi-sb-demo-title" lang="en">Error status</h3>
-      <DocMarkdown>{vi ? "Bằng cách dùng `status` của `Steps`, bạn có thể chỉ định trạng thái cho bước hiện tại." : "By using `status` of `Steps`, you can specify the state for current step."}</DocMarkdown>
-      <DocCanvas of={ErrorStatus} sourceState="hidden" />
-      <h3 id="steps-demo-vertical" className="fabi-sb-demo-title" lang="en">Vertical</h3>
-      <DocMarkdown>{vi ? "Thanh bước đơn giản theo chiều dọc." : "A simple step bar in the vertical orientation."}</DocMarkdown>
-      <DocCanvas of={Vertical} sourceState="hidden" />
-      <h3 id="steps-demo-clickable" className="fabi-sb-demo-title" lang="en">Clickable</h3>
-      <DocMarkdown>{vi ? "Đặt `onChange` để làm cho Steps có thể nhấp được." : "Setting `onChange` makes Steps clickable."}</DocMarkdown>
-      <DocCanvas of={Clickable} sourceState="hidden" />
-      <h3 id="steps-demo-panel" className="fabi-sb-demo-title" lang="en">Panel Steps</h3>
-      <DocMarkdown>{vi ? "Steps kiểu panel." : "Panel style steps."}</DocMarkdown>
-      <DocCanvas of={PanelSteps} sourceState="hidden" />
-      <h3 id="steps-demo-icon" className="fabi-sb-demo-title" lang="en">With icon</h3>
-      <DocMarkdown>{vi ? "Bạn có thể dùng icon riêng bằng cách đặt thuộc tính `icon` cho `items`." : "You can use your own custom icons by setting the property `icon` for `items`."}</DocMarkdown>
-      <DocCanvas of={WithIcon} sourceState="hidden" />
-      <h3 id="steps-demo-title-placement" className="fabi-sb-demo-title" lang="en">Title Placement and Progress</h3>
-      <DocMarkdown>{vi ? "Dùng `titlePlacement` để đặt vị trí nhãn và hiển thị tiến độ qua `percent`." : "Use `titlePlacement` to set the label position and display the progress through `percent`."}</DocMarkdown>
-      <DocCanvas of={TitlePlacementAndProgress} sourceState="hidden" />
-      <h3 id="steps-demo-max-count" className="fabi-sb-demo-title" lang="en">Max Count</h3>
-      <DocMarkdown>{vi ? "Dùng `maxCount` để giới hạn số bước hiển thị. Các đoạn bị ẩn được gộp thành các bước dấu ba chấm." : "Use `maxCount` to limit visible steps. Hidden ranges are collapsed into ellipsis steps."}</DocMarkdown>
-      <DocCanvas of={MaxCount} sourceState="hidden" />
-      <h3 id="steps-demo-progress-dot" className="fabi-sb-demo-title" lang="en">Dot Style</h3>
-      <DocMarkdown>{vi ? "Steps với style chấm tiến độ." : "Steps with progress dot style."}</DocMarkdown>
-      <DocCanvas of={DotStyle} sourceState="hidden" />
-      <h3 id="steps-demo-nav" className="fabi-sb-demo-title" lang="en">Navigation Steps</h3>
-      <DocMarkdown>{vi ? "Steps điều hướng." : "Navigation steps."}</DocMarkdown>
-      <DocCanvas of={NavigationSteps} sourceState="hidden" />
-      <h3 id="steps-demo-inline" className="fabi-sb-demo-title" lang="en">Inline Steps</h3>
-      <DocMarkdown>{vi ? "Steps kiểu inline, phù hợp để hiển thị quy trình và trạng thái hiện tại của đối tượng trong ngữ cảnh nội dung danh sách." : "Inline type steps, suitable for displaying the process and current state of the object in the list content scene."}</DocMarkdown>
-      <DocCanvas of={InlineSteps} sourceState="hidden" />
-      <h3 id="steps-demo-inline-variant" className="fabi-sb-demo-title" lang="en">Inline Style Combination</h3>
-      <DocMarkdown>{vi ? "Thanh bước inline chỉnh style và căn chỉnh thông qua `offset`." : "Inline step bar modifies the style and aligns through `offset`."}</DocMarkdown>
-      <DocCanvas of={InlineStyleCombination} sourceState="hidden" />
-      <h3 id="steps-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Steps bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Steps by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="steps-demo-simple" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Thanh bước cơ bản nhất. Dùng thuộc tính `variant` để đặt các style khác nhau và `size` để điều khiển kích thước." : "The most basic step bar. Use the `variant` property to set different styles and `size` to control the size."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-error" title="Error status" of={ErrorStatus} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Bằng cách dùng `status` của `Steps`, bạn có thể chỉ định trạng thái cho bước hiện tại." : "By using `status` of `Steps`, you can specify the state for current step."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-vertical" title="Vertical" of={Vertical} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Thanh bước đơn giản theo chiều dọc." : "A simple step bar in the vertical orientation."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-clickable" title="Clickable" of={Clickable} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Đặt `onChange` để làm cho Steps có thể nhấp được." : "Setting `onChange` makes Steps clickable."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-panel" title="Panel Steps" of={PanelSteps} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Steps kiểu panel." : "Panel style steps."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-icon" title="With icon" of={WithIcon} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Bạn có thể dùng icon riêng bằng cách đặt thuộc tính `icon` cho `items`." : "You can use your own custom icons by setting the property `icon` for `items`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-title-placement" title="Title Placement and Progress" of={TitlePlacementAndProgress} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Dùng `titlePlacement` để đặt vị trí nhãn và hiển thị tiến độ qua `percent`." : "Use `titlePlacement` to set the label position and display the progress through `percent`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-max-count" title="Max Count" of={MaxCount} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Dùng `maxCount` để giới hạn số bước hiển thị. Các đoạn bị ẩn được gộp thành các bước dấu ba chấm." : "Use `maxCount` to limit visible steps. Hidden ranges are collapsed into ellipsis steps."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-progress-dot" title="Dot Style" of={DotStyle} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Steps với style chấm tiến độ." : "Steps with progress dot style."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-nav" title="Navigation Steps" of={NavigationSteps} code={Demo9Source}>
+        <DocMarkdown>{vi ? "Steps điều hướng." : "Navigation steps."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-inline" title="Inline Steps" of={InlineSteps} code={Demo10Source}>
+        <DocMarkdown>{vi ? "Steps kiểu inline, phù hợp để hiển thị quy trình và trạng thái hiện tại của đối tượng trong ngữ cảnh nội dung danh sách." : "Inline type steps, suitable for displaying the process and current state of the object in the list content scene."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-inline-variant" title="Inline Style Combination" of={InlineStyleCombination} code={Demo11Source}>
+        <DocMarkdown>{vi ? "Thanh bước inline chỉnh style và căn chỉnh thông qua `offset`." : "Inline step bar modifies the style and aligns through `offset`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="steps-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo12Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Steps bằng cách truyền object/hàm qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Steps by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n### Steps\n\nToàn bộ thanh bước.\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| current | Đặt bước hiện tại, đếm từ 0. Bạn có thể ghi đè trạng thái này bằng `status` của `Step` | number | 0 | × |\n| iconRender | Render icon tuỳ chỉnh, hãy ưu tiên dùng `items.icon` | (oriNode, info: { index, active, item }) => ReactNode | - | × |\n| initial | Đặt bước ban đầu, đếm từ 0 | number | 0 | × |\n| maxCount | Số bước tối đa được hiển thị (`>= 3`). Các đoạn bị ẩn được gộp thành các bước dấu ba chấm bị vô hiệu hoá. | number | - | × |\n| orientation | Chỉ định hướng của thanh bước, `horizontal` hoặc `vertical` | string | `horizontal` | × |\n| percent | Phần trăm vòng tiến độ của bước hiện tại ở trạng thái `process` (chỉ có tác dụng với Steps cơ bản) | number | - | × |\n| responsive | Chuyển sang hướng dọc khi độ rộng màn hình nhỏ hơn `532px` | boolean | true | × |\n| size | Chỉ định kích thước của thanh bước, hiện hỗ trợ `medium` và `small` | string | `medium` | × |\n| status | Chỉ định trạng thái của bước hiện tại, có thể đặt là một trong các giá trị sau: `wait` `process` `finish` `error` | string | `process` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc hàm. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| titlePlacement | Đặt tiêu đề và nội dung theo hướng `horizontal` hoặc `vertical` | string | `horizontal` | × |\n| type | Kiểu của steps, có thể đặt là một trong các giá trị sau: `default` `dot` `inline` `navigation` `panel` | string | `default` | × |\n| variant | Cấu hình variant của style | `filled` \\| `outlined` | `filled` | × |\n| onChange | Kích hoạt khi Step thay đổi | (current) => void | - | × |\n| items | Nội dung StepItem | [StepItem](#stepitem) | [] | × |\n\n### StepItem\n\nMột bước đơn lẻ trong thanh bước.\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| content | Mô tả của bước, thuộc tính tuỳ chọn | ReactNode | - |\n| disabled | Vô hiệu hoá nhấp chuột | boolean | false |\n| icon | Icon của bước, thuộc tính tuỳ chọn | ReactNode | - |\n| status | Chỉ định trạng thái. Sẽ được tự động đặt theo `current` của `Steps` nếu không cấu hình. Các giá trị tuỳ chọn: `wait` `process` `finish` `error` | string | `wait` |\n| subTitle | Phụ đề của bước | ReactNode | - |\n| title | Tiêu đề của bước | ReactNode | - |\n\n## Semantic DOM\n\n### Steps" : "## API\n\n### Steps\n\nThe whole of the step bar.\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| current | To set the current step, counting from 0. You can overwrite this state by using `status` of `Step` | number | 0 | × |\n| iconRender | Custom render icon, please use `items.icon` first | (oriNode, info: { index, active, item }) => ReactNode | - | × |\n| initial | Set the initial step, counting from 0 | number | 0 | × |\n| maxCount | Maximum number of step items to display (`>= 3`). Hidden ranges are collapsed into disabled ellipsis steps. | number | - | × |\n| orientation | To specify the orientation of the step bar, `horizontal` or `vertical` | string | `horizontal` | × |\n| percent | Progress circle percentage of current step in `process` status (only works on basic Steps) | number | - | × |\n| responsive | Change to vertical direction when screen width smaller than `532px` | boolean | true | × |\n| size | To specify the size of the step bar, `medium` and `small` are currently supported | string | `medium` | × |\n| status | To specify the status of current step, can be set to one of the following values: `wait` `process` `finish` `error` | string | `process` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| titlePlacement | Place title and content with `horizontal` or `vertical` direction | string | `horizontal` | × |\n| type | Type of steps, can be set to one of the following values: `default` `dot` `inline` `navigation` `panel` | string | `default` | × |\n| variant | Config style variant | `filled` \\| `outlined` | `filled` | × |\n| onChange | Trigger when Step is changed | (current) => void | - | × |\n| items | StepItem content | [StepItem](#stepitem) | [] | × |\n\n### StepItem\n\nA single step in the step bar.\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| content | Description of the step, optional property | ReactNode | - |\n| disabled | Disable click | boolean | false |\n| icon | Icon of the step, optional property | ReactNode | - |\n| status | To specify the status. It will be automatically set by `current` of `Steps` if not configured. Optional values are: `wait` `process` `finish` `error` | string | `wait` |\n| subTitle | Subtitle of the step | ReactNode | - |\n| title | Title of the step | ReactNode | - |\n\n## Semantic DOM\n\n### Steps"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo13 /></div></DocUnstyled>
       <DocMarkdown>{"### StepItem"}</DocMarkdown>

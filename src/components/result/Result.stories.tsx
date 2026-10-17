@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Result } from '@fabi/ui'
 import Demo0 from "./demo/success"
@@ -43,33 +44,33 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nDùng khi các thao tác quan trọng cần thông báo kết quả xử lý cho người dùng và nội dung phản hồi khá phức tạp.\n\n## Ví dụ" : "## When To Use\n\nUse when important operations need to inform the user to process the results and the feedback is more complicated.\n\n## Examples"}</DocMarkdown>
-      <h3 id="result-demo-success" className="fabi-sb-demo-title" lang="en">Success</h3>
-      <DocMarkdown>{vi ? "Hiển thị kết quả thành công." : "Show successful results."}</DocMarkdown>
-      <DocCanvas of={Success} sourceState="hidden" />
-      <h3 id="result-demo-info" className="fabi-sb-demo-title" lang="en">Info</h3>
-      <DocMarkdown>{vi ? "Hiển thị kết quả xử lý." : "Show processing results."}</DocMarkdown>
-      <DocCanvas of={Info} sourceState="hidden" />
-      <h3 id="result-demo-warning" className="fabi-sb-demo-title" lang="en">Warning</h3>
-      <DocMarkdown>{vi ? "Kết quả cảnh báo." : "The result of the warning."}</DocMarkdown>
-      <DocCanvas of={Warning} sourceState="hidden" />
-      <h3 id="result-demo-403" className="fabi-sb-demo-title" lang="en">403</h3>
-      <DocMarkdown>{vi ? "Bạn không có quyền truy cập trang này." : "you are not authorized to access this page."}</DocMarkdown>
-      <DocCanvas of={Example403} sourceState="hidden" />
-      <h3 id="result-demo-404" className="fabi-sb-demo-title" lang="en">404</h3>
-      <DocMarkdown>{vi ? "Trang bạn truy cập không tồn tại." : "The page you visited does not exist."}</DocMarkdown>
-      <DocCanvas of={Example404} sourceState="hidden" />
-      <h3 id="result-demo-500" className="fabi-sb-demo-title" lang="en">500</h3>
-      <DocMarkdown>{vi ? "Máy chủ đã xảy ra lỗi." : "Something went wrong on server."}</DocMarkdown>
-      <DocCanvas of={Example500} sourceState="hidden" />
-      <h3 id="result-demo-error" className="fabi-sb-demo-title" lang="en">Error</h3>
-      <DocMarkdown>{vi ? "Phản hồi lỗi phức tạp." : "Complex error feedback."}</DocMarkdown>
-      <DocCanvas of={Error} sourceState="hidden" />
-      <h3 id="result-demo-customicon" className="fabi-sb-demo-title" lang="en">Custom icon</h3>
-      <DocMarkdown>{vi ? "Icon tuỳ chỉnh." : "Custom icon."}</DocMarkdown>
-      <DocCanvas of={CustomIcon} sourceState="hidden" />
-      <h3 id="result-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Result bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Result by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="result-demo-success" title="Success" of={Success} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Hiển thị kết quả thành công." : "Show successful results."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="result-demo-info" title="Info" of={Info} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Hiển thị kết quả xử lý." : "Show processing results."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="result-demo-warning" title="Warning" of={Warning} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Kết quả cảnh báo." : "The result of the warning."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="result-demo-403" title="403" of={Example403} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Bạn không có quyền truy cập trang này." : "you are not authorized to access this page."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="result-demo-404" title="404" of={Example404} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Trang bạn truy cập không tồn tại." : "The page you visited does not exist."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="result-demo-500" title="500" of={Example500} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Máy chủ đã xảy ra lỗi." : "Something went wrong on server."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="result-demo-error" title="Error" of={Error} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Phản hồi lỗi phức tạp." : "Complex error feedback."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="result-demo-customicon" title="Custom icon" of={CustomIcon} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Icon tuỳ chỉnh." : "Custom icon."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="result-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Result bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Result by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| extra | Vùng thao tác | ReactNode | - | × |\n| icon | Icon tuỳ chỉnh | ReactNode | - | × |\n| status | Trạng thái kết quả, quyết định icon và màu sắc | `success` \\| `error` \\| `info` \\| `warning` \\| `404` \\| `403` \\| `500` | `info` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| subTitle | Tiêu đề phụ | ReactNode | - | × |\n| title | Tiêu đề | ReactNode | - | × |\n\n## Semantic DOM" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| extra | Operating area | ReactNode | - | × |\n| icon | Custom back icon | ReactNode | - | × |\n| status | Result status, decide icons and colors | `success` \\| `error` \\| `info` \\| `warning` \\| `404` \\| `403` \\| `500` | `info` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| subTitle | The subTitle | ReactNode | - | × |\n| title | The title | ReactNode | - | × |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo9 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

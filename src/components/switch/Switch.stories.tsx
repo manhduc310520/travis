@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { expect, fn, screen, waitFor, within } from 'storybook/test'
 import { Switch } from '@fabi/ui'
@@ -38,24 +39,24 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Khi cần biểu diễn việc chuyển đổi giữa hai trạng thái hoặc trạng thái bật/tắt.\n- Điểm khác nhau giữa `Switch` và `Checkbox`: `Switch` kích hoạt thay đổi trạng thái ngay khi bạn bật/tắt, còn `Checkbox` thường dùng để đánh dấu trạng thái và cần đi kèm thao tác submit.\n\n## Ví dụ" : "## When To Use\n\n- If you need to represent the switching between two states or on-off state.\n- The difference between `Switch` and `Checkbox` is that `Switch` will trigger a state change directly when you toggle it, while `Checkbox` is generally used for state marking, which should work in conjunction with submit operation.\n\n## Examples"}</DocMarkdown>
-      <h3 id="switch-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng cơ bản nhất." : "The most basic usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="switch-demo-disabled" className="fabi-sb-demo-title" lang="en">Disabled</h3>
-      <DocMarkdown>{vi ? "Trạng thái vô hiệu hoá của `Switch`." : "Disabled state of `Switch`."}</DocMarkdown>
-      <DocCanvas of={Disabled} sourceState="hidden" />
-      <h3 id="switch-demo-text" className="fabi-sb-demo-title" lang="en">Text & icon</h3>
-      <DocMarkdown>{vi ? "Kèm văn bản và icon." : "With text and icon."}</DocMarkdown>
-      <DocCanvas of={TextIcon} sourceState="hidden" />
-      <h3 id="switch-demo-size" className="fabi-sb-demo-title" lang="en">Two sizes</h3>
-      <DocMarkdown>{vi ? "`size=\"small\"` là switch cỡ nhỏ." : "`size=\"small\"` represents a small sized switch."}</DocMarkdown>
-      <DocCanvas of={TwoSizes} sourceState="hidden" />
-      <h3 id="switch-demo-loading" className="fabi-sb-demo-title" lang="en">Loading</h3>
-      <DocMarkdown>{vi ? "Đánh dấu trạng thái đang chờ của switch." : "Mark a pending state of switch."}</DocMarkdown>
-      <DocCanvas of={Loading} sourceState="hidden" />
-      <h3 id="switch-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Switch bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Switch by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="switch-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng cơ bản nhất." : "The most basic usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="switch-demo-disabled" title="Disabled" of={Disabled} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Trạng thái vô hiệu hoá của `Switch`." : "Disabled state of `Switch`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="switch-demo-text" title="Text & icon" of={TextIcon} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Kèm văn bản và icon." : "With text and icon."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="switch-demo-size" title="Two sizes" of={TwoSizes} code={Demo3Source}>
+        <DocMarkdown>{vi ? "`size=\"small\"` là switch cỡ nhỏ." : "`size=\"small\"` represents a small sized switch."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="switch-demo-loading" title="Loading" of={Loading} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Đánh dấu trạng thái đang chờ của switch." : "Mark a pending state of switch."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="switch-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Switch bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Switch by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| checked | Xác định Switch có được chọn hay không | boolean | false | × |\n| checkedChildren | Nội dung hiển thị khi ở trạng thái được chọn | ReactNode | - | × |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultChecked | Có đặt trạng thái ban đầu hay không | boolean | false | × |\n| defaultValue | Bí danh của `defaultChecked` | boolean | - | × |\n| disabled | Vô hiệu hoá switch | boolean | false | × |\n| loading | Trạng thái đang tải của switch | boolean | false | × |\n| size | Kích thước của Switch, các lựa chọn: `medium` `small` | `'medium'` \\| `'small'` | `medium` | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| unCheckedChildren | Nội dung hiển thị khi ở trạng thái không được chọn | ReactNode | - | × |\n| value | Bí danh của `checked` | boolean | - | × |\n| onChange | Kích hoạt khi trạng thái được chọn thay đổi | function(checked: boolean, event: Event) | - | × |\n| onClick | Kích hoạt khi được click | function(checked: boolean, event: Event) | - | × |\n\n## Phương thức\n\n| Tên | Mô tả |\n| ------- | ------------ |\n| blur() | Bỏ focus |\n| focus() | Đặt focus |\n\n## Semantic DOM" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| checked | Determine whether the Switch is checked | boolean | false | × |\n| checkedChildren | The content to be shown when the state is checked | ReactNode | - | × |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| defaultChecked | Whether to set the initial state | boolean | false | × |\n| defaultValue | Alias for `defaultChecked` | boolean | - | × |\n| disabled | Disable switch | boolean | false | × |\n| loading | Loading state of switch | boolean | false | × |\n| size | The size of the Switch, options: `medium` `small` | `'medium'` \\| `'small'` | `medium` | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props })=> Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| unCheckedChildren | The content to be shown when the state is unchecked | ReactNode | - | × |\n| value | Alias for `checked` | boolean | - | × |\n| onChange | Trigger when the checked state is changing | function(checked: boolean, event: Event) | - | × |\n| onClick | Trigger when clicked | function(checked: boolean, event: Event) | - | × |\n\n## Methods\n\n| Name | Description |\n| ------- | ------------ |\n| blur() | Remove focus |\n| focus() | Get focus |\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo6 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

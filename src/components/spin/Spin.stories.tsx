@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Spin } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -43,33 +44,33 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\nKhi một phần của trang đang chờ dữ liệu bất đồng bộ hoặc đang trong quá trình render, một hiệu ứng tải phù hợp có thể giúp giảm bớt sự sốt ruột của người dùng.\n\n## Ví dụ" : "## When To Use\n\nWhen part of the page is waiting for asynchronous data or during a rendering process, an appropriate loading animation can effectively alleviate users' inquietude.\n\n## Examples"}</DocMarkdown>
-      <h3 id="spin-demo-basic" className="fabi-sb-demo-title" lang="en">Basic Usage</h3>
-      <DocMarkdown>{vi ? "Trạng thái đang tải đơn giản." : "A simple loading status."}</DocMarkdown>
-      <DocCanvas of={BasicUsage} sourceState="hidden" />
-      <h3 id="spin-demo-size" className="fabi-sb-demo-title" lang="en">Size</h3>
-      <DocMarkdown>{vi ? "`Spin` cỡ nhỏ dùng khi tải văn bản, `Spin` cỡ mặc định dùng khi tải khối cấp card, và `Spin` cỡ lớn dùng khi tải cả **trang**." : "A small `Spin` is used for loading text, default sized `Spin` for loading a card-level block, and large `Spin` used for loading a **page**."}</DocMarkdown>
-      <DocCanvas of={Size} sourceState="hidden" />
-      <h3 id="spin-demo-nested" className="fabi-sb-demo-title" lang="en">Embedded mode</h3>
-      <DocMarkdown>{vi ? "Đặt nội dung vào bên trong `Spin` sẽ chuyển nội dung đó sang trạng thái đang tải." : "Embedding content into `Spin` will set it into loading state."}</DocMarkdown>
-      <DocCanvas of={EmbeddedMode} sourceState="hidden" />
-      <h3 id="spin-demo-tip" className="fabi-sb-demo-title" lang="en">Customized description</h3>
-      <DocMarkdown>{vi ? "Tuỳ chỉnh văn bản mô tả." : "Customize the description text."}</DocMarkdown>
-      <DocCanvas of={CustomizedDescription} sourceState="hidden" />
-      <h3 id="spin-demo-delayanddebounce" className="fabi-sb-demo-title" lang="en">Delay</h3>
-      <DocMarkdown>{vi ? "Chỉ định độ trễ cho trạng thái đang tải. Nếu `spinning` kết thúc trong thời gian trễ, trạng thái đang tải sẽ không xuất hiện." : "Specifies a delay for loading state. If `spinning` ends during delay, loading status won't appear."}</DocMarkdown>
-      <DocCanvas of={Delay} sourceState="hidden" />
-      <h3 id="spin-demo-custom-indicator" className="fabi-sb-demo-title" lang="en">Custom spinning indicator</h3>
-      <DocMarkdown>{vi ? "Dùng indicator tải tuỳ chỉnh." : "Use custom loading indicator."}</DocMarkdown>
-      <DocCanvas of={CustomSpinningIndicator} sourceState="hidden" />
-      <h3 id="spin-demo-percent" className="fabi-sb-demo-title" lang="en">Progress</h3>
-      <DocMarkdown>{vi ? "Hiển thị tiến độ. Khi đặt `percent=\"auto\"`, một tiến độ không xác định sẽ được hiển thị." : "Show the progress. When `percent=\"auto\"` is set, an indeterminate progress will be displayed."}</DocMarkdown>
-      <DocCanvas of={Progress} sourceState="hidden" />
-      <h3 id="spin-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Spin bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Spin by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
-      <h3 id="spin-demo-fullscreen" className="fabi-sb-demo-title" lang="en">Fullscreen</h3>
-      <DocMarkdown>{vi ? "Chế độ `fullscreen` rất phù hợp để tạo trình tải trang. Nó thêm một lớp phủ mờ với spinner ở giữa." : "The `fullscreen` mode is perfect for creating page loaders. It adds a dimmed overlay with a centered spinner."}</DocMarkdown>
-      <DocCanvas of={Fullscreen} sourceState="hidden" />
+      <DemoBox id="spin-demo-basic" title="Basic Usage" of={BasicUsage} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Trạng thái đang tải đơn giản." : "A simple loading status."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="spin-demo-size" title="Size" of={Size} code={Demo1Source}>
+        <DocMarkdown>{vi ? "`Spin` cỡ nhỏ dùng khi tải văn bản, `Spin` cỡ mặc định dùng khi tải khối cấp card, và `Spin` cỡ lớn dùng khi tải cả **trang**." : "A small `Spin` is used for loading text, default sized `Spin` for loading a card-level block, and large `Spin` used for loading a **page**."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="spin-demo-nested" title="Embedded mode" of={EmbeddedMode} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Đặt nội dung vào bên trong `Spin` sẽ chuyển nội dung đó sang trạng thái đang tải." : "Embedding content into `Spin` will set it into loading state."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="spin-demo-tip" title="Customized description" of={CustomizedDescription} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Tuỳ chỉnh văn bản mô tả." : "Customize the description text."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="spin-demo-delayanddebounce" title="Delay" of={Delay} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Chỉ định độ trễ cho trạng thái đang tải. Nếu `spinning` kết thúc trong thời gian trễ, trạng thái đang tải sẽ không xuất hiện." : "Specifies a delay for loading state. If `spinning` ends during delay, loading status won't appear."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="spin-demo-custom-indicator" title="Custom spinning indicator" of={CustomSpinningIndicator} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Dùng indicator tải tuỳ chỉnh." : "Use custom loading indicator."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="spin-demo-percent" title="Progress" of={Progress} code={Demo6Source}>
+        <DocMarkdown>{vi ? "Hiển thị tiến độ. Khi đặt `percent=\"auto\"`, một tiến độ không xác định sẽ được hiển thị." : "Show the progress. When `percent=\"auto\"` is set, an indeterminate progress will be displayed."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="spin-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo7Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Spin bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of Spin by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="spin-demo-fullscreen" title="Fullscreen" of={Fullscreen} code={Demo8Source}>
+        <DocMarkdown>{vi ? "Chế độ `fullscreen` rất phù hợp để tạo trình tải trang. Nó thêm một lớp phủ mờ với spinner ở giữa." : "The `fullscreen` mode is perfect for creating page loaders. It adds a dimmed overlay with a centered spinner."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| delay | Chỉ định độ trễ tính bằng mili giây cho trạng thái đang tải (tránh nhấp nháy) | number (milliseconds) | - | × |\n| description | Tuỳ chỉnh nội dung mô tả | ReactNode | - | × |\n| fullscreen | Hiển thị lớp nền phủ cùng với component `Spin` | boolean | false | × |\n| indicator | React node của indicator quay | ReactNode | - | ✓ |\n| percent | Phần trăm tiến độ, khi đặt là `auto` sẽ là tiến độ không xác định | number \\| 'auto' | - | × |\n| size | Kích thước của Spin, các lựa chọn: `small`, `medium` và `large` | string | `medium` | × |\n| spinning | Spin có hiển thị hay không | boolean | true | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n### Phương thức tĩnh\n\n- `Spin.setDefaultIndicator(indicator: ReactNode)`\n\n  Bạn có thể định nghĩa phần tử spin mặc định trên toàn cục.\n\n## Semantic DOM" : "## API\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| delay | Specifies a delay in milliseconds for loading state (prevent flush) | number (milliseconds) | - | × |\n| description | Customize description content | ReactNode | - | × |\n| fullscreen | Display a backdrop with the `Spin` component | boolean | false | × |\n| indicator | React node of the spinning indicator | ReactNode | - | ✓ |\n| percent | The progress percentage, when set to `auto`, it will be an indeterminate progress | number \\| 'auto' | - | × |\n| size | The size of Spin, options: `small`, `medium` and `large` | string | `medium` | × |\n| spinning | Whether Spin is visible | boolean | true | × |\n| styles | Customize inline style for each semantic structure inside the component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n\n### Static Method\n\n- `Spin.setDefaultIndicator(indicator: ReactNode)`\n\n  You can define default spin element globally.\n\n## Semantic DOM"}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo9 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>

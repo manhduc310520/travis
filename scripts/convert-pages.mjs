@@ -147,14 +147,15 @@ function convertPage({ file, slug }) {
     const prev = segments[segments.indexOf(seg) - 1]
     const headings = prev?.type === 'md' ? [...prev.md.matchAll(/^#{1,6} (.+)$/gm)].map((m) => m[1].trim().toLowerCase()) : []
     const titled = headings.at(-1) === seg.label.toLowerCase()
-    if (seg.label && !titled) out.push(`      <h3 className="fabi-sb-demo-title">${escapeJsxText(seg.label)}</h3>`)
     // the example's own description goes inside its box, as on ant.design (the page text
     // above often says nearly the same thing)
     // packages the example needs besides @fabi/ui and React
     const deps = extraDeps(fs.readFileSync(path.join(outDir, rel), 'utf8'))
     const description = desc && descEn ? ` description={${bilingual(desc, descEn)}}`
       : desc || descEn ? ` description={${desc ? 'vi' : '!vi'} ? ${js(desc || descEn)} : undefined}` : ''
-    out.push(`      <Example code={${id}Source} inline={${!!seg.inline}}${description}${deps.length ? ` deps={${js(deps)}}` : ''}><${id} /></Example>`)
+    // its title (unless the heading above already names it) sits on the box's border, as on ant.design
+    const title = seg.label && !titled ? ` title={${js(seg.label)}}` : ''
+    out.push(`      <Example code={${id}Source} inline={${!!seg.inline}}${title}${description}${deps.length ? ` deps={${js(deps)}}` : ''}><${id} /></Example>`)
   }
 
   // The site loads ColorStyle globally; palette widgets read their swatch colours from it.

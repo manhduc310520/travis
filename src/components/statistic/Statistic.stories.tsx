@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Canvas as DocCanvas, Markdown as DocMarkdown, Title as DocTitle, Unstyled as DocUnstyled } from '@storybook/addon-docs/blocks'
 import { useDocsLocale } from '../../../.storybook/locale'
 import { LocalizedControls, type ArgDocs } from '../../../.storybook/docsBlocks'
+import DemoBox from '../../../.storybook/DemoBox'
 import ComponentTokenTable from '../../_dumi/theme/builtins/ComponentTokenTable'
 import { Statistic } from '@fabi/ui'
 import Demo0 from "./demo/basic"
@@ -37,25 +38,25 @@ function DocsPage() {
       <DocCanvas of={Playground} sourceState="shown" />
       <LocalizedControls of={Playground} vi={argDocsVi} />
       <DocMarkdown>{vi ? "## Khi nào dùng\n\n- Khi muốn làm nổi bật một số dữ liệu.\n- Khi muốn hiển thị dữ liệu thống kê kèm mô tả.\n\n## Ví dụ" : "## When To Use\n\n- When want to highlight some data.\n- When want to display statistic data with description.\n\n## Examples"}</DocMarkdown>
-      <h3 id="statistic-demo-basic" className="fabi-sb-demo-title" lang="en">Basic</h3>
-      <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "Simplest Usage."}</DocMarkdown>
-      <DocCanvas of={Basic} sourceState="hidden" />
-      <h3 id="statistic-demo-unit" className="fabi-sb-demo-title" lang="en">Unit</h3>
-      <DocMarkdown>{vi ? "Thêm đơn vị qua `prefix` và `suffix`." : "Add unit through `prefix` and `suffix`."}</DocMarkdown>
-      <DocCanvas of={Unit} sourceState="hidden" />
-      <h3 id="statistic-demo-animated" className="fabi-sb-demo-title" lang="en">Animated number</h3>
-      <DocMarkdown>{vi ? "Số có hiệu ứng động với [react-countup](https://www.npmjs.com/package/react-countup)." : "Animated number with [react-countup](https://www.npmjs.com/package/react-countup)."}</DocMarkdown>
-      <DocCanvas of={AnimatedNumber} sourceState="hidden" />
-      <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>react-countup</code></p>
-      <h3 id="statistic-demo-card" className="fabi-sb-demo-title" lang="en">In Card</h3>
-      <DocMarkdown>{vi ? "Hiển thị dữ liệu thống kê trong Card." : "Display statistic data in Card."}</DocMarkdown>
-      <DocCanvas of={InCard} sourceState="hidden" />
-      <h3 id="statistic-demo-timer" className="fabi-sb-demo-title" lang="en">Timer</h3>
-      <DocMarkdown>{vi ? "Component bộ đếm thời gian." : "Timer component."}</DocMarkdown>
-      <DocCanvas of={Timer} sourceState="hidden" />
-      <h3 id="statistic-demo-style-class" className="fabi-sb-demo-title" lang="en">Custom semantic dom styling</h3>
-      <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Statistic bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of the Statistic by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
-      <DocCanvas of={CustomSemanticDomStyling} sourceState="hidden" />
+      <DemoBox id="statistic-demo-basic" title="Basic" of={Basic} code={Demo0Source}>
+        <DocMarkdown>{vi ? "Cách dùng đơn giản nhất." : "Simplest Usage."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="statistic-demo-unit" title="Unit" of={Unit} code={Demo1Source}>
+        <DocMarkdown>{vi ? "Thêm đơn vị qua `prefix` và `suffix`." : "Add unit through `prefix` and `suffix`."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="statistic-demo-animated" title="Animated number" of={AnimatedNumber} code={Demo2Source}>
+        <DocMarkdown>{vi ? "Số có hiệu ứng động với [react-countup](https://www.npmjs.com/package/react-countup)." : "Animated number with [react-countup](https://www.npmjs.com/package/react-countup)."}</DocMarkdown>
+        <p className="fabi-sb-deps">{vi ? "Cần cài thêm:" : "Also install:"} <code>react-countup</code></p>
+      </DemoBox>
+      <DemoBox id="statistic-demo-card" title="In Card" of={InCard} code={Demo3Source}>
+        <DocMarkdown>{vi ? "Hiển thị dữ liệu thống kê trong Card." : "Display statistic data in Card."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="statistic-demo-timer" title="Timer" of={Timer} code={Demo4Source}>
+        <DocMarkdown>{vi ? "Component bộ đếm thời gian." : "Timer component."}</DocMarkdown>
+      </DemoBox>
+      <DemoBox id="statistic-demo-style-class" title="Custom semantic dom styling" of={CustomSemanticDomStyling} code={Demo5Source}>
+        <DocMarkdown>{vi ? "Bạn có thể tuỳ chỉnh style [semantic dom](#semantic-dom) của Statistic bằng cách truyền object/function qua `classNames` và `styles`." : "You can customize the [semantic dom](#semantic-dom) style of the Statistic by passing objects/functions through `classNames` and `styles`."}</DocMarkdown>
+      </DemoBox>
       <DocMarkdown>{vi ? "## API\n\n#### Statistic\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định | Cấu hình chung |\n| --- | --- | --- | --- | --- |\n| classNames | Tuỳ chỉnh class cho từng cấu trúc semantic bên trong component Statistic. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| decimalSeparator | Dấu phân cách thập phân | string | `.` | × |\n| formatter | Tuỳ chỉnh logic hiển thị giá trị | (value) => ReactNode | - | × |\n| groupSeparator | Dấu phân cách nhóm | string | `,` | × |\n| loading | Trạng thái đang tải của Statistic | boolean | false | × |\n| precision | Độ chính xác của giá trị đầu vào | number | - | × |\n| prefix | Node đứng trước giá trị | ReactNode | - | × |\n| styles | Tuỳ chỉnh inline style cho từng cấu trúc semantic bên trong component Statistic. Hỗ trợ object hoặc function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| suffix | Node đứng sau giá trị | ReactNode | - | × |\n| title | Tiêu đề hiển thị | ReactNode | - | × |\n| value | Giá trị hiển thị | string \\| number | - | × |\n\n#### Statistic.Timer\n\n| Thuộc tính | Mô tả | Kiểu | Mặc định |\n| --- | --- | --- | --- |\n| type | Hướng của bộ đếm: đếm ngược hoặc đếm xuôi | `countdown` \\| `countup` | - |\n| format | Định dạng theo [dayjs](https://day.js.org/) | string | `HH:mm:ss` |\n| prefix | Node đứng trước giá trị | ReactNode | - |\n| suffix | Node đứng sau giá trị | ReactNode | - |\n| title | Tiêu đề hiển thị | ReactNode | - |\n| value | Thời điểm đích với `countdown`, hoặc thời điểm bắt đầu với `countup` (timestamp tính bằng ms) | number | - |\n| valueStyle | Đặt style cho phần giá trị | CSSProperties | - |\n| onFinish | Kích hoạt khi hết giờ, chỉ được gọi khi type là `countdown` | () => void | - |\n| onChange | Kích hoạt khi thời gian thay đổi | (value: number) => void | - |\n\n## Semantic DOM\n\nStatistic hỗ trợ các node semantic DOM `root`, `header`, `title`, `content`, `value`, `prefix` và `suffix`." : "## API\n\n#### Statistic\n\n| Property | Description | Type | Default | Global Config |\n| --- | --- | --- | --- | --- |\n| classNames | Customize class for each semantic structure inside the Statistic component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), string> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), string> | - | ✓ |\n| decimalSeparator | The decimal separator | string | `.` | × |\n| formatter | Customize value display logic | (value) => ReactNode | - | × |\n| groupSeparator | Group separator | string | `,` | × |\n| loading | Loading status of Statistic | boolean | false | × |\n| precision | The precision of input value | number | - | × |\n| prefix | The prefix node of value | ReactNode | - | × |\n| styles | Customize inline style for each semantic structure inside the Statistic component. Supports object or function. | Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> \\| (info: { props }) => Record&lt;[SemanticDOM](#semantic-dom), CSSProperties> | - | ✓ |\n| suffix | The suffix node of value | ReactNode | - | × |\n| title | Display title | ReactNode | - | × |\n| value | Display value | string \\| number | - | × |\n\n#### Statistic.Timer\n\n| Property | Description | Type | Default |\n| --- | --- | --- | --- |\n| type | Timer direction, count down or count up | `countdown` \\| `countup` | - |\n| format | Format as [dayjs](https://day.js.org/) | string | `HH:mm:ss` |\n| prefix | The prefix node of value | ReactNode | - |\n| suffix | The suffix node of value | ReactNode | - |\n| title | Display title | ReactNode | - |\n| value | Target time for `countdown`, or start time for `countup` (timestamp in ms) | number | - |\n| valueStyle | Set value section style | CSSProperties | - |\n| onFinish | Trigger when time's up, only called when type is `countdown` | () => void | - |\n| onChange | Trigger when time's changing | (value: number) => void | - |\n\n## Semantic DOM\n\nStatistic supports `root`, `header`, `title`, `content`, `value`, `prefix`, and `suffix` semantic DOM nodes."}</DocMarkdown>
       <DocUnstyled><div className="fabi-sb-block fabi-sb-semantic"><Demo6 /></div></DocUnstyled>
       <DocMarkdown>{"## Design Token"}</DocMarkdown>
